@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+/* constant colors  */
+
+html {
+    --mc: #147ED5;
+    --sc: #FC792E;
+    --tc: #0D265F;
+}
+
+
+/* constant font in our project  */
+
+body {
+    font-family: Montserrat, sans-serif;
+}
+
+
+/* example for how to use constant color  */
+
+body {
+    background-color: var(--mc);
+}
