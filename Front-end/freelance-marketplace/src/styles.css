@@ -1,13 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+/* bootstrap  */
+
 @import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+/* prime-ng  */
+
+
+/* node_modules/primeng/resources/themes/saga-blue/theme.css
+node_modules/primeng/resources/primeng.min.css */
+
 
 /* constant colors  */
 
 html {
-    --mc: #147ED5;
+    --mc: #0D265F;
     --sc: #FC792E;
-    --tc: #0D265F;
+    --tc: #147ED5;
 }
 
 
