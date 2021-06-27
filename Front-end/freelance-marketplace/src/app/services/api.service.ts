@@ -10,22 +10,4 @@ export class ApiService {
   constructor(private httpClient : HttpClient) { }
 
 
-  get(url : string){
-    this.httpClient.get(`${environment.apiUrl}/${url}`);
-  }
-
-
-  post(url : string , body : any){
-    this.httpClient.post(`${environment.apiUrl}/${url}` , body)
-  }
-
-
-  put(url: string , body : any){
-    this.httpClient.put(`${environment.apiUrl}/${url}` , body)
-  }
-
-  delete(url : string){
-    this.httpClient.delete(`${environment.apiUrl}/${url}`)
-  }
-
 }
