@@ -3,7 +3,7 @@
 
 /* bootstrap  */
 
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 /* styles for prime-ng  */
 
