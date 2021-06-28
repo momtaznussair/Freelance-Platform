@@ -9,6 +9,10 @@ const routes: Routes = [
   //   loadChildren: () => import('./components/shared/shared.module').then(m => m.SharedModule)
   // },
   {
+    path: 'freelancer',
+    loadChildren: () => import('./components/freelancer/freelancer.module').then(m => m.FreelancerModule)
+  },
+  {
     path: '',
     loadChildren: () => import('./components/landing-page/landing-page.module').then(m => m.LandingPageModule)
   },
