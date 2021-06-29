@@ -22,31 +22,36 @@
             <!-- sort section  -->
             <div class="card-header d-flex row m-0">
                 <div class="select align-items-center col-lg-7">
+                    <div class="row">
+                        <span class="h6 d-none d-lg-block mx-2 col-lg-2 align-middle">Sorted by </span>
 
-                    <span class="h6 d-none d-lg-block mx-2">Sorted by </span>
+                        <select class="form-select-md-lg form-select-sm col-lg-6 align-middle" aria-label="Default select example">
+                          <option selected>Open this select menu</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
 
-                    <select class="form-select-md-lg form-select-sm" aria-label="Default select example">
-                      <option selected>Open this select menu</option>
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
-                    </select>
-
-                    <button class="total btn rounded-circle btn-outline-danger mx-2"><span class="fa fa-arrow-up fa-sm"></span></button>
-                    <small>0 total</small>
+                        <button class="total btn rounded-circle btn-outline-danger col-lg-2"><span class="fa fa-arrow-up fa-sm"></span></button>
+                        <small>0 total</small>
+                    </div>
                 </div>
 
-                <div class="checkbox mx-0 p-0 col-lg-3 d-none d-lg-block">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
+                <div class="vert col-lg-5 align-text-bottom">
+                    <div class="row">
+                        <div class="checkbox mx-0 p-0 col-lg-6 d-none d-lg-block">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
                           Include closed contracts
                         </label>
-                </div>
+                        </div>
 
 
-                <div class="cv col-md-4 col-lg-2 ">
-                    <button class="cv-btn btn btn-link"><span class="fa fa-arrow-down d-none d-md-block"><small>Download CV</small></span></button>
-                    <button class="cv-btn btn btn-link d-block d-md-none "><span>clisck</span></button>
+                        <div class="cv col-md-4 col-lg-6 ">
+                            <button class="cv-btn btn btn-link"><span class="fa fa-arrow-down d-none d-md-block"><small>Download CV</small></span></button>
+                            <button class="cv-btn btn btn-link d-block d-md-none "><span>clisck</span></button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
