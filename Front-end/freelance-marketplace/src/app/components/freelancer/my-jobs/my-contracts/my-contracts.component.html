@@ -1,16 +1,64 @@
 <app-nav></app-nav>
-<div class="card">
-    <div class="card-header">
-        Featured
-    </div>
-    <div class="card-header">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    <div class="card-header">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
+<div class="container">
+
+    <!-- this is main form -->
+    <form action="" class=" mt-5 ">
+        <p class="h2 mb-4"> Contracts</p>
+
+        <!-- Card -->
+        <div class="card">
+
+
+            <!-- search section   -->
+            <div class="search card-header d-flex align-items-center">
+                <div class="form-group col-6">
+                    <input class="form-control my-2" type="search" placeholder="Search" aria-label="Search">
+                </div>
+                <div class="search-icon d-lg-none offset-3">
+                    <button class="btn rounded-circle btn-outline-danger"><span class="fa fa-search-minus"></span></button>
+                </div>
+            </div>
+
+            <!-- sort section  -->
+            <div class="card-header d-flex row m-0">
+                <div class="select align-items-center col-lg-7">
+
+                    <span class="h6 d-none d-lg-block mx-2">Sorted by </span>
+
+                    <select class="form-select-md-lg form-select-sm" aria-label="Default select example">
+                      <option selected>Open this select menu</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+
+                    <button class="total btn rounded-circle btn-outline-danger mx-2"><span class="fa fa-arrow-up fa-sm"></span></button>
+                    <small>0 total</small>
+                </div>
+
+                <div class="checkbox mx-0 p-0 col-lg-3 d-none d-lg-block">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                          Include closed contracts
+                        </label>
+                </div>
+
+
+                <div class="cv col-md-4 col-lg-2 ">
+                    <button class="cv-btn btn btn-link"><span class="fa fa-arrow-down d-none d-md-block"><small>Download CV</small></span></button>
+                    <button class="cv-btn btn btn-link d-block d-md-none "><span>clisck</span></button>
+                </div>
+            </div>
+
+
+
+            <!-- <div class="card-header">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div> -->
+        </div>
+    </form>
+    <!-- this is main form -->
+
 </div>

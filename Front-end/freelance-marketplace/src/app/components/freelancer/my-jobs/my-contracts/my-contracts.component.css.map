@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAEQ,UAFE,CACN,KAAK,CACD,MAAM,CAAC;EAIH,MAAM,EAAE,aACZ;CAAC;;AAPT,AAQQ,UARE,CACN,KAAK,CAOD,OAAO,CAAC;EACJ,KAAK,EAAE,KAAK;EACZ,eAAe,EAAE,IAAI;CACxB",
+    "sources": [
+        "my-contracts.component.scss"
+    ],
+    "names": [],
+    "file": "my-contracts.component.css"
+}

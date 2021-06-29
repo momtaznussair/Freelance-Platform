@@ -1,0 +1,9 @@
+.container .card .total {
+  border: 1px solid red;
+}
+
+.container .card .cv-btn {
+  color: black;
+  text-decoration: none;
+}
+/*# sourceMappingURL=my-contracts.component.css.map */
