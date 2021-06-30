@@ -1,8 +1,28 @@
 .container {
+    font-weight: bold;
+    form {
+        .contracts {
+            color: var(--mc)
+        }
+    }
     .card {
+        .section {
+            .sorted {
+                color: var(--mc);
+            }
+        }
         .cv-btn {
             color: black;
             text-decoration: none;
+        }
+        .vertical .checkbox .lable {
+            color: var(--mc)
+        }
+        .footer {
+            span {
+                color: var(--mc);
+                text-decoration: none;
+            }
         }
     }
 }
