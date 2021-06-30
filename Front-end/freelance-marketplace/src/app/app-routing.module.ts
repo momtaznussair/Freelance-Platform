@@ -3,11 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  // example for how to use sub routes by lazy load syntax
-  // {
-  //   path: 'SharedModule',
-  //   loadChildren: () => import('./components/shared/shared.module').then(m => m.SharedModule)
-  // },
+  {
+    path: 'user',
+    loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule)
+  },
   {
     path: 'freelancer',
     loadChildren: () => import('./components/freelancer/freelancer.module').then(m => m.FreelancerModule)
@@ -16,6 +15,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./components/landing-page/landing-page.module').then(m => m.LandingPageModule)
   },
+
 ];
 
 @NgModule({
