@@ -1,0 +1,30 @@
+.container .card .accordion .accordion-button {
+  color: var(--sc);
+}
+
+.container .card .nav {
+  font-weight: bold !important;
+}
+
+.container .card .nav a {
+  text-decoration: none;
+}
+
+.container .card .nav .active {
+  background-color: var(--tc);
+  color: white !important;
+}
+
+.container .card .body {
+  height: 420px;
+  overflow: hidden;
+}
+
+.container .card .body .collapse .data {
+  font-size: 1rem !important;
+  margin-bottom: 50px;
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+/*# sourceMappingURL=overview.component.css.map */

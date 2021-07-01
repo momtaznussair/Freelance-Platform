@@ -1,0 +1,15 @@
+.container .h4 {
+    color: var(--mc);
+}
+
+.container .air-card {
+    background-color: var(--mc);
+}
+
+.alert .h5 {
+    color: var(--tc);
+}
+
+.alert small {
+    color: var(--sc);
+}

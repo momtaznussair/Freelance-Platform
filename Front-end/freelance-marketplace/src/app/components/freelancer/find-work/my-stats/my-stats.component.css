@@ -1,0 +1,14 @@
+.main {
+    color: var(--tc);
+}
+
+.row {
+    background-color: var(--tc);
+    color: white;
+}
+
+.main .main-stats,
+.main .main-client,
+.main .main-job {
+    color: var(--mc);
+}

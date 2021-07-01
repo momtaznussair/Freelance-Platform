@@ -1,0 +1,26 @@
+.container .card {
+    .accordion .accordion-button {
+        color: var(--sc);
+    }
+    .nav {
+        font-weight: bold !important;
+        a {
+            text-decoration: none;
+        }
+        .active {
+            background-color: var(--tc);
+            color: white !important;
+        }
+    }
+    .body {
+        height: 420px;
+        overflow: hidden;
+        .collapse .data {
+            font-size: 1rem !important;
+            margin-bottom: 50px;
+            width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+        }
+    }
+}

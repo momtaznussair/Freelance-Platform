@@ -1,50 +1,183 @@
-<nav class="navbar navbar-expand-lg bg-dark text-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/freelancer/work/stats">stats</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/freelancer/myjobs/contracts">my contracts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/freelancer/myjobs/jobs">my jobs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/freelancer/myjobs/workdiary">my workdiary</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" routerLink="/freelancer/reports/overview">overview</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" routerLink="#">Action</a></li>
-                        <li><a class="dropdown-item" routerLink="#">Another action</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
+<div class="container-fluid">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg text-light">
+            <div class="container-fluid">
+                <!-- Start Logo -->
+                <a class="navbar-brand ms-md-2" href="/freelancer">UpWork</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- End Logo -->
+
+                <!-- Start Links-->
+                <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2  mb-lg-0">
+                        <!-- Start Seaarch -->
+                        <form class="d-flex mx-2 search-form">
+                            <!-- <a href="#">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a> -->
+                            <input class="form-control search-input me-2" type="search" placeholder="Search" aria-label="Search">
+                        </form>
+                        <!-- End search -->
+
+                        <!-- Start Find Work -->
+                        <li class="nav-item dropdown ms-md-4 me-md-2">
+                            <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">  Find Work  </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/work">Find Work</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/work/saved-jobs">Saved Jobs</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/work/proposals">Proposals</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/work/profile">Profile</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/work/stats">My State</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li><a class="dropdown-item" routerLink="#">Something else here</a></li>
+                        <!-- End Find Work -->
+
+
+                        <!-- Start My Jobs -->
+                        <li class="nav-item dropdown me-md-2">
+                            <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">  My Jobs  </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/myjobs/jobs">My Jobs</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/myjobs/contracts">All Contracts</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/myjobs/workdiary">Work Diary</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- End My Jobs -->
+
+
+                        <!-- Start Reports -->
+                        <li class="nav-item dropdown me-md-2">
+                            <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">  Reports  </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/overview">Oveview</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/my-reports">My Reports</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/billings-earnings">Billings & Earnings</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/connects-history">Connects History</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/transaction-history">Transaction History</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/certificate-of-earnings">Certificate of Earnings</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- End Reports -->
+
+
+                        <!-- Start Messages -->
+                        <li class="nav-item mx-md-2 mt-md-2">
+                            <a routerLink="/freelancer/messages" class="text-white text-decoration-none">Messages</a>
+                        </li>
+                        <!-- End Messages -->
+
+
+                        <!-- Start Help -->
+                        <li class="nav-item ms-md-5 me-md-3">
+                            <a routerLink="#">
+                                <i class="fas fa-question fa-2x"></i>
+                            </a>
+                        </li>
+                        <!-- End Help -->
+
+                        <!-- Start Notifications -->
+                        <li class="nav-item mx-md-3">
+                            <a routerLink="#">
+                                <i class="far fa-bell fa-2x"></i>
+                            </a>
+                        </li>
+                        <!-- End Notifications -->
+
+                        <!-- Start Direct Contracts -->
+                        <li class="nav-item mx-md-3">
+                            <a routerLink="#">
+                                <i class="far fa-location-arrow fa-2x"></i>
+                            </a>
+                        </li>
+                        <!-- End Direct Contracts -->
+
+                        <!-- Start Image  -->
+                        <li class="nav-item ms-md-4">
+                            <img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt="">
+                        </li>
+                        <!-- End Image -->
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" routerLink="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+
+                </div>
+                <!-- End Links -->
+            </div>
+        </nav>
     </div>
-</nav>
+</div>
+
+
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------ -->
+
+
+<!-- Srart Scripts -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // make it as accordion for smaller screens
+        if (window.innerWidth > 992) {
+
+            document.querySelectorAll('.navbar .nav-item').forEach(function(everyitem) {
+
+                everyitem.addEventListener('mouseover', function(e) {
+
+                    let el_link = this.querySelector('a[data-bs-toggle]');
+
+                    if (el_link != null) {
+                        let nextEl = el_link.nextElementSibling;
+                        el_link.classList.add('show');
+                        nextEl.classList.add('show');
+                    }
+
+                });
+                everyitem.addEventListener('mouseleave', function(e) {
+                    let el_link = this.querySelector('a[data-bs-toggle]');
+
+                    if (el_link != null) {
+                        let nextEl = el_link.nextElementSibling;
+                        el_link.classList.remove('show');
+                        nextEl.classList.remove('show');
+                    }
+
+
+                })
+            });
+
+        }
+        // end if innerWidth
+    });
+    // DOMContentLoaded  end
+</script>
+
+<!-- End Scripts -->

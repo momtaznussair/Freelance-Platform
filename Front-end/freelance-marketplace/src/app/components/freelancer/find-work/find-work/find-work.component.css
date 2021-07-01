@@ -1,0 +1,23 @@
+/* Start Aside Find Job */
+a{
+    text-decoration: none;
+}
+
+.edit a{
+    border: 1px solid #999;
+    border-radius: 50%;
+    background-color: rgb(219, 216, 216);
+}
+/* End Aside Find Job */
+
+
+/* Start main */
+.input-group .form-control:focus{
+    border: 1px solid #999;
+}
+
+.card-header a{
+    border: 1px solid #999;
+    border-radius: 50%;
+}
+/* End main */

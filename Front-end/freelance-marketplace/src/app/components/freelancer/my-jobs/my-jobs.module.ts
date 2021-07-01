@@ -11,7 +11,6 @@ const routes : Routes = [
   {path : 'jobs' , component : MyJobsComponent},
   {path : 'contracts' , component : MyContractsComponent},
   {path : 'workdiary' , component : WorkDiaryComponent},
-  {path : '' , component : MyJobsComponent},
 ]
 
 
