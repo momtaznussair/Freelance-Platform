@@ -2,13 +2,6 @@
   font-weight: bold;
 }
 
-.container form .search,
-.container form .section,
-.container form .footer {
-  background-color: var(--tc);
-  color: white;
-}
-
 .container form .contracts {
   color: var(--mc);
 }

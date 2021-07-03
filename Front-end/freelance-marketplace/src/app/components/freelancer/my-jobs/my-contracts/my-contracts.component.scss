@@ -1,12 +1,6 @@
 .container {
     font-weight: bold;
     form {
-        .search,
-        .section,
-        .footer {
-            background-color: var(--tc);
-            color: white;
-        }
         .contracts {
             color: var(--mc)
         }
@@ -15,9 +9,6 @@
         .section {
             .sorted {
                 color: var(--mc);
-                // .row .form-select-sm {
-                //     background-color: red;
-                // }
             }
         }
         .cv-btn {

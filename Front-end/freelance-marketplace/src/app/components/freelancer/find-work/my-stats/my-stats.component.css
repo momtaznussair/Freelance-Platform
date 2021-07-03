@@ -1,14 +1,39 @@
-.main {
-    color: var(--tc);
+html {
+    background-color: #e13434;
 }
 
-.row {
-    background-color: var(--tc);
-    color: white;
+.main {
+    color: var(--tc);
 }
 
 .main .main-stats,
 .main .main-client,
 .main .main-job {
     color: var(--mc);
+}
+
+.aside .btn {
+    border: 1px solid var(--sc);
+}
+
+.aside .btn:hover {
+    background-color: var(--sc);
+    color: white;
+}
+
+.progress-bar {
+    background-color: var(--sc);
+}
+
+.profile-view-text {
+    color: black;
+}
+
+.progress {
+    background-color: #ffe3e3;
+    height: 10px;
+}
+
+.profile-complete-progress .progress-bar {
+    background-color: var(--sc);
 }
