@@ -1,11 +1,18 @@
-html {
-    background-color: #e13434;
-}
-
 .main {
     color: var(--tc);
 }
 
+.card-left {
+    padding-right: 0;
+}
+
+.main-stats-header,
+.comunication-header,
+.Marketing-effectiveness-header {
+    background-color: #f4f4f4;
+}
+
+;
 .main .main-stats,
 .main .main-client,
 .main .main-job {
