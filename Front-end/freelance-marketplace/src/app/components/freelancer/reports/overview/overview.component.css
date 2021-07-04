@@ -27,4 +27,20 @@
   max-height: 100%;
   overflow: hidden;
 }
+
+#collapseFour .card-title {
+  background-color: #f4f4f4;
+  height: 100%;
+}
+
+#collapseFour button {
+  border: 1px solid var(--sc);
+  color: var(--mc);
+  border-radius: 20px;
+}
+
+#collapseFour button:hover {
+  background-color: var(--sc);
+  color: #e8e7e7;
+}
 /*# sourceMappingURL=overview.component.css.map */

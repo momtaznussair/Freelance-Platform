@@ -1,9 +1,9 @@
-<div class="container-fluid">
+<div class="container-fluid py-md-2">
     <div class="container">
-        <nav class="navbar navbar-expand-lg text-light">
+        <nav class="navbar navbar-expand-lg navbar-dark text-light">
             <div class="container-fluid">
                 <!-- Start Logo -->
-                <a class="navbar-brand ms-md-2" href="/freelancer">UpWork</a>
+                <a class="navbar-brand ms-md-2" routerLink="/freelancer">UpWork</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -13,11 +13,11 @@
                 <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2  mb-lg-0">
                         <!-- Start Seaarch -->
-                        <form class="d-flex mx-2 search-form">
+                        <form class="d-flex mx-md-2 search-form">
                             <!-- <a href="#">
                                 <span class="glyphicon glyphicon-search"></span>
                             </a> -->
-                            <input class="form-control search-input me-2" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control search-input me-md-2" type="search" placeholder="Search" aria-label="Search">
                         </form>
                         <!-- End search -->
 
@@ -44,7 +44,6 @@
                         </li>
                         <!-- End Find Work -->
 
-
                         <!-- Start My Jobs -->
                         <li class="nav-item dropdown me-md-2">
                             <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown">  My Jobs  </a>
@@ -61,7 +60,6 @@
                             </ul>
                         </li>
                         <!-- End My Jobs -->
-
 
                         <!-- Start Reports -->
                         <li class="nav-item dropdown me-md-2">
@@ -89,43 +87,92 @@
                         </li>
                         <!-- End Reports -->
 
-
                         <!-- Start Messages -->
                         <li class="nav-item mx-md-2 mt-md-2">
                             <a routerLink="/freelancer/messages" class="text-white text-decoration-none">Messages</a>
                         </li>
                         <!-- End Messages -->
 
+                        <!-- strat Help , Notification , Direct Contract , Image in md => xl screen -->
+                            <div class="nav-item d-sm-none d-md-flex">
+                                <ul class="navbar-nav">
+                                    <!-- Start Help -->
+                                    <li class="ms-md-5 me-md-3">
+                                        <a routerLink="#" class="">
+                                            <i class="fas fa-question fa-2x"></i>
+                                        </a>
+                                    </li>
+                                    <!-- End Help -->
 
-                        <!-- Start Help -->
-                        <li class="nav-item ms-md-5 me-md-3">
-                            <a routerLink="#">
-                                <i class="fas fa-question fa-2x"></i>
-                            </a>
-                        </li>
-                        <!-- End Help -->
+                                    <!-- Start Notifications -->
+                                    <li class=" mx-md-3">
+                                        <a routerLink="#">
+                                            <i class="far fa-bell fa-2x"></i>
+                                        </a>
+                                    </li>
+                                    <!-- End Notifications -->
 
-                        <!-- Start Notifications -->
-                        <li class="nav-item mx-md-3">
-                            <a routerLink="#">
-                                <i class="far fa-bell fa-2x"></i>
-                            </a>
-                        </li>
-                        <!-- End Notifications -->
+                                    <!-- Start Direct Contracts -->
+                                    <li class=" mx-md-3">
+                                        <a routerLink="#">
+                                            <i class="far fa-location-arrow fa-2x"></i>
+                                        </a>
+                                    </li>
+                                    <!-- End Direct Contracts -->
 
-                        <!-- Start Direct Contracts -->
-                        <li class="nav-item mx-md-3">
-                            <a routerLink="#">
-                                <i class="far fa-location-arrow fa-2x"></i>
-                            </a>
-                        </li>
-                        <!-- End Direct Contracts -->
+                                    <!-- Start Image  -->
+                                    <li class=" ms-md-4">
+                                        <img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt="">
+                                    </li>
+                                    <!-- End Image -->
+                                </ul>
+                            </div>
+                        <!-- end Help , Notification , Direct Contract , Image in md => xl screen -->
 
-                        <!-- Start Image  -->
-                        <li class="nav-item ms-md-4">
-                            <img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt="">
-                        </li>
-                        <!-- End Image -->
+                        <!-- strat Help , Notification , Direct Contract , Image in sm screen -->
+                            <div class="nav-item d-sm-flex d-md-none">
+                                <ul class="navbar-nav">
+                                    <!-- Help -->
+                                    <li>
+                                        Help
+                                        <a routerLink="#">
+                                            <i class="fas fa-question ms-2"></i>
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- Notifications -->
+                                    <li>
+                                        Notifications 
+                                        <a routerLink="#">
+                                            <i class="far fa-bell ms-2"></i>
+                                        </a>
+                                    </li>
+
+                                    <!-- Direct Contracts -->
+                                    <li >
+                                        Direct Contracts 
+                                        <a routerLink="#">
+                                            <i class="far fa-location-arrow ms-2"></i>
+                                        </a>
+                                    </li>
+
+                                    <!-- Settings -->
+                                    <li >
+                                        <a routerLink="#">
+                                            <i class="fas fa-cog me-2"></i>
+                                        </a>
+                                        Settings
+                                    </li>
+                                    <!-- Logout -->
+                                    <li >
+                                        <a routerLink="#">
+                                            <i class="fas fa-sign-out-alt me-2"></i>
+                                        </a>
+                                        Logout
+                                    </li>
+                                </ul>
+                            </div>
+                        <!-- end Help , Notification , Direct Contract , Image in sm screen -->
                     </ul>
 
                 </div>

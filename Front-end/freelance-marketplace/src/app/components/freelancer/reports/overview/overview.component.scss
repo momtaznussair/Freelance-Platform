@@ -24,3 +24,19 @@
         }
     }
 }
+
+#collapseFour {
+    .card-title {
+        background-color: #f4f4f4;
+        height: 100%;
+    }
+    button {
+        border: 1px solid var(--sc);
+        color: var(--mc);
+        border-radius: 20px;
+        &:hover {
+            background-color: var(--sc);
+            color: rgb(232, 231, 231);
+        }
+    }
+}

@@ -17,6 +17,7 @@
 
 .nav-item i{
     color: white;
+    font-weight: 100;
 }
 
 .nav-item img{
@@ -24,8 +25,6 @@
     width: 2.5rem;
     height: 2.5rem;
 }
-
-
 
 
 /* ---------------------------------------------------------------------------------------------------------------- */
@@ -36,4 +35,11 @@
 	.navbar .nav-item:hover .nav-link{   }
 	.navbar .nav-item:hover .dropdown-menu{ display: block; }
 	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+
+
+@media (max-width: 767px){
+    .d-sm-flex li{
+        margin-top: .5rem;
+    }
 }

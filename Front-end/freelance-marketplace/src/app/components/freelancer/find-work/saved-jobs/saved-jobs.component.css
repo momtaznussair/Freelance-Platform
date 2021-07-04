@@ -1,0 +1,53 @@
+/* Start Card Header */
+.card-header{
+    background-color: white;
+}
+
+.card-header a{
+    text-decoration: none;
+}
+
+.card-header a:hover{
+    color: var(--mc);
+}
+
+.active{
+    color: var(--mc);
+    border-bottom: 5px solid var(--mc);
+}
+
+/* End Card Header */
+
+
+/* Start Card Body */
+img{
+    width: 8.125rem;
+    height: 8.125rem;
+}
+
+.card-body{
+    border-bottom:3px solid #b8b8b8;
+}
+
+.card-body:hover{
+    cursor: pointer;
+    background-color: #F9F9F9;
+}
+
+.card-body:hover a{
+    color: var(--mc);
+    text-decoration: underline;
+}
+
+/* Job skills */
+.skills span{
+    border: 1px solid #999;
+    border-radius: 1rem;
+    padding: .3125rem;
+    background-color: rgb(238, 238, 238);
+}
+
+.skills span:hover{
+    background-color: rgb(216, 216, 216);
+}
+/* End Card Body */

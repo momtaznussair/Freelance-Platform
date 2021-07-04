@@ -6,6 +6,10 @@
   color: var(--mc);
 }
 
+.container .card .search {
+  background-color: #f4f4f4;
+}
+
 .container .card .section .sorted {
   color: var(--mc);
 }
