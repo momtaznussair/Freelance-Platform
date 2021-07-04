@@ -25,7 +25,7 @@
 
 .aside .btn:hover {
     background-color: var(--sc);
-    color: #e8e7e7;
+    color: white;
 }
 
 .progress-bar {
