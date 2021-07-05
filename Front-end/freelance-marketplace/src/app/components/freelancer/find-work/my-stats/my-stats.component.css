@@ -1,23 +1,18 @@
 .main {
-    color: var(--tc);
+    color: var(--mc);
 }
 
 .card-left {
-    padding-right: 0;
+    /* padding-right: 0; */
 }
 
 .main-stats-header,
 .comunication-header,
 .Marketing-effectiveness-header {
-    background-color: #f4f4f4;
+    background-color: var(--bg);
 }
 
-;
-.main .main-stats,
-.main .main-client,
-.main .main-job {
-    color: var(--mc);
-}
+
 
 .aside .btn {
     border: 1px solid var(--sc);
@@ -25,7 +20,7 @@
 
 .aside .btn:hover {
     background-color: var(--sc);
-    color: white;
+    color: var(--bg);
 }
 
 .progress-bar {
@@ -37,7 +32,7 @@
 }
 
 .progress {
-    background-color: #ffe3e3;
+    background-color: var(--bg);
     height: 10px;
 }
 

@@ -5,6 +5,8 @@ import { JobsModule } from './jobs/jobs.module';
 import { TalentModule } from './talent/talent.module';
 import { ReportsModule } from '../client/reports/reports.module';
 import { MessagesModule } from './messages/messages.module';
+import { ClientSettingModule } from './client-setting/client-setting.module';
+
 
 const routes : Routes = [
   {
@@ -22,16 +24,22 @@ const routes : Routes = [
   {
     path: 'messages',
     loadChildren: () => import('./messages/messages.module').then(m => m.MessagesModule)
+  },
+  {
+    path: 'setting',
+    loadChildren: () => import('./client-setting/client-setting.module').then(m => m.ClientSettingModule)
   }
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [
+
+  ],
   imports: [
     CommonModule,RouterModule.forChild(routes)
   ],
   exports : [
-    JobsModule, TalentModule , ReportsModule,MessagesModule
+    JobsModule, TalentModule , ReportsModule,MessagesModule,ClientSettingModule
   ]
 })
 export class ClientModule { }
