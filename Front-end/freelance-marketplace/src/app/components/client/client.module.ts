@@ -6,6 +6,7 @@ import { TalentModule } from './talent/talent.module';
 import { ReportsModule } from '../client/reports/reports.module';
 import { MessagesModule } from './messages/messages.module';
 import { ClientSettingModule } from './client-setting/client-setting.module';
+import { MainComponent } from './main/main.component';
 
 
 const routes : Routes = [
@@ -28,12 +29,16 @@ const routes : Routes = [
   {
     path: 'setting',
     loadChildren: () => import('./client-setting/client-setting.module').then(m => m.ClientSettingModule)
-  }
+  },
+  {path : 'main' ,component : MainComponent},
+  {path : '' ,component : MainComponent}
 ]
 
 @NgModule({
   declarations: [
 
+
+    MainComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes)
