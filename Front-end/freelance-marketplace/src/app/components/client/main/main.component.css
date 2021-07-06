@@ -8,14 +8,16 @@
     margin-top: 0;
 }
 
-.draft-btn {
+.draft-btn,
+.slide-btn {
     border: 1px solid var(--mc);
     background-color: var(--bg);
     width: 10rem;
     border-radius: 3rem;
 }
 
-.draft-btn:hover {
+.draft-btn:hover,
+.slide-btn:hover {
     background-color: var(--mc);
     color: var(--bg);
 }
@@ -28,4 +30,18 @@
     background-image: url("../../../../assets/images/finance.jpg");
     background-size: cover;
     border-radius: 20px;
+}
+
+.slide-images {
+    height: 250px;
+}
+
+.slide-images img {
+    width: 100%;
+    height: 100%;
+}
+
+.job-templates a {
+    text-decoration: none;
+    color: var(--mc);
 }
