@@ -40,6 +40,9 @@ const routes : Routes = [
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes)
+  ],
+  exports : [
+    SidebarComponent
   ]
 })
 export class ClientSettingModule { }

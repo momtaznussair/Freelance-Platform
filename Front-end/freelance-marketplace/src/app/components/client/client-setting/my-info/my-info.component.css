@@ -31,4 +31,10 @@
 .account-btn:hover {
     background-color: var(--mc);
     color: var(--bg);
+    border-color: var(--bg);
+}
+
+.card-header,
+.card-footer {
+    background-color: var(--bg)
 }
