@@ -1,0 +1,31 @@
+.container .dropdown img {
+    width: 40px;
+    height: 40px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.draft-btn {
+    border: 1px solid var(--mc);
+    background-color: var(--bg);
+    width: 10rem;
+    border-radius: 3rem;
+}
+
+.draft-btn:hover {
+    background-color: var(--mc);
+    color: var(--bg);
+}
+
+.work-img {
+    height: 80px;
+}
+
+.img {
+    background-image: url("../../../../assets/images/finance.jpg");
+    background-size: cover;
+    border-radius: 20px;
+}
