@@ -12,14 +12,14 @@
     background-color: var(--bg);
 }
 
-
-
 .aside .btn {
-    border: 1px solid var(--sc);
+    border: 1px solid var(--mc);
+    background-color: var(--bg);
+    color: var(--mc);
 }
 
 .aside .btn:hover {
-    background-color: var(--sc);
+    background-color: var(--mc);
     color: var(--bg);
 }
 
@@ -32,10 +32,15 @@
 }
 
 .progress {
-    background-color: var(--bg);
+    background-color: white;
     height: 10px;
 }
 
-.profile-complete-progress .progress-bar {
+
+/* .profile-complete-progress .progress-bar {
     background-color: var(--sc);
+} */
+
+.card {
+    background-color: var(--bg)
 }

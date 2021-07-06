@@ -3,13 +3,9 @@
 }
 
 .container .air-card {
-    background-color: var(--mc);
+    background-color: var(--bg);
 }
 
 .alert .h5 {
-    color: var(--tc);
-}
-
-.alert small {
-    color: var(--sc);
+    color: var(--mc);
 }

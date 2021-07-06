@@ -1,5 +1,10 @@
 .alert {
-    background-color: #f4f4f4;
+    background-color: var(--bg);
+    border: 1px solid var(--mc);
+}
+
+.h5 {
+    color: var(--mc)
 }
 
 .container .myjobs {

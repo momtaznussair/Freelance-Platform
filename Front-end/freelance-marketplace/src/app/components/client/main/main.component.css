@@ -1,5 +1,10 @@
 .company span {
-    color: var(--mc)
+    color: var(--mc);
+    cursor: pointer;
+}
+
+.company span:hover {
+    color: var(--sc);
 }
 
 .company-name .h5 {
@@ -64,4 +69,14 @@
 .job-templates a {
     text-decoration: none;
     color: var(--mc);
+}
+
+.h2,
+.h5,
+.h6 {
+    color: var(--mc)
+}
+
+.card {
+    background-color: var(--bg)
 }
