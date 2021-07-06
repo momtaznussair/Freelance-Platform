@@ -1,3 +1,23 @@
+.company span {
+    color: var(--mc)
+}
+
+.company-name .h5 {
+    color: var(--mc)
+}
+
+.company .btn {
+    border: 1px solid var(--mc);
+    background-color: var(--bg);
+    border-radius: 20px
+}
+
+.company .btn:hover {
+    border: 1px solid var(--bg);
+    background-color: var(--mc);
+    color: var(--bg);
+}
+
 .container .dropdown img {
     width: 40px;
     height: 40px;
