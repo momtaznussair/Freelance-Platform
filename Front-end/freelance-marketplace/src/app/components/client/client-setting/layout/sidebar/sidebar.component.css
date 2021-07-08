@@ -2,9 +2,11 @@
 
 a {
     text-decoration: none;
+    color: black;
 }
 
 a:hover {
+    color: var(--tc);
     text-decoration: underline;
 }
 

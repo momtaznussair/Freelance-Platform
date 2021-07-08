@@ -10,6 +10,8 @@ import { MainComponent } from './main/main.component';
 
 
 const routes : Routes = [
+  {path : 'main' ,component : MainComponent},
+  {path : '' , component : MainComponent},
   {
     path: 'jobs',
     loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule)
@@ -29,9 +31,7 @@ const routes : Routes = [
   {
     path: 'setting',
     loadChildren: () => import('./client-setting/client-setting.module').then(m => m.ClientSettingModule)
-  },
-  {path : 'main' ,component : MainComponent},
-  {path : '' ,component : MainComponent}
+  }
 ]
 
 @NgModule({

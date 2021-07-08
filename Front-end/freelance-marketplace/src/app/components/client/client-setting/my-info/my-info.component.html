@@ -17,7 +17,7 @@
 
                 <div class="card-header p-4">
                     <span class="h2">Account</span>
-                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil"></span> </span>
+                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#account"></span> </span>
                 </div>
                 <div class="card-body  px-4 d-flex justify-content-center">
                     <div class="account-shape" style="background-image: url('./assets/images/login.jpg');">
@@ -31,12 +31,42 @@
                 </div>
             </div>
 
+            <!-- account section modal  -->
+            <div class="modal fade" id="account" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Re-enter password</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="h6 fw-bold">I***mali</p>
+                            <p class="text-muted fw-bold">eng.....@gmail.com</p>
+                            <a href="#" class="small fw-bold">Not you?</a><br>
+                            <form class="form">
+                                <label class="small form-check-label">password</label><br>
+                                <input type="password" class="form-control w-50"><br>
+                                <a href="#" class="small fw-bold">Forget Password</a>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                            <button type="button" class="btn">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End account section modal  -->
+
+
+
+
             <!-- Company details -->
             <div class="card mb-5">
 
                 <div class="card-header p-4 ">
                     <span class="h2">Company details</span>
-                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil"></span></span>
+                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#company"></span></span>
                 </div>
                 <div class="card-body  px-4 d-flex justify-content-center">
                     <div class="company-shape" style="background-image: url('./assets/images/jefferson-santos-9SoCnyQmkzI-unsplash.jpg');"></div>
@@ -45,6 +75,28 @@
                     <p class="h4 fw-bold">ITI</p>
                 </div>
             </div>
+            <!-- company section modal  -->
+            <div class="modal fade" id="company" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <form class="form">
+                                <label class="small form-check-label">Company Name</label><br>
+                                <input type="text" class="form-control"><br>
+                                <label class="small form-check-label">Website</label><br>
+                                <input type="text" class="form-control"><br>
+                                <label class="small form-check-label">Tagline</label><br>
+                                <input type="text" class="form-control"><br>
+                                <label class="small form-check-label">Description</label><br>
+                                <input type="text" class="form-control"><br>
+                                <button type="button" class="btn" data-bs-dismiss="modal">Save</button>
+                                <button type="button" class="btn mx-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End company section modal  -->
 
 
             <!-- Company contacts-->
@@ -53,7 +105,7 @@
                 <div class="card-header p-4 ">
                     <span class="h2">Company contacts
                     </span>
-                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil"></span></span>
+                    <!-- <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil"></span></span> -->
                 </div>
                 <div class="card-footer  px-4 pt-3">
                     <p class="h6 fw-bold">Owner</p>

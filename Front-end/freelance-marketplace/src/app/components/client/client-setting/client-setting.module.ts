@@ -20,7 +20,7 @@ const routes : Routes = [
   {path : 'plans/index' , component : MembershipComponent},
   {path : 'teams' , component : TeamsComponent},
   {path : 'notification-settings' , component : NotificationComponent},
-  {path : 'members/active' , component : MembershipComponent},
+  {path : 'members/active' , component : MembersPermissionsComponent},
   {path : 'payments/tax-info' , component : TaxInformationComponent},
   {path : '' , component : MyInfoComponent}
 ]

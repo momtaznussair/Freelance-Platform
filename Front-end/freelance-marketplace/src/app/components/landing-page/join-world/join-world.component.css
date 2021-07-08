@@ -1,56 +1,65 @@
 .container h1 {
-  font-size: 80px !important;
-  color: var(--mc);
+    font-size: 80px !important;
+    color: var(--mc);
 }
 
 .container p {
-  font-size: 24px !important;
-  color: var(--tc);
+    font-size: 24px !important;
+    color: black;
 }
 
 .container button {
-  padding: 12px 29px;
-  border-radius: 40px;
-  border: 1px solid var(--mc);
+    padding: 12px 29px;
+    border-radius: 40px;
+    border: 1px solid var(--mc);
 }
 
 .container button.one {
-  margin-right: 15px;
-  background-color: var(--sc);
-  color: white;
+    margin-right: 15px;
+    background-color: var(--mc);
+    color: var(--bg);
 }
 
-.container button.two {
-  color: var(--mc);
+.container button.two:hover {
+    background-color: var(--mc);
+    color: var(--bg);
 }
+
+
+/* .container button.two {
+    color: var(--mc);
+    background-color: var(--bg);
+} */
+
+
+/* //================media query ============ */
 
 @media (max-width: 1399.99px) {
-  .container h1 {
-    font-size: 71px !important;
-  }
+    .container h1 {
+        font-size: 71px !important;
+    }
 }
 
 @media (max-width: 1199.9px) {
-  .container h1 {
-    font-size: 59px !important;
-  }
+    .container h1 {
+        font-size: 59px !important;
+    }
 }
 
 @media (max-width: 991.99px) {
-  .container h1 {
-    font-size: 44px !important;
-  }
-  .container p {
-    font-size: 20px !important;
-  }
+    .container h1 {
+        font-size: 44px !important;
+    }
+    .container p {
+        font-size: 20px !important;
+    }
 }
 
 @media (max-width: 767.99px) {
-  .container h1 {
-    font-size: 48px !important;
-  }
-  .container p {
-    font-size: 22px !important;
-  }
+    .container h1 {
+        font-size: 48px !important;
+    }
+    .container p {
+        font-size: 22px !important;
+    }
 }
-/*# sourceMappingURL=join-world.component.css.map */

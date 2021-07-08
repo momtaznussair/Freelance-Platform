@@ -24,4 +24,4 @@ const routes : Routes = [
   ],
   exports : [MyStatsComponent]
 })
-export class FindWorkModule { }
+export class FindWorkModule {}

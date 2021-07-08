@@ -10,6 +10,20 @@
     background-color: var(--bg);
 }
 
+.search-icon,
+.btn-search {
+    background-color: var(--bg);
+    color: var(--mc);
+    border: 1px solid var(--mc);
+    border-radius: 50%;
+}
+
+.search-icon,
+.btn-search:hover {
+    background-color: var(--mc);
+    color: var(--bg);
+}
+
 .container .card .section .sorted {
     color: var(--mc);
 }
