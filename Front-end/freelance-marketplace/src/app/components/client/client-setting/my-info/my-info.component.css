@@ -12,11 +12,6 @@
     border-radius: 3rem;
 }
 
-.btn:hover {
-    background-color: var(--mc);
-    color: var(--bg);
-}
-
 .h2,
 .h4,
 .lead,
@@ -26,13 +21,13 @@
 
 .btn-link,
 a {
-    color: black;
+    color: var(--mc);
     text-decoration: none;
 }
 
 .btn-link:hover,
 a:hover {
-    color: var(--mc);
+    color: var(--tc);
     text-decoration: underline;
 }
 
