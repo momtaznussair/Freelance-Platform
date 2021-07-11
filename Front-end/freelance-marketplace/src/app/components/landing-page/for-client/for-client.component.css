@@ -10,6 +10,7 @@
 
 .container .text h1 {
     font-size: 64px !important;
+    color: var(--mc);
     /* color: var(--sc); */
 }
 
