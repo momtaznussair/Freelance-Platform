@@ -5,11 +5,15 @@ import { CommonModule } from '@angular/common';
 import { MyStatsComponent } from './my-stats/my-stats.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
+import { ProposalsComponent } from './proposals/proposals.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes : Routes = [
   {path : 'stats' , component : MyStatsComponent},
   {path : 'saved-jobs' , component : SavedJobsComponent},
   {path : 'work' , component : FindWorkComponent},
+  {path : 'profile' , component : ProfileComponent},
+  {path : 'proposals' , component : ProposalsComponent},
   {path:'', component:FindWorkComponent}
 ]
 
@@ -17,7 +21,9 @@ const routes : Routes = [
   declarations: [
     MyStatsComponent,
     FindWorkComponent,
-    SavedJobsComponent
+    SavedJobsComponent,
+    ProposalsComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),SharedModule

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AccordionModule} from 'primeng/accordion';
-import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [

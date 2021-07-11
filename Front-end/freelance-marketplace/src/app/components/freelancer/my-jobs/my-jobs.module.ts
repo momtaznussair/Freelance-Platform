@@ -10,7 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 const routes : Routes = [
   {path : 'jobs' , component : MyJobsComponent},
   {path : 'contracts' , component : MyContractsComponent},
-  {path : 'workdiary' , component : WorkDiaryComponent},
+  {path : 'workdiary' , component : WorkDiaryComponent}
 ]
 
 
