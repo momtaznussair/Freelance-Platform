@@ -3,7 +3,7 @@
 
 /* bootstrap  */
 
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
 /* styles for prime-ng  */
 
@@ -19,18 +19,20 @@
     --mc: #0D265F;
     --sc: #FC792E;
     --tc: #147ED5;
+    --bg: #f7f7f5;
 }
 
 
 /* constant font in our project  */
 
 body {
-    font-family: Montserrat, sans-serif;
+    font-family: Montserrat, /* serif, "sans-serif"; */
 }
 
 
 /* example for how to use constant color  */
 
-body {
+
+/* body {
     background-color: var(--mc);
-}
+} */

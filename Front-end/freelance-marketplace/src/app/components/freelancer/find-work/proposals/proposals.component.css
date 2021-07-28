@@ -1,0 +1,177 @@
+.con {
+    margin-top: 3.4rem;
+}
+
+h2 {
+    margin: 2.5rem 2.5rem;
+    color: var(--mc);
+}
+
+.ftab {
+    border: .0125rem var(--mc) solid;
+    border-radius: .3125rem;
+    height: 4.6875rem;
+    margin-top: .25rem;
+    background-color: white;
+}
+
+.sectab,
+.thirdtab,
+.fourtab {
+    border: .0125rem var(--mc) solid;
+    border-radius: .3125rem;
+    height: 4.6875rem;
+    margin-top: 1.375rem;
+    background-color: white;
+}
+
+h3 {
+    padding: 22px;
+    font-size: 23px;
+}
+
+.nav-tabs {
+    font-size: 1.375rem;
+    margin-left: 2.5rem;
+    border-bottom: none;
+    color: var(--mc);
+}
+
+.nav-tabs button {
+    color: var(--mc);
+}
+
+body {
+    background-color: var(--bg);
+}
+
+a,
+span {
+    color: var(--mc);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.pip {
+    margin-top: 1.25rem;
+    margin-right: 3.5rem;
+}
+
+.fas {
+    color: var(--mc);
+}
+
+
+/* referrals */
+
+.Referrals {
+    height: 31.25rem;
+    border: .0125rem solid var(--mc);
+    text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {}
+
+@media only screen and (max-width: 992px) {
+    .nav-tabs {
+        font-size: 20px;
+        margin-left: 40px;
+    }
+    .aa,
+    span,
+    .pip {
+        display: none;
+    }
+    .ftab,
+    .sectab,
+    .thirdtab,
+    .fourtab {
+        height: 75px;
+        margin-top: 10px;
+    }
+    h3 {
+        font-size: 22px;
+        padding: 20px;
+    }
+    .Referrals {
+        height: 400px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-tabs {
+        font-size: 16px;
+    }
+    .aa,
+    span,
+    .pip {
+        display: none;
+    }
+    .ftab,
+    .sectab,
+    .thirdtab,
+    .fourtab {
+        height: 50px;
+        margin-top: 7px;
+    }
+    h3 {
+        padding: 10px;
+        font-size: 20px;
+    }
+    .nav-tabs {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .nav-tabs {
+        font-size: 12px;
+    }
+    .sectab,
+    .thirdtab,
+    .fourtab {
+        height: 60px;
+        margin-top: .6rem;
+    }
+    .ftab {
+        height: 60px;
+        margin-top: 4px;
+    }
+    h3 {
+        padding: 10px;
+        font-size: 20px;
+    }
+    .aa,
+    span,
+    .pip {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .sectab,
+    .thirdtab,
+    .fourtab {
+        height: 48px;
+        margin-top: .5rem;
+    }
+    .ftab {
+        height: 48px;
+        margin-top: 3px;
+    }
+    h3 {
+        font-size: 15px;
+    }
+    h4 {
+        font-size: 16px;
+    }
+    p {
+        font-size: 10px;
+    }
+    .Referrals {
+        height: 200px;
+    }
+    .ref {
+        font-size: 9px;
+    }
+}

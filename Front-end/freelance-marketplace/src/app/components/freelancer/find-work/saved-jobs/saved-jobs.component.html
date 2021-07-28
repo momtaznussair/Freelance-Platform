@@ -1,0 +1,82 @@
+<app-nav></app-nav>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <a href="#">Search</a>
+                <a href="#" class="active mx-3">Saved Jobs</a>
+            </div>
+            <!-- If there is no saved jobs -->
+            <div class="card-body text-center border-bottom-0">
+                <img src="../../../../../assets/images/globe-2x.jpg" class="d-block mx-auto" alt="">
+                <h3 class="mx-md-5 fw-bold text-secondary">Keep track of jobs you're interested in. Select the heart icon on a job post to save it for later.</h3>
+            </div>
+
+            <!-- if saved jobs -->
+            <div class="card-body  d-none">
+                <!-- Job Title -->
+                <div class="header d-flex">
+                    <a routerLink="#">Job Title</a>
+                    <span class="ms-auto">
+                        <i class="far fa-thumbs-down fa-2x mx-md-2"></i>
+                        <i class="far fa-heart fa-2x mx-2 d-none"></i>
+                        <i class="fas fa-heart fa-2x mx-2"></i>
+                    </span>
+                    <br>
+                </div>
+
+                <!-- Job Info  -->
+                Hourly: <span class="hourly-rate fw-bold">$5.00 - $15.00</span>
+                <span class="complex"> - Intermidiate</span>
+                - Est. Time: <span class="job-time"> More than 6 months, Hours to be determined </span>
+                - Posted: <span class="job-since"> 1 day ago</span>
+                <br>
+
+                <!-- Job Description -->
+                <p class="job-desc fw-bold">
+                    I’d like to have a person with good css/html/ Laravel knowledge to assist me in some projects. 
+                    Please, fill free to start discussion. 
+                </p>
+
+                <!-- Job Skills -->
+                <div class="skills mb-sm-3 text-center">
+                    <span class="mx-2">Web Design</span>
+                    <span class="mx-2">Web Aplication</span>
+                    <span class="mx-2">PHP</span>
+                    <span class="mx-2">Laravel</span>
+                </div>
+
+                -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
+
+                <!-- More Info -->
+                <div class="more-info">
+                    <!-- start Verified -->
+                    <span class="unverified">
+                        <i class="far fa-check-circle me-md-2"></i> <span class="fw-bold">Payment unverified</span>
+                    </span>
+                    <span class="verified d-none">
+                        <i class="fas fa-check-circle mee-md-2"></i> <span class="fw-bold">Payment verified</span>
+                    </span>
+                    <!-- End Verified -->
+
+                    <!-- Rating -->
+                    <span class="payment-rating mx-md-2">
+                        rating with stars
+                    </span>
+
+                    <!-- Money spent -->
+                    <span class="spent mx-md-2">
+                        <span class="money-spent fw-bold">$10</span> spent
+                    </span>
+
+                    <!-- Location -->
+                    <span class="location ms-md-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        <span class="fw-bold">United state</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

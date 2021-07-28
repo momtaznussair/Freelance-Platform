@@ -1,0 +1,43 @@
+h1{
+    font-weight: bold !important;
+}
+
+li a{
+    text-decoration: none;
+    color:#999;
+}
+
+li a:hover{
+    color: blue;
+}
+
+a.active{
+    color: var(--mc) !important;
+}
+
+img{
+    border-radius: 10px;
+}
+
+span{
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 1.5rem;
+}
+
+span:hover{
+    background-color: rgb(216, 216, 216);
+    cursor: pointer;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------------------- */
+
+/* Media Query */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 300px) and (max-width:768px) { 
+    a{
+        font-size: 1.4rem;
+    }
+}

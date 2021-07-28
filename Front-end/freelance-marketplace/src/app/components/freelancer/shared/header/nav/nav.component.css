@@ -1,0 +1,45 @@
+.container-fluid{
+    background-color:var(--mc) ;
+}
+
+.navbar-brand{
+    color: white;
+    font-weight: bold;
+}
+
+.search-form input{
+    border-radius:1.2rem ;
+}
+
+.search-input{
+    width: 20rem;
+}
+
+.nav-item i{
+    color: white;
+    font-weight: 100;
+}
+
+.nav-item img{
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Media Query */
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+
+
+@media (max-width: 767px){
+    .d-sm-flex li{
+        margin-top: .5rem;
+    }
+}
