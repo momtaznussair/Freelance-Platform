@@ -10,6 +10,7 @@ import {AccordionModule} from 'primeng/accordion';
 @NgModule({
   declarations: [
     AppComponent,
+    
 
   ],
   imports: [
