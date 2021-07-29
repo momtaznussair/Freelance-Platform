@@ -1,0 +1,56 @@
+.one{
+  margin: auto;
+
+
+}
+.container{
+    box-sizing: border-box;
+    border: solid 1px  #0D265F;
+    width: 90%;
+    height: 100%;
+}
+
+.parent{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+h1,h3,p,h6 ,select{
+    margin-left: 30px;
+}
+select{
+    width: 60%;
+}
+.bt1{
+   margin-left: 20px;
+   padding: 16px 30px ;
+    border: 0;
+    font-size: 16px;
+    line-height: 1;
+ display: inline-block;
+    border-radius: 30px;
+    background:  #f3f2f1;
+    color:  #0D265F;
+    cursor: pointer;
+ }
+ .bt1:hover{
+
+    background-color: #0D265F;
+    color: white;
+ }
+
+.bt2{
+   padding: 16px 30px;
+   margin-left: 240px;
+   border:0;
+   font-size: 16px;
+   line-height: 1;
+display: inline-block;
+   border-radius: 30px;
+   color:  #f3f2f1;
+   background:  #0D265F;
+   cursor: pointer;
+}
+
+

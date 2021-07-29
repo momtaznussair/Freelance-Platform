@@ -17,6 +17,7 @@ export class SignupComponent implements OnInit {
   pwdPattern = "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,15}$";
   phoneNumPattern = "^((\+91-?)|0)?[0-9]{10 , 15}$";
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  imagePattern :string =  "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({

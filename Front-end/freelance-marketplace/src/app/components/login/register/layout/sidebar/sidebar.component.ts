@@ -14,15 +14,13 @@ export class SidebarComponent implements OnInit {
 
 
   groups : any = [
-    {name : "My Info" , shape : "user" , path : "/client/info"},
-    {name : "Billing Methods" , shape : "badger-honey" , path : "/client/payments/deposit-methods"},
-    {name : "Password & Security" , shape : "lock" , path : "/client/account-security/password-and-security"},
-    {name : "Membership" , shape : "badge" , path : "/client/plans/index"},
-    {name : "Teams" , shape : "group" , path : "/client/teams"},
-    {name : "Notification Setting" , shape : "group" , path : "/client/notification-settings"},
-    {name : "Members & Permissions" , shape : "calculator" , path : "/client/members/active"},
-    {name : "Task Information" , shape : "commenting" , path : "/client/payments/tax-info"},
-
+    {name : "Category" , shape : "user" , path : "/user/signup/category"},
+    {name : "expertise" , shape : "badger-honey" , path : "/user/signup/expertise"},
+    {name : "expertise level" , shape : "lock" , path : "/user/signup/expertise-level"},
+    {name : "Education" , shape : "badge" , path : "/user/signup/education"},
+    {name : "Language" , shape : "group" , path : "/user/signup/lang"},
+    {name : "Hourly rate" , shape : "group" , path : "/user/signup/hourly-rate"},
+    {name : "Location" , shape : "calculator" , path : "/user/signup/location"},
   ];
 
   selectedItem : any = '';
