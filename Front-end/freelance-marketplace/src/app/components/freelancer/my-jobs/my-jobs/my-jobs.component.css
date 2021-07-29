@@ -1,0 +1,32 @@
+.alert {
+    background-color: var(--bg);
+    border: 1px solid var(--mc);
+}
+
+.h5 {
+    color: var(--mc)
+}
+
+.container .myjobs {
+    height: 70px;
+}
+
+.container .dropdown img {
+    width: 40px;
+    height: 40px;
+}
+
+.container .myjobs-link a {
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.myjobs .h5,
+.myjobs-link .h5,
+.card .card-active {
+    color: var(--mc)
+}

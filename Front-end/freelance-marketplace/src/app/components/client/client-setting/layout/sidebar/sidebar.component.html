@@ -1,0 +1,64 @@
+<p class="mb-md-5 h2">Setting</p>
+
+<!-- <ul class="list-unstyled mt-md-5">
+    <li class="my-md-3">
+        <div class="active px-2">
+            <span class="fa fa-user"></span>
+            <a routerLink="/client/info" class="text-reset mx-2">My Info</a>
+        </div>
+    </li>
+    <li class="my-md-3">
+        <div class="px-2">
+            <span class="fa fa-badger-honey"></span>
+            <a routerLink="/client/payments/deposit-methods" class="text-reset  mx-2">Billing Methods</a>
+        </div>
+    </li>
+    <li class="my-md-3">
+        <div class="px-2">
+            <span class="fa fa-lock"></span>
+            <a routerLink="/client/account-security/password-and-security" class="text-reset mx-2">Password & Security</a>
+        </div>
+    </li>
+    <li class="my-md-3">
+        <div class="px-2">
+            <span class="fa fa-badge"></span>
+            <a routerLink="/client/plans/index" class="text-reset mx-2">Membership</a>
+        </div>
+    </li>
+    <li class="my-md-3">
+        <div class="px-2">
+            <span class="fa fa-group"></span>
+            <a routerLink="/client/teams" class="text-reset mx-2">Teams</a>
+        </div>
+    </li>
+    <li class="my-md-3">
+        <div class="px-2">
+            <span class="fa fa-group"></span>
+            <a routerLink="/client/notification-settings" class="text-reset mx-2">Notification Setting</a>
+        </div>
+    </li>
+    <li class="my-md-3">
+        <div class="px-2">
+            <span class="fa fa-calculator"></span>
+            <a routerLink="/client/members/active" class="text-reset mx-2">Members & Permessions</a>
+        </div>
+    </li>
+    <li class="my-md-3">
+        <div class="px-2">
+            <span class="fa fa-commenting"></span>
+            <a routerLink="/client/payments/tax-info" class="text-reset mx-2">Taks Information</a>
+        </div>
+    </li>
+</ul>
+
+
+ -->
+
+
+
+
+<ul id="grouplist" class="list-unstyled">
+    <li class="my-md-3 " *ngFor="let item of groups">
+        <a [ngClass]="{'active': selectedItem == item }" (mouseover)="listClick($event, item)" routerLink="{{item.path}}"><span class="fa fa-{{item.shape}} mx-2"></span> {{ item.name }}</a>
+    </li>
+</ul>

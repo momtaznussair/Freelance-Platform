@@ -1,0 +1,84 @@
+.container-fluid {
+    background-color: var(--mc);
+}
+
+
+/* Start Footer Links */
+
+h5 {
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+ul li {
+    margin-bottom: 1rem;
+}
+
+
+/* End Footer Links */
+
+
+/* Start Links in small screen */
+
+.accordion-body,
+.accordion-button {
+    background-color: var(--mc) !important;
+    /* color:black !important; */
+}
+
+.accordion-button {
+    color: white !important;
+    /* border-bottom-color: white; */
+}
+
+.accordion-body a {
+    text-decoration: none;
+}
+
+
+/* End links in small screen */
+
+
+/* Start Footer Follow Us */
+
+a i {
+    margin-right: .75rem;
+}
+
+
+/* End Footer Follow Us */
+
+
+/* ----------------------------------------------------------------------------------------------------------------- */
+
+
+/* Media Query */
+
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {}
+
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {}
+
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {}
+
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {}

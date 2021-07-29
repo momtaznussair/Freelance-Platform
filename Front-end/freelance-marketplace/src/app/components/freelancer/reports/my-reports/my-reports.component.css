@@ -1,0 +1,17 @@
+.h2 {
+    color: var(--mc)
+}
+
+a {
+    text-decoration: none;
+    color: var(--mc);
+}
+
+a:hover {
+    color: var(--tc);
+    text-decoration: underline;
+}
+
+.card {
+    background-color: var(--bg);
+}

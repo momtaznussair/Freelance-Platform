@@ -1,0 +1,43 @@
+.container {
+    font-weight: bold;
+}
+
+.container form .contracts {
+    color: var(--mc);
+}
+
+.container .card .search {
+    background-color: var(--bg);
+}
+
+.search-icon,
+.btn-search {
+    background-color: var(--bg);
+    color: var(--mc);
+    border: 1px solid var(--mc);
+    border-radius: 50%;
+}
+
+.search-icon,
+.btn-search:hover {
+    background-color: var(--mc);
+    color: var(--bg);
+}
+
+.container .card .section .sorted {
+    color: var(--mc);
+}
+
+.container .card .cv-btn {
+    color: black;
+    text-decoration: none;
+}
+
+.container .card .vertical .checkbox .lable {
+    color: var(--mc);
+}
+
+.container .card .footer span {
+    color: var(--mc);
+    text-decoration: none;
+}
