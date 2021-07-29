@@ -43,8 +43,8 @@ font-size: 16px;
 line-height: 1;
 display: inline-block;
 border-radius: 30px;
-color:  #f3f2f1;
-background:  #0D265F;
+color:   var(--bg);
+background:   var(--mc);
 cursor: pointer;
 }
 #one{

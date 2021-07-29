@@ -16,6 +16,7 @@ import { LocationComponent } from './location/location/location.component';
 
 const routes : Routes=[
   {path : 'main' , component : SignupComponent},
+  {path : 'first' , component : FirstComponent},
   {path : 'expertise' , component : ExpertiseComponent},
   {path : 'expertise-level' , component : ExpertlevelComponent},
   {path : 'education' , component : EductionComponent},

@@ -34,7 +34,7 @@ padding: 16px 30px ;
  line-height: 1;
 display: inline-block;
  border-radius: 30px;
- background:  #f3f2f1;
+ background:  var(--bg);
  color:  var(--mc);
  cursor: pointer;
 }
