@@ -1,0 +1,53 @@
+
+ .container2{
+  height: 550px;
+   margin: 200px auto;
+   width: 50%;
+   box-sizing: border-box;
+
+   justify-content: center;
+
+}
+p{
+   display: inline;
+}
+h1,h3,p,h6 ,select , input,textarea{
+   margin-left: 30px;
+}
+select{
+   width: 60%;
+}
+.bt1{
+  margin-left: 20px;
+  padding: 16px 30px ;
+   border: 0;
+   font-size: 16px;
+   line-height: 1;
+display: inline-block;
+   border-radius: 30px;
+   background:  #f3f2f1;
+   color:  #0D265F;
+   cursor: pointer;
+}
+.bt1:hover{
+
+   background-color: #0D265F;
+   color: white;
+}
+
+.bt2{
+  padding: 16px 30px;
+  margin-left: 420px;
+  border:0;
+  font-size: 16px;
+  line-height: 1;
+display: inline-block;
+  border-radius: 30px;
+  color:  #f3f2f1;
+  background:  #0D265F;
+  cursor: pointer;
+}
+
+#one{
+  margin-left:260px;
+}
