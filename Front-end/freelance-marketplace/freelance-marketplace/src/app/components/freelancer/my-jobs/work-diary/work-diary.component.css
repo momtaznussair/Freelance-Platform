@@ -1,0 +1,11 @@
+.container .h4 {
+    color: var(--mc);
+}
+
+.container .air-card {
+    background-color: var(--bg);
+}
+
+.alert .h5 {
+    color: var(--mc);
+}

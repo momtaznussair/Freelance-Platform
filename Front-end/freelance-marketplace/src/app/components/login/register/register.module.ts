@@ -21,6 +21,7 @@ const routes : Routes=[
   {path : 'lang' , component : LanguagesComponent},
   {path : 'hourly-rate' , component : HourlyrateComponent},
   {path : 'location' , component : LocationComponent},
+  {path : '' , component : SignupComponent},
 ]
 
 @NgModule({

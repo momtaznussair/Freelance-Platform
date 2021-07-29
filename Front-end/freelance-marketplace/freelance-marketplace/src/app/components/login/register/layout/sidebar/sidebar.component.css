@@ -1,0 +1,22 @@
+/* Start Aside Find Job */
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: var(--tc);
+    text-decoration: underline;
+}
+
+.active {
+    border-left: 5px solid var(--mc);
+}
+
+.h2 {
+    color: var(--mc);
+}
+
+
+/* End Aside Find Job */

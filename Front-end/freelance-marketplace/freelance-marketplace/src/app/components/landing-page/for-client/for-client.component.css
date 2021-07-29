@@ -1,0 +1,63 @@
+.container {
+    background-image: url("../../../../assets/images/find-talent.jpg");
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.container .text p {
+    font-size: 18px !important;
+}
+
+.container .text h1 {
+    font-size: 64px !important;
+    color: var(--mc);
+    /* color: var(--sc); */
+}
+
+.container .links a {
+    border-radius: 20px;
+    text-decoration: none;
+    background-color: var(--sc);
+    color: var(--bg);
+    cursor: pointer;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.container .links a:hover {
+    background-color: var(--bg);
+    color: var(--mc);
+}
+
+@media (max-width: 991.99px) {
+    .text p {
+        font-size: 17px !important;
+        color: var(--bg);
+    }
+    .text h1 {
+        font-size: 63px !important;
+        color: var(--sc);
+    }
+}
+
+@media (max-width: 767.99px) {
+    .text p {
+        font-size: 17px !important;
+        color: var(--tc);
+    }
+    .text h1 {
+        font-size: 47px !important;
+        color: var(--sc);
+    }
+}
+
+@media (max-width: 575.99px) {
+    .text p {
+        font-size: 17px !important;
+        color: white;
+    }
+    .text h1 {
+        font-size: 47px !important;
+        color: var(--sc);
+    }
+}
