@@ -18,8 +18,8 @@ export class LoginComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      email : ['' , [Validators.email ,Validators.maxLength(50) , Validators.required] ],
-      password : ['' , [Validators.required , Validators.minLength(6) , Validators.maxLength(30)]]
+      email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
+      password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15)]]
     })
   }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,20 +10,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
 
-  form:FormGroup = new FormGroup({});
-  matchValidator: any;
-  constructor(private formBuilder : FormBuilder) { }
+  form : FormGroup = new FormGroup({});
+  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
 
   ngOnInit(): void {
+
+
     this.form = this.formBuilder.group({
-      fname:['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(30)]],
-      lname:['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(30)]],
-      email : ['' , [Validators.email , Validators.minLength(10) , Validators.maxLength(50) , Validators.required] ],
-      password : ['' , [Validators.required , Validators.minLength(6) , Validators.maxLength(30)]],
-      repeatpassword : ['' , [Validators.required , Validators.minLength(6) , Validators.maxLength(30)]]
+      fName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(250)]],
+      lName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(250)]],
+      userName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(250)]],
+      email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
+      gender:['' , [Validators.required]],
+      phone:['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(250)]],
+      password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15)]],
+      repeatPassword : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15)]]
     })
+
+  }//end of ngOnInit
+
+  login(){
+    if(this.form.valid && (this.form.controls['password'].value == this.form.controls['repeatPassword'].value))
+      this.router.navigateByUrl('freelancer');
   }
-
-
 
 }

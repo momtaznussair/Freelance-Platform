@@ -26,8 +26,8 @@
                                 <input formControlName="password" type="password" name="password" id="password" class="form-control  mt-3 mb-0" placeholder="***********">
                                 <div *ngIf="form.controls.password.invalid && form.controls.password.dirty || form.controls.password.touched">
                                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('required')">Password is required</small>
-                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('minlength')">You have to write more than 6 characters</small>
-                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('maxlength')">You have to write less than 30 characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('minlength')">You have to write more than 8 characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('maxlength')">You have to write less than 15 characters</small>
                                 </div>
                             </div>
                             <input name="login" (click)="login()" [disabled]="form.invalid" id="login" class="btn btn-primary mb-4 form-control" type="submit" value="Login">
