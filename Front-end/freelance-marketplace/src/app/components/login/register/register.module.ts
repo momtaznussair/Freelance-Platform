@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { FirstComponent } from './first/first/first.component';
 import { ExpertiseComponent } from './Expertise/expertise/expertise.component';
 import { ExpertlevelComponent } from './Expertlevel/expertlevel/expertlevel.component';
@@ -10,17 +12,22 @@ import { EmpolymentComponent } from './Employment/empolyment/empolyment.componen
 import { LanguagesComponent } from './languages/languages/languages.component';
 import { HourlyrateComponent } from './hourlyrate/hourlyrate/hourlyrate.component';
 import { LocationComponent } from './location/location/location.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
+
 
 const routes : Routes=[
   {path : 'main' , component : SignupComponent},
-  {path : '' , component : SignupComponent},
+  {path : 'expertise' , component : ExpertiseComponent},
+  {path : 'expertise-level' , component : ExpertlevelComponent},
+  {path : 'education' , component : EductionComponent},
+  {path : 'lang' , component : LanguagesComponent},
+  {path : 'hourly-rate' , component : HourlyrateComponent},
+  {path : 'location' , component : LocationComponent},
 ]
 
 @NgModule({
   declarations: [
     SignupComponent,
+    SidebarComponent,
     FirstComponent,
     ExpertiseComponent,
     ExpertlevelComponent,
@@ -29,7 +36,8 @@ const routes : Routes=[
     LanguagesComponent,
     HourlyrateComponent,
     LocationComponent,
-    SidebarComponent
+    SidebarComponent,
+    LocationComponent
   ],
   imports: [
     CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule
