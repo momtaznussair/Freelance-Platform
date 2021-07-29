@@ -1,19 +1,25 @@
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-  font-size: 1rem;
-  line-height: 2.15;
-  padding-left: .75em;
-  padding-right: .75em;
-}
-.card-registration .select-arrow {
-  top: 13px;
+h3 {
+    color: var(--mc)
 }
 
-#submit{
-  color: white;
-  background-color: #0D265F;
-  border-radius: 30px;
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
 }
-#submit:hover{
-  color: #0D265F;
-  background-color: white;
+
+.card-registration .select-arrow {
+    top: 13px;
+}
+
+#submit {
+    color: var(--mc);
+    background-color: var(--bg);
+    border-radius: 30px;
+}
+
+#submit:hover {
+    color: var(--bg);
+    background-color: var(--mc);
 }

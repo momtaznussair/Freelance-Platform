@@ -35,12 +35,12 @@ padding: 16px 30px ;
 display: inline-block;
  border-radius: 30px;
  background:  #f3f2f1;
- color:  #0D265F;
+ color:  var(--mc);
  cursor: pointer;
 }
 .bt1:hover{
 
- background-color: #0D265F;
+ background-color: var(--mc);
  color: white;
 }
 
@@ -53,7 +53,7 @@ line-height: 1;
 display: inline-block;
 border-radius: 30px;
 color:  #f3f2f1;
-background:  #0D265F;
+background:  var(--mc);
 cursor: pointer;
 }
 

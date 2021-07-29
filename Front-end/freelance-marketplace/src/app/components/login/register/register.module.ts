@@ -10,6 +10,8 @@ import { EmpolymentComponent } from './Employment/empolyment/empolyment.componen
 import { LanguagesComponent } from './languages/languages/languages.component';
 import { HourlyrateComponent } from './hourlyrate/hourlyrate/hourlyrate.component';
 import { LocationComponent } from './location/location/location.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 const routes : Routes=[
   {path : 'main' , component : SignupComponent},
@@ -26,13 +28,14 @@ const routes : Routes=[
     EmpolymentComponent,
     LanguagesComponent,
     HourlyrateComponent,
-    LocationComponent
+    LocationComponent,
+    SidebarComponent
   ],
   imports: [
-    CommonModule , RouterModule.forChild(routes)
+    CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule
   ],
   exports : [
-    SignupComponent
+    SignupComponent , SidebarComponent
   ]
 })
 export class RegisterModule { }

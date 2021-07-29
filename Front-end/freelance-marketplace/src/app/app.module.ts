@@ -16,8 +16,8 @@ import {AccordionModule} from 'primeng/accordion';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
+    // FormsModule,
+    // ReactiveFormsModule,
     HttpClientModule,
     AccordionModule,
   ],
