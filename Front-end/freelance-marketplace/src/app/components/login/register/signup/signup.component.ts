@@ -47,11 +47,11 @@ export class SignupComponent implements OnInit {
   }//end of ngOnInit
 
   becameClient(){
-    this.router.navigateByUrl('user/signup/category')
+    this.router.navigateByUrl('client/main');
   }
 
   becameFreelancer(){
-    this.router.navigateByUrl('freelancer')
+    this.router.navigateByUrl('user/signup/category');
   }
 
   login(){
