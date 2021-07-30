@@ -20,6 +20,7 @@
         "@angular/router": "~12.0.4",
         "@mobiscroll/angular": "https://npm.mobiscroll.com/@mobiscroll/angular-trial/-/angular-trial-4.10.9.tgz",
         "bootstrap": "^5.0.2",
+        "bootstrap-icons": "^1.5.0",
         "primeng": "^12.0.0",
         "rxjs": "~6.6.0",
         "tslib": "^2.1.0",
