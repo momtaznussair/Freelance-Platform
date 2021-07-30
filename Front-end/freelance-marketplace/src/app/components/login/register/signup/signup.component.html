@@ -10,7 +10,7 @@
 
                         <div class="col-xl-6">
 
-                            <form action="#" method="POST" [formGroup]="form" *ngIf="isTokenFound">
+                            <form action="#" method="POST" [formGroup]="form" *ngIf="!isTokenFound">
 
                                 <div class="card-body p-md-5 text-black">
                                     <h3 class="mb-5 text-uppercase fw-bold"> registration form</h3>
@@ -106,10 +106,27 @@
                                     </div>
 
                                     <div class="text-primary mt-3">
-                                        <input type="file" [pattern]="imagePattern" class="fw-bold" formControlName="personalImage" name="personalImage">
+                                        <input type="file" class="fw-bold" formControlName="personalImage" name="personalImage">
                                     </div>
-                                    <div class="d-flex justify-content-end pt-3">
-                                        <button id="submit" type="submit" [disabled]="form.invalid && (passwordInput.value !== repeatPasswordInput.value)" (click)="login()" class="fw-bold btn-lg ms-2" name="submit">Submit </button>
+
+                                    <div class="d-md-flex justify-content-start align-items-center mb-4 py-2 mt-3">
+
+                                        <!-- <h6 class="mb-0 me-4 fw-bold"></h6> -->
+
+                                        <div class="form-check form-check-inline mb-0 me-4">
+                                            <input class="form-check-input" type="radio" name="Type" id="client" value="client" formControlName="type" />
+                                            <label class="form-check-label fw-bold" for="clientLogin">Hire for a project</label>
+                                        </div>
+
+                                        <div class="form-check form-check-inline mb-0 me-4">
+                                            <input class="form-check-input" type="radio" name="Type" id="freelancer" value="freelancer" formControlName="type" />
+                                            <label class="form-check-label fw-bold" for="freelancerLogin">Work as a freelancer</label>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="d-flex justify-content-end pt-1">
+                                        <button id="submit" type="submit" [disabled]="form.invalid && (passwordInput.value !== repeatPasswordInput.value)" (click)="login()" class="fw-bold btn-lg ms-2 form-control" name="submit">Submit </button>
                                     </div>
 
                                 </div>
@@ -117,8 +134,21 @@
                             </form>
 
                             <!-- if token found -->
-                            <div class="card-body p-md-5 text-black">
-
+                            <div class="card-body p-md-5 text-black py-5" *ngIf="isTokenFound">
+                                <img src="assets/images/business-team-success-achievement-concept-vector-21618446.jpg" alt="Sample photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <p class="fw-bold h3">Tell us about what you want</p>
+                                <div class="client-login mt-5">
+                                    <button class=" btn btn-dark text-light form-control my-3 py-3" (click)="becameClient()">Hire for a project</button>
+                                </div>
+                                <div class="freelancer-login">
+                                    <button class=" btn btn-dark text-light form-control my-3 py-3" (click)="becameFreelancer()">Work as a freelancer</button>
+                                </div>
                             </div>
                         </div>
 

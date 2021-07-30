@@ -13,7 +13,7 @@ export class SignupComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
 
-  namePattern = "^[a-z0-9_-]{8,15}$";
+  namePattern = "^[a-zA-Z]{8,15}$";
   pwdPattern = "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,15}$";
   phoneNumPattern = "^((\+91-?)|0)?[0-9]{10 , 15}$";
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
@@ -40,21 +40,33 @@ export class SignupComponent implements OnInit {
       phone:['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15) ]],
       repeatPassword : ['' , [Validators.required]],
-      personalImage : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]]
+      personalImage : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
+      type:['' , [Validators.required]],
     })
 
   }//end of ngOnInit
 
+  becameClient(){
+    this.router.navigateByUrl('user/signup/category')
+  }
+
+  becameFreelancer(){
+    this.router.navigateByUrl('freelancer')
+  }
+
   login(){
     if(this.form.valid)
     {
-      this.userService.login(this.form.controls['email'].value);
-      this.router.navigateByUrl('freelancer');
-    }else
-    {
-      this.router.navigateByUrl('user/signup');
+      if(this.form.controls.type.value == 'client'){
+        this.userService.login(this.form.controls['email'].value);
+        this.becameClient();
+      }else{
+        this.userService.login(this.form.controls['email'].value);
+        this.becameFreelancer
+      }
     }
   };//end of login function
+
 
 
 
