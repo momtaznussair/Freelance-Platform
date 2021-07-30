@@ -18,7 +18,18 @@ export class SignupComponent implements OnInit {
   phoneNumPattern = "^((\+91-?)|0)?[0-9]{10 , 15}$";
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   imagePattern :string =  "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
+
+  isTokenFound : boolean = false;
+
   ngOnInit(): void {
+    if(localStorage.getItem('token'))
+    {
+      this.isTokenFound = true;
+    }else
+    {
+      this.isTokenFound = false;
+    }
+
 
     this.form = this.formBuilder.group({
       fName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
