@@ -13,8 +13,10 @@ import { LanguagesComponent } from './languages/languages/languages.component';
 import { HourlyrateComponent } from './hourlyrate/hourlyrate/hourlyrate.component';
 import { LocationComponent } from './location/location/location.component';
 
+
 const routes : Routes=[
   {path : 'main' , component : SignupComponent},
+  {path : 'first' , component : FirstComponent},
   {path : 'expertise' , component : ExpertiseComponent},
   {path : 'expertise-level' , component : ExpertlevelComponent},
   {path : 'education' , component : EductionComponent},
@@ -35,6 +37,8 @@ const routes : Routes=[
     EmpolymentComponent,
     LanguagesComponent,
     HourlyrateComponent,
+    LocationComponent,
+    SidebarComponent,
     LocationComponent
   ],
   imports: [
