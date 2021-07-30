@@ -62,12 +62,8 @@ export class SignupComponent implements OnInit {
         this.becameClient();
       }else{
         this.userService.login(this.form.controls['email'].value);
-        this.becameFreelancer
+        this.becameFreelancer();
       }
     }
   };//end of login function
-
-
-
-
 }

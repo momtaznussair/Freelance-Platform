@@ -1,28 +1,20 @@
-.container2 {
-    height: 850px;
-    margin: 200px auto;
-    width: 50%;
-    box-sizing: border-box;
-    justify-content: center;
+  /***********************essential*********************/
+  
+  
+  a {
+    font-size: 12px;
+    color: var(--sc);
 }
-
-p {
-    display: inline;
+.header,
+.footer {
+    background-color: var(--bg);
+    padding: 15px;
+   
 }
-
-h3,
-p,
-h6,
-select,
-input,
-textarea {
-    margin-left: 20px;
+.footer{
+    display: flex;
+    justify-content: space-between;
 }
-
-select {
-    width: 40%;
-}
-
 .bt1 {
     margin-left: 20px;
     padding: 16px 30px;
@@ -31,14 +23,14 @@ select {
     line-height: 1;
     display: inline-block;
     border-radius: 30px;
-    background: #f3f2f1;
-    color: #0D265F;
+    background: var(--bg);
+    color: var(--mc);
     cursor: pointer;
 }
 
 .bt1:hover {
-    background-color: #0D265F;
-    color: white;
+    background-color: var(--mc);
+    color: var(--bg);
 }
 
 .bt2 {
@@ -53,12 +45,6 @@ select {
     background: var(--mc);
     cursor: pointer;
 }
-
-#one {
-    margin-left: 260px;
-}
-
-h1 {
-    padding-top: 6vh;
-    margin-left: 2vh;
+p{
+    font-size: 14px;
 }
