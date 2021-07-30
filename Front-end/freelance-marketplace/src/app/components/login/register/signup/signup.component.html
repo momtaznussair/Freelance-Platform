@@ -10,7 +10,7 @@
 
                         <div class="col-xl-6">
 
-                            <form action="#" method="POST" [formGroup]="form" *ngIf="!isTokenFound">
+                            <form action="#" method="POST" [formGroup]="form" *ngIf="isTokenFound">
 
                                 <div class="card-body p-md-5 text-black">
                                     <h3 class="mb-5 text-uppercase fw-bold"> registration form</h3>
@@ -134,7 +134,7 @@
                             </form>
 
                             <!-- if token found -->
-                            <div class="card-body p-md-5 text-black py-5" *ngIf="isTokenFound">
+                            <div class="card-body p-md-5 text-black py-5" *ngIf="!isTokenFound">
                                 <img src="assets/images/business-team-success-achievement-concept-vector-21618446.jpg" alt="Sample photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
                                 <br>
                                 <br>
