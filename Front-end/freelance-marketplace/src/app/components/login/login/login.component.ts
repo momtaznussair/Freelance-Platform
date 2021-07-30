@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
 
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService , private apiService : ApiService) { }
 
   ngOnInit(): void {
 
@@ -24,8 +25,25 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.userService.login(this.form.controls['email'].value);
-    this.router.navigateByUrl('freelancer');
+    let token : any = this.userService.login(this.form.getRawValue());
+
+    if(token)
+    {
+      console.log(token);
+      localStorage.setItem('token' , token);
+      this.router.navigateByUrl('freelancer');
+    }
+    else
+    {
+      this.router.navigateByUrl('/user');
+    }
+
+  }//end of login function
+
+  submit():void{
+    this.apiService.post("url" , this.form.getRawValue() , {withCredentials : true}).subscribe(response=>{
+      console.log(response);
+    })
   }
 
 

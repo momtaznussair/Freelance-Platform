@@ -13,8 +13,8 @@ export class ApiService {
     return this.httpClient.get(url);
   }
 
-  post(url:string , body:any){
-    return this.httpClient.post(url , body);
+  post(url:string , body:any , condition ? : any){
+    return this.httpClient.post<any>(url , body , condition);
   }
 
   put(url:string , body:any){
