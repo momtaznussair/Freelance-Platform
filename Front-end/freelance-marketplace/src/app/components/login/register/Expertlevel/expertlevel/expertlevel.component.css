@@ -1,37 +1,4 @@
-#divone{
-  border: 1px solid black;
-  width: 40vh;
-  margin-left:60px;
-  }
-  .bt1{
-    margin-left: 20px;
-    padding: 16px 30px ;
-     border: 0;
-     font-size: 16px;
-     line-height: 1;
-  display: inline-block;
-     border-radius: 30px;
-     background:  var(--bg);
-     color:   var(--mc);
-     cursor: pointer;
-  }
-  .bt1:hover{
-
-     background-color:  var(--mc);
-     color: var(--bg);
-  }
-
-  .bt2{
-    padding: 16px 30px;
-    margin-left: 240px;
-    border:0;
-    font-size: 16px;
-    line-height: 1;
-  display: inline-block;
-    border-radius: 30px;
-    color:  var(--bg);
-    background:  var(--mc);
-    cursor: pointer;
-  }
-
-
+@import url(../../main.css);
+.card {
+    padding: 5px 10px;
+}

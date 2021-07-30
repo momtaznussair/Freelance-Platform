@@ -6,11 +6,14 @@
         <section class="sidebar d-none d-md-block col-md-3">
             <app-sidebar></app-sidebar>
         </section>
-        <section class="myinfo col-12 col-md-9">
-            <h1>Languages </h1>
-            <p>7 of 12</p>
-            <hr> <br>
-            <h6> <b>What is your English proficienvy?</b> </h6>
+        <section class="lang col-12 col-md-9">
+            <div class="header">
+
+                <h3>Languages </h3>
+                <p>7 of 5</p>
+            </div>
+            <br>
+            <h3> What is your English proficienvy? </h3>
             <select class="form-select form-select-sm" aria-label=".form-select-sm example">
             <option selected>Open this select menu</option>
             <option value="1">One</option>
@@ -20,8 +23,8 @@
             <br>
 
 
-            <h6> <b> What other Languages do you speak?  </b></h6> <br>
-            <p> <b> Language  <p id="one">proficiency</p> </b> </p> <br> <br>
+            <h3> What other Languages do you speak? </h3> <br>
+            <p> <b> Language  <p >proficiency</p> </b> </p> <br> <br>
             <div class="container px-3">
                 <div class="row ">
                     <select class="col form-select form-select-sm ">
@@ -37,10 +40,12 @@
             <br> <br>
             <button class="bt1" type="button">  + Add Language </button>
             <br> <br> <br>
-            <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button>
+            <div class="md-6 lg-6 d-sm-flex footer">
 
-            <button class="bt2" type="button" routerLink="/user/signup/hourly-rate">Next</button>
+                <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button>
 
+                <button class="bt2" type="button" routerLink="/user/signup/hourly-rate">Next</button>
+            </div>
         </section>
 
     </div>

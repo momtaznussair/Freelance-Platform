@@ -1,59 +1,13 @@
-.container{
-  height:100% px;
-
-   width: 90%;
-   box-sizing: border-box;
-
-   justify-content: center;
-
-}
-h1,h3,p,h6 ,select ,input{
-   margin-left: 40px;
-}
-select{
-   width: 30%;
+@import url(../../main.css);
+select {
+    width: 30%;
 }
 
-
-.input-group{
-  margin-left: 40px;
-  width: 33%;
-}
-#two
-{
-
-  width: 20%;
-  margin-bottom: 8vh;
+.input-group {
+    width: 33%;
 }
 
-.bt1{
-margin-left: 20px;
-padding: 16px 30px ;
- border: 0;
- font-size: 16px;
- line-height: 1;
-display: inline-block;
- border-radius: 30px;
- background:  var(--bg);
- color:  var(--mc);
- cursor: pointer;
+#two {
+    width: 20%;
+    margin-bottom: 15px;
 }
-.bt1:hover{
-
- background-color: var(--mc);
- color: white;
-}
-
-.bt2{
-padding: 16px 30px;
-margin-left: 240px;
-border:0;
-font-size: 16px;
-line-height: 1;
-display: inline-block;
-border-radius: 30px;
-color:  #f3f2f1;
-background:  var(--mc);
-cursor: pointer;
-}
-

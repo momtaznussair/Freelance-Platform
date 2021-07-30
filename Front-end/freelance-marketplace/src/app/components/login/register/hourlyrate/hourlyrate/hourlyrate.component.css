@@ -1,14 +1,10 @@
+@import url(../../main.css);
+
 /* small devices ( 600px and down) */
 
 @media only screen and (max-width: 576px) {
     .container {
         padding: 0;
-    }
-    h2 {
-        font-size: 18px;
-    }
-    p {
-        font-size: 14px;
     }
     .align {
         flex-direction: column;
@@ -16,33 +12,11 @@
     .sec2 input {
         margin-top: 8px;
     }
-    .btn {
-        border-radius: 20px;
-        border: 2px white;
-        background-color: var(--mc);
-        color: white;
-        padding: 8px 19px;
-    }
-    .btn:hover {
-        color: white !important;
-    }
     /**********************layout***************************/
-    .header,
-    .footer {
-        background-color: var(--bg);
-        padding: 15px;
-    }
-    .align,
-    .footer {
+    .align {
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
-    }
-    .header {
-        border-color: var(--sc);
-    }
-    .footer {
-        border-top: 2px gray;
     }
     .sec {
         margin: 10px 0;
@@ -54,46 +28,11 @@
 /* large devices ( 600px and up) */
 
 @media only screen and (min-width: 576px) {
-    /***********************essential*********************/
-    h2 {
-        font-size: 20px;
-        display: inline-block;
-        margin-right: 5px;
-    }
-    p {
-        font-size: 14px;
-    }
-    a {
-        font-size: 12px;
-        color: var(--sc);
-    }
-    .btn {
-        border-radius: 20px;
-        border: 2px white;
-        background-color: var(--mc);
-        color: white;
-        padding: 8px 19px;
-    }
-    .btn:hover {
-        color: white !important;
-    }
     /**********************layout***************************/
-    .header,
-    .footer {
-        background-color: var(--bg);
-        padding: 15px;
-    }
-    .align,
-    .footer {
+    .align {
         display: flex;
         justify-content: space-between;
         margin-bottom: 10px;
-    }
-    .header {
-        border-color: var(--sc);
-    }
-    .footer {
-        border-top: 2px gray;
     }
     .sec {
         margin: 10px 0;
