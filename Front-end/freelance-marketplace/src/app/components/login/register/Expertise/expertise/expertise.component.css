@@ -3,9 +3,9 @@
  @media only screen and (max-width: 576px) {
      /***********************essential*********************/
      h2 {
-         font-size: 20px;
          display: inline-block;
          margin-right: 5px;
+         color: var(--mc);
      }
      p {
          font-size: 14px;
@@ -58,7 +58,6 @@
  @media only screen and (min-width: 576px) {
      /***********************essential*********************/
      h2 {
-         font-size: 20px;
          display: inline-block;
          margin-right: 5px;
      }
