@@ -13,27 +13,26 @@ export class UserService {
   private loginUrl = '';
   constructor(private apiService : ApiService) {
     this.logged.next(this.isLogged());
-  }
+  }//end of constructor
 
-  register(body : any){
+  register(body : any)
+  {
     return this.apiService.post(this.registerUrl , body)
-  }
+  }//end of registerUser
 
-  login(body : any){
+  login(body : any)
+  {
     return this.apiService.post(this.registerUrl , body , {withCredentials:true});
-  }
+  }//end of loginUser
 
-  // login(email : string){
-  //   localStorage.setItem('email' , email);
-  //   this.logged.next(true);
-  // }
-
-  logout(){
+  logout()
+  {
     localStorage.removeItem('token');
     this.logged.next(false);
-  }
+  }//end of logout
 
-  setLoggedStatus(status : boolean){
+  setLoggedStatus(status : boolean)
+  {
     this.logged.next(status)
   }
 
@@ -41,14 +40,13 @@ export class UserService {
     return this.logged.asObservable();
   }
 
-
   getToken(){
     return localStorage.getItem('token');
   }
 
   isLogged():boolean{
-    const email = localStorage.getItem('email');
-    if(!email) return false;
+    const token = localStorage.getItem('token');
+    if(!token) return false;
     return true;
   }
 

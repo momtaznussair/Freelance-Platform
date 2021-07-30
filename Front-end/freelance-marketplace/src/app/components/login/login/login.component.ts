@@ -25,12 +25,20 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    let response = this.userService.login(this.form.getRawValue());
-    console.log(response);
-    // this.userService.login(this.form.controls['email'].value);
-    // this.router.navigateByUrl('freelancer');
-    // console.log(this.form.getRawValue());
-  }
+    let token : any = this.userService.login(this.form.getRawValue());
+
+    if(token)
+    {
+      console.log(token);
+      localStorage.setItem('token' , token);
+      this.router.navigateByUrl('freelancer');
+    }
+    else
+    {
+      this.router.navigateByUrl('/user');
+    }
+
+  }//end of login function
 
   submit():void{
     this.apiService.post("url" , this.form.getRawValue() , {withCredentials : true}).subscribe(response=>{
