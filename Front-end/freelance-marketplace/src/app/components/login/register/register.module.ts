@@ -4,7 +4,6 @@ import { SignupComponent } from './signup/signup.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
-import { FirstComponent } from './first/first/first.component';
 import { ExpertiseComponent } from './Expertise/expertise/expertise.component';
 import { ExpertlevelComponent } from './Expertlevel/expertlevel/expertlevel.component';
 import { EductionComponent } from './Eduction/eduction/eduction.component';
@@ -12,24 +11,27 @@ import { EmpolymentComponent } from './Employment/empolyment/empolyment.componen
 import { LanguagesComponent } from './languages/languages/languages.component';
 import { HourlyrateComponent } from './hourlyrate/hourlyrate/hourlyrate.component';
 import { LocationComponent } from './location/location/location.component';
+import { CategoryComponent } from './category/category/category.component';
+import { ConnectionTypeComponent } from './connection-type/connection-type/connection-type.component';
 
 
 const routes : Routes=[
-  {path : 'main' , component : SignupComponent},
-  {path : 'first' , component : FirstComponent},
+  {path : 'main' , component : ConnectionTypeComponent},
+  {path : 'signup' , component : SignupComponent},
+  {path : 'category' , component : CategoryComponent},
   {path : 'expertise' , component : ExpertiseComponent},
   {path : 'expertise-level' , component : ExpertlevelComponent},
   {path : 'education' , component : EductionComponent},
   {path : 'lang' , component : LanguagesComponent},
   {path : 'hourly-rate' , component : HourlyrateComponent},
   {path : 'location' , component : LocationComponent},
+  {path : '' , component : ConnectionTypeComponent},
 ]
 
 @NgModule({
   declarations: [
     SignupComponent,
     SidebarComponent,
-    FirstComponent,
     ExpertiseComponent,
     ExpertlevelComponent,
     EductionComponent,
@@ -38,7 +40,9 @@ const routes : Routes=[
     HourlyrateComponent,
     LocationComponent,
     SidebarComponent,
-    LocationComponent
+    LocationComponent,
+    CategoryComponent,
+    ConnectionTypeComponent
   ],
   imports: [
     CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule

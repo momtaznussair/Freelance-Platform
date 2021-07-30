@@ -1,3 +1,4 @@
+import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,13 +8,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {AccordionModule} from 'primeng/accordion';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    
+
 
   ],
   imports: [
+    MbscModule,
     BrowserModule,
     AppRoutingModule,
     // FormsModule,

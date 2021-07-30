@@ -1,114 +1,109 @@
-:root {
-  --mc: #0D265F;
-  --sc: #FC792E;
-  --tc: #147ED5;
-  --bg: #f7f7f5;
-}
-
-
-/* small devices ( 600px and down) */
-@media only screen and (max-width: 576px){ /***********************essential*********************/
-h2{
-  font-size: 20px;
-  display: inline-block ;
-  margin-right: 5px;
-}
-p{
-  font-size: 14px;
-}
-a{
-  font-size: 12px;
-  color:var(--sc);
-}
-.btn{
-  border-radius: 20px;
-  border: 2px white;
-  background-color: var(--mc);
-  color: white;
-  padding: 8px 19px;
-}
-.btn:hover{
-  color: white !important;
-}
-/**********************layout***************************/
-.header, .footer{
-background-color:var(--bg);
-padding: 15px;
-
-}
-.align,.footer{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-.header{
-  border-color:var(--sc) ;
-}
-.footer{
-  border-top: 2px gray;
-}
-.sec{
-  margin:10px 0;
-  padding:15px ;
-}.btn-skill{
-  border-radius:15px;
-  padding:2px 19px ;
-  margin-bottom: 6px;
-  color: var(--mc);
-}}
-
-
-/* large devices ( 600px and up) */
-@media only screen and (min-width: 576px) { /***********************essential*********************/
-h2{
-  font-size: 20px;
-  display: inline-block ;
-  margin-right: 5px;
-}
-p{
-  font-size: 14px;
-}
-a{
-  font-size: 12px;
-  color:var(--sc);
-}
-.btn{
-  border-radius: 20px;
-  border: 2px white;
-  background-color: var(--mc);
-  color: white;
-  padding: 8px 19px;
-}
-.btn:hover{
-  color: white !important;
-}
-/**********************layout***************************/
-.header, .footer{
-background-color:var(--bg);
-padding: 15px;
-
-}
-.align,.footer{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-.header{
-  border-color:var(--sc) ;
-}
-.footer{
-  border-top: 2px gray;
-}
-.sec{
-  margin:10px 0;
-  padding:15px ;
-}
-
-.btn-skill{
-border-radius:15px;
-padding:2px 19px ;
-margin-bottom: 6px;
-color: var(--mc);
-}
-}
-
+ /* small devices ( 600px and down) */
+ 
+ @media only screen and (max-width: 576px) {
+     /***********************essential*********************/
+     h2 {
+         display: inline-block;
+         margin-right: 5px;
+         color: var(--mc);
+     }
+     p {
+         font-size: 14px;
+     }
+     a {
+         font-size: 12px;
+         color: var(--sc);
+     }
+     .btn {
+         border-radius: 20px;
+         border: 2px white;
+         background-color: var(--mc);
+         color: white;
+         padding: 8px 19px;
+     }
+     .btn:hover {
+         color: white !important;
+     }
+     /**********************layout***************************/
+     .header,
+     .footer {
+         background-color: var(--bg);
+         padding: 15px;
+     }
+     .align,
+     .footer {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 10px;
+     }
+     .header {
+         border-color: var(--sc);
+     }
+     .footer {
+         border-top: 2px gray;
+     }
+     .sec {
+         margin: 10px 0;
+         padding: 15px;
+     }
+     .btn-skill {
+         border-radius: 15px;
+         padding: 2px 19px;
+         margin-bottom: 6px;
+         color: var(--mc);
+     }
+ }
+ /* large devices ( 600px and up) */
+ 
+ @media only screen and (min-width: 576px) {
+     /***********************essential*********************/
+     h2 {
+         display: inline-block;
+         margin-right: 5px;
+     }
+     p {
+         font-size: 14px;
+     }
+     a {
+         font-size: 12px;
+         color: var(--sc);
+     }
+     .btn {
+         border-radius: 20px;
+         border: 2px white;
+         background-color: var(--mc);
+         color: white;
+         padding: 8px 19px;
+     }
+     .btn:hover {
+         color: white !important;
+     }
+     /**********************layout***************************/
+     .header,
+     .footer {
+         background-color: var(--bg);
+         padding: 15px;
+     }
+     .align,
+     .footer {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 10px;
+     }
+     .header {
+         border-color: var(--sc);
+     }
+     .footer {
+         border-top: 2px gray;
+     }
+     .sec {
+         margin: 10px 0;
+         padding: 15px;
+     }
+     .btn-skill {
+         border-radius: 15px;
+         padding: 2px 19px;
+         margin-bottom: 6px;
+         color: var(--mc);
+     }
+ }

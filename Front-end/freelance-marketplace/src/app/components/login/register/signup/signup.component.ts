@@ -35,9 +35,16 @@ export class SignupComponent implements OnInit {
   }//end of ngOnInit
 
   login(){
-    if(this.form.valid && (this.form.controls['password'].value == this.form.controls['repeatPassword'].value))
+    if(this.form.valid)
+    {
       this.userService.login(this.form.controls['email'].value);
       this.router.navigateByUrl('freelancer');
-  }//end of login function
+    }else
+    {
+      this.router.navigateByUrl('user/signup');
+    }
+  };//end of login function
+
+
 
 }
