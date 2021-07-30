@@ -22,7 +22,7 @@ export class UserService {
 
   login(body : any)
   {
-    return this.apiService.post(this.registerUrl , body , {withCredentials:true});
+    return this.apiService.post(this.loginUrl , body , {withCredentials:true});
   }//end of loginUser
 
   logout()
@@ -44,7 +44,7 @@ export class UserService {
     return localStorage.getItem('token');
   }
 
-  isLogged():boolean{
+  isLogged(){
     const token = localStorage.getItem('token');
     if(!token) return false;
     return true;
