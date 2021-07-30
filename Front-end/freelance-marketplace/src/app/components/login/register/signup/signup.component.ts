@@ -66,8 +66,4 @@ export class SignupComponent implements OnInit {
       }
     }
   };//end of login function
-
-
-
-
 }

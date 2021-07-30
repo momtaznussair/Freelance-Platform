@@ -30,8 +30,12 @@
               "src/assets"
             ],
             "styles": [
+<<<<<<< HEAD
               "src/styles.css",
               "./node_modules/@mobiscroll/angular/dist/css/mobiscroll.min.css"
+=======
+              "src/styles.css"
+>>>>>>> 642d48f5a7047b4164e9879694d81c2bef1ee6f4
             ],
             "scripts": []
           },
@@ -107,4 +111,8 @@
     }
   },
   "defaultProject": "freelance-marketplace"
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 642d48f5a7047b4164e9879694d81c2bef1ee6f4
