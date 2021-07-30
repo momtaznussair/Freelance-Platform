@@ -13,4 +13,8 @@ class Language extends Model
         'name',
       
     ];
+    public function job(){
+        return $this->belongsTo(Job::class);
+    }
+
 }
