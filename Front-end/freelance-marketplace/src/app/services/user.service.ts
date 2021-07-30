@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,17 +8,28 @@ import { Subject } from 'rxjs';
 export class UserService {
 
   logged = new Subject<boolean>();
-  constructor() {
-    this.logged.next(this.islogged());
+
+  private registerUrl = '';
+  private loginUrl = '';
+  constructor(private apiService : ApiService) {
+    this.logged.next(this.isLogged());
   }
 
-  login(email : string){
-    localStorage.setItem('email' , email);
-    this.logged.next(true);
+  register(body : any){
+    return this.apiService.post(this.registerUrl , body)
   }
+
+  login(body : any){
+    return this.apiService.post(this.registerUrl , body , {withCredentials:true});
+  }
+
+  // login(email : string){
+  //   localStorage.setItem('email' , email);
+  //   this.logged.next(true);
+  // }
 
   logout(){
-    localStorage.removeItem('email');
+    localStorage.removeItem('token');
     this.logged.next(false);
   }
 
@@ -30,9 +42,11 @@ export class UserService {
   }
 
 
+  getToken(){
+    return localStorage.getItem('token');
+  }
 
-
-  islogged():boolean{
+  isLogged():boolean{
     const email = localStorage.getItem('email');
     if(!email) return false;
     return true;
