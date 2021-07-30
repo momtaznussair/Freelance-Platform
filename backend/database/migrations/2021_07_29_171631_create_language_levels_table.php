@@ -16,6 +16,7 @@ class CreateLanguageLevelsTable extends Migration
         Schema::create('language_levels', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->timestamps();
         });
     }
 

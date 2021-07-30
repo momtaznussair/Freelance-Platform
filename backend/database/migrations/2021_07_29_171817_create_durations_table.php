@@ -16,6 +16,7 @@ class CreateDurationsTable extends Migration
         Schema::create('durations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->timestamps();
         });
     }
 
