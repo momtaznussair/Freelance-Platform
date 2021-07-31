@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-$d:any;
+
   constructor(private httpClient : HttpClient) { }
 
   get(url:string , headers ? :any){

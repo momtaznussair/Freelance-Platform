@@ -1,6 +1,8 @@
-import { group } from '@angular/animations';
+import { environment } from './../../../../../../environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
-import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
+import { Categories } from 'src/app/models/categories/categories';
+import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-category',
@@ -9,12 +11,15 @@ import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { $num:Number}
+
+  categories : Categories[] = [];
+  constructor(private apiService : ApiService) {}
 
   ngOnInit(): void {
+    this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response=>{
+      console.log(response);
+      // this.categories = response
+    },error=>console.error);
   }
-  // next($n:number){
-  //   alert("hi"+$n+ groups.n);
-  // }
 
 }
