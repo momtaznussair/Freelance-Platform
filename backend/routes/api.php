@@ -30,7 +30,7 @@ Route::delete('/categories/{category}',[PostController::class,'destroy']);
 
 // Auth Routes
 Route::post('/register', [AuthController::class, 'register']);
-
+Route::post('/login' ,[AuthController::class , 'login'] );
 
 // Sanctum Token Route
 Route::post('/sanctum/token', function (Request $request) {
