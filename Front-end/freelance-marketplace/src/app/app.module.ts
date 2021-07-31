@@ -11,7 +11,6 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
   declarations: [
     AppComponent,
 
-
   ],
   imports: [
     BrowserModule,
