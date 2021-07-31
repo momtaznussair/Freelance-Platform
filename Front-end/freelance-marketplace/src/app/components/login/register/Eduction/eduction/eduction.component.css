@@ -1,0 +1,12 @@
+@import url(../../main.css);
+.container2 {
+    height: 760px;
+    margin: 200px auto;
+    width: 50%;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+select {
+    width: 40%;
+}
