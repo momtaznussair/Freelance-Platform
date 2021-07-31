@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     if(token)
     {
       console.log(token);
+      alert(JSON.stringify(this.form.getRawValue()));
       localStorage.setItem('token' , token);
       this.router.navigateByUrl('freelancer');
     }

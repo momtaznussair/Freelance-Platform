@@ -7,11 +7,11 @@ import { UserService } from '../services/user.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private userservice : UserService){}
+  constructor(private userService : UserService){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      let isLogged = this.userservice.isLogged();
+      let isLogged = this.userService.isLogged();
       if(!isLogged){
         return false;
       }

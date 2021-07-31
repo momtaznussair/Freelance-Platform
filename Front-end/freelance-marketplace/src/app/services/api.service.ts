@@ -9,8 +9,8 @@ export class ApiService {
 
   constructor(private httpClient : HttpClient) { }
 
-  get(url:string){
-    return this.httpClient.get(url);
+  get(url:string , headers ? :any){
+    return this.httpClient.get<any>(url , headers);
   }
 
   post(url:string , body:any , condition ? : any){
@@ -18,7 +18,7 @@ export class ApiService {
   }
 
   put(url:string , body:any){
-    this.httpClient.put(url , body);
+    this.httpClient.put<any>(url , body);
   }
 
   delete(url:string){
