@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ApiService } from './api.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(
+  // {providedIn: 'root'}
+  )
 export class UserService {
 
   logged = new Subject<boolean>();
@@ -44,7 +44,7 @@ export class UserService {
     return localStorage.getItem('token');
   }
 
-  isLogged(){
+  isLogged():boolean{
     const token = localStorage.getItem('token');
     if(!token) return false;
     return true;
