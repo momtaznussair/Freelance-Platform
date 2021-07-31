@@ -1,0 +1,44 @@
+<div class="container py-5 px-3">
+
+    <div class="row">
+
+
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+        <section class="col-12 col-md-9">
+            <div class="header">
+                <h3>Overview</h3>
+                <p>1 of 7</p>
+            </div>
+            <form action="" [formGroup]="form">
+                <div class="body">
+                    <div class="overview card-haeder mt-3">
+                        <p class="h3 fw-bold">Overview</p>
+                        <textarea formControlName="overview" class="form-control" placeholder="type an overview about yourself" value=""></textarea>
+                        <div *ngIf="form.controls.overview.invalid && form.controls.overview.dirty || form.controls.overview.touched">
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('required')">This field is required</small>
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('minlength')">You should write more than 10 letter </small>
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('maxlength')"> You can not write more than 255 letter</small>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 mb-3">
+                        <p class="h3 fw-bold">Title</p>
+                        <input type="text" formControlName="jobTitle" class=" form-control" placeholder="write title for your skills">
+                        <div *ngIf="form.controls.jobTitle.invalid && form.controls.jobTitle.dirty || form.controls.jobTitle.touched">
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.jobTitle.hasError('required')">This field is required</small>
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.jobTitle.hasError('minlength')">You should write more than 250 letter </small>
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.jobTitle.hasError('maxlength')"> You can not write more than 500 letter</small>
+                        </div>
+                    </div>
+                </div>
+                <div class=" footer lg-6 d-sm-flex">
+                    <button class="bt1" routerLink="/user/signup/category">back</button>
+                    <button class="bt2" [disabled]="form.invalid" type="submit" routerLink="/user/signup/expertise">next</button>
+                </div>
+            </form>
+        </section>
+
+    </div>
+</div>
