@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Auth\SocialiteAuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,21 +33,13 @@ Route::delete('/categories/{category}',[PostController::class,'destroy']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login' ,[AuthController::class , 'login'] );
 
-// Sanctum Token Route
-Route::post('/sanctum/token', function (Request $request) {
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-        'device_name' => 'required',
-    ]);
 
-    $user = User::where('email', $request->email)->first();
+// Google 
+Route::get('/auth/google/redirect', [SocialiteAuthController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/auth/google/callback', [SocialiteAuthController::class, 'handleGoogleCallback']);
 
-    if (! $user || ! Hash::check($request->password, $user->password)) {
-        throw ValidationException::withMessages([
-            'email' => ['The provided credentials are incorrect.'],
-        ]);
-    }
+// LinkedIn
+Route::get('/auth/linkedin/redirect', [SocialiteAuthController::class, 'redirectToLinkedin'])->name('login.linkedin');
+Route::get('/auth/linkedin/callback', [SocialiteAuthController::class, 'handleLinkedinCallback']);
 
-    return $user->createToken($request->device_name)->plainTextToken;
-});
+
