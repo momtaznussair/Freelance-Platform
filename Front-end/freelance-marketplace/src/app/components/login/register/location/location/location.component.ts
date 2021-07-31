@@ -35,7 +35,7 @@ export class LocationComponent implements OnInit {
       console.log(response)
       this.respondedToken.resToken = response
       let token = this.respondedToken.resToken.auth_token;
-      localStorage.setItem('locationToken' ,`Bearer ${token}` );
+      localStorage.setItem('locationToken' ,`Bearer ${token}`);
     },error=>{
       console.log(error);
     })
@@ -48,7 +48,8 @@ export class LocationComponent implements OnInit {
   }
 
   getLocations(){
-    console.log(localStorage.getItem('locationToken'));
+    // console.log(localStorage.getItem('locationToken'));
+    console.log(this.secondRequestHeader)
     this.apiService.get('https://www.universal-tutorial.com/api/countries/' , {headers : this.secondRequestHeader}).subscribe(response=>{
       console.log(response);
     })
