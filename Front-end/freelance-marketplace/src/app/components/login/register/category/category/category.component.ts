@@ -1,4 +1,6 @@
+import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-category',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  constructor() { $num:Number}
 
   ngOnInit(): void {
   }
+  // next($n:number){
+  //   alert("hi"+$n+ groups.n);
+  // }
 
 }

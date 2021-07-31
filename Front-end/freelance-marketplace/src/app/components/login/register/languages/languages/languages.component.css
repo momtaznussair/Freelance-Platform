@@ -9,7 +9,10 @@
 select {
     width: 60%;
 }
-
-#one {
-    /* margin-left:260px; */
+.flex{
+    display: flex;
+    justify-content: space-around;
+}
+.flex p{
+    display: inline-block;
 }

@@ -12,3 +12,6 @@
 select {
     width: 60%;
 }
+.footer{
+    justify-content: flex-end;
+}

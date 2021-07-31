@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ApiService {
-
+$d:any;
   constructor(private httpClient : HttpClient) { }
 
   get(url:string , headers ? :any){
@@ -15,6 +15,7 @@ export class ApiService {
 
   post(url:string , body:any , condition ? : any){
     return this.httpClient.post<any>(url , body , condition);
+    // .subscribe(response=>{alert('done'+response);}, error=>{alert('error'+error);});
   }
 
   put(url:string , body:any){
