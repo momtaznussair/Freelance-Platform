@@ -30,8 +30,8 @@ Route::delete('/categories/{category}',[PostController::class,'destroy']);
 
 
 // Auth Routes
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login' ,[AuthController::class , 'login'] );
+Route::post('/register', [AuthController::class, 'register'])->middleware('token.guest');
+Route::post('/login' ,[AuthController::class , 'login'] )->middleware('token.guest');
 Route::get('/logout' , [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::middleware('auth:sanctum')->get('/test', function (Request $request) {
