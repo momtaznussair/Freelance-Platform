@@ -9,7 +9,11 @@ export class SidebarComponent implements OnInit {
 
   constructor() { }
 
+  currentPath : string = ''
+
   ngOnInit(): void {
+  this.currentPath = window.location.href.substring(22);
+  console.log(this.currentPath = window.location.href.substring(21))
   }
 
 
@@ -23,10 +27,6 @@ export class SidebarComponent implements OnInit {
     {name : "Location" , shape : "calculator" , path : "/user/signup/location"},
   ];
 
-  selectedItem : any = '';
 
-  listClick(event : any , newValue : any) {
-    this.selectedItem = newValue;
-}
 
 }
