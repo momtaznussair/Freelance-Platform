@@ -25,19 +25,25 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    let token : any = this.userService.login(this.form.getRawValue());
 
-    if(token)
-    {
-      console.log(token);
-      alert(JSON.stringify(this.form.getRawValue()));
-      localStorage.setItem('token' , token);
-      this.router.navigateByUrl('freelancer');
-    }
-    else
-    {
-      this.router.navigateByUrl('/user');
-    }
+    this.userService.login(this.form.getRawValue()).subscribe(response=>{
+      alert ('login success');
+      console.log(response)
+    },error=>console.error);
+
+
+    // if(token)
+    // {
+    //   console.log(token);
+    //   alert(JSON.stringify(this.form.getRawValue()));
+    //   localStorage.setItem('token' , token);
+    //   this.router.navigateByUrl('freelancer');
+    // }
+    // else
+    // {
+    //   this.router.navigateByUrl('/user');
+    //   alert('login unsuccessfully');
+    // }
 
   }//end of login function
 

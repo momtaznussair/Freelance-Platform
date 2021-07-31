@@ -10,8 +10,10 @@ export class UserService {
   logged = new Subject<boolean>();
 
   private registerUrl = '';
-  private loginUrl = '';
-  constructor(private apiService : ApiService) {
+  private loginUrl = 'localhost:8000/api/sanctum/token';
+
+  constructor(private apiService : ApiService)
+  {
     this.logged.next(this.isLogged());
   }//end of constructor
 
