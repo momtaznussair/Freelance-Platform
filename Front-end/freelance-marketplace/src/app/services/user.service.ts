@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { ApiService } from './api.service';
 
 @Injectable(
-  // {providedIn: 'root'}
+  {providedIn: 'root'}
   )
 export class UserService {
 
