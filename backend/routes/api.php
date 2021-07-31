@@ -19,7 +19,7 @@ use App\Http\Controllers\Api\Auth\SocialiteAuthController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -32,6 +32,11 @@ Route::delete('/categories/{category}',[PostController::class,'destroy']);
 // Auth Routes
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login' ,[AuthController::class , 'login'] );
+Route::get('/logout' , [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+Route::middleware('auth:sanctum')->get('/test', function (Request $request) {
+    return "hello";
+});
 
 
 // Google 
