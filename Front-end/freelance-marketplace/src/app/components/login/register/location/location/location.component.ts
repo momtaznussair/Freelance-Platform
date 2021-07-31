@@ -44,7 +44,7 @@ export class LocationComponent implements OnInit {
   //second header request
   secondRequestHeader : any = {
     "Authorization": localStorage.getItem('locationToken'),
-    "Accept": "application/json"
+    "Accept": "application/json",
   }
 
   getLocations(){
