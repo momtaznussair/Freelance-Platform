@@ -19,11 +19,11 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AccordionModule,
   ],
   providers: [
-    {
-      provide : HTTP_INTERCEPTORS,
-      useClass : TokenInterceptorService,
-      multi : true
-    },
+    // {
+    //   provide : HTTP_INTERCEPTORS,
+    //   useClass : TokenInterceptorService,
+    //   multi : true
+    // },
   ],
   bootstrap: [AppComponent]
 })
