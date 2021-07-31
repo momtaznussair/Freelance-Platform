@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -18,11 +19,9 @@ class AuthController extends Controller
         $token = $request->bearerToken();
 
         $validator = Validator::make($request->all(), [
-            // 'username' => "requiredIf($token)|string|max:255|min:3",
             'username'=> [Rule::requiredIf(!$token),'string','max:255','min:3'],
             'first_name' => 'required|string|min:3|max:255',
             'last_name' => 'required|string|min:3|max:255',
-            // 'email' => "requiredIf(!$token)|email|unique:users,email|max:255",
             'email' => [Rule::requiredIf(!$token),'email','unique:users,email','max:255'],
             'password' => [Rule::requiredIf(!$token), 'string', 'min:8','max:255', 'confirmed'],
             'gender' => 'required|in:male,female',
@@ -39,36 +38,38 @@ class AuthController extends Controller
         {
             return Response::json($validator->errors());
         }
-            
-        $path = Storage::putFile('users', $request->file('img'));
-        User::create([
-            'username' => $request->username,
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' =>Hash::make($request->password),
-            'gender' => $request->gender,
-            'img_link' => $path,
-            'phone_number' => $request->phone_number,
-            'country' => $request->country,
-            'city' => $request->city,
-            'street' => $request->street,
-            'zip_code' => $request->zip_code,
-        ]);
-            
-        $data = [
-            'msg' => "data Created successfully",
-        ];
-            
-        return Response::json($data);
-            
-    
+        
+        $user = new User();
+
+        if(!$token){
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->gender = $request->gender;
+        $user->phone_number = $request->phone_number;
+        $user->country =$request->country;
+        $user->city = $request->city;
+        $user->street = $request->street;
+        $user->zip_code = $request->zip_code;
+
+        if ($request->hasFile('img_link'))
+        {
+            $path = Storage::putFile('users', $request->file('img_link'));
+             $user->img_link = $path;
+        }
+        
+        $user->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
                 'access_token' => $token,
                 'token_type' => 'Bearer',
+                'msg' => "User registered successfully"
         ]);
     }
 
