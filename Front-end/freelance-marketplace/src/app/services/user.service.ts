@@ -51,6 +51,4 @@ export class UserService {
     if(!token) return false;
     return true;
   }
-
-
 }
