@@ -57,7 +57,7 @@ export class SignupComponent implements OnInit {
   login(){
     if(this.form.valid)
     {
-      if(this.form.controls.type.value == 'client'){
+      if(this.form.controls.type.value == 'client/main'){
         this.userService.login(this.form.controls['email'].value);
         this.becameClient();
       }else{

@@ -9,12 +9,17 @@ export class SidebarComponent implements OnInit {
 
   constructor() { }
 
+  currentPath : string = ''
+
   ngOnInit(): void {
+  this.currentPath = window.location.href.substring(22);
+  console.log(this.currentPath = window.location.href.substring(21))
   }
 
 
   groups : any = [
     {name : "Category" , shape : "user" , path : "/user/signup/category"},
+    {name : "Overview" , shape : "user" , path : "/user/signup/overview"},
     {name : "expertise" , shape : "badger-honey" , path : "/user/signup/expertise"},
     {name : "expertise level" , shape : "lock" , path : "/user/signup/expertise-level"},
     {name : "Education" , shape : "badge" , path : "/user/signup/education"},
@@ -23,10 +28,6 @@ export class SidebarComponent implements OnInit {
     {name : "Location" , shape : "calculator" , path : "/user/signup/location"},
   ];
 
-  selectedItem : any = '';
 
-  listClick(event : any , newValue : any) {
-    this.selectedItem = newValue;
-}
 
 }

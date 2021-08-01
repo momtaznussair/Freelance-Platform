@@ -15,37 +15,28 @@
 
                 <div class="header">
                     <h3> Category </h3>
-                    <p>1 of 7</p>
+                    <p>1 of 8</p>
                 </div>
 
 
                 <br>
-                <p> Tell us about the work you do </p>
-                <br>
-                <h3> <b> what is the main service you offer ? </b></h3> <br><br>
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-                <br>
+                <p class="h5"> Tell us about the work you do </p>
+                <h3> <b> what is the main service you offer ? </b></h3><br>
+                <form action="" class="mb-5">
+                    <select class="form-select form-select-sm" name="category" aria-label=".form-select-sm example">
+                      <option selected  ></option>
+                    </select>
+                </form>
 
-                <select class="form-select form-select-sm" aria-label=".form-select-sm example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select><br> <br>
+          
                 <div class="md-6 lg-6  footer">
                    
                     <!-- (click)="next(1)" -->
-                        <button class="bt2" type="button"  routerLink="/user/signup/expertise">Next</button>
-                        <input type="text" name="approvalText" [(ngModel)]="approvalText" class="form-control" id="approvalText" >
-                        <button (click)="submit()">Approve Basic</button>
+                        <button class="bt2" type="button"  (click)="submit()"  routerLink="/user/signup/expertise">Next</button>
                 </div>
             </div>
-
+            
+  
 
         </section>
 

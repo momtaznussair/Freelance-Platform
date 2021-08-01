@@ -1,33 +1,31 @@
-import { group } from '@angular/animations';
+import { environment } from './../../../../../../environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
 import { SidebarComponent } from '../../layout/sidebar/sidebar.component';
 import {RegisterDataService} from "../../../../../services/register-data.service";
+import { Categories } from 'src/app/models/categories/categories';
+import { ApiService } from 'src/app/services/api.service';
+
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  message:string="";
- approvalText:string="";
+
   constructor(private appService:RegisterDataService) {
 
   }
 
   ngOnInit(): void {
-    
-//  this.appService.currentApprovalStageMessage.subscribe(msg => this.message = msg);
   }
   
- submit()
+  submit()
  {
-//  console.log(this.approvalText);
 //  this.appService.updateApprovalMessage(this.approvalText);
- console.log(this.appService.momtazArry['skills']);
- console.log(this.appService.momtazArry['expertiselevel']);
+ console.log(this.appService.momtazArray['skills']);
+ console.log(this.appService.momtazArray['expertiselevel']);
  }
-  // next($n:number){
-  //   alert("hi"+$n+ groups.n);
-  // }
+
 
 }
