@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
 import { ApiService } from 'src/app/services/api.service';
+import {RegisterDataService} from "../../../../../services/register-data.service";
 
 
 
@@ -11,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class LocationComponent implements OnInit {
 
-  constructor(private apiService : ApiService) { }
+  constructor(private appService:RegisterDataService, private apiService : ApiService) { }
 
 
    // responseToken : any = {auth_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…MwOX0.-8FYA7Pa40tCXSrPr-ZeKSGrbFeKCVD_-qwbT2Ze_qo" , "Accept": "application/json"}
@@ -53,6 +54,8 @@ export class LocationComponent implements OnInit {
     this.apiService.get('https://www.universal-tutorial.com/api/countries/' , {headers : this.secondRequestHeader}).subscribe(response=>{
       console.log(response);
     })
+      
+  
   }
 
 

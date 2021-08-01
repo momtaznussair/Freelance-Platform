@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+// import {RegisterDataService} from "../../../../../services/register-data.service";
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -21,6 +22,7 @@ export class OverviewComponent implements OnInit {
       jobTitle : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255)]]
     })
   }
+  
 
   next()
   {

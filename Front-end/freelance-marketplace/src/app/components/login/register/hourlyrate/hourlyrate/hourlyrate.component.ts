@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RegisterDataService} from "../../../../../services/register-data.service";
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
@@ -11,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HourlyrateComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder , private userService : UserService,private appService:RegisterDataService) { }
 
   ngOnInit(): void
   {
@@ -19,6 +20,13 @@ export class HourlyrateComponent implements OnInit {
       hour : ['' , [ Validators.required]],
     })
   }
+  
+  submit()
+ {
+//  this.appService.updateApprovalMessage(this.approvalText);
+ console.log(this.appService.momtazArray['skills']);
+ console.log(this.appService.momtazArray['expertiselevel']);
+ }
 
   hourlyRate : any;
   siteService : any;
