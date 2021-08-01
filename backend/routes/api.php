@@ -48,3 +48,11 @@ Route::get('/auth/linkedin/redirect', [SocialiteAuthController::class, 'redirect
 Route::get('/auth/linkedin/callback', [SocialiteAuthController::class, 'handleLinkedinCallback']);
 
 
+
+Route::get('/testclient', function(){
+    return "I'm a client";
+})->middleware(['client','auth:sanctum']);
+
+Route::get('/testfreelancer', function(){
+    return "I'm a freelancer";
+})->middleware(['freelancer','auth:sanctum']);
