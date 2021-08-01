@@ -12,13 +12,13 @@ import { ApiService } from 'src/app/services/api.service';
 export class CategoryComponent implements OnInit {
 
 
-  categories : Categories[] = [];
+  category : Categories = new Categories();
   constructor(private apiService : ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response=>{
-      console.log(response);
-      // this.categories = response
+    this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response =>{
+      this.category = response;
+      console.log(this.category);
     },error=>console.error);
   }
 
