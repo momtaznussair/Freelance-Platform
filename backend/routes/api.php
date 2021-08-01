@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -23,10 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('categories',[PostController::class,'index']);
-Route::post('categories',[PostController::class,'store']);
-Route::post('/categories/{category}',[PostController::class,'update']);
-Route::delete('/categories/{category}',[PostController::class,'destroy']);
+Route::get('categories',[CategoryController::class,'index']);
+Route::get('categories/{id}',[CategoryController::class,'show']);
+Route::post('categories',[CategoryController::class,'store']);
+Route::post('/categories/{category}',[CategoryController::class,'update']);
+Route::delete('/categories/delete/{category}',[CategoryController::class,'destroy']);
 
 
 // Auth Routes

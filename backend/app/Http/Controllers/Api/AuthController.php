@@ -60,7 +60,7 @@ class AuthController extends Controller
         if ($request->hasFile('img_link'))
         {
             $path = Storage::putFile('users', $request->file('img_link'));
-             $user->img_link = $path;
+            $user->img_link = $path;
         }
         
         $user->save();
