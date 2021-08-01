@@ -1,0 +1,37 @@
+.account-shape {
+    background-size: cover;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.btn {
+    border: 1px solid var(--mc);
+    background-color: var(--bg);
+    border-radius: 3rem;
+}
+
+.h2,
+.h4,
+.lead,
+.modal-title {
+    color: var(--mc);
+}
+
+.btn-link,
+a {
+    color: var(--mc);
+    text-decoration: none;
+}
+
+.btn-link:hover,
+a:hover {
+    color: var(--tc);
+    text-decoration: underline;
+}
+
+.card-header,
+.card-footer,
+.modal-content {
+    background-color: var(--bg)
+}
