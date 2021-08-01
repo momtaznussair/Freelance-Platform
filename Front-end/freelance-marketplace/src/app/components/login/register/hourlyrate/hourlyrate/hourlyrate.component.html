@@ -22,10 +22,12 @@
                             <h3>hourly rate</h3>
                             <p>total amount the client will see</p>
                         </div>
-                        <div class="right">
-                            <input type="text" name="hourlyRate" placeholder="10.00">
-                            <span>/hr</span>
-                        </div>
+                        <form [formGroup]="form">
+                            <div class="right">
+                                <input type="text" name="hour" formControlName="hour" #hourly (keyup)="getSiteService(hourly.value)" [(ngModel)]="hourlyRate" placeholder="10.00">
+                                <span>/hr</span>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <hr>
@@ -37,7 +39,7 @@
 
                         </div>
                         <div class="right">
-                            <input type="text" name="fee" placeholder="-2.00">
+                            <input type="number" [(ngModel)]="siteService" disabled name="siteService" placeholder="-2.00">
                             <span>/hr</span>
                         </div>
 
@@ -53,7 +55,7 @@
                         </div>
                         <div class="right">
 
-                            <input type="text" name="recieved" placeholder="8.00">
+                            <input type="number" [(ngModel)]="latestReceive" disabled name="latestReceive" placeholder="8.00">
                             <span>/hr</span>
                         </div>
                     </div>
@@ -64,8 +66,9 @@
 
             <div class=" footer lg-6 d-sm-flex">
                 <button class="bt1" routerLink="/user/signup/lang">back</button>
-                <button class="bt2" (click)="submit()" routerLink="/user/signup/location">next</button>
+                <button class="bt2" type="submit" [disabled]="form.invalid" (click)="next()" routerLink="/user/signup/location">next</button>
             </div>
+
 
 
         </section>

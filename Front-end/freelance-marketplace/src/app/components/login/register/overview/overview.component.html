@@ -35,8 +35,7 @@
                 </div>
                 <div class=" footer lg-6 d-sm-flex">
                     <button class="bt1" routerLink="/user/signup/category">back</button>
-                    <button class="bt2"    type="submit" routerLink="/user/signup/expertise">next</button>
-                    <!-- [disabled]="form.invalid" -->
+                    <button class="bt2" (click)="next()" [disabled]="form.invalid" type="submit" routerLink="/user/signup/expertise">next</button>
                 </div>
             </form>
         </section>
