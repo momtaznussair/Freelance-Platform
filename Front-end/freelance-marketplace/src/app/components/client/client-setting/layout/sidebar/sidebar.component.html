@@ -59,7 +59,6 @@
 
 <ul id="grouplist" class="list-unstyled">
     <li class="my-md-3 " *ngFor="let item of groups">
-        <!-- <a [ngClass]="{'active': currentPath == item.path , selectedItem == item}" (mouseover)="listClick($event, item)" routerLink="{{item.path}} "><span class="fa fa-{{item.shape}} mx-2 "></span> {{ item.name }}</a> -->
-        <a [ngClass]="{'active': selectedItem == item }" (mouseover)="listClick($event, item)" routerLink="{{item.path}}"><span class="fa fa-{{item.shape}} mx-2 "></span> {{ item.name }}</a>
+        <a [ngClass]="{'active': currentPath == item.path }" (mouseover)="listClick($event, item)" routerLink="{{item.path}}"><span class="fa fa-{{item.shape}} mx-2 "></span> {{ item.name }}</a>
     </li>
 </ul>
