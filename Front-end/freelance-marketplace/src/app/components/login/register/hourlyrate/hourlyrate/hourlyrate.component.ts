@@ -17,18 +17,16 @@ export class HourlyrateComponent implements OnInit {
   ngOnInit(): void
   {
     this.form = this.formBuilder.group({
-      hour : ['' , [ Validators.required]],
+      hourlyRate : ['' , [ Validators.required]],
     })
   }
-  
+
   submit()
  {
 //  this.appService.updateApprovalMessage(this.approvalText);
- console.log(this.appService.momtazArray['skills']);
- console.log(this.appService.momtazArray['expertiselevel']);
  }
 
-  hourlyRate : any;
+  hourlyRating : any;
   siteService : any;
   latestReceive : any;
 

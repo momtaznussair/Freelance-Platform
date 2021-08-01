@@ -24,7 +24,7 @@
                         </div>
                         <form [formGroup]="form">
                             <div class="right">
-                                <input type="text" name="hour" formControlName="hour" #hourly (keyup)="getSiteService(hourly.value)" [(ngModel)]="hourlyRate" placeholder="10.00">
+                                <input type="text" name="hourlyRate" formControlName="hourlyRate" #hourly (keyup)="getSiteService(hourly.value)" [(ngModel)]="hourlyRating" placeholder="10.00">
                                 <span>/hr</span>
                             </div>
                         </form>

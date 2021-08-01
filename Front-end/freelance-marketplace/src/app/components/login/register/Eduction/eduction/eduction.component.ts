@@ -15,7 +15,6 @@ export class EductionComponent implements OnInit {
 
 submit()
 {
-console.log(this.appService.momtazArray['skills']);
-console.log(this.appService.momtazArray['expertiselevel']);
+  
 }
 }
