@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit {
   }//end of login function
 
   submit():void{
-    this.apiService.post("url" , this.form.getRawValue() , {withCredentials : true}).subscribe(response=>{
-      console.log(response);
+    this.userService.login(this.form.getRawValue()).subscribe(response=>{
+      alert(JSON.stringify( response));
     })
   }
 
