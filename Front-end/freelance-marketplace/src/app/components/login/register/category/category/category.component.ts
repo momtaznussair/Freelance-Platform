@@ -23,7 +23,7 @@ export class CategoryComponent implements OnInit {
     this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response =>{
       this.category = response;
       // this.appService.registerProcess.push(response);
-      console.log(this.appService.registerProcess);
+      // console.log(this.appService.registerProcess);
       console.log(response);
       console.log(this.category);
     },error=>console.error);

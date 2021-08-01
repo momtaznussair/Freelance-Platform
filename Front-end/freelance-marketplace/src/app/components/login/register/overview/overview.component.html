@@ -28,7 +28,7 @@
                         <input type="text" formControlName="jobTitle" class=" form-control" placeholder="write title for your skills">
                         <div *ngIf="form.controls.jobTitle.invalid && form.controls.jobTitle.dirty || form.controls.jobTitle.touched">
                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.jobTitle.hasError('required')">This field is required</small>
-                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.jobTitle.hasError('minlength')">You should write more than 250 letter </small>
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.jobTitle.hasError('minlength')">You should write more than 10 letter </small>
                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.jobTitle.hasError('maxlength')"> You can not write more than 500 letter</small>
                         </div>
                     </div>

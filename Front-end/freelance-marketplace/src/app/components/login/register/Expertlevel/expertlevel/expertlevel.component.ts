@@ -26,9 +26,9 @@ export class ExpertlevelComponent implements OnInit {
   next()
   {
     if(this.form.value){
-      this.appService.registerProcess.category =  'test';
+      // this.appService.registerProcess.category =  'test';
       // this.appService.momtazArray.push(this.form.getRawValue());
-      console.log(this.appService.registerProcess)
+      // console.log(this.appService.registerProcess)
       alert(JSON.stringify(this.form.getRawValue()));
     }
   }
