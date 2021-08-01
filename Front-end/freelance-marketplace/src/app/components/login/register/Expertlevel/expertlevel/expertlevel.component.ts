@@ -16,8 +16,11 @@ export class ExpertlevelComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder , private userService : UserService,private appService:RegisterDataService) { }
 
+  currentRegisterData : any;
   ngOnInit(): void
   {
+    this.currentRegisterData = localStorage.getItem('data');
+    console.log(this.currentRegisterData);
     this.form = this.formBuilder.group({
       experienceLevel : ['' ,  [Validators.required]],
     })
@@ -26,10 +29,9 @@ export class ExpertlevelComponent implements OnInit {
   next()
   {
     if(this.form.value){
-      this.appService.registerProcess.category =  'test';
-      // this.appService.momtazArray.push(this.form.getRawValue());
-      console.log(this.appService.registerProcess)
-      alert(JSON.stringify(this.form.getRawValue()));
+      this.currentRegisterData = JSON.parse(this.currentRegisterData)
+      this.currentRegisterData.experienceLevel = this.form.controls.experienceLevel.value;
+      localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
     }
   }
 

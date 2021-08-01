@@ -10,7 +10,9 @@ export class ExpertiseComponent implements OnInit {
 
   constructor(private appService:RegisterDataService) { }
 
+  currentRegisterData : any ;
   ngOnInit(): void {
+    this.currentRegisterData = localStorage.getItem('data');
   }
 
   submit()

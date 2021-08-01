@@ -14,8 +14,10 @@ export class HourlyrateComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder , private userService : UserService,private appService:RegisterDataService) { }
 
+  currentRegisterData : any;
   ngOnInit(): void
   {
+    this.currentRegisterData = localStorage.getItem('data');
     this.form = this.formBuilder.group({
       hourlyRate : ['' , [ Validators.required]],
     })
@@ -23,7 +25,7 @@ export class HourlyrateComponent implements OnInit {
 
   submit()
  {
-//  this.appService.updateApprovalMessage(this.approvalText);
+
  }
 
   hourlyRating : any;
@@ -37,7 +39,10 @@ export class HourlyrateComponent implements OnInit {
 
   next()
   {
-      alert(JSON.stringify(this.form.getRawValue()));
+    alert(JSON.stringify(this.form.getRawValue()));
+    this.currentRegisterData = JSON.parse(this.currentRegisterData)
+    this.currentRegisterData.hourlyRate = this.form.controls.hourlyRate.value;
+    localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
   }
 
 

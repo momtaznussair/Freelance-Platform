@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
+import { RegisterDataService } from 'src/app/services/register-data.service';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -13,7 +14,7 @@ import { environment } from 'src/environments/environment.prod';
 export class SignupComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService , private registerService : RegisterDataService) { }
 
 
   isTokenFound : boolean = false;
@@ -58,13 +59,19 @@ export class SignupComponent implements OnInit {
     // alert(JSON.stringify( this.form.value))
     if(this.form.valid)
     {
-      this.userService.register(this.form.value).subscribe(response=>{
-        alert('process successfully');
-        console.log(response);
-        this.respondedToken.resToken = response
-        this.msg = this.respondedToken.resToken;
-        this.msg = localStorage.setItem('msg' , JSON.stringify(this.msg));
-      },error=>console.error)
+
+      this.registerService.registerProcess.registrationData = this.form.value;
+      localStorage.setItem('data' ,JSON.stringify(this.registerService.registerProcess));
+      console.log(localStorage.getItem('data'));
+
+      //====Use HttpClient====
+      // this.userService.register(this.form.value).subscribe(response=>{
+      //   alert('process successfully');
+      //   console.log(response);
+      //   this.respondedToken.resToken = response
+      //   this.msg = this.respondedToken.resToken;
+      //   this.msg = localStorage.setItem('msg' , JSON.stringify(this.msg));
+      // },error=>console.error)
 
       if(this.form.controls.type.value == 'client')
       {
