@@ -1,6 +1,12 @@
 export class Categories
 {
+  "data" : [
+    "id",
+    "name",
+    "created_at",
+    "updated_at",
+  ]
 
-  constructor(id ? : number , name ?: string , created_at ? : any , updated_at ? : any){}
+  // constructor(public id ?: number , public name ?: string ,public created_at  ?: Date ,public updated_at ?: Date){}
 
 }
