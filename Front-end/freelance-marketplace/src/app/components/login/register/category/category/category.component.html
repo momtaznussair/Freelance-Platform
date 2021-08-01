@@ -41,7 +41,8 @@
                    
                     <!-- (click)="next(1)" -->
                         <button class="bt2" type="button"  routerLink="/user/signup/expertise">Next</button>
-                  
+                        <input type="text" name="approvalText" [(ngModel)]="approvalText" class="form-control" id="approvalText" >
+                        <button (click)="submit()">Approve Basic</button>
                 </div>
             </div>
 
