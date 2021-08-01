@@ -55,9 +55,13 @@ export class SignupComponent implements OnInit {
 
   respondedToken : RespondedLocationToken = new RespondedLocationToken();
   msg : any;
+
+  repeatedPassword : string = '';
+  password : string = '';
+  isLogged : boolean = false;
   register(){
     // alert(JSON.stringify( this.form.value))
-    if(this.form.valid)
+    if(this.form.valid && this.password == this.repeatedPassword)
     {
 
       this.registerService.registerProcess.registrationData = this.form.value;
@@ -82,5 +86,9 @@ export class SignupComponent implements OnInit {
       }
 
     }
-  };//end of login function
+    else
+    {
+      this.isLogged = true;
+    }
+  };//end of register function
 }

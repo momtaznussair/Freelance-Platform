@@ -24,12 +24,25 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  login(){
+  isLogged : boolean = false;
 
-    this.userService.login(this.form.getRawValue()).subscribe(response=>{
-      alert ('login success');
-      console.log(response)
-    },error=>console.error);
+  login(){
+    console.log(this.form.value);
+    if(this.form.valid)
+    {
+
+      this.userService.login(this.form.getRawValue()).subscribe(response=>{
+        alert ('login success');
+        console.log(response)
+      },error=>console.error);
+
+    }
+    else
+    {
+      this.isLogged = true;
+      console.log(this.isLogged);
+    }
+
 
 
     // if(token)
@@ -47,11 +60,11 @@ export class LoginComponent implements OnInit {
 
   }//end of login function
 
-  submit():void{
-    this.userService.login(this.form.getRawValue()).subscribe(response=>{
-      alert(JSON.stringify( response));
-    })
-  }
+  // submit():void{
+  //   this.userService.login(this.form.getRawValue()).subscribe(response=>{
+  //     alert(JSON.stringify( response));
+  //   })
+  // }
 
 
 
