@@ -6,22 +6,17 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class RegisterDataService {
 
-  // private approvalStageMessage = new BehaviorSubject('Basic Approval is required!');
-  // currentApprovalStageMessage = this.approvalStageMessage.asObservable();
   momtazArray:any={
-    "category":"  initial category",
-    "overview":"initial overview",
-    "title":"initial title",
-    "skills":["html","css","java"],
+    "category":"",
+    "overview":"",
+    "title":"",
+    "skills":[],
     "expertiselevel":2,
-    "education":" ",
-   "language":" ",
+    "education":[],
+   "language":[],
    "service fee":2,
-   "location":" "
+   "location":[]
 }
   constructor() { }
-  // updateArray(message: string) {
-  //   // this.approvalStageMessage.next(message)
-  //   // this.momtazArry.push()
-  //   }
+ 
 }
