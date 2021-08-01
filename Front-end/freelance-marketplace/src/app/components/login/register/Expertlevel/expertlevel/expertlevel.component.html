@@ -4,46 +4,48 @@
             <app-sidebar></app-sidebar>
         </section>
         <section class="expertlevel col-12 col-md-9">
-            <div class="header">
-                <h3>Experience level</h3>
-                <p>4 of 8</p>
-            </div>
-            <br />
-
-            <h3>What is your level experience in this field?</h3>
-            <br />
-            <div class="card my-2">
-                <label class="radio-inline"><input type="radio"
-           name="level"  />Entry
+            <form [formGroup]="form">
+                <div class="header">
+                    <h3>Experience level</h3>
+                    <p>4 of 8</p>
+                </div>
+                <br />
+                <h3>What is your level experience in this field?</h3>
+                <br />
+                <div class="card my-2">
+                    <label class="radio-inline"><input formControlName="level" type="radio"
+           name="level" value="1"  />Entry
           level<br />
           <p>I am relatively new to this field</p>
         </label>
-            </div>
+                </div>
 
-            <div class="card my-2">
-                <label class="radio-inline"><input
+                <div class="card my-2">
+                    <label class="radio-inline"><input formControlName="level"
             type="radio"
-            name="level"
+            name="level" value="2"
 
           />Intermediate<br />
           <p>I have substantial experience in this field</p>
         </label>
-            </div>
-            <div class="card my-2">
-                <label class="radio-inline"><input
+                </div>
+                <div class="card my-2">
+                    <label class="radio-inline"><input formControlName="level"
             type="radio"
-            name="level"
+            name="level" value="3"
 
           />Expert<br />
           <p>I have comprehensive and deep expertise in this field</p>
         </label>
-            </div>
-            <br />
+                </div>
+                <br />
 
-            <div class="footer lg-6 d-sm-flex">
-                <button class="bt1" type="button" routerLink="/user/signup/expertise"> Back </button>
-                <button class="bt2" type="button" routerLink="/user/signup/education">Next</button>
-            </div>
+
+                <div class="footer lg-6 d-sm-flex">
+                    <button class="bt1" type="button" routerLink="/user/signup/expertise"> Back </button>
+                    <button class="bt2" type="submit" (click)="next()" [disabled]="form.invalid" routerLink="/user/signup/education">Next</button>
+                </div>
+            </form>
         </section>
     </div>
 </div>

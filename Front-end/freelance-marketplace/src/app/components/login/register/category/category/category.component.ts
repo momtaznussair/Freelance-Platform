@@ -11,6 +11,11 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class CategoryComponent implements OnInit {
 
+  arr = [{"id":1,"name":"web","created_at":null,"updated_at":null}];
+
+
+  msg = localStorage.getItem('msg');
+
 
   category : Categories = new Categories();
   constructor(private apiService : ApiService) {}
@@ -18,6 +23,7 @@ export class CategoryComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response =>{
       this.category = response;
+      console.log(response);
       console.log(this.category);
     },error=>console.error);
   }

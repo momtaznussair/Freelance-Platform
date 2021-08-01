@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-hourlyrate',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HourlyrateComponent implements OnInit {
 
-  constructor() { }
+  form : FormGroup = new FormGroup({});
+  constructor(private formBuilder : FormBuilder , private userService : UserService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void
+  {
+    this.form = this.formBuilder.group({
+      hour : ['' , [ Validators.required]],
+    })
   }
+
+  hourlyRate : any;
+  siteService : any;
+  latestReceive : any;
+
+  getSiteService(hourly : any):any
+  {
+    return (this.siteService = hourly * 0.8).toFixed(2) && (this.latestReceive = hourly - this.siteService).toFixed(2)
+  }
+
+  next()
+  {
+      alert(JSON.stringify(this.form.getRawValue()));
+  }
+
+
+
 
 }
