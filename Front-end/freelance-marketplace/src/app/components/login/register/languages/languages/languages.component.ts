@@ -12,11 +12,8 @@ export class LanguagesComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   submit()
  {
-//  this.appService.updateApprovalMessage(this.approvalText);
- console.log(this.appService.momtazArray['skills']);
- console.log(this.appService.momtazArray['expertiselevel']);
  }
 }

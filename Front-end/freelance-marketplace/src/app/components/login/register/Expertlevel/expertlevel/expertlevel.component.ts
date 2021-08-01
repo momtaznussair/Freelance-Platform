@@ -26,14 +26,14 @@ export class ExpertlevelComponent implements OnInit {
   next()
   {
     if(this.form.value){
+      this.appService.registerProcess.category =  'test';
+      // this.appService.momtazArray.push(this.form.getRawValue());
+      console.log(this.appService.registerProcess)
       alert(JSON.stringify(this.form.getRawValue()));
     }
   }
-  
+
   submit()
  {
-//  this.appService.updateApprovalMessage(this.approvalText);
- console.log(this.appService.momtazArray['skills']);
- console.log(this.appService.momtazArray['expertiselevel']);
  }
 }

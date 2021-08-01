@@ -11,29 +11,26 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  arr = [{"id":1,"name":"web","created_at":null,"updated_at":null}];
-
 
     msg = localStorage.getItem('msg');
 
   constructor(private appService:RegisterDataService,private apiService : ApiService) {
-  
+
   }
 
   category : Categories = new Categories();
   ngOnInit(): void {
     this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response =>{
       this.category = response;
+      // this.appService.registerProcess.push(response);
+      console.log(this.appService.registerProcess);
       console.log(response);
       console.log(this.category);
     },error=>console.error);
   }
-  
+
   submit()
  {
-//  this.appService.updateApprovalMessage(this.approvalText);
- console.log(this.appService.momtazArray['skills']);
- console.log(this.appService.momtazArray['expertiselevel']);
  }
 
 

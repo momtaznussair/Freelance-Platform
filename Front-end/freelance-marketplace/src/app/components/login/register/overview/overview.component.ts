@@ -18,11 +18,11 @@ export class OverviewComponent implements OnInit {
   ngOnInit(): void
   {
     this.form = this.formBuilder.group({
-      overview : ['' , [ Validators.required, Validators.maxLength(500) , Validators.minLength(10)] ],
+      overview : ['' , [ Validators.required, Validators.maxLength(500) , Validators.minLength(10)]],
       jobTitle : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255)]]
     })
   }
-  
+
 
   next()
   {

@@ -6,17 +6,19 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class RegisterDataService {
 
-  momtazArray:any={
-    "category":"",
-    "overview":"",
-    "title":"",
-    "skills":[],
-    "expertiselevel":2,
-    "education":[],
-   "language":[],
-   "service fee":2,
-   "location":[]
-}
   constructor() { }
- 
+//service to get all registration process
+    registerProcess:any = {
+      "registrationData" : {},
+      "category":"",
+      "overview":"",
+      "jobTitle":"",
+      "skills": [],
+      "experienceLevel":2,
+      "education":"",
+      "language":[],
+      "hourlyRate":0,
+      "location":{}
+    }
+    
 }

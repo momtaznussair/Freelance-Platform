@@ -26,7 +26,7 @@ export class UserService {
 
   login(body : any)
   {
-    return this.apiService.post(this.loginUrl , body , {withCredentials:true});
+    return this.apiService.post(this.loginUrl, body );
   }//end of loginUser
 
   logout()

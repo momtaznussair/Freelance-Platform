@@ -19,7 +19,7 @@ import { OverviewComponent } from './overview/overview.component';
 
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
-  {path : 'signup' , component : SignupComponent},
+  {path : 'register' , component : SignupComponent},
   {path : 'category' , component : CategoryComponent},
   {path : 'overview' , component : OverviewComponent},
   {path : 'expertise' , component : ExpertiseComponent},

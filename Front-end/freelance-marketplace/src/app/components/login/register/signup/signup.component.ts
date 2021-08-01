@@ -59,6 +59,7 @@ export class SignupComponent implements OnInit {
     if(this.form.valid)
     {
       this.userService.register(this.form.value).subscribe(response=>{
+        alert('process successfully');
         console.log(response);
         this.respondedToken.resToken = response
         this.msg = this.respondedToken.resToken;
