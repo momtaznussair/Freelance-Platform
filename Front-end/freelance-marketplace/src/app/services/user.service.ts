@@ -19,6 +19,7 @@ export class UserService {
     this.logged.next(this.isLogged());
   }//end of constructor
 
+
   register(body : any)
   {
     return this.apiService.post(this.registerUrl , body)

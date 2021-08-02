@@ -1,0 +1,22 @@
+h4{
+    color: var(--mc);
+}
+.btn{
+    background-color: var(--mc);
+  
+}
+input{
+    width: 50%;
+}
+/* body{
+    background-color:var(--bg) ;
+} */
+.container{
+    width:70%;
+}
+.bill{
+    background-color: var(--bg);
+    height: 3rem;
+    width: 100%;
+    text-align: center;
+}

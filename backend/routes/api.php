@@ -40,7 +40,7 @@ Route::middleware('auth:sanctum')->get('/test', function (Request $request) {
 });
 
 
-// Google 
+// Google
 Route::get('/auth/google/redirect', [SocialiteAuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/auth/google/callback', [SocialiteAuthController::class, 'handleGoogleCallback']);
 
@@ -54,6 +54,14 @@ Route::get('/testclient', function(){
     return "I'm a client";
 })->middleware(['client','auth:sanctum']);
 
-Route::get('/testfreelancer', function(){
-    return "I'm a freelancer";
-})->middleware(['freelancer','auth:sanctum']);
+//skillController
+Route::get('skills',[SkillController::class,'index']);
+Route::post('skills',[SkillController::class,'store']);
+Route::post('/skills/{skill}',[SkillController::class,'update']);
+Route::delete('/skills/{skill}',[SkillController::class,'destroy']);
+
+Route::get('jobs',[JobController::class,'index']);
+Route::post('jobs',[JobController::class,'store']);
+Route::post('/jobs/{job}',[JobController::class,'update']);
+Route::delete('/jobs/{job}',[JobController::class,'destroy']);
+
