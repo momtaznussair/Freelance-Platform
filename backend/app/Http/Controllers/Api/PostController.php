@@ -10,7 +10,10 @@ class PostController extends Controller
 {
     public function index(){
         $categories=Category::all();
-        return $categories;
+        // return $categories;
+        return response()->json([
+            "data" => $categories
+        ]);
     }
     public function store(Request $request){
        $category=Category::create([
@@ -31,13 +34,13 @@ class PostController extends Controller
 }
 public function destroy($id)
     {
-    
+
         return Category::destroy($id);
     }
 
     // public function search($name)
     // {
-        
+
     //     return Category::where('name','like','%'.$name.'%')->get();
     // }
 }
