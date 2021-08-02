@@ -24,7 +24,7 @@ class CategoryController extends Controller
             return $this->apiResponse($category);
         }
 
-        return $this->apiResponse(null,'Not Found',404);
+        return $this->NotFoundError();
     }
 
     public function store(Request $request){
@@ -43,7 +43,7 @@ class CategoryController extends Controller
         if($category){
             return $this->apiResponse($category);
         }
-        return  $this->apiResponse(null,'Unknown Error',400);
+        return  $this->UnknownError();
     }
 
     public function update(Request $request, $id)
@@ -59,7 +59,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         if(!$category){
-            return $this->apiResponse(null,'Not Found',404);
+            return $this->NotFoundError();
         }
 
         $category->update($request->all());
@@ -67,7 +67,7 @@ class CategoryController extends Controller
             return $this->apiResponse($category,'',201);
         }
 
-        return  $this->apiResponse(null,'Unknown Error',400);
+        return  $this->UnknownError();
     }
 
     public function destroy($id)
@@ -76,10 +76,10 @@ class CategoryController extends Controller
 
         if($category){
             $category->delete();
-            return $this->apiResponse(true,'',201);
+            return $this->apiResponse(true,'',200);
         }
 
-        return $this->apiResponse(null,'Not Found',404);
+        return $this->NotFoundError();
     }
 
 }

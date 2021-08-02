@@ -20,4 +20,13 @@ trait ApiResponseTrait {
             200 , 201, 202
         ];
     }
+
+    public function NotFoundError(){
+        return $this->apiResponse(null,'Not Found',404);
+    }
+
+    public function UnknownError(){
+        return  $this->apiResponse(null,'Unknown Error',400);
+    }
+
 }
