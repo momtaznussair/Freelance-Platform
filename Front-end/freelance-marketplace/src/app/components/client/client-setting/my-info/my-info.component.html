@@ -36,23 +36,41 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Re-enter password</h5>
+                            <h5 class="modal-title">Update Your Info</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <p class="h6 fw-bold">I***mali</p>
-                            <p class="text-muted fw-bold">eng.....@gmail.com</p>
-                            <a href="#" class="small fw-bold">Not you?</a><br>
-                            <form class="form">
-                                <label class="small form-check-label">password</label><br>
-                                <input type="password" class="form-control w-50"><br>
-                                <a href="#" class="small fw-bold">Forget Password</a>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
-                            <button type="button" class="btn">Save</button>
-                        </div>
+                        <form class="form" [formGroup]="form">
+                            <div class="modal-body">
+                                <label class="small form-check-label  mt-3">Email</label><br>
+                                <input type="text" formControlName="email" class="form-control" placeholder="update your account">
+                                <div *ngIf="form.controls.email.invalid && isLogged || (form.controls.email.dirty || form.controls.email.touched)">
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.email.hasError( 'required') ">Email is required</small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.email.hasError( 'email') ">Invalid Email </small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.email.hasError( 'maxlength') "> this is big email</small>
+                                </div>
+
+                                <label class="small form-check-label mt-3">User name</label><br>
+                                <input type="text" formControlName="userName" class="form-control" placeholder="update your user name">
+                                <div *ngIf="form.controls.userName.invalid && isLogged || (form.controls.userName.dirty || form.controls.userName.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.userName.hasError('required')">User name is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.userName.hasError('minlength')"> You gen der.write more than three characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.userName.hasError('maxlength')"> You should write less than 250 characters</small>
+                                </div>
+
+                                <label class="small form-check-label  mt-3">password</label><br>
+                                <input type="password" formControlName="password" class="form-control">
+                                <div *ngIf="form.controls.password.invalid && isLogged || (form.controls.password.dirty || form.controls.password.touched)">
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.password.hasError( 'required') ">Password is required</small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.password.hasError( 'minlength') ">You have to write more than 8 characters</small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.password.hasError( 'maxlength') ">You have to write less than 15 characters</small>
+                                </div>
+                                <!-- <a href="#" class="small fw-bold">Forget Password</a> -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                <button type="submit" (click)="saveData()" class="btn">Save</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

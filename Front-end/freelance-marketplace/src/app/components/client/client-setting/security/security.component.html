@@ -37,16 +37,33 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="form">
-                                <label class="small form-check-label">Old Password</label><br>
-                                <input type="password" class="form-control"><br>
-                                <label class="small form-check-label">New password</label><br>
-                                <input type="password" class="form-control"><br>
-                                <label class="small form-check-label">Confirm New Password</label><br>
-                                <input type="password" class="form-control"><br>
-                                <input type="checkbox" class="mx-2"> <span class="small text-muted">All devices will be required to sign in with new password</span><br>
-                                <div class="form-group mt-3">
-                                    <button type="button" class="btn" data-bs-dismiss="modal">Save</button>
+                            <form class="form" [formGroup]="form">
+                                <label class="small form-check-label mt-3">Old Password</label>
+                                <input type="password" name="password" formControlName="password" class="form-control">
+                                <div *ngIf="form.controls.password.invalid && isLogged || (form.controls.password.dirty || form.controls.password.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('required')">Password is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('minlength')">You have to write more than 8 characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('maxlength')">You have to write less than 15 characters</small>
+                                </div>
+
+                                <label class="small form-check-label mt-3">New password</label>
+                                <input type="password" name="updatedPassword" [(ngModel)]="updatedPassword" formControlName="updatedPassword" class="form-control">
+                                <div *ngIf="form.controls.updatedPassword.invalid && isLogged || (form.controls.updatedPassword.dirty || form.controls.updatedPassword.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.updatedPassword.hasError('required')">Password is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.updatedPassword.hasError('minlength')">You have to write more than 8 characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.updatedPassword.hasError('maxlength')">You have to write less than 15 characters</small>
+                                </div>
+
+                                <label class="small form-check-label mt-3">Confirm New Password</label>
+                                <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" class="form-control" formControlName="confirmPassword" />
+                                <div *ngIf="form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty || form.controls.confirmPassword.touched">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.confirmPassword.hasError('required')">This field is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="updatedPassword != confirmPassword">You have to write similar password </small>
+                                </div>
+
+                                <!-- <input type="checkbox" class="mx-2"> <span class="small text-muted">All devices will be required to sign in with new password</span><br> -->
+                                <div class="form-group mt-5 card-footer">
+                                    <button type="submit" (click)="saveData()" class="btn" data-bs-dismiss="modalStatus" aria-label="Close">Save</button>
                                     <button type="button" class="btn mx-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                                 </div>
                             </form>
@@ -141,6 +158,7 @@
 </div>
 
 <pre>
+
 
 
 
