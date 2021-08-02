@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Auth\SocialiteAuthController;
+use App\Http\Controllers\Api\LanguageController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,7 +26,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('categories',[CategoryController::class,'index']);
-Route::get('categories/{id}',[CategoryController::class,'show']);
+Route::get('categories/{category}',[CategoryController::class,'show']);
 Route::post('categories',[CategoryController::class,'store']);
 Route::post('/categories/{category}',[CategoryController::class,'update']);
 Route::delete('/categories/delete/{category}',[CategoryController::class,'destroy']);
@@ -57,3 +59,11 @@ Route::get('/testclient', function(){
 Route::get('/testfreelancer', function(){
     return "I'm a freelancer";
 })->middleware(['freelancer','auth:sanctum']);
+
+
+
+Route::get('languages',[LanguageController::class,'index']);
+Route::get('languages/{language}',[LanguageController::class,'show']);
+Route::post('languages' ,[LanguageController::class,'store']);
+Route::post('languages/{language}' ,[LanguageController::class,'update']);
+Route::delete('languages/delete/{language}' ,[LanguageController::class,'destroy']);
