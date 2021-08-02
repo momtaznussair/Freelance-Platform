@@ -11,6 +11,5 @@ class Test extends Model
     protected $fillable = [
         'name',
         'link',
-      
     ];
 }

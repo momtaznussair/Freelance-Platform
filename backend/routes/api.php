@@ -49,7 +49,7 @@ Route::get('/auth/linkedin/redirect', [SocialiteAuthController::class, 'redirect
 Route::get('/auth/linkedin/callback', [SocialiteAuthController::class, 'handleLinkedinCallback']);
 
 
-
+// Test Client & freelancer middleware
 Route::get('/testclient', function(){
     return "I'm a client";
 })->middleware(['client','auth:sanctum']);
