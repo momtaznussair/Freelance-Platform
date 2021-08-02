@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Auth\SocialiteAuthController;
+use App\Http\Controllers\Api\CompanyController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//category
 Route::get('categories',[CategoryController::class,'index']);
 Route::get('categories/{id}',[CategoryController::class,'show']);
 Route::post('categories',[CategoryController::class,'store']);
@@ -57,3 +60,12 @@ Route::get('/testclient', function(){
 Route::get('/testfreelancer', function(){
     return "I'm a freelancer";
 })->middleware(['freelancer','auth:sanctum']);
+
+
+// company api
+
+Route::get('companies', [CompanyController::class, 'index']);
+Route::get('companies/{id}',[CategoryController::class,'show']);
+Route::post('companies',[CategoryController::class,'store']);
+Route::post('/companies/{company}',[CategoryController::class,'update']);
+Route::delete('/companies/delete/{company}',[CategoryController::class,'destroy']);
