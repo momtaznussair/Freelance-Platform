@@ -63,6 +63,8 @@ export class SignupComponent implements OnInit {
     // alert(JSON.stringify( this.form.value))
     if(this.form.valid && this.password == this.repeatedPassword)
     {
+      //save token into localStorage to login and stop guard
+      localStorage.setItem("token" , "response");
 
       this.registerService.registerProcess.registrationData = this.form.value;
       localStorage.setItem('data' ,JSON.stringify(this.registerService.registerProcess));
