@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Auth\SocialiteAuthController;
 use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\LanguageLevelController;
+use App\Http\Controllers\Api\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,3 +76,10 @@ Route::get('languageLevel/{languageLevel}',[LanguageLevelController::class,'show
 Route::post('languageLevel' ,[LanguageLevelController::class,'store']);
 Route::post('languageLevel/{languageLevel}' ,[LanguageLevelController::class,'update']);
 Route::delete('languageLevel/delete/{languageLevel}' ,[LanguageLevelController::class,'destroy']);
+
+// CRUD for Portfolio
+Route::get('portfolios',[PortfolioController::class,'index']);
+Route::get('portfolios/{portfolio}',[PortfolioController::class,'show']);
+Route::post('portfolios' ,[PortfolioController::class,'store']);
+Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
+Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);

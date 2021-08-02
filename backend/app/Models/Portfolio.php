@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Protfoilio extends Model
+class Portfolio extends Model
 {
     use HasFactory;
 
@@ -16,4 +16,8 @@ class Protfoilio extends Model
         'image_link',
         'attachment_link'
     ];
+
+    public function freelancer(){
+        return $this->belongsTo(Freelancer::class);
+    }
 }
