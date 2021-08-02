@@ -1,0 +1,56 @@
+<div class="container py-5 px-3">
+
+    <div class="row">
+
+
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+        <section class="lang col-12 col-md-9">
+            <div class="header">
+
+                <h3>Languages </h3>
+                <p>6 of 8</p>
+            </div>
+            <br>
+            <h3> What is your English proficienvy? </h3>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+            <br>
+
+
+            <h3> What other Languages do you speak? </h3> <br>
+            <div class="flex">
+                <p> <b> Language  </b></p>
+                <p> <b>proficiency </b></p>
+            </div>
+
+            <div class="container px-3">
+                <div class="row ">
+                    <select class="col form-select form-select-sm ">
+         <option   class="p-3 border bg-light"  selected>Arabic</option>
+         <option value="1">English</option>
+        </select>
+                    <select class="col form-select form-select-sm ">
+          <option class="p-3 border bg-light"  selected>Native</option>
+          <option value="1">Fluent</option>
+        </select>
+                </div>
+            </div>
+            <br> <br>
+            <button class="bt1" type="button">  + Add Language </button>
+            <br> <br>
+            <div class="md-6 lg-6 d-sm-flex footer">
+
+                <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button>
+
+                <button class="bt2" type="button" (click)="submit()" routerLink="/user/signup/hourly-rate">Next</button>
+            </div>
+        </section>
+
+    </div>
+</div>

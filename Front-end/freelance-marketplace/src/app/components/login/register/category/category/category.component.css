@@ -1,0 +1,17 @@
+@import url(../../main.css);
+.one {
+    margin: auto;
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+select {
+    width: 60%;
+}
+.footer{
+    justify-content: flex-end;
+}
