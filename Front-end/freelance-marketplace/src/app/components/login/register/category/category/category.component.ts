@@ -35,20 +35,21 @@ export class CategoryComponent implements OnInit {
     // } , error=>console.error);
 
     //second test =======
-    this.apiService.get("https://www.universal-tutorial.com/api/countries" , { header:{"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtb210YXpfbnVzc2FpckB5YWhvby5jb20iLCJhcGlfdG9rZW4iOiJZbUJNQnVfZUE5OVB5dlJ3bTFWRlNJWWZYQkZ0WjR6cmJ1UTMzakJrYUQ5N2d6OVk5eEJacVkzME5SQjZFU2J4OFU0In0sImV4cCI6MTYyNzkyNjAzNH0.BiJp1Za9pdFSZOLlKtU3ktU5TIILqTmpzbJS1CvkkSU","Accept": "application/json"}})
-      .subscribe(response=>{
-        alert ('success');
-        console.log(response);
-      } , error=>{alert('field')});
+    // this.apiService.get("https://www.universal-tutorial.com/api/countries" , { header:{"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtb210YXpfbnVzc2FpckB5YWhvby5jb20iLCJhcGlfdG9rZW4iOiJZbUJNQnVfZUE5OVB5dlJ3bTFWRlNJWWZYQkZ0WjR6cmJ1UTMzakJrYUQ5N2d6OVk5eEJacVkzME5SQjZFU2J4OFU0In0sImV4cCI6MTYyNzkyNjAzNH0.BiJp1Za9pdFSZOLlKtU3ktU5TIILqTmpzbJS1CvkkSU","Accept": "application/json"}})
+    //   .subscribe(response=>{
+    //     alert ('success');
+    //     console.log(response);
+    //   } , error=>{alert('field')});
 
     // this.currentRegisterData = localStorage.getItem('data');
-    // this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response =>{
-    //   // this.category = response[]
+    this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response =>{
+      // this.category = response[]
 
-    //   console.log(response);
-    //   console.log(this.category);
-    // },error=>console.error);
+      console.log(response);
+      console.log(this.category);
+    },error=>console.error);
   }
+
 
   submit()
   {

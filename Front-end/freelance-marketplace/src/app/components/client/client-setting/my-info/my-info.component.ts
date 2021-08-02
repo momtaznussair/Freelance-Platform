@@ -15,6 +15,8 @@ import { UserService } from 'src/app/services/user.service';
 export class MyInfoComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
+  formLocation : FormGroup = new FormGroup({});
+
   constructor(private formBuilder : FormBuilder  , private router : Router  , private apiService : ApiService) { }
 
   ngOnInit(): void {
@@ -26,17 +28,27 @@ export class MyInfoComponent implements OnInit {
     //     console.log(response);
     // },error=>console.error)
 
-
+    //validate email and name form
     this.form = this.formBuilder.group({
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
       username : ['' , [Validators.minLength(10) ,Validators.maxLength(255) , Validators.required] ],
+      password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15)]]
+    })
+
+
+    //validate email and name form
+    this.formLocation = this.formBuilder.group({
+      phone_number : ['' , [Validators.maxLength(255) , Validators.required] ],
+      country : ['' , [Validators.required] ],
+      city : ['' , [Validators.required] ],
+      street : ['' , [Validators.minLength(10) ,Validators.maxLength(255) , Validators.required] ],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15)]]
     })
   }
 
   isLogged : boolean = false;
 
-  saveData(){
+  saveAccountData(){
     console.log(this.form.value);
     if(this.form.valid)
     {
@@ -56,4 +68,22 @@ export class MyInfoComponent implements OnInit {
     }
 
   }
+
+  saveLocationData(){
+    console.log(this.formLocation.value)
+    if(this.form.valid)
+    {
+      alert('updated successfully');
+      this.router.navigateByUrl('/client/info');
+    }
+    else
+    {
+      this.isLogged = true;
+      console.log(this.isLogged);
+    }
+  }
+
+
+
+
 }
