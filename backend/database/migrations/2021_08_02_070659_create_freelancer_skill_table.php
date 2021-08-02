@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePortfoliosTable extends Migration
+class CreateFreelancerSkillTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreatePortfoliosTable extends Migration
      */
     public function up()
     {
-        Schema::create('portfolios', function (Blueprint $table) {
-            $table->id();
+        Schema::create('freelancer_skill', function (Blueprint $table) {
+            // $table->id();
             $table->unsignedBigInteger('freelancer_id');
-            // $table->primary(['freelancer_id']);
-            $table->string('title');
-            $table->text('description');
-            $table->string('img_link');
-            $table->string('attachment_link')->nullable();
+            $table->unsignedBigInteger('skill_id');
+            $table->primary('freelancer_id' , 'skill_id');
             $table->timestamps();
 
+
+            $table->foreign('skill_id')->references('id')->on('skills');
             $table->foreign('freelancer_id')->references('id')->on('freelancers');
         });
     }
@@ -34,6 +33,6 @@ class CreatePortfoliosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('portfolios');
+        Schema::dropIfExists('freelancer_skill');
     }
 }
