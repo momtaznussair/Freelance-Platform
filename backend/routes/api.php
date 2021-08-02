@@ -69,3 +69,11 @@ Route::get('companies/{id}',[CategoryController::class,'show']);
 Route::post('companies',[CategoryController::class,'store']);
 Route::post('/companies/{company}',[CategoryController::class,'update']);
 Route::delete('/companies/delete/{company}',[CategoryController::class,'destroy']);
+
+// freelancer
+
+Route::get('freelancers', [CompanyController::class, 'index']);
+Route::get('freelancers/{id}',[CategoryController::class,'show']);
+Route::post('freelancers',[CategoryController::class,'store']);
+Route::post('/freelancers/{freelancer}',[CategoryController::class,'update']);
+Route::delete('/freelancers/delete/{freelancer}',[CategoryController::class,'destroy']);
