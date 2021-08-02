@@ -39,8 +39,8 @@ export class MyInfoComponent implements OnInit {
     //validate email and name form
     this.formLocation = this.formBuilder.group({
       phone_number : ['' , [Validators.maxLength(255) , Validators.required] ],
-      country : ['' , [Validators.required] ],
-      city : ['' , [Validators.required] ],
+      // country : ['' , [Validators.required] ],
+      // city : ['' , [Validators.required] ],
       street : ['' , [Validators.minLength(10) ,Validators.maxLength(255) , Validators.required] ],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15)]]
     })
@@ -57,7 +57,7 @@ export class MyInfoComponent implements OnInit {
       // this.apiService.post(`${environment.apiUrl}/update` , this.form.getRawValue() , {header:{"token" : `Bearer ${localStorage.getItem('token')}`}}).subscribe(response=>{
       //   alert ('updated successfully');
       //   console.log(response);
-      this.router.navigateByUrl('/client/info');
+      // this.router.navigateByUrl('/client/info');
       // },error=>console.error);
 
     }
@@ -71,10 +71,10 @@ export class MyInfoComponent implements OnInit {
 
   saveLocationData(){
     console.log(this.formLocation.value)
-    if(this.form.valid)
+    if(this.formLocation.valid)
     {
       alert('updated successfully');
-      this.router.navigateByUrl('/client/info');
+      // this.router.navigateByUrl('/client/info');
     }
     else
     {

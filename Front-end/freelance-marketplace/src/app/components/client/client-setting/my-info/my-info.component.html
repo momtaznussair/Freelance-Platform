@@ -160,6 +160,11 @@
                             <form class="form" [formGroup]="formLocation">
                                 <label class="small form-check-label mt-3">Phone number</label><br>
                                 <input formControlName="phone_number" name="phone_number" type=" text " class="form-control ">
+                                <div *ngIf="formLocation.controls.phone_number.invalid && isLogged || (formLocation.controls.phone_number.dirty || formLocation.controls.phone_number.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.phone_number.hasError('required')">This field is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.phone_number.hasError('minlength')"> You should write more than three characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.phone_number.hasError('maxlength')"> You should write less than 250 characters</small>
+                                </div>
                                 <label class="small form-check-label mt-3 ">Country</label>
                                 <select name="country" class="form-select" name="country">
                                   <option value="mans" selected>Egypt</option>

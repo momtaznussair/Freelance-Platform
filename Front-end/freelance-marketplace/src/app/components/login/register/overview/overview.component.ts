@@ -38,7 +38,7 @@ export class OverviewComponent implements OnInit {
       this.currentRegisterData.overview = this.form.controls.overview.value;
       this.currentRegisterData.jobTitle = this.form.controls.jobTitle.value;
       localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
-      this.router.navigateByUrl("/user/signup/expertise");
+      this.router.navigateByUrl("/user/signup/experience");
     }
     else
     {
