@@ -29,7 +29,7 @@ export class MyInfoComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
-      userName : ['' , [Validators.minLength(10) ,Validators.maxLength(255) , Validators.required] ],
+      username : ['' , [Validators.minLength(10) ,Validators.maxLength(255) , Validators.required] ],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15)]]
     })
   }

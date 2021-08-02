@@ -50,11 +50,11 @@
                                 </div>
 
                                 <label class="small form-check-label mt-3">User name</label><br>
-                                <input type="text" formControlName="userName" class="form-control" placeholder="update your user name">
-                                <div *ngIf="form.controls.userName.invalid && isLogged || (form.controls.userName.dirty || form.controls.userName.touched)">
-                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.userName.hasError('required')">User name is required</small>
-                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.userName.hasError('minlength')"> You gen der.write more than three characters</small>
-                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.userName.hasError('maxlength')"> You should write less than 250 characters</small>
+                                <input type="text" formControlName="username" class="form-control" placeholder="update your user name">
+                                <div *ngIf="form.controls.username.invalid && isLogged || (form.controls.username.dirty || form.controls.username.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('required')">User name is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('minlength')"> You gen der.write more than three characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('maxlength')"> You should write less than 250 characters</small>
                                 </div>
 
                                 <label class="small form-check-label  mt-3">password</label><br>

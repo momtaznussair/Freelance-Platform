@@ -30,15 +30,15 @@ export class SignupComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      firstName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
-      lastName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
-      userName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
+      first_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
+      last_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
+      username : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
       gender:['' , [Validators.required]],
-      phoneNumber:['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
+      phone_number:['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15) ]],
       repeatPassword : ['' , [Validators.required]],
-      personalImage : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
+      image_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
       type:['' , [Validators.required]],
     })
 
