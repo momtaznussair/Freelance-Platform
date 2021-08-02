@@ -20,7 +20,7 @@ class CreatePortfoliosTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('img_link');
-            $table->string('attachment-link')->nullable();
+            $table->string('attachment_link')->nullable();
             $table->timestamps();
 
             $table->foreign('freelancer_id')->references('id')->on('freelancers');
