@@ -9,6 +9,7 @@ use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Auth\SocialiteAuthController;
 use App\Http\Controllers\Api\LanguageController;
+use App\Http\Controllers\Api\LanguageLevelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ use App\Http\Controllers\Api\LanguageController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+// CRUD for Category
 Route::get('categories',[CategoryController::class,'index']);
 Route::get('categories/{category}',[CategoryController::class,'show']);
 Route::post('categories',[CategoryController::class,'store']);
@@ -61,9 +62,16 @@ Route::get('/testfreelancer', function(){
 })->middleware(['freelancer','auth:sanctum']);
 
 
-
+// CRUD for Language
 Route::get('languages',[LanguageController::class,'index']);
 Route::get('languages/{language}',[LanguageController::class,'show']);
 Route::post('languages' ,[LanguageController::class,'store']);
 Route::post('languages/{language}' ,[LanguageController::class,'update']);
 Route::delete('languages/delete/{language}' ,[LanguageController::class,'destroy']);
+
+// CRUD for Language Levels
+Route::get('languageLevel',[LanguageLevelController::class,'index']);
+Route::get('languageLevel/{languageLevel}',[LanguageLevelController::class,'show']);
+Route::post('languageLevel' ,[LanguageLevelController::class,'store']);
+Route::post('languageLevel/{languageLevel}' ,[LanguageLevelController::class,'update']);
+Route::delete('languageLevel/delete/{languageLevel}' ,[LanguageLevelController::class,'destroy']);
