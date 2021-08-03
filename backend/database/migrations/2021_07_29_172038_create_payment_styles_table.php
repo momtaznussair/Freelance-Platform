@@ -16,6 +16,7 @@ class CreatePaymentStylesTable extends Migration
         Schema::create('payment_styles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->timestamps();
         });
     }
 

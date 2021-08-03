@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,19 +13,23 @@ import { HourlyrateComponent } from './hourlyrate/hourlyrate/hourlyrate.componen
 import { LocationComponent } from './location/location/location.component';
 import { CategoryComponent } from './category/category/category.component';
 import { ConnectionTypeComponent } from './connection-type/connection-type/connection-type.component';
+import { OverviewComponent } from './overview/overview.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+
 
 
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
-  {path : 'signup' , component : SignupComponent},
-  {path : 'category' , component : CategoryComponent},
-  {path : 'expertise' , component : ExpertiseComponent},
-  {path : 'expertise-level' , component : ExpertlevelComponent},
-  {path : 'education' , component : EductionComponent},
-  {path : 'lang' , component : LanguagesComponent},
-  {path : 'hourly-rate' , component : HourlyrateComponent},
-  {path : 'location' , component : LocationComponent},
-  {path : '' , component : ConnectionTypeComponent},
+  {path : 'register' , component : SignupComponent},
+  {path : 'category' , component : CategoryComponent, canActivate:[AuthGuard]},
+  {path : 'overview' , component : OverviewComponent, canActivate:[AuthGuard]},
+  {path : 'experience' , component : ExpertiseComponent, canActivate:[AuthGuard]},
+  {path : 'experience-level' , component : ExpertlevelComponent, canActivate:[AuthGuard]},
+  {path : 'education' , component : EductionComponent, canActivate:[AuthGuard]},
+  {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard]},
+  {path : 'hourly-rate' , component : HourlyrateComponent, canActivate:[AuthGuard]},
+  {path : 'location' , component : LocationComponent, canActivate:[AuthGuard]},
+  {path : '' , component : ConnectionTypeComponent, canActivate:[AuthGuard]},
 ]
 
 @NgModule({
@@ -42,7 +46,9 @@ const routes : Routes=[
     SidebarComponent,
     LocationComponent,
     CategoryComponent,
-    ConnectionTypeComponent
+    ConnectionTypeComponent,
+    OverviewComponent,
+
   ],
   imports: [
     CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule

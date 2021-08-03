@@ -6,10 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use App\Models\Client;
+use App\Models\Freelancer;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -17,13 +20,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'username',
         'first_name',
         'last_name',
         'email',
         'password',
         'gender',
-        'personal_img',
+        'img_link',
         'phone_number',
+        'country',
+        'city',
+        'street',
+        'zip_code'
     ];
 
     /**
@@ -44,4 +52,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function client(){
+        return $this->hasOne(Client::class);
+    }
+
+    public function freelancer(){
+        return $this->hasOne(Freelancer::class);
+    }
 }

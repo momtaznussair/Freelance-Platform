@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
 })
 export class CreatClientAccountComponent implements OnInit {
 
-  constructor( private _apiservice:ApiService) { }
+  constructor( private _apiservice:ApiService ) { }
   // company:Company[]=[];
   ngOnInit(): void {
   }
   addcompany(name:string){
     if(this.validateInput(name)){
         // this.Router.navigate(['/setting/client-account']);
-        
+
     }else{
       let company:Company=new Company();
       company.name=name;
@@ -25,7 +25,7 @@ export class CreatClientAccountComponent implements OnInit {
         console.log(Response);
       },error=>console.error);
     }
-  
+
   }
 
   validateInput(name : string){
@@ -34,6 +34,6 @@ export class CreatClientAccountComponent implements OnInit {
     return false
   }
 
-  
+
   }
 

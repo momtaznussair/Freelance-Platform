@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { ApiService } from './api.service';
 
 @Injectable(
@@ -9,13 +10,15 @@ export class UserService {
 
   logged = new Subject<boolean>();
 
-  private registerUrl = '';
-  private loginUrl = 'localhost:8000/api/sanctum/token';
+  private registerUrl = `${environment.apiUrl}/register`;
+  private loginUrl = `${environment.apiUrl}/login`;
+  private logoutUrl = `${environment.apiUrl}/logout`;
 
   constructor(private apiService : ApiService)
   {
     this.logged.next(this.isLogged());
   }//end of constructor
+
 
   register(body : any)
   {
@@ -24,7 +27,7 @@ export class UserService {
 
   login(body : any)
   {
-    return this.apiService.post(this.loginUrl , body , {withCredentials:true});
+    return this.apiService.post(this.loginUrl, body );
   }//end of loginUser
 
   logout()

@@ -11,9 +11,10 @@ class Client extends Model
 
     protected $fillable = [
         'registration_date',
-        'location',
-      
+        'user_id',
+        'company_id'
     ];
+    
     public function user(){
         return $this->belongsTo(User::class);
     }

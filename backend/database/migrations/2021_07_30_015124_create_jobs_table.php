@@ -21,7 +21,7 @@ class CreateJobsTable extends Migration
             $table->string('job_title');
             $table->text('attatchment');
             $table->string('skill');
-
+            $table->timestamps();
         });
     }
 
