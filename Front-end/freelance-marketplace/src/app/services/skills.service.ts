@@ -11,9 +11,17 @@ export class SkillsService {
 
   showSkills()
   {
+    
     return this.apiService.get(this.skillsUrl)
+    
+    // .subscribe(response =>{
+      // // this.skills = response;
+
+      // console.log(response);
+      // console.log(this.skills);
+    // },error=>console.error);
   }
  addSkill(skill :string){
-  return this.apiService.get(this.skillsUrl , skill)
+  return this.apiService.post(this.skillsUrl , skill)
  }
 }

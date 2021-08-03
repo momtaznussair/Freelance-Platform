@@ -7,6 +7,10 @@ import {FormControl} from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../../../../../environments/environment.prod';
+import { SkillsService } from 'src/app/services/skills.service';
+import { FormsModule } from '@angular/forms';
+import { searchFilter } from 'src/app/pipes/search-filter.pipe';
+
 @Component({
   selector: 'app-expertise',
   templateUrl: './expertise.component.html',
@@ -15,45 +19,37 @@ import { environment } from './../../../../../../environments/environment.prod';
 export class ExpertiseComponent implements OnInit {
   data: string="";
 
-  Users = [{
+  skills = [{
       "id": 5440,
       "name": "Wanda Lynch",
-      "email": "wanda.lynch@example.com"
     },
     {
       "id": 6228,
       "name": "Katrina Graves",
-      "email": "katrina.graves@example.com"
     },
     {
       "id": 1654,
       "name": "Louis Daniels",
-      "email": "louis.daniels@example.com"
     },
     {
       "id": 1631,
       "name": "Gavin Sullivan",
-      "email": "gavin.sullivan@example.com"
     },
     {
       "id": 9880,
       "name": "June Martinez",
-      "email": "june.martinez@example.com"
     },
     {
       "id": 8634,
       "name": "Owen Davis",
-      "email": "owen.davis@example.com"
     },
     {
       "id": 3918,
       "name": "Megan Harrison",
-      "email": "megan.harrison@example.com"
     },
     {
       "id": 3680,
       "name": "Joel Thompson",
-      "email": "joel.thompson@example.com"
     },
     {
       "id": 2409,
@@ -69,16 +65,16 @@ export class ExpertiseComponent implements OnInit {
   
 
 
-
-
   form : FormGroup = new FormGroup({});
-  skills=["css","html","javascript","react"];
-  // skills:any;
+  // skills=["css","html","javascript","react"];
+  // skills=this.skillServices.showSkills();
   selectedSkills=[""];
   approvalText:string="";
   result=[""];
   added :number=0;
-  constructor(private httpClient : HttpClient ,private formBuilder : FormBuilder ,private appService:RegisterDataService ,private apiService:ApiService) { }
+  public searchFilter:any;
+  query="";
+  constructor(private httpClient : HttpClient ,private formBuilder : FormBuilder ,private appService:RegisterDataService ,private skillServices:SkillsService) { }
 
   currentRegisterData : any ;
   ngOnInit(): void {
@@ -90,12 +86,7 @@ export class ExpertiseComponent implements OnInit {
 
     /////////////////////////////
 
-    this.apiService.get(`${environment.apiUrl}/experience`).subscribe(response =>{
-      // this.skills = response;
 
-      console.log(response);
-      console.log(this.skills);
-    },error=>console.error);
   }
 
   submit()
@@ -104,12 +95,22 @@ export class ExpertiseComponent implements OnInit {
  } 
  
  addSkill(b:HTMLElement){
-  console.log(b.prefix);
+  
   this.selectedSkills.push(b.innerText);
-   console.log(this.selectedSkills)
+   console.log(this.selectedSkills);
+
+   this.skillServices.addSkill(b.innerText);
+ }
+ addSkillFromDropDown(p:HTMLElement){
+  // this.selectedSkills.push(p.innerText);
+  // console.log(this.selectedSkills);
+ console.log(p)
+  // this.skillServices.addSkill(p.innerText);
+
  }
  search(){
-  this.result = this.skills.filter(s => s.includes(this.approvalText));
+  // this.result = this.skills.filter(s => s.includes(this.approvalText));
   console.log(this.result);
+ 
  }
 }

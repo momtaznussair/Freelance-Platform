@@ -18,19 +18,18 @@
                     <p><b>Select your skills</b></p>
                     <div class="skills">
                         <!-- <i *ngIf="added" class=" fa fa-solid fa-check"></i> -->
-                        <button #b class=" mx-1 my-1  bt1" (click)="addSkill(b)" *ngFor="let i of skills">{{i}} </button>
+                        <button #b class=" mx-1 my-1  bt1" (click)="addSkill(b)" *ngFor="let i as Users">{{i}} </button>
                        </div>
                 </div>
                 <div class="sec sec2">
                     <p><b>Not what you're looking for ?</b></p>
-                    <!-- [(ngModel)]=" " -->
+                   
                     <div class="card dropdown">
-                        <input #inpt type="text" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="data" (keyup)="search()" formControlName="searchSkill" name="serachSkills" class="form-control" placeholder="Start typing to search for skills">
-                       
-                        
+                        <input #inpt type="text" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="query" (keyup)="search()" formControlName="searchSkill" name="serachSkills" class="form-control" placeholder="Start typing to search for skills">
+                      
                     </div>
-                    <div  *ngFor="let item of Users ">
-                        <p> {{item.id}}</p>
+                    <div class="psearch"  *ngFor="let item of skills |searchFilter: query">
+                        <p #p (onclick)="addSkillFromDropDown(p)" *ngIf="inpt.value"> {{item.name}}</p>
                     </div>
                     <div *ngIf="form.controls.searchSkill.invalid && form.controls.searchSkill.dirty || form.controls.searchSkill.touched">
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('required')">This field is required</small>
