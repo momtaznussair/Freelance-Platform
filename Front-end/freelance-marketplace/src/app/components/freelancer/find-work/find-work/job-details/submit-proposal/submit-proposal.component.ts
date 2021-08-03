@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Proposal } from 'src/app/models/proposal';
 import { ProposalService } from 'src/app/services/proposal.service';
 
@@ -9,9 +10,14 @@ import { ProposalService } from 'src/app/services/proposal.service';
 })
 export class SubmitProposalComponent implements OnInit {
   // proposal:Proposal[]=[];
-  constructor(private proposalservice:ProposalService) { }
+
+    // form:FormGroup;
+  constructor(private proposalservice:ProposalService,private _formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
+    // this.form=this._formBuilder.group({
+       
+    // });
   }
   submitproposal(hourrate:any,paymentamount:any,coverletter:any,attatchment:string){
     let proposals:Proposal=new Proposal();

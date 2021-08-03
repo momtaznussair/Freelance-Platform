@@ -17,7 +17,7 @@ const routes : Routes = [
   {path : 'saved-jobs' , component : SavedJobsComponent},
   {path : 'profile' , component : ProfileComponent},
   {path : 'proposals' , component : ProposalsComponent},
-  {path : 'submit-proposal' , component : SubmitProposalComponent},
+  {path : 'submit-proposal' , component :SubmitProposalComponent},
   {path:'', component:FindWorkComponent}
 ]
 
