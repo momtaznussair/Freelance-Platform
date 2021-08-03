@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\LanguageLevelController;
 use App\Http\Controllers\Api\PortfolioController;
 use App\Http\Controllers\Api\FreelancerController;
 use App\Http\Controllers\Api\ExperienceLevelController;
+use App\Http\Controllers\Api\SkillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,3 +109,11 @@ Route::get('experience_levels/{level}',[ExperienceLevelController::class,'show']
 Route::post('experience_levels',[ExperienceLevelController::class,'store']);
 Route::post('/experience_levels/{level}',[ExperienceLevelController::class,'update']);
 Route::delete('/experience_levels/delete/{level}',[ExperienceLevelController::class,'destroy']);
+
+
+// CRUD for skills
+Route::get('skills',[SkillController::class,'index']);
+Route::get('skills/{skill}',[SkillController::class,'show']);
+Route::post('skills',[SkillController::class,'store']);
+Route::post('/skills/{skill}',[SkillController::class,'update']);
+Route::delete('/skills/delete/{skill}',[SkillController::class,'destroy']);

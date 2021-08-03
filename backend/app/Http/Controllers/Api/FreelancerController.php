@@ -30,9 +30,9 @@ class FreelancerController extends Controller
     public function store(Request $request){
         
         $validate = Validator::make($request->all(),[
-           'user_id' => 'required|exists:users, id',
-           'category_id' => 'required|exists:categories, id',
-           'experience_id' => 'required|exists:experience_levels, id',
+           'user_id' => 'required|exists:users,id',
+           'category_id' => 'required|exists:categories,id',
+           'experience_id' => 'required|exists:experience_levels,id',
            'overview' => 'required|min:512',
            'job_title' => 'required|min:10|max:255',
         ]);

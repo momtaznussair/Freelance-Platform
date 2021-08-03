@@ -36,4 +36,9 @@ class Freelancer extends Model
     {
         return $this->belongsToMany(Skill::class);
     }
+
+    public function category(){
+
+        return $this->belongsTo(Category::class);
+    }
 }
