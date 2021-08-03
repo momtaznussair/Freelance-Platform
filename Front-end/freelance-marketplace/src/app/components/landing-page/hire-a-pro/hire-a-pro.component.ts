@@ -14,16 +14,16 @@ export class HireAProComponent implements OnInit {
   skills:Category[]=[];
 
   ngOnInit(): void {
-  //   this._apiservice.get("http://127.0.0.1:8000/api/categories").subscribe(Response=>{
-  //     this.categories=Response as Category[];
-  //   },error=>{}
-  //   );
+    // this._apiservice.get("http://127.0.0.1:8000/api/categories").subscribe(Response=>{
+    //   this.categories=Response as Category[];
+    // },error=>{}
+    // );
 
 
-  //   this._apiservice.get("http://127.0.0.1:8000/api/skills").subscribe(Response=>{
-  //     this.skills=Response as Category[];
-  //   },error=>{}
-  //   );
+    // this._apiservice.get("http://127.0.0.1:8000/api/skills").subscribe(Response=>{
+    //   this.skills=Response as Category[];
+    // },error=>{}
+    // );
   }
 
 }
