@@ -13,6 +13,8 @@ use App\Http\Controllers\Api\LanguageLevelController;
 use App\Http\Controllers\Api\PortfolioController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\JobController;
+use App\Http\Controllers\Api\FreelancerController;
+use App\Http\Controllers\Api\ExperienceLevelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +88,7 @@ Route::post('portfolios' ,[PortfolioController::class,'store']);
 Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
 Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
 
-// CRUD for Portfolio
+// CRUD for Jobs
 Route::get('jobs',[JobController::class,'index']);
 Route::get('jobs/{job}',[JobController::class,'show']);
 Route::post('jobs' ,[JobController::class,'store']);
@@ -103,8 +105,15 @@ Route::delete('/companies/delete/{company}',[CompanyController::class,'destroy']
 
 // freelancer
 
-Route::get('freelancers', [CompanyController::class, 'index']);
-Route::get('freelancers/{id}',[CategoryController::class,'show']);
-Route::post('freelancers',[CategoryController::class,'store']);
-Route::post('/freelancers/{freelancer}',[CategoryController::class,'update']);
-Route::delete('/freelancers/delete/{freelancer}',[CategoryController::class,'destroy']);
+Route::get('freelancers', [FreelancerController::class, 'index']);
+Route::get('freelancers/{id}',[FreelancerController::class,'show']);
+Route::post('freelancers',[FreelancerController::class,'store']);
+Route::post('/freelancers/{freelancer}',[FreelancerController::class,'update']);
+Route::delete('/freelancers/delete/{freelancer}',[FreelancerController::class,'destroy']);
+
+// CRUD for experience_levels
+Route::get('experience_levels',[ExperienceLevelController::class,'index']);
+Route::get('experience_levels/{level}',[ExperienceLevelController::class,'show']);
+Route::post('experience_levels',[ExperienceLevelController::class,'store']);
+Route::post('/experience_levels/{level}',[ExperienceLevelController::class,'update']);
+Route::delete('/experience_levels/delete/{level}',[ExperienceLevelController::class,'destroy']);

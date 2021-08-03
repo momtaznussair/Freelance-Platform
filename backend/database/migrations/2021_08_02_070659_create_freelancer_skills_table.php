@@ -19,8 +19,6 @@ class CreateFreelancerSkillsTable extends Migration
             $table->unsignedBigInteger('skill_id');
             $table->primary('freelancer_id' , 'skill_id');
             $table->timestamps();
-
-
             $table->foreign('skill_id')->references('id')->on('skills');
             $table->foreign('freelancer_id')->references('id')->on('freelancers');
         });

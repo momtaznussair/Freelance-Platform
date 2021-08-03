@@ -19,7 +19,6 @@ class CreateCompaniesTable extends Migration
             $table->string('location');
             // $table->unsignedBigInteger('founder_id');
             $table->timestamps();
-            // $table->foreign('founder_id')->references('id')->on('clients');
         });
     }
 
