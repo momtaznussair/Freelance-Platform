@@ -31,4 +31,9 @@ class Freelancer extends Model
     {
         return $this->hasMany(Certificate::class);
     }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class);
+    }
 }

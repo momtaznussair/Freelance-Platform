@@ -14,13 +14,10 @@ class CreateFreelancerSkillTable extends Migration
     public function up()
     {
         Schema::create('freelancer_skill', function (Blueprint $table) {
-            // $table->id();
             $table->unsignedBigInteger('freelancer_id');
             $table->unsignedBigInteger('skill_id');
             $table->primary('freelancer_id' , 'skill_id');
             $table->timestamps();
-
-
             $table->foreign('skill_id')->references('id')->on('skills');
             $table->foreign('freelancer_id')->references('id')->on('freelancers');
         });
