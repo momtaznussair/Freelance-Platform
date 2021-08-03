@@ -23,14 +23,14 @@ export class RegisterDataService {
 // }
 
     registerProcess:any = {
-      "registrationData" : {},
-      "category":"",
+      // "registrationData" : {},
+      "category_id":"",
       "overview":"",
       "jobTitle":"",
-      "skills": [],
+      // "skills": [],
       "experienceLevel":0,
-      "education":"",
-      "language":[],
+      // "education":"",
+      // "language":[],
       "hourlyRate":0,
       "location":{}
     }

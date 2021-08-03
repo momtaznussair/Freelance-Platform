@@ -98,10 +98,10 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="repeatPassword">repeat password </label>
-                                        <input type="password" [(ngModel)]="repeatedPassword" name="repeatPassword" class="form-control " formControlName="repeatPassword" />
-                                        <div *ngIf="form.controls.repeatPassword.invalid && form.controls.repeatPassword.dirty || form.controls.repeatPassword.touched">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.repeatPassword.hasError('required')">This field is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="password != repeatedPassword">You have to write similar password </small>
+                                        <input type="password" [(ngModel)]="password_confirmation" name="password_confirmation" class="form-control " formControlName="password_confirmation" />
+                                        <div *ngIf="form.controls.password_confirmation.invalid && form.controls.password_confirmation.dirty || form.controls.password_confirmation.touched">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password_confirmation.hasError('required')">This field is required</small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="password != password_confirmation">You have to write similar password </small>
                                         </div>
                                     </div>
 

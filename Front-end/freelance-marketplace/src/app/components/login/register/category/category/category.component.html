@@ -22,18 +22,19 @@
                 <br>
                 <p class="h5"> Tell us about the work you do </p>
                 <h3> <b> what is the main service you offer ? </b></h3><br>
-                <form action="" class="mb-5">
-                    <select class="form-select form-select-sm" name="category" aria-label=".form-select-sm example">
-                      <!-- <option selected  *ngFor="let item of category">{{item.name}}</option> -->
+                <form action="" class="mb-5" [formGroup]="form">
+                    <select class="form-select form-select-sm" formControlName="category_id" name="category_id" aria-label=".form-select-sm example">
+                      <option selected   value="1" >front_end</option>
                     </select>
+
+
+
+                    <div class="md-6 lg-6  footer">
+
+                        <!-- (click)="next(1)" -->
+                        <button class="bt2" type="submit" (click)="submit()">Next</button>
+                    </div>
                 </form>
-
-
-                <div class="md-6 lg-6  footer">
-
-                    <!-- (click)="next(1)" -->
-                    <button class="bt2" type="button" (click)="submit()" routerLink="/user/signup/overview">Next</button>
-                </div>
             </div>
 
 
