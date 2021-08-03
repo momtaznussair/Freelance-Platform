@@ -10,6 +10,7 @@ import { environment } from './../../../../../../environments/environment.prod';
 import { SkillsService } from 'src/app/services/skills.service';
 import { FormsModule } from '@angular/forms';
 import { searchFilter } from 'src/app/pipes/search-filter.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-expertise',
@@ -62,7 +63,7 @@ export class ExpertiseComponent implements OnInit {
       "email": "candice.neal@example.com"
     }
   ]
-  
+
 
 
   form : FormGroup = new FormGroup({});
@@ -74,7 +75,7 @@ export class ExpertiseComponent implements OnInit {
   added :number=0;
   public searchFilter:any;
   query="";
-  constructor(private httpClient : HttpClient ,private formBuilder : FormBuilder ,private appService:RegisterDataService ,private skillServices:SkillsService) { }
+  constructor(private router : Router , private apiService : ApiService ,private formBuilder : FormBuilder ,private skillServices:SkillsService) { }
 
   currentRegisterData : any ;
   ngOnInit(): void {
@@ -89,13 +90,22 @@ export class ExpertiseComponent implements OnInit {
 
   }
 
+  isLogged : boolean = false;
   submit()
  {
-//  this.appService.updateApprovalMessage(this.approvalText);
- } 
- 
+   this.isLogged = true;
+   if(this.form.valid)
+   {
+     alert('success');
+    //  this.apiService.post(`${environment.apiUrl}/skills` , this.form.value).subscribe(response=>{
+    //    console.log(response);
+    //    this.router.navigateByUrl('/user/signup/education');
+    //  })
+   }
+ }
+
  addSkill(b:HTMLElement){
-  
+
   this.selectedSkills.push(b.innerText);
    console.log(this.selectedSkills);
 
@@ -111,6 +121,6 @@ export class ExpertiseComponent implements OnInit {
  search(){
   // this.result = this.skills.filter(s => s.includes(this.approvalText));
   console.log(this.result);
- 
+
  }
 }
