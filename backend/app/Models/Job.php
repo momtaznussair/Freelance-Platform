@@ -11,11 +11,9 @@ class Job extends Model
 
     protected $fillable = [
         'description',
-        'payment_type',
         'payment_amount',
         'job_title',
         'attachment',
-        'skill',
         'client_id',
         'duration_id',
         'experience_id',
