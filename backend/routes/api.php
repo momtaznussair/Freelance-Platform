@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\Auth\SocialiteAuthController;
 use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\LanguageLevelController;
 use App\Http\Controllers\Api\PortfolioController;
+use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\FreelancerController;
 use App\Http\Controllers\Api\ExperienceLevelController;
 use App\Http\Controllers\Api\SkillController;
@@ -86,6 +88,13 @@ Route::get('portfolios/{portfolio}',[PortfolioController::class,'show']);
 Route::post('portfolios' ,[PortfolioController::class,'store']);
 Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
 Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
+
+// CRUD for Jobs
+Route::get('jobs',[JobController::class,'index']);
+Route::get('jobs/{job}',[JobController::class,'show']);
+Route::post('jobs' ,[JobController::class,'store']);
+Route::post('jobs/{job}' ,[JobController::class,'update']);
+Route::delete('jobs/delete/{job}' ,[JobController::class,'destroy']);
 
 // company api
 

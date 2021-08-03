@@ -17,6 +17,7 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
+            // $table->unsignedBigInteger('founder_id');
             $table->timestamps();
         });
     }

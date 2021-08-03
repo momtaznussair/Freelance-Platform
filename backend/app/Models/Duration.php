@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Duration extends Model
-{public $timestamps = false;
+{
     use HasFactory;
     protected $fillable = [
         'name',
-      
     ];
-    public function job(){
-        return $this->belongsTo(Job::class);
+    
+    public function jobs(){
+        return $this->hasMany(Job::class);
     }
+
+
 
 }

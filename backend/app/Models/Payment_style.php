@@ -12,8 +12,9 @@ class Payment_style extends Model
         'name',
       
     ];
-    public function job(){
-        return $this->belongsTo(Job::class);
+
+    public function jobs(){
+        return $this->hasMany(Job::class);
     }
 
 }

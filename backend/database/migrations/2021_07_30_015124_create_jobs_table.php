@@ -19,7 +19,7 @@ class CreateJobsTable extends Migration
             $table->string('payment_type');
             $table->decimal('payment_amount');
             $table->string('job_title');
-            $table->text('attatchment');
+            $table->text('attachment')->nullable();
             $table->string('skill');
             $table->timestamps();
         });
