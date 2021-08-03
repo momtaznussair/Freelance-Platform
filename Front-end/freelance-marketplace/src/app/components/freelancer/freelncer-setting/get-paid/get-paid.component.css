@@ -1,0 +1,18 @@
+.myinfo .h2,
+.h1 {
+    color: var(--mc);
+}
+
+.balance-due .btn,
+.billing-method .btn {
+    background-color: var(--bg);
+    color: var(--mc);
+    border: 1px solid var(--mc);
+    border-radius: 20px;
+}
+
+.balance-due .btn:hover,
+.billing-method .btn:hover {
+    background-color: var(--mc);
+    color: var(--bg);
+}

@@ -52,7 +52,7 @@
 }
 
 .img {
-    background-image: url("../../../../assets/images/daria-pimkina-Dj5HnHMtkH0-unsplash.jpg");
+    background-image: url("/../../../../assets/images/daria-pimkina-Dj5HnHMtkH0-unsplash.jpg");
     background-size: cover;
     border-radius: 20px;
 }

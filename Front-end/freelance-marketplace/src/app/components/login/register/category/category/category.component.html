@@ -1,0 +1,44 @@
+<div class="container py-5 px-3">
+
+    <div class="row">
+
+
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+
+
+
+        <section class="category col-md-9">
+
+            <div class="container2 ">
+
+                <div class="header">
+                    <h3> Category </h3>
+                    <p>1 of 8</p>
+                </div>
+
+
+                <br>
+                <p class="h5"> Tell us about the work you do </p>
+                <h3> <b> what is the main service you offer ? </b></h3><br>
+                <form action="" class="mb-5">
+                    <select class="form-select form-select-sm" name="category" aria-label=".form-select-sm example">
+                      <!-- <option selected  *ngFor="let item of category">{{item.name}}</option> -->
+                    </select>
+                </form>
+
+
+                <div class="md-6 lg-6  footer">
+
+                    <!-- (click)="next(1)" -->
+                    <button class="bt2" type="button" (click)="submit()" routerLink="/user/signup/overview">Next</button>
+                </div>
+            </div>
+
+
+
+        </section>
+
+    </div>
+</div>
