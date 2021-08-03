@@ -30,14 +30,16 @@ class SkillController extends Controller
     public function store(Request $request){
         
         $validate = Validator::make($request->all(),[
-            'name' => 'required|min:2|unique:skills,name'
+            'name' => 'required|min:2|unique:skills,name',
+            'category_id' => 'required|exists:categories,id'
         ]);
 
         if($validate->fails()){
             return  $this->apiResponse(null,$validate->errors(),422);
         }
         $skill = skill::create([
-            'name' => $request->name
+            'name' => $request->name,
+            'category_id' => $request->category_id,
         ]);
 
         if($skill){
