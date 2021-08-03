@@ -5,11 +5,14 @@ import { AppComponent } from './app.component';
 import {HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AccordionModule} from 'primeng/accordion';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { FormsModule } from '@angular/forms';
+import { searchFilter } from './pipes/search-filter.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    searchFilter,
 
   ],
   imports: [
@@ -17,6 +20,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AppRoutingModule,
     HttpClientModule,
     AccordionModule,
+    FormsModule,
   ],
   providers: [
     {
