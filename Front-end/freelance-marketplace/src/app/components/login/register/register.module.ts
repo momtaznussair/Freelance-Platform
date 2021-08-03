@@ -15,7 +15,7 @@ import { CategoryComponent } from './category/category/category.component';
 import { ConnectionTypeComponent } from './connection-type/connection-type/connection-type.component';
 import { OverviewComponent } from './overview/overview.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-
+import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 
 const routes : Routes=[
@@ -48,6 +48,7 @@ const routes : Routes=[
     CategoryComponent,
     ConnectionTypeComponent,
     OverviewComponent,
+    searchFilter
 
   ],
   imports: [
