@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFreelancerSkillTable extends Migration
+class CreateJobSkillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateFreelancerSkillTable extends Migration
      */
     public function up()
     {
-        Schema::create('freelancer_skill', function (Blueprint $table) {
-            // $table->id();
-            $table->unsignedBigInteger('freelancer_id');
+        Schema::create('job_skills', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('job_id');
             $table->unsignedBigInteger('skill_id');
-            $table->primary('freelancer_id' , 'skill_id');
             $table->timestamps();
 
-
             $table->foreign('skill_id')->references('id')->on('skills');
-            $table->foreign('freelancer_id')->references('id')->on('freelancers');
+            $table->foreign('job_id')->references('id')->on('jobs');
         });
     }
 
@@ -33,6 +31,6 @@ class CreateFreelancerSkillTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('freelancer_skill');
+        Schema::dropIfExists('job_skills');
     }
 }

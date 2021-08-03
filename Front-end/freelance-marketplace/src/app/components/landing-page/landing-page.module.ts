@@ -7,6 +7,8 @@ import { MainComponent } from './main/main.component';
 import { SharedModule } from '../shared/shared.module';
 import { HireAProComponent } from './hire-a-pro/hire-a-pro.component';
 import { MyProposalComponent } from './my-proposal/my-proposal.component';
+import { WeareComponent } from './weare/weare/weare.component';
+import { TopskillComponent } from './topskill/topskill/topskill.component';
 
 const routes: Routes = [
   {path : 'main' , component : MainComponent},
@@ -19,7 +21,9 @@ const routes: Routes = [
     ForClientComponent,
     MainComponent,
     HireAProComponent,
-    MyProposalComponent
+    MyProposalComponent,
+    WeareComponent,
+    TopskillComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),SharedModule

@@ -1,0 +1,75 @@
+<div class="container py-5 px-3">
+
+    <div class="row">
+
+
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+        <section class="myinfo col-12 col-md-9">
+
+            <h1>Employment </h1>
+            <p>6 of 12</p>
+            <hr style="margin-left: 4vh;"> <br>
+            <h6> <b>Company</b> </h6>
+            <div class="col-12 md-6 ">
+                <input class="form-control " type="text"> </div><br>
+
+
+            <p> <b> Location </b> </p> <br> <br>
+            <div class="container px-6">
+                <div class="row gx-4">
+                    <input class="col form-control" placeholder="Cairo">
+
+                    <select class="col form-select form-select-sm ">
+                    <option class=" border bg-light" selected>Egypt</option>
+                    <option value="1">mansoura</option>
+                </select>
+                </div>
+            </div>
+
+
+            <br> <br>
+            <h6> <b>Title</b> </h6>
+            <input class="form-control" type="text"> <br>
+            <p> <b> Period </b> </p> <br>
+
+            <div class="container px-3">
+                <div class="row ">
+                    <select class="col form-select form-select-sm ">
+             <option   class="p-3 border bg-light"  selected>Month</option>
+             <option value="1">jun</option>
+            </select>
+                    <select class="col form-select form-select-sm ">
+              <option class="p-3 border bg-light"  selected>Year</option>
+              <option value="1">2020</option>
+            </select>
+                </div>
+            </div>
+            <br>
+            <p> <b>through </b></p>
+            <div class="container px-3">
+                <div class="row ">
+                    <select class="col form-select form-select-sm ">
+             <option   class="p-3 border bg-light"  selected>Month</option>
+             <option value="1">jun</option>
+            </select>
+                    <select class="col form-select form-select-sm ">
+              <option class="p-3 border bg-light"  selected>Year</option>
+              <option value="1">2020</option>
+            </select>
+                </div>
+            </div>
+            <br>
+            <h6> <b> Description </b></h6>
+            <div class="col-12 md-6">
+                <textarea class="form-control" id="exampleFormControlTextarea1"></textarea> </div>
+            <br>
+            <div class=" footer lg-6 d-sm-flex">
+                <button class="bt1" type="button"> Back </button>
+                <button class="bt2" (click)="submit()" type="button">Next</button>
+            </div>
+        </section>
+
+    </div>
+</div>

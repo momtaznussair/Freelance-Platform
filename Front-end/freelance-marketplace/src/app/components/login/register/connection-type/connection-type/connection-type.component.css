@@ -1,0 +1,55 @@
+@import url(../../main.css);
+.gradient-custom-4 {
+    background: #bd6909;
+    background: -webkit-linear-gradient(to right, rgb(218, 165, 52), rgb(214, 172, 118));
+    background: linear-gradient(to right, rgb(218, 165, 52), rgb(214, 172, 118))
+}
+
+a{
+  font-size: 20px;
+  color: black;
+  text-decoration:none;
+
+
+
+}
+
+/* .btn-round {
+	background: linear-gradient(to right, rgb(218, 165, 52), rgb(214, 172, 118));
+
+	border-radius: 50%;
+	color: black;
+	display: block;
+	font-size: 12px;
+	height: 50px;
+	line-height: 50px;
+	margin: 30px 190px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 50px;
+} */
+h4 {
+  overflow: hidden;
+  text-align: center;
+}
+h4:before,
+h4:after {
+  color: linear-gradient(to right, rgb(218, 165, 52), rgb(214, 172, 118));; ;
+  border-radius: 50%;
+   background: linear-gradient(to right, rgb(218, 165, 52), rgb(214, 172, 118));
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+h4:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+h4:after {
+  left: 0.5em;
+  margin-right: -50%;
+}

@@ -9,7 +9,11 @@ export class SidebarComponent implements OnInit {
 
   constructor() { }
 
+  currentPath : string = ''
+
   ngOnInit(): void {
+    this.currentPath = window.location.href.substring(22);
+    console.log(this.currentPath = window.location.href.substring(21))
   }
 
 
@@ -20,8 +24,8 @@ export class SidebarComponent implements OnInit {
     {name : "Membership" , shape : "badge" , path : "/client/plans/index"},
     {name : "Teams" , shape : "group" , path : "/client/teams"},
     {name : "Notification Setting" , shape : "group" , path : "/client/notification-settings"},
-    {name : "Members & Permessions" , shape : "calculator" , path : "/client/members/active"},
-    {name : "Taks Informatio" , shape : "commenting" , path : "/client/payments/tax-info"},
+    {name : "Members & Permissions" , shape : "calculator" , path : "/client/members/active"},
+    {name : "Task Information" , shape : "commenting" , path : "/client/payments/tax-info"},
 
   ];
 

@@ -1,0 +1,37 @@
+<div class="container py-5 px-3">
+
+    <div class="row">
+
+
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+        <section class="myinfo col-12 col-md-9">
+            <div class="header">
+                <h3> Add Eduction </h3>
+                <p>5 of 8</p>
+
+            </div>
+
+            <br>
+            <p><b> School </b></p>
+
+            <div class="col-12 md-6"> <input type="text" class="form-control" placeholder="EX: Mansoura university"> </div>
+            <br>
+            <p><b>  Area of study </b></p>
+            <input type="text" class="form-control" placeholder="EX:computer science">
+            <br>
+            <p><b>  Degree</b></p>
+            <input type="text" class="form-control" placeholder="EX:Bachelor's"> <br>
+
+            <p><b> Dates Attended</b></p>
+            <input type="date" class="form-control"> <br>
+            <div class="md-6 lg-6 d-sm-flex footer">
+                <button class="bt1" type="button" routerLink="/user/signup/expertise-level"> Back </button>
+                <button class="bt2 " type="button " (click)="submit()" routerLink="/user/signup/lang">Next</button>
+            </div>
+
+
+            <!-- <div class="container2 ">
+
+</div> -->
