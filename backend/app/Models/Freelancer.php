@@ -14,10 +14,21 @@ class Freelancer extends Model
         'category_id',
         'overview',
         'job_title',
-        'experience_id'
+        'experience_id',
+        'hourly-rate'
     ];
 
     public function portfolios(){
         return $this->hasMany(Portfolio::class);
+    }
+
+    public function user(){
+
+        return $this->belongsTo(User::class);
+    }
+
+    public function certificates()
+    {
+        return $this->hasMany(Certificate::class);
     }
 }
