@@ -42,7 +42,7 @@ export class CategoryComponent implements OnInit {
     if(this.form.valid)
     {
       console.log(this.form.value);
-      this.registerService.registerProcess.category_id = this.form.value;
+      this.registerService.registerProcess.category = this.form.value;
       localStorage.setItem("data" ,JSON.stringify(this.registerService.registerProcess));
       this.router.navigateByUrl('/user/signup/overview');
     }

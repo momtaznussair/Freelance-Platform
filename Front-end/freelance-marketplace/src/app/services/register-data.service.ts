@@ -24,7 +24,7 @@ export class RegisterDataService {
 
     registerProcess:any = {
       // "registrationData" : {},
-      "category_id":"",
+      "category":"",
       "overview":"",
       "jobTitle":"",
       // "skills": [],
