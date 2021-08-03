@@ -99,7 +99,7 @@ export class ExpertiseComponent implements OnInit {
      alert('success');
     //  this.apiService.post(`${environment.apiUrl}/skills` , this.form.value).subscribe(response=>{
     //    console.log(response);
-    //    this.router.navigateByUrl('/user/signup/education');
+       this.router.navigateByUrl('/user/signup/education');
     //  })
    }
  }
