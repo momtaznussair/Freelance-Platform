@@ -11,6 +11,8 @@ use App\Http\Controllers\Api\Auth\SocialiteAuthController;
 use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\LanguageLevelController;
 use App\Http\Controllers\Api\PortfolioController;
+use App\Http\Controllers\Api\FreelancerController;
+use App\Http\Controllers\Api\ExperienceLevelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,8 +96,15 @@ Route::delete('/companies/delete/{company}',[CompanyController::class,'destroy']
 
 // freelancer
 
-Route::get('freelancers', [CompanyController::class, 'index']);
-Route::get('freelancers/{id}',[CategoryController::class,'show']);
-Route::post('freelancers',[CategoryController::class,'store']);
-Route::post('/freelancers/{freelancer}',[CategoryController::class,'update']);
-Route::delete('/freelancers/delete/{freelancer}',[CategoryController::class,'destroy']);
+Route::get('freelancers', [FreelancerController::class, 'index']);
+Route::get('freelancers/{id}',[FreelancerController::class,'show']);
+Route::post('freelancers',[FreelancerController::class,'store']);
+Route::post('/freelancers/{freelancer}',[FreelancerController::class,'update']);
+Route::delete('/freelancers/delete/{freelancer}',[FreelancerController::class,'destroy']);
+
+// CRUD for experience_levels
+Route::get('experience_levels',[ExperienceLevelController::class,'index']);
+Route::get('experience_levels/{level}',[ExperienceLevelController::class,'show']);
+Route::post('experience_levels',[ExperienceLevelController::class,'store']);
+Route::post('/experience_levels/{level}',[ExperienceLevelController::class,'update']);
+Route::delete('/experience_levels/delete/{level}',[ExperienceLevelController::class,'destroy']);
