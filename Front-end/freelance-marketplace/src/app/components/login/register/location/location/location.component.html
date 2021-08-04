@@ -59,7 +59,7 @@
                 </div>
                 <br>
                 <h3>ZIP/Postal Code</h3>
-                <input id="two" formControlName="zip_code" type="text" class="form-control col-lg-4 col-md-6 col-sm-6">
+                <input id="two" formControlName="zip_code" type="number" class="form-control col-lg-4 col-md-6 col-sm-6">
                 <div *ngIf="form.controls.zip_code.invalid && isLogged || (form.controls.zip_code.dirty || form.controls.zip_code.touched)">
 
                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.zip_code.hasError('required')">This field is required</small>
