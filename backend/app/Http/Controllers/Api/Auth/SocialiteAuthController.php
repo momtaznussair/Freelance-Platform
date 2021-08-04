@@ -11,15 +11,17 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
+use App\Traits\ApiResponseTrait;
 
 
 class SocialiteAuthController extends Controller
 {
 
+    use ApiResponseTrait;
     // Google / Gmail
     public function redirectToGoogle(){
         return Socialite::driver('google')->redirect();
-    } 
+    }
 
     public function handleGoogleCallback(){
         $user = Socialite::driver('google')->stateless()->user();
@@ -29,7 +31,7 @@ class SocialiteAuthController extends Controller
     // Linked in
     public function redirectToLinkedin(){
         return Socialite::driver('linkedin')->redirect();
-    } 
+    }
 
     public function handleLinkedinCallback(){
         $user = Socialite::driver('linkedin')->stateless()->user();
@@ -39,7 +41,7 @@ class SocialiteAuthController extends Controller
 
     protected function registerOrLoginUser($data){
         $user = User::where('email','=',$data->email)->first();
-        
+
         if (!$user){
             $user = new User();
             $user->username = $data->name;
@@ -51,10 +53,17 @@ class SocialiteAuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json([
-                'access_token' => $token,
-                'token_type' => 'Bearer',
-        ]);
+        // return response()->json([
+        //         'access_token' => $token,
+        //         'token_type' => 'Bearer',
+        // ]);
+        $data = [
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+        ];
+
+        return $this->apiResponse($data);
+
 
     }
 
