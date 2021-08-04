@@ -1,0 +1,20 @@
+.edit a{
+    border: 1px solid #999;
+    border-radius: 50%;
+    background-color: #F9F9F9;
+}
+
+.edit a:hover{
+    background-color: white;
+}
+
+.skill{
+    background-color: rgb(221, 221, 221);
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.skill:hover{
+    background-color: rgb(240, 238, 238);
+}
