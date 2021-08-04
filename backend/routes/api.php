@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\LanguageLevelController;
 use App\Http\Controllers\Api\PortfolioController;
 use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\APi\DurationController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\FreelancerController;
 use App\Http\Controllers\Api\ExperienceLevelController;
@@ -103,6 +104,13 @@ Route::get('proposals/{proposal}',[ProposalController::class,'show']);
 Route::post('proposals' ,[ProposalController::class,'store']);
 Route::post('proposals/{proposal}' ,[ProposalController::class,'update']);
 Route::delete('proposals/delete/{proposal}' ,[ProposalController::class,'destroy']);
+
+// CRUD for Durations
+Route::get('durations',[DurationController::class,'index']);
+Route::get('durations/{durations}',[DurationController::class,'show']);
+Route::post('durations' ,[DurationController::class,'store']);
+Route::post('durations/{durations}' ,[DurationController::class,'update']);
+Route::delete('durations/delete/{durations}' ,[DurationController::class,'destroy']);
 
 // company api
 
