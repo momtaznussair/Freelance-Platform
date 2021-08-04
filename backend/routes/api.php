@@ -12,9 +12,12 @@ use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\LanguageLevelController;
 use App\Http\Controllers\Api\PortfolioController;
 use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\APi\DurationController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\FreelancerController;
 use App\Http\Controllers\Api\ExperienceLevelController;
+use App\Http\Controllers\Api\PaymentStyleController;
+use App\Http\Controllers\Api\PaymentTypeController;
 use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SkillController;
 
@@ -107,6 +110,27 @@ Route::get('proposals/{proposal}',[ProposalController::class,'show']);
 Route::post('proposals' ,[ProposalController::class,'store']);
 Route::post('proposals/{proposal}' ,[ProposalController::class,'update']);
 Route::delete('proposals/delete/{proposal}' ,[ProposalController::class,'destroy']);
+
+// CRUD for Durations
+Route::get('durations',[DurationController::class,'index']);
+Route::get('durations/{durations}',[DurationController::class,'show']);
+Route::post('durations' ,[DurationController::class,'store']);
+Route::post('durations/{durations}' ,[DurationController::class,'update']);
+Route::delete('durations/delete/{durations}' ,[DurationController::class,'destroy']);
+
+// CRUD for Payment Type
+Route::get('payment_types',[PaymentTypeController::class,'index']);
+Route::get('payment_types/{payment_type}',[PaymentTypeController::class,'show']);
+Route::post('payment_types' ,[PaymentTypeController::class,'store']);
+Route::post('payment_types/{payment_type}' ,[PaymentTypeController::class,'update']);
+Route::delete('payment_types/delete/{payment_type}' ,[PaymentTypeController::class,'destroy']);
+
+// CRUD for Payment Type
+Route::get('payment_styles',[PaymentStyleController::class,'index']);
+Route::get('payment_styles/{payment_style}',[PaymentStyleController::class,'show']);
+Route::post('payment_styles' ,[PaymentStyleController::class,'store']);
+Route::post('payment_styles/{payment_style}' ,[PaymentStyleController::class,'update']);
+Route::delete('payment_styles/delete/{payment_style}' ,[PaymentStyleController::class,'destroy']);
 
 // company api
 
