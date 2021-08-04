@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {RegisterDataService} from "../../../../../services/register-data.service";
 
 @Component({
   selector: 'app-empolyment',
@@ -8,7 +7,7 @@ import {RegisterDataService} from "../../../../../services/register-data.service
 })
 export class EmpolymentComponent implements OnInit {
 
-  constructor(private appService:RegisterDataService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -17,5 +16,5 @@ export class EmpolymentComponent implements OnInit {
  {
 //  this.appService.updateApprovalMessage(this.approvalText);
  }
- 
+
 }
