@@ -8,10 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ProposalsComponent } from './proposals/proposals.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JobDetailsComponent } from './find-work/job-details/job-details.component';
-<<<<<<< HEAD
 import { SubmitProposalComponent } from './find-work/job-details/submit-proposal/submit-proposal.component';
-=======
->>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
 
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},
@@ -31,17 +28,8 @@ const routes : Routes = [
     SavedJobsComponent,
     ProposalsComponent,
     ProfileComponent,
-<<<<<<< HEAD
     JobDetailsComponent,
-<<<<<<< HEAD
     SubmitProposalComponent
-=======
-    JobDetailsComponent
->>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
-=======
-    SubmitProposalComponent,
-  
->>>>>>> 9d1f519bf520f681af43a5fa0174051fd15749d1
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),SharedModule

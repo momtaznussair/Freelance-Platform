@@ -24,8 +24,7 @@ const routes : Routes = [
     AllJobPostsComponent,
     AllContractsComponent,
     BringYourOwnTalentComponent,
-    PostAJobComponent,
-
+    PostAJobComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes)

@@ -33,11 +33,8 @@ export class UserService {
   logout()
   {
     localStorage.removeItem('token');
-<<<<<<< HEAD
     localStorage.removeItem('id');
     localStorage.removeItem('msg');
-=======
->>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
     this.logged.next(false);
   }//end of logout
 

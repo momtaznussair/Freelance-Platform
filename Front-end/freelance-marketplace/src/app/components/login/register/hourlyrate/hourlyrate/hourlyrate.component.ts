@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import {FreelancerRegisterProcess} from "../../../../../services/register-data.service";
-=======
-import {RegisterDataService} from "../../../../../services/register-data.service";
->>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hourlyrate',
@@ -16,11 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HourlyrateComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
-<<<<<<< HEAD
-  constructor(private formBuilder : FormBuilder , private userService : UserService,private registerProcess:FreelancerRegisterProcess) { }
-=======
-  constructor(private formBuilder : FormBuilder , private userService : UserService,private appService:RegisterDataService) { }
->>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
+  constructor(private formBuilder : FormBuilder , private userService : UserService,private router : Router ) { }
 
   currentRegisterData : any;
   ngOnInit(): void
@@ -31,10 +24,6 @@ export class HourlyrateComponent implements OnInit {
     })
   }
 
-  submit()
- {
-
- }
 
   hourlyRating : number = 10;
   siteService : any;
@@ -45,12 +34,13 @@ export class HourlyrateComponent implements OnInit {
     return (this.siteService = hourly * 0.8).toFixed(2) && (this.latestReceive = hourly - this.siteService).toFixed(2)
   }
 
-  next()
+  submit()
   {
     this.currentRegisterData = JSON.parse(this.currentRegisterData)
     this.currentRegisterData.hourlyRate = this.form.controls.hourlyRate.value;
-    localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
     console.log(localStorage.getItem('data'));
+    localStorage.removeItem('data');
+    this.router.navigateByUrl('freelancer');
   }
 
 

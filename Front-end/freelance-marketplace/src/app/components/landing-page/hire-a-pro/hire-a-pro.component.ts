@@ -14,7 +14,6 @@ export class HireAProComponent implements OnInit {
   skills:Category[]=[];
 
   ngOnInit(): void {
-<<<<<<< HEAD
     // this._apiservice.get("http://127.0.0.1:8000/api/categories").subscribe(Response=>{
     //   this.categories=Response as Category[];
     // },error=>{}
@@ -25,18 +24,6 @@ export class HireAProComponent implements OnInit {
     //   this.skills=Response as Category[];
     // },error=>{}
     // );
-=======
-  //   this._apiservice.get("http://127.0.0.1:8000/api/categories").subscribe(Response=>{
-  //     this.categories=Response as Category[];
-  //   },error=>{}
-  //   );
-
-
-  //   this._apiservice.get("http://127.0.0.1:8000/api/skills").subscribe(Response=>{
-  //     this.skills=Response as Category[];
-  //   },error=>{}
-  //   );
->>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
   }
 
 }
