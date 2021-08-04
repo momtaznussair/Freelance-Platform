@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Proposal } from 'src/app/models/proposal';
 import { ProposalService } from 'src/app/services/proposal.service';
 
@@ -10,24 +10,24 @@ import { ProposalService } from 'src/app/services/proposal.service';
 })
 export class SubmitProposalComponent implements OnInit {
   // proposal:Proposal[]=[];
-
-    // form:FormGroup;
-  constructor(private proposalservice:ProposalService,private _formBuilder:FormBuilder) { }
+  status:boolean=false;
+  fx:boolean=false;
+    form:FormGroup=new FormGroup({});
+  constructor(private proposalservice:ProposalService) { }
 
   ngOnInit(): void {
     // this.form=this._formBuilder.group({
-       
+    //    hourlyrate:['',[Validators.required,Validators.minLength(2)]]
     // });
   }
-  submitproposal(hourrate:any,paymentamount:any,coverletter:any,attatchment:string){
-    let proposals:Proposal=new Proposal();
-    proposals.hourly_rate=hourrate;
-    proposals.payment_amount=paymentamount;
-    proposals.cover_letter=coverletter;
-    proposals.attachment=attatchment;
-    this.proposalservice.addproposal(proposals).subscribe(Response=>{
-      console.log(Response);
-    },error=>console.error);
-  }
+  // submitproposal(amount:any,letter:any,attatchment:string){
+  //   let proposals:Proposal=new Proposal();
+  //   proposals.amount=amount;
+  //   proposals.letter=letter;
+  //   proposals.attachment=attatchment;
+  //   this.proposalservice.addproposal(proposals).subscribe(Response=>{
+  //     console.log(Response);
+  //   },error=>console.error);
+  // }
 
 }
