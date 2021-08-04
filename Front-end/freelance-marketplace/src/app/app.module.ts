@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-  
-    
+
+
 
   ],
   imports: [
@@ -24,11 +24,11 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
   ],
   providers: [
-    { 
+    {
       provide : HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
       multi : true,
-      
+
     }
   ],
   bootstrap: [AppComponent]

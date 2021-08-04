@@ -35,8 +35,13 @@ export class LoginComponent implements OnInit {
     if(this.form.valid)
     {
 
+<<<<<<< HEAD
       // localStorage.setItem("token" , "response");
       // this.router.navigateByUrl('/freelancer/work/work');
+=======
+      localStorage.setItem("token" , "response");
+      this.router.navigateByUrl('/freelancer/work/work');
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
       this.userService.login(this.form.getRawValue()).subscribe(response=>{
         alert ('login success');
         console.log(response)

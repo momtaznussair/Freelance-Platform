@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import {FreelancerRegisterProcess} from "../../../../../services/register-data.service";
+=======
+import {RegisterDataService} from "../../../../../services/register-data.service";
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
@@ -12,7 +16,11 @@ import { UserService } from 'src/app/services/user.service';
 export class HourlyrateComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
+<<<<<<< HEAD
   constructor(private formBuilder : FormBuilder , private userService : UserService,private registerProcess:FreelancerRegisterProcess) { }
+=======
+  constructor(private formBuilder : FormBuilder , private userService : UserService,private appService:RegisterDataService) { }
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
 
   currentRegisterData : any;
   ngOnInit(): void

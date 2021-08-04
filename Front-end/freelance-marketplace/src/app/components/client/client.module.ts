@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { JobsModule } from './jobs/jobs.module';
 import { TalentModule } from './talent/talent.module';
 import { ReportsModule } from '../client/reports/reports.module';
@@ -31,7 +32,13 @@ const routes : Routes = [
   {
     path: 'setting',
     loadChildren: () => import('./client-setting/client-setting.module').then(m => m.ClientSettingModule)
-  }
+  },
+  {
+    path: 'post-job',
+    loadChildren: () => import('./post-job/post-job.module').then(m => m.PostJobModule)
+  },
+
+
 ]
 
 @NgModule({
@@ -41,7 +48,7 @@ const routes : Routes = [
     MainComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes)
+    CommonModule,RouterModule.forChild(routes),FormsModule,ReactiveFormsModule
   ],
   exports : [
     JobsModule, TalentModule , ReportsModule,MessagesModule,ClientSettingModule

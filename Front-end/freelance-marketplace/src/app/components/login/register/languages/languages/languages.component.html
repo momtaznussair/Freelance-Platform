@@ -13,6 +13,7 @@
                 <p>6 of 8</p>
             </div>
             <br>
+<<<<<<< HEAD
             <h3> What is your English proficienvy? </h3>
             <select class="form-select form-select-sm" aria-label=".form-select-sm example">
             <option selected>Open this select menu</option>
@@ -20,6 +21,23 @@
             <option value="2">Two</option>
             <option value="3">Three</option>
           </select>
+=======
+            <form action="" [formGroup]="form">
+            <h3> What is your English proficienvy? </h3>
+            <select  formControlName="languagelevelid" class="form-select form-select-sm" aria-label=".form-select-sm example">
+
+
+            <option id="1" value="1" selected>Beginner</option>
+            <option id="2" value="2">Fluent</option>
+            <option id="3" value="3">Native</option>
+
+          </select>
+          <div *ngIf="form.controls.languagelevelid.invalid && isLogged || (form.controls.languagelevelid.dirty || form.controls.languagelevelid.touched)">
+            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.languagelevelid.hasError('required')">please select your level</small>
+            <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('minlength')">You should write more than 255 letter </small> -->
+            <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('maxlength')"> You can not write more than 500 letter</small> -->
+        </div>
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
             <br>
 
 
@@ -31,6 +49,7 @@
 
             <div class="container px-3">
                 <div class="row ">
+<<<<<<< HEAD
                     <select class="col form-select form-select-sm ">
          <option   class="p-3 border bg-light"  selected>Arabic</option>
          <option value="1">English</option>
@@ -38,6 +57,23 @@
                     <select class="col form-select form-select-sm ">
           <option class="p-3 border bg-light"  selected>Native</option>
           <option value="1">Fluent</option>
+=======
+                    <select formControlName="languageid" class="col form-select form-select-sm ">
+         <option   class="p-3 border bg-light" id="1" value="1"  selected >Arabic</option>
+         <option id="2" value="2">English</option>
+         <option id="3" value="3">French</option>
+
+
+        </select>
+        <div *ngIf="form.controls.languageid.invalid && isLogged || (form.controls.languageid.dirty || form.controls.languageid.touched)">
+          <small class="text-danger fw-bold mb-3" *ngIf="form.controls.languageid.hasError('required')">please select your second language</small>
+         </div>
+
+                    <select class="col form-select form-select-sm ">
+          <option class="p-3 border bg-light" >Native</option>
+          <option value="2">Fluent</option>
+          <option value="3">Beginner</option>
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
         </select>
                 </div>
             </div>
@@ -48,8 +84,14 @@
 
                 <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button>
 
+<<<<<<< HEAD
                 <button class="bt2" type="button" (click)="submit()" routerLink="/user/signup/hourly-rate">Next</button>
             </div>
+=======
+                <button class="bt2" type="button" (click)="next()" >Next</button>
+            </div>
+            </form>
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
         </section>
 
     </div>

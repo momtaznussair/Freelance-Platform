@@ -3,7 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+<<<<<<< HEAD
 import { FreelancerRegisterProcess } from 'src/app/services/register-data.service';
+=======
+import { RegisterDataService } from 'src/app/services/register-data.service';
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
 // import {RegisterDataService} from "../../../../../services/register-data.service";
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,7 +19,11 @@ import { UserService } from 'src/app/services/user.service';
 export class OverviewComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
+<<<<<<< HEAD
   constructor(private formBuilder : FormBuilder , private registerService : FreelancerRegisterProcess , private router : Router) { }
+=======
+  constructor(private formBuilder : FormBuilder , private registerService : RegisterDataService , private router : Router) { }
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
 
   currentRegisterData : any;
   ngOnInit(): void
@@ -38,7 +46,11 @@ export class OverviewComponent implements OnInit {
       this.currentRegisterData.overview = this.form.controls.overview.value;
       this.currentRegisterData.jobTitle = this.form.controls.jobTitle.value;
       localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
+<<<<<<< HEAD
       this.router.navigateByUrl("/user/signup/experience-level");
+=======
+      this.router.navigateByUrl("/user/signup/experience");
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
     }
     else
     {

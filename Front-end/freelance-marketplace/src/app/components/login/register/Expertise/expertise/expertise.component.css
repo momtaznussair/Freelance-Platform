@@ -24,7 +24,10 @@
          margin: 10px 0;
          padding: 15px;
      }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
  }
  /* large devices ( 600px and up) */
  
@@ -38,9 +41,12 @@
          margin: 10px 0;
          padding: 15px;
      }
+<<<<<<< HEAD
      .psearch{
         font-size: 16px;
         padding: 5px;
         margin-bottom: 0;
     }
+=======
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
  }

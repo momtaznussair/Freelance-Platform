@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -10,6 +11,9 @@ import { SkillsService } from 'src/app/services/skills.service';
 import { FormsModule } from '@angular/forms';
 import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 import { Router } from '@angular/router';
+=======
+import {RegisterDataService} from "../../../../../services/register-data.service";
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
 
 @Component({
   selector: 'app-expertise',
@@ -17,6 +21,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./expertise.component.css']
 })
 export class ExpertiseComponent implements OnInit {
+<<<<<<< HEAD
   data: string="";
 
   skills = [{
@@ -75,10 +80,15 @@ export class ExpertiseComponent implements OnInit {
   public searchFilter:any;
   query="";
   constructor(private router : Router , private apiService : ApiService ,private formBuilder : FormBuilder ,private skillServices:SkillsService) { }
+=======
+
+  constructor(private appService:RegisterDataService) { }
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
 
   currentRegisterData : any ;
   ngOnInit(): void {
     this.currentRegisterData = localStorage.getItem('data');
+<<<<<<< HEAD
 
     this.form = this.formBuilder.group({
       searchSkill : ['' , [ Validators.required, Validators.maxLength(500) , Validators.minLength(10)]]
@@ -121,5 +131,12 @@ export class ExpertiseComponent implements OnInit {
   // this.result = this.skills.filter(s => s.includes(this.approvalText));
   console.log(this.result);
 
+=======
+  }
+
+  submit()
+ {
+//  this.appService.updateApprovalMessage(this.approvalText);
+>>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
  }
 }
