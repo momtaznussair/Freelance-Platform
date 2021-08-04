@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
 import { User } from 'src/app/models/user/user';
-import { RegisterDataService } from 'src/app/services/register-data.service';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -66,26 +65,23 @@ export class SignupComponent implements OnInit {
     // alert(JSON.stringify( this.form.value))
     if(this.form.valid && this.password == this.password_confirmation)
     {
-      // this.userService.register(this.form.value).subscribe(response=>{
-      //   console.log(this.form.value);
-      //   console.log(response);
-      // })
+      // localStorage.setItem('token' , 'any');
 
-
+      this.router.navigateByUrl('')
 
       //====Use HttpClient====
       // this.userService.register(this.form.value).subscribe(response=>{
-        this.http.post<User>( `${environment.apiUrl}/register` , this.form.value).subscribe(response=>{
+        this.userService.register(this.form.value).subscribe(response=>{
         console.log(response);
-        this.userResponse = response;
-        localStorage.setItem('data' , JSON.stringify(this.userResponse));
-        if(this.userResponse.msg)
-        {
-          alert(this.userResponse.msg);
-        }else if(this.userResponse.email)
-        {
-          alert(this.userResponse.email[0]);
-        }
+        // this.userResponse = response;
+        // localStorage.setItem('data' , JSON.stringify(this.userResponse));
+        // if(this.userResponse.msg)
+        // {
+        //   alert(this.userResponse.msg);
+        // }else if(this.userResponse.email)
+        // {
+        //   alert(this.userResponse.email[0]);
+        // }
         // this.respondedToken.resToken = response;
       },error=>console.error)
 
