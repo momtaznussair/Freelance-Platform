@@ -79,10 +79,10 @@ class AuthController extends Controller
         $data = [
                 'access_token' => $token,
                 'id' => $user->id,
-                'msg' => "User registered successfully"
+                // 'msg' => "User registered successfully"
         ];
 
-        return $this->apiResponse($data);
+        return $this->apiResponse($data,'User registered successfully');
     }
 
 
