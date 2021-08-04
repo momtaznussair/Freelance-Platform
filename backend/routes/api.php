@@ -49,7 +49,7 @@ Route::middleware('auth:sanctum')->get('/test', function (Request $request) {
 });
 
 
-// Google 
+// Google
 Route::get('/auth/google/redirect', [SocialiteAuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/auth/google/callback', [SocialiteAuthController::class, 'handleGoogleCallback']);
 
@@ -88,6 +88,7 @@ Route::get('portfolios/{portfolio}',[PortfolioController::class,'show']);
 Route::post('portfolios' ,[PortfolioController::class,'store']);
 Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
 Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
+<<<<<<< HEAD
 
 // CRUD for Jobs
 Route::get('jobs',[JobController::class,'index']);
@@ -126,3 +127,5 @@ Route::get('skills/{skill}',[SkillController::class,'show']);
 Route::post('skills',[SkillController::class,'store']);
 Route::post('/skills/{skill}',[SkillController::class,'update']);
 Route::delete('/skills/delete/{skill}',[SkillController::class,'destroy']);
+=======
+>>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837

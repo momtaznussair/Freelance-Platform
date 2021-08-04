@@ -11,6 +11,8 @@ import { SecurityComponent } from './security/security.component';
 import { TaxInformationComponent } from './tax-information/tax-information.component';
 import { TeamsComponent } from './teams/teams.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 const routes : Routes = [
@@ -36,10 +38,10 @@ const routes : Routes = [
     MembersPermissionsComponent,
     TaxInformationComponent,
     ConnectedServicesComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes)
+    CommonModule,RouterModule.forChild(routes),ReactiveFormsModule,FormsModule
   ],
   exports : [
     SidebarComponent

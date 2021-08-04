@@ -1,0 +1,15 @@
+.h1,
+.h2 {
+    color: var(--mc)
+}
+
+.btn {
+    border: 1px solid var(--mc);
+    background-color: var(--bg);
+    border-radius: 3rem;
+}
+
+.btn:hover {
+    background-color: var(--mc);
+    color: var(--bg);
+}

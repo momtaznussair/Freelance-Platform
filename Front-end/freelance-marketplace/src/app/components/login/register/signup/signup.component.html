@@ -18,42 +18,42 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <label class="form-label fw-bold" for="firstName">First name</label>
-                                                <input type="text" name="firstName" class="form-control " formControlName="firstName" />
-                                                <div *ngIf="form.controls.firstName.invalid && form.controls.firstName.dirty || form.controls.firstName.touched">
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.firstName.hasError('required')">This field is required</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.firstName.hasError('minlength')"> You should write more than three characters</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.firstName.hasError('maxlength')"> You should write less than 250 characters</small>
+                                                <label class="form-label fw-bold" for="first_name">First name</label>
+                                                <input type="text" name="first_name" class="form-control " formControlName="first_name" />
+                                                <div *ngIf="form.controls.first_name.invalid && isLogged || (form.controls.first_name.dirty || form.controls.first_name.touched)">
+                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('required')">This field is required</small>
+                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('minlength')"> You should write more than three characters</small>
+                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('maxlength')"> You should write less than 250 characters</small>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <label class="form-label fw-bold" for="lastName">Last name</label>
-                                                <input type="text" name="lastName" class="form-control " formControlName="lastName" />
-                                                <div *ngIf="form.controls.lastName.invalid && form.controls.lastName.dirty || form.controls.lastName.touched">
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.lastName.hasError('required')">This field is required</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.lastName.hasError('minlength')"> You should write more than three characters</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.lastName.hasError('maxlength')"> You should write less than 250 characters</small>
+                                                <label class="form-label fw-bold" for="last_name">Last name</label>
+                                                <input type="text" name="last_name" class="form-control " formControlName="last_name" />
+                                                <div *ngIf="form.controls.last_name.invalid && isLogged || (form.controls.last_name.dirty || form.controls.last_name.touched)">
+                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('required')">This field is required</small>
+                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('minlength')"> You should write more than three characters</small>
+                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('maxlength')"> You should write less than 250 characters</small>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label fw-bold" for="userName">User Name</label>
-                                        <input type="text" name="userName" class="form-control " formControlName="userName" />
-                                        <div *ngIf="form.controls.userName.invalid && form.controls.userName.dirty || form.controls.userName.touched">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.userName.hasError('required')">This field is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.userName.hasError('minlength')"> You gen der.write more than three characters</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.userName.hasError('maxlength')"> You should write less than 250 characters</small>
+                                        <label class="form-label fw-bold" for="username">User Name</label>
+                                        <input type="text" name="username" class="form-control " formControlName="username" />
+                                        <div *ngIf="form.controls.username.invalid && isLogged || (form.controls.username.dirty || form.controls.username.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('required')">This field is required</small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('minlength')"> You gen der.write more than three characters</small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('maxlength')"> You should write less than 250 characters</small>
                                         </div>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="email">Email</label>
                                         <input type="email" name="email" class="form-control " formControlName="email" />
-                                        <div *ngIf="form.controls.email.invalid && form.controls.email.dirty || form.controls.email.touched">
+                                        <div *ngIf="form.controls.email.invalid && isLogged || (form.controls.email.dirty || form.controls.email.touched)">
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.email.hasError('required')">Email is required</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.email.hasError('email')">Invalid Email </small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.email.hasError('maxlength')"> this is big email</small>
@@ -77,19 +77,19 @@
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <label class="form-label fw-bold" for="phoneNumber">Phone Number</label>
-                                        <input type="text" name="phoneNumber" class="form-control " formControlName="phoneNumber" />
-                                        <div *ngIf="form.controls.phoneNumber.invalid && form.controls.phoneNumber.dirty || form.controls.phoneNumber.touched">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phoneNumber.hasError('required')">This field is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phoneNumber.hasError('minlength')"> You should write more than three characters</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phoneNumber.hasError('maxlength')"> You should write less than 250 characters</small>
+                                        <label class="form-label fw-bold" for="phone_number">Phone Number</label>
+                                        <input type="text" name="phone_number" class="form-control " formControlName="phone_number" />
+                                        <div *ngIf="form.controls.phone_number.invalid && isLogged || (form.controls.phone_number.dirty || form.controls.phone_number.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('required')">This field is required</small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('minlength')"> You should write more than three characters</small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('maxlength')"> You should write less than 250 characters</small>
                                         </div>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="password">password</label>
-                                        <input type="password" #passwordInput name="password" class="form-control " formControlName="password" />
-                                        <div *ngIf="form.controls.password.invalid && form.controls.password.dirty || form.controls.password.touched">
+                                        <input type="password" [(ngModel)]="password" name="password" class="form-control " formControlName="password" />
+                                        <div *ngIf="form.controls.password.invalid && isLogged || (form.controls.password.dirty || form.controls.password.touched)">
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('required')">Password is required</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('minlength')">You have to write more than 8 characters</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('maxlength')">You have to write less than 15 characters</small>
@@ -98,15 +98,15 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="repeatPassword">repeat password </label>
-                                        <input type="password" #repeatPasswordInput name="repeatPassword" class="form-control " formControlName="repeatPassword" />
+                                        <input type="password" [(ngModel)]="repeatedPassword" name="repeatPassword" class="form-control " formControlName="repeatPassword" />
                                         <div *ngIf="form.controls.repeatPassword.invalid && form.controls.repeatPassword.dirty || form.controls.repeatPassword.touched">
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.repeatPassword.hasError('required')">This field is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="passwordInput.value != repeatPasswordInput.value">You have to write similar password </small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="password != repeatedPassword">You have to write similar password </small>
                                         </div>
                                     </div>
 
                                     <div class="text-primary mt-3">
-                                        <input type="file" class="fw-bold" formControlName="personalImage" name="personalImage">
+                                        <input type="file" class="fw-bold" formControlName="img_link" name="image_link">
                                     </div>
 
                                     <div class="d-md-flex justify-content-start align-items-center mb-4 py-2 mt-3">
@@ -126,7 +126,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-end pt-1">
-                                        <button id="submit" type="submit" [disabled]="form.invalid && (passwordInput.value !== repeatPasswordInput.value)" (click)="register()" class="fw-bold btn-lg ms-2 form-control" name="submit">Submit </button>
+                                        <button id="submit" type="submit" (click)="register()" class="fw-bold btn-lg ms-2 form-control" name="submit">Submit </button>
                                     </div>
 
                                 </div>
@@ -154,4 +154,3 @@
 
                     </div>
                 </div>
-

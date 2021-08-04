@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Skill;
+<<<<<<< HEAD
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -46,10 +47,31 @@ class SkillController extends Controller
             return $this->apiResponse($skill);
         }
         return  $this->UnknownError();
+=======
+use Illuminate\Http\Request;
+
+class SkillController extends Controller
+{
+    public function index(){
+        $skills=Skill::all();
+        return $skills;
+    }
+    public function store(Request $request){
+       $skills=Skill::create([
+
+            'name'=>$request->name ,
+            'category'=>$request->category,
+            'category_id'=>$request->category_id
+            
+        ]);
+
+        return $skills;
+>>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837
     }
 
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         $validate = Validator::make($request->all(),[
             'name' => 'required|min:2|unique:skills,name'
         ]);
@@ -84,4 +106,17 @@ class SkillController extends Controller
         return $this->NotFoundError();
     }
 
+=======
+
+    $skills=Skill::find($id);
+    $skills->update($request->all());
+        return $skills;
+
+}
+public function destroy($id)
+    {
+    
+        return Skill::destroy($id);
+    }
+>>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837
 }

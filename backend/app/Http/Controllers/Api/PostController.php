@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<?php
+>>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837
 
 namespace App\Http\Controllers\Api;
 
@@ -9,7 +13,14 @@ class PostController extends Controller
 {
     public function index(){
         $categories=Category::all();
+<<<<<<< HEAD
         return $categories;
+=======
+        // return $categories;
+        return response()->json([
+            "data" => $categories
+        ]);
+>>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837
     }
     public function store(Request $request){
        $category=Category::create([
@@ -30,13 +41,21 @@ class PostController extends Controller
 }
 public function destroy($id)
     {
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837
         return Category::destroy($id);
     }
 
     // public function search($name)
     // {
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837
     //     return Category::where('name','like','%'.$name.'%')->get();
     // }
 }
