@@ -17,7 +17,7 @@ import { searchFilter } from 'src/app/pipes/search-filter.pipe';
   styleUrls: ['./expertise.component.css']
 })
 export class ExpertiseComponent implements OnInit {
-  data: string="";
+  // data: string="";
 
   skills = [{
       "id": 5440,
@@ -54,22 +54,19 @@ export class ExpertiseComponent implements OnInit {
     {
       "id": 2409,
       "name": "Dora Rose",
-      "email": "dora.rose@example.com"
     },
     {
       "id": 4477,
       "name": "Candice Neal",
-      "email": "candice.neal@example.com"
     }
   ]
   
 
 
   form : FormGroup = new FormGroup({});
-  // skills=["css","html","javascript","react"];
   // skills=this.skillServices.showSkills();
   selectedSkills=[""];
-  approvalText:string="";
+  // approvalText:string="";
   result=[""];
   added :number=0;
   public searchFilter:any;
@@ -93,24 +90,20 @@ export class ExpertiseComponent implements OnInit {
  {
 //  this.appService.updateApprovalMessage(this.approvalText);
  } 
- 
+ status: boolean = false;
+
  addSkill(b:HTMLElement){
-  
+  this.status = !this.status; 
   this.selectedSkills.push(b.innerText);
-   console.log(this.selectedSkills);
+  //  console.log(this.selectedSkills);
 
-   this.skillServices.addSkill(b.innerText);
+  //  this.skillServices.addSkill(b.innerText);
  }
- addSkillFromDropDown(p:HTMLElement){
-  // this.selectedSkills.push(p.innerText);
-  // console.log(this.selectedSkills);
- console.log(p)
-  // this.skillServices.addSkill(p.innerText);
+ addSkillFromDropDown(a:HTMLElement){
+  this.selectedSkills.push(a.innerText);
+  console.log(this.selectedSkills);
+  this.skillServices.addSkill(a.innerText);
 
  }
- search(){
-  // this.result = this.skills.filter(s => s.includes(this.approvalText));
-  console.log(this.result);
- 
- }
+
 }

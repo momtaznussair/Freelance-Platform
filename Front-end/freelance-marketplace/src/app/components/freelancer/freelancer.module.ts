@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FindWorkModule } from './find-work/find-work.module';
 import { ReportsModule } from './reports/reports.module';
 import { SharedModule } from './shared/shared.module';
+import { FreelancerSettingModule } from './freelncer-setting/freelancer-setting.module';
 
 
 const routes : Routes = [
@@ -20,19 +21,23 @@ const routes : Routes = [
     path: 'reports',
     loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule)
   },
+  {
+    path: 'setting',
+    loadChildren: () => import('./freelncer-setting/freelancer-setting.module').then(m => m.FreelancerSettingModule)
+  }
 
 
 ]
 
 @NgModule({
   declarations: [
-
+  
   ],
   imports: [
     CommonModule,MyJobsModule,RouterModule.forChild(routes),SharedModule
   ],
   exports : [
-    MyJobsModule,FindWorkModule,ReportsModule
+    MyJobsModule,FindWorkModule,ReportsModule,FreelancerSettingModule
   ]
 })
 export class FreelancerModule { }

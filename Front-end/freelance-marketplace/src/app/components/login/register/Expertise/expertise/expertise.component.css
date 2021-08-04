@@ -40,7 +40,56 @@
      }
      .psearch{
         font-size: 16px;
-        padding: 5px;
+      padding: auto;
         margin-bottom: 0;
     }
+    .menubox{
+        overflow-y: auto;
+        max-height: 250px;
+    }
+    .menubox a{
+        text-decoration: none;
+        color: var(--mc);
+    }
+    .menubox a:hover{
+        background-color: var(--bg);
+    }
+    .bt1s {
+        margin-left: 20px;
+        padding: 16px 30px;
+        border: 0;
+        font-size: 14px;
+        line-height: 1;
+        display: inline-block;
+        border-radius: 30px;
+        background: var(--bg);
+        color: var(--mc);
+        cursor: pointer;
+    }
+  .bt1s::after{
+    font-family: FontAwesome;
+      content: '\f067';
+  }
+    .bt1s:hover {
+        background-color: var(--mc);
+        color: var(--bg);
+    }
+  
+    .bt2s {
+        padding: 16px 30px;
+        margin-left: 240px;
+        border: 0;
+        font-size: 14px;
+        line-height: 1;
+        display: inline-block;
+        border-radius: 30px;
+        color: var(--bg);
+        background: var(--mc);
+        cursor: pointer;
+    }
+    /* bt2s:after{
+        font-family: FontAwesome;
+        content: '\f00c';
+    } */
+  
  }
