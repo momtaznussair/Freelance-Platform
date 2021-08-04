@@ -12,37 +12,36 @@
                 <h3>Skills</h3>
                 <p>3 of 8</p>
             </div>
-            <div class="body">
-                <div class="sec sec1">
-                    <p><b>Select your skills</b></p>
-                    <div class="skills">
-                        <button class=" mx-1 my-1  bt1">html<b>+</b> </button>
-                        <button class=" mx-1 my-1  bt1">css <b>+</b></button>
-                        <button class=" mx-1 my-1  bt1">nodejs<b>+</b></button>
-                        <button class=" mx-1 my-1  bt1">java<i class="fa fa-solid fa-check "></i></button>
-                        <button class=" mx-1 my-1  bt1">react`<b>+</b></button>
-                        <button class=" mx-1 my-1  bt1">html<b>+</b></button>
-                        <button class="mx-1 my-1  bt1">css<b>+</b></button>
-                        <button class="mx-1 my-1  bt1">nodejs<b>+</b></button>
-                        <button class="mx-1 my-1  bt1">java<b>+</b></button>
-                        <button class="mx-1 my-1  bt1">react<b>+</b>`</button>
+            <form action="" [formGroup]="form">
+                <div class="body">
+                    <div class="sec sec1">
+                        <p><b>Select your skills</b></p>
+                        <div class="skills">
+                            <!-- <i *ngIf="added" class=" fa fa-solid fa-check"></i> -->
+                            <button #b class=" mx-1 my-1  bt1" (click)="addSkill(b)" *ngFor="let i as Users">{{i}} </button>
+                        </div>
+                    </div>
+                    <div class="sec sec2">
+                        <p><b>Not what you're looking for ?</b></p>
+
+                        <div class="card dropdown">
+                            <input #inpt type="text" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="query" (keyup)="search()" formControlName="searchSkill" name="serachSkills" class="form-control" placeholder="Start typing to search for skills">
+
+                        </div>
+                        <div class="psearch" *ngFor="let item of skills |searchFilter: query">
+                            <p #p (onclick)="addSkillFromDropDown(p)" *ngIf="inpt.value"> {{item.name}}</p>
+                        </div>
+                        <div *ngIf="form.controls.searchSkill.invalid && isLogged || (form.controls.searchSkill.dirty || form.controls.searchSkill.touched)">
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('required')">This field is required</small>
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('maxlength')"> You can not write more than 500 letter</small>
+                        </div>
                     </div>
                 </div>
-                <div class="sec sec2">
-                    <p><b>Not what you're looking for ?</b></p>
-
-                    <div class="card">
-
-
-
-                        <input type="text" name="serachSkills" class="form-control" placeholder="Start typing to search for skills">
-                    </div>
+                <div class=" footer lg-6 d-sm-flex">
+                    <button class="bt1" routerLink="/user/signup/experience-level">back</button>
+                    <button class="bt2" (click)="submit()">next</button>
                 </div>
-            </div>
-            <div class=" footer lg-6 d-sm-flex">
-                <button class="bt1" routerLink="/user/signup/overview">back</button>
-                <button class="bt2" (click)="submit()" routerLink="/user/signup/expertise-level">next</button>
-            </div>
+            </form>
         </section>
     </div>
 </div>

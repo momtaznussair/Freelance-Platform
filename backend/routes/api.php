@@ -50,7 +50,7 @@ Route::middleware('auth:sanctum')->get('/test', function (Request $request) {
 });
 
 
-// Google 
+// Google
 Route::get('/auth/google/redirect', [SocialiteAuthController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/auth/google/callback', [SocialiteAuthController::class, 'handleGoogleCallback']);
 

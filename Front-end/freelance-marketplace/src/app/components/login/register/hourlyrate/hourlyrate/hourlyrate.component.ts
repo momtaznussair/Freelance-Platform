@@ -28,7 +28,7 @@ export class HourlyrateComponent implements OnInit {
 
  }
 
-  hourlyRating : any;
+  hourlyRating : number = 10;
   siteService : any;
   latestReceive : any;
 
@@ -39,10 +39,10 @@ export class HourlyrateComponent implements OnInit {
 
   next()
   {
-    alert(JSON.stringify(this.form.getRawValue()));
     this.currentRegisterData = JSON.parse(this.currentRegisterData)
     this.currentRegisterData.hourlyRate = this.form.controls.hourlyRate.value;
     localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
+    console.log(localStorage.getItem('data'));
   }
 
 

@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment.prod';
 export class SignupComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService , private registerService : RegisterDataService) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
 
 
   isTokenFound : boolean = false;
@@ -30,15 +30,15 @@ export class SignupComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      firstName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
-      lastName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
-      userName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
+      first_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
+      last_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
+      username : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
       gender:['' , [Validators.required]],
-      phoneNumber:['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
+      phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15) ]],
-      repeatPassword : ['' , [Validators.required]],
-      personalImage : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
+      password_confirmation : ['' , [Validators.required]],
+      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
       type:['' , [Validators.required]],
     })
 
@@ -55,14 +55,25 @@ export class SignupComponent implements OnInit {
 
   respondedToken : RespondedLocationToken = new RespondedLocationToken();
   msg : any;
+
+  password_confirmation : string = '';
+  password : string = '';
+  isLogged : boolean = false;
   register(){
     // alert(JSON.stringify( this.form.value))
-    if(this.form.valid)
+    if(this.form.valid && this.password == this.password_confirmation)
     {
+      this.userService.register(this.form.value).subscribe(response=>{
+        console.log(this.form.value);
+        console.log(response);
+      })
 
-      this.registerService.registerProcess.registrationData = this.form.value;
-      localStorage.setItem('data' ,JSON.stringify(this.registerService.registerProcess));
-      console.log(localStorage.getItem('data'));
+      //save token into localStorage to login and stop guard
+      localStorage.setItem("token" , "response");
+
+      // this.registerService.registerProcess.registrationData = this.form.value;
+      // localStorage.setItem('data' ,JSON.stringify(this.registerService.registerProcess));
+      // console.log(localStorage.getItem('data'));
 
       //====Use HttpClient====
       // this.userService.register(this.form.value).subscribe(response=>{
@@ -82,5 +93,9 @@ export class SignupComponent implements OnInit {
       }
 
     }
-  };//end of login function
+    else
+    {
+      this.isLogged = true;
+    }
+  };//end of register function
 }
