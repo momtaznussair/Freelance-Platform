@@ -96,7 +96,8 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            return Response::json($validator->errors());
+            // return Response::json($validator->errors());
+            return $this->apiResponse(null,$validator->errors(),400);
         }
 
         $user = User::where('email', $request->email)->first();
@@ -113,9 +114,11 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
-        return response()->json([
-                'msg' => "User logout successfully"
-        ]);
+        // return response()->json([
+        //         'msg' => "User logout successfully"
+        // ]);
+
+        return $this->apiResponse(true,'User logout successfully',200);
     }
 
 }
