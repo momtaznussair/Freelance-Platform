@@ -33,10 +33,15 @@ const routes : Routes = [
     ProfileComponent,
 <<<<<<< HEAD
     JobDetailsComponent,
+<<<<<<< HEAD
     SubmitProposalComponent
 =======
     JobDetailsComponent
 >>>>>>> e17b3d65997eacb6555202f5d49ac857581a3f77
+=======
+    SubmitProposalComponent,
+  
+>>>>>>> 9d1f519bf520f681af43a5fa0174051fd15749d1
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),SharedModule

@@ -43,10 +43,15 @@
             <div class="col-md-8 card ">
 
                 <div class="input-group mb-md-3 d-sm-none d-md-flex">
-                    <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs">
+                    <input #inpt type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs">
                     <a href="" class="input-group-text">
                         <i class="fas fa-search"></i>
                     </a>
+                    <ul class="menubox card list-group" *ngIf="inpt.value">
+                        <div class="psearch"  *ngFor="let item of jobs ">
+                            <a class="list-group-item list-group-item-light"  #a   > {{item.title}}</a>
+                       </div>
+                    </ul>
                 </div>
 
 
@@ -84,7 +89,7 @@
                                     <label for="TitleSearch" class="form-label">Title Search</label>
                                     <input type="text" class="form-control" id="TitleSearch">
 
-                                    <label for="SkillsSearch" class="form-label">Skills Search</label>
+                                    <label for=" skillsSearch" class="form-label">Skills Search</label>
                                     <input type="text" class="form-control" id="SkillsSearch">
 
                                 </form>

@@ -22,7 +22,11 @@ import {RegisterDataService} from "../../../../../services/register-data.service
 })
 export class ExpertiseComponent implements OnInit {
 <<<<<<< HEAD
+<<<<<<< HEAD
   data: string="";
+=======
+  // data: string="";
+>>>>>>> 9d1f519bf520f681af43a5fa0174051fd15749d1
 
   skills = [{
       "id": 5440,
@@ -59,22 +63,19 @@ export class ExpertiseComponent implements OnInit {
     {
       "id": 2409,
       "name": "Dora Rose",
-      "email": "dora.rose@example.com"
     },
     {
       "id": 4477,
       "name": "Candice Neal",
-      "email": "candice.neal@example.com"
     }
   ]
 
-
+placeholder="Start typing to search for skills";
 
   form : FormGroup = new FormGroup({});
-  // skills=["css","html","javascript","react"];
   // skills=this.skillServices.showSkills();
   selectedSkills=[""];
-  approvalText:string="";
+  // approvalText:string="";
   result=[""];
   added :number=0;
   public searchFilter:any;
@@ -102,6 +103,12 @@ export class ExpertiseComponent implements OnInit {
   isLogged : boolean = false;
   submit()
  {
+//  this.appService.updateApprovalMessage(this.approvalText);
+ } 
+ status: boolean = false;
+
+ addSkill(e:Event,b:HTMLElement){
+  this.status = !this.status; 
    this.isLogged = true;
    if(this.form.valid)
    {
@@ -111,20 +118,15 @@ export class ExpertiseComponent implements OnInit {
        this.router.navigateByUrl('/user/signup/education');
     //  })
    }
- }
-
- addSkill(b:HTMLElement){
-
-  this.selectedSkills.push(b.innerText);
-   console.log(this.selectedSkills);
-
    this.skillServices.addSkill(b.innerText);
  }
- addSkillFromDropDown(p:HTMLElement){
-  // this.selectedSkills.push(p.innerText);
-  // console.log(this.selectedSkills);
- console.log(p)
-  // this.skillServices.addSkill(p.innerText);
+
+
+ addSkillFromDropDown(a:HTMLElement,inpt:HTMLElement){
+  this.selectedSkills.push(a.innerText);
+  this.query=inpt.innerText;
+  console.log(this.selectedSkills);
+  // this.skillServices.addSkill(a.innerText);
 
  }
  search(){
