@@ -14,7 +14,7 @@ export class ApiService {
   }
 
   post(url:string , body:any , condition ? : any){
-    return this.httpClient.post<any>(url , body , condition);
+    return this.httpClient.post(url , body , condition);
     // .subscribe(response=>{alert('done'+response);}, error=>{alert('error'+error);});
   }
 
