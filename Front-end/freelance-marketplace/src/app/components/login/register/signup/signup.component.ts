@@ -65,7 +65,9 @@ export class SignupComponent implements OnInit {
     // alert(JSON.stringify( this.form.value))
     if(this.form.valid && this.password == this.password_confirmation)
     {
+
       localStorage.setItem('token' , 'any');
+      this.router.navigateByUrl('/user/signup/location');
 
 
       //====Use HttpClient====
@@ -84,13 +86,13 @@ export class SignupComponent implements OnInit {
         // this.respondedToken.resToken = response;
       // },error=>console.error)
 
-      if(this.form.controls.type.value == 'client')
-      {
-        this.becameClient();
-      }else
-      {
-        this.becameFreelancer();
-      }
+      // if(this.form.controls.type.value == 'client')
+      // {
+      //   this.becameClient();
+      // }else
+      // {
+      //   this.becameFreelancer();
+      // }
 
     }
     else
