@@ -62,7 +62,7 @@ export class ExpertiseComponent implements OnInit {
   ]
 
 placeholder="Start typing to search for skills";
-
+obj={}
   form : FormGroup = new FormGroup({});
   // skills=this.skillServices.showSkills();
   selectedSkills=[""];
@@ -109,10 +109,15 @@ placeholder="Start typing to search for skills";
 
 
  addSkillFromDropDown(a:HTMLElement,inpt:HTMLElement){
-  this.selectedSkills.push(a.innerText);
+  
+  this.skills.push({
+    "id": 3918,
+    "name":a.innerText,
+  });
   this.query=inpt.innerText;
-  console.log(this.selectedSkills);
+  // console.log(this.selectedSkills);
   // this.skillServices.addSkill(a.innerText);
+  console.log(a.innerText);
 
  }
  search(){
