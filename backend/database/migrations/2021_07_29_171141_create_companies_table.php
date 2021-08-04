@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 class CreateCompaniesTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations
      *
      * @return void
      */
@@ -17,7 +17,6 @@ class CreateCompaniesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
-            // $table->unsignedBigInteger('founder_id');
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class AddFounderIdToCompaniesTable extends Migration
     {
         Schema::table('companies', function (Blueprint $table) {
             $table->unsignedBigInteger('founder_id');
-            // $table->foreign('founder_id')->references('id')->on('clients');
+            $table->foreign('founder_id')->references('id')->on('clients');
         });
     }
 

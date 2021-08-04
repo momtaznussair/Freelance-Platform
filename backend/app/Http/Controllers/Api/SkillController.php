@@ -3,25 +3,25 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Skill;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class CategoryController extends Controller
+class SkillController extends Controller
 {
     use ApiResponseTrait;
 
     public function index(){
-        $categories=Category::all();
-        return $this->apiResponse($categories);
+        $skills = Skill::all();
+        return $this->apiResponse($skills);
     }
 
     public function show($id){
-        $category = Category::find($id);
+        $skill = Skill::find($id);
 
-        if($category){
-            return $this->apiResponse($category);
+        if($skill){
+            return $this->apiResponse($skill);
         }
 
         return $this->NotFoundError();
@@ -30,18 +30,20 @@ class CategoryController extends Controller
     public function store(Request $request){
         
         $validate = Validator::make($request->all(),[
-            'name' => 'required|min:2|unique:categories,name'
+            'name' => 'required|min:2|unique:skills,name',
+            'category_id' => 'required|exists:categories,id'
         ]);
 
         if($validate->fails()){
             return  $this->apiResponse(null,$validate->errors(),422);
         }
-        $category=Category::create([
-            'name' => $request->name
+        $skill = skill::create([
+            'name' => $request->name,
+            'category_id' => $request->category_id,
         ]);
 
-        if($category){
-            return $this->apiResponse($category);
+        if($skill){
+            return $this->apiResponse($skill);
         }
         return  $this->UnknownError();
     }
@@ -49,22 +51,22 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'name' => 'required|min:2|unique:categories,name'
+            'name' => 'required|min:2|unique:skills,name'
         ]);
 
         if($validate->fails()){
             return  $this->apiResponse(null,$validate->errors(),422);
         }
 
-        $category = Category::find($id);
+        $skill = Skill::find($id);
 
-        if(!$category){
+        if(!$skill){
             return $this->NotFoundError();
         }
 
-        $category->update($request->all());
-        if($category){
-            return $this->apiResponse($category,'',201);
+        $skill->update($request->all());
+        if($skill){
+            return $this->apiResponse($skill,'',201);
         }
 
         return  $this->UnknownError();
@@ -72,10 +74,10 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        $category = Category::find($id);
+        $skill = Skill::find($id);
 
-        if($category){
-            $category->delete();
+        if($skill){
+            $skill->delete();
             return $this->apiResponse(true,'',200);
         }
 
