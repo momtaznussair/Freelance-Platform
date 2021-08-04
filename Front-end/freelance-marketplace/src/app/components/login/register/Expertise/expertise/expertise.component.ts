@@ -92,10 +92,11 @@ export class ExpertiseComponent implements OnInit {
  } 
  status: boolean = false;
 
- addSkill(b:HTMLElement){
+ addSkill(e:Event,b:HTMLElement){
   this.status = !this.status; 
   this.selectedSkills.push(b.innerText);
-  //  console.log(this.selectedSkills);
+   console.log(e.target);
+   console.log(b.eventListeners);
 
   //  this.skillServices.addSkill(b.innerText);
  }

@@ -18,7 +18,7 @@
                     <p><b>Select your skills</b></p>
                     <div class="skills">
                         <!-- <i *ngIf="added" class=" fa fa-solid fa-check"></i> -->
-                        <button #b class=" mx-1 my-1  bt1s" [ngClass]="status ? 'bt2s' : 'bt1'"  (click)="addSkill(b)" *ngFor="let i of skills">{{i.name}} </button>
+                        <button #b class=" mx-1 my-1  bt1s" [ngClass]="status ? 'bt2s' : 'bt1'"  (click)="addSkill($event,b)" *ngFor="let i of skills">{{i.name}} </button>
                        </div>
                 </div>
                 <div class="sec sec2">
