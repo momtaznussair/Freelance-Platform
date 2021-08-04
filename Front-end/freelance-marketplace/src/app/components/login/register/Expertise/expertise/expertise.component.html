@@ -18,8 +18,12 @@
                     <p><b>Select your skills</b></p>
                     <div class="skills">
                         <!-- <i *ngIf="added" class=" fa fa-solid fa-check"></i> -->
-                        <button #b class=" mx-1 my-1  bt1s" [ngClass]="status ? 'bt2s' : 'bt1'"  (click)="addSkill($event,b)" *ngFor="let i of skills">{{i.name}} </button>
-                       </div>
+                        <button #b class="bt1s mx-1 my-1" [ngClass]="{'bt2s': status,'bt1s':!status }"   *ngFor="let i of skills"  (click)="addSkill(i.name,b)">{{i.name}} </button>
+                       <!-- <div class="div" *ngFor="let i of skills">
+                        <a #b class=" mx-1 my-1  bt1s"  (click)="addSkill($event,b)" [ngClass]="{'bt2s': status }"><span class="fa fa-check mx-2 "></span> {{ i.name }}</a>
+                       </div> -->
+                   
+                    </div>
                 </div>
                 <div class="sec sec2">
                     <p><b>Not what you're looking for ?</b></p>

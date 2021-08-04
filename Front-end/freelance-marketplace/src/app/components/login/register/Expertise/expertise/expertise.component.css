@@ -87,9 +87,9 @@
         background: var(--mc);
         cursor: pointer;
     }
-    /* bt2s:after{
+    .bt2s:after{
         font-family: FontAwesome;
         content: '\f00c';
-    } */
+    }
   
  }

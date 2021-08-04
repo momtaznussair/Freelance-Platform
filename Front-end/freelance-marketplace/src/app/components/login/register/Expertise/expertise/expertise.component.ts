@@ -17,47 +17,57 @@ import { Router } from '@angular/router';
   styleUrls: ['./expertise.component.css']
 })
 export class ExpertiseComponent implements OnInit {
-  // data: string="";
 
   skills = [{
       "id": 5440,
       "name": "Wanda Lynch",
+      "selected":true
+      
     },
     {
       "id": 6228,
       "name": "Katrina Graves",
+      "selected":true
     },
     {
       "id": 1654,
       "name": "Louis Daniels",
+      "selected":false
     },
     {
       "id": 1631,
       "name": "Gavin Sullivan",
+      "selected":true
     },
     {
       "id": 9880,
       "name": "June Martinez",
+      "selected":true
     },
     {
       "id": 8634,
       "name": "Owen Davis",
+      "selected":true
     },
     {
       "id": 3918,
       "name": "Megan Harrison",
+      "selected":false
     },
     {
       "id": 3680,
       "name": "Joel Thompson",
+      "selected":true
     },
     {
       "id": 2409,
       "name": "Dora Rose",
+      "selected":true
     },
     {
       "id": 4477,
       "name": "Candice Neal",
+      "selected":false
     }
   ]
 
@@ -66,9 +76,7 @@ obj={}
   form : FormGroup = new FormGroup({});
   // skills=this.skillServices.showSkills();
   selectedSkills=[""];
-  // approvalText:string="";
   result=[""];
-  added :number=0;
   public searchFilter:any;
   query="";
   constructor(private router : Router , private apiService : ApiService ,private formBuilder : FormBuilder ,private skillServices:SkillsService) { }
@@ -93,7 +101,7 @@ obj={}
  } 
  status: boolean = false;
 
- addSkill(e:Event,b:HTMLElement){
+ addSkill(i:string,b:HTMLElement){
   this.status = !this.status; 
    this.isLogged = true;
    if(this.form.valid)
@@ -104,7 +112,11 @@ obj={}
        this.router.navigateByUrl('/user/signup/education');
     //  })
    }
+
    this.skillServices.addSkill(b.innerText);
+  
+  
+   console.log(i )
  }
 
 
@@ -113,6 +125,7 @@ obj={}
   this.skills.push({
     "id": 3918,
     "name":a.innerText,
+    "selected":true
   });
   this.query=inpt.innerText;
   // console.log(this.selectedSkills);
