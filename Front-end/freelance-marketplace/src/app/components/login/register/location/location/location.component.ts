@@ -39,28 +39,28 @@ export class LocationComponent implements OnInit {
     this.currentRegisterData = localStorage.getItem('data');
 
 
-    this.apiService.get('https://www.universal-tutorial.com/api/getaccesstoken' , {headers : this.firstRequestHeader }).subscribe((response)=>{
-      console.log(response)
-      this.respondedToken.resToken = response
-      let token = this.respondedToken.resToken.auth_token;
-      localStorage.setItem('locationToken' ,`Bearer ${token}`);
-    },error=>{
-      console.log(error);
-    })
+    // this.apiService.get('https://www.universal-tutorial.com/api/getaccesstoken' , {headers : this.firstRequestHeader }).subscribe((response)=>{
+    //   console.log(response)
+    //   this.respondedToken.resToken = response
+    //   let token = this.respondedToken.resToken.auth_token;
+    //   localStorage.setItem('locationToken' ,`Bearer ${token}`);
+    // },error=>{
+    //   console.log(error);
+    // })
   }
 
   //second header request
-  secondRequestHeader : any = {
-    "Authorization": localStorage.getItem('locationToken'),
-    "Accept": "application/json",
-  }
+  // secondRequestHeader : any = {
+  //   "Authorization": localStorage.getItem('locationToken'),
+  //   "Accept": "application/json",
+  // }
 
   getLocations(){
     // console.log(localStorage.getItem('locationToken'));
-    console.log(this.secondRequestHeader)
-    this.apiService.get('https://www.universal-tutorial.com/api/countries/' , {headers : this.secondRequestHeader}).subscribe(response=>{
-      console.log(response);
-    })
+    // console.log(this.secondRequestHeader)
+    // this.apiService.get('https://www.universal-tutorial.com/api/countries/' , {headers : this.secondRequestHeader}).subscribe(response=>{
+    //   console.log(response);
+    // })
 
 
   }
