@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use App\Traits\ApiResponseTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Response;
 
 class SocialiteAuthController extends Controller
 {
-
+    use ApiResponseTrait;
     // Google / Gmail
     public function redirectToGoogle(){
         return Socialite::driver('google')->redirect();
@@ -51,10 +52,17 @@ class SocialiteAuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json([
+        // return response()->json([
+        //         'access_token' => $token,
+        //         'token_type' => 'Bearer',
+        // ]);
+
+        $data = [
                 'access_token' => $token,
                 'token_type' => 'Bearer',
-        ]);
+        ];
+
+        return $this->apiResponse($data);
 
     }
 

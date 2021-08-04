@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -14,7 +15,7 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-
+    use ApiResponseTrait;
     public function register(Request $request)
     {
         $token = $request->bearerToken();
@@ -37,7 +38,8 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            return Response::json($validator->errors());
+            // return Response::json($validator->errors());
+            return $this->apiResponse(null,$validator->errors(),400);
         }
 
         $user = new User();
@@ -67,12 +69,20 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        return response()->json([
+        // return response()->json([
+        //         'access_token' => $token,
+        //         // 'token_type' => 'Bearer',
+        //         'id' => $user->id,
+        //         'msg' => "User registered successfully"
+        // ]);
+
+        $data = [
                 'access_token' => $token,
-                // 'token_type' => 'Bearer',
                 'id' => $user->id,
                 'msg' => "User registered successfully"
-        ]);
+        ];
+
+        return $this->apiResponse($data);
     }
 
 
