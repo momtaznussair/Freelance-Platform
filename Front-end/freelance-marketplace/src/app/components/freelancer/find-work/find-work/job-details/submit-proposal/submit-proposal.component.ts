@@ -20,6 +20,14 @@ export class SubmitProposalComponent implements OnInit {
     //    hourlyrate:['',[Validators.required,Validators.minLength(2)]]
     // });
   }
+  submitproposal(letter:any,attatchment:string){
+        let proposals:Proposal=new Proposal();
+    proposals.letter=letter;
+    proposals.attachment=attatchment;
+    this.proposalservice.addproposal(proposals).subscribe(Response=>{
+      console.log(Response);
+    },error=>console.error);
+  }
   // submitproposal(amount:any,letter:any,attatchment:string){
   //   let proposals:Proposal=new Proposal();
   //   proposals.amount=amount;
