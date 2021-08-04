@@ -1,0 +1,76 @@
+.main {
+    color:var(--mc);
+  }
+  
+  
+  .main-stats-header,
+  .comunication-header,
+  .Marketing-effectiveness-header {
+    background-color:white;
+  }
+  
+  .aside .btn {
+    border: 1px solid var(--mc);
+    background-color:  white;
+    ;
+    color: var(--mc);
+  }
+  
+  .aside .btn:hover {
+    background-color: var(--mc);
+    color:white;
+  }
+  
+  .progress-bar {
+    background-color:firebrick;
+  }
+  
+  .profile-view-text {
+    color: black;
+  }
+  
+  .progress {
+    background-color: white;
+  
+  }
+  
+  
+  /* .profile-complete-progress .progress-bar {
+    background-color: var(--sc);
+  } */
+  
+  .card {
+    background-color:white
+  }
+  .bt1 {
+    margin-left: 20px;
+    padding: 16px 30px;
+    border: 0;
+    font-size: 16px;
+    line-height: 1;
+    display: inline-block;
+    border-radius: 30px;
+    color:white;
+    background-color:var(--mc);
+    cursor: pointer;
+  }
+  .bt2 {
+    margin-left: 20px;
+    padding: 16px 30px;
+    border: 0;
+    font-size: 16px;
+    line-height: 1;
+    display: inline-block;
+    border-radius: 30px;
+    color:var(--mc);
+    background-color:white;
+    cursor: pointer;
+  }
+  @media only screen and (max-width: 480px) {
+    .amr{
+      font-size: 1rem;
+      width: 6rem;
+  }
+    }
+  
+  

@@ -23,7 +23,7 @@ const routes : Routes=[
   {path : 'register' , component : SignupComponent},
   {path : 'category' , component : CategoryComponent, canActivate:[AuthGuard]},
   {path : 'overview' , component : OverviewComponent, canActivate:[AuthGuard]},
-  {path : 'experience' , component : ExpertiseComponent, canActivate:[AuthGuard]},
+  {path : 'skills' , component : ExpertiseComponent, canActivate:[AuthGuard]},
   {path : 'experience-level' , component : ExpertlevelComponent, canActivate:[AuthGuard]},
   {path : 'education' , component : EductionComponent, canActivate:[AuthGuard]},
   {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard]},

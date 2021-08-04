@@ -41,12 +41,11 @@
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('maxlength')"> You can not write more than 500 letter</small>
                     </div>
                 </div>
-            </div>
-            <div class=" footer lg-6 d-sm-flex">
-                <button class="bt1" routerLink="/user/signup/overview">back</button>
-                <button class="bt2" (click)="submit()"  [disabled]="form.invalid"  routerLink="/user/signup/experience-level">next</button>
-            </div>
-        </form>
+                <div class=" footer lg-6 d-sm-flex">
+                    <button class="bt1" routerLink="/user/signup/experience-level">back</button>
+                    <button class="bt2" (click)="submit()">next</button>
+                </div></div>
+            </form>
         </section>
     </div>
 </div>

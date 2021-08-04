@@ -10,6 +10,7 @@ import { environment } from './../../../../../../environments/environment.prod';
 import { SkillsService } from 'src/app/services/skills.service';
 import { FormsModule } from '@angular/forms';
 import { searchFilter } from 'src/app/pipes/search-filter.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-expertise',
@@ -60,7 +61,7 @@ export class ExpertiseComponent implements OnInit {
       "name": "Candice Neal",
     }
   ]
-  
+
 
 
   form : FormGroup = new FormGroup({});
@@ -71,7 +72,7 @@ export class ExpertiseComponent implements OnInit {
   added :number=0;
   public searchFilter:any;
   query="";
-  constructor(private httpClient : HttpClient ,private formBuilder : FormBuilder ,private appService:RegisterDataService ,private skillServices:SkillsService) { }
+  constructor(private router : Router , private apiService : ApiService ,private formBuilder : FormBuilder ,private skillServices:SkillsService) { }
 
   currentRegisterData : any ;
   ngOnInit(): void {
@@ -86,6 +87,7 @@ export class ExpertiseComponent implements OnInit {
 
   }
 
+  isLogged : boolean = false;
   submit()
  {
 //  this.appService.updateApprovalMessage(this.approvalText);
@@ -94,17 +96,28 @@ export class ExpertiseComponent implements OnInit {
 
  addSkill(e:Event,b:HTMLElement){
   this.status = !this.status; 
-  this.selectedSkills.push(b.innerText);
-   console.log(e.target);
-   console.log(b.eventListeners);
-
-  //  this.skillServices.addSkill(b.innerText);
+   this.isLogged = true;
+   if(this.form.valid)
+   {
+     alert('success');
+    //  this.apiService.post(`${environment.apiUrl}/skills` , this.form.value).subscribe(response=>{
+    //    console.log(response);
+       this.router.navigateByUrl('/user/signup/education');
+    //  })
+   }
+   this.skillServices.addSkill(b.innerText);
  }
+
+
  addSkillFromDropDown(a:HTMLElement){
   this.selectedSkills.push(a.innerText);
   console.log(this.selectedSkills);
   this.skillServices.addSkill(a.innerText);
 
  }
+ search(){
+  // this.result = this.skills.filter(s => s.includes(this.approvalText));
+  console.log(this.result);
 
+ }
 }

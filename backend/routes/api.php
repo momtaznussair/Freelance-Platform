@@ -83,3 +83,19 @@ Route::get('portfolios/{portfolio}',[PortfolioController::class,'show']);
 Route::post('portfolios' ,[PortfolioController::class,'store']);
 Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
 Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
+
+// company api
+
+Route::get('companies', [CompanyController::class, 'index']);
+Route::get('companies/{id}',[CompanyController::class,'show']);
+Route::post('companies',[CompanyController::class,'store']);
+Route::post('/companies/{company}',[CompanyController::class,'update']);
+Route::delete('/companies/delete/{company}',[CompanyController::class,'destroy']);
+
+// freelancer
+
+Route::get('freelancers', [CompanyController::class, 'index']);
+Route::get('freelancers/{id}',[CategoryController::class,'show']);
+Route::post('freelancers',[CategoryController::class,'store']);
+Route::post('/freelancers/{freelancer}',[CategoryController::class,'update']);
+Route::delete('/freelancers/delete/{freelancer}',[CategoryController::class,'destroy']);
