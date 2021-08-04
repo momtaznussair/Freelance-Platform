@@ -92,10 +92,6 @@ Route::get('portfolios/{portfolio}',[PortfolioController::class,'show']);
 Route::post('portfolios' ,[PortfolioController::class,'store']);
 Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
 Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 6897d0e0b4aeb62af68a4b2fcca8f0efed9fa376
 
 // CRUD for Jobs
 Route::get('jobs',[JobController::class,'index']);
@@ -162,8 +158,3 @@ Route::get('skills/{skill}',[SkillController::class,'show']);
 Route::post('skills',[SkillController::class,'store']);
 Route::post('/skills/{skill}',[SkillController::class,'update']);
 Route::delete('/skills/delete/{skill}',[SkillController::class,'destroy']);
-<<<<<<< HEAD
-=======
->>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837
-=======
->>>>>>> 6897d0e0b4aeb62af68a4b2fcca8f0efed9fa376
