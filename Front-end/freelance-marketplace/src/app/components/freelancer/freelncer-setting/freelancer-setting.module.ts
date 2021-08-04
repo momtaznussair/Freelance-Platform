@@ -8,7 +8,8 @@ import { ContactInfoComponent } from './contact-info/contact-info.component';
 import { TaxInformationComponent } from './tax-information/tax-information.component';
 import { GetPaidComponent } from './get-paid/get-paid.component';
 import { PassowrdSecurityComponent } from './passowrd-security/passowrd-security.component';
-
+import { CreatClientAccountComponent } from './contact-info/creat-client-account/creat-client-account.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes : Routes = [
   {path : 'settings/deposit-method' , component :BillingMethodComponent},
@@ -17,6 +18,7 @@ const routes : Routes = [
   {path : 'settings/tax-info' , component : TaxInformationComponent}, 
   {path : 'settings/get-paid' , component : GetPaidComponent},
   {path : 'settings/security' , component : PassowrdSecurityComponent},
+  {path : 'client-account' , component : CreatClientAccountComponent},
 ]
 
 
@@ -28,10 +30,11 @@ const routes : Routes = [
     ContactInfoComponent,
     TaxInformationComponent,
     GetPaidComponent,
-    PassowrdSecurityComponent
+    PassowrdSecurityComponent,
+    CreatClientAccountComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes)
+    CommonModule,RouterModule.forChild(routes),ReactiveFormsModule,FormsModule
   ],
   exports : [
     SidebarComponent

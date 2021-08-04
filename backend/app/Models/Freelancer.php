@@ -16,4 +16,8 @@ class Freelancer extends Model
         'job_title',
         'experience_id'
     ];
+
+    public function portfolios(){
+        return $this->hasMany(Portfolio::class);
+    }
 }

@@ -10,6 +10,10 @@ export class GetPaidComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
-
+  // validateinput(name:any){
+  //   if(name == null)
+  //     return true;
+  //   }
 }

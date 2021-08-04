@@ -19,6 +19,7 @@ export class UserService {
     this.logged.next(this.isLogged());
   }//end of constructor
 
+
   register(body : any)
   {
     return this.apiService.post(this.registerUrl , body)
@@ -32,6 +33,8 @@ export class UserService {
   logout()
   {
     localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('msg');
     this.logged.next(false);
   }//end of logout
 

@@ -1,5 +1,5 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import {RegisterDataService} from "../../../../../services/register-data.service";
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
@@ -14,7 +14,7 @@ export class ExpertlevelComponent implements OnInit {
 
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder , private userService : UserService,private appService:RegisterDataService) { }
+  constructor(private formBuilder : FormBuilder ,private router : Router) { }
 
   currentRegisterData : any;
   ngOnInit(): void
@@ -26,9 +26,13 @@ export class ExpertlevelComponent implements OnInit {
     })
   }
 
+  isLogged : boolean = false;
+
   next()
   {
-    if(this.form.value){
+    this.isLogged = true;
+    if(this.form.valid){
+      this.router.navigateByUrl('/user/signup/skills');
       this.currentRegisterData = JSON.parse(this.currentRegisterData)
       this.currentRegisterData.experienceLevel = this.form.controls.experienceLevel.value;
       localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));

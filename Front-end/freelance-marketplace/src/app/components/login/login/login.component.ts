@@ -17,6 +17,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
+    if(this.userService.isLogged())
+    {
+      this.router.navigateByUrl('/client/main')
+    }
 
     this.form = this.formBuilder.group({
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
@@ -31,6 +35,8 @@ export class LoginComponent implements OnInit {
     if(this.form.valid)
     {
 
+      // localStorage.setItem("token" , "response");
+      // this.router.navigateByUrl('/freelancer/work/work');
       this.userService.login(this.form.getRawValue()).subscribe(response=>{
         alert ('login success');
         console.log(response)

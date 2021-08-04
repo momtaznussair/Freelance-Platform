@@ -38,12 +38,15 @@
           <p>I have comprehensive and deep expertise in this field</p>
         </label>
                 </div>
+                <div *ngIf="form.controls.experienceLevel.invalid && isLogged">
+                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.experienceLevel.hasError('required')">You have to choose one of the above first !!!!</small>
+                </div>
                 <br />
 
 
                 <div class="footer lg-6 d-sm-flex">
-                    <button class="bt1" type="button" routerLink="/user/signup/expertise"> Back </button>
-                    <button class="bt2" type="submit" (click)="next()" [disabled]="form.invalid" routerLink="/user/signup/education">Next</button>
+                    <button class="bt1" type="button" routerLink="/user/signup/overview"> Back </button>
+                    <button class="bt2" type="submit" (click)="next()">Next</button>
                 </div>
             </form>
         </section>

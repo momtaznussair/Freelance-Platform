@@ -5,11 +5,15 @@ import { AppComponent } from './app.component';
 import {HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AccordionModule} from 'primeng/accordion';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+  
+    
 
   ],
   imports: [
@@ -17,12 +21,14 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AppRoutingModule,
     HttpClientModule,
     AccordionModule,
+    FormsModule,
   ],
   providers: [
-    {
+    { 
       provide : HTTP_INTERCEPTORS,
       useClass : TokenInterceptorService,
-      multi : true
+      multi : true,
+      
     }
   ],
   bootstrap: [AppComponent]
