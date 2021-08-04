@@ -18,8 +18,8 @@ class ProposalController extends Controller
     }
 
     public function show($id){
-        // $proposal = Proposal::with('job')->find($id);
-        $proposal = Proposal::find($id);
+        $proposal = Proposal::with('job')->find($id);
+        // $proposal = Proposal::find($id);
 
         if(!$proposal){
             $this->NotFoundError();

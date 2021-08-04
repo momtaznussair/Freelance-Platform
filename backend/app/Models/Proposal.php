@@ -24,5 +24,19 @@ class Proposal extends Model
         'job_id'
     ];
 
-    
+    public function job(){
+        return $this->belongsTo(Job::class);
+    }
+
+    public function freelancer(){
+        return $this->belongsTo(freelancer::class);
+    }
+
+    public function duration(){
+        return $this->belongsTo(Duration::class);
+    }
+
+    public function payment_style(){
+        return $this->belongsTo(Payment_style::class);
+    }
 }
