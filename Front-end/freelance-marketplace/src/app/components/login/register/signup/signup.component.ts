@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
+import { RegisterDataService } from 'src/app/services/register-data.service';
 import { UserService } from 'src/app/services/user.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-signup',
@@ -11,13 +14,8 @@ import { UserService } from 'src/app/services/user.service';
 export class SignupComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService , private registerService : RegisterDataService) { }
 
-  namePattern = "^[a-zA-Z]{8,15}$";
-  pwdPattern = "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{8,15}$";
-  phoneNumPattern = "^((\+91-?)|0)?[0-9]{10 , 15}$";
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-  imagePattern :string =  "([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)";
 
   isTokenFound : boolean = false;
 
@@ -32,12 +30,12 @@ export class SignupComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      fName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
-      lName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
+      firstName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
+      lastName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
       userName : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
       gender:['' , [Validators.required]],
-      phone:['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
+      phoneNumber:['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15) ]],
       repeatPassword : ['' , [Validators.required]],
       personalImage : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
@@ -54,16 +52,43 @@ export class SignupComponent implements OnInit {
     this.router.navigateByUrl('user/signup/category');
   }
 
-  login(){
-    if(this.form.valid)
+
+  respondedToken : RespondedLocationToken = new RespondedLocationToken();
+  msg : any;
+
+  repeatedPassword : string = '';
+  password : string = '';
+  isLogged : boolean = false;
+  register(){
+    // alert(JSON.stringify( this.form.value))
+    if(this.form.valid && this.password == this.repeatedPassword)
     {
-      if(this.form.controls.type.value == 'client'){
-        this.userService.login(this.form.controls['email'].value);
+
+      this.registerService.registerProcess.registrationData = this.form.value;
+      localStorage.setItem('data' ,JSON.stringify(this.registerService.registerProcess));
+      console.log(localStorage.getItem('data'));
+
+      //====Use HttpClient====
+      // this.userService.register(this.form.value).subscribe(response=>{
+      //   alert('process successfully');
+      //   console.log(response);
+      //   this.respondedToken.resToken = response
+      //   this.msg = this.respondedToken.resToken;
+      //   this.msg = localStorage.setItem('msg' , JSON.stringify(this.msg));
+      // },error=>console.error)
+
+      if(this.form.controls.type.value == 'client')
+      {
         this.becameClient();
-      }else{
-        this.userService.login(this.form.controls['email'].value);
+      }else
+      {
         this.becameFreelancer();
       }
+
     }
-  };//end of login function
+    else
+    {
+      this.isLogged = true;
+    }
+  };//end of register function
 }

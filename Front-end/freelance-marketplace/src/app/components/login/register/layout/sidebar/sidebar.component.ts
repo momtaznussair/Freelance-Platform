@@ -19,6 +19,7 @@ export class SidebarComponent implements OnInit {
 
   groups : any = [
     {name : "Category" , shape : "user" , path : "/user/signup/category"},
+    {name : "Overview" , shape : "user" , path : "/user/signup/overview"},
     {name : "expertise" , shape : "badger-honey" , path : "/user/signup/expertise"},
     {name : "expertise level" , shape : "lock" , path : "/user/signup/expertise-level"},
     {name : "Education" , shape : "badge" , path : "/user/signup/education"},

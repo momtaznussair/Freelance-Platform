@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,12 +13,15 @@ import { HourlyrateComponent } from './hourlyrate/hourlyrate/hourlyrate.componen
 import { LocationComponent } from './location/location/location.component';
 import { CategoryComponent } from './category/category/category.component';
 import { ConnectionTypeComponent } from './connection-type/connection-type/connection-type.component';
+import { OverviewComponent } from './overview/overview.component';
+
 
 
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
-  {path : 'signup' , component : SignupComponent},
+  {path : 'register' , component : SignupComponent},
   {path : 'category' , component : CategoryComponent},
+  {path : 'overview' , component : OverviewComponent},
   {path : 'expertise' , component : ExpertiseComponent},
   {path : 'expertise-level' , component : ExpertlevelComponent},
   {path : 'education' , component : EductionComponent},
@@ -42,7 +45,9 @@ const routes : Routes=[
     SidebarComponent,
     LocationComponent,
     CategoryComponent,
-    ConnectionTypeComponent
+    ConnectionTypeComponent,
+    OverviewComponent,
+
   ],
   imports: [
     CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule

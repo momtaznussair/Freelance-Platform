@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {RegisterDataService} from "../../../../../services/register-data.service";
 
 @Component({
   selector: 'app-languages',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguagesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appService:RegisterDataService) { }
 
   ngOnInit(): void {
   }
 
+  submit()
+ {
+//  this.appService.updateApprovalMessage(this.approvalText);
+ }
 }
