@@ -75,14 +75,14 @@ export class SignupComponent implements OnInit {
       // localStorage.setItem('data' ,JSON.stringify(this.registerService.registerProcess));
       // console.log(localStorage.getItem('data'));
 
-      //====Use HttpClient====
-      // this.userService.register(this.form.value).subscribe(response=>{
-      //   alert('process successfully');
-      //   console.log(response);
-      //   this.respondedToken.resToken = response
-      //   this.msg = this.respondedToken.resToken;
-      //   this.msg = localStorage.setItem('msg' , JSON.stringify(this.msg));
-      // },error=>console.error)
+      // ====Use HttpClient====
+      this.userService.register(this.form.value).subscribe(response=>{
+        alert('process successfully');
+        console.log(response);
+        this.respondedToken.resToken = response
+        this.msg = this.respondedToken.resToken;
+        this.msg = localStorage.setItem('msg' , JSON.stringify(this.msg));
+      },error=>console.error)
 
       if(this.form.controls.type.value == 'client')
       {
