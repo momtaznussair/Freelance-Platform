@@ -17,4 +17,7 @@ class Payment_style extends Model
         return $this->hasMany(Job::class);
     }
 
+    public function proposals(){
+        return $this->hasMany(Proposal::class);
+    }
 }

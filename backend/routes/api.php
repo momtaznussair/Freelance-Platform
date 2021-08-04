@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\FreelancerController;
 use App\Http\Controllers\Api\ExperienceLevelController;
+use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SkillController;
 
 /*
@@ -89,6 +90,9 @@ Route::post('portfolios' ,[PortfolioController::class,'store']);
 Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
 Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6897d0e0b4aeb62af68a4b2fcca8f0efed9fa376
 
 // CRUD for Jobs
 Route::get('jobs',[JobController::class,'index']);
@@ -96,6 +100,13 @@ Route::get('jobs/{job}',[JobController::class,'show']);
 Route::post('jobs' ,[JobController::class,'store']);
 Route::post('jobs/{job}' ,[JobController::class,'update']);
 Route::delete('jobs/delete/{job}' ,[JobController::class,'destroy']);
+
+// CRUD for Proposal
+Route::get('proposals',[ProposalController::class,'index']);
+Route::get('proposals/{proposal}',[ProposalController::class,'show']);
+Route::post('proposals' ,[ProposalController::class,'store']);
+Route::post('proposals/{proposal}' ,[ProposalController::class,'update']);
+Route::delete('proposals/delete/{proposal}' ,[ProposalController::class,'destroy']);
 
 // company api
 
@@ -127,5 +138,8 @@ Route::get('skills/{skill}',[SkillController::class,'show']);
 Route::post('skills',[SkillController::class,'store']);
 Route::post('/skills/{skill}',[SkillController::class,'update']);
 Route::delete('/skills/delete/{skill}',[SkillController::class,'destroy']);
+<<<<<<< HEAD
 =======
 >>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837
+=======
+>>>>>>> 6897d0e0b4aeb62af68a4b2fcca8f0efed9fa376

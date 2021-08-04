@@ -15,7 +15,7 @@ import { CategoryComponent } from './category/category/category.component';
 import { ConnectionTypeComponent } from './connection-type/connection-type/connection-type.component';
 import { OverviewComponent } from './overview/overview.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-
+import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 
 const routes : Routes=[
@@ -23,7 +23,7 @@ const routes : Routes=[
   {path : 'register' , component : SignupComponent},
   {path : 'category' , component : CategoryComponent, canActivate:[AuthGuard]},
   {path : 'overview' , component : OverviewComponent, canActivate:[AuthGuard]},
-  {path : 'experience' , component : ExpertiseComponent, canActivate:[AuthGuard]},
+  {path : 'skills' , component : ExpertiseComponent, canActivate:[AuthGuard]},
   {path : 'experience-level' , component : ExpertlevelComponent, canActivate:[AuthGuard]},
   {path : 'education' , component : EductionComponent, canActivate:[AuthGuard]},
   {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard]},
@@ -48,6 +48,7 @@ const routes : Routes=[
     CategoryComponent,
     ConnectionTypeComponent,
     OverviewComponent,
+    searchFilter
 
   ],
   imports: [

@@ -24,6 +24,7 @@
          margin: 10px 0;
          padding: 15px;
      }
+
  }
  /* large devices ( 600px and up) */
  
@@ -37,4 +38,9 @@
          margin: 10px 0;
          padding: 15px;
      }
+     .psearch{
+        font-size: 16px;
+        padding: 5px;
+        margin-bottom: 0;
+    }
  }

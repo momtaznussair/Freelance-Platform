@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6897d0e0b4aeb62af68a4b2fcca8f0efed9fa376
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -32,11 +35,10 @@ class JobController extends Controller
     public function store(Request $request){
         $validate = Validator::make($request->all(),[
             'description' => 'required|min:10',
-            'payment_type' => 'required',
             'payment_amount' => 'required|numeric',
             'job_title' => 'required|min:3',
             'attachment' => 'min:5',
-            'skill' => 'required|min:3',
+            'skill' => 'required|exists:skills,id',
             'client_id' => 'required|exists:clients,id',
             'duration_id' => 'required|exists:durations,id',
             'experience_id' => 'required|exists:experience_levels,id',
@@ -50,42 +52,10 @@ class JobController extends Controller
             return  $this->apiResponse(null,$validate->errors(),422);
         }
 
-        // $job = Job::create(
-        //     $request->all()
-        // );
+        $job = Job::create(
+            $request->all()
+        );
         
-        // $job = new Job();
-        // $job->id = $request->id;
-        // $job->description = $request->description;
-        // $job->payment_type = $request->payment_type;
-        // $job->payment_amount = $request->payment_amount;
-        // $job->job_title = $request->job_title;
-        // $job->client_id = $request->client_id;
-        // $job->duration_id = $request->duration_id;
-        // $job->experience_id = $request->experience_id;
-        // $job->payment_style_id = $request->payment_style_id;
-        // $job->category_id = $request->category_id;
-        // $job->language_id = $request->language_id;
-        // $job->language_level_id = $request->language_level_id;
-
-        $job = new Job([
-            'description' => $request->description,
-            'payment_type' => $request->payment_type,
-            'payment_amount' => $request->payment_amount,
-            'job_title' => $request->job_title,
-            'client_id' => $request->client_id,
-            'duration_id' => $request->duration_id,
-            'experience_id' => $request->experience_id,
-            'payment_style_id' => $request->payment_style_id,
-            'category_id' => $request->category_id,
-            'language_id' => $request->language_id,
-            'language_level_id' => $request->language_level_id,
-        ]);
-
-        // dd($request);
-        // dd($job);
-        // $job->save();
-
         $job->skills()->attach($request->skill === null ? [] : $request->skill);
 
         
@@ -100,11 +70,10 @@ class JobController extends Controller
     public function update(Request $request ,$id){
         $validate = Validator::make($request->all(),[
             'description' => 'required|min:10',
-            'payment_type' => 'required',
             'payment_amount' => 'required|numeric',
             'job_title' => 'required|min:3',
             'attachment' => 'min:5',
-            'skill' => 'required|min:3',
+            'skill' => 'required|exists:skills,id',
             'client_id' => 'required|exists:clients,id',
             'duration_id' => 'required|exists:durations,id',
             'experience_id' => 'required|exists:experience_levels,id',
@@ -144,6 +113,7 @@ class JobController extends Controller
         }
 
         return $this->NotFoundError();
+<<<<<<< HEAD
 =======
 use Illuminate\Http\Request;
 
@@ -189,5 +159,7 @@ public function destroy($id)
     
         return Job::destroy($id);
 >>>>>>> cb84c5474033ef42f7bb23c395ed721e6cb86837
+=======
+>>>>>>> 6897d0e0b4aeb62af68a4b2fcca8f0efed9fa376
     }
 }

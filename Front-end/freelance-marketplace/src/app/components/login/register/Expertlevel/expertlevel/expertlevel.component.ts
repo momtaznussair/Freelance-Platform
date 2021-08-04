@@ -15,7 +15,7 @@ export class ExpertlevelComponent implements OnInit {
 
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder ,private router : Router, private userService : UserService,private appService:RegisterDataService) { }
+  constructor(private formBuilder : FormBuilder ,private router : Router) { }
 
   currentRegisterData : any;
   ngOnInit(): void
@@ -33,7 +33,7 @@ export class ExpertlevelComponent implements OnInit {
   {
     this.isLogged = true;
     if(this.form.valid){
-      this.router.navigateByUrl('/user/signup/education');
+      this.router.navigateByUrl('/user/signup/skills');
       this.currentRegisterData = JSON.parse(this.currentRegisterData)
       this.currentRegisterData.experienceLevel = this.form.controls.experienceLevel.value;
       localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));

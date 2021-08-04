@@ -11,11 +11,9 @@ class Job extends Model
 
     protected $fillable = [
         'description',
-        'payment_type',
         'payment_amount',
         'job_title',
         'attachment',
-        'skill',
         'client_id',
         'duration_id',
         'experience_id',
@@ -57,5 +55,9 @@ class Job extends Model
 
     public function skills(){
         return $this->belongsToMany(Skill::class,'job_skills')->withTimestamps();
+    }
+
+    public function proposals(){
+        return $this->hasMany(Proposal::class);
     }
 }
