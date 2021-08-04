@@ -45,7 +45,7 @@ import { TestLoginComponent } from './test/test-login/test-login.component';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '391081912414-s4puc43hobm8vf5ll3231d465lk9t3tq.apps.googleusercontent.com'
+              '110770812923-nsh217rehcgov5d6v1a80h82kmk6s4cu.apps.googleusercontent.com'
             )
           },
         ],

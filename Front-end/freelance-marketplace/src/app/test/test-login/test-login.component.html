@@ -8,7 +8,7 @@
             <p class="card-text">Sign in with</p>
         </div>
         <div class="card-block">
-            <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span class="fab fa-google">Google</span></button>
+            <button class="btn btn-social-icon btn-google mx-1" (click)="signInWithGoogle()"><span class="fab fa-google"></span></button>
         </div>
     </div>
     <div *ngIf="user" class="card text-center">
@@ -16,8 +16,9 @@
             Social Login Demo
         </h6>
         <div class="card-block"></div>
-        <img *ngIf="user.photoUrl" class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+        <!-- <img *ngIf="user.photoUrl" class="card-img-top img-responsive photo" src="{{ user.photoUrl }}"> -->
         <div class="card-block">
+            <p>{{user}}</p>
             <h4 class="card-title">{{ user.name }}</h4>
             <p class="card-text">{{ user.email }}</p>
             <p class="card-text">Logged in with {{ user.provider }}</p>
