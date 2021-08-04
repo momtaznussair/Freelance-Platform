@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/_services/auth.service';
+import { SocialAuthService, SocialUser } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 
 
@@ -10,18 +10,29 @@ import { GoogleLoginProvider } from "angularx-social-login";
 })
 export class TestLoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: SocialAuthService) { }
+
+  user: SocialUser = new SocialUser();
+  GoogleLoginProvider = GoogleLoginProvider;
+  loggedIn: boolean = false;
 
   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
+    this.authService.authState.subscribe(user => {
+      this.user = user;
+    });
   }
 
   signInWithGoogle(): void {
-  this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
-  // Generic method to sign out, regardless of Auth provider
+
+
   signOut(): void {
-  this.authService.signOut();
+    this.authService.signOut();
+  }
+
+  refreshGoogleToken(): void {
+    this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
 
 }
