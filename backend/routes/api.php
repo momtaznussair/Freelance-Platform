@@ -16,6 +16,7 @@ use App\Http\Controllers\APi\DurationController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\FreelancerController;
 use App\Http\Controllers\Api\ExperienceLevelController;
+use App\Http\Controllers\Api\PaymentTypeController;
 use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SkillController;
 
@@ -111,6 +112,13 @@ Route::get('durations/{durations}',[DurationController::class,'show']);
 Route::post('durations' ,[DurationController::class,'store']);
 Route::post('durations/{durations}' ,[DurationController::class,'update']);
 Route::delete('durations/delete/{durations}' ,[DurationController::class,'destroy']);
+
+// CRUD for Payment Type
+Route::get('payment_types',[PaymentTypeController::class,'index']);
+Route::get('payment_types/{payment_type}',[PaymentTypeController::class,'show']);
+Route::post('payment_types' ,[PaymentTypeController::class,'store']);
+Route::post('payment_types/{payment_type}' ,[PaymentTypeController::class,'update']);
+Route::delete('payment_types/delete/{payment_type}' ,[PaymentTypeController::class,'destroy']);
 
 // company api
 
