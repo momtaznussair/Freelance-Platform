@@ -17,6 +17,7 @@ export class ConnectionTypeComponent implements OnInit {
   }
 
   redirectGoogle(){
+    this.router.navigateByUrl(`${environment.apiUrl}/auth/google/redirect`)
     this.http.get(`${environment.apiUrl}/auth/google/redirect`).subscribe(response=>{
       console.log(response);
     }, error =>console.error);

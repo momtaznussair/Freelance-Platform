@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
 import { ApiService } from 'src/app/services/api.service';
-import {RegisterDataService} from "../../../../../services/register-data.service";
 
 
 
@@ -14,7 +13,7 @@ import {RegisterDataService} from "../../../../../services/register-data.service
 })
 export class LocationComponent implements OnInit {
 
-  constructor(private register:RegisterDataService, private apiService : ApiService , private router : Router) { }
+  constructor(private apiService : ApiService , private router : Router) { }
 
 
    // responseToken : any = {auth_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…MwOX0.-8FYA7Pa40tCXSrPr-ZeKSGrbFeKCVD_-qwbT2Ze_qo" , "Accept": "application/json"}

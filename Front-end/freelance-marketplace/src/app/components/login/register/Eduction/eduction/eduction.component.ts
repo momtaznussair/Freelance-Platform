@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {RegisterDataService} from "../../../../../services/register-data.service";
 @Component({
   selector: 'app-eduction',
   templateUrl: './eduction.component.html',
@@ -7,7 +6,7 @@ import {RegisterDataService} from "../../../../../services/register-data.service
 })
 export class EductionComponent implements OnInit {
 
-  constructor(private appService:RegisterDataService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -15,6 +14,6 @@ export class EductionComponent implements OnInit {
 
 submit()
 {
-  
+
 }
 }
