@@ -10,7 +10,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
 
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes)

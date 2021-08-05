@@ -52,6 +52,7 @@ class PortfolioController extends Controller
             $path = Storage::putFile('attachments/portfolios', $request->file('attachment'));
             $portfolio->attachment_link = $path;
         }
+
         $portfolio->save();
 
         foreach($request->file('image') as $image)
@@ -118,7 +119,7 @@ class PortfolioController extends Controller
             $images = $portfolio->images;
             foreach ($images as $image ){
 
-                Storage::delete($image);              
+                Storage::delete($image);            
             }
             $images->delete();
             

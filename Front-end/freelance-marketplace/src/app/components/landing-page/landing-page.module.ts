@@ -9,6 +9,7 @@ import { HireAProComponent } from './hire-a-pro/hire-a-pro.component';
 import { MyProposalComponent } from './my-proposal/my-proposal.component';
 import { WeareComponent } from './weare/weare/weare.component';
 import { TopskillComponent } from './topskill/topskill/topskill.component';
+import { LayoutModule } from '../layout/layout.module';
 
 const routes: Routes = [
   {path : 'main' , component : MainComponent},
@@ -23,10 +24,10 @@ const routes: Routes = [
     HireAProComponent,
     MyProposalComponent,
     WeareComponent,
-    TopskillComponent
+    TopskillComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule
+    CommonModule,RouterModule.forChild(routes),SharedModule,LayoutModule
   ],
   exports: [JoinWorldComponent , ForClientComponent , HireAProComponent]
 })
