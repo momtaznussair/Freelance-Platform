@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
 
 
 
-    if(localStorage.getItem('id_token'))
+    if(localStorage.getItem('user_data'))
     {
       this.user_data = localStorage.getItem('user_data');
       this.user_data = JSON.parse(this.user_data);

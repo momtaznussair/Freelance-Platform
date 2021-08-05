@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 
 //start of import social login modules
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {GoogleLoginProvider} from 'angularx-social-login';
+import {GoogleLoginProvider , FacebookLoginProvider} from 'angularx-social-login';
 
 
 
@@ -43,6 +43,12 @@ import {GoogleLoginProvider} from 'angularx-social-login';
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
               '110770812923-nsh217rehcgov5d6v1a80h82kmk6s4cu.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(
+              '261003865513295'
             )
           },
         ],
