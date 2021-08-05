@@ -24,6 +24,7 @@
                                                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('required')">This field is required</small>
                                                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('minlength')"> You should write more than three characters</small>
                                                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('maxlength')"> You should write less than 250 characters</small>
+                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('pattern')"> You should to write valid text</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -35,6 +36,7 @@
                                                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('required')">This field is required</small>
                                                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('minlength')"> You should write more than three characters</small>
                                                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('maxlength')"> You should write less than 250 characters</small>
+                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('pattern')"> You should to write valid text</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -47,6 +49,7 @@
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('required')">This field is required</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('minlength')"> You gen der.write more than three characters</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('maxlength')"> You should write less than 250 characters</small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('pattern')"> You should to write valid text</small>
                                         </div>
                                     </div>
 
@@ -93,6 +96,7 @@
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('required')">Password is required</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('minlength')">You have to write more than 8 characters</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('maxlength')">You have to write less than 15 characters</small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('pattern')"> You should to write valid password</small>
                                         </div>
                                     </div>
 

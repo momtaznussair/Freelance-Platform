@@ -22,6 +22,7 @@
         "angularx-social-login": "^4.0.1",
         "bootstrap": "^5.0.2",
         "bootstrap-icons": "^1.5.0",
+        "ngx-pagination": "^5.1.1",
         "primeng": "^12.0.0",
         "rxjs": "~6.6.0",
         "tslib": "^2.1.0",

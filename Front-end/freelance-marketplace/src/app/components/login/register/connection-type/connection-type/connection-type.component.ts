@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from "angularx-social-login";
-import { GoogleLoginProvider } from "angularx-social-login";
+import { GoogleLoginProvider , FacebookLoginProvider } from "angularx-social-login";
 
 
 @Component({
@@ -19,11 +19,10 @@ export class ConnectionTypeComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.authState.subscribe(user => {
+      this.loggedIn = (user != null);
       this.user = user;
-      console.log(this.user.response);
-      localStorage.setItem('user_data' ,JSON.stringify( this.user));
-      // localStorage.setItem('token' , this.user.response.access_token);
-      localStorage.setItem('id_token' , this.user.response.id_token);
+      console.log(this.user);
+      localStorage.setItem('user_data' ,JSON.stringify(this.user));
       this.router.navigateByUrl('/user/signup/register');
     });
   }
@@ -31,6 +30,10 @@ export class ConnectionTypeComponent implements OnInit {
   username : string = '';
   signInWithGoogle(): void {
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
 
