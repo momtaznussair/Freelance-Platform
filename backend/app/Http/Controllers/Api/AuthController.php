@@ -67,17 +67,9 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // return response()->json([
-        //         'access_token' => $token,
-        //         // 'token_type' => 'Bearer',
-        //         'id' => $user->id,
-        //         'msg' => "User registered successfully"
-        // ]);
-
         $data = [
                 'access_token' => $token,
                 'id' => $user->id,
-                // 'msg' => "User registered successfully"
         ];
 
         return $this->apiResponse($data,'User registered successfully');
@@ -94,7 +86,6 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            // return Response::json($validator->errors());
             return $this->apiResponse(null,$validator->errors(),400);
         }
 
@@ -112,9 +103,6 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
-        // return response()->json([
-        //         'msg' => "User logout successfully"
-        // ]);
         return $this->apiResponse(true,'User logout successfully',200);
     }
 }
