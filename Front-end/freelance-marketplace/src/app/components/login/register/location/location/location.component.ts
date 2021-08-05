@@ -27,7 +27,6 @@ export class LocationComponent implements OnInit {
       street_address: ['' , [Validators.required ]],
       city: ['' , [Validators.required ]],
       zip_code: ['' , [Validators.required ]]
-
     })
   }
     isLogged : boolean = false;
