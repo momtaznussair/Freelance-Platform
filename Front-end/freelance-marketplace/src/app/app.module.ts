@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 //start of import social login modules
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {GoogleLoginProvider} from 'angularx-social-login';
-import { TestLoginComponent } from './test/test-login/test-login.component';
 
 
 
@@ -18,7 +17,6 @@ import { TestLoginComponent } from './test/test-login/test-login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TestLoginComponent,
 
 
 
