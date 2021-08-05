@@ -9,7 +9,7 @@ import { TaxInformationComponent } from './tax-information/tax-information.compo
 import { GetPaidComponent } from './get-paid/get-paid.component';
 import { PassowrdSecurityComponent } from './passowrd-security/passowrd-security.component';
 import { CreatClientAccountComponent } from './contact-info/creat-client-account/creat-client-account.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes : Routes = [
   {path : 'settings/deposit-method' , component :BillingMethodComponent},
@@ -34,7 +34,7 @@ const routes : Routes = [
     CreatClientAccountComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes)
+    CommonModule,RouterModule.forChild(routes),ReactiveFormsModule,FormsModule
   ],
   exports : [
     SidebarComponent
