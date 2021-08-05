@@ -30,9 +30,7 @@ const routes : Routes = [
     ProposalsComponent,
     ProfileComponent,
     JobDetailsComponent,
-    SubmitProposalComponent,
-    
-  
+    SubmitProposalComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule

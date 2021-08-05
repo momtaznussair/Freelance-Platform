@@ -15,7 +15,8 @@ import { CategoryComponent } from './category/category/category.component';
 import { ConnectionTypeComponent } from './connection-type/connection-type/connection-type.component';
 import { OverviewComponent } from './overview/overview.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { searchFilter } from 'src/app/pipes/search-filter.pipe';
+import { SharedModule } from '../../freelancer/shared/shared.module';
+// import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 
 const routes : Routes=[
@@ -28,7 +29,7 @@ const routes : Routes=[
   {path : 'education' , component : EductionComponent, canActivate:[AuthGuard]},
   {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard]},
   {path : 'hourly-rate' , component : HourlyrateComponent, canActivate:[AuthGuard]},
-  {path : 'location' , component : LocationComponent, canActivate:[AuthGuard]},
+  {path : 'location' , component : LocationComponent},
   {path : '' , component : ConnectionTypeComponent, canActivate:[AuthGuard]},
 ]
 
@@ -48,11 +49,11 @@ const routes : Routes=[
     CategoryComponent,
     ConnectionTypeComponent,
     OverviewComponent,
-    searchFilter
+    // searchFilter
 
   ],
   imports: [
-    CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule
+    CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,SharedModule
   ],
   exports : [
     SignupComponent , SidebarComponent

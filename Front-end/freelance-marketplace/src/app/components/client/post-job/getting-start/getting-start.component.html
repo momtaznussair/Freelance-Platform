@@ -1,0 +1,161 @@
+<div class="container">
+    <div class="row">
+        <div class="col-2 d-sm-none d-md-block">
+            <post-job-aside></post-job-aside>
+        </div>
+
+        <div class="col-sm-12 col-md-10">
+            <div class="container">
+                <div class="row mt-2">
+                    <div class="col-12">
+                        <div class="container border">
+                            <!-- header -->
+                            <div class="header border-bottom row">
+                                <h2 class="py-4">Getting started</h2>
+                            </div>
+                            
+                            <form>
+
+                                <!-- body -->
+                                <div class="body py-4">
+                                    
+                                        <div class="form-group row justify-content-center">
+                                            
+                                            <div class=" col-12 col-md-5">
+                                                <div class="card-deck">
+                                                    <div id="short-term-card" class="card mb-4">
+                                                        <div class="card-body" role="button">
+                                                            <h5 class="card-title">
+                                                                <input id="short-term" name="term" type="radio">
+                                                            </h5>
+                                                            <div class="text-center">
+                                                                <i class="far fa-clock"></i>
+                                                                <h5>Short-term or part-time work</h5>
+                                                                <ul class="list-unstyled">
+                                                                    <li>Less than 30 hrs/week</li>
+                                                                    <li>Less than 3 months</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-md-5">
+                                                <div class="card-deck">
+                                                    <div id="long-term-card" class="card mb-4">
+                                                        <div class="card-body" role="button">
+                                                            <h5 class="card-title">
+                                                                <input id="long-term" name="term" type="radio">
+                                                            </h5>
+                                                            <div class="text-center">
+                                                                <i class="far fa-calendar-alt"></i>
+                                                                <h5>Designated, longer term work</h5>
+                                                                <ul class="list-unstyled">
+                                                                    <li>More than 30 hrs/week</li>
+                                                                    <li>3+ months</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                </div>
+                                <!-- footer -->
+                                <div class="border-top py-4">
+                                    <div class="btn-group ">
+                                        <a href="#" class="btn btn-light rounded-pill border mx-3 text-primary">
+                                            Cancel
+                                        </a>
+                                        <a routerLink="/client/post-job/title" class="btn btn-primary rounded-pill border ms-2 px-4">
+                                            Next
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- JQuery Code -->
+<script>
+
+    $(document).ready(function () {
+        $('input:radio').change(function () {//Clicking input radio
+            var radioClicked = $(this).attr('id');
+            unclickRadio();
+            removeActive();
+            clickRadio(radioClicked);
+            makeActive(radioClicked);
+        });
+        $(".card").click(function () {//Clicking the card
+            var inputElement = $(this).find('input[type=radio]').attr('id');
+            unclickRadio();
+            removeActive();
+            makeActive(inputElement);
+            clickRadio(inputElement);
+        });
+    });
+
+
+    function unclickRadio() {
+        $("input:radio").prop("checked", false);
+    }
+
+    function clickRadio(inputElement) {
+        $("#" + inputElement).prop("checked", true);
+    }
+
+    function removeActive() {
+        $(".card").removeClass("active");
+    }
+
+    function makeActive(element) {
+        $("#" + element + "-card").addClass("active");
+    }
+</script>
+
+<!-- Js Code -->
+<!-- <script>
+    document.querySelector(document).ready(function () {
+        document.querySelector('input:radio').change(function () {//Clicking input radio
+            var radioClicked = document.querySelector(this).attr('id');
+            unclickRadio();
+            removeActive();
+            clickRadio(radioClicked);
+            makeActive(radioClicked);
+        });
+        document.querySelector(".card").click(function () {//Clicking the card
+            var inputElement = document.querySelector(this).querySelector('input[type=radio]').attr('id');
+            unclickRadio();
+            removeActive();
+            makeActive(inputElement);
+            clickRadio(inputElement);
+        });
+    });
+
+
+    function unclickRadio() {
+        document.querySelector("input:radio").prop("checked", false);
+    }
+
+    function clickRadio(inputElement) {
+        document.querySelector("#" + inputElement).prop("checked", true);
+    }
+
+    function removeActive() {
+        document.querySelector(".card").removeClass("active");
+    }
+
+    function makeActive(element) {
+        document.querySelector("#" + element + "-card").classList.add("active");
+    }
+</script> -->

@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
-import { environment } from 'src/environments/environment.prod';
+import { SocialAuthService, SocialUser } from "angularx-social-login";
+import { GoogleLoginProvider } from "angularx-social-login";
+
 
 @Component({
   selector: 'app-connection-type',
@@ -11,23 +11,35 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ConnectionTypeComponent implements OnInit {
 
-  constructor(private router : Router , private userService : UserService , private http:HttpClient) { }
+  constructor(private authService: SocialAuthService , private router : Router) { }
+
+  user: SocialUser = new SocialUser();
+  GoogleLoginProvider = GoogleLoginProvider;
+  loggedIn: boolean = false;
 
   ngOnInit(): void {
+    this.authService.authState.subscribe(user => {
+      this.user = user;
+      console.log(this.user.response);
+      localStorage.setItem('user_data' ,JSON.stringify( this.user));
+      // localStorage.setItem('token' , this.user.response.access_token);
+      localStorage.setItem('id_token' , this.user.response.id_token);
+      this.router.navigateByUrl('/user/signup/register');
+    });
   }
 
-  redirectGoogle(){
-    this.router.navigateByUrl(`${environment.apiUrl}/auth/google/redirect`)
-    this.http.get(`${environment.apiUrl}/auth/google/redirect`).subscribe(response=>{
-      console.log(response);
-    }, error =>console.error);
+  username : string = '';
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
-  redirectLinked(){
-    this.http.get(`${environment.apiUrl}/auth/linkedin/redirect`).subscribe(response=>{
-      console.log(response);
-    })
-    // this.router.navigateByUrl(`${environment.apiUrl}/auth/google/redirect`)
+
+  signOut(): void {
+    this.authService.signOut();
+  }
+
+  refreshGoogleToken(): void {
+    this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
 
 
