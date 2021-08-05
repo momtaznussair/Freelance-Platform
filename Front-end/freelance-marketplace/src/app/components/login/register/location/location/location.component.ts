@@ -54,17 +54,18 @@ export class LocationComponent implements OnInit {
         }
         else
         {
-          if(this.user_data.type == 'client')
+          if(this.user_data.user_data.type == 'client')
           {
             //this is a fake token
+            console.log(this.user_data.user_data.type);
             localStorage.setItem('token' , 'any');
             this.router.navigateByUrl('/client/main');
           }
           else
           {
+            console.log(this.user_data.user_data.type);
             localStorage.setItem('token' , 'any');
             this.router.navigateByUrl('/user/signup/category');
-            // localStorage.removeItem('user_data');
           }
         }
 
