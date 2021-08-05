@@ -54,10 +54,9 @@ class JobController extends Controller
         $job = Job::create(
             $request->all()
         );
-        
+
         $job->skills()->attach($request->skill === null ? [] : $request->skill);
 
-        
 
         if ($job) {
             return $this->apiResponse($job);

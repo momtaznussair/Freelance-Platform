@@ -28,7 +28,7 @@ class SkillController extends Controller
     }
 
     public function store(Request $request){
-        
+
         $validate = Validator::make($request->all(),[
             'name' => 'required|min:2|unique:skills,name',
             'category_id' => 'required|exists:categories,id'
