@@ -73,6 +73,7 @@ class LanguageController extends Controller
         $language = Language::find($id);
 
         if($language){
+            $language->jobs()->delete();
             $language->delete();
             return $this->apiResponse(true,'',200);
         }
