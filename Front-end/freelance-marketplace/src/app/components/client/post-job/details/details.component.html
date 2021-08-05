@@ -1,0 +1,236 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-2 d-sm-none d-md-block">
+            <post-job-aside></post-job-aside>
+        </div>
+
+        <div class="col-sm-12 col-md-10 mt-3">
+            <div class="container">
+                <form action="" [formGroup]="form">               >
+
+                    <div class="card mb-5">
+                        <div class="card-header">
+                            <h2>Details</h2>
+                            <p>Step 3 of 7</p>
+                        </div>
+
+                        <div class="card-body p-5">
+                            <!-- <form> -->
+                                <div class="form-group row">
+
+                                    <div class=" col-12 col-md-4">
+                                        <div class="card-deck">
+                                            <div id="one-time-card" class="card mb-4">
+                                                <div class="card-body py-md-4" role="button">
+                                                    <h5 class="card-title">
+                                                        <input id="one-time-card"  value="1" type="radio"  formControlName="choose">
+                                                    </h5>
+                                                    <div class="text-center">
+                                                        <i class="fas fa-user"></i>
+                                                        <h5>One Time Project</h5>
+                                                        <small>Find the right skills for a short-term need.</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4">
+                                        <div class="card-deck">
+                                            <div id="ongoing-card" class="card mb-4">
+                                                <div class="card-body py-md-4" role="button">
+                                                    <h5 class="card-title">
+                                                        <input id="ongoing"  type="radio"  value="2" formControlName="choose">
+                                                    </h5>
+                                                    <div class="text-center">
+                                                        <i class="fas fa-clipboard-list"></i>
+                                                        <h5>Ongoing project</h5>
+                                                        <small>Find a skilled resource for an extended engagement.</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-md-4">
+                                        <div class="card-deck">
+                                            <div id="complex-card" class="card mb-4">
+                                                <div class="card-body py-md-4" role="button">
+                                                    <h5 class="card-title">
+                                                        <input id="complex" value="3"  type="radio"  formControlName="choose">
+                                                    </h5>
+                                                    <div class="text-center">
+                                                        <i class="fas fa-vector-square"></i>
+                                                        <h5>Complex project</h5>
+                                                        <small>Find specialized experts and agencies for large projects.</small>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    <div *ngIf="form.controls.choose.invalid && isLogged">
+                                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.choose.hasError('required')">You have to choose one of the above first</small>
+                                  </div>
+                                </div>
+                            <!-- </form> -->
+                        </div>
+                    </div>
+
+                    <div class="card">
+
+                        <div class="card-body p-4 border-bottom">
+                            <h6 class="fw-bold mb-md-4">Screening Questions (optional)</h6>
+                            <p class="mb-md-4">Add screening questions and/or require a cover letter</p>
+
+                            <!-- Button trigger modal -->
+                            <i class="fas fa-plus me-2 text-primary"></i>
+                            <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Add a question
+                            </a>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Add screening questions</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h6 class="fw-bold">Select from our suggested questions:</h6>
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q1">
+                                                    <label class="form-check-label" for="q1">
+                                                        Do you have any questions about the job description?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q2">
+                                                    <label class="form-check-label" for="q2">
+                                                        Do you have suggestions to make this project run successfully?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q3">
+                                                    <label class="form-check-label" for="q3">
+                                                        What challenging part of this job are you most experienced in?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q4">
+                                                    <label class="form-check-label" for="q4">
+                                                        What part of this project most appeals to you?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q5">
+                                                    <label class="form-check-label" for="q5">
+                                                        What past project or job have you had that is most like this one and why?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q6">
+                                                    <label class="form-check-label" for="q6">
+                                                        What questions do you have about the project?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q7">
+                                                    <label class="form-check-label" for="q7">
+                                                        Which of the required job skills do you feel you are strongest at?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q8">
+                                                    <label class="form-check-label" for="q8">
+                                                        Which part of this project do you think will take the most time?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q9">
+                                                    <label class="form-check-label" for="q9">
+                                                        Why did you apply to this particular job?
+                                                    </label>
+                                                </li>
+                                                <li>
+                                                    <input class="form-check-input me-2" type="checkbox" value="" id="q10">
+                                                    <label class="form-check-label" for="q10">
+                                                        Why do you think you are a good fit for this particular project?
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                            <small class="text-muted text-end d-block">You have added 0 out of 5 questions.</small>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light border rounded-pill px-3 text-primary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary rounded-pill px-3"> Add These Questions </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <p class="fw-bold">
+                                Cover letter
+                            </p>
+                            <p>If you don't add any screening questions, we'll require a cover letter to allow freelancers and agencies to introduce themselves.</p>
+                        </div>
+
+                        <div class="card-footer py-4">
+                            <a routerLink="/client/post-job/description" class="btn btn-light px-5 mx-3 py-2 border rounded-pill text-primary">Back</a>
+                            <button class="btn btn-primary px-5 mx-3 py-2 border rounded-pill "  type="submit" (click)="next()">Next</button>
+                          </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- scripts -->
+<script>
+    $(document).ready(function () {
+        $('input:radio').change(function () {//Clicking input radio
+            var radioClicked = $(this).attr('id');
+            unclickRadio();
+            removeActive();
+            clickRadio(radioClicked);
+            makeActive(radioClicked);
+        });
+        $(".card").click(function () {//Clicking the card
+            var inputElement = $(this).find('input[type=radio]').attr('id');
+            unclickRadio();
+            removeActive();
+            makeActive(inputElement);
+            clickRadio(inputElement);
+        });
+    });
+
+
+    function unclickRadio() {
+        $("input:radio").prop("checked", false);
+    }
+
+    function clickRadio(inputElement) {
+        $("#" + inputElement).prop("checked", true);
+    }
+
+    function removeActive() {
+        $(".card").removeClass("active");
+    }
+
+    function makeActive(element) {
+        $("#" + element + "-card").addClass("active");
+    }
+</script>

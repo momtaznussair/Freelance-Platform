@@ -1,0 +1,285 @@
+<div class="container">
+  <div class="row">
+
+      <div class="col-sm-12 col-md-10 mt-3">
+          <div class="container">
+              <div class="row">
+                  <div class="col-12">
+                      <form  [formGroup]="form">
+
+                          <div class="card mb-5">
+                              <div class="card-header">
+                                  <h2>Budget</h2>
+                                  <p>Step 6 of 7</p>
+                              </div>
+                              <div class="card-body">
+                                  <p class="fw-bold">
+                                      How would you like to pay your freelancer or agency?
+                                  </p>
+
+                                  <div class="form-group row">
+
+                                      <div class=" col-12 col-md-4">
+                                          <div class="card-deck">
+                                              <div id="hour-card" class="card mb-4">
+                                                  <div class="card-body py-md-4" role="button">
+                                                      <h5 class="card-title">
+                                                          <input id="hour" formControlName="pay" name="pay" type="radio">
+                                                      </h5>
+                                                      <div class="text-center pb-5">
+                                                          <i class="fas fa-clock"></i>
+                                                          <h5>Pay by the hour</h5>
+                                                          <small>Pay hourly to easily scale up and down.</small>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="col-12 col-md-4">
+                                          <div class="card-deck">
+                                              <div id="fixed-card" class="card mb-4">
+                                                  <div class="card-body py-md-4" role="button">
+                                                      <h5 class="card-title">
+                                                          <input id="fixed" formControlName="pay" name="pay" type="radio">
+                                                      </h5>
+                                                      <div class="text-center pb-3">
+                                                          <i class="fas fa-comment-dollar"></i>
+                                                          <h5>Pay a fixed price</h5>
+                                                          <small>Define payment before work begins and pay only when work is delivered.</small>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div *ngIf="form.controls.pay.invalid && isLogged">
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.pay.hasError('required')">You have to choose one of the above first </small>
+                                    </div>
+                                  </div>
+
+                                  <!-- IF pay by hour Checked -->
+                                  <div class="by-hour">
+                                      <!-- Hourly range -->
+                                      <div class="hourly-range">
+                                          <hr>
+                                          <div class="form-check">
+                                              <input class="form-check-input" type="radio" name="payment" id="hour-range" value="hourly-range" checked>
+                                              <label class="form-check-label" for="hour-range">
+                                                  Set your own hourly range
+                                              </label>
+                                          </div>
+                                          <div class="input-group mb-3 w-md-50">
+                                              <span class="input-group-text">$</span>
+                                              <input type="text" class="form-control" placeholder="0">
+                                              <span class="mt-2"> &nbsp;&nbsp; /hr to &nbsp;&nbsp; </span>
+                                              <span class="input-group-text">$</span>
+                                              <input type="text" class="form-control" placeholder="0">
+                                          </div>
+                                          <hr>
+                                      </div>
+
+                                      <!-- period -->
+                                      <div class="period">
+
+                                          <div class="form-check mb-4">
+                                              <input class="form-check-input" type="radio" name="payment" id="period-range" value="period-range">
+                                              <label class="form-check-label" for="hour-range">
+                                                  Don’t add an hourly range to your job <br>
+                                                  <small class="text-muted">Showing your budget can increase the number of relevant proposals</small>
+                                              </label>
+                                          </div>
+
+                                          <p class="fw-bold">
+                                              How long do you expect this project to last?
+                                          </p>
+                                          <div class="form-group row">
+
+                                              <div class=" col-12 col-md-4">
+                                                  <div class="card-deck">
+                                                      <div id="more6-card" class="card mb-4">
+                                                          <div class="card-body py-md-4" role="button">
+                                                              <h5 class="card-title">
+                                                                  <input id="more6" name="period" type="radio">
+                                                              </h5>
+                                                              <div class="text-center">
+                                                                  <i class="fas fa-calendar-week"></i>
+                                                                  <h5>More than 6 months</h5>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class=" col-12 col-md-4">
+                                                  <div class="card-deck">
+                                                      <div id="from3to6-card" class="card mb-4">
+                                                          <div class="card-body py-md-4" role="button">
+                                                              <h5 class="card-title">
+                                                                  <input id="from3to6" name="period" type="radio">
+                                                              </h5>
+                                                              <div class="text-center">
+                                                                  <i class="fas fa-calendar-week"></i>
+                                                                  <h5>3 to 6 months</h5>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class=" col-12 col-md-4">
+                                                  <div class="card-deck">
+                                                      <div id="from1to3-card" class="card mb-4">
+                                                          <div class="card-body py-md-4" role="button">
+                                                              <h5 class="card-title">
+                                                                  <input id="from1to3" name="period" type="radio">
+                                                              </h5>
+                                                              <div class="text-center">
+                                                                  <i class="fas fa-calendar-week"></i>
+                                                                  <h5>1 to 3 months</h5>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class=" col-12 col-md-4">
+                                                  <div class="card-deck">
+                                                      <div id="less1-card" class="card mb-4">
+                                                          <div class="card-body py-md-4" role="button">
+                                                              <h5 class="card-title">
+                                                                  <input id="less1" name="period" type="radio">
+                                                              </h5>
+                                                              <div class="text-center">
+                                                                  <i class="fas fa-calendar-week"></i>
+                                                                  <h5>Less than 1 month</h5>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+
+
+                                          <p class="fw-bold">
+                                              Do you have a time requirement for this project?
+                                          </p>
+                                          <div class="form-group row">
+
+                                              <div class=" col-12 col-md-4">
+                                                  <div class="card-deck">
+                                                      <div id="more30-card" class="card mb-4">
+                                                          <div class="card-body py-md-4" role="button">
+                                                              <h5 class="card-title">
+                                                                  <input id="more30" name="time" type="radio">
+                                                              </h5>
+                                                              <div class="text-center">
+                                                                  <i class="far fa-clock"></i>
+                                                                  <h5>More than 30 hrs/week</h5>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class=" col-12 col-md-4">
+                                                  <div class="card-deck">
+                                                      <div id="less30-card" class="card mb-4">
+                                                          <div class="card-body py-md-4" role="button">
+                                                              <h5 class="card-title">
+                                                                  <input id="less30" name="time" type="radio">
+                                                              </h5>
+                                                              <div class="text-center">
+                                                                  <i class="far fa-clock"></i>
+                                                                  <h5>Less than 30 hrs/week</h5>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class=" col-12 col-md-4">
+                                                  <div class="card-deck">
+                                                      <div id="not-yet-card" class="card mb-4">
+                                                          <div class="card-body py-md-4" role="button">
+                                                              <h5 class="card-title">
+                                                                  <input id="not-yet" name="time" type="radio">
+                                                              </h5>
+                                                              <div class="text-center">
+                                                                  <i class="far fa-clock"></i>
+                                                                  <h5>I don't know yet</h5>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                  </div>
+
+                                  <!-- If Fixed Payment Checked -->
+                                  <div class="fixed">
+                                      <div class="">
+                                          <p class="fw-bold">Do you have a specific budget?</p>
+                                      </div>
+
+                                      <div class="input-group mb-3 w-25">
+                                          <span class="input-group-text">$</span>
+                                          <input type="text" class="form-control" placeholder="0" aria-label="Amount (to the nearest dollar)">
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <!-- footer -->
+                              <div class="card-footer py-4">
+                                  <a routerLink="/client/post-job/visibility" class="btn btn-light px-5 mx-3 py-2 border rounded-pill text-primary">Back</a>
+                                  <button (click)="next()" type="submit" class="btn btn-primary px-5 mx-3 py-2 rounded-pill">Next</button>
+                              </div>
+                          </div>
+
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+
+<!-- scripts -->
+<script>
+  $(document).ready(function () {
+      $('input:radio').change(function () {//Clicking input radio
+          var radioClicked = $(this).attr('id');
+          unclickRadio();
+          removeActive();
+          clickRadio(radioClicked);
+          makeActive(radioClicked);
+      });
+      $(".card").click(function () {//Clicking the card
+          var inputElement = $(this).find('input[type=radio]').attr('id');
+          unclickRadio();
+          removeActive();
+          makeActive(inputElement);
+          clickRadio(inputElement);
+      });
+  });
+
+
+  function unclickRadio() {
+      $("input:radio").prop("checked", false);
+  }
+
+  function clickRadio(inputElement) {
+      $("#" + inputElement).prop("checked", true);
+  }
+
+  function removeActive() {
+      $(".card").removeClass("active");
+  }
+
+  function makeActive(element) {
+      $("#" + element + "-card").addClass("active");
+  }
+</script>

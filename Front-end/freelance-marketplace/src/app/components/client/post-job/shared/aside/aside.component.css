@@ -1,0 +1,25 @@
+span{
+    color: #B0A8A0;
+    cursor: not-allowed;
+    margin-top: 1rem !important;
+    padding-top: .75rem;
+    display: flex;
+}
+
+.active{
+    border-left: 3px solid var(--mc);
+    color: black;
+    cursor: pointer;
+}
+
+span i:first-of-type{
+    margin: 0 1rem !important;
+}
+
+h6{
+    font-weight: bold;
+}
+
+span i:last-of-type{
+    margin-left: auto;
+}

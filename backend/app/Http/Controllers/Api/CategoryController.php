@@ -75,6 +75,8 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         if($category){
+            $category->jobs()->delete();
+            $category->freelancers()->delete();
             $category->delete();
             return $this->apiResponse(true,'',200);
         }

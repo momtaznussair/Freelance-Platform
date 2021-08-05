@@ -77,6 +77,8 @@ class SkillController extends Controller
         $skill = Skill::find($id);
 
         if($skill){
+            $skill->jobs()->detach();
+            $skill->freelancers()->detach();
             $skill->delete();
             return $this->apiResponse(true,'',200);
         }

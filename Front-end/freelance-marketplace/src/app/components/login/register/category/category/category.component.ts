@@ -1,5 +1,5 @@
+import { FreelancerRegisterProcess } from './../../../../../services/register-data.service';
 import { Component, OnInit } from '@angular/core';
-import {RegisterDataService} from "../../../../../services/register-data.service";
 import { Categories } from 'src/app/models/categories/categories';
 import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, Validators } from '@angular/forms';
@@ -16,7 +16,7 @@ export class CategoryComponent implements OnInit {
 
     msg = localStorage.getItem('msg');
 
-  constructor(private formBuilder : FormBuilder ,private router : Router , private registerService : RegisterDataService) {
+  constructor(private formBuilder : FormBuilder ,private router : Router , private registerService : FreelancerRegisterProcess) {
 
   }
 

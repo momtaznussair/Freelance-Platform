@@ -3,55 +3,72 @@
     <div class="row">
 
 
-        <section class="sidebar d-none d-md-block col-md-3">
+        <!-- <section class="sidebar d-none d-md-block col-md-3">
             <app-sidebar></app-sidebar>
-        </section>
-        <section class="myinfo col-12 col-md-9">
+        </section> -->
+        <section class="myinfo col-12">
             <div class="header">
                 <h3> Location </h3>
                 <p>8 of 8</p>
             </div>
+            <form action="" [formGroup]="form">
 
 
-            <h3>What are you based?</h3>
+                <h3>What are you based?</h3>
 
-            <p> We take your privacy very seriously </p>
-            <h3>Country</h3>
-            <div class="col-lg-12 col-md-12 col-sm-9">
-                <select class="form-select form-select-sm " aria-label=".form-select-sm example">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select> </div>
-            <br>
+                <p> We take your privacy very seriously </p>
+                <h3>Country</h3>
 
-            <h3>Street Address</h3>
+                <div class="col-lg-12 col-md-12 col-sm-9">
+                    <select formControlName="country" class="form-select form-select-sm " aria-label=".form-select-sm example">
+        <option selected>Open this select menu</option>
+         <!-- <option selected  *ngFor="let item of category">{{item.name}}</option> -->
 
-            <div class="col-lg-4 col-md-4 col-sm-9 "><input class="form-control" type="text" aria-label="default input example">
-                <br>
-                <input class="form-control" type="text" placeholder="Suite" aria-label="default input example"> </div> <br>
-
-            <h3>City </h3>
-            <div class="continer col-lg-12">
-                <label class="visually-hidden" for="autoSizingInputGroup"></label>
-                <div class="input-group">
-                    <div class="input-group-text col-lg-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-              </svg></div>
-                    <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="Start typing your city">
+      </select>
+                    <div *ngIf="form.controls.country.invalid && isLogged || (form.controls.country.dirty || form.controls.country.touched)">
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.country.hasError('required')">please select a country</small>
+                    </div>
                 </div>
-            </div>
-            <br>
-            <h3>ZIP/Postal Code</h3>
-            <input id="two" type="text" class="form-control col-lg-4 col-md-6 col-sm-6">
+                <br>
 
-            <div class=" footer lg-6 d-sm-flex">
-                <button class="bt1" type="button" routerLink="/user/signup/hourly-rate"> Back </button>
-                <button class="bt2 "    type="button" routerLink="/freelancer">Next</button>
-            </div>
+                <h3>Street Address</h3>
 
+                <div class="col-lg-4 col-md-4 col-sm-9 ">
+                    <input formControlName="street_address" class="form-control" type="text" aria-label="default input example">
+                    <div *ngIf="form.controls.street_address.invalid && isLogged || (form.controls.street_address.dirty || form.controls.street_address.touched)">
+
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.street_address.hasError('required')">This field is required</small>
+                    </div>
+                    <br>
+                </div> <br>
+
+                <h3>City </h3>
+                <div class="continer col-lg-12">
+                    <label class="visually-hidden" for="autoSizingInputGroup"></label>
+                    <div class="input-group">
+                        <div class="input-group-text col-lg-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg></div>
+                        <input formControlName="city" type="text" class="form-control" id="autoSizingInputGroup" placeholder="Start typing your city">
+                        <div *ngIf="form.controls.city.invalid && isLogged || (form.controls.city.dirty || form.controls.city.touched)">
+
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.city.hasError('required')">This field is required</small>
+                            <br></div><br>
+                    </div>
+                </div>
+                <br>
+                <h3>ZIP/Postal Code</h3>
+                <input id="two" formControlName="zip_code" type="number" class="form-control col-lg-4 col-md-6 col-sm-6">
+                <div *ngIf="form.controls.zip_code.invalid && isLogged || (form.controls.zip_code.dirty || form.controls.zip_code.touched)">
+
+                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.zip_code.hasError('required')">This field is required</small>
+                </div>
+                <div class=" footer lg-6 d-sm-flex">
+                    <!-- <button class="bt1" type="button" routerLink="/user/signup/hourly-rate"> Back </button> -->
+                    <button class="bt2" (click)="next()" type="submit">Next</button>
+                </div>
+            </form>
         </section>
 
     </div>

@@ -13,7 +13,7 @@ class Portfolio extends Model
         'freelancer_id',
         'title',
         'description',
-        'image_link',
+        'img_link',
         'attachment_link'
     ];
 

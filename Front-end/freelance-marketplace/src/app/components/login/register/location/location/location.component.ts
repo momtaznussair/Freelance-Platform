@@ -1,11 +1,9 @@
-import { environment } from './../../../../../../environments/environment';
-import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
-import { ApiService } from 'src/app/services/api.service';
-import {RegisterDataService} from "../../../../../services/register-data.service";
-
-
+import { Component, OnInit } from '@angular/core';
+import { Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-location',
@@ -14,78 +12,68 @@ import {RegisterDataService} from "../../../../../services/register-data.service
 })
 export class LocationComponent implements OnInit {
 
-  constructor(private register:RegisterDataService, private apiService : ApiService , private router : Router) { }
+  form : FormGroup = new FormGroup({});
+  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
 
-
-   // responseToken : any = {auth_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7I…MwOX0.-8FYA7Pa40tCXSrPr-ZeKSGrbFeKCVD_-qwbT2Ze_qo" , "Accept": "application/json"}
-
-   // token for get locations
-  generatedToken : string = 'lZTv5kjIRIqEN89G5lfaXWdodpZzB3NhLOkmLGA0TM3tm93ifILj7_mFSmcMs60PJb0';
-
-  //first request header
-  firstRequestHeader : any = {
-    "Accept": "application/json",
-    "api-token": "AuXnFjES43NqbdODZoc1anLtpO9op_9HsA7hqU56HJoxlbbNrMsUAzmsp6cqoZ0HhWQ",
-    "user-email": "hemamessi47@gmail.com"
-  }
-
-
-
-  respondedToken : RespondedLocationToken = new RespondedLocationToken();
-  currentRegisterData : any;
+  user_data : any ;
 
   ngOnInit(): void {
 
-    this.currentRegisterData = localStorage.getItem('data');
+    this.user_data = localStorage.getItem('user_data');
+    this.user_data = JSON.parse(this.user_data);
 
+    this.form = this.formBuilder.group({
+      country : ['' , [ Validators.required ]],
+      street_address: ['' , [Validators.required ]],
+      city: ['' , [Validators.required ]],
+      zip_code: ['' , [Validators.required ]]
+    })
+  }
+    isLogged : boolean = false;
+    next() {
+      if(this.form.valid)
+      {
+        this.user_data.location = this.form.value;
+        console.log(this.user_data)
 
-    // this.apiService.get('https://www.universal-tutorial.com/api/getaccesstoken' , {headers : this.firstRequestHeader }).subscribe((response)=>{
-    //   console.log(response)
-    //   this.respondedToken.resToken = response
-    //   let token = this.respondedToken.resToken.auth_token;
-    //   localStorage.setItem('locationToken' ,`Bearer ${token}`);
-    // },error=>{
-    //   console.log(error);
-    // })
+        //if signUp with socialite
+        if(this.user_data.response)
+        {
+
+          localStorage.setItem('token' , this.user_data.response.access_token);
+          console.log(this.user_data);
+          if(this.user_data.type == 'client')
+          {
+            this.router.navigateByUrl('/client/main');
+          }else
+          {
+            this.router.navigateByUrl('/user/signup/category');
+          }
+
+        }
+        else
+        {
+          if(this.user_data.user_data.type == 'client')
+          {
+            //this is a fake token
+            console.log(this.user_data.user_data.type);
+            localStorage.setItem('token' , 'any');
+            this.router.navigateByUrl('/client/main');
+          }
+          else
+          {
+            console.log(this.user_data.user_data.type);
+            localStorage.setItem('token' , 'any');
+            this.router.navigateByUrl('/user/signup/category');
+          }
+        }
+
+      }
+      else
+      {
+      this.isLogged = true;
+      }
+
+    }
   }
 
-  //second header request
-  // secondRequestHeader : any = {
-  //   "Authorization": localStorage.getItem('locationToken'),
-  //   "Accept": "application/json",
-  // }
-
-  getLocations(){
-    // console.log(localStorage.getItem('locationToken'));
-    // console.log(this.secondRequestHeader)
-    // this.apiService.get('https://www.universal-tutorial.com/api/countries/' , {headers : this.secondRequestHeader}).subscribe(response=>{
-    //   console.log(response);
-    // })
-
-
-  }
-
-  isLogged : boolean = false;
-
-  // submit()
-  // {
-  //   this.isLogged = true;
-  //   if(this.form.valid){
-  //     this.router.navigateByUrl('/freelancer/work/work');
-  //     this.currentRegisterData = JSON.parse(this.currentRegisterData)
-  //     this.currentRegisterData.experienceLevel = this.form.controls.experienceLevel.value;
-  //     console.log(this.currentRegisterData);
-
-  //     //send request with all forms
-  //     this.apiService.post(`${environment.apiUrl}/freelance` , this.currentRegisterData).subscribe(response=>{
-  //       console.log(response);
-  //       localStorage.removeItem('data');
-  //       // localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
-  //     })
-
-  //   }
-  // }
-
-
-
-}

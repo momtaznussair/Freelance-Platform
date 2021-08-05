@@ -7,6 +7,7 @@ use App\Models\Portfolio;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
@@ -31,7 +32,7 @@ class PortfolioController extends Controller
             'freelancer_id' => 'required|exists:freelancers,id',
             'title' => 'required|min:2',
             'description' => 'required|min:10',
-            'image_link' => 'required:min:5',
+            'img_link' => 'required|min:5',
             'attachment_link' => 'min:5',
         ]);
 
@@ -39,9 +40,17 @@ class PortfolioController extends Controller
             return  $this->apiResponse(null,$validate->errors(),422);
         }
 
-        $portfolio = Portfolio::create([
-            'name' => $request->name
-        ]);
+        
+        // $portfolio = Portfolio::create($request->all());
+        $portfolio = new Portfolio();
+        $portfolio->freelancer_id = $request->freelancer_id;
+        $portfolio->title = $request->title;
+        $portfolio->description = $request->description;
+        $portfolio->attachment_link = $request->attachment_link;
+
+        $path = Storage::putFile('portfolios', $request->file('img_link'));
+        $portfolio->img_link = $path;
+
 
         if($portfolio){
             return $this->apiResponse($portfolio);
@@ -55,7 +64,8 @@ class PortfolioController extends Controller
             'freelancer_id' => 'required|exists:freelancers,id',
             'title' => 'required|min:2',
             'description' => 'required|min:10',
-            'image_link' => 'required:min:5'
+            'img_link' => 'required|min:5',
+            'attachment_link' => 'min:5',
         ]);
 
         if($validate->fails()){
@@ -68,7 +78,15 @@ class PortfolioController extends Controller
             return $this->NotFoundError();
         }
 
-        $portfolio->update($request->all());
+        // $portfolio->update($request->all());
+        $portfolio->freelancer_id = $request->freelancer_id;
+        $portfolio->title = $request->title;
+        $portfolio->description = $request->description;
+        $portfolio->attachment_link = $request->attachment_link;
+
+        $path = Storage::putFile('portfolios', $request->file('img_link'));
+        $portfolio->img_link = $path;
+
         if($portfolio){
             return $this->apiResponse($portfolio,'',201);
         }

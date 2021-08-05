@@ -58,7 +58,6 @@ class JobController extends Controller
         $job->skills()->attach($request->skill === null ? [] : $request->skill);
 
 
-
         if ($job) {
             return $this->apiResponse($job);
         }
@@ -109,6 +108,7 @@ class JobController extends Controller
 
         if ($job) {
             $job->skills()->detach();
+            $job->proposals()->delete();
             $job->delete();
             return $this->apiResponse(true, '', 200);
         }

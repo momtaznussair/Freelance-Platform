@@ -88,6 +88,9 @@ class FreelancerController extends Controller
         $freelancer = freelancer::find($id);
 
         if($freelancer){
+            $freelancer->portfolios()->delete();
+            $freelancer->certificates()->delete();
+            $freelancer->proposals()->delete();
             $freelancer->delete();
             return $this->apiResponse(true,'',200);
         }

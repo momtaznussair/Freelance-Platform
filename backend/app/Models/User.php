@@ -31,7 +31,8 @@ class User extends Authenticatable
         'country',
         'city',
         'street',
-        'zip_code'
+        'zip_code',
+        'type'
     ];
 
     /**
@@ -59,5 +60,9 @@ class User extends Authenticatable
 
     public function freelancer(){
         return $this->hasOne(Freelancer::class);
+    }
+
+    public function educations(){
+        return $this->hasMany(Education::class);
     }
 }
