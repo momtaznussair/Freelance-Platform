@@ -12,6 +12,8 @@ import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
 export class SignupComponent implements OnInit {
 
   userResponse : User = new User();
+  imgPattern = '([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)';
+
 
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
@@ -20,6 +22,12 @@ export class SignupComponent implements OnInit {
   isTokenFound : boolean = false;
 
   user_data : any ;
+
+  //patterns for validation
+  textPattern = "^[a-zA-Z]{3,255}$"
+  phonePattern = "^[0-9a-zA-Z]{3,255}$"
+  passwordPattern = "^[0-9a-zA-Z]{3,255}$"
+
   ngOnInit(): void {
 
 
@@ -37,16 +45,16 @@ export class SignupComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      first_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
-      last_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
-      username : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
-      email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
+      first_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) , Validators.pattern(this.textPattern)]],
+      last_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255), Validators.pattern(this.textPattern) ]],
+      username : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) , Validators.pattern(this.textPattern)]],
+      email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required , Validators.pattern(this.textPattern)] ],
       gender:['' , [Validators.required]],
       phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
-      password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15) ]],
-      password_confirmation : ['' , [Validators.required]],
-      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
-      type:['' , [Validators.required]],
+      password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
+      password_confirmation : ['' , [Validators.required ]],
+      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255) ]],
+      type:['' , [Validators.required , Validators.pattern(this.textPattern)]],
     })
 
   }//end of ngOnInit
