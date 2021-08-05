@@ -17,6 +17,7 @@ use App\Http\Controllers\Api\FreelancerController;
 use App\Http\Controllers\Api\ExperienceLevelController;
 use App\Http\Controllers\Api\PaymentStyleController;
 use App\Http\Controllers\Api\PaymentTypeController;
+use App\Http\Controllers\Api\portfolioImagesController;
 use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SkillController;
 
@@ -172,3 +173,7 @@ Route::get('educations/{education}',[EducationController::class,'show']);
 Route::post('educations',[EducationController::class,'store']);
 Route::post('/educations/{education}',[EducationController::class,'update']);
 Route::delete('/educations/delete/{education}',[EducationController::class,'destroy']);
+
+// portfolios images
+Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
+Route::post('portfolios/images', [portfolioImagesController::class, 'store']);
