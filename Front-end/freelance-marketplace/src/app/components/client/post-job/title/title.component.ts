@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { RegisterDataService } from 'src/app/services/register-data.service';
+// import { RegisterDataService } from 'src/app/services/register-data.service';
 // import {RegisterDataService} from "../../../../../services/register-data.service";
 import { UserService } from 'src/app/services/user.service';
 @Component({
@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
 export class TitleComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder , private registerService : RegisterDataService , private router : Router) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router) { }
 
   currentRegisterData : any;
   ngOnInit(): void {
