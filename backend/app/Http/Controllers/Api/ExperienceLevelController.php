@@ -75,6 +75,7 @@ class ExperienceLevelController extends Controller
         $experience_level = Experience_level::find($id);
 
         if($experience_level){
+            $experience_level->jobs()->delete();
             $experience_level->delete();
             return $this->apiResponse(true,'',200);
         }
