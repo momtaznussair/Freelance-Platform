@@ -15,10 +15,12 @@ export class LocationComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
 
-  currentDataForUser : any;
+  user_data : any ;
+
   ngOnInit(): void {
 
-    this.currentDataForUser = localStorage.getItem('user_data');
+    this.user_data = localStorage.getItem('user_data');
+    this.user_data = JSON.parse(this.user_data);
 
     this.form = this.formBuilder.group({
       country : ['' , [ Validators.required ]],
@@ -32,15 +34,19 @@ export class LocationComponent implements OnInit {
     next() {
       if(this.form.valid)
       {
-        localStorage.setItem('token' , 'any');
-        this.currentDataForUser = JSON.parse(this.currentDataForUser);
-        this.currentDataForUser.location = this.form.value;
-        console.log(this.currentDataForUser);
+        this.user_data.location = this.form.value;
+        localStorage.setItem('token' , this.user_data.response.access_token);
+        console.log(this.user_data);
 
-        this.router.navigateByUrl('/user/signup/category');
-        // this.userService.register(this.currentDataForUser).subscribe(response=>{
-        //   console.log(response);
-        // })
+        if(this.user_data.type == 'client')
+        {
+          this.router.navigateByUrl('/client/main');
+        }
+        else
+        {
+          localStorage.removeItem('user_data');
+          this.router.navigateByUrl('/user/signup/category');
+        }
       }
       else
       {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from "angularx-social-login";
 import { GoogleLoginProvider } from "angularx-social-login";
 
@@ -10,7 +11,7 @@ import { GoogleLoginProvider } from "angularx-social-login";
 })
 export class ConnectionTypeComponent implements OnInit {
 
-  constructor(private authService: SocialAuthService) { }
+  constructor(private authService: SocialAuthService , private router : Router) { }
 
   user: SocialUser = new SocialUser();
   GoogleLoginProvider = GoogleLoginProvider;
@@ -19,7 +20,11 @@ export class ConnectionTypeComponent implements OnInit {
   ngOnInit(): void {
     this.authService.authState.subscribe(user => {
       this.user = user;
-      console.log(this.user);
+      console.log(this.user.response);
+      localStorage.setItem('user_data' ,JSON.stringify( this.user));
+      // localStorage.setItem('token' , this.user.response.access_token);
+      localStorage.setItem('id_token' , this.user.response.id_token);
+      this.router.navigateByUrl('/user/signup/register');
     });
   }
 

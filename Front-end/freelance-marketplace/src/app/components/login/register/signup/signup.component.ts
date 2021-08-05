@@ -19,11 +19,18 @@ export class SignupComponent implements OnInit {
 
   isTokenFound : boolean = false;
 
+  user_data : any ;
   ngOnInit(): void {
-    if(localStorage.getItem('token'))
+
+
+
+    if(localStorage.getItem('id_token'))
     {
+      this.user_data = localStorage.getItem('user_data');
+      this.user_data = JSON.parse(this.user_data);
       this.isTokenFound = true;
-    }else
+    }
+    else
     {
       this.isTokenFound = false;
     }
@@ -44,13 +51,25 @@ export class SignupComponent implements OnInit {
 
   }//end of ngOnInit
 
+  nextStepOfSignUp()
+  {
+
+    localStorage.setItem('user_data' , JSON.stringify(this.user_data));
+    this.router.navigateByUrl('/user/signup/location');
+  }
+
   becameClient(){
-    this.router.navigateByUrl('client/main');
+      this.user_data.type = 'client';
+      this.nextStepOfSignUp();
   }
 
   becameFreelancer(){
-    this.router.navigateByUrl('user/signup/category');
+      this.user_data.type = 'freelancer';
+      this.nextStepOfSignUp();
   }
+
+  // if signup with any socialite
+
 
 
 
