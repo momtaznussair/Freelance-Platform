@@ -3,9 +3,6 @@
 use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Auth\SocialiteAuthController;
 use App\Http\Controllers\Api\LanguageController;
@@ -35,6 +32,7 @@ use App\Http\Controllers\Api\SkillController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 // CRUD for Category
 Route::get('categories',[CategoryController::class,'index']);
 Route::get('categories/{category}',[CategoryController::class,'show']);
