@@ -1,0 +1,20 @@
+/* card body */
+/* textarea:hover{
+    border: 1px solid green;
+} */
+
+.drag-drop{
+    border: .125rem dotted rgb(82, 104, 82);
+    height: 5rem;
+}
+
+.drag-drop span{
+    color: var(--tc);
+}
+
+.drag-drop span:hover{
+    cursor: pointer;
+    text-decoration: underline ;
+}
+
+/* card footer */

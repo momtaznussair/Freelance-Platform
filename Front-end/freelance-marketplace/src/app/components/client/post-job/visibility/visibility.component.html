@@ -1,0 +1,136 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-2 d-sm-none d-md-block">
+            <post-job-aside></post-job-aside>
+        </div>
+
+        <div class="col-sm-12 col-md-10 mt-3">
+          <form action="">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="" [formGroup]="form">
+
+                            <div class="card mb-5">
+                                <div class="card-header">
+                                    <h2>Visibility</h2>
+                                    <p>Step 5 of 7</p>
+                                </div>
+                                <div class="card-body">
+                                    <p class="fw-bold">
+                                        Who can see your job?
+                                    </p>
+                                    <div class="form-group row">
+
+                                        <div class=" col-12 col-md-4">
+                                            <div class="card-deck">
+                                                <div id="anyone-card" class="card mb-4">
+                                                    <div class="card-body py-md-4" role="button">
+                                                        <h5 class="card-title">
+                                                            <input id="anyone" value="1" type="radio"  formControlName="Visibility">
+                                                        </h5>
+                                                        <div class="text-center">
+                                                            <i class="fas fa-user"></i>
+                                                            <h5>Anyone</h5>
+                                                            <small>Freelancers and agencies using Upwork and public search engines can find this job.</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4">
+                                            <div class="card-deck">
+                                                <div id="talent-card" class="card mb-4">
+                                                    <div class="card-body py-md-4" role="button">
+                                                        <h5 class="card-title">
+                                                            <input id="talent" value="2" type="radio" formControlName="Visibility">
+                                                        </h5>
+                                                        <div class="text-center pb-5">
+                                                            <i class="fab fa-adn"></i>
+                                                            <h5>Only Upwork talent</h5>
+                                                            <small>Only Upwork users can find this job.</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-4">
+                                            <div class="card-deck">
+                                                <div id="invite-card" class="card mb-4">
+                                                    <div class="card-body py-md-4" role="button">
+                                                        <h5 class="card-title">
+                                                            <input id="invite" value="3" type="radio" formControlName="Visibility">
+                                                        </h5>
+                                                        <div class="text-center pb-4">
+                                                            <i class="fas fa-lock"></i>
+                                                            <h5>Invite-only</h5>
+                                                            <small>Looking for comprehensive and deep expertise in this field</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="form.controls.Visibility.invalid && isLogged">
+                                          <small class="text-danger fw-bold mb-3" *ngIf="form.controls.Visibility.hasError('required')">You have to choose one of the above first </small>
+                                      </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- footer -->
+                                <div class="card-footer py-4">
+                                    <a routerLink="/client/post-job/expertise" class="btn btn-light px-5 mx-3 py-2 border rounded-pill text-primary">Back</a>
+                                    <button class="btn btn-primary px-5 mx-3 py-2 border rounded-pill " type="submit" (click)="next()">Next</button>
+                                  </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+          </form>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- scripts -->
+<script>
+    $(document).ready(function () {
+        $('input:radio').change(function () {//Clicking input radio
+            var radioClicked = $(this).attr('id');
+            unclickRadio();
+            removeActive();
+            clickRadio(radioClicked);
+            makeActive(radioClicked);
+        });
+        $(".card").click(function () {//Clicking the card
+            var inputElement = $(this).find('input[type=radio]').attr('id');
+            unclickRadio();
+            removeActive();
+            makeActive(inputElement);
+            clickRadio(inputElement);
+        });
+    });
+
+
+    function unclickRadio() {
+        $("input:radio").prop("checked", false);
+    }
+
+    function clickRadio(inputElement) {
+        $("#" + inputElement).prop("checked", true);
+    }
+
+    function removeActive() {
+        $(".card").removeClass("active");
+    }
+
+    function makeActive(element) {
+        $("#" + element + "-card").addClass("active");
+    }
+</script>

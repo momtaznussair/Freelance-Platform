@@ -28,7 +28,7 @@ const routes : Routes=[
   {path : 'education' , component : EductionComponent, canActivate:[AuthGuard]},
   {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard]},
   {path : 'hourly-rate' , component : HourlyrateComponent, canActivate:[AuthGuard]},
-  {path : 'location' , component : LocationComponent, canActivate:[AuthGuard]},
+  {path : 'location' , component : LocationComponent},
   {path : '' , component : ConnectionTypeComponent, canActivate:[AuthGuard]},
 ]
 

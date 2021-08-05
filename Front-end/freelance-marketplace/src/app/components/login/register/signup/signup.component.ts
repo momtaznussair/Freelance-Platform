@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
-import { RegisterDataService } from 'src/app/services/register-data.service';
-import { UserService } from 'src/app/services/user.service';
-import { environment } from 'src/environments/environment.prod';
+import { User } from 'src/app/models/user/user';
+import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
 
 @Component({
   selector: 'app-signup',
@@ -13,17 +11,26 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class SignupComponent implements OnInit {
 
+  userResponse : User = new User();
+
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder  ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
 
 
   isTokenFound : boolean = false;
 
+  user_data : any ;
   ngOnInit(): void {
-    if(localStorage.getItem('token'))
+
+
+
+    if(localStorage.getItem('id_token'))
     {
+      this.user_data = localStorage.getItem('user_data');
+      this.user_data = JSON.parse(this.user_data);
       this.isTokenFound = true;
-    }else
+    }
+    else
     {
       this.isTokenFound = false;
     }
@@ -44,17 +51,27 @@ export class SignupComponent implements OnInit {
 
   }//end of ngOnInit
 
+  nextStepOfSignUp()
+  {
+
+    localStorage.setItem('user_data' , JSON.stringify(this.user_data));
+    this.router.navigateByUrl('/user/signup/location');
+  }
+
   becameClient(){
-    this.router.navigateByUrl('client/main');
+      this.user_data.type = 'client';
+      this.nextStepOfSignUp();
   }
 
   becameFreelancer(){
-    this.router.navigateByUrl('user/signup/category');
+      this.user_data.type = 'freelancer';
+      this.nextStepOfSignUp();
   }
 
+  // if signup with any socialite
 
-  respondedToken : RespondedLocationToken = new RespondedLocationToken();
-  msg : any;
+
+
 
   password_confirmation : string = '';
   password : string = '';
@@ -63,35 +80,9 @@ export class SignupComponent implements OnInit {
     // alert(JSON.stringify( this.form.value))
     if(this.form.valid && this.password == this.password_confirmation)
     {
-      this.userService.register(this.form.value).subscribe(response=>{
-        console.log(this.form.value);
-        console.log(response);
-      })
-
-      //save token into localStorage to login and stop guard
-      localStorage.setItem("token" , "response");
-
-      // this.registerService.registerProcess.registrationData = this.form.value;
-      // localStorage.setItem('data' ,JSON.stringify(this.registerService.registerProcess));
-      // console.log(localStorage.getItem('data'));
-
-      // ====Use HttpClient====
-      this.userService.register(this.form.value).subscribe(response=>{
-        alert('process successfully');
-        console.log(response);
-        this.respondedToken.resToken = response
-        this.msg = this.respondedToken.resToken;
-        this.msg = localStorage.setItem('msg' , JSON.stringify(this.msg));
-      },error=>console.error)
-
-      if(this.form.controls.type.value == 'client')
-      {
-        this.becameClient();
-      }else
-      {
-        this.becameFreelancer();
-      }
-
+      this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
+      localStorage.setItem('user_data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
+      this.router.navigateByUrl('/user/signup/location');
     }
     else
     {
