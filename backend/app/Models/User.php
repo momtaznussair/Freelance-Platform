@@ -31,7 +31,8 @@ class User extends Authenticatable
         'country',
         'city',
         'street',
-        'zip_code'
+        'zip_code',
+        'type'
     ];
 
     /**
