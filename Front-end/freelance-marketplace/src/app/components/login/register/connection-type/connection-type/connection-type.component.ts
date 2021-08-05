@@ -23,7 +23,6 @@ export class ConnectionTypeComponent implements OnInit {
       console.log(this.user);
       console.log(this.user.response);
       localStorage.setItem('user_data' ,JSON.stringify( this.user));
-      localStorage.setItem('id_token' , this.user.response.id_token);
       this.router.navigateByUrl('/user/signup/register');
     });
   }
