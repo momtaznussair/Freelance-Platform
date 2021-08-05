@@ -108,6 +108,7 @@ class JobController extends Controller
 
         if ($job) {
             $job->skills()->detach();
+            $job->proposals()->delete();
             $job->delete();
             return $this->apiResponse(true, '', 200);
         }
