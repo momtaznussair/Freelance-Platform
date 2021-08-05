@@ -1,0 +1,16 @@
+.myinfo .h2,
+.h1 {
+    color: var(--mc);
+}
+
+.billing-method .btn {
+    background-color: var(--bg);
+    color: var(--mc);
+    border: 1px solid var(--mc);
+    border-radius: 20px;
+}
+
+.billing-method .btn:hover {
+    background-color: var(--mc);
+    color: var(--bg);
+}

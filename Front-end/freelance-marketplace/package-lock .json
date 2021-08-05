@@ -1,0 +1,24 @@
+{
+  "name": "Freelance-Platform",
+  "lockfileVersion": 2,
+  "requires": true,
+  "packages": {
+    "": {
+      "dependencies": {
+        "ng2-search-filter": "^0.5.1"
+      }
+    },
+    "node_modules/ng2-search-filter": {
+      "version": "0.5.1",
+      "resolved": "https://registry.npmjs.org/ng2-search-filter/-/ng2-search-filter-0.5.1.tgz",
+      "integrity": "sha512-noN8R+Gyxo5ZuboEOvq+u0zKio6pEf1IVYQTCZfAfXm6ONmzWu/M2xK0di9oVUprDbPBQXCGUuvD5i2GD+35HA=="
+    }
+  },
+  "dependencies": {
+    "ng2-search-filter": {
+      "version": "0.5.1",
+      "resolved": "https://registry.npmjs.org/ng2-search-filter/-/ng2-search-filter-0.5.1.tgz",
+      "integrity": "sha512-noN8R+Gyxo5ZuboEOvq+u0zKio6pEf1IVYQTCZfAfXm6ONmzWu/M2xK0di9oVUprDbPBQXCGUuvD5i2GD+35HA=="
+    }
+  }
+}

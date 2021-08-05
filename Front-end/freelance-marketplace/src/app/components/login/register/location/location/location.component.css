@@ -1,0 +1,13 @@
+@import url(../../main.css);
+select {
+    width: 30%;
+}
+
+.input-group {
+    width: 33%;
+}
+
+#two {
+    width: 20%;
+    margin-bottom: 15px;
+}

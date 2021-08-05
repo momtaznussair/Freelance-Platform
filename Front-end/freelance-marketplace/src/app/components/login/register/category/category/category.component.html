@@ -1,0 +1,45 @@
+<div class="container py-5 px-3">
+
+    <div class="row">
+
+
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+
+
+
+        <section class="category col-md-9">
+
+            <div class="container2 ">
+
+                <div class="header">
+                    <h3> Category </h3>
+                    <p>1 of 8</p>
+                </div>
+
+
+                <br>
+                <p class="h5"> Tell us about the work you do </p>
+                <h3> <b> what is the main service you offer ? </b></h3><br>
+                <form action="" class="mb-5" [formGroup]="form">
+                    <select class="form-select form-select-sm" formControlName="category_id" name="category_id" aria-label=".form-select-sm example">
+                      <option selected   value="1" >front_end</option>
+                    </select>
+
+
+
+                    <div class="md-6 lg-6  footer">
+
+                        <!-- (click)="next(1)" -->
+                        <button class="bt2" type="submit" (click)="submit()">Next</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </section>
+
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="container py-5 px-3">
+
+    <div class="row">
+
+
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+        <section class="hourlyrate col-12 col-md-9">
+
+            <div class="header">
+                <h3>hourly Rate</h3>
+                <p>7 of 8</p>
+            </div>
+
+            <div class="body">
+                <div class="sec1 sec">
+                    <p>Clients will see this rate on your profile and in search results once you publish your profile. You can adjust your rate every time you submit a proposal
+                    </p>
+                    <div class="align">
+                        <div class="left">
+                            <h3>hourly rate</h3>
+                            <p>total amount the client will see</p>
+                        </div>
+                        <form [formGroup]="form">
+                            <div class="right">
+                                <input type="text" name="hourlyRate" formControlName="hourlyRate" #hourly (keyup)="getSiteService(hourly.value)" [(ngModel)]="hourlyRating" placeholder="10.00">
+                                <span>/hr</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <div class="sec2 sec">
+                    <div class="align">
+                        <div class="left">
+                            <h3>upwork service fee</h3>
+                            <a href="#">Explain this</a>
+
+                        </div>
+                        <div class="right">
+                            <input type="number" [(ngModel)]="siteService" disabled name="siteService" placeholder="-2.00">
+                            <span>/hr</span>
+                        </div>
+
+                    </div>
+                    <p>The Upwork Service Fee is 20% when you begin a contract with a new client. bill over $500 with your client. the fee will be 10%</p>
+                </div>
+                <hr>
+                <div class="sec3 sec">
+                    <div class="align">
+                        <div class="left">
+                            <h3>you will recive</h3>
+                            <p> the estimated amount you will recive after service fee </p>
+                        </div>
+                        <div class="right">
+
+                            <input type="number" [(ngModel)]="latestReceive" disabled name="latestReceive" placeholder="8.00">
+                            <span>/hr</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class=" footer lg-6 d-sm-flex">
+                <button class="bt1" routerLink="/user/signup/lang">back</button>
+                <button class="bt2" type="submit" (click)="submit()">next</button>
+            </div>
+
+
+
+        </section>
+
+    </div>
+</div>

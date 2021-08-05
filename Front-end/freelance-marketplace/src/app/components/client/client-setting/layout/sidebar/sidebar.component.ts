@@ -9,7 +9,11 @@ export class SidebarComponent implements OnInit {
 
   constructor() { }
 
+  currentPath : string = ''
+
   ngOnInit(): void {
+    this.currentPath = window.location.href.substring(22);
+    console.log(this.currentPath = window.location.href.substring(21))
   }
 
 

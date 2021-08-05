@@ -9,12 +9,12 @@ export class ApiService {
 
   constructor(private httpClient : HttpClient) { }
 
-  get(url:string){
-    return this.httpClient.get(url);
+  get(url:string , headers ? :any){
+    return this.httpClient.get(url , headers);
   }
 
-  post(url:string , body:any){
-    return this.httpClient.post(url , body);
+  post(url:string , body:any , condition ? : any){
+    return this.httpClient.post(url , body , condition);
   }
 
   put(url:string , body:any){

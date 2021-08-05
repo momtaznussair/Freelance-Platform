@@ -1,0 +1,46 @@
+ /* small devices ( 600px and down) */
+ 
+ @import url(../../main.css);
+ @media only screen and (max-width: 576px) {
+     /***********************essential*********************/
+     h2 {
+         display: inline-block;
+         margin-right: 5px;
+         color: var(--mc);
+     }
+     p {
+         font-size: 14px;
+     }
+     a {
+         font-size: 12px;
+         color: var(--sc);
+     }
+     .align {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 10px;
+     }
+     .sec {
+         margin: 10px 0;
+         padding: 15px;
+     }
+
+ }
+ /* large devices ( 600px and up) */
+ 
+ @media only screen and (min-width: 576px) {
+     .align {
+         display: flex;
+         justify-content: space-between;
+         margin-bottom: 10px;
+     }
+     .sec {
+         margin: 10px 0;
+         padding: 15px;
+     }
+     .psearch{
+        font-size: 16px;
+        padding: 5px;
+        margin-bottom: 0;
+    }
+ }

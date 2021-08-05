@@ -1,0 +1,54 @@
+<div class="container py-5 px-3">
+    <div class="row">
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+        <section class="expertlevel col-12 col-md-9">
+            <form [formGroup]="form">
+                <div class="header">
+                    <h3>Experience level</h3>
+                    <p>4 of 8</p>
+                </div>
+                <br />
+                <h3>What is your level experience in this field?</h3>
+                <br />
+                <div class="card my-2">
+                    <label class="radio-inline"><input formControlName="experienceLevel" type="radio"
+           name="experienceLevel" value="1"  />Entry
+          level<br />
+          <p>I am relatively new to this field</p>
+        </label>
+                </div>
+
+                <div class="card my-2">
+                    <label class="radio-inline"><input formControlName="experienceLevel"
+            type="radio"
+            name="experienceLevel" value="2"
+
+          />Intermediate<br />
+          <p>I have substantial experience in this field</p>
+        </label>
+                </div>
+                <div class="card my-2">
+                    <label class="radio-inline"><input formControlName="experienceLevel"
+            type="radio"
+            name="experienceLevel" value="3"
+
+          />Expert<br />
+          <p>I have comprehensive and deep expertise in this field</p>
+        </label>
+                </div>
+                <div *ngIf="form.controls.experienceLevel.invalid && isLogged">
+                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.experienceLevel.hasError('required')">You have to choose one of the above first !!!!</small>
+                </div>
+                <br />
+
+
+                <div class="footer lg-6 d-sm-flex">
+                    <button class="bt1" type="button" routerLink="/user/signup/overview"> Back </button>
+                    <button class="bt2" type="submit" (click)="next()">Next</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
