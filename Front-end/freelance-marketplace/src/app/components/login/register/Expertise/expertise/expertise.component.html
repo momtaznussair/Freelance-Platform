@@ -1,3 +1,4 @@
+
 <div class=" container py-5 px-3">
 
     <div class="row">
@@ -13,34 +14,35 @@
                 <p>3 of 8</p>
             </div>
             <form action="" [formGroup]="form">
-                <div class="body">
-                    <div class="sec sec1">
-                        <p><b>Select your skills</b></p>
-                        <div class="skills">
-                            <!-- <i *ngIf="added" class=" fa fa-solid fa-check"></i> -->
-                            <button #b class=" mx-1 my-1  bt1" (click)="addSkill(b)" *ngFor="let i as Users">{{i}} </button>
-                        </div>
+            <div class="body">
+                <div class="sec sec1">
+                    <p><b>Select your skills</b></p>
+                    <div class="skills"  >
+                        <!-- <i *ngIf="added" class=" fa fa-solid fa-check"></i> -->
+                        <button #b class=" mx-1 my-1  bt1s"  *ngFor="let i of skills" [ngClass]="{'bt2s':i.selected}"  (click)="addSkill(i,b)" >{{i.name}} </button>
+                       </div>
+                </div>
+                <div class="sec sec2">
+                    <p><b>Not what you're looking for ?</b></p>
+                   
+                    <div class="card dropdown">
+                        <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="query"  formControlName="searchSkill"  class="form-control" [placeholder]= "placeholder">
+                      
                     </div>
-                    <div class="sec sec2">
-                        <p><b>Not what you're looking for ?</b></p>
-
-                        <div class="card dropdown">
-                            <input #inpt type="text" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="query" (keyup)="search()" formControlName="searchSkill" name="serachSkills" class="form-control" placeholder="Start typing to search for skills">
-
-                        </div>
-                        <div class="psearch" *ngFor="let item of skills |searchFilter: query">
-                            <p #p (onclick)="addSkillFromDropDown(p)" *ngIf="inpt.value"> {{item.name}}</p>
-                        </div>
-                        <div *ngIf="form.controls.searchSkill.invalid && isLogged || (form.controls.searchSkill.dirty || form.controls.searchSkill.touched)">
-                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('required')">This field is required</small>
-                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('maxlength')"> You can not write more than 500 letter</small>
-                        </div>
+                    <ul class="menubox card list-group" *ngIf="inpt.value">
+                    <div class="psearch"  *ngFor="let item of skills |searchFilter: query">
+                        <a class="list-group-item list-group-item-light"  #a (click)="addSkillFromDropDown(a,inpt)"  > {{item.name}}</a>
+                   </div>
+                </ul>
+                    <div *ngIf="form.controls.searchSkill.invalid && form.controls.searchSkill.dirty || form.controls.searchSkill.touched">
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('required')">This field is required</small>
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('maxlength')"> You can not write more than 500 letter</small>
                     </div>
                 </div>
                 <div class=" footer lg-6 d-sm-flex">
                     <button class="bt1" routerLink="/user/signup/experience-level">back</button>
                     <button class="bt2" (click)="submit()">next</button>
-                </div>
+                </div></div>
             </form>
         </section>
     </div>

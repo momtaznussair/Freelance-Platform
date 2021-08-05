@@ -83,7 +83,7 @@ a:hover{
 
 /* Media Query */
 
-@media (max-width:767px){
+@media (max-width:770px){
     .header span i{
         font-size: 1.2rem;
 
@@ -92,7 +92,7 @@ a:hover{
         font-size: .2rem;
     }
 }
-@media(min-width:801px) {
+@media(min-width:770px) {
    .edit{
         font-size: .6rem;
     }
