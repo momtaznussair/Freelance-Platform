@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\Auth\SocialiteAuthController;
+use App\Http\Controllers\Api\ClientController;
 use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\LanguageLevelController;
 use App\Http\Controllers\Api\PortfolioController;
@@ -158,3 +159,10 @@ Route::get('skills/{skill}',[SkillController::class,'show']);
 Route::post('skills',[SkillController::class,'store']);
 Route::post('/skills/{skill}',[SkillController::class,'update']);
 Route::delete('/skills/delete/{skill}',[SkillController::class,'destroy']);
+
+// CRUD for Clients
+Route::get('clients',[ClientController::class,'index']);
+Route::get('clients/{client}',[ClientController::class,'show']);
+Route::post('clients',[ClientController::class,'store']);
+Route::post('/clients/{client}',[ClientController::class,'update']);
+Route::delete('/clients/delete/{client}',[ClientController::class,'destroy']);
