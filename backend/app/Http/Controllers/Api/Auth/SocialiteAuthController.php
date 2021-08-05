@@ -66,7 +66,7 @@ class SocialiteAuthController extends Controller
         // ]);
 
         $data = [
-                'access_token' => $token,
+                'token' => $token,
                 'token_type' => 'Bearer',
         ];
 

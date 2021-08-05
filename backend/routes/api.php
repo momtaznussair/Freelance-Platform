@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\LanguageLevelController;
 use App\Http\Controllers\Api\PortfolioController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\APi\DurationController;
+use App\Http\Controllers\Api\EducationController;
 use App\Http\Controllers\Api\JobController;
 use App\Http\Controllers\Api\FreelancerController;
 use App\Http\Controllers\Api\ExperienceLevelController;
@@ -166,3 +167,10 @@ Route::get('clients/{client}',[ClientController::class,'show']);
 Route::post('clients',[ClientController::class,'store']);
 Route::post('/clients/{client}',[ClientController::class,'update']);
 Route::delete('/clients/delete/{client}',[ClientController::class,'destroy']);
+
+// CRUD for Educations
+Route::get('educations',[EducationController::class,'index']);
+Route::get('educations/{education}',[EducationController::class,'show']);
+Route::post('educations',[EducationController::class,'store']);
+Route::post('/educations/{education}',[EducationController::class,'update']);
+Route::delete('/educations/delete/{education}',[EducationController::class,'destroy']);
