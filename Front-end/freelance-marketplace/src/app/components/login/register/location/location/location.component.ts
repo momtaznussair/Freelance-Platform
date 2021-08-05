@@ -35,18 +35,39 @@ export class LocationComponent implements OnInit {
       if(this.form.valid)
       {
         this.user_data.location = this.form.value;
-        localStorage.setItem('token' , this.user_data.response.access_token);
-        console.log(this.user_data);
+        console.log(this.user_data)
 
-        if(this.user_data.type == 'client')
+        //if signUp with socialite
+        if(this.user_data.response)
         {
-          this.router.navigateByUrl('/client/main');
+
+          localStorage.setItem('token' , this.user_data.response.access_token);
+          console.log(this.user_data);
+          if(this.user_data.type == 'client')
+          {
+            this.router.navigateByUrl('/client/main');
+          }else
+          {
+            this.router.navigateByUrl('/user/signup/category');
+          }
+
         }
         else
         {
-          localStorage.removeItem('user_data');
-          this.router.navigateByUrl('/user/signup/category');
+          if(this.user_data.type == 'client')
+          {
+            //this is a fake token
+            localStorage.setItem('token' , 'any');
+            this.router.navigateByUrl('/client/main');
+          }
+          else
+          {
+            localStorage.setItem('token' , 'any');
+            this.router.navigateByUrl('/user/signup/category');
+            // localStorage.removeItem('user_data');
+          }
         }
+
       }
       else
       {
