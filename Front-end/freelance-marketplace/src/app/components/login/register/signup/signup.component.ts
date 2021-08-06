@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
 
   //patterns for validation
   textPattern = "^[a-zA-Z]{3,255}$"
-  phonePattern = "^[0-9a-zA-Z]{3,255}$"
+  phonePattern = "/^[0-9]{11,15}$/"
   passwordPattern = "^[0-9a-zA-Z]{3,255}$"
 
   ngOnInit(): void {
@@ -50,7 +50,7 @@ export class SignupComponent implements OnInit {
       username : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) , Validators.pattern(this.textPattern)]],
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required , Validators.pattern(this.textPattern)] ],
       gender:['' , [Validators.required]],
-      phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
+      phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255) , Validators.pattern(this.phonePattern)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
       password_confirmation : ['' , [Validators.required ]],
       img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255) ]],

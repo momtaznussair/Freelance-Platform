@@ -86,6 +86,7 @@
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('required')">This field is required</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('minlength')"> You should write more than three characters</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('maxlength')"> You should write less than 250 characters</small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('pattern')"> You should write valid number</small>
                                         </div>
                                     </div>
 

@@ -12,7 +12,7 @@ import { FreelancerRegisterProcess } from 'src/app/services/register-data.servic
 })
 export class OverviewComponent implements OnInit {
 
-  textPattern = "^[a-zA-Z]{10,500}$"
+  textPattern = "/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/"
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder , private registerService : FreelancerRegisterProcess , private router : Router) { }
 
