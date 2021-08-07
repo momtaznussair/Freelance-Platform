@@ -20,7 +20,7 @@ export class HourlyrateComponent implements OnInit {
   {
     this.currentRegisterData = localStorage.getItem('data');
     this.form = this.formBuilder.group({
-      hourlyRate : ['' , [ Validators.required]],
+      hourly_rate : ['' , [ Validators.required]],
     })
   }
 
