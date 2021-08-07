@@ -65,4 +65,8 @@ class User extends \TCG\Voyager\Models\User
     public function educations(){
         return $this->hasMany(Education::class);
     }
+
+    public function proposals(){
+        return $this->hasMany(Proposal::class);
+    }
 }
