@@ -9,6 +9,7 @@
 
 # dependencies
 /node_modules
+/assets/images
 
 # profiling files
 chrome-profiler-events*.json
