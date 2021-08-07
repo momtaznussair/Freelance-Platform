@@ -27,8 +27,9 @@ export class SignupComponent implements OnInit {
   //patterns for validation
   textPattern = "^[a-zA-Z]{3,255}$"
   phonePattern = "/^[0-9]{11,15}$/";
-  passwordPattern = "^[0-9a-zA-Z]{3,255}$"
+  passwordPattern = "^[0-9a-zA-Z]{3,255}$";
 
+  genders = ['male' , 'female'];
   ngOnInit(): void {
 
     //check if user logged
@@ -90,6 +91,7 @@ export class SignupComponent implements OnInit {
   password_confirmation : string = '';
   password : string = '';
   isLogged : boolean = false;
+
   register(){
     // alert(JSON.stringify( this.form.value))
     if(this.form.valid && this.password == this.password_confirmation)
