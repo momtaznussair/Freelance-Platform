@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
@@ -38,7 +39,6 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            // return Response::json($validator->errors());
             return $this->apiResponse(null,$validator->errors(),400);
         }
         $user = new User();
@@ -97,7 +97,14 @@ class AuthController extends Controller
             ]);
         }
 
-        return $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
+        $data = [
+            'token' => $token,
+            'user' => new UserResource($user),
+        ];
+
+        return $this->apiResponse($data);
+
     }
 
 
