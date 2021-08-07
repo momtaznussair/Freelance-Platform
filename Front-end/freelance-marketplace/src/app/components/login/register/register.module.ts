@@ -16,25 +16,21 @@ import { ConnectionTypeComponent } from './connection-type/connection-type/conne
 import { OverviewComponent } from './overview/overview.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { SharedModule } from '../../freelancer/shared/shared.module';
-<<<<<<< HEAD
-import { FreelancerAuthorization } from 'src/app/guards/freelancer-authorization.guard';
-=======
->>>>>>> 602cd0ba9667ba9684b78d936ad7039d5cc573bf
 // import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
   {path : 'register' , component : SignupComponent},
-  {path : 'category' , component : CategoryComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
-  {path : 'overview' , component : OverviewComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
-  {path : 'skills' , component : ExpertiseComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
-  {path : 'experience-level' , component : ExpertlevelComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
-  {path : 'education' , component : EductionComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
-  {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
-  {path : 'hourly-rate' , component : HourlyrateComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
+  {path : 'category' , component : CategoryComponent, canActivate:[AuthGuard]},
+  {path : 'overview' , component : OverviewComponent, canActivate:[AuthGuard]},
+  {path : 'skills' , component : ExpertiseComponent, canActivate:[AuthGuard]},
+  {path : 'experience-level' , component : ExpertlevelComponent, canActivate:[AuthGuard]},
+  {path : 'education' , component : EductionComponent, canActivate:[AuthGuard]},
+  {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard]},
+  {path : 'hourly-rate' , component : HourlyrateComponent, canActivate:[AuthGuard]},
   {path : 'location' , component : LocationComponent},
-  {path : '' , component : ConnectionTypeComponent},
+  {path : '' , component : ConnectionTypeComponent, canActivate:[AuthGuard]},
 ]
 
 @NgModule({
