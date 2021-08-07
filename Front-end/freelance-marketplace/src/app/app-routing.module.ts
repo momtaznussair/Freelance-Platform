@@ -12,11 +12,13 @@ const routes: Routes = [
   },
   {
     path: 'freelancer',
-    loadChildren: () => import('./components/freelancer/freelancer.module').then(m => m.FreelancerModule),canActivate:[AuthGuard , FreelancerAuthorization]
+    loadChildren: () => import('./components/freelancer/freelancer.module').then(m => m.FreelancerModule)
+    // ,canActivate:[AuthGuard , FreelancerAuthorization]
   },
   {
     path: 'client',
-    loadChildren: () => import('./components/client/client.module').then(m => m.ClientModule),canActivate:[AuthGuard , ClientAuthorizationGuard]
+    loadChildren: () => import('./components/client/client.module').then(m => m.ClientModule)
+    // ,canActivate:[AuthGuard , ClientAuthorizationGuard]
   },
   {
     path: '',
