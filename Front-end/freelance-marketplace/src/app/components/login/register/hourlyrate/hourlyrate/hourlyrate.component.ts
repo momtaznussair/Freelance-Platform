@@ -20,7 +20,7 @@ export class HourlyrateComponent implements OnInit {
   {
     this.currentRegisterData = localStorage.getItem('data');
     this.form = this.formBuilder.group({
-      hourlyRate : ['' , [ Validators.required]],
+      hourly_rate : ['' , [ Validators.required]],
     })
   }
 
@@ -37,7 +37,7 @@ export class HourlyrateComponent implements OnInit {
   submit()
   {
     this.currentRegisterData = JSON.parse(this.currentRegisterData)
-    this.currentRegisterData.hourlyRate = this.form.controls.hourlyRate.value;
+    this.currentRegisterData.hourlyRate = this.form.controls.hourly_rate.value;
     console.log(localStorage.getItem('data'));
     localStorage.removeItem('data');
     this.router.navigateByUrl('freelancer');
