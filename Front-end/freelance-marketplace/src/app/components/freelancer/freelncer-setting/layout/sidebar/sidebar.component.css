@@ -12,6 +12,8 @@ a:hover {
 
 .active {
   border-left: 5px solid var(--mc);
+  color: var(--mc);
+  font-weight: bold;
 }
 
 .h2 {

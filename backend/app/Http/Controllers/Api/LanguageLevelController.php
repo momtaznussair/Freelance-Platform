@@ -73,6 +73,7 @@ class LanguageLevelController extends Controller
         $languageLevel = Language_level::find($id);
 
         if($languageLevel){
+            $languageLevel->jobs()->delete();
             $languageLevel->delete();
             return $this->apiResponse(true,'',200);
         }

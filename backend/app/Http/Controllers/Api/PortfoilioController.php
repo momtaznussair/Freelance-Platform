@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Portfolio;
+use App\Models\PortfolioImages;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
@@ -31,17 +33,38 @@ class PortfolioController extends Controller
             'freelancer_id' => 'required|exists:freelancers,id',
             'title' => 'required|min:2',
             'description' => 'required|min:10',
-            'image_link' => 'required:min:5',
-            'attachment_link' => 'min:5',
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'attachment' => 'nullable|file|mimes:xlsx,xls,csv,jpg,jpeg,png,bmp,doc,docx,pdf,tif,tiff',
         ]);
 
         if($validate->fails()){
             return  $this->apiResponse(null,$validate->errors(),422);
         }
+        
+        $portfolio = new Portfolio();
+        $portfolio->freelancer_id = $request->freelancer_id;
+        $portfolio->title = $request->title;
+        $portfolio->description = $request->description;
 
-        $portfolio = Portfolio::create([
-            'name' => $request->name
-        ]);
+        if ($request->hasFile('attachment'))
+        {
+            $path = Storage::putFile('attachments/portfolios', $request->file('attachment'));
+            $portfolio->attachment_link = $path;
+        }
+
+        $portfolio->save();
+
+        foreach($request->file('image') as $image)
+        {
+            $path = Storage::putFile('portfolios', $image);
+            
+            $image = PortfolioImages::create([
+                'portfolio_id' => $portfolio->id,
+                'image_path' => $path,
+            ]);  
+
+        }
 
         if($portfolio){
             return $this->apiResponse($portfolio);
@@ -55,7 +78,7 @@ class PortfolioController extends Controller
             'freelancer_id' => 'required|exists:freelancers,id',
             'title' => 'required|min:2',
             'description' => 'required|min:10',
-            'image_link' => 'required:min:5'
+            'attachment' => 'nullable|file|mimes:xlsx,xls,csv,jpg,jpeg,png,bmp,doc,docx,pdf,tif,tiff',
         ]);
 
         if($validate->fails()){
@@ -68,7 +91,20 @@ class PortfolioController extends Controller
             return $this->NotFoundError();
         }
 
-        $portfolio->update($request->all());
+        $attachment_path = $portfolio->attachment_link;
+        
+        if ($request->hasFile('attachment'))
+        {
+            Storage::delete("$attachment_path");
+            $path = Storage::putFile('attachments/portfolios', $request->file('attachment'));
+        }
+
+        $portfolio->freelancer_id = $request->freelancer_id;
+        $portfolio->title = $request->title;
+        $portfolio->description = $request->description;
+        $portfolio->attachment_link = $request->attachment_link;
+        $portfolio->save();
+
         if($portfolio){
             return $this->apiResponse($portfolio,'',201);
         }
@@ -80,6 +116,13 @@ class PortfolioController extends Controller
         $portfolio = Portfolio::find($id);
 
         if($portfolio){
+            $images = $portfolio->images;
+            foreach ($images as $image ){
+
+                Storage::delete($image);            
+            }
+            $images->delete();
+            
             $portfolio->delete();
             return $this->apiResponse(true,'',200);
         }

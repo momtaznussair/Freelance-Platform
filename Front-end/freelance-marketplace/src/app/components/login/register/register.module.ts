@@ -16,7 +16,10 @@ import { ConnectionTypeComponent } from './connection-type/connection-type/conne
 import { OverviewComponent } from './overview/overview.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { SharedModule } from '../../freelancer/shared/shared.module';
+<<<<<<< HEAD
 import { FreelancerAuthorization } from 'src/app/guards/freelancer-authorization.guard';
+=======
+>>>>>>> 602cd0ba9667ba9684b78d936ad7039d5cc573bf
 // import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 

@@ -15,15 +15,14 @@ class CreateEducationsTable extends Migration
     {
         Schema::create('educations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('institute');
-            $table->date('start_date');
+            $table->string('area_of_study');
+            $table->string('degree');
             $table->date('graduation_date');
-            $table->unsignedBigInteger('freelancer_id');
-            // $table->primary(['freelancer_id','id']);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('freelancer_id')->references('id')->on('freelancers');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

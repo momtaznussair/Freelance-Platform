@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
+use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -11,11 +13,9 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
-use App\Traits\ApiResponseTrait;
 
 class AuthController extends Controller
 {
-
     use ApiResponseTrait;
     public function register(Request $request)
     {
@@ -67,19 +67,12 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // return response()->json([
-        //         'access_token' => $token,
-        //         // 'token_type' => 'Bearer',
-        //         'id' => $user->id,
-        //         'msg' => "User registered successfully"
-        // ]);
         $data = [
-            'access_token' => $token,
-            'id' => $user->id,
-            // 'msg' => "User registered successfully"
+                'access_token' => $token,
+                'id' => $user->id,
         ];
-        return $this->apiResponse($data , "User registered successfully");
 
+        return $this->apiResponse($data,'User registered successfully');
     }
 
 
@@ -104,15 +97,19 @@ class AuthController extends Controller
             ]);
         }
 
-        return $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
+        $data = [
+            'token' => $token,
+            'user' => new UserResource($user),
+        ];
+
+        return $this->apiResponse($data);
+
     }
 
 
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
-        // return response()->json([
-        //         'msg' => "User logout successfully"
-        // ]);
         return $this->apiResponse(true,'User logout successfully',200);
     }
 }

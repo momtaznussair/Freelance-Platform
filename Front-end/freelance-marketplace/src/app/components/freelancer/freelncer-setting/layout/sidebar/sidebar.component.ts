@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
   
   groups : any = [
     {name : "Contact Info" , shape : "user" , path : "/freelancer/settings/info"},
-    {name : "Billing Methods" , shape : "badger-honey" , path : "freelancer/settings/deposit-method"},
+    {name : "Billing Methods" , shape : "badger-honey" , path : "/freelancer/settings/deposit-method"},
     {name : "Password & Security" , shape : "lock" , path : "/freelancer/settings/security"},
     {name : "Membership" , shape : "badge" , path : "/freelancer/settings/membership"},
     {name : "Tax Information" , shape : "commenting" , path : "/freelancer/settings/tax-info"},

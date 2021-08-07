@@ -10,6 +10,7 @@ import { NavComponent } from './header/nav/nav.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports : [NavComponent],
 })
 export class LayoutModule { }

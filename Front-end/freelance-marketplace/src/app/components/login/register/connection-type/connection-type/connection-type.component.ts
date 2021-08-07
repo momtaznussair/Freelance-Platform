@@ -12,7 +12,11 @@ import { GoogleLoginProvider , FacebookLoginProvider } from "angularx-social-log
 })
 export class ConnectionTypeComponent implements OnInit {
 
+<<<<<<< HEAD
   constructor(private authService: SocialAuthService , private router : Router , private userService : UserService) { }
+=======
+  constructor(private authService: SocialAuthService , private router : Router) { }
+>>>>>>> 602cd0ba9667ba9684b78d936ad7039d5cc573bf
 
   user: SocialUser = new SocialUser();
   GoogleLoginProvider = GoogleLoginProvider;

@@ -26,16 +26,23 @@ export class SignupComponent implements OnInit {
 
   //patterns for validation
   textPattern = "^[a-zA-Z]{3,255}$"
+<<<<<<< HEAD
   phonePattern = "/^[0-9]{11,15}$/";
+=======
+  phonePattern = "^[0-9a-zA-Z]{3,255}$"
+>>>>>>> 602cd0ba9667ba9684b78d936ad7039d5cc573bf
   passwordPattern = "^[0-9a-zA-Z]{3,255}$"
 
   ngOnInit(): void {
 
+<<<<<<< HEAD
     //check if user logged
     if(this.userService.isLogged())
     {
       this.userService.logout();
     }
+=======
+>>>>>>> 602cd0ba9667ba9684b78d936ad7039d5cc573bf
 
 
     if(localStorage.getItem('user_data'))
@@ -54,13 +61,21 @@ export class SignupComponent implements OnInit {
       first_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) , Validators.pattern(this.textPattern)]],
       last_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255), Validators.pattern(this.textPattern) ]],
       username : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) , Validators.pattern(this.textPattern)]],
+<<<<<<< HEAD
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
+=======
+      email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required , Validators.pattern(this.textPattern)] ],
+>>>>>>> 602cd0ba9667ba9684b78d936ad7039d5cc573bf
       gender:['' , [Validators.required]],
       phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
       password_confirmation : ['' , [Validators.required ]],
       img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255) ]],
+<<<<<<< HEAD
       type:['' , [Validators.required]],
+=======
+      type:['' , [Validators.required , Validators.pattern(this.textPattern)]],
+>>>>>>> 602cd0ba9667ba9684b78d936ad7039d5cc573bf
     })
 
   }//end of ngOnInit
