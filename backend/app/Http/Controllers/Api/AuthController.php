@@ -44,7 +44,7 @@ class AuthController extends Controller
         $user = new User();
 
         if(!$token){
-            $user->username = $request->username;
+            $user->name = $request->username;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
         }
