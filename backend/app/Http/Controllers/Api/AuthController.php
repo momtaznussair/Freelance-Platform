@@ -39,7 +39,9 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            return $this->apiResponse(null,$validator->errors(),400);
+            // return 
+            
+            return "invalid data";
         }
         $user = new User();
 
