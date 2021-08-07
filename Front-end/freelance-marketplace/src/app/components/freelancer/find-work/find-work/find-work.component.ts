@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {JobPostsService} from '../../../../services/job-posts.service'
+import { searchFilter } from 'src/app/pipes/search-filter.pipe';
+import {JobPostsService} from '../../../../services/job-posts.service';
 
 @Component({
   selector: 'app-find-work',
@@ -41,7 +42,7 @@ tableSize = 7;
 tableSizes = [3, 6, 9, 12];
 responsive:string="true"
 currentIndex:number=0;
-  constructor(private jobsPosts:JobPostsService) { }
+  constructor(private jobsPosts:JobPostsService ,private searchFilter:searchFilter) { }
 
   ngOnInit(): void {
     this.fetchPosts();
@@ -70,5 +71,10 @@ currentIndex:number=0;
     this.page = 1;
     this.fetchPosts();
   }  
+
+  search(){
+    console.log(this.query)
+    // this.POSTS=this.POSTS | searchFilter : this.query;
+  }
 
 }

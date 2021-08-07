@@ -32,7 +32,7 @@ const routes : Routes = [
 
 @NgModule({
   declarations: [
-  
+    
   ],
   imports: [
     CommonModule,MyJobsModule,RouterModule.forChild(routes),SharedModule
