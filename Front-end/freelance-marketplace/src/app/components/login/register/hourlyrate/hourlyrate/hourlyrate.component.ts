@@ -37,7 +37,7 @@ export class HourlyrateComponent implements OnInit {
   submit()
   {
     this.currentRegisterData = JSON.parse(this.currentRegisterData)
-    this.currentRegisterData.hourlyRate = this.form.controls.hourlyRate.value;
+    this.currentRegisterData.hourlyRate = this.form.controls.hourly_rate.value;
     console.log(localStorage.getItem('data'));
     localStorage.removeItem('data');
     this.router.navigateByUrl('freelancer');
