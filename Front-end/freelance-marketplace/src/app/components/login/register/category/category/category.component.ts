@@ -1,3 +1,5 @@
+import { HttpClient } from '@angular/common/http';
+import { environment } from './../../../../../../environments/environment.prod';
 import { FreelancerRegisterProcess } from './../../../../../services/register-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Categories } from 'src/app/models/categories/categories';
@@ -21,10 +23,6 @@ export class CategoryComponent implements OnInit {
   }
 
   currentCategoryChosen : string = '';
-  // category : Categories = new Categories();
-
-  category : Categories[] =[];
-
 
   currentRegisterData : any;
   form : FormGroup = new FormGroup({});
