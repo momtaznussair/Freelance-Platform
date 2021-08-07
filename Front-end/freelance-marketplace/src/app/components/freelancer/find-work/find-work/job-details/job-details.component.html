@@ -7,7 +7,7 @@
         <div class="col-12 col-lg-9 ">
             <div class="row border-bottom py-3 pt-md-4">
 
-                <p class="po">web design
+                <p class="po">{{job_details.job_title}}
                     <br><span class="sp">Posted 4 days ago</span>
 
                     <span><i class="fas fa-route ii"></i>WorldWide</span>
@@ -119,7 +119,7 @@
         <!--end of right col -->
         <div class="container fixed-bottom d-lg-none d-md-block">
 
-            <button type="button" class="btn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3  mx-5 ">Submit a proposal</button>
+            <button type="button" class="btn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3  mx-5 " (click)="submitproposal()">Submit a proposal</button>
 
             <button type="button" class="btn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3  mx-5 ">Save Job</button>
 
