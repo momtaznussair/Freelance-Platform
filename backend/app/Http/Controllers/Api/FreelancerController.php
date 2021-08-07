@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Freelancer;
+use App\Models\User;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +19,8 @@ class FreelancerController extends Controller
     }
 
     public function show($id){
-        $freelancer = freelancer::find($id);
+        $user = User::find($id);
+        $freelancer = $user->freelancer;
 
         if($freelancer){
             return $this->apiResponse($freelancer);

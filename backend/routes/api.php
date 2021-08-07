@@ -79,7 +79,7 @@ Route::get('portfolios',[PortfolioController::class,'index']);
 Route::get('portfolios/{portfolio}',[PortfolioController::class,'show']);
 
 
-// CRUD for Jobs
+// CRUD for Jobs+/
 Route::get('jobs',[JobController::class,'index']);
 Route::get('jobs/{job}',[JobController::class,'show']);
 
