@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function store(Request $request){
         
         $validate = Validator::make($request->all(),[
-            'name' => 'required|min:2'
+            'name' => 'required|min:2|unique:categories,name'
         ]);
 
         if($validate->fails()){
@@ -49,7 +49,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validate = Validator::make($request->all(),[
-            'name' => 'required|min:2'
+            'name' => 'required|min:2|unique:categories,name'
         ]);
 
         if($validate->fails()){
@@ -75,6 +75,8 @@ class CategoryController extends Controller
         $category = Category::find($id);
 
         if($category){
+            $category->jobs()->delete();
+            $category->freelancers()->delete();
             $category->delete();
             return $this->apiResponse(true,'',200);
         }

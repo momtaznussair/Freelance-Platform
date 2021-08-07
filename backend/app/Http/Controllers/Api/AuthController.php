@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -11,11 +12,9 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
-use App\Traits\ApiResponseTrait;
 
 class AuthController extends Controller
 {
-
     use ApiResponseTrait;
     public function register(Request $request)
     {
@@ -30,18 +29,18 @@ class AuthController extends Controller
             'gender' => 'required|in:male,female',
             'img_link' => 'nullable|image|max:512|mimes:png,jpg',
             'phone_number' => 'min:11|numeric',
-            // 'country' => 'required',
-            // 'city' => 'required',
-            // 'street' => 'required',
-            // 'zip_code' => 'required'
+            'country' => 'required',
+            'city' => 'required',
+            'street' => 'required',
+            'zip_code' => 'required'
         ]);
 
 
         if ($validator->fails())
         {
+            // return Response::json($validator->errors());
             return $this->apiResponse(null,$validator->errors(),400);
         }
-
         $user = new User();
 
         if(!$token){
@@ -54,34 +53,26 @@ class AuthController extends Controller
         $user->last_name = $request->last_name;
         $user->gender = $request->gender;
         $user->phone_number = $request->phone_number;
-        // $user->country =$request->country;
-        // $user->city = $request->city;
-        // $user->street = $request->street;
-        // $user->zip_code = $request->zip_code;
+        $user->country =$request->country;
+        $user->city = $request->city;
+        $user->street = $request->street;
+        $user->zip_code = $request->zip_code;
 
         if ($request->hasFile('img_link'))
         {
             $path = Storage::putFile('users', $request->file('img_link'));
             $user->img_link = $path;
         }
-
         $user->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // return response()->json([
-        //         'access_token' => $token,
-        //         // 'token_type' => 'Bearer',
-        //         'id' => $user->id,
-        //         'msg' => "User registered successfully"
-        // ]);
         $data = [
-            'access_token' => $token,
-            'id' => $user->id,
-            // 'msg' => "User registered successfully"
+                'access_token' => $token,
+                'id' => $user->id,
         ];
-        return $this->apiResponse($data , "User registered successfully");
 
+        return $this->apiResponse($data,'User registered successfully');
     }
 
 
@@ -112,10 +103,6 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
-        // return response()->json([
-        //         'msg' => "User logout successfully"
-        // ]);
         return $this->apiResponse(true,'User logout successfully',200);
     }
-
 }

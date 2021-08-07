@@ -15,10 +15,12 @@ export class LocationComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
 
-  currentDataForUser : any;
+  user_data : any ;
+
   ngOnInit(): void {
 
-    this.currentDataForUser = localStorage.getItem('user_data');
+    this.user_data = localStorage.getItem('user_data');
+    this.user_data = JSON.parse(this.user_data);
 
     this.form = this.formBuilder.group({
       country : ['' , [ Validators.required ]],
@@ -32,17 +34,53 @@ export class LocationComponent implements OnInit {
     next() {
       if(this.form.valid)
       {
-        localStorage.setItem('token' , 'any');
-        this.currentDataForUser = JSON.parse(this.currentDataForUser);
-        this.currentDataForUser.location = this.form.value;
-        console.log(this.currentDataForUser);
+        this.user_data.location = this.form.value;
+        console.log(this.user_data)
 
-        this.router.navigateByUrl('/user/signup/category');
-        // this.userService.register(this.currentDataForUser).subscribe(response=>{
-        //   console.log(response);
-        // })
+        //if signUp with socialite done
+        if(this.user_data.response)
+        {
+          console.log(this.user_data);
+
+          //send request
+          this.userService.register(this.user_data).subscribe(response=>{
+
+            console.log(response);
+
+            //redirect user as a client or freelancer
+            if(this.user_data.type == 'client')
+            {
+              this.router.navigateByUrl('/client/main');
+            }else
+            {
+              this.router.navigateByUrl('/user/signup/category');
+            }
+          })//end of request
+
+        }
+        else //=> if logged manually
+        {
+
+          //send request
+          this.userService.register(this.user_data).subscribe(response=>{
+            console.log(response);
+
+
+            if(this.user_data.user_data.type == 'client')
+            {
+              this.router.navigateByUrl('/client/main');
+            }
+            else
+            {
+              this.router.navigateByUrl('/user/signup/category');
+            }
+
+          })//end of request
+
+        }
+
       }
-      else
+      else //=> invalid data or error validation
       {
       this.isLogged = true;
       }

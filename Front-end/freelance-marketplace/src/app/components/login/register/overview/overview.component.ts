@@ -4,8 +4,6 @@ import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FreelancerRegisterProcess } from 'src/app/services/register-data.service';
-// import {RegisterDataService} from "../../../../../services/register-data.service";
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-overview',
@@ -14,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class OverviewComponent implements OnInit {
 
+  textPattern = "^[a-zA-Z]{10,500}$"
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder , private registerService : FreelancerRegisterProcess , private router : Router) { }
 
@@ -23,8 +22,8 @@ export class OverviewComponent implements OnInit {
     this.currentRegisterData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
-      overview : ['' , [ Validators.required , Validators.minLength(10), Validators.maxLength(500)]],
-      jobTitle : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255)]]
+      overview : ['' , [ Validators.required , Validators.minLength(10), Validators.maxLength(500) , Validators.pattern(this.textPattern)]],
+      jobTitle : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255), Validators.pattern(this.textPattern)]]
     })
   }
 

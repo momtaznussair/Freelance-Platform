@@ -89,7 +89,7 @@ class CompanyController extends Controller
         $company = company::where([ ['id','==', $id], ['founder_id', '==', $founder_id] ])->first();
 
         if($company){
-
+            $company->clients()->delete();
             $company->delete();
             return $this->apiResponse(true,'',200);
         }
