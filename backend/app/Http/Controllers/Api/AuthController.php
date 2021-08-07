@@ -39,10 +39,9 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            // return 
-            
-            return "invalid data";
+            return $this->apiResponse(null,$validator->errors(),400);
         }
+
         $user = new User();
 
         if(!$token){
@@ -71,7 +70,7 @@ class AuthController extends Controller
 
         $data = [
                 'access_token' => $token,
-                'id' => $user->id,
+                'user' => $user,
         ];
 
         return $this->apiResponse($data,'User registered successfully');
