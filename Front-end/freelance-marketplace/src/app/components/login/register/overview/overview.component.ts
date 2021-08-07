@@ -22,8 +22,8 @@ export class OverviewComponent implements OnInit {
     this.currentRegisterData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
-      overview : ['' , [ Validators.required , Validators.minLength(10), Validators.maxLength(500) , Validators.pattern(this.textPattern)]],
-      jobTitle : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255), Validators.pattern(this.textPattern)]]
+      overview : ['' , [ Validators.required , Validators.minLength(10), Validators.maxLength(500)]],
+      jobTitle : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255)]]
     })
   }
 
