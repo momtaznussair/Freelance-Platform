@@ -86,7 +86,7 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            return $this->apiResponse(null,$validator->errors(),400);
+            return $this->apiResponse(null,$validator->errors(),200);
         }
 
         $user = User::where('email', $request->email)->first();
