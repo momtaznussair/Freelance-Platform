@@ -21,7 +21,7 @@ export class LocationComponent implements OnInit {
     username : 'ali',
     first_name : 'ali',
     last_name : 'mohamed',
-    email : 'aliiiiiii@gmail.com',
+    email : 'aliiiiiiii@gmail.com',
     password : '11111111',
     password_confirmation : '11111111',
     img_link : '',
