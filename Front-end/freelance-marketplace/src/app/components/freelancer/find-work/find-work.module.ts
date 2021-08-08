@@ -10,10 +10,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { JobDetailsComponent } from './find-work/job-details/job-details.component';
 import { SubmitProposalComponent } from './find-work/job-details/submit-proposal/submit-proposal.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterJobsComponent } from './filter-jobs/filter-jobs.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterByPipe } from 'src/app/pipes/filter-by.pipe';
+
 
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},
+  {path : 'filter' , component : FilterJobsComponent},
   {path : 'work/details' , component : JobDetailsComponent},
   {path : 'stats' , component : MyStatsComponent},
   {path : 'saved-jobs' , component : SavedJobsComponent},
@@ -31,11 +35,13 @@ const routes : Routes = [
     ProposalsComponent,
     ProfileComponent,
     JobDetailsComponent,
-    SubmitProposalComponent
+    SubmitProposalComponent,
+    FilterJobsComponent,FilterByPipe
+    
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule
-
+    CommonModule,RouterModule.forChild(routes),SharedModule
+    ,NgxPaginationModule,FormsModule,ReactiveFormsModule
   ],
   exports : [MyStatsComponent]
 })

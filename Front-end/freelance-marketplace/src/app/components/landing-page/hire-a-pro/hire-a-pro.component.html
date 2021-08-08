@@ -14,13 +14,12 @@
         <div class="col-md-6">
             <img src="../../../../assets/images/annie-spratt-QckxruozjRg-unsplash.jpg" class="img-fluid mb-3" alt="">
             <div class="p-md-3">
-                <table>
-                    <tr *ngFor="let cat of categories">
+              
+                    <button class="btnn border rounded-pill mx-1 my-2 p-2" *ngFor="let cat of categories">{{cat.name}}</button>
                     
-                        <td> <span class="m-sm-1 m-md-2 p-2 d-inline-block">{{cat.name}}</span></td>
-                    </tr>  
+                   
                   
-            </table>
+           
             </div>
         </div>
     </div>

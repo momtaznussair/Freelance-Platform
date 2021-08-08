@@ -19,11 +19,8 @@ export class LocationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(localStorage.getItem('user_data'))
-    {
-      this.user_data = localStorage.getItem('user_data');
-      this.user_data = JSON.parse(this.user_data);
-    }
+    this.user_data = localStorage.getItem('user_data');
+    this.user_data = JSON.parse(this.user_data);
 
     this.form = this.formBuilder.group({
       country : ['' , [ Validators.required ]],
@@ -46,47 +43,39 @@ export class LocationComponent implements OnInit {
           console.log(this.user_data);
 
           //send request
-          // this.userService.register(this.user_data).subscribe(response=>{
+          this.userService.register(this.user_data).subscribe(response=>{
 
-            // console.log(response);
+            console.log(response);
 
-            //face token
-            localStorage.setItem('token' , 'any');
             //redirect user as a client or freelancer
             if(this.user_data.type == 'client')
             {
-              localStorage.setItem('clientType' , 'client');
               this.router.navigateByUrl('/client/main');
             }else
             {
-              localStorage.setItem('freelancerType' , 'freelancer');
               this.router.navigateByUrl('/user/signup/category');
             }
-          // })//end of request
+          })//end of request
 
         }
         else //=> if logged manually
         {
 
           //send request
-          // this.userService.register(this.user_data).subscribe(response=>{
-            // console.log(response);
+          this.userService.register(this.user_data).subscribe(response=>{
+            console.log(response);
 
-            //fake token
-            localStorage.setItem('token' , 'any');
 
             if(this.user_data.user_data.type == 'client')
             {
-              localStorage.setItem('clientType' , 'client');
               this.router.navigateByUrl('/client/main');
             }
             else
             {
-              localStorage.setItem('freelancerType' , 'freelancer');
               this.router.navigateByUrl('/user/signup/category');
             }
 
-          // })//end of request
+          })//end of request
 
         }
 
