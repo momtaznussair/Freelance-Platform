@@ -41,8 +41,8 @@ export class PortofolioComponent implements OnInit {
     if(this.form.valid)
     {
       this.portofolioData  = JSON.parse(this.portofolioData )
-      this.portofolioData .overview = this.form.controls.overview.value;
-      this.portofolioData .jobTitle = this.form.controls.jobTitle.value;
+      this.portofolioData.overview = this.form.controls.overview.value;
+      this.portofolioData.jobTitle = this.form.controls.portofolioTitle.value;
       localStorage.setItem('data' ,JSON.stringify(this.portofolioData ));
       this.router.navigateByUrl("/freelancer/profile");
     }
