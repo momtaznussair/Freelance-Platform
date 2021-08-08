@@ -144,7 +144,24 @@ return [
         ],
 
         'widgets' => [
-
+            'TCG\\Voyager\\Widgets\\UserDimmer',
+            'App\\Widgets\\Freelancers',
+            'App\\Widgets\\Clients',
+            'App\\Widgets\\Categories',
+            'App\\Widgets\\Companies',
+            'App\\Widgets\\Certificates',
+            'App\\Widgets\\Durations',
+            'App\\Widgets\\Educations',
+            'App\\Widgets\\ExLevel',
+            'App\\Widgets\\Jobs',
+            'App\\Widgets\\LangLevel',
+            'App\\Widgets\\Languages',
+            'App\\Widgets\\PayStyles',
+            'App\\Widgets\\PayTypes',
+            'App\\Widgets\\Portfolios',
+            'App\\Widgets\\Proposals',
+            'App\\Widgets\\Skills',
+            'App\\Widgets\\Tests',
         ],
 
     ],
