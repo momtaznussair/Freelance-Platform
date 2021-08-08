@@ -20,8 +20,6 @@ export class LanguagesComponent implements OnInit {
   currentRegisterData : any;
 
   ngOnInit(): void {
-    this.currentRegisterData = localStorage.getItem('data');
-
     this.form = this.formBuilder.group({
       proficiency : ['' , [ Validators.required ]],
       name : ['' , [ Validators.required]],
@@ -33,15 +31,15 @@ export class LanguagesComponent implements OnInit {
 
   /*hourly-rate*/
   next()
- {
-  console.log({name : this.form.controls['name'].value})
-  this.apiService.post(`${environment.apiUrl}/languages` , {name : this.form.controls['name'].value}).subscribe(response=>{
-    console.log(response);
-  })
-  if(this.form.valid)
   {
-    // this.router.navigateByUrl("/user/signup/hourly-rate");
-  }
+    if(this.form.valid)
+    {
+      console.log(this.form.value);
+      this.apiService.post(`${environment.apiUrl}/languages` , {name : this.form.controls['name'].value}).subscribe(response=>{
+        console.log(response);
+        // this.router.navigateByUrl("/user/signup/hourly-rate");
+      },error=>console.error);
+    }
   else
   {
     this.isLogged = true;
