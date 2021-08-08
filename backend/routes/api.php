@@ -21,7 +21,7 @@ use App\Http\Controllers\Api\portfolioImagesController;
 use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SkillController;
 use App\Models\Education;
-
+use App\Http\Controllers\Api\EmailVerificationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -33,7 +33,7 @@ use App\Models\Education;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum' ,'verified'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -191,3 +191,7 @@ Route::middleware(['freelancer','auth:sanctum'])->group(function () {
     Route::post('educations',[EducationController::class,'store']);
 
 });
+
+// Verification Email
+Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
+Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
