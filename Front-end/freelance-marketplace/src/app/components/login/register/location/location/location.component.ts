@@ -17,22 +17,22 @@ export class LocationComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  ,private http : HttpClient , private router : Router , private userService : UserService) { }
 
-  // data = {
-  //   username : 'ali',
-  //   first_name : 'ali',
-  //   last_name : 'mohamed',
-  //   email : 'aliiiiiiiii@gmail.com',
-  //   password : '11111111',
-  //   password_confirmation : '11111111',
-  //   img_link : '',
-  //   phone_number : 11111111111,
-  //   country : 'any',
-  //   city : 'any',
-  //   street : 'any',
-  //   zip_code : 2222,
-  //   gender : 'male',
-  //   type : 'client'
-  // }
+  test = {
+    username : 'ali',
+    first_name : 'ali',
+    last_name : 'mohamed',
+    email : 'alii@gmail.com',
+    password : '11111111',
+    password_confirmation : '11111111',
+    img_link : '',
+    phone_number : 11111111111,
+    country : 'any',
+    city : 'any',
+    street : 'any',
+    zip_code : 2222,
+    gender : 'male',
+    type : 'client'
+  }
 
 
 
@@ -42,6 +42,7 @@ export class LocationComponent implements OnInit {
   // data comes from manually signUp
   data : any = '';
 
+  response_data : any;
   ngOnInit(): void {
 
     if(localStorage.getItem('user_data'))
@@ -96,19 +97,18 @@ export class LocationComponent implements OnInit {
           console.log(this.user_data.user_data);
 
           //send request
-          // this.userService.register(this.user_data).subscribe(response=>{
-            this.http.post(`http://localhost:8000/api/register`, this.user_data.user_data).subscribe(response=>{
+          this.userService.register(this.user_data.user_data).subscribe(response=>{
 
             console.log(response);
-            // if(this.user_data.type == 'client')
-            // {
-            //   localStorage.setItem('clientType' , 'client');
-            //   this.router.navigateByUrl('/client/main');
-            // }else
-            // {
-            //   localStorage.setItem('freelancerType' , 'freelancer');
-            //   this.router.navigateByUrl('/user/signup/category');
-            // }
+            if(this.user_data.type == 'client')
+            {
+              localStorage.setItem('clientType' , 'client');
+              this.router.navigateByUrl('/client/main');
+            }else
+            {
+              localStorage.setItem('freelancerType' , 'freelancer');
+              this.router.navigateByUrl('/user/signup/category');
+            }
           })//end of request
 
         }
@@ -116,28 +116,41 @@ export class LocationComponent implements OnInit {
         {
           console.log(this.data.user_data)
           //send request
-          // this.userService.register(this.user_data).subscribe(response=>{
-            this.http.post(`http://localhost:8000/api/register`, this.data.user_data).subscribe(response=>{
+          this.userService.register(this.data.user_data).subscribe(response=>{
+
             console.log(response);
-            // localStorage.setItem('response_data' , JSON.stringify(response));
 
-            //fake token
-            // localStorage.setItem('token' , 'any');
+            //if response has token
+            this.response_data = response;
+            if(this.response_data.data != null)
+            {
+              localStorage.setItem('token' , this.response_data.data.access_token);
+              localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
+              localStorage.setItem('success_msg' , this.response_data.msg);
+              localStorage.setItem('logged_status' , this.response_data.status);
 
-            // if(this.user_data.user_data.type == 'client')
-            // {
-            //   localStorage.setItem('clientType' , 'client');
-            //   this.router.navigateByUrl('/client/main');
-            // }
-            // else
-            // {
-            //   localStorage.setItem('freelancerType' , 'freelancer');
-            //   this.router.navigateByUrl('/user/signup/category');
-            // }
+              //redirect user
+              if(this.data.user_data.type == 'client')
+              {
+                localStorage.setItem('clientType' , 'client');
+                this.router.navigateByUrl('/client/main');
+              }
+              else
+              {
+                localStorage.setItem('freelancerType' , 'freelancer');
+                this.router.navigateByUrl('/user/signup/category');
+              }
 
-          } , error=>{
-            console.log('shit');
-          })//end of request
+            }
+            else
+            {
+              this.router.navigateByUrl('/user/signup/register');
+              alert(this.response_data.msg.email);
+              localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
+            }
+
+
+          } , error=>console.error)//end of request
 
         }
 
@@ -150,13 +163,13 @@ export class LocationComponent implements OnInit {
     }
 
     //test request
-    test(){
-      // this.http.post(`${environment.apiUrl}/register` ,this.data).subscribe(response=>{
-      //   console.log(response);
-      //   console.log(this.data);
-      // }, error=>{
-      //   console.log('error message');
-      // })
+    testRequest(){
+      this.http.post(`${environment.apiUrl}/register` ,this.test).subscribe(response=>{
+        console.log(response);
+        console.log(this.data);
+      }, error=>{
+        console.log('error message');
+      })
     }
 
 

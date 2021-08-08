@@ -30,6 +30,9 @@ export class SignupComponent implements OnInit {
   passwordPattern = "^[0-9a-zA-Z]{3,255}$";
 
   genders = ['male' , 'female'];
+
+
+  //start of ngOnInit()
   ngOnInit(): void {
 
     //check if user logged
@@ -66,6 +69,7 @@ export class SignupComponent implements OnInit {
 
   }//end of ngOnInit
 
+
   nextStepOfSignUp()
   {
 
@@ -83,17 +87,15 @@ export class SignupComponent implements OnInit {
       this.nextStepOfSignUp();
   }
 
-  // if signup with any socialite
 
-
-
+  // signUp manually
 
   password_confirmation : string = '';
   password : string = '';
   isLogged : boolean = false;
 
   register(){
-    // alert(JSON.stringify( this.form.value))
+    
     if(this.form.valid && this.password == this.password_confirmation)
     {
       console.log(this.form.value);
