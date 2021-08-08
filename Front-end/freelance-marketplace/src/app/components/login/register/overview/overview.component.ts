@@ -4,8 +4,6 @@ import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FreelancerRegisterProcess } from 'src/app/services/register-data.service';
-// import {RegisterDataService} from "../../../../../services/register-data.service";
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-overview',
@@ -14,8 +12,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class OverviewComponent implements OnInit {
 
+  textPattern = "[a-z]{1,30}(,[a-z]{1,30})*";
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder , private registerService : FreelancerRegisterProcess , private router : Router) { }
+  constructor(private formBuilder : FormBuilder, private router : Router) { }
 
   currentRegisterData : any;
   ngOnInit(): void

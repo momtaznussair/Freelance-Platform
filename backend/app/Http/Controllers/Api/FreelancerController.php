@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Freelancer;
+use App\Models\User;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +19,8 @@ class FreelancerController extends Controller
     }
 
     public function show($id){
-        $freelancer = freelancer::find($id);
+        $user = User::find($id);
+        $freelancer = $user->freelancer;
 
         if($freelancer){
             return $this->apiResponse($freelancer);
@@ -30,9 +32,9 @@ class FreelancerController extends Controller
     public function store(Request $request){
         
         $validate = Validator::make($request->all(),[
-           'user_id' => 'required|exists:users, id',
-           'category_id' => 'required|exists:categories, id',
-           'experience_id' => 'required|exists:experience_levels, id',
+           'user_id' => 'required|exists:users,id|unique:freelancers,user_id',
+           'category_id' => 'required|exists:categories,id',
+           'experience_id' => 'required|exists:experience_levels,id',
            'overview' => 'required|min:512',
            'job_title' => 'required|min:10|max:255',
         ]);
@@ -48,8 +50,8 @@ class FreelancerController extends Controller
            'overview' => $request->overview,
            'job_title' => $request->job_title,
         ]);
-
         if($freelancer){
+            $freelancer->skills()->attach([1, 2, 3]);
             return $this->apiResponse($freelancer);
         }
         return  $this->UnknownError();
@@ -88,6 +90,9 @@ class FreelancerController extends Controller
         $freelancer = freelancer::find($id);
 
         if($freelancer){
+            $freelancer->portfolios()->delete();
+            $freelancer->certificates()->delete();
+            $freelancer->proposals()->delete();
             $freelancer->delete();
             return $this->apiResponse(true,'',200);
         }

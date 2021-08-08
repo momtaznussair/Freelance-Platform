@@ -14,7 +14,10 @@ import { UserService } from 'src/app/services/user.service';
 export class TitleComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
+
+
   constructor(private formBuilder : FormBuilder  , private router : Router) { }
+
 
   currentRegisterData : any;
   ngOnInit(): void {

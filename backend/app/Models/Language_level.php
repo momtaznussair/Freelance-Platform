@@ -11,8 +11,9 @@ class Language_level extends Model
     protected $fillable = [
         'name',
     ];
-    public function job(){
-        return $this->belongsTo(Job::class);
+
+    public function jobs(){
+        return $this->hasMany(Job::class);
     }
 
 }

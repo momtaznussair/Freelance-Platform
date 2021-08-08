@@ -16,13 +16,9 @@ class CreateSkillsTable extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            // $table->string('category');
             $table->unsignedBigInteger('category_id');
-            $table->timestamps();
-            
-            
+            $table->timestamps();          
             $table->foreign('category_id')->references('id')->on('categories');
-
         });
     }
 
