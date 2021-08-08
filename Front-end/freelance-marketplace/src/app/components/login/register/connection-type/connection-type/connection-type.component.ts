@@ -53,6 +53,4 @@ export class ConnectionTypeComponent implements OnInit {
     this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
 
-
-
 }

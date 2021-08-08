@@ -23,7 +23,7 @@ import { FreelancerAuthorization } from 'src/app/guards/freelancer-authorization
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
   {path : 'register' , component : SignupComponent},
-  {path : 'category' , component : CategoryComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
+  {path : 'category' , component : CategoryComponent},
   {path : 'overview' , component : OverviewComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
   {path : 'skills' , component : ExpertiseComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
   {path : 'experience-level' , component : ExpertlevelComponent, canActivate:[AuthGuard , FreelancerAuthorization]},

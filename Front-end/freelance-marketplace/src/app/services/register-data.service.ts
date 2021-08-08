@@ -27,7 +27,7 @@ export class FreelancerRegisterProcess {
   }
 
     registerProcess:any = {
-      "category":"",
+      "category_id":"",
       "overview":"",
       "jobTitle":"",
       "experienceLevel":0,

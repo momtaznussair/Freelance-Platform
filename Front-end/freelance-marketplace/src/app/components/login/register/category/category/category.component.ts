@@ -16,18 +16,28 @@ import { Router } from '@angular/router';
 })
 export class CategoryComponent implements OnInit {
 
-    msg = localStorage.getItem('msg');
+  // categories : Categories[] = [];
+  categories :any ;
 
-  constructor(private formBuilder : FormBuilder ,private router : Router , private registerService : FreelancerRegisterProcess) {
+  constructor(private formBuilder : FormBuilder ,private http : HttpClient , private apiService : ApiService ,private router : Router , private registerService : FreelancerRegisterProcess) {
 
   }
 
+  isCategoryGet : boolean = false;
+  isDone :boolean = false;
   currentCategoryChosen : string = '';
 
   currentRegisterData : any;
   form : FormGroup = new FormGroup({});
 
   ngOnInit(): void {
+
+    this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response=>{
+      this.isCategoryGet = true;
+      console.log(response);
+      this.categories = response;
+      console.log(this.categories.data);
+    })
 
     this.form = this.formBuilder.group({
       category_id : ['',[Validators.required]]
@@ -40,9 +50,13 @@ export class CategoryComponent implements OnInit {
     if(this.form.valid)
     {
       console.log(this.form.value);
-      this.registerService.registerProcess.category = this.form.value;
+      this.registerService.registerProcess.category_id = this.form.controls['category_id'].value;
       localStorage.setItem("data" ,JSON.stringify(this.registerService.registerProcess));
       this.router.navigateByUrl('/user/signup/overview');
+    }
+    else
+    {
+      this.isDone = true
     }
   }
 
