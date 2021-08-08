@@ -7,6 +7,7 @@ import { ReportsModule } from './reports/reports.module';
 import { SharedModule } from './shared/shared.module';
 import { FreelancerSettingModule } from './freelncer-setting/freelancer-setting.module';
 import { searchFilter } from 'src/app/pipes/search-filter.pipe';
+import { HttpClient } from '@angular/common/http';
 
 
 const routes : Routes = [

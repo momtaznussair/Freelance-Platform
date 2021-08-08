@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClient, HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AccordionModule} from 'primeng/accordion';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +26,8 @@ import {GoogleLoginProvider , FacebookLoginProvider} from 'angularx-social-login
     HttpClientModule,
     AccordionModule,
     FormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClient
   ],
   providers: [
     {

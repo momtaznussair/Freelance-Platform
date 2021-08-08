@@ -13,6 +13,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterJobsComponent } from './filter-jobs/filter-jobs.component';
 import { FormsModule } from '@angular/forms';
 import { FilterByPipe } from 'src/app/pipes/filter-by.pipe';
+import { HttpClient } from '@angular/common/http';
 
 
 const routes : Routes = [
