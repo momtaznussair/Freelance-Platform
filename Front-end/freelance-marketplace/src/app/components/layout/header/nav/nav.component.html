@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <!-- find a talent tab -->
-      <a class="navbar-brand" href="#">Freelance</a>
+      <a class="navbar-brand" href="">Freelance</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,18 +35,19 @@
         <form class="d-flex mt-1">
             <div class="btn-group">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                
+
                 <!-- search type dropdown -->
                 <ul class="dropdown-menu mt-2 ms-3">
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" (click)="freelancer()"  >
                             <span class="fa fa-user me-3" style="font-size:24px"></span>
                             Freelancers
                         </a>
                     </li>
+                    <!--freelanser and jobs "pages only" when you click it go to page pls go to ts and put router -->
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item"(click)="jobs()">
                             <span class="fa fa-briefcase me-3" style="font-size:24px"></span>
                             Jobs
                         </a>
@@ -62,8 +63,8 @@
 
         <!-- sign in / up -->
        <div class="text-center sign-container">
-          <a class="mx-3 ms-md-4" id="login">Log In</a>
-          <button type="button" class="btn rounded-pill sign-Up-Button">Sign Up</button>
+          <a class="mx-3 ms-md-4" (click)="log()" id="login">Log In</a>
+          <button type="submit" (click)="sign()" class="btn rounded-pill sign-Up-Button">Sign Up</button>
        </div>
       </div>
     </div>
