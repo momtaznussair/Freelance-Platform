@@ -10,6 +10,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { JobDetailsComponent } from './find-work/job-details/job-details.component';
 import { SubmitProposalComponent } from './find-work/job-details/submit-proposal/submit-proposal.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PortofolioComponent } from './profile/portfolio/portofolio.component';
 
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},
@@ -30,10 +32,11 @@ const routes : Routes = [
     ProposalsComponent,
     ProfileComponent,
     JobDetailsComponent,
-    SubmitProposalComponent
+    SubmitProposalComponent,
+    PortofolioComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule
+    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule
   ],
   exports : [MyStatsComponent]
 })
