@@ -13,33 +13,33 @@
                 <h3>What is your level experience in this field?</h3>
                 <br />
                 <div class="card my-2">
-                    <label class="radio-inline"><input formControlName="experience_level" type="radio"
-           name="experience_level" value="1"  />Entry
+                    <label class="radio-inline"><input formControlName="experience_id" type="radio"
+           name="experience_id" value="1"  />Entry
           level<br />
           <p>I am relatively new to this field</p>
         </label>
                 </div>
 
                 <div class="card my-2">
-                    <label class="radio-inline"><input formControlName="experience_level"
+                    <label class="radio-inline"><input formControlName="experience_id"
             type="radio"
-            name="experience_level" value="2"
+            name="experience_id" value="2"
 
           />Intermediate<br />
           <p>I have substantial experience in this field</p>
         </label>
                 </div>
                 <div class="card my-2">
-                    <label class="radio-inline"><input formControlName="experience_level"
+                    <label class="radio-inline"><input formControlName="experience_id"
             type="radio"
-            name="experience_level" value="3"
+            name="experience_id" value="3"
 
           />Expert<br />
           <p>I have comprehensive and deep expertise in this field</p>
         </label>
                 </div>
-                <div *ngIf="form.controls.experience_level.invalid && isLogged">
-                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.experience_level.hasError('required')">You have to choose one of the above first !!!!</small>
+                <div *ngIf="form.controls.experience_id.invalid && isLogged">
+                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.experience_id.hasError('required')">You have to choose one of the above first !!!!</small>
                 </div>
                 <br />
 

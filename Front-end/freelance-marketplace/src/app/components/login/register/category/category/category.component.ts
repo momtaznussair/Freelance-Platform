@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit {
   // categories : Categories[] = [];
   categories :any ;
 
-  constructor(private formBuilder : FormBuilder ,private http : HttpClient , private apiService : ApiService ,private router : Router , private registerService : FreelancerRegisterProcess) {
+  constructor(private formBuilder : FormBuilder ,private apiService : ApiService ,private router : Router , private registerService : FreelancerRegisterProcess) {
 
   }
 
@@ -59,6 +59,27 @@ export class CategoryComponent implements OnInit {
       this.isDone = true
     }
   }
+
+
+  // Test for request freelancer data
+  test_request: any ={
+    // user_id : 30,
+    // category_id : 1,
+    // overview : 'this is test',
+    // job_title : 'this is test title',
+    // experience_id : 2,
+  }
+
+
+  test()
+  {
+    // this.apiService.post(`${environment.apiUrl}/freelancers` , this.test_request).subscribe(response=>{
+    //   console.log(response);
+    // })
+  }
+
+
+
 
 
 }
