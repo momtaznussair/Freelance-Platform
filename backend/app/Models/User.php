@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -10,6 +9,8 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Client;
 use App\Models\Freelancer;
 use Laravel\Cashier\Billable;
+
+use function Illuminate\Events\queueable;
 
 class User extends Authenticatable
 {
@@ -64,5 +65,12 @@ class User extends Authenticatable
 
     public function educations(){
         return $this->hasMany(Education::class);
+    }
+
+    protected static function booted()
+    {
+        static::updated(queueable(function ($customer) {
+            $customer->syncStripeCustomerDetails();
+        }));
     }
 }
