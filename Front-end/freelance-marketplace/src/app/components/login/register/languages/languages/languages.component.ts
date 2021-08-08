@@ -1,10 +1,11 @@
+import { environment } from './../../../../../../environments/environment.prod';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-// import {RegisterDataService} from "../../../../../services/register-data.service";
-import { UserService } from 'src/app/services/user.service';
+import { ApiService } from 'src/app/services/api.service';
+
 @Component({
   selector: 'app-languages',
   templateUrl: './languages.component.html',
@@ -14,7 +15,7 @@ export class LanguagesComponent implements OnInit {
 
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  , private router : Router) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router , private apiService : ApiService) { }
 
   currentRegisterData : any;
 
@@ -22,25 +23,24 @@ export class LanguagesComponent implements OnInit {
     this.currentRegisterData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
-      peroficienvy : ['' , [ Validators.required ]],
-
-
+      proficiency : ['' , [ Validators.required ]],
+      name : ['' , [ Validators.required]],
     })
   }
+
+
   isLogged : boolean = false;
 
   /*hourly-rate*/
   next()
  {
+  console.log({name : this.form.controls['name'].value})
+  this.apiService.post(`${environment.apiUrl}/languages` , {name : this.form.controls['name'].value}).subscribe(response=>{
+    console.log(response);
+  })
   if(this.form.valid)
   {
-    // this.currentRegisterData = JSON.parse(this.currentRegisterData)
-    // this.currentRegisterData.inistiute = this.form.controls.inistiute.value;
-    // this.currentRegisterData.areaofstudy = this.form.controls.areaofstudy.value;
-    // this.currentRegisterData.degree = this.form.controls.degree.value;
-    // this.currentRegisterData.graduation_date = this.form.controls.graduation_date.value;
-    // localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
-    this.router.navigateByUrl("/user/signup/hourly-rate");
+    // this.router.navigateByUrl("/user/signup/hourly-rate");
   }
   else
   {
