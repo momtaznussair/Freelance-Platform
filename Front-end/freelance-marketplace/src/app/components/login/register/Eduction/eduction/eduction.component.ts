@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-// import {Registerstart_dateService} from "../../../../../services/register-start_date.service";
-import { UserService } from 'src/app/services/user.service';
 import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment.prod';
 
@@ -44,8 +42,8 @@ export class EductionComponent implements OnInit {
   {
     this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{
       console.log(response);
-    })
-    // this.router.navigateByUrl("/user/signup/lang");
+      this.router.navigateByUrl("/user/signup/lang");
+    },error=>console.error);
   }
   else
   {
