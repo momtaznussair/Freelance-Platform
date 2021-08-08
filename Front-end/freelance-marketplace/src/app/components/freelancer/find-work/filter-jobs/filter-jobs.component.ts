@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {JobPostsService} from '../../../../services/job-posts.service'
 import { HttpParams } from '@angular/common/http';
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-filter-jobs',
@@ -15,6 +16,7 @@ export class FilterJobsComponent implements OnInit {
   params:any=[];
   count = 0;
   currentIndex:number=0;
+  cat :Category[]=[];
   constructor(private jobsPosts:JobPostsService) { }
 
   ngOnInit(): void {
@@ -68,15 +70,25 @@ console.log(e)
 
   fetchPosts(): void {
     
-    this.jobsPosts.getAllPosts(HttpParams)
-      .subscribe(
-        response => {
-          this.POSTS = response;
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        });
+    // this.jobsPosts.getAllPosts(HttpParams)
+    //   .subscribe(
+    //     response => {
+    //       this.POSTS = response;
+    //       console.log(response);
+    //     },
+    //     error => {
+    //       console.log(error);
+    //     });
+    this.jobsPosts.getAllCategories('categories').subscribe(response=>{
+      this.cat=response ['data'] as Category[];
+      console.log(this.cat)
+      
+    }
+    // , error =>{
+      // console.log(error);
+      // alert(error)
+    // }
+    )
   }
   onTableDataChange(event:any){
     this.page = event;
