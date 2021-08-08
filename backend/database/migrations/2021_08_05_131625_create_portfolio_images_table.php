@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJobsTable extends Migration
+class CreatePortfolioImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateJobsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('portfolio_images', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
-            $table->decimal('payment_amount');
-            $table->string('job_title');
-            $table->text('attachment')->nullable();
             $table->timestamps();
+            $table->string('image_path');
+            $table->unsignedBigInteger('portfolio_id');
+            $table->foreign('portfolio_id')->references('id')->on('portfolios');
         });
     }
 
@@ -30,6 +29,6 @@ class CreateJobsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jobs');
+        Schema::dropIfExists('portfolio_images');
     }
 }

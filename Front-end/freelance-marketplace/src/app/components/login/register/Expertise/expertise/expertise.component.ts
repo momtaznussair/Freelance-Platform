@@ -1,4 +1,7 @@
+
+  
 import { Component, OnInit } from '@angular/core';
+// import {RegisterDataService} from "../../../../../services/register-data.service";
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -17,59 +20,66 @@ import { Router } from '@angular/router';
   styleUrls: ['./expertise.component.css']
 })
 export class ExpertiseComponent implements OnInit {
-  data: string="";
+  // data: string="";
 
   skills = [{
       "id": 5440,
       "name": "Wanda Lynch",
+      "selected":false
     },
     {
       "id": 6228,
       "name": "Katrina Graves",
+      "selected":false
     },
     {
       "id": 1654,
       "name": "Louis Daniels",
+      "selected":false
     },
     {
       "id": 1631,
       "name": "Gavin Sullivan",
+      "selected":false
     },
     {
       "id": 9880,
       "name": "June Martinez",
+      "selected":false
     },
     {
       "id": 8634,
       "name": "Owen Davis",
+      "selected":false
     },
     {
       "id": 3918,
       "name": "Megan Harrison",
+      "selected":false
     },
     {
       "id": 3680,
       "name": "Joel Thompson",
+      "selected":false
     },
     {
       "id": 2409,
       "name": "Dora Rose",
-      "email": "dora.rose@example.com"
+      "selected":false
     },
     {
       "id": 4477,
       "name": "Candice Neal",
-      "email": "candice.neal@example.com"
+      "selected":false
     }
   ]
 
-
-
+placeholder="Start typing to search for skills";
+clicked:number=0;
   form : FormGroup = new FormGroup({});
-  // skills=["css","html","javascript","react"];
   // skills=this.skillServices.showSkills();
   selectedSkills=[""];
-  approvalText:string="";
+  // approvalText:string="";
   result=[""];
   added :number=0;
   public searchFilter:any;
@@ -85,13 +95,17 @@ export class ExpertiseComponent implements OnInit {
     })
 
     /////////////////////////////
-
-
   }
 
   isLogged : boolean = false;
   submit()
  {
+//  this.appService.updateApprovalMessage(this.approvalText);
+ } 
+ status: boolean = false;
+
+ addSkill(i:any,b:HTMLElement){
+ i.selected = ! i.selected; 
    this.isLogged = true;
    if(this.form.valid)
    {
@@ -101,20 +115,21 @@ export class ExpertiseComponent implements OnInit {
        this.router.navigateByUrl('/user/signup/education');
     //  })
    }
+   this.skillServices.addSkill(b.innerText); 
+ 
+   console.log(i)
  }
 
- addSkill(b:HTMLElement){
 
-  this.selectedSkills.push(b.innerText);
-   console.log(this.selectedSkills);
+ addSkillFromDropDown(a:HTMLElement,inpt:HTMLElement){
 
-   this.skillServices.addSkill(b.innerText);
- }
- addSkillFromDropDown(p:HTMLElement){
-  // this.selectedSkills.push(p.innerText);
-  // console.log(this.selectedSkills);
- console.log(p)
-  // this.skillServices.addSkill(p.innerText);
+  this.skills.push({
+    "id":5444,
+    "name": a.innerText,
+  "selected":true});
+  this.query=inpt.innerText;
+  console.log(a.innerText);
+  // this.skillServices.addSkill(a.innerText);
 
  }
  search(){

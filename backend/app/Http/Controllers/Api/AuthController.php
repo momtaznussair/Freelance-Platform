@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use App\Models\Client;
+
 
 class AuthController extends Controller
 {
@@ -32,7 +34,8 @@ class AuthController extends Controller
             'country' => 'required',
             'city' => 'required',
             'street' => 'required',
-            'zip_code' => 'required'
+            'zip_code' => 'required',
+            'type' => 'required',
         ]);
 
 
@@ -41,6 +44,7 @@ class AuthController extends Controller
             // return Response::json($validator->errors());
             return $this->apiResponse(null,$validator->errors(),400);
         }
+
         $user = new User();
 
         if(!$token){
@@ -64,20 +68,19 @@ class AuthController extends Controller
             $user->img_link = $path;
         }
         $user->save();
-
+        // add as a  client
+        if ($request->type == 'client')
+        {
+            $client = Client::create([
+                'user_id' => $user->id,
+            ]);
+        }
+        
         $token = $user->createToken('auth_token')->plainTextToken;
-
-        // return response()->json([
-        //         'access_token' => $token,
-        //         // 'token_type' => 'Bearer',
-        //         'id' => $user->id,
-        //         'msg' => "User registered successfully"
-        // ]);
 
         $data = [
                 'access_token' => $token,
-                'id' => $user->id,
-                // 'msg' => "User registered successfully"
+                'user' => $user,
         ];
 
         return $this->apiResponse($data,'User registered successfully');
@@ -94,8 +97,7 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            // return Response::json($validator->errors());
-            return $this->apiResponse(null,$validator->errors(),400);
+            return $this->apiResponse(null,$validator->errors(),200);
         }
 
         $user = User::where('email', $request->email)->first();
@@ -106,15 +108,19 @@ class AuthController extends Controller
             ]);
         }
 
-        return $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
+        $data = [
+            'token' => $token,
+            'user' => new UserResource($user),
+        ];
+
+        return $this->apiResponse($data);
+
     }
 
 
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
-        // return response()->json([
-        //         'msg' => "User logout successfully"
-        // ]);
         return $this->apiResponse(true,'User logout successfully',200);
     }
 }

@@ -13,11 +13,15 @@ class Portfolio extends Model
         'freelancer_id',
         'title',
         'description',
-        'img_link',
         'attachment_link'
     ];
 
     public function freelancer(){
         return $this->belongsTo(Freelancer::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(PortfolioImages::class);
     }
 }

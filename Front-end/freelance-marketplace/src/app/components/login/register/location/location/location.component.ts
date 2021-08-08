@@ -19,14 +19,18 @@ export class LocationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.user_data = localStorage.getItem('user_data');
-    this.user_data = JSON.parse(this.user_data);
+    if(localStorage.getItem('user_data'))
+    {
+      this.user_data = localStorage.getItem('user_data');
+      this.user_data = JSON.parse(this.user_data);
+    }
 
     this.form = this.formBuilder.group({
       country : ['' , [ Validators.required ]],
       street_address: ['' , [Validators.required ]],
       city: ['' , [Validators.required ]],
       zip_code: ['' , [Validators.required ]]
+
     })
   }
     isLogged : boolean = false;
@@ -36,40 +40,58 @@ export class LocationComponent implements OnInit {
         this.user_data.location = this.form.value;
         console.log(this.user_data)
 
-        //if signUp with socialite
+        //if signUp with socialite done
         if(this.user_data.response)
         {
-
-          localStorage.setItem('token' , this.user_data.response.access_token);
           console.log(this.user_data);
-          if(this.user_data.type == 'client')
-          {
-            this.router.navigateByUrl('/client/main');
-          }else
-          {
-            this.router.navigateByUrl('/user/signup/category');
-          }
+
+          //send request
+          // this.userService.register(this.user_data).subscribe(response=>{
+
+            // console.log(response);
+
+            //face token
+            localStorage.setItem('token' , 'any');
+            //redirect user as a client or freelancer
+            if(this.user_data.type == 'client')
+            {
+              localStorage.setItem('clientType' , 'client');
+              this.router.navigateByUrl('/client/main');
+            }else
+            {
+              localStorage.setItem('freelancerType' , 'freelancer');
+              this.router.navigateByUrl('/user/signup/category');
+            }
+          // })//end of request
 
         }
-        else
+        else //=> if logged manually
         {
-          if(this.user_data.user_data.type == 'client')
-          {
-            //this is a fake token
-            console.log(this.user_data.user_data.type);
+
+          //send request
+          // this.userService.register(this.user_data).subscribe(response=>{
+            // console.log(response);
+
+            //fake token
             localStorage.setItem('token' , 'any');
-            this.router.navigateByUrl('/client/main');
-          }
-          else
-          {
-            console.log(this.user_data.user_data.type);
-            localStorage.setItem('token' , 'any');
-            this.router.navigateByUrl('/user/signup/category');
-          }
+
+            if(this.user_data.user_data.type == 'client')
+            {
+              localStorage.setItem('clientType' , 'client');
+              this.router.navigateByUrl('/client/main');
+            }
+            else
+            {
+              localStorage.setItem('freelancerType' , 'freelancer');
+              this.router.navigateByUrl('/user/signup/category');
+            }
+
+          // })//end of request
+
         }
 
       }
-      else
+      else //=> invalid data or error validation
       {
       this.isLogged = true;
       }

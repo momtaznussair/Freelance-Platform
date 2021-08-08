@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,19 +13,32 @@ import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
 export class SignupComponent implements OnInit {
 
   userResponse : User = new User();
+  imgPattern = '([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)';
+
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
+  constructor(private formBuilder : FormBuilder  ,private userService : UserService ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
 
 
   isTokenFound : boolean = false;
 
   user_data : any ;
+
+  //patterns for validation
+  textPattern = "^[a-zA-Z]{3,255}$"
+  phonePattern = "/^[0-9]{11,15}$/";
+  passwordPattern = "^[0-9a-zA-Z]{3,255}$"
+
   ngOnInit(): void {
 
+    //check if user logged
+    if(this.userService.isLogged())
+    {
+      this.userService.logout();
+    }
 
 
-    if(localStorage.getItem('id_token'))
+    if(localStorage.getItem('user_data'))
     {
       this.user_data = localStorage.getItem('user_data');
       this.user_data = JSON.parse(this.user_data);
@@ -37,15 +51,15 @@ export class SignupComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      first_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255)]],
-      last_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
-      username : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) ]],
+      first_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) , Validators.pattern(this.textPattern)]],
+      last_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255), Validators.pattern(this.textPattern) ]],
+      username : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) , Validators.pattern(this.textPattern)]],
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
       gender:['' , [Validators.required]],
       phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
-      password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15) ]],
-      password_confirmation : ['' , [Validators.required]],
-      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
+      password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
+      password_confirmation : ['' , [Validators.required ]],
+      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255) ]],
       type:['' , [Validators.required]],
     })
 
@@ -80,12 +94,14 @@ export class SignupComponent implements OnInit {
     // alert(JSON.stringify( this.form.value))
     if(this.form.valid && this.password == this.password_confirmation)
     {
+      console.log(this.form.value);
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
       localStorage.setItem('user_data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
       this.router.navigateByUrl('/user/signup/location');
     }
     else
     {
+      alert('error values');
       this.isLogged = true;
     }
   };//end of register function

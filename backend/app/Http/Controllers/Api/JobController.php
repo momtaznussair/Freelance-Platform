@@ -14,20 +14,18 @@ class JobController extends Controller
 
     public function index()
     {
-        $jobs = Job::all();
+        $jobs = Job::with('skills')->get();
         return $this->apiResponse($jobs);
     }
 
     public function show($id)
     {
-        $job = Job::find($id);
-        $skills = $job->skills();
-
-        $data = [$job , $skills];
+        $job = Job::with('skills')->find($id);
+       
         if (!$job) {
             $this->NotFoundError();
         }
-        return $this->apiResponse($data);
+        return $this->apiResponse($job);
     }
 
     public function store(Request $request)
