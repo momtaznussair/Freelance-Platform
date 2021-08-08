@@ -12,7 +12,7 @@ export class JobPostsService{
   constructor(private api:ApiService) { }
 
   getAllCategories(url:string): Observable<any> {
-    return this.api.get(`${url}`);
+    return this.api.get(url);
   }
 
 }
