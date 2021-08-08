@@ -17,30 +17,31 @@
                   <!-- <div class="form-group">
                     <label for="title" class="control-label">Project Title</label>
                     <input id="title" placeholder="Enter a brief but descriptive title" type="text" class="form-control mt-3">
-                    
+
                     <input id="image" name="images[]" placeholder="Enter a brief but descriptive title" type="file" class="form-control mt-3" multiple>
 
                     <label class="control-label mt-3">Project Description</label>
                     <textarea data-v-850c1da2="" rows="8" placeholder="Describe what you did on the project" class="form-control mt-3" spellcheck="false" data-gramm="false"></textarea>
-                  
+
                     <button  class="btn btn-primary mt-3 pull-right" routerLink="/freelancer/profile">Save</button>
-                    <button  class="btn btn-danger mt-3 pull-left" routerLink="/freelancer/profile">Cancel</button>                
+                    <button  class="btn btn-danger mt-3 pull-left" routerLink="/freelancer/profile">Cancel</button>
                 </div> -->
                 <form action="" [formGroup]="form">
                     <div class="body">
                         <div class="mt-5 mb-3">
                             <p class="h3 fw-bold">Title</p>
                             <input type="text" formControlName="portofolioTitle" class=" form-control" placeholder="write title for your skills">
-                            <div *ngIf="form.controls.portofolioTitle.invalid && isLogged || (form.controls.jobTitle.dirty || form.controls.jobTitle.touched)">
+                            <div *ngIf="form.controls.portofolioTitle.invalid && isLogged || (form.controls.portofolioTitle.dirty || form.controls.portofolioTitle.touched)">
                                 <small class="text-danger fw-bold mb-3" *ngIf="form.controls.portofolioTitle.hasError('required')">This field is required</small>
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.portofolioTitle.hasError('minlength')">You should write more than 20 letter </small>
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.portofolioTitle.hasError('maxlength')"> You can not write more than 250 letter</small>
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('pattern')"> You need to write a valid text</small>
+
                             </div>
                         </div>
 
                         <div class="text-primary mt-3">
-                            <input type="file" class="fw-bold" formControlName="img_link" name="image_link" multiple>
+                            <input type="file" class="fw-bold" formControlName="imglink" name="image_link" multiple>
+                            <div *ngIf="form.controls.imglink.invalid && isLogged || (form.controls.imglink.dirty || form.controls.imglink.touched)">
+                              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.imglink.hasError('required')">This field is required</small>
+
                         </div>
 
                         <div class="overview card-haeder mt-3">
@@ -48,19 +49,20 @@
                             <textarea formControlName="overview" class="form-control" placeholder="type an overview about yourself" value=""></textarea>
                             <div *ngIf="form.controls.overview.invalid && isLogged || (form.controls.overview.dirty || form.controls.overview.touched)">
                                 <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('required')">This field is required</small>
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('minlength')">You should write more than 255 letter </small>
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('maxlength')"> You can not write more than 500 letter</small>
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('pattern')"> You need to write a valid text</small>
+
                             </div>
                         </div>
                     </div>
                     <div class=" footer lg-6 d-sm-flex">
-                        <button  class="btn btn-primary mt-3 pull-right" (click)="save()" type="submit" routerLink="/freelancer/profile">Save</button>
-                        <button  class="btn btn-danger mt-3 pull-left" routerLink="/freelancer/profile">Cancel</button> 
+                        <button  class="btn btn-primary mt-3 pull-right" (click)="save()" type="submit" >Save</button>
+                        <button  class="btn btn-danger mt-3 pull-left" routerLink="/freelancer/profile">Cancel</button>
                     </div>
-                </form>
+
               </div>
+                </form>
           </div>
+          </div>
+
       </section>
 
   </div>

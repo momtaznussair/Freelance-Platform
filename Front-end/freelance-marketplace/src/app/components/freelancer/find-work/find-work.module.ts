@@ -19,9 +19,11 @@ const routes : Routes = [
   {path : 'stats' , component : MyStatsComponent},
   {path : 'saved-jobs' , component : SavedJobsComponent},
   {path : 'profile' , component : ProfileComponent},
+  {path:'profile/portofolio', component:PortofolioComponent},
   {path : 'proposals' , component : ProposalsComponent},
   {path : 'submit-proposal' , component :SubmitProposalComponent},
-  {path:'', component:FindWorkComponent}
+  {path:'', component:FindWorkComponent},
+
 ]
 
 @NgModule({

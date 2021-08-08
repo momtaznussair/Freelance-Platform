@@ -12,8 +12,8 @@ import { PortofolioService } from 'src/app/services/portofolio.service';
   styleUrls: ['./portofolio.component.css']
 })
 export class PortofolioComponent implements OnInit {
-  
-  textPattern = "^[a-zA-Z]{10,500}$"
+
+  // textPattern = "^[a-zA-Z]{10,500}$"
   form : FormGroup = new FormGroup({});
   portofolioData: any;
   portfolio:Portofolio[]=[];
@@ -21,18 +21,19 @@ export class PortofolioComponent implements OnInit {
   ngOnInit(): void {
 
     this.portofolioData = localStorage.getItem('data');
-    
+
     this.form = this.formBuilder.group({
-      portofolioTitle : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255), Validators.pattern(this.textPattern)]],
-      overview : ['' , [ Validators.required , Validators.minLength(10), Validators.maxLength(500) , Validators.pattern(this.textPattern)]]
+      portofolioTitle : ['' , [Validators.required]],
+      overview : ['' , [ Validators.required]],
+      imglink :['', [Validators.required]]
     })
 
-    
+
     // this._portofolio.post().subscribe(Response=>{
     //   this.portfolio=Response as Portofolio[];
     // },error=>{console.error}
     // );
-    
+
   }
 
   isLogged : boolean = false;
@@ -41,8 +42,8 @@ export class PortofolioComponent implements OnInit {
     if(this.form.valid)
     {
       this.portofolioData  = JSON.parse(this.portofolioData )
-      this.portofolioData .overview = this.form.controls.overview.value;
-      this.portofolioData .jobTitle = this.form.controls.jobTitle.value;
+      this.portofolioData.overview = this.form.controls.overview.value;
+      this.portofolioData.jobTitle = this.form.controls.jobTitle.value;
       localStorage.setItem('data' ,JSON.stringify(this.portofolioData ));
       this.router.navigateByUrl("/freelancer/profile");
     }
