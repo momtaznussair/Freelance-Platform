@@ -1,8 +1,6 @@
-import { ClientAuthorizationGuard } from './guards/client-authorization.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
-import { FreelancerAuthorization } from './guards/freelancer-authorization.guard';
 
 
 const routes: Routes = [
@@ -12,13 +10,11 @@ const routes: Routes = [
   },
   {
     path: 'freelancer',
-    loadChildren: () => import('./components/freelancer/freelancer.module').then(m => m.FreelancerModule)
-    // ,canActivate:[AuthGuard , FreelancerAuthorization]
+    loadChildren: () => import('./components/freelancer/freelancer.module').then(m => m.FreelancerModule),canActivate:[AuthGuard]
   },
   {
     path: 'client',
-    loadChildren: () => import('./components/client/client.module').then(m => m.ClientModule)
-    // ,canActivate:[AuthGuard , ClientAuthorizationGuard]
+    loadChildren: () => import('./components/client/client.module').then(m => m.ClientModule),canActivate:[AuthGuard]
   },
   {
     path: '',

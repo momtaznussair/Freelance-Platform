@@ -50,15 +50,15 @@ currentIndex:number=0;
 
   fetchPosts(): void {
     
-    // this.jobsPosts.getAllPosts(HttpParams)
-    //   .subscribe(
-    //     response => {
-    //       this.POSTS = response;
-    //       console.log(response);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     });
+    this.jobsPosts.getAllPosts(HttpParams)
+      .subscribe(
+        response => {
+          this.POSTS = response;
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   onTableDataChange(event:any){

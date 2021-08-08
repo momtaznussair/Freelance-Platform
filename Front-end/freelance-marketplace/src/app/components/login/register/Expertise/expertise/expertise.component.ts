@@ -7,8 +7,8 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import {FormControl} from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
-import { HttpClient } from '@angular/common/http';
-import { environment } from './../../../../../../environments/environment.prod';
+// import { HttpClient } from '@angular/common/http';
+// import { environment } from './../../../../../../environments/environment.prod';
 import { SkillsService } from 'src/app/services/skills.service';
 import { FormsModule } from '@angular/forms';
 import { searchFilter } from 'src/app/pipes/search-filter.pipe';
@@ -91,32 +91,46 @@ clicked:number=0;
     this.currentRegisterData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
-      searchSkill : ['' , [ Validators.required, Validators.maxLength(500) , Validators.minLength(10)]]
+      searchSkill : ['' , [  Validators.maxLength(10) , Validators.minLength(3)]]
     })
 
     /////////////////////////////
   }
 
   isLogged : boolean = false;
+  require:boolean=false
+
+
+
   submit()
  {
 //  this.appService.updateApprovalMessage(this.approvalText);
+for(let s of this.skills){
+  if(s.selected==true){
+    this.require=false;
+    this.router.navigateByUrl('/user/signup/education');
+  }else{
+   this.require=true
+  }
+}
+
+// if(this.form.valid)
+// {
+//  //  alert('success');
+//  //  this.apiService.post(`${environment.apiUrl}/skills` , this.form.value).subscribe(response=>{
+//  //    console.log(response);
+//     this.router.navigateByUrl('/user/signup/education');
+//  //  })
+// }
  } 
  status: boolean = false;
 
  addSkill(i:any,b:HTMLElement){
  i.selected = ! i.selected; 
    this.isLogged = true;
-   if(this.form.valid)
-   {
-     alert('success');
-    //  this.apiService.post(`${environment.apiUrl}/skills` , this.form.value).subscribe(response=>{
-    //    console.log(response);
-       this.router.navigateByUrl('/user/signup/education');
-    //  })
-   }
+  
    this.skillServices.addSkill(b.innerText); 
- 
+ this.require=false
    console.log(i)
  }
 
@@ -127,6 +141,7 @@ clicked:number=0;
     "id":5444,
     "name": a.innerText,
   "selected":true});
+  this.require=false;
   this.query=inpt.innerText;
   console.log(a.innerText);
   // this.skillServices.addSkill(a.innerText);

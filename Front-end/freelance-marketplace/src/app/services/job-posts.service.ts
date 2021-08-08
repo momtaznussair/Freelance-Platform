@@ -1,10 +1,17 @@
-import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Category } from '../models/category';
-import { ApiService } from './api.service';
+// import { Injectable } from '@angular/core';
 
-// const endpoint = 'http://127.0.0.1:8000/api';
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class JobPostsService {
+
+//   constructor() { }
+// }
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+const endpoint = 'https://jsonplaceholder.typicode.com/posts';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +19,10 @@ import { ApiService } from './api.service';
 
 export class JobPostsService{
 
-  constructor(private api:ApiService) { }
+  constructor(private http: HttpClient) { }
 
-  getAllCategories(params:any): Observable<any> {
-    return this.api.get('/categories');
+  getAllPosts(params:any): Observable<any> {
+    return this.http.get(endpoint, { params });
   }
- 
+
 }
