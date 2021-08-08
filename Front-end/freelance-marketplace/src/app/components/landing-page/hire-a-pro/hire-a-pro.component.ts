@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { ApiService } from 'src/app/services/api.service';
@@ -9,21 +10,21 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class HireAProComponent implements OnInit {
 
-  constructor(private _apiservice:ApiService) { }
+  constructor(private _apiservice:ApiService,private http:HttpClient) { }
   categories:Category[]=[];
   skills:Category[]=[];
 
   ngOnInit(): void {
-    // this._apiservice.get("http://127.0.0.1:8000/api/categories").subscribe(Response=>{
-    //   this.categories=Response as Category[];
-    // },error=>{}
-    // );
+    this.http.get("http://127.0.0.1:8000/api/categories").subscribe(response=>{
+      this.categories=response as Category[];
+    },error=>{console.error('wrong')}
+    );
 
 
-    // this._apiservice.get("http://127.0.0.1:8000/api/skills").subscribe(Response=>{
-    //   this.skills=Response as Category[];
-    // },error=>{}
-    // );
+    this.http.get("http://127.0.0.1:8000/api/skills").subscribe(response=>{
+      this.skills=response as Category[];
+    },error=>{console.error('wrong')}
+    );
   }
 
 }

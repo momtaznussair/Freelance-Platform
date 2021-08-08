@@ -14,16 +14,22 @@ export class JobDetailsComponent implements OnInit {
   constructor(private _api:ApiService,private http:HttpClient,private job:JobService) { }
 job_details:Job[]=[];
   ngOnInit(): void {
-    this.http.get("http://127.0.0.1:8000/api/jobs/1").subscribe(Response=>{
+    this.http.get("http://127.0.0.1:8000/api/jobs/{id}").subscribe(Response=>{
       this.job_details=Response as Job[];
-    },error=>{console.error});
+    },error=>{console.error()});
 
   
 
   
   }
   submitproposal(){
-      
+      let jop:Job=new Job();
+      // jop.id=id;
+      this.http.post("http://127.0.0.1:8000/api/jobs",jop).subscribe(Response=>{
+        console.log(Response);
+      },erroe=>{console.error()}
+      );
+
   }
 
 }

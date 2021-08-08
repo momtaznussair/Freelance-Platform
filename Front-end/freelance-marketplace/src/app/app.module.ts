@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import {HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AccordionModule} from 'primeng/accordion';
 import { TokenInterceptorService } from './services/token-interceptor.service';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //start of import social login modules
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
