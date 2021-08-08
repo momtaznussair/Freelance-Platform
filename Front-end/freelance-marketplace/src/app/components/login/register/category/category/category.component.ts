@@ -63,23 +63,24 @@ export class CategoryComponent implements OnInit {
 
   // Test for request freelancer data
   test_request: any ={
-    // user_id : 30,
-    // category_id : 1,
-    // overview : 'this is test',
-    // job_title : 'this is test title',
-    // experience_id : 2,
+    user_id : 50,
+    category_id : 1,
+    overview : `this is test overview this is test overview this is test overview this is test overview this is test overview
+                this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview
+                this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview
+                this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview
+                this is test overview this is test overview this is test overview `,
+    job_title : 'this is test title',
+    experience_id : 2,
   }
 
 
   test()
   {
-    // this.apiService.post(`${environment.apiUrl}/freelancers` , this.test_request).subscribe(response=>{
-    //   console.log(response);
-    // })
+    this.apiService.post(`${environment.apiUrl}/freelancers` , this.test_request).subscribe(response=>{
+      console.log(response);
+    })
   }
-
-
-
 
 
 }

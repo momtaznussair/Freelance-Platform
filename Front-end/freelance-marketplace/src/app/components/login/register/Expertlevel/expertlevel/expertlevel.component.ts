@@ -38,8 +38,4 @@ export class ExpertlevelComponent implements OnInit {
     }
   }
 
-  submit()
- {
-//  this.appService.updateApprovalMessage(this.approvalText);
- }
 }
