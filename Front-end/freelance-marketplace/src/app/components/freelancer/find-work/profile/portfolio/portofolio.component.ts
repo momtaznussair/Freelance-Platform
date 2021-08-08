@@ -24,7 +24,8 @@ export class PortofolioComponent implements OnInit {
     
     this.form = this.formBuilder.group({
       portofolioTitle : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255), Validators.pattern(this.textPattern)]],
-      overview : ['' , [ Validators.required , Validators.minLength(10), Validators.maxLength(500) , Validators.pattern(this.textPattern)]]
+      overview : ['' , [ Validators.required , Validators.minLength(10), Validators.maxLength(500) , Validators.pattern(this.textPattern)]],
+      imglink :['', [Validators.required]]
     })
 
     
