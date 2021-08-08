@@ -1,37 +1,78 @@
 <div class="container py-5 px-3">
 
-    <div class="row">
+  <div class="row">
 
 
-        <section class="sidebar d-none d-md-block col-md-3">
-            <app-sidebar></app-sidebar>
-        </section>
-        <section class="myinfo col-12 col-md-9">
-            <div class="header">
-                <h3> Add Eduction </h3>
-                <p>5 of 8</p>
+    <section class="sidebar d-none d-md-block col-md-3">
+      <app-sidebar></app-sidebar>
 
-            </div>
+    </section>
+    <section class="myinfo col-12 col-md-9">
+      <div class="header">
+        <h3> Add Eduction </h3>
+        <p>5 of 8</p>
 
-            <br>
-            <p><b> School </b></p>
-
-            <div class="col-12 md-6"> <input type="text" class="form-control" placeholder="EX: Mansoura university"> </div>
-            <br>
-            <p><b>  Area of study </b></p>
-            <input type="text" class="form-control" placeholder="EX:computer science">
-            <br>
-            <p><b>  Degree</b></p>
-            <input type="text" class="form-control" placeholder="EX:Bachelor's"> <br>
-
-            <p><b> Dates Attended</b></p>
-            <input type="date" class="form-control"> <br>
-            <div class="md-6 lg-6 d-sm-flex footer">
-                <button class="bt1" type="button" routerLink="/user/signup/skills"> Back </button>
-                <button class="bt2 " type="button " (click)="submit()" routerLink="/user/signup/lang">Next</button>
-            </div>
+      </div>
+      <form action="" [formGroup]="form">
+        <br>
+        <p><b> School </b></p>
 
 
-            <!-- <div class="container2 ">
+        <div class="col-12 md-6">
+          <input type="text" formControlName="inistiute" class="form-control" placeholder="EX: Mansoura university">
+
+          <div *ngIf="form.controls.inistiute.invalid && isLogged || (form.controls.inistiute.dirty || form.controls.inistiute.touched)">
+            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.inistiute.hasError('required')">This field is
+              required</small>
+            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.inistiute.hasError('minlength')">You should
+              write more than 255 letter </small>
+            <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('maxlength')"> You can not write more than 500 letter</small> -->
+          </div>
+        </div>
+        <br>
+        <p><b> Area of study </b></p>
+        <div>
+          <input type="text" formControlName="areaofstudy" class="form-control" placeholder="EX:computer science">
+          <div *ngIf="form.controls.areaofstudy.invalid && isLogged || (form.controls.areaofstudy.dirty || form.controls.areaofstudy.touched)">
+            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.areaofstudy.hasError('required')">This field is
+              required</small>
+              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.areaofstudy.hasError('minlength')">You should
+                write more than 255 letter </small>
+
+            <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('maxlength')"> You can not write more than 500 letter</small> -->
+          </div>
+        </div>
+
+        <br>
+        <p><b> Degree</b></p>
+        <div>
+          <input type="text" formControlName="degree" class="form-control" placeholder="EX:Bachelor's"> <br>
+          <div *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
+            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('required')">This field is
+              required</small>
+
+            <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('maxlength')"> You can not write more than 500 letter</small> -->
+          </div>
+        </div>
+
+        <p><b> Dates Attended</b></p>
+        <input type="date" formControlName="data" class="form-control"> <br>
+        <div *ngIf="form.controls.data.invalid && isLogged || (form.controls.data.dirty || form.controls.data.touched)">
+          <small class="text-danger fw-bold mb-3" *ngIf="form.controls.data.hasError('required')">choose data
+            </small>
+
+          <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('maxlength')"> You can not write more than 500 letter</small> -->
+        </div>
+
+        <div class="md-6 lg-6 d-sm-flex footer">
+          <button class="bt1" type="button" routerLink="/user/signup/experience-level"> Back </button>
+          <button class="bt2" (click)="next()"   type="submit">next</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- <div class="container2 ">
 
 </div> -->
+  </div>
+</div>
