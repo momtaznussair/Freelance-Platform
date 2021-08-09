@@ -9,7 +9,6 @@ export class sharedSignUpProcess {
 
   sharedSignUpProcess:any = {
     user_data : {},
-    location : {},
   }
 
 }

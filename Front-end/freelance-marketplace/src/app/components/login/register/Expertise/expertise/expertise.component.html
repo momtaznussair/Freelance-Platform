@@ -14,25 +14,38 @@
                 <p>3 of 8</p>
             </div>
             <form action="" [formGroup]="form">
-            <div class="body">
-                <div class="sec sec1">
-                    <p><b>Select your skills</b></p>
-                    <div class="skills"  > 
-                        <button #b class=" mx-1 my-1  bt1s"  *ngFor="let i of skills" [ngClass]="{'bt2s':i.selected}"  (click)="addSkill(i,b)" >{{i.name}} </button>
-                       </div>
-                       <div *ngIf="require">
-                        <small class="text-danger fw-bold mb-3"  *ngIf="require" > required</small>
-                    </div>
+                <div>
+                    <input type="hidden" formControlName="user_id" [(ngModel)]="user_id" name="user_id">
                 </div>
-                <div class="sec sec2">
-                    <p><b>Not what you're looking for ?</b></p>
-             <!------------------------------------start search  bar -------------------------------------------------->
+                <div class="body">
+                    <div class="sec sec1">
+                        <p><b>Select your skills</b></p>
+                        <div class="skills">
+                            <button #b class=" mx-1 my-1  bt1s" *ngFor="let i of skills" [ngClass]="{'bt2s':i.selected}" (click)="addSkill(i,b)">{{i.name}} </button>
+                        </div>
+                        <div *ngIf="require">
+                            <small class="text-danger fw-bold mb-3" *ngIf="require"> please select your skills</small>
+                        </div>
+                    </div>
+                    <div class="sec sec2">
+                        <p><b>Not what you're looking for ?</b></p>
+                        <!------------------------------------start search  bar -------------------------------------------------->
 
-             <!-- <app-search-bar></app-search-bar> -->
-                    <div class="card dropdown">
-                        <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="query" 
-                         formControlName="searchSkill"  class="form-control" [placeholder]= "placeholder">
-                      
+                        <!-- <app-search-bar></app-search-bar> -->
+                        <div class="card dropdown">
+                            <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="query" formControlName="searchSkill" class="form-control" [placeholder]="placeholder">
+
+                        </div>
+                        <ul class="menubox card list-group" *ngIf="inpt.value">
+                            <div class="psearch" *ngFor="let item of skills |searchFilter: query">
+                                <a class="list-group-item list-group-item-light" #a (click)="addSkillFromDropDown(a,inpt)"> {{item.name}}</a>
+                            </div>
+                        </ul>
+                        <!------------------------------------end search bar -------------------------------------------------->
+                        <div *ngIf="form.controls.searchSkill.invalid && form.controls.searchSkill.dirty || form.controls.searchSkill.touched">
+                            <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('required')">This field is required</small> -->
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('maxlength')"> You can not write more than 500 letter</small>
+                        </div>
                     </div>
                     <ul class="menubox card list-group" *ngIf="inpt.value">
                     <div class="psearch"  *ngFor="let item of skills |searchFilter: query">
@@ -48,7 +61,8 @@
                 <div class=" footer lg-6 d-sm-flex">
                     <button class="bt1" routerLink="/user/signup/experience-level">back</button>
                     <button class="bt2" (click)="submit()">next</button>
-                </div></div>
+                </div>
+            <!-- </div> -->
             </form>
         </section>
     </div>

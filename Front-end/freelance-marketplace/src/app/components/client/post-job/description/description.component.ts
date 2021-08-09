@@ -33,6 +33,34 @@ next(){
   if(this.form.valid)
   {
 
+import { UserService } from 'src/app/services/user.service';
+
+@Component({
+  selector: 'app-description',
+  templateUrl: './description.component.html',
+  styleUrls: ['./description.component.css']
+})
+export class DescriptionComponent implements OnInit {
+
+
+  form : FormGroup = new FormGroup({});
+  constructor(private formBuilder : FormBuilder  , private router : Router) { }
+
+  currentRegisterData : any;
+
+  ngOnInit(): void {
+    this.currentRegisterData = localStorage.getItem('data');
+
+    this.form = this.formBuilder.group({
+      description : ['' , [ Validators.required , Validators.minLength(10) ]],
+    })
+  }
+  isLogged : boolean = false;
+
+next(){
+  if(this.form.valid)
+  {
+
     this.router.navigateByUrl("/client/post-job/details");
   }
   else

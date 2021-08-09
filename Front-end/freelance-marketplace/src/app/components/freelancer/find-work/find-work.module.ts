@@ -1,7 +1,7 @@
 import { SavedJobsComponent } from './saved-jobs/saved-jobs.component';
 import { FindWorkComponent } from './find-work/find-work.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 import { MyStatsComponent } from './my-stats/my-stats.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
@@ -11,9 +11,10 @@ import { JobDetailsComponent } from './find-work/job-details/job-details.compone
 import { SubmitProposalComponent } from './find-work/job-details/submit-proposal/submit-proposal.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FilterJobsComponent } from './filter-jobs/filter-jobs.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterByPipe } from 'src/app/pipes/filter-by.pipe';
-
+import { CommonModule, NgClass } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PortofolioComponent } from './profile/portfolio/portofolio.component';
 
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},
@@ -22,6 +23,7 @@ const routes : Routes = [
   {path : 'stats' , component : MyStatsComponent},
   {path : 'saved-jobs' , component : SavedJobsComponent},
   {path : 'profile' , component : ProfileComponent},
+  {path:'profile/portofolio', component:PortofolioComponent},
   {path : 'proposals' , component : ProposalsComponent},
   {path : 'submit-proposal' , component :SubmitProposalComponent},
   {path:'', component:FindWorkComponent}
@@ -36,12 +38,11 @@ const routes : Routes = [
     ProfileComponent,
     JobDetailsComponent,
     SubmitProposalComponent,
-    FilterJobsComponent,FilterByPipe
-    
+    PortofolioComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule
-    ,NgxPaginationModule,FormsModule,ReactiveFormsModule
+    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,
+    FormsModule,ReactiveFormsModule,NgxPaginationModule
   ],
   exports : [MyStatsComponent]
 })

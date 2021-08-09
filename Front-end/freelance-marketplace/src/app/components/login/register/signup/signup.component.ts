@@ -25,9 +25,13 @@ export class SignupComponent implements OnInit {
 
   //patterns for validation
   textPattern = "^[a-zA-Z]{3,255}$"
-  phonePattern = "^[0-9a-zA-Z]{3,255}$"
-  passwordPattern = "^[0-9a-zA-Z]{3,255}$"
+  phonePattern = "/^[0-9]{11,15}$/";
+  passwordPattern = "^[0-9a-zA-Z]{3,255}$";
 
+  genders = ['male' , 'female'];
+
+
+  //start of ngOnInit()
   ngOnInit(): void {
 
 
@@ -59,6 +63,7 @@ export class SignupComponent implements OnInit {
 
   }//end of ngOnInit
 
+
   nextStepOfSignUp()
   {
 
@@ -76,24 +81,24 @@ export class SignupComponent implements OnInit {
       this.nextStepOfSignUp();
   }
 
-  // if signup with any socialite
 
-
-
+  // signUp manually
 
   password_confirmation : string = '';
   password : string = '';
   isLogged : boolean = false;
+
   register(){
-    // alert(JSON.stringify( this.form.value))
+
     if(this.form.valid && this.password == this.password_confirmation)
     {
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
-      localStorage.setItem('user_data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
+      localStorage.setItem('data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
       this.router.navigateByUrl('/user/signup/location');
     }
     else
     {
+      alert('error values please complete your information');
       this.isLogged = true;
     }
   };//end of register function

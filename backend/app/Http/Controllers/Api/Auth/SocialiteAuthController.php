@@ -54,6 +54,7 @@ class SocialiteAuthController extends Controller
             $user->city = $data->location->city;
             $user->street = $data->location->street_address;
             $user->zip_code = $data->location->zip_code;
+            $user->type = $data->type;
             $user->save();
         }
 

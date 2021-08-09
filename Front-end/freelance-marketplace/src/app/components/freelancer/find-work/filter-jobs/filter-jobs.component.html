@@ -1,4 +1,6 @@
-<app-nav></app-nav>
+<!-- <app-nav> 
+
+</app-nav> -->
 <!---------------------------------------
  
 ------------------------------------------>
@@ -101,7 +103,9 @@
                 <!-----------------------------------------------------------------test dropdown--------------------------------------------->
 
     <div class="input-group mb-md-3 d-sm-none d-md-flex">
-        <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs" [(ngModel)]="query">
+        <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs"
+        >
+        <!-- [(ngModel)]="query"> -->
         <a  class="input-group-text">
             <i class="fas fa-search"></i>
         </a>
@@ -251,11 +255,10 @@
 <div class="container">
    
     <div class="d-flex justify-content-center">
-        <pagination-controls 
-       
+        <!-- <pagination-controls 
           nextLabel="next" 
-          (pageChange)="onTableDataChange($event)">
-        </pagination-controls>
+          (pageChange)="onTableDataChange($event)"
+        </pagination-controls> -->
       </div>
   
   </div>
