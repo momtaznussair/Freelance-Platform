@@ -1,6 +1,6 @@
 <app-nav></app-nav>
 <!---------------------------------------
- 
+
 ------------------------------------------>
 
 
@@ -15,250 +15,241 @@
             <div class="col-md-2 d-sm-none d-md-block">
                 <h2 class="mb-md-5">Filter By</h2>
 
- <!---------------------------------------------------category----------------------------------------------------------------->
- <button class="alert alert-light my-3 "  (click)="changeCatgoryIcon()" type="button" data-bs-toggle="collapse"
-  data-bs-target="#collapseExample0" aria-expanded="false" aria-controls="collapseExample0">
+                <!---------------------------------------------------category----------------------------------------------------------------->
+                <button class="alert alert-light my-3 " (click)="changeCatgoryIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample0" aria-expanded="false" aria-controls="collapseExample0">
     <span >
       <strong>category</strong>
    <i class=" fa fa-{{shape1}} fa-chevron-down"></i>
- </span>   
+ </span>
 </button>
-     
-      
-     <div class="collapse" id="collapseExample0">
-       <div class="card card-body">
-        <div class="form-check">
-           <a  *ngFor="let item of cat" (click)="addParams($event)">
+
+
+                <div class="collapse" id="collapseExample0">
+                    <div class="card card-body">
+                        <div class="form-check">
+                            <a *ngFor="let item of cat" (click)="addParams($event)">
               {{item.name}}
            </a>
-            </div> 
-            
-             </div> </div>
-     </div>
-<!--------------------------------------------------------Hourly rate----------------------------------------------------------->
-                    <button class="alert alert-light my-3 "  (click)=" changeHourlyRateIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--------------------------------------------------------Hourly rate----------------------------------------------------------->
+            <button class="alert alert-light my-3 " (click)=" changeHourlyRateIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                  <span >
                    <strong>Hour Rate</strong>
                 <i class=" fa fa-{{shape2}} fa-chevron-down"></i>
-              </span>   
+              </span>
             </button>
-                  
-                   
-                  <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
-                             (change)="addParams($event)">
-                            <label class="form-check-label" for="flexRadioDefault1">
+
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" (change)="addParams($event)">
+                        <label class="form-check-label" for="flexRadioDefault1">
                              fixed hours
                             </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                             (change)="addParams($event)"
-                            >
-                            <label class="form-check-label" for="flexRadioDefault2">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" (change)="addParams($event)">
+                        <label class="form-check-label" for="flexRadioDefault2">
                            hourly rate
                             </label>
-                          </div> </div>
-                  </div>
+                    </div>
+                </div>
+            </div>
 
-            
-               <!-------------------------------------------------------------------------------->
-               <button class=" alert alert-light "  (click)="changeSkillsIcon()" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+
+            <!-------------------------------------------------------------------------------->
+            <button class=" alert alert-light " (click)="changeSkillsIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
                 <span >
                     <strong>skills</strong>
                  <i class=" fa fa-{{shape3}} fa-chevron-down"></i>
-               </span>   
+               </span>
              </button>
-                   
-                    
-                   <div class="collapse" id="collapseExample1">
-                     <div class="card card-body">
-                        <div class="form-check">
-                            <input #s1 class="form-check-input" type="checkbox" value="html" id="flexCheckDefault"  (change)="addParams($event)" >
-                            <label class="form-check-label" for="flexCheckDefault">
+
+
+            <div class="collapse" id="collapseExample1">
+                <div class="card card-body">
+                    <div class="form-check">
+                        <input #s1 class="form-check-input" type="checkbox" value="html" id="flexCheckDefault" (change)="addParams($event)">
+                        <label class="form-check-label" for="flexCheckDefault">
                           html
                             </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="php" id="flexCheckChecked" (change)="addParams($event)"   >
-                            <label class="form-check-label" for="flexCheckChecked">
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="php" id="flexCheckChecked" (change)="addParams($event)">
+                        <label class="form-check-label" for="flexCheckChecked">
                           php
                             </label>
-                          </div>
-                        </div>
-                   </div>
+                    </div>
                 </div>
-           
-            <!-- End filter side -->
+            </div>
+        </div>
 
-            <!----------------------------------------------- Start Main  ------------------------------------->
+        <!-- End filter side -->
 
-            <div class="col-md-8 card py-3 ">
+        <!----------------------------------------------- Start Main  ------------------------------------->
 
-                <!-----------------------------------------------------------------test dropdown--------------------------------------------->
+        <div class="col-md-8 card py-3 ">
 
-    <div class="input-group mb-md-3 d-sm-none d-md-flex">
-        <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs" [(ngModel)]="query">
-        <a  class="input-group-text">
-            <i class="fas fa-search"></i>
-        </a>
-    </div>
+            <!-----------------------------------------------------------------test dropdown--------------------------------------------->
+
+            <div class="input-group mb-md-3 d-sm-none d-md-flex">
+                <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs" [(ngModel)]="query">
+                <a class="input-group-text">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
 
 
-                <!-- Button trigger modal -->
-                <a href="#" class="d-sm-none d-md-flex" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <!-- Button trigger modal -->
+            <a href="#" class="d-sm-none d-md-flex" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Advanced Search
                 </a>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <!-- Header -->
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Advanced Search</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-
-                            <!-- Body -->
-                            <div class="modal-body">
-                                <form>
-
-                                    <label for="AllOfTheseWords" class="form-label">All of these words</label>
-                                    <input type="text" class="form-control" id="AllOfTheseWords">
-
-                                    <label for="AnyOfTheseWords" class="form-label">Any of these words</label>
-                                    <input type="text" class="form-control" id="AnyOfTheseWords">
-
-                                    <label for="TheExactPhrase" class="form-label">The exact phrase</label>
-                                    <input type="text" class="form-control" id="TheExactPhrase">
-
-                                    <label for="ExcludeTheseWords" class="form-label">Exclude these words</label>
-                                    <input type="text" class="form-control" id="ExcludeTheseWords">
-
-                                    <label for="TitleSearch" class="form-label">Title Search</label>
-                                    <input type="text" class="form-control" id="TitleSearch">
-
-                                    <label for="SkillsSearch" class="form-label">Skills Search</label>
-                                    <input type="text" class="form-control" id="SkillsSearch">
-
-                                </form>
-                            </div>
-
-                            <!-- Footer -->
-                            <div class="modal-footer">
-                                <a href="#" class="btn text-primary" data-bs-dismiss="modal">Cancle</a>
-                                <a href="#" class="btn btn-primary rounded-pill">Search</a>
-                            </div>
-
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Header -->
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Advanced Search</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+
+                        <!-- Body -->
+                        <div class="modal-body">
+                            <form>
+
+                                <label for="AllOfTheseWords" class="form-label">All of these words</label>
+                                <input type="text" class="form-control" id="AllOfTheseWords">
+
+                                <label for="AnyOfTheseWords" class="form-label">Any of these words</label>
+                                <input type="text" class="form-control" id="AnyOfTheseWords">
+
+                                <label for="TheExactPhrase" class="form-label">The exact phrase</label>
+                                <input type="text" class="form-control" id="TheExactPhrase">
+
+                                <label for="ExcludeTheseWords" class="form-label">Exclude these words</label>
+                                <input type="text" class="form-control" id="ExcludeTheseWords">
+
+                                <label for="TitleSearch" class="form-label">Title Search</label>
+                                <input type="text" class="form-control" id="TitleSearch">
+
+                                <label for="SkillsSearch" class="form-label">Skills Search</label>
+                                <input type="text" class="form-control" id="SkillsSearch">
+
+                            </form>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="modal-footer">
+                            <a href="#" class="btn text-primary" data-bs-dismiss="modal">Cancle</a>
+                            <a href="#" class="btn btn-primary rounded-pill">Search</a>
+                        </div>
+
                     </div>
                 </div>
+            </div>
 
-                <div class="card mt-md-3 mt-sm-4">
-                    <h5 class="card-header fw-bold px-md-3 py-md-4 d-flex">
-                        My Feed
-                        <div class="d-inline-block ms-auto">
-                            <a href="" class="text-reset p-1">
-                                <i class="fas fa-ellipsis-h"></i>
-                            </a>
-                        </div>
-                    </h5>
-                    <!---//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+            <div class="card mt-md-3 mt-sm-4">
+                <h5 class="card-header fw-bold px-md-3 py-md-4 d-flex">
+                    My Feed
+                    <div class="d-inline-block ms-auto">
+                        <a href="" class="text-reset p-1">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </a>
+                    </div>
+                </h5>
+                <!---//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
-<!----/////////////////////////////////////////////end card /////////////////////////////////////////////////////////////////-->
-                    <div class="card-body" *ngFor="let post of POSTS |searchFilter: 'title': 'eum et est occaecat'
+                <!----/////////////////////////////////////////////end card /////////////////////////////////////////////////////////////////-->
+                <div class="card-body" *ngFor="let post of POSTS |searchFilter: 'title': 'eum et est occaecat'
                     | paginate : {
                         itemsPerPage: 5,
                         currentPage: page,
                         totalItems: count
                       };
                 let i = index" [class.active]="i == currentIndex">
-                        <!-- Job Title -->
-                        <div class="header d-flex">
-                            <a routerLink="#"> {{post.title}}</a>
-                            <span class="ms-auto">
+                    <!-- Job Title -->
+                    <div class="header d-flex">
+                        <a routerLink="#"> {{post.title}}</a>
+                        <span class="ms-auto">
                                 <i class="far fa-thumbs-down fa-2x mx-md-2"></i>
                                 <i class="far fa-heart fa-2x mx-2 d-none"></i>
                                 <i class="fas fa-heart fa-2x mx-2"></i>
                             </span>
-                            <br>
-                        </div>
-
-                        <!-- Job Info  -->
-                        Hourly: <span class="hourly-rate fw-bold">$5.00 - $15.00</span>
-                        <span class="complex"> - Intermidiate</span> - Est. Time: <span class="job-time"> More than 6 months, Hours to be determined </span> - Posted: <span class="job-since"> 1 day ago</span>
                         <br>
+                    </div>
 
-                        <!-- Job Description -->
-                        <p class="job-desc fw-bold">
-                            {{post.body}}
-                        </p>
+                    <!-- Job Info  -->
+                    Hourly: <span class="hourly-rate fw-bold">$5.00 - $15.00</span>
+                    <span class="complex"> - Intermidiate</span> - Est. Time: <span class="job-time"> More than 6 months, Hours to be determined </span> - Posted: <span class="job-since"> 1 day ago</span>
+                    <br>
 
-                        <!-- Job Skills -->
-                        <div class="skills text-center">
-                            <span class="mx-2">Web Design</span>
-                            <span class="mx-2">Web Aplication</span>
-                            <span class="mx-2">PHP</span>
-                            <span class="mx-2">Laravel</span>
-                        </div>
+                    <!-- Job Description -->
+                    <p class="job-desc fw-bold">
+                        {{post.body}}
+                    </p>
 
-                        -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
+                    <!-- Job Skills -->
+                    <div class="skills text-center">
+                        <span class="mx-2">Web Design</span>
+                        <span class="mx-2">Web Aplication</span>
+                        <span class="mx-2">PHP</span>
+                        <span class="mx-2">Laravel</span>
+                    </div>
 
-                        <!-- More Info -->
-                        <div class="more-info">
-                            <!-- start Verified -->
-                            <span class="unverified">
+                    -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
+
+                    <!-- More Info -->
+                    <div class="more-info">
+                        <!-- start Verified -->
+                        <span class="unverified">
                                 <i class="far fa-check-circle me-md-2"></i> <span class="fw-bold">Payment unverified</span>
-                            </span>
-                            <span class="verified d-none">
+                        </span>
+                        <span class="verified d-none">
                                 <i class="fas fa-check-circle mee-md-2"></i> <span class="fw-bold">Payment verified</span>
-                            </span>
-                            <!-- End Verified -->
+                        </span>
+                        <!-- End Verified -->
 
-                            <!-- Rating -->
-                            <span class="payment-rating mx-md-2">
+                        <!-- Rating -->
+                        <span class="payment-rating mx-md-2">
                                 rating with stars
                             </span>
 
-                            <!-- Money spent -->
-                            <span class="spent mx-md-2">
+                        <!-- Money spent -->
+                        <span class="spent mx-md-2">
                                 <span class="money-spent fw-bold">$10</span> spent
-                            </span>
+                        </span>
 
-                            <!-- Location -->
-                            <span class="location ms-md-2">
+                        <!-- Location -->
+                        <span class="location ms-md-2">
                                 <i class="fas fa-map-marker-alt me-2"></i>
                                 <span class="fw-bold">United state</span>
-                            </span>
-                        </div>
-
-
+                        </span>
                     </div>
 
-                </div>
-            </div>
-            <!------------------------------------------------------- End main ------------------------------------------------>
 
-          
+                </div>
+
+            </div>
         </div>
+        <!------------------------------------------------------- End main ------------------------------------------------>
+
+
     </div>
+</div>
 <!-- </div> -->
 <!---------------------------------------------------------------- pagination controls------------------------------------------------------->
 <div class="container">
-   
+
     <div class="d-flex justify-content-center">
-        <pagination-controls 
-       
-          nextLabel="next" 
-          (pageChange)="onTableDataChange($event)">
+        <pagination-controls nextLabel="next" (pageChange)="onTableDataChange($event)">
         </pagination-controls>
-      </div>
-  
-  </div>
+    </div>
 
-
-
+</div>
