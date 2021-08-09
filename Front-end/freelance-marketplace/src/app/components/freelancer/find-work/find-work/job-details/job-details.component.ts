@@ -26,6 +26,7 @@ job_details:Job[]=[];
       let jop:Job=new Job();
       // jop.id=id;
       this.jobDetails.addJob("jobs",jop).subscribe(response=>{
+        // jop.id=response['data']['id'] as number;
         console.log(response);
       },erroe=>{console.error()}
       );
