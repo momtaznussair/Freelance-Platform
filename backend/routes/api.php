@@ -22,6 +22,8 @@ use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SkillController;
 use App\Models\Education;
 use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\Api\NotificationController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -144,6 +146,9 @@ Route::post('clients',[ClientController::class,'store']);
 Route::get('educations',[EducationController::class,'index']);
 Route::get('educations/{education}',[EducationController::class,'show']);
 
+    Route::post('jobs' ,[JobController::class,'store']);
+
+
 // authenticated client routes
 
 Route::middleware(['client','auth:sanctum'])->group(function () {
@@ -152,7 +157,6 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
     Route::delete('/clients/delete/{client}',[ClientController::class,'destroy']);
 
     // jobs
-    Route::post('jobs' ,[JobController::class,'store']);
     Route::post('jobs/{job}' ,[JobController::class,'update']);
     Route::delete('jobs/delete/{job}' ,[JobController::class,'destroy']);
 
@@ -195,3 +199,9 @@ Route::middleware(['freelancer','auth:sanctum'])->group(function () {
 // Verification Email
 Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
 Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
+
+
+Route::get('/notifications/{id}' ,[NotificationController::class,'allNotifications'])->name('allNotifications');
+Route::get('/readNotifications/{id}' ,[NotificationController::class,'readNotifications'])->name('readNotifications');
+Route::get('/unreadNotifications/{id}' ,[NotificationController::class,'unreadNotifications'])->name('unreadNotifications');
+Route::post('/markAsRead/{id}/{notifyID}' ,[NotificationController::class,'markAsRead'])->name('markAsRead');

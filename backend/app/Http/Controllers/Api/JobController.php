@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Freelancer;
+use App\Models\FreelancerSkill;
 use App\Models\Job;
+use App\Models\User;
+use App\Notifications\JobNotification;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -57,6 +61,15 @@ class JobController extends Controller
 
 
         if ($job) {
+            $skillsIDs = $job->skills;
+            $freelancersIDs =  FreelancerSkill::select('freelancer_id')->whereIn('skill_id',$skillsIDs)->get();
+            
+            foreach($freelancersIDs as $id){
+                $freelancer = Freelancer::where('id' , $id->freelancer_id)->first();
+                $user = User::where('id' , $freelancer->user_id)->first();
+                $user->notify(new JobNotification($job->job_title));
+            }
+
             return $this->apiResponse($job);
         }
 
