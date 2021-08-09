@@ -74,6 +74,7 @@ clicked:number=0;
         console.log({user_id : 30 , skills : this.name})
         this.apiService.post(`${environment.apiUrl}/skills`, {user_id : 30 , skills : this.name}).subscribe(response=>{
           console.log(response);
+          this.router.navigateByUrl('/user/signup/education');
         })
       }
 
@@ -107,16 +108,14 @@ clicked:number=0;
   this.skills.push({
     "id":5444,
     "name": a.innerText,
-  "selected":true});
+  "selected":true
+  });
   this.require=false;
   this.query=inpt.innerText;
   console.log(a.innerText);
-  // this.skillServices.addSkill(a.innerText);
 
  }
  search(){
-  // this.result = this.skills.filter(s => s.includes(this.approvalText));
   console.log(this.result);
-
  }
 }
