@@ -11,11 +11,11 @@ import { JobService } from 'src/app/services/job.service';
 })
 export class JobDetailsComponent implements OnInit {
 
-  constructor(private _api:ApiService,private http:HttpClient,private job:JobService) { }
+  constructor(private jobDetails:JobService) { }
 job_details:Job[]=[];
   ngOnInit(): void {
-    this.http.get("http://127.0.0.1:8000/api/jobs/{id}").subscribe(Response=>{
-      this.job_details=Response as Job[];
+    this.jobDetails.getJobs("jobs/{id}").subscribe(Response=>{
+      this.job_details=Response['data'] as Job[];
     },error=>{console.error()});
 
   
@@ -25,8 +25,8 @@ job_details:Job[]=[];
   submitproposal(){
       let jop:Job=new Job();
       // jop.id=id;
-      this.http.post("http://127.0.0.1:8000/api/jobs",jop).subscribe(Response=>{
-        console.log(Response);
+      this.jobDetails.addJob("jobs",jop).subscribe(response=>{
+        console.log(response);
       },erroe=>{console.error()}
       );
 

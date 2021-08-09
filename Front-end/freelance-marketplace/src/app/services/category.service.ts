@@ -10,5 +10,8 @@ export class CategoryService {
   constructor(private api:ApiService) { }
   getCategories(url:string):Observable<any>{
     return this.api.get(url)
+  };
+  post(url:string,body:any){
+    return this.api.post(url,body);
   }
 }

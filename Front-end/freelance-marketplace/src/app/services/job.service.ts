@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -7,14 +8,14 @@ import { ApiService } from './api.service';
 })
 export class JobService {
 
-  constructor(private _apiservice:ApiService,private http:HttpClient) { }
+  constructor(private api:ApiService) { }
 
-  get(){
-    return this._apiservice.get("http://127.0.0.1:8000/api/jobs");
-  
+  getJobs(url:string):Observable<any>{
+    return this.api.get(url);
+   
   }
-  addJob(body:any){
-    return this._apiservice.post("http://127.0.0.1:8000/api/jobs",body);
+  addJob(url:string,body:any):Observable<any>{
+    return this.api.post("url",body);
   }
 
   // delete(id:number){
