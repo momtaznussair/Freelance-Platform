@@ -14,10 +14,7 @@
             </div>
             <form action="" [formGroup]="form">
                 <div>
-                    <input type="hidden" formControlName="user_id" name="user_id">
-                </div>
-                <div>
-                    <input type="hidden" formControlName="category_id" name="category_id">
+                    <input type="hidden" formControlName="user_id" [(ngModel)]="user_id" name="user_id">
                 </div>
                 <div class="body">
                     <div class="sec sec1">

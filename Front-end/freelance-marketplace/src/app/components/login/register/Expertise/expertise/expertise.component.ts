@@ -23,8 +23,6 @@ export class ExpertiseComponent implements OnInit {
 placeholder="Start typing to search for skills";
 clicked:number=0;
   form : FormGroup = new FormGroup({});
-  // skills=this.skillServices.showSkills();
-  selectedSkills=[""];
   // approvalText:string="";
   result=[""];
   added :number=0;
@@ -36,6 +34,8 @@ clicked:number=0;
 
   getData : any;
   skills : any;
+  category_id :number =  0;
+  user_id :number =  0;
   ngOnInit(): void {
 
     this.apiService.get(`${environment.apiUrl}/skills`).subscribe(response=>{
@@ -43,12 +43,12 @@ clicked:number=0;
       this.getData = response;
       this.skills = this.getData.data;
       console.log(this.skills);
+      // this.category_id = this.skills.category_id;
     })
 
     this.form = this.formBuilder.group({
       searchSkill : ['' , [  Validators.maxLength(10) , Validators.minLength(3)]],
       user_id : ['', [Validators.required]],
-      category_id : ['', [Validators.required]],
     })
 
     /////////////////////////////
@@ -65,7 +65,7 @@ clicked:number=0;
     {
       for (let i = 0; i < this.skills.length; i++) {
         if(this.skills[i].selected == true){
-          this.name.push({name : this.skills[i].name , category_id : 2});
+          this.name.push({name : this.skills[i].name , category_id : this.skills[i].category_id});
         }
       }
 
@@ -75,7 +75,7 @@ clicked:number=0;
         this.apiService.post(`${environment.apiUrl}/skills`, {user_id : 30 , skills : this.name}).subscribe(response=>{
           console.log(response);
           this.router.navigateByUrl('/user/signup/education');
-        })
+        },error=>console.error);
       }
 
     }
@@ -105,17 +105,26 @@ clicked:number=0;
 
  addSkillFromDropDown(a:HTMLElement,inpt:HTMLElement){
 
-  this.skills.push({
-    "id":5444,
-    "name": a.innerText,
-  "selected":true
-  });
-  this.require=false;
-  this.query=inpt.innerText;
-  console.log(a.innerText);
+  // for (let i = 0; i < this.skills.length; i++) {
+  //   if(this.skills[i].selected == inpt)
+  //   {
+
+      this.skills.push({
+        "id":this.skills.id,
+        "name": a.innerText,
+        "selected":true
+      });
+      this.require=false;
+      this.query=inpt.innerText;
+      console.log(a.innerText);
+
+  //   }
+
+  // }
+
 
  }
- search(){
-  console.log(this.result);
- }
+//  search(){
+//   console.log(this.result);
+//  }
 }
