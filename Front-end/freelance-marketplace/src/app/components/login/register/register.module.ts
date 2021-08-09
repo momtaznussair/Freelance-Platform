@@ -32,7 +32,7 @@ const routes : Routes=[
   {path : 'lang' , component : LanguagesComponent},
   {path : 'hourly-rate' , component : HourlyrateComponent},
   {path : 'location' , component : LocationComponent},
-  {path : '' , component : ConnectionTypeComponent, canActivate:[AuthGuard]},
+  {path : '' , component : ConnectionTypeComponent},
 ]
 
 @NgModule({

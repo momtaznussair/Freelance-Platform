@@ -25,16 +25,23 @@ export class CategoryComponent implements OnInit {
   isCategoryGet : boolean = false;
   isDone :boolean = false;
   currentCategoryChosen : string = '';
-  // category : Categories = new Categories();
-
-  category : Categories[] =[];
-
 
   currentRegisterData : any;
   form : FormGroup = new FormGroup({});
 
 
   ngOnInit(): void {
+
+    //test request location
+    this.apiService.get("https://www.universal-tutorial.com/api/countries/",{ 'headers': {
+      'Accept' : 'application/json',
+      'Authorization' : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhbWlyYTk1YmFkckBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJvSXFDZEdkbkFzSGNVbE8zQTc4UGl4VENEelpqUHZGc0dJZ`
+    // Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7IEzMn0.yrPObnULTAJDiGtXZlC1hBA77tHimLhitgmaQWF_2Z8"
+    }}).subscribe(res =>{
+      console.log(res)
+    },error=>{console.log(error)});
+
+    //end of test location
 
     localStorage.removeItem('data');
 
