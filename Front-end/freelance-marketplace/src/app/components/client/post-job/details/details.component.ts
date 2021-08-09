@@ -15,10 +15,10 @@ export class DetailsComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder ,private router : Router, private userService : UserService) { }
 
-  currentRegisterData : any;
+  post_job : any;
   ngOnInit(): void {
-    this.currentRegisterData = localStorage.getItem('data');
-    console.log(this.currentRegisterData);
+    this.post_job = localStorage.getItem('postjob');
+    console.log(this.post_job);
     this.form = this.formBuilder.group({
       choose : ['' ,  [Validators.required]],
     })
@@ -33,7 +33,7 @@ export class DetailsComponent implements OnInit {
     }
     else
     {
-      
+
       this.isLogged = true;
     }
   }

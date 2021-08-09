@@ -36,7 +36,10 @@ export class CategoryComponent implements OnInit {
     this.apiService.get("https://www.universal-tutorial.com/api/countries/",{ 'headers': {
       'Accept' : 'application/json',
       'Authorization' : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhbWlyYTk1YmFkckBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJvSXFDZEdkbkFzSGNVbE8zQTc4UGl4VENEelpqUHZGc0dJZ`
+<<<<<<< HEAD
     // Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7IEzMn0.yrPObnULTAJDiGtXZlC1hBA77tHimLhitgmaQWF_2Z8"
+=======
+>>>>>>> 34babce925e6da2da2aedd8195889ff72058ae5a
     }}).subscribe(res =>{
       console.log(res)
     },error=>{console.log(error)});

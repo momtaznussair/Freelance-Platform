@@ -10,7 +10,12 @@ import { ExpertiseComponent } from './expertise/expertise.component';
 import { VisibilityComponent } from './visibility/visibility.component';
 import { BudgetComponent } from './budget/budget.component';
 import { ReviewComponent } from './review/review.component';
+<<<<<<< HEAD
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+=======
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// import { FormGroup } from '@angular/forms';
+>>>>>>> 34babce925e6da2da2aedd8195889ff72058ae5a
 
 
 
@@ -37,8 +42,13 @@ const routes : Routes = [
     VisibilityComponent,
     BudgetComponent,
     ReviewComponent,
+<<<<<<< HEAD
     TitleComponent
     
+=======
+    TitleComponent,
+    DescriptionComponent
+>>>>>>> 34babce925e6da2da2aedd8195889ff72058ae5a
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,FormGroup
