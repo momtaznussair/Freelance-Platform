@@ -40,11 +40,11 @@
 
             <!-- Start Main  -->
 
-            <div class="col-md-8 card ">
+            <div class="col-md-8 card py-3 ">
 
                 <div class="input-group mb-md-3 d-sm-none d-md-flex">
-                    <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs">
-                    <a href="" class="input-group-text">
+                    <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs" [(ngModel)]="query">
+                    <a  class="input-group-text" (click)="search()">
                         <i class="fas fa-search"></i>
                     </a>
                 </div>

@@ -32,7 +32,9 @@ export class UserService {
 
   logout()
   {
-    localStorage.clear();
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('msg');
     this.logged.next(false);
   }//end of logout
 
@@ -41,35 +43,17 @@ export class UserService {
     this.logged.next(status)
   }
 
-  getLoggedStatus()
-  {
+  getLoggedStatus(){
     return this.logged.asObservable();
   }
 
-  getToken()
-  {
+  getToken(){
     return localStorage.getItem('token');
   }
 
-  isLogged():boolean
-  {
+  isLogged():boolean{
     const token = localStorage.getItem('token');
     if(!token) return false;
     return true;
   }
-
-  isUserFreelancer():boolean
-  {
-    const freelancerType = localStorage.getItem('freelancerType');
-    if(!freelancerType) return false;
-    return true;
-  }
-
-  isUserClient():boolean
-  {
-    const clientType = localStorage.getItem('clientType');
-    if(!clientType) return false;
-    return true;
-  }
-
 }

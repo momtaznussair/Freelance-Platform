@@ -12,9 +12,9 @@ import { FreelancerRegisterProcess } from 'src/app/services/register-data.servic
 })
 export class OverviewComponent implements OnInit {
 
-  textPattern = "[a-z]{1,30}(,[a-z]{1,30})*";
+  textPattern = "^[a-zA-Z]{10,500}$"
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder, private router : Router) { }
+  constructor(private formBuilder : FormBuilder , private registerService : FreelancerRegisterProcess , private router : Router) { }
 
   currentRegisterData : any;
   ngOnInit(): void

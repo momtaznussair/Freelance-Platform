@@ -25,6 +25,10 @@ export class CategoryComponent implements OnInit {
   isCategoryGet : boolean = false;
   isDone :boolean = false;
   currentCategoryChosen : string = '';
+  // category : Categories = new Categories();
+
+  category : Categories[] =[];
+
 
   currentRegisterData : any;
   form : FormGroup = new FormGroup({});

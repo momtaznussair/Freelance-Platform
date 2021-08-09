@@ -9,19 +9,19 @@
         <section class="col-12 col-md-9">
             <div class="header">
                 <h3>Overview</h3>
-                <p>2 of 7</p>
+                <p>2 of 8</p>
             </div>
             <form action="" [formGroup]="form">
                 <div class="body">
                     <div class="overview card-haeder mt-3">
                         <p class="h3 fw-bold">Overview</p>
-                        <textarea formControlName="overview" class="form-control" placeholder="type an overview about yourself"></textarea>
+                        <textarea formControlName="overview" class="form-control" placeholder="type an overview about yourself" value=""></textarea>
                         <!-- <div *ngIf="form.controls.overview.invalid && form.controls.overview.dirty || form.controls.overview.touched"> -->
                         <div *ngIf="form.controls.overview.invalid && isLogged || (form.controls.overview.dirty || form.controls.overview.touched)">
                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('required')">This field is required</small>
                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('minlength')">You should write more than 255 letter </small>
                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('maxlength')"> You can not write more than 500 letter</small>
-                            <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('pattern')"> You need to write a valid text</small> -->
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('pattern')"> You need to write a valid text</small>
                         </div>
                     </div>
 

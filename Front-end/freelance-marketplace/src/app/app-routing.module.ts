@@ -1,8 +1,6 @@
-import { ClientAuthorizationGuard } from './guards/client-authorization.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
-import { FreelancerAuthorization } from './guards/freelancer-authorization.guard';
 
 
 const routes: Routes = [
