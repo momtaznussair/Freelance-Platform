@@ -30,13 +30,19 @@ export class CategoryComponent implements OnInit {
   currentRegisterData : any;
   form : FormGroup = new FormGroup({});
 
+
   ngOnInit(): void {
 
+    localStorage.removeItem('data');
+
+    this.currentRegisterData = localStorage.getItem('user_data');
+    this.currentRegisterData = JSON.parse(this.currentRegisterData);
+    console.log(this.currentRegisterData.id);
     this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response=>{
       this.isCategoryGet = true;
-      console.log(response);
+      // console.log(response);
       this.categories = response;
-      console.log(this.categories.data);
+      // console.log(this.categories.data);
     })
 
     this.form = this.formBuilder.group({
@@ -63,7 +69,7 @@ export class CategoryComponent implements OnInit {
 
   // Test for request freelancer data
   test_request: any ={
-    user_id : 50,
+    user_id : 34,
     category_id : 1,
     overview : `this is test overview this is test overview this is test overview this is test overview this is test overview
                 this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview

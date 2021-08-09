@@ -164,12 +164,12 @@ export class LocationComponent implements OnInit {
 
     //test request
     testRequest(){
-      this.http.post(`${environment.apiUrl}/register` ,this.test).subscribe(response=>{
-        console.log(response);
-        console.log(this.data);
-      }, error=>{
-        console.log('error message');
-      })
+      // this.http.post(`${environment.apiUrl}/register` ,this.test).subscribe(response=>{
+      //   console.log(response);
+      //   console.log(this.data);
+      // }, error=>{
+      //   console.log('error message');
+      // })
     }
 
 
