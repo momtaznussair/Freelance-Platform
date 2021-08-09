@@ -1,3 +1,5 @@
+import { environment } from './../../../../../environments/environment';
+import { ApiService } from './../../../../services/api.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
@@ -17,7 +19,7 @@ export class TitleComponent implements OnInit {
   form : FormGroup = new FormGroup({});
 
 
-  constructor(private formBuilder : FormBuilder  , private router : Router ,private jobprocess:postjob) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router ,private jobprocess:postjob , private apiService : ApiService) { }
 
 
   // currentRegisterData : any;
@@ -51,5 +53,23 @@ export class TitleComponent implements OnInit {
       this.isLogged = true;
     }
   }
+
+  //=====================================test request =====================//
+  // data = {
+  //   description : 'this is test desc',
+  //   payment_amount : 20,
+  //   job_title : 'this is test title',
+  //   skill : ['html' , 'css'],
+
+  // }
+
+  // callDb()
+  // {
+  //   this.apiService.post(`${environment.apiUrl}/jobs` , this.data).subscribe(response=>{
+  //     console.log(response);
+  //   })
+  // }
+
+
 
 }

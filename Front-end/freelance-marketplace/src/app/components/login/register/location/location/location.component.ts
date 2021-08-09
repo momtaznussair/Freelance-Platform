@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-location',
@@ -94,6 +95,7 @@ export class LocationComponent implements OnInit {
         //if signUp with socialite done
         if(this.user_data.response)
         {
+          this.alertConfirmation();
           console.log(this.user_data.user_data);
 
           localStorage.setItem('token' , this.response_data.data.access_token);
@@ -120,6 +122,7 @@ export class LocationComponent implements OnInit {
         }
         else //=> if logged manually
         {
+          this.alertConfirmation();
           console.log(this.data.user_data)
           //send request
           this.userService.register(this.data.user_data).subscribe(response=>{
@@ -130,6 +133,7 @@ export class LocationComponent implements OnInit {
             this.response_data = response;
             if(this.response_data.data != null)
             {
+
               localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.id);
@@ -178,6 +182,37 @@ export class LocationComponent implements OnInit {
       //   console.log('error message');
       // })
     }
+
+    //==============start use notification ===============
+    successAlertNotification(){
+      Swal.fire('Hi', 'Congrats! operation successfull', 'success')
+    }
+
+    alertConfirmation(){
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'Your Action cannot be rollback.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, go ahead.',
+        cancelButtonText: 'No, let me think again'
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Done!',
+            'Action performed successfully.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Performed action record present in cloud and databstore.)',
+            'error'
+          )
+        }
+      })
+    }
+    //=================End of notifications
 
 
   }
