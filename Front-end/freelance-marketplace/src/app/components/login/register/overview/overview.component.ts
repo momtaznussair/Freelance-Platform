@@ -12,9 +12,9 @@ import { FreelancerRegisterProcess } from 'src/app/services/register-data.servic
 })
 export class OverviewComponent implements OnInit {
 
-  textPattern = "[a-z]{1,30}(,[a-z]{1,30})*";
+  textPattern = "^[a-zA-Z]{10,500}$"
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder, private router : Router) { }
+  constructor(private formBuilder : FormBuilder , private registerService : FreelancerRegisterProcess , private router : Router) { }
 
   currentRegisterData : any;
   ngOnInit(): void
@@ -23,7 +23,7 @@ export class OverviewComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       overview : ['' , [ Validators.required , Validators.minLength(10), Validators.maxLength(500)]],
-      jobTitle : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255)]]
+      job_title : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(255)]]
     })
   }
 
@@ -35,7 +35,7 @@ export class OverviewComponent implements OnInit {
     {
       this.currentRegisterData = JSON.parse(this.currentRegisterData)
       this.currentRegisterData.overview = this.form.controls.overview.value;
-      this.currentRegisterData.jobTitle = this.form.controls.jobTitle.value;
+      this.currentRegisterData.job_title = this.form.controls.job_title.value;
       localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
       this.router.navigateByUrl("/user/signup/experience-level");
     }

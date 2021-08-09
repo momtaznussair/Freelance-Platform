@@ -10,20 +10,27 @@
 
             <div class="header">
                 <h3>Skills</h3>
-                <p>3 of 7</p>
+                <p>3 of 8</p>
             </div>
             <form action="" [formGroup]="form">
+                <div>
+                    <input type="hidden" formControlName="user_id" [(ngModel)]="user_id" name="user_id">
+                </div>
                 <div class="body">
                     <div class="sec sec1">
                         <p><b>Select your skills</b></p>
                         <div class="skills">
-                            <!-- <i *ngIf="added" class=" fa fa-solid fa-check"></i> -->
                             <button #b class=" mx-1 my-1  bt1s" *ngFor="let i of skills" [ngClass]="{'bt2s':i.selected}" (click)="addSkill(i,b)">{{i.name}} </button>
+                        </div>
+                        <div *ngIf="require">
+                            <small class="text-danger fw-bold mb-3" *ngIf="require"> please select your skills</small>
                         </div>
                     </div>
                     <div class="sec sec2">
                         <p><b>Not what you're looking for ?</b></p>
+                        <!------------------------------------start search  bar -------------------------------------------------->
 
+                        <!-- <app-search-bar></app-search-bar> -->
                         <div class="card dropdown">
                             <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="query" formControlName="searchSkill" class="form-control" [placeholder]="placeholder">
 
@@ -33,8 +40,9 @@
                                 <a class="list-group-item list-group-item-light" #a (click)="addSkillFromDropDown(a,inpt)"> {{item.name}}</a>
                             </div>
                         </ul>
+                        <!------------------------------------end search bar -------------------------------------------------->
                         <div *ngIf="form.controls.searchSkill.invalid && form.controls.searchSkill.dirty || form.controls.searchSkill.touched">
-                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('required')">This field is required</small>
+                            <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('required')">This field is required</small> -->
                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('maxlength')"> You can not write more than 500 letter</small>
                         </div>
                     </div>

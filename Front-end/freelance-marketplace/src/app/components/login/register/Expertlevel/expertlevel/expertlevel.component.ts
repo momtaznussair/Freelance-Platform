@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-expertlevel',
@@ -21,7 +22,7 @@ export class ExpertlevelComponent implements OnInit {
     this.currentRegisterData = localStorage.getItem('data');
     console.log(this.currentRegisterData);
     this.form = this.formBuilder.group({
-      experience_level : ['' ,  [Validators.required]],
+      experience_id : ['' ,  [Validators.required]],
     })
   }
 
@@ -33,13 +34,9 @@ export class ExpertlevelComponent implements OnInit {
     if(this.form.valid){
       this.router.navigateByUrl('/user/signup/skills');
       this.currentRegisterData = JSON.parse(this.currentRegisterData)
-      this.currentRegisterData.experienceLevel = this.form.controls.experienceLevel.value;
+      this.currentRegisterData.experience_id = +this.form.controls.experience_id.value;
       localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
     }
   }
 
-  submit()
- {
-//  this.appService.updateApprovalMessage(this.approvalText);
- }
 }

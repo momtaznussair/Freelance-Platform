@@ -30,7 +30,7 @@ class FreelancerController extends Controller
     }
 
     public function store(Request $request){
-        
+
         $validate = Validator::make($request->all(),[
            'user_id' => 'required|exists:users,id|unique:freelancers,user_id',
            'category_id' => 'required|exists:categories,id',
@@ -42,7 +42,7 @@ class FreelancerController extends Controller
         if($validate->fails()){
             return  $this->apiResponse(null,$validate->errors(),422);
         }
-        
+
         $freelancer = freelancer::create([
             'user_id' => $request->user_id,
            'category_id' => $request->category_id,

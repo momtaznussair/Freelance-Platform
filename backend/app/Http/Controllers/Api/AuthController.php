@@ -41,6 +41,7 @@ class AuthController extends Controller
         {
             return $this->apiResponse(null,$validator->errors(),200);
         }
+
         $user = new User();
 
         if(!$token){
@@ -69,7 +70,7 @@ class AuthController extends Controller
 
         $data = [
                 'access_token' => $token,
-                'id' => $user->id,
+                'user' => $user,
         ];
 
         return $this->apiResponse($data,'User registered successfully');
@@ -86,7 +87,7 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            return $this->apiResponse(null,$validator->errors(),400);
+            return $this->apiResponse(null,$validator->errors(),200);
         }
 
         $user = User::where('email', $request->email)->first();

@@ -1,62 +1,63 @@
 <div class="container py-5 px-3">
 
-  <div class="row">
+    <div class="row">
 
 
-      <section class="sidebar d-none d-md-block col-md-3">
-          <app-sidebar></app-sidebar>
-      </section>
-      <section class="lang col-12 col-md-9">
-          <div class="header">
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+        <section class="lang col-12 col-md-9">
+            <div class="header">
 
-              <h3>Languages </h3>
-              <p>6 of 8</p>
-          </div>
-          <form action="" [formGroup]="form">
-          <br>
-          <h3> What is your English proficienvy? </h3>
-          <select  class="form-select form-select-sm" formControlName="peroficienvy" aria-label=".form-select-sm example">
-
-          <option  value="1">Beginner</option>
-          <option  value="2">Intermediate</option>
-          <option  value="3">Fluent</option>
-        </select>
-        <div *ngIf="form.controls.peroficienvy.invalid && isLogged || (form.controls.peroficienvy.dirty || form.controls.peroficienvy.touched)">
-          <small class="text-danger fw-bold mb-3" *ngIf="form.controls.peroficienvy.hasError('required')">choose your level </small>
-
-        </div>
-          <br>
+                <h3>Languages </h3>
+                <p>6 of 8</p>
+            </div>
+            <form action="" [formGroup]="form">
+                <br>
+                <h3> What is your English proficiency? </h3>
+                <select class="form-select form-select-sm" name="proficiency" formControlName="proficiency" aria-label=".form-select-sm example">
+                  <option  value="1">Beginner</option>
+                  <option  value="2">Intermediate</option>
+                  <option  value="3">Fluent</option>
+                </select>
+                <div *ngIf="form.controls.proficiency.invalid && isLogged || (form.controls.proficiency.dirty || form.controls.proficiency.touched)">
+                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.proficiency.hasError('required')">choose your level </small>
+                </div>
+                <br>
 
 
-          <h3> What other Languages do you speak? </h3> <br>
-          <div class="flex">
-              <p> <b> Language  </b></p>
-              <p> <b>proficiency </b></p>
-          </div>
+                <h3> What other Languages do you speak? </h3> <br>
+                <div class="flex">
+                    <p> <b> Language  </b></p>
+                    <p> <b>proficiency </b></p>
+                </div>
 
-          <div class="container px-3">
-              <div class="row ">
-                  <select class="col form-select form-select-sm ">
-       <option   class="p-3 border bg-light"  value="1" >Arabic</option>
-       <option value="2">English</option>
-      </select>
-                  <select class="col form-select form-select-sm ">
-        <option class="p-3 border bg-light" value="1" >Native</option>
-        <option value="2">Fluent</option>
-      </select>
-              </div>
-          </div>
-          <br> <br>
-          <button class="bt1" type="button">  + Add Language </button>
-          <br> <br>
-          <div class="md-6 lg-6 d-sm-flex footer">
+                <div class="container px-3">
+                    <div class="row ">
+                        <select class="col form-select form-select-sm " name="name" formControlName="name">
+                          <option value="arabic" >Arabic</option>
+                          <option value="english">English</option>
+                        </select>
+                        <div *ngIf="form.controls.name.invalid && isLogged || (form.controls.name.dirty || form.controls.name.touched)">
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.name.hasError('required')">please choose your language </small>
+                        </div>
+                        <!-- <select class="col form-select form-select-sm " name="name" formControlName="name">
+                          <option class="p-3 border bg-light" value="native" >Native</option>
+                          <option value="fluent">Fluent</option>
+                        </select> -->
+                    </div>
+                </div>
+                <br> <br>
+                <button class="bt1" type="button">  + Add Language </button>
+                <br> <br>
+                <div class="md-6 lg-6 d-sm-flex footer">
 
-              <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button>
+                    <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button>
 
-              <button class="bt2" type="button" (click)="next()" >Next</button>
-          </div>
-          </form>
-      </section>
+                    <button class="bt2" type="button" (click)="next()">Next</button>
+                </div>
+            </form>
+        </section>
 
-  </div>
+    </div>
 </div>

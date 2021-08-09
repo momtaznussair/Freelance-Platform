@@ -10,7 +10,7 @@
 
             <div class="header">
                 <h3>hourly Rate</h3>
-                <p>7 of 7</p>
+                <p>7 of 8</p>
             </div>
 
             <div class="body">
@@ -24,7 +24,7 @@
                         </div>
                         <form [formGroup]="form">
                             <div class="right">
-                                <input type="text" name="hourly_rate" formControlName="hourly_rate" #hourly (keyup)="getSiteService(hourly.value)" [(ngModel)]="hourlyRating" placeholder="10.00">
+                                <input type="text" name="hourlyRate" formControlName="hourlyRate" #hourly (keyup)="getSiteService(hourly.value)" [(ngModel)]="hourlyRating" placeholder="10.00">
                                 <span>/hr</span>
                             </div>
                         </form>

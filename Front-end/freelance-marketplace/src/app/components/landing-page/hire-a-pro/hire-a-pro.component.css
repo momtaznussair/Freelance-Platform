@@ -30,7 +30,11 @@ span:hover{
     cursor: pointer;
 }
 
-
+.btnn{
+    width: auto;
+    background-color: var(--mc);
+    color: white;
+}
 /* ----------------------------------------------------------------------------------------------------------------- */
 
 /* Media Query */

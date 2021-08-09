@@ -9,29 +9,12 @@ export class FreelancerRegisterProcess {
 
   constructor() { }
 
-  formAndLocationData = {
-    username : '',
-    first_name : '',
-    last_name : '',
-    email : '',
-    password : '',
-    password_confirmation : '',
-    img_link : '',
-    phone_number :'',
-    country : '',
-    city : '',
-    street : '',
-    zip_code :'',
-    gender : '',
-    type : ''
-  }
-
     registerProcess:any = {
-      "category":"",
+      "category_id":"",
       "overview":"",
-      "jobTitle":"",
-      "experienceLevel":0,
-      "hourlyRate":0,
+      "job_title":"",
+      "experience_id":0,
+      "hourly_rate":0,
     }
 
 }

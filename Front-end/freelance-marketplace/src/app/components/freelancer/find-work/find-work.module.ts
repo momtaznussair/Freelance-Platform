@@ -1,3 +1,4 @@
+import { FilterJobsComponent } from './filter-jobs/filter-jobs.component';
 import { SavedJobsComponent } from './saved-jobs/saved-jobs.component';
 import { FindWorkComponent } from './find-work/find-work.component';
 import { NgModule } from '@angular/core';
@@ -35,7 +36,8 @@ const routes : Routes = [
     ProfileComponent,
     JobDetailsComponent,
     SubmitProposalComponent,
-    PortofolioComponent
+    PortofolioComponent,
+    FilterJobsComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule

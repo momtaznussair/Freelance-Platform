@@ -9,13 +9,13 @@ export class ProposalService {
   constructor(private _apiservice:ApiService) { }
 
 addproposal(body:any){
-  return this._apiservice.post("",body);
+  return this._apiservice.post("http://127.0.0.1:8000/api/proposals",body);
 }
 update(body:any){
-  return this._apiservice.put("",body);
+  return this._apiservice.put("http://127.0.0.1:8000/api/proposals",body);
 }
 get(){
-  return this._apiservice.get("");
+  return this._apiservice.get("http://127.0.0.1:8000/api/proposals");
 
 }
 // delete(id:number){
