@@ -13,14 +13,15 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class EductionComponent implements OnInit {
 
-
+  user_id : any;
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  , private router : Router , private apiService : ApiService) { }
 
   currentRegisterstart_date : any;
 
   ngOnInit(): void {
-
+    this.user_id = localStorage.getItem('user_id');
+    console.log(this.user_id)
     this.currentRegisterstart_date = localStorage.getItem('start_date');
 
     this.form = this.formBuilder.group({
@@ -37,7 +38,7 @@ export class EductionComponent implements OnInit {
   next()
 {
 
-  console.log(this.form.value);
+  console.log({user_id : this.user_id , institute : this.form.controls['institute'].value , area_of_study : this.form.controls['area_of_study'].value});
   if(this.form.valid)
   {
     this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{

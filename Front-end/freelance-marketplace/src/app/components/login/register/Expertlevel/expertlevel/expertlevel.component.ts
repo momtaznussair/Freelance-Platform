@@ -33,7 +33,7 @@ export class ExpertlevelComponent implements OnInit {
     if(this.form.valid){
       this.router.navigateByUrl('/user/signup/skills');
       this.currentRegisterData = JSON.parse(this.currentRegisterData)
-      this.currentRegisterData.experience_id = this.form.controls.experience_id.value;
+      this.currentRegisterData.experience_id = +this.form.controls.experience_id.value;
       localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
     }
   }

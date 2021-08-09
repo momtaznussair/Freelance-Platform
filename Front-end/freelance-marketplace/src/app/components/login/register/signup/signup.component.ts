@@ -95,7 +95,7 @@ export class SignupComponent implements OnInit {
   isLogged : boolean = false;
 
   register(){
-    
+
     if(this.form.valid && this.password == this.password_confirmation)
     {
       console.log(this.form.value);
@@ -105,7 +105,7 @@ export class SignupComponent implements OnInit {
     }
     else
     {
-      alert('error values');
+      alert('error values please complete your information');
       this.isLogged = true;
     }
   };//end of register function

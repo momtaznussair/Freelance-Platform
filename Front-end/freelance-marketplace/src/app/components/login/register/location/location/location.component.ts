@@ -96,6 +96,12 @@ export class LocationComponent implements OnInit {
         {
           console.log(this.user_data.user_data);
 
+          localStorage.setItem('token' , this.response_data.data.access_token);
+          localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
+          localStorage.setItem('user_id' , this.response_data.data.user.id);
+          localStorage.setItem('success_msg' , this.response_data.msg);
+          localStorage.setItem('logged_status' , this.response_data.status);
+
           //send request
           this.userService.register(this.user_data.user_data).subscribe(response=>{
 
@@ -126,6 +132,7 @@ export class LocationComponent implements OnInit {
             {
               localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
+              localStorage.setItem('user_id' , this.response_data.data.user.id);
               localStorage.setItem('success_msg' , this.response_data.msg);
               localStorage.setItem('logged_status' , this.response_data.status);
 

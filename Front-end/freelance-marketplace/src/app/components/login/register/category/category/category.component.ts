@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { environment } from './../../../../../../environments/environment.prod';
 import { FreelancerRegisterProcess } from './../../../../../services/register-data.service';
 import { Component, OnInit } from '@angular/core';
@@ -56,7 +55,7 @@ export class CategoryComponent implements OnInit {
     if(this.form.valid)
     {
       console.log(this.form.value);
-      this.registerService.registerProcess.category_id = this.form.controls['category_id'].value;
+      this.registerService.registerProcess.category_id = +this.form.controls['category_id'].value;
       localStorage.setItem("data" ,JSON.stringify(this.registerService.registerProcess));
       this.router.navigateByUrl('/user/signup/overview');
     }
@@ -68,24 +67,24 @@ export class CategoryComponent implements OnInit {
 
 
   // Test for request freelancer data
-  test_request: any ={
-    user_id : 34,
-    category_id : 1,
-    overview : `this is test overview this is test overview this is test overview this is test overview this is test overview
-                this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview
-                this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview
-                this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview
-                this is test overview this is test overview this is test overview `,
-    job_title : 'this is test title',
-    experience_id : 2,
-  }
+  // test_request: any ={
+  //   user_id : 34,
+  //   category_id : 1,
+  //   overview : `this is test overview this is test overview this is test overview this is test overview this is test overview
+  //               this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview
+  //               this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview
+  //               this is test overview this is test overview this is test overview this is test overview this is test overview this is test overview
+  //               this is test overview this is test overview this is test overview `,
+  //   job_title : 'this is test title',
+  //   experience_id : 2,
+  // }
 
 
   test()
   {
-    this.apiService.post(`${environment.apiUrl}/freelancers` , this.test_request).subscribe(response=>{
-      console.log(response);
-    })
+    // this.apiService.post(`${environment.apiUrl}/freelancers` , this.test_request).subscribe(response=>{
+    //   console.log(response);
+    // })
   }
 
 
