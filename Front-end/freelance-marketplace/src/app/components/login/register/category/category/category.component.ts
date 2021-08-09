@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 import { environment } from './../../../../../../environments/environment.prod';
->>>>>>> 14166a86378d3737db0302b330aaeef7e2c09745
 import { FreelancerRegisterProcess } from './../../../../../services/register-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Categories } from 'src/app/models/categories/categories';
@@ -9,7 +6,6 @@ import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
 
 
 @Component({
@@ -29,10 +25,6 @@ export class CategoryComponent implements OnInit {
   isCategoryGet : boolean = false;
   isDone :boolean = false;
   currentCategoryChosen : string = '';
-  // category : Categories = new Categories();
-
-  category : Categories[] =[];
-
 
   currentRegisterData : any;
   form : FormGroup = new FormGroup({});
