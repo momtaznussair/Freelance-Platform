@@ -25,8 +25,6 @@ export class LanguagesComponent implements OnInit {
       name : ['' , [ Validators.required]],
     })
   }
-
-
   isLogged : boolean = false;
 
   /*hourly-rate*/

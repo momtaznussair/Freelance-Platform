@@ -3,8 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+<<<<<<< HEAD
 import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment.prod';
+=======
+// import {RegisterDataService} from "../../../../../services/register-data.service";
+import { UserService } from 'src/app/services/user.service';
+>>>>>>> 3a63b5880f0c09adf46c7c27ec075df81e7859b3
 
 @Component({
   selector: 'app-eduction',
@@ -13,6 +18,7 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class EductionComponent implements OnInit {
 
+<<<<<<< HEAD
   user_id : any;
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  , private router : Router , private apiService : ApiService) { }
@@ -45,6 +51,51 @@ export class EductionComponent implements OnInit {
       console.log(response);
       this.router.navigateByUrl("/user/signup/lang");
     },error=>console.error);
+=======
+
+  form : FormGroup = new FormGroup({});
+  constructor(private formBuilder : FormBuilder  , private router : Router) { }
+
+  currentRegisterData : any;
+
+
+  // msg = localStorage.getItem('msg');
+  // constructor(private appService:RegisterDataService,private apiService : ApiService , private registerService : RegisterDataService) { }
+
+  // name : string = '';
+  // institute : string = '';
+  // graduationdate : any ='';
+
+  // eduction : Eduction = new Eduction();
+
+
+
+  ngOnInit(): void {
+
+    this.currentRegisterData = localStorage.getItem('data');
+
+    this.form = this.formBuilder.group({
+      inistiute : ['' , [ Validators.required ]],
+      areaofstudy : ['' , [Validators.required ]],
+      degree : ['' , [Validators.required ]],
+      data : ['' , [Validators.required ]]
+
+    })
+  }
+  isLogged : boolean = false;
+
+  next()
+{
+  if(this.form.valid)
+  {
+    this.currentRegisterData = JSON.parse(this.currentRegisterData)
+    this.currentRegisterData.inistiute = this.form.controls.inistiute.value;
+    this.currentRegisterData.areaofstudy = this.form.controls.areaofstudy.value;
+    this.currentRegisterData.degree = this.form.controls.degree.value;
+    // this.currentRegisterData.graduation_date = this.form.controls.graduation_date.value;
+    localStorage.setItem('data' ,JSON.stringify(this.currentRegisterData));
+    this.router.navigateByUrl("/user/signup/lang");
+>>>>>>> 3a63b5880f0c09adf46c7c27ec075df81e7859b3
   }
   else
   {
@@ -53,5 +104,14 @@ export class EductionComponent implements OnInit {
 }
 }
 
+<<<<<<< HEAD
+=======
+    // this.currentRegisterData = localStorage.getItem('data');
+    // this.apiService.get(`${environment.apiUrl}/eduction`).subscribe(response =>{
+    //   this.eduction = response;
+    //   console.log(this.eduction);
+    // },error=>console.error);
+
+>>>>>>> 3a63b5880f0c09adf46c7c27ec075df81e7859b3
 
 
