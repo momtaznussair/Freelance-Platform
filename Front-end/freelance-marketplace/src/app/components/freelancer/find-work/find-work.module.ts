@@ -1,7 +1,8 @@
+import { FilterJobsComponent } from './filter-jobs/filter-jobs.component';
 import { SavedJobsComponent } from './saved-jobs/saved-jobs.component';
 import { FindWorkComponent } from './find-work/find-work.component';
 import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { MyStatsComponent } from './my-stats/my-stats.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
@@ -10,15 +11,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { JobDetailsComponent } from './find-work/job-details/job-details.component';
 import { SubmitProposalComponent } from './find-work/job-details/submit-proposal/submit-proposal.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FilterJobsComponent } from './filter-jobs/filter-jobs.component';
-import { FilterByPipe } from 'src/app/pipes/filter-by.pipe';
-import { CommonModule, NgClass } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PortofolioComponent } from './profile/portfolio/portofolio.component';
 
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},
-  {path : 'filter' , component : FilterJobsComponent},
   {path : 'work/details' , component : JobDetailsComponent},
   {path : 'stats' , component : MyStatsComponent},
   {path : 'saved-jobs' , component : SavedJobsComponent},
@@ -39,10 +36,10 @@ const routes : Routes = [
     JobDetailsComponent,
     SubmitProposalComponent,
     PortofolioComponent,
+    FilterJobsComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,
-    FormsModule,ReactiveFormsModule,NgxPaginationModule
+    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule
   ],
   exports : [MyStatsComponent]
 })

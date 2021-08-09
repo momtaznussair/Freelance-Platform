@@ -28,13 +28,13 @@ class EducationController extends Controller
     }
 
     public function store(Request $request){
-        
+
         $validate = Validator::make($request->all(),$this->Rules());
 
         if($validate->fails()){
             return  $this->apiResponse(null,$validate->errors(),422);
         }
-        
+
         $education = Education::create([
             'institute' => $request->institute,
             'area_of_study' => $request->area_of_study,

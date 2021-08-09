@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { environment } from './../../../../../../environments/environment.prod';
+>>>>>>> 14166a86378d3737db0302b330aaeef7e2c09745
 import { FreelancerRegisterProcess } from './../../../../../services/register-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Categories } from 'src/app/models/categories/categories';
