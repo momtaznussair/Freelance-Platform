@@ -30,7 +30,7 @@
                       <div class="body">
                           <div class="mt-5 mb-3">
                               <p class="h3 fw-bold">Title</p>
-                              <input type="text" formControlName="portofolioTitle" class=" form-control" placeholder="write title for your skills">
+                              <input type="text" name="portofolioTitle" formControlName="portofolioTitle" class=" form-control" placeholder="write title for your skills">
                               <div *ngIf="form.controls.portofolioTitle.invalid && isLogged || (form.controls.portofolioTitle.dirty || form.controls.portofolioTitle.touched)">
                                   <small class="text-danger fw-bold mb-3" *ngIf="form.controls.portofolioTitle.hasError('required')">This field is required</small>
   
