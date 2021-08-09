@@ -3,16 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-<<<<<<< HEAD
-// import { RegisterDataService } from 'src/app/services/register-data.service';
-// import {RegisterDataService} from "../../../../../services/register-data.service";
-// import { UserService } from 'src/app/services/user.service';
-=======
 import { UserService } from 'src/app/services/user.service';
 import { postjob } from 'src/app/services/post-job.service';
 
 
->>>>>>> 34babce925e6da2da2aedd8195889ff72058ae5a
 @Component({
   selector: 'app-description',
   templateUrl: './description.component.html',
