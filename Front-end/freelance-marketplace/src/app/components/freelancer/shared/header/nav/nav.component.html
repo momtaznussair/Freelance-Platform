@@ -197,14 +197,15 @@
 
                               <!-- Settings -->
                               <li>
-                                  <a routerLink="#">
-                                      <i class="fas fa-cog me-2"></i>
-                                  </a>
-                                  Settings
+                                  <button type="submit" (click)="setting()">
+                                      <span class="fas fa-cog me-2"></span>
+                                      Settings
+                                  </button>
+
                               </li>
                               <!-- Logout -->
                               <li>
-                                  <a routerLink="#" (click)="logout()">
+                                  <a (click)="logout()">
                                       <i class="fas fa-sign-out-alt me-2"></i>
                                   </a>
                                   Logout
