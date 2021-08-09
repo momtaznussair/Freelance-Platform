@@ -32,8 +32,6 @@ const routes : Routes = [
   declarations: [
     GettingStartComponent,
     AsideComponent,
-    TitleComponent,
-    DescriptionComponent,
     DetailsComponent,
     ExpertiseComponent,
     VisibilityComponent,
@@ -42,10 +40,7 @@ const routes : Routes = [
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),FormsModule,ReactiveFormsModule
-<<<<<<< HEAD
 
-=======
->>>>>>> 60f6d54f8e01e413063a3746640f6fd11bdc47fb
   ]
 })
 export class PostJobModule { }
