@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Job } from 'src/app/models/job';
+import { ApiService } from 'src/app/services/api.service';
+import { JobService } from 'src/app/services/job.service';
 
 @Component({
   selector: 'app-job-details',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class JobDetailsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private _api:ApiService,private http:HttpClient,private job:JobService) { }
+job_details:Job[]=[];
   ngOnInit(): void {
+    this.http.get("http://127.0.0.1:8000/api/jobs/{id}").subscribe(Response=>{
+      this.job_details=Response as Job[];
+    },error=>{console.error()});
+
+  
+
+  
+  }
+  submitproposal(){
+      let jop:Job=new Job();
+      // jop.id=id;
+      this.http.post("http://127.0.0.1:8000/api/jobs",jop).subscribe(Response=>{
+        console.log(Response);
+      },erroe=>{console.error()}
+      );
+
   }
 
 }
