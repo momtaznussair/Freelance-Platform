@@ -8,7 +8,7 @@ import { DescriptionComponent } from './description/description.component';
 import { ExpertiseComponent } from './expertise/expertise.component';
 import { BudgetComponent } from './budget/budget.component';
 import { ReviewComponent } from './review/review.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -35,7 +35,7 @@ const routes : Routes = [
     DescriptionComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),FormsModule,ReactiveFormsModule
+    CommonModule,RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,FormGroup
 
   ]
 })
