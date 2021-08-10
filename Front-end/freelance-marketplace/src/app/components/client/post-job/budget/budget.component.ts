@@ -59,6 +59,7 @@ export class BudgetComponent implements OnInit {
       if(this.fixedForm.valid)
       {
         console.log(this.fixedForm.value);
+        this.currentJobProcess.payment_style_id = this.form.controls.payment_style_id.value;
         this.currentJobProcess.payment_amount = this.fixedForm.controls.payment_amount.value;
         localStorage.setItem('job_process' , JSON.stringify(this.currentJobProcess));
         this.router.navigateByUrl("/client/post-job/review");

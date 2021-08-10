@@ -59,7 +59,7 @@ export class ExpertiseComponent implements OnInit {
           {
             for (let i = 0; i < this.skills.length; i++) {
               if(this.skills[i].selected == true){
-                this.skillsId.push({id: this.skills[i].id});
+                this.skillsId.push(this.skills[i].id);
                 this.skillsData.push({id: this.skills[i].id , name:this.skills[i].name});
               }
             }
