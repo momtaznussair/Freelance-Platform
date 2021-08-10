@@ -25,12 +25,14 @@ export class ReviewComponent implements OnInit {
     this.experience_level = localStorage.getItem('experience_level');
     this.experience_level = JSON.parse(this.experience_level);
     console.log(this.skillsData);
+
   }
 
   submit()
   {
     this.apiService.post(`${environment.apiUrl}/jobs` , this.currentJobProcess).subscribe(response=>{
       console.log(response);
+      localStorage.clear();
     } , error=>console.error);
   }
 
