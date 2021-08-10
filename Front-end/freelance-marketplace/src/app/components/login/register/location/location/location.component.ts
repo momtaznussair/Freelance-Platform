@@ -24,22 +24,6 @@ export class LocationComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder , private api:ApiService,private country:CountriesService , private router : Router , private userService : UserService) { }
 
-  test = {
-    username : 'ali',
-    first_name : 'ali',
-    last_name : 'mohamed',
-    email : 'alii@gmail.com',
-    password : '11111111',
-    password_confirmation : '11111111',
-    img_link : '',
-    phone_number : 11111111111,
-    country : 'any',
-    city : 'any',
-    street : 'any',
-    zip_code : 2222,
-    gender : 'male',
-    type : 'client'
-  }
   placeholder="Start typing your city"
  countries :countries []=[]
   // data comes from social sign up
