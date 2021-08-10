@@ -28,7 +28,7 @@
                 </div> -->
                 <form action="" [formGroup]="form">
                     <div class="body">
-                        <div class="mt-5 mb-3">
+                        <div class="mt-4 mb-3">
                             <p class="h3 fw-bold">Title</p>
                             <input type="text" formControlName="title" class=" form-control" placeholder="write title for your skills">
                             <div *ngIf="form.controls.title.invalid && isLogged || (form.controls.title.dirty || form.controls.title.touched)">
@@ -37,13 +37,17 @@
                             </div>
                         </div>
 
-                        <div class="text-primary mt-3">
-                            <input type="file" class="fw-bold" formControlName="img_link" name="image_link" multiple>
+                        <div class=" mt-3">
+
+
+
+                            <input type="file" class="fw-bold"  formControlName="img_link" name="image_link" multiple>
+
                             <div *ngIf="form.controls.img_link.invalid && isLogged || (form.controls.img_link.dirty || form.controls.img_link.touched)">
                               <small class="text-danger fw-bold mb-3" *ngIf="form.controls.img_link.hasError('required')">This field is required</small>
 
                         </div>
-
+                        </div>
                         <div class="overview card-haeder mt-3">
                             <p class="h3 fw-bold">Overview</p>
                             <textarea formControlName="overview" name="overview" class="form-control" placeholder="type an overview about yourself" value=""></textarea>
@@ -51,14 +55,16 @@
                                 <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('required')">This field is required</small>
 
                             </div>
-                        </div>
-                    </div>
-                    <div class=" footer lg-6 d-sm-flex">
-                        <button  class="btn btn-primary mt-3 pull-right" (click)="save()" type="submit" >Save</button>
-                        <button  class="btn btn-danger mt-3 pull-left" routerLink="/freelancer/profile">Cancel</button>
+
                     </div>
 
+
               </div>
+              <div class=" card-footer py-4">
+                <button  class="btn btn-light px-5 mx-3 py-2 border rounded-pill " routerLink="/freelancer/profile">Cancel</button>
+                <button  class="btn btn-dark px-5 mx-3 py-2 rounded-pill" (click)="save()" type="submit" >Save</button>
+
+            </div>
                 </form>
           </div>
           </div>
