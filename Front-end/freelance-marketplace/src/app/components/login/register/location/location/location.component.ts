@@ -212,7 +212,7 @@ export class LocationComponent implements OnInit {
         }
       })
     }
-    //=================End of notifications
+    //=================End of notifications ==============
 
 
   }

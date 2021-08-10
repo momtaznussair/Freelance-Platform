@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -36,10 +38,10 @@ export class LoginComponent implements OnInit {
     {
 
       // localStorage.setItem("token" , "response");
-      // this.router.navigateByUrl('/freelancer/work/work');
       this.userService.login(this.form.getRawValue()).subscribe(response=>{
-        alert ('login success');
-        console.log(response)
+        console.log(response);
+        
+        this.router.navigateByUrl('/freelancer');
       },error=>console.error);
 
     }
@@ -71,6 +73,7 @@ export class LoginComponent implements OnInit {
   //     alert(JSON.stringify( response));
   //   })
   // }
+
 
 
 

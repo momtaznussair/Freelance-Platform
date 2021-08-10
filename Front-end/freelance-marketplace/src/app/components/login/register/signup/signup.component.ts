@@ -118,8 +118,6 @@ export class SignupComponent implements OnInit {
   simpleAlert(){
     Swal.fire('please complete your information first');
   }
-
-  
   //==================end of notification method
 
 }

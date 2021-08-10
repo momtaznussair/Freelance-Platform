@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {JobPostsService} from '../../../../services/job-posts.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-find-work',
@@ -42,7 +44,12 @@ responsive:string="true"
 currentIndex:number=0;
   constructor(private jobsPosts:JobPostsService) { }
 
+  successAlertNotification(){
+    Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
+  }
+
   ngOnInit(): void {
+    this.successAlertNotification();
     this.fetchPosts();
   }
 
