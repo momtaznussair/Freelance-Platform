@@ -6,6 +6,8 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
 import { SkillsService } from 'src/app/services/skills.service';
+import { searchFilter } from 'src/app/pipes/search-filter.pipe';
+
 
 @Component({
   selector: 'app-expertise',
@@ -22,6 +24,9 @@ export class ExpertiseComponent implements OnInit {
   skills : any;
   query="";
   result=[""];
+  public search : any;
+  placeholder="Start typing to search for skills";
+
 
 
   ngOnInit(): void {
@@ -41,15 +46,15 @@ export class ExpertiseComponent implements OnInit {
       experience_id : ['' ,  [Validators.required]],
     })
 
-
-
   }
   isLogged : boolean = false;
 
   skillsData : Object[] = [];
   skillsId : Object[] = [];
+  user_id : any;
   next(){
 
+      console.log(this.form.value)
           if(this.require == false)
           {
             for (let i = 0; i < this.skills.length; i++) {
@@ -66,6 +71,15 @@ export class ExpertiseComponent implements OnInit {
               this.currentJobProcess.skill = this.skillsId;
               localStorage.setItem('job_process' , JSON.stringify(this.currentJobProcess));
               localStorage.setItem('skills_data' , JSON.stringify(this.skillsData));
+
+              if(this.form.controls.experience_id.value == 1){
+                localStorage.setItem('experience_level' , 'Entry level')
+              } else if (this.form.controls.experience_id.value == 2){
+                localStorage.setItem('experience_level' , 'Intermediate')
+              }else{
+                localStorage.setItem('experience_level' , 'Expert')
+              }
+
               this.router.navigateByUrl('client/post-job/budget');
             }
 

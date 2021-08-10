@@ -25,7 +25,8 @@ export class ExpertiseComponent implements OnInit {
 
   result=[""];
   added :number=0;
-  public searchFilter:any;
+  public
+  :any;
   query="";
   constructor(private router : Router , private apiService : ApiService ,private formBuilder : FormBuilder ,private skillServices:SkillsService) { }
 

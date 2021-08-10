@@ -30,7 +30,7 @@ export class TitleComponent implements OnInit {
     })
 
     this.form = this.formBuilder.group({
-      job_title : ['' , [ Validators.required ,, Validators.minLength(20) ]],
+      job_title : ['' , [ Validators.required ,Validators.minLength(3), Validators.maxLength(255)]],
       category_id : ['', [Validators.required]]
     })
   }
@@ -43,7 +43,12 @@ export class TitleComponent implements OnInit {
       this.jobprocess.postjobProcess.job_title=this.form.controls.job_title.value;
       this.jobprocess.postjobProcess.category_id=this.form.controls.category_id.value;
 
-      console.log(this.jobprocess.postjobProcess);
+      for(let i = 0 ; i< this.categoryData.data.length ; i++){
+        if(this.categoryData.data[i].id == this.form.controls.category_id.value){
+          localStorage.setItem('category_name', this.categoryData.data[i].name);
+        }
+      }
+      console.log(localStorage.getItem('category_name'))
 
       localStorage.setItem('job_process',JSON.stringify(this.jobprocess.postjobProcess));
       this.router.navigateByUrl("/client/post-job/description");
