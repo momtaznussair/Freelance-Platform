@@ -34,7 +34,20 @@ export class BudgetComponent implements OnInit {
     })
   }
 
+  isFixed : boolean = false;
+  isHourly : boolean = false;
   isLogged : boolean = false;
+
+  chooseFixed()
+  {
+    this.isFixed = true;
+  }
+
+  chooseHourly()
+  {
+    this.isFixed = false;
+  }
+
 
   next(){
     if(this.form.valid)
