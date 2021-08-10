@@ -149,6 +149,7 @@ Route::get('educations/{education}',[EducationController::class,'show']);
 
 
 // authenticated client routes
+Route::post('jobs' ,[JobController::class,'store']);
 
 Route::middleware(['client','auth:sanctum'])->group(function () {
     // clients
@@ -156,7 +157,6 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
     Route::delete('/clients/delete/{client}',[ClientController::class,'destroy']);
     
     // jobs
-    Route::post('jobs' ,[JobController::class,'store']);
     Route::post('jobs/{job}' ,[JobController::class,'update']);
     Route::delete('jobs/delete/{job}' ,[JobController::class,'destroy']);
 

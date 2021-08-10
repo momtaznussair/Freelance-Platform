@@ -21,11 +21,7 @@ export class ReviewComponent implements OnInit {
     this.skillsData = localStorage.getItem('skills_data');
     this.skillsData = JSON.parse(this.skillsData);
     this.category_name = localStorage.getItem('category_name');
-    this.category_name = JSON.parse(this.category_name);
     this.experience_level = localStorage.getItem('experience_level');
-    this.experience_level = JSON.parse(this.experience_level);
-    console.log(this.skillsData);
-
   }
 
   submit()

@@ -35,12 +35,10 @@ export class ExpertiseComponent implements OnInit {
       console.log(response);
       this.getData = response;
       this.skills = this.getData.data;
-      console.log(this.skills);
     })
 
     this.currentJobProcess = localStorage.getItem('job_process');
     this.currentJobProcess = JSON.parse(this.currentJobProcess);
-    console.log(this.currentJobProcess);
 
     this.form = this.formBuilder.group({
       experience_id : ['' ,  [Validators.required]],
@@ -54,7 +52,6 @@ export class ExpertiseComponent implements OnInit {
   user_id : any;
   next(){
 
-      console.log(this.form.value)
           if(this.require == false)
           {
             for (let i = 0; i < this.skills.length; i++) {
@@ -63,7 +60,6 @@ export class ExpertiseComponent implements OnInit {
                 this.skillsData.push({id: this.skills[i].id , name:this.skills[i].name});
               }
             }
-            console.log(this.skillsId);
 
             if(this.form.valid)
             {

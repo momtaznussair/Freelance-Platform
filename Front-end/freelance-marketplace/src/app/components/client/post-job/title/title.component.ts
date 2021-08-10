@@ -25,7 +25,6 @@ export class TitleComponent implements OnInit {
 
     this.apiService.get(`${environment.apiUrl}/categories`).subscribe(res=>{
       this.categoryData = res;
-      console.log(this.categoryData);
       this.isCategoryGet = true;
     })
 
@@ -48,8 +47,6 @@ export class TitleComponent implements OnInit {
           localStorage.setItem('category_name', this.categoryData.data[i].name);
         }
       }
-      console.log(localStorage.getItem('category_name'))
-
       localStorage.setItem('job_process',JSON.stringify(this.jobprocess.postjobProcess));
       this.router.navigateByUrl("/client/post-job/description");
     }
@@ -59,29 +56,7 @@ export class TitleComponent implements OnInit {
     }
   }
 
-  //=====================================test request =====================//
-  data = {
-    description : 'this is test desc',
-    payment_amount : 20,
-    job_title : 'this is test title',
-    skill : ['html' , 'css'],
-    client_id : 5,
-    duration_id : 1,
-    payment_type : 1,
-    attatchment : 'this is test attatchment',
-    experience_id : 2,
-    payment_style_id : 1,
-    category_id : 1,
-    language_id : 1,
-    language_level_id : 1,
-  }
 
-  callDb()
-  {
-    // this.apiService.post(`${environment.apiUrl}/jobs` , this.data).subscribe(response=>{
-    //   console.log(response);
-    // })
-  }
 
 
 

@@ -19,7 +19,7 @@ export class postjob {
       category_id:0,
       payment_style_id: 0,
       experience_id:0,
-      duration_id:0,
+      duration_id:1,
       skill : [],
     }
 

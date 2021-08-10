@@ -18,11 +18,7 @@ class JobController extends Controller
 
     public function index()
     {
-<<<<<<< HEAD
         $jobs = Job::with('skills')->get();
-=======
-        $jobs = Job::all();
->>>>>>> d679bb8e91cdb035768c19396505a008e705b618
         return $this->apiResponse($jobs);
     }
 
@@ -42,7 +38,7 @@ class JobController extends Controller
             'description' => 'required|min:10',
             'payment_amount' => 'numeric',
             'job_title' => 'required|min:3',
-            'attachment' => 'min:5',
+            // 'attachment' => 'min:5',
             'skill' => 'required|exists:skills,id',
             'client_id' => 'required|exists:clients,id',
             'duration_id' => 'exists:durations,id',
@@ -54,7 +50,7 @@ class JobController extends Controller
         ]);
 
         if ($validate->fails()) {
-            return  $this->apiResponse(null, $validate->errors(), 422);
+            return  $this->apiResponse(null, $validate->errors(), 200);
         }
 
         $job = Job::create(
