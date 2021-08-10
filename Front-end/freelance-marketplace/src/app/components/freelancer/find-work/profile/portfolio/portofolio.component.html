@@ -11,7 +11,7 @@
           <div class="card mb-5">
 
               <div class="card-header p-4">
-                  <span class="h2">Add Portfolio Project</span>
+                  <span class="h2" id="one"> Portfolio </span>
               </div>
               <div class="card-footer  px-4">
                   <!-- <div class="form-group">
@@ -29,15 +29,23 @@
                 <form action="" [formGroup]="form">
                     <div class="body">
                         <div class="mt-4 mb-3">
-                            <p class="h3 fw-bold">Title</p>
+                            <p class="h3 fw-bold" id="one">Title</p>
                             <input type="text" formControlName="title" class=" form-control" placeholder="write title for your skills">
                             <div *ngIf="form.controls.title.invalid && isLogged || (form.controls.title.dirty || form.controls.title.touched)">
                                 <small class="text-danger fw-bold mb-3" *ngIf="form.controls.title.hasError('required')">This field is required</small>
 
                             </div>
-                        </div>
 
-                        <div class=" mt-3">
+                        </div>
+                        <p class="fw-bold h3" id="one" >
+                          Image
+                      </p>
+                        <div class="drag-drop">
+                          <p class=" text-center mt-4">
+                               <input type="file" >
+                          </p>
+                      </div>
+                        <!-- <div class=" mt-3">
 
 
 
@@ -47,9 +55,9 @@
                               <small class="text-danger fw-bold mb-3" *ngIf="form.controls.img_link.hasError('required')">This field is required</small>
 
                         </div>
-                        </div>
+                        </div> -->
                         <div class="overview card-haeder mt-3">
-                            <p class="h3 fw-bold">Overview</p>
+                            <p class="h3 " id="one">Overview</p>
                             <textarea formControlName="overview" name="overview" class="form-control" placeholder="type an overview about yourself" value=""></textarea>
                             <div *ngIf="form.controls.overview.invalid && isLogged || (form.controls.overview.dirty || form.controls.overview.touched)">
                                 <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('required')">This field is required</small>
@@ -61,8 +69,8 @@
 
               </div>
               <div class=" card-footer py-4">
-                <button  class="btn btn-light px-5 mx-3 py-2 border rounded-pill " routerLink="/freelancer/profile">Cancel</button>
-                <button  class="btn btn-dark px-5 mx-3 py-2 rounded-pill" (click)="save()" type="submit" >Save</button>
+                <button  class="btn btn-light px-5 mx-3 py-2 border rounded-pill " routerLink="/freelancer/profile" id="one">Cancel</button>
+                <button  class="btn btn-dark px-5 mx-3 py-2 rounded-pill" (click)="save()" type="submit" id="two" >Save</button>
 
             </div>
                 </form>
