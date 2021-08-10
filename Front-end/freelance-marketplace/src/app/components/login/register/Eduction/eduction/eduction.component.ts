@@ -25,7 +25,7 @@ export class EductionComponent implements OnInit {
     this.currentRegisterstart_date = localStorage.getItem('start_date');
 
     this.form = this.formBuilder.group({
-      user_id : [this.user_id , [ Validators.required]],
+      user_id : ['1' , [ Validators.required]],
       institute : ['' , [ Validators.required , Validators.minLength(10) , Validators.maxLength(250) ]],
       area_of_study : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(250) ]],
       degree : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(250) ]],
@@ -38,7 +38,7 @@ export class EductionComponent implements OnInit {
   next()
 {
 
-  console.log(this.form.value);
+  console.log({user_id : this.user_id , institute : this.form.controls['institute'].value , area_of_study : this.form.controls['area_of_study'].value});
   if(this.form.valid)
   {
     this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{

@@ -11,6 +11,8 @@ import { RespondedLocationToken } from 'src/app/models/location/responded-locati
 import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
 import { countries } from 'src/app/models/location/countries';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
@@ -112,6 +114,7 @@ queryloc:string=""
         //if signUp with socialite done
         if(this.user_data.response)
         {
+          this.alertConfirmation();
           console.log(this.user_data.user_data);
 
           localStorage.setItem('token' , this.response_data.data.access_token);
@@ -126,9 +129,11 @@ queryloc:string=""
             console.log(response);
             if(this.user_data.type == 'client')
             {
+              localStorage.setItem('clientType' , 'client');
               this.router.navigateByUrl('/client/main');
             }else
             {
+              localStorage.setItem('freelancerType' , 'freelancer');
               this.router.navigateByUrl('/user/signup/category');
             }
           })//end of request
@@ -136,6 +141,7 @@ queryloc:string=""
         }
         else //=> if logged manually
         {
+          this.alertConfirmation();
           console.log(this.data.user_data)
           //send request
           this.userService.register(this.data.user_data).subscribe(response=>{
@@ -146,6 +152,7 @@ queryloc:string=""
             this.response_data = response;
             if(this.response_data.data != null)
             {
+
               localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.id);
@@ -206,5 +213,38 @@ queryloc:string=""
      
       console.log(a.innerText)
     }
+
+    //==============start use notification ===============
+    successAlertNotification(){
+      Swal.fire('Hi', 'Congrats! operation successfull', 'success')
+    }
+
+    alertConfirmation(){
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'Your Action cannot be rollback.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, go ahead.',
+        cancelButtonText: 'No, let me think again'
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Done!',
+            'Action performed successfully.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Performed action record present in cloud and databstore.)',
+            'error'
+          )
+        }
+      })
+    }
+    //=================End of notifications ==============
+
+
   }
 

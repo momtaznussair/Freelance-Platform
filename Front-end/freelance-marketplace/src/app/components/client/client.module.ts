@@ -32,10 +32,11 @@ const routes : Routes = [
     path: 'setting',
     loadChildren: () => import('./client-setting/client-setting.module').then(m => m.ClientSettingModule)
   },
-  // {
-  //   path: 'post-job',
-  //   loadChildren: () => import('./post-job/post-job.module').then(m => m.PostJobModule)
-  //   },
+  {
+    path: 'post-job',
+    loadChildren: () => import('./post-job/post-job.module').then(m => m.PostJobModule)
+    },
+
 ]
 
 @NgModule({

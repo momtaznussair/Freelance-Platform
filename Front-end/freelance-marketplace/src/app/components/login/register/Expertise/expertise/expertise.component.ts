@@ -19,8 +19,8 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ExpertiseComponent implements OnInit {
 
-placeholder="Start typing to search for skills";
-clicked:number=0;
+  placeholder="Start typing to search for skills";
+  clicked:number=0;
   form : FormGroup = new FormGroup({});
 
   result=[""];

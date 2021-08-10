@@ -15,7 +15,7 @@
 
                 <div class="header">
                     <h3> Category </h3>
-                    <p>1 of 8</p>
+                    <p>1 of 7</p>
                 </div>
 
 
@@ -27,6 +27,7 @@
                     <select class="form-select form-select-sm" placeholder="select" formControlName="category_id" name="category_id" aria-label=".form-select-sm example">
                       <option selected *ngFor="let item of categories.data" value="{{item.id}}" >{{item.name}}</option>
                     </select>
+
                     <div *ngIf="form.controls.category_id.invalid && isDone || (form.controls.category_id.dirty || form.controls.category_id.touched)">
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.category_id.hasError('required')"> Please select your category</small>
                     </div>

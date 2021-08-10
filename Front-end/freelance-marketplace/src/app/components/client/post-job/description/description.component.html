@@ -3,6 +3,7 @@
 
         <div class="col-md-2 d-sm-none d-md-block">
             <post-job-aside></post-job-aside>
+
         </div>
 
         <div class="col-sm-12 col-md-10 mt-3">
@@ -15,7 +16,7 @@
                         <p>Step 2 of 7</p>
                     </div>
 
-                    <form action=""[formGroup]="form" >
+                    <form action="" [formGroup]="form">
 
                         <!-- card body -->
                         <div class="card-body p-5">
@@ -26,12 +27,12 @@
                                 <li>Anything unique about the project, team, or your company</li>
                             </ul>
 
-                            <textarea name="description"  formControlName="description" class="form-control" id="" cols="30" rows="10"></textarea>
+                            <textarea name="description" formControlName="description" class="form-control" id="" cols="30" rows="10"></textarea>
                             <div *ngIf="form.controls.description.invalid && isLogged || (form.controls.description.dirty || form.controls.description.touched)">
-                              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.description.hasError('required')">This field is required</small>
-                              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('minlength')">You should write more than 50 letter </small>
+                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.description.hasError('required')">This field is required</small>
+                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.description.hasError('minlength')">You should write more than 50 letter </small>
 
-                          </div>
+                            </div>
 
                             <p class="textt-muted text-end fs-6"> (minimum 50)</p>
 
@@ -41,6 +42,7 @@
                             <div class="drag-drop">
                                 <p class=" text-center mt-4">
                                     drag or <span>upload</span> project images
+                                    <input type="file" name="attachment" formControlName="attachment">
                                 </p>
                             </div>
                             <p class="text-muted fs-6">You may attach up to 5 files under <span class="fw-bold">100 MB </span> each</p>
@@ -50,7 +52,7 @@
                         <div class="card-footer py-4">
                             <a routerLink="/client/post-job/title" class="btn btn-light px-5 mx-3 py-2 border rounded-pill text-primary">Back</a>
                             <button class="btn btn-primary px-5 mx-3 py-2 rounded-pill" type="submit" (click)="next()">next</button>
-                          </div>
+                        </div>
 
                     </form>
                 </div>

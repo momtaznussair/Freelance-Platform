@@ -14,7 +14,7 @@
                             <div class="card mb-5">
                                 <div class="card-header d-flex py-3">
                                     <span class="h2">Review and post</span>
-                                    <input type="button" class="btn btn-primary rounded-pill ms-auto" value="Post Job Now">
+                                    <input type="button" class="btn btn-primary rounded-pill ms-auto" (click)="submit()" value="Post Job Now">
                                 </div>
 
                                 <!-- Title -->
@@ -63,9 +63,7 @@
                                     <p class="fw-bold">
                                         Description
                                     </p>
-                                    <p class="mb-3 col-6">What the deliverable is
-                                        Type of freelancer or agency you're looking for
-                                        Anything unique about the project, team, or your company
+                                    <p class="mb-3 col-6">What the deliverable is Type of freelancer or agency you're looking for Anything unique about the project, team, or your company
                                     </p>
                                 </div>
                             </div>
@@ -84,7 +82,7 @@
                                                 <i class="fas fa-pen"></i>
                                             </a>
                                         </div>
-                                        
+
                                     </div>
 
                                     <hr>
@@ -118,7 +116,7 @@
                                     <p class="fw-bold">
                                         Web Design Skills
                                     </p>
-                                    <span class="skill border rounded-pill px-3 py-2">Mobile App Design</span>
+                                    <span class="skill border rounded-pill px-3 py-2 mx-2 bg-info" *ngFor="let item of skills">{{item.name}}</span>
 
                                     <hr>
 
@@ -223,6 +221,3 @@
 
     </div>
 </div>
-
-
-

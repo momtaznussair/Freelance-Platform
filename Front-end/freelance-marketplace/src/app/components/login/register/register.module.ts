@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { ExpertiseComponent } from './Expertise/expertise/expertise.component';
 import { ExpertlevelComponent } from './Expertlevel/expertlevel/expertlevel.component';
@@ -17,8 +17,6 @@ import { OverviewComponent } from './overview/overview.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { SharedModule } from '../../freelancer/shared/shared.module';
 import { FreelancerAuthorization } from 'src/app/guards/freelancer-authorization.guard';
-import { LayoutModule } from '../../layout/layout.module';
-// import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
@@ -31,7 +29,7 @@ const routes : Routes=[
   {path : 'lang' , component : LanguagesComponent},
   {path : 'hourly-rate' , component : HourlyrateComponent},
   {path : 'location' , component : LocationComponent},
-  {path : '' , component : ConnectionTypeComponent, canActivate:[AuthGuard]},
+  {path : '' , component : ConnectionTypeComponent},
 ]
 
 @NgModule({
@@ -50,11 +48,11 @@ const routes : Routes=[
     CategoryComponent,
     ConnectionTypeComponent,
     OverviewComponent,
-    // searchFilter
 
   ],
   imports: [
     CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,SharedModule
+    // ,FormGroup
   ],
   exports : [
     SignupComponent , SidebarComponent
