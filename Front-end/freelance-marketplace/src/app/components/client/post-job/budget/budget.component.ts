@@ -15,35 +15,38 @@ import { postjob } from 'src/app/services/post-job.service';
 export class BudgetComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder ,private router : Router, private userService : UserService ,private jobprocess:postjob) { }
+  constructor(private formBuilder : FormBuilder ,private router : Router, private userService : UserService) { }
 
-  post_job : any;
+  currentJobProcess : any;
   ngOnInit(): void {
-    this.post_job = localStorage.getItem('postjob');
-    console.log(this.post_job);
+
+    this.currentJobProcess = localStorage.getItem('job_process');
+    this.currentJobProcess = JSON.parse(this.currentJobProcess);
+    console.log(this.currentJobProcess);
+
     this.form = this.formBuilder.group({
-      timeproject : ['' ,  [Validators.required]],
+      duration_id : ['' ,  [Validators.required]],
       expectproject : ['' ,  [Validators.required]],
-      pay : ['' ,  [Validators.required]],
+      payment_style_id : ['' ,  [Validators.required]],
 
 
     })
   }
+
   isLogged : boolean = false;
 
   next(){
     if(this.form.valid)
     {
-
-      this.post_job = JSON.parse(this.post_job)
-      this.post_job.payment_style_id = this.form.controls.payment_style_id.value;
-      console.log(localStorage.getItem('postjob'));
-      localStorage.removeItem('postjob');
+      console.log(this.form.value);
+      this.currentJobProcess.payment_style_id = this.form.controls.payment_style_id.value;
+      this.currentJobProcess.duration_id = this.form.controls.duration_id.value;
+      localStorage.setItem('job_process' , JSON.stringify(this.currentJobProcess));
+      console.log(this.currentJobProcess);
       this.router.navigateByUrl("/client/post-job/review");
     }
     else
     {
-
       this.isLogged = true;
     }
   }

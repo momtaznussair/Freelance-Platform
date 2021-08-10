@@ -1,11 +1,11 @@
+import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-//  import {RegisterDataService} from "../../../../../services/register-data.service";
 import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
-import { postjob } from 'src/app/services/post-job.service';
+import { environment } from 'src/environments/environment.prod';
+import { SkillsService } from 'src/app/services/skills.service';
 
 @Component({
   selector: 'app-expertise',
@@ -15,15 +15,30 @@ import { postjob } from 'src/app/services/post-job.service';
 export class ExpertiseComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder ,private router : Router, private userService : UserService ,private jobprocess:postjob) { }
+  constructor(private formBuilder : FormBuilder ,private router : Router, private apiService : ApiService ,private skillServices:SkillsService) { }
 
-  post_job : any;
+  currentJobProcess : any;
+  getData : any;
+  skills : any;
+  query="";
+  result=[""];
+
+
   ngOnInit(): void {
 
-    this.post_job = localStorage.getItem('postjob');
-    console.log(this.post_job);
+    this.apiService.get(`${environment.apiUrl}/skills`).subscribe(response=>{
+      console.log(response);
+      this.getData = response;
+      this.skills = this.getData.data;
+      console.log(this.skills);
+    })
+
+    this.currentJobProcess = localStorage.getItem('job_process');
+    this.currentJobProcess = JSON.parse(this.currentJobProcess);
+    console.log(this.currentJobProcess);
+
     this.form = this.formBuilder.group({
-      level : ['' ,  [Validators.required]],
+      experience_id : ['' ,  [Validators.required]],
     })
 
 
@@ -31,25 +46,59 @@ export class ExpertiseComponent implements OnInit {
   }
   isLogged : boolean = false;
 
+  name : Object[] = [];
   next(){
-    if(this.form.valid)
-    {
 
-      this.jobprocess.postjobProcess.level=this.form.controls.expertise;
+          if(this.require == false)
+          {
+            for (let i = 0; i < this.skills.length; i++) {
+              if(this.skills[i].selected == true){
+                this.name.push({id: this.skills[i].id ,name : this.skills[i].name});
+              }
+            }
+            console.log(this.name);
 
+            if(this.form.valid)
+            {
+              this.currentJobProcess.experience_id = this.form.controls.experience_id.value;
+              this.currentJobProcess.skill = this.name;
+              localStorage.setItem('job_process' , JSON.stringify(this.currentJobProcess));
+              console.log(this.currentJobProcess);
+              this.router.navigateByUrl('client/post-job/visibility')
+            }
 
-      this.post_job = JSON.parse(this.post_job)
-      this.post_job.level = this.form.controls.level.value;
-      localStorage.setItem('postjob' ,JSON.stringify(this.post_job));
-      this.router.navigateByUrl("/client/post-job/visibility");
-    }
-    else
-    {
-      this.isLogged = true;
-    }
+          }
+          else
+          {
+            this.require = true;
+          }
+
   }
+
+  status: boolean = false;
+  require:boolean=false
+
+  addSkill(i:any,b:HTMLElement){
+  i.selected = ! i.selected;
+     this.isLogged = true;
+
+     this.skillServices.addSkill(b.innerText);
+     this.require=false
+     console.log(i)
   }
 
 
+  addSkillFromDropDown(a:HTMLElement,inpt:HTMLElement){
+       this.skills.push({
+         "id":this.skills.id,
+         "name": a.innerText,
+         "selected":true
+       });
+       this.require=false;
+       this.query=inpt.innerText;
+       console.log(a.innerText);
+  }
 
+
+}
 

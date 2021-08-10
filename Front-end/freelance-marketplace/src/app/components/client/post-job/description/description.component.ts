@@ -17,29 +17,32 @@ export class DescriptionComponent implements OnInit {
 
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  , private router : Router ,private jobprocess:postjob) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router) { }
 
-  post_job : any;
+  currentJobProcess : any;
 
   ngOnInit(): void {
 
-    this.post_job = localStorage.getItem('postjob');
+    this.currentJobProcess = localStorage.getItem('job_process');
+    this.currentJobProcess = JSON.parse(this.currentJobProcess);
+    console.log(this.currentJobProcess);
 
     this.form = this.formBuilder.group({
-      description : ['' , [ Validators.required , Validators.minLength(50) ]],
+      description : ['' , [ Validators.required , Validators.minLength(10) ]],
+      attachment : ['']
     })
   }
   isLogged : boolean = false;
 
 next(){
+  console.log(this.form.value);
   if(this.form.valid)
   {
 
-      this.jobprocess.postjobProcess.description=this.form.controls.description;
+    this.currentJobProcess.description = this.form.controls.description.value;
+    console.log(this.currentJobProcess);
+    localStorage.setItem('job_process' ,JSON.stringify(this.currentJobProcess))
 
-        this.post_job = JSON.parse(this.post_job)
-      this.post_job.description= this.form.controls.description.value;
-      localStorage.setItem('postjob' ,JSON.stringify(this.jobprocess.postjobProcess));
     this.router.navigateByUrl("/client/post-job/details");
   }
   else

@@ -23,12 +23,8 @@
                                     </p>
                                     <input class="form-control mb-3" name="job_title" formControlName="job_title" type="text" placeholder="Enter the title of the job" aria-label="default input example">
                                     <div *ngIf="form.controls.job_title.invalid && isLogged || (form.controls.job_title.dirty || form.controls.job_title.touched)">
-                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('required')">This field is required
-
-                                      </small>
-                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('minLength')">This field is required min 20 char
-
-                                      </small>
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('required')">This field is required </small>
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('minlength')">Please write than 20 chars</small>
                                     </div>
                                     <p class="fw-bold">
                                         Here are some good examples:
@@ -84,42 +80,20 @@
                                                     <!-- Category -->
                                                     <h6>Select a category</h6>
                                                     <p class="fw-bold">Category</p>
-                                                    <select class="form-select category" aria-label="Default select example">
-                                                        <option selected>Select a category</option>
-                                                        <option value="accounting-consulting">Accounting & Consulting</option>
-                                                        <option value="admin-spport">Admin Support</option>
-                                                        <option value="customer-service">Customer Service</option>
-                                                        <option value="data-science">Data Science & Analytics</option>
-                                                        <option value="it-networking">IT & Networking</option>
-                                                        <option value="customer-service">Customer Service</option>
-                                                        <option value="writing">Writing</option>
-                                                        <option value="translation">Translation</option>
-                                                        <option value="web-mobile-software-dev">Web, Mobile & Software Dev</option>
-                                                        <option value="sales-marketing">Sales & Marketing</option>
-                                                        <option value="engineering-architecture">Engineering & Architecture</option>
+                                                    <select class="form-select form-select-sm" placeholder="select" formControlName="category_id" name="category_id" aria-label=".form-select-sm example" *ngIf="isCategoryGet">
+                                                      <option selected *ngFor="let item of categoryData.data" value="{{item.id}}" >{{item.name}}</option>
                                                     </select>
                                                     <!-- speciality -->
                                                     <p class="fw-bold">Specialty</p>
                                                     <select class="form-select specialty" name="" id="">
                                                         <option selected>Select a specialty</option>
                                                         <option value="ar-vr">AR/VR Development</option>
-                                                        <option value="automation-testing">Automation Testing</option>
-                                                        <option value="back-end-development">Back-End Development</option>
-                                                        <option value="database-development">Database Development</option>
-                                                        <option value="desktop-software-development">Desktop Software Development</option>
-                                                        <option value="ecommerce">Ecommerce Development</option>
-                                                        <option value="front-end">Front-End Development</option>
-                                                        <option value="full-stack">Full Stack Development</option>
-                                                        <option value="mobile-app-development">Mobile App Development</option>
-                                                        <option value="mobile-design">Mobile Design</option>
-                                                        <option value="ux-ui">UX/UI Design</option>
-                                                        <option value="web-design">Web Design</option>
                                                     </select>
 
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary rounded-pill" disabled>Save</button>
+                                                    <button type="button" class="btn btn-primary rounded-pill" data-bs-dismiss="modal">Save</button>
                                                 </div>
                                             </div>
                                         </div>
