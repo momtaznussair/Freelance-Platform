@@ -19,8 +19,8 @@
                 <div class="body">
                     <div class="sec sec1">
                         <p><b>Select your skills</b></p>
-                        <div class="skills">
-                            <button #b class=" mx-1 my-1  bt1s" *ngFor="let i of skills" [ngClass]="{'bt2s':i.selected}" (click)="addSkill(i,b)">{{i.name}} </button>
+                        <div class="skills"   >
+                            <button #b *ngFor="let item of skills " class=" mx-1 my-1  bt1s" [ngClass]="{'bt2s':item.selected}" (click)="addSkill(item,b)">{{item.name}}</button>
                         </div>
                         <div *ngIf="require">
                             <small class="text-danger fw-bold mb-3" *ngIf="require"> please select your skills</small>
@@ -51,14 +51,6 @@
                         <button class="bt2" (click)="submit()">next</button>
                     </div>
                 </div>
-<<<<<<< HEAD
-                <div class=" footer lg-6 d-sm-flex">
-                    <button class="bt1" routerLink="/user/signup/experience-level">back</button>
-                    <button class="bt2" (click)="submit()">next</button>
-                </div>
-            <!-- </div> -->
-=======
->>>>>>> 14166a86378d3737db0302b330aaeef7e2c09745
             </form>
         </section>
     </div>

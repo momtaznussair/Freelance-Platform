@@ -20,7 +20,6 @@ import { FreelancerAuthorization } from 'src/app/guards/freelancer-authorization
 import { LayoutModule } from '../../layout/layout.module';
 // import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
-
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
   {path : 'register' , component : SignupComponent},
