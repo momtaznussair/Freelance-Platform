@@ -12,12 +12,13 @@ export class ReviewComponent implements OnInit {
   constructor(private apiService : ApiService) { }
 
   currentJobProcess : any;
-  skills : any;
+  skillsData : any;
   ngOnInit(): void {
     this.currentJobProcess = localStorage.getItem('job_process');
     this.currentJobProcess = JSON.parse(this.currentJobProcess);
-    this.skills = this.currentJobProcess.skill;
-    console.log(this.skills);
+    this.skillsData = localStorage.getItem('skills_data');
+    this.skillsData = JSON.parse(this.skillsData);
+    console.log(this.skillsData);
   }
 
   submit()

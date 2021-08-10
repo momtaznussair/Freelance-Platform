@@ -46,25 +46,27 @@ export class ExpertiseComponent implements OnInit {
   }
   isLogged : boolean = false;
 
-  name : Object[] = [];
+  skillsData : Object[] = [];
+  skillsId : Object[] = [];
   next(){
 
           if(this.require == false)
           {
             for (let i = 0; i < this.skills.length; i++) {
               if(this.skills[i].selected == true){
-                this.name.push({id: this.skills[i].id ,name : this.skills[i].name});
+                this.skillsId.push({id: this.skills[i].id});
+                this.skillsData.push({id: this.skills[i].id , name:this.skills[i].name});
               }
             }
-            console.log(this.name);
+            console.log(this.skillsId);
 
             if(this.form.valid)
             {
               this.currentJobProcess.experience_id = this.form.controls.experience_id.value;
-              this.currentJobProcess.skill = this.name;
+              this.currentJobProcess.skill = this.skillsId;
               localStorage.setItem('job_process' , JSON.stringify(this.currentJobProcess));
-              console.log(this.currentJobProcess);
-              this.router.navigateByUrl('client/post-job/visibility')
+              localStorage.setItem('skills_data' , JSON.stringify(this.skillsData));
+              this.router.navigateByUrl('client/post-job/visibility');
             }
 
           }

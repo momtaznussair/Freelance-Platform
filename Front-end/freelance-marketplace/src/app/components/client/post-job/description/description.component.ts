@@ -43,7 +43,7 @@ next(){
     console.log(this.currentJobProcess);
     localStorage.setItem('job_process' ,JSON.stringify(this.currentJobProcess))
 
-    this.router.navigateByUrl("/client/post-job/details");
+    this.router.navigateByUrl("/client/post-job/expertise");
   }
   else
   {

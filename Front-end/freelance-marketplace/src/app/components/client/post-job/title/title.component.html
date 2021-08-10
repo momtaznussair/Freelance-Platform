@@ -45,59 +45,11 @@
                                     </p>
                                     <p>Let's categorize your job, which helps us personalize your job details and match your job to relevant freelancers and agencies.</p>
 
-                                    <!-- Radio button -->
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="mobile">
-                                        <label class="form-check-label fw-bold" for="mobile">
-                                            Mobile Design
-                                        </label>
-                                        <p>
-                                            Mobile design involves designing the user interface (UI) and user experience (UX) for mobile applications.
-                                        </p>
-                                    </div>
-                                    <!-- <div *ngIf="form.controls.category_id.invalid && isLogged || (form.controls.category_id.dirty || form.controls.category_id.touched)">
-                                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.category_id.hasError('required')">This field is required
-                                      </small>
+                                    <p class="fw-bold">Category</p>
+                                    <select class="form-select form-select-sm" placeholder="select" formControlName="category_id" name="category_id" aria-label=".form-select-sm example" *ngIf="isCategoryGet">
+                                        <option selected *ngFor="let item of categoryData.data" value="{{item.id}}" >{{item.name}}</option>
+                                    </select>
 
-
-                                  </div> -->
-                                    <!-- Button trigger modal -->
-                                    <a type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        See Categories
-                                    </a>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <!-- modal header -->
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Job categorization</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <!-- modal body -->
-                                                <div class="modal-body">
-                                                    <!-- Category -->
-                                                    <h6>Select a category</h6>
-                                                    <p class="fw-bold">Category</p>
-                                                    <select class="form-select form-select-sm" placeholder="select" formControlName="category_id" name="category_id" aria-label=".form-select-sm example" *ngIf="isCategoryGet">
-                                                      <option selected *ngFor="let item of categoryData.data" value="{{item.id}}" >{{item.name}}</option>
-                                                    </select>
-                                                    <!-- speciality -->
-                                                    <p class="fw-bold">Specialty</p>
-                                                    <select class="form-select specialty" name="" id="">
-                                                        <option selected>Select a specialty</option>
-                                                        <option value="ar-vr">AR/VR Development</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary rounded-pill" data-bs-dismiss="modal">Save</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="card-footer py-4">
                                     <a routerLink="/client/post-job/getting-start" class="btn btn-light px-5 mx-3 py-2 border rounded-pill text-primary">Back</a>
