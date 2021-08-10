@@ -28,6 +28,7 @@ export class BudgetComponent implements OnInit {
       duration_id : ['' ,  [Validators.required]],
       expectproject : ['' ,  [Validators.required]],
       payment_style_id : ['' ,  [Validators.required]],
+      payment_amount : ['10' , [Validators.required]]
 
 
     })
@@ -41,6 +42,7 @@ export class BudgetComponent implements OnInit {
       console.log(this.form.value);
       this.currentJobProcess.payment_style_id = this.form.controls.payment_style_id.value;
       this.currentJobProcess.duration_id = this.form.controls.duration_id.value;
+      this.currentJobProcess.payment_amount = this.form.controls.payment_amount.value;
       localStorage.setItem('job_process' , JSON.stringify(this.currentJobProcess));
       console.log(this.currentJobProcess);
       this.router.navigateByUrl("/client/post-job/review");
