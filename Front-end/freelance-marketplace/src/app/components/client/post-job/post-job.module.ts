@@ -6,7 +6,6 @@ import { AsideComponent } from './shared/aside/aside.component';
 import { TitleComponent } from './title/title.component';
 import { DescriptionComponent } from './description/description.component';
 import { ExpertiseComponent } from './expertise/expertise.component';
-import { VisibilityComponent } from './visibility/visibility.component';
 import { BudgetComponent } from './budget/budget.component';
 import { ReviewComponent } from './review/review.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +17,6 @@ const routes : Routes = [
   {path:"title" , component:TitleComponent},
   {path:"description" , component:DescriptionComponent},
   {path:"expertise",component:ExpertiseComponent},
-  {path:"visibility",component:VisibilityComponent},
   {path:"budget",component:BudgetComponent},
   {path:"review",component:ReviewComponent},
   {path:"" , component:GettingStartComponent}
@@ -31,7 +29,6 @@ const routes : Routes = [
     GettingStartComponent,
     AsideComponent,
     ExpertiseComponent,
-    VisibilityComponent,
     BudgetComponent,
     ReviewComponent,
     TitleComponent,

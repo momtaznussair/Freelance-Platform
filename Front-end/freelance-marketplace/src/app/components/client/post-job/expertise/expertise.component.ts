@@ -66,7 +66,7 @@ export class ExpertiseComponent implements OnInit {
               this.currentJobProcess.skill = this.skillsId;
               localStorage.setItem('job_process' , JSON.stringify(this.currentJobProcess));
               localStorage.setItem('skills_data' , JSON.stringify(this.skillsData));
-              this.router.navigateByUrl('client/post-job/visibility');
+              this.router.navigateByUrl('client/post-job/budget');
             }
 
           }
