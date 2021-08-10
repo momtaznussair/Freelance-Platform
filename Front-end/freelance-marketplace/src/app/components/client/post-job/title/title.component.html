@@ -14,19 +14,20 @@
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <h2>Title</h2>
-                                    <p>Step 1 of 7</p>
+                                    <p>Step 1 of 5</p>
                                 </div>
 
                                 <div class="card-body">
                                     <p class="fw-bold">
                                         Enter the name of your job post
                                     </p>
-                                    <input class="form-control mb-3" name="job_title" formControlName="job_title" type="text" placeholder="Enter the title of the job" aria-label="default input example">
+                                    <input class="form-control" name="job_title" formControlName="job_title" type="text" placeholder="Enter the title of the job" aria-label="default input example">
                                     <div *ngIf="form.controls.job_title.invalid && isLogged || (form.controls.job_title.dirty || form.controls.job_title.touched)">
                                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('required')">This field is required </small>
-                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('minlength')">Please write than 20 chars</small>
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('minlength')">Please write more than 3 characters</small>
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('maxlength')">Sorry, you can't write more than 255 characters</small>
                                     </div>
-                                    <p class="fw-bold">
+                                    <p class="fw-bold mt-3">
                                         Here are some good examples:
                                     </p>
                                     <ul>

@@ -1,20 +1,20 @@
 <div class="container py-5 px-3">
 
-  <div class="row">
+    <div class="row">
 
 
-      <section class="d-none d-md-block col-md-2">
+        <section class="d-none d-md-block col-md-2">
 
-      </section>
+        </section>
 
-      <section class="myinfo col-12 col-md-9">
-          <div class="card mb-5">
+        <section class="myinfo col-12 col-md-9">
+            <div class="card mb-5">
 
-              <div class="card-header p-4">
-                  <span class="h2">Add Portfolio Project</span>
-              </div>
-              <div class="card-footer  px-4">
-                  <!-- <div class="form-group">
+                <div class="card-header p-4">
+                    <span class="h2">Add Portfolio Project</span>
+                </div>
+                <div class="card-footer  px-4">
+                    <!-- <div class="form-group">
                     <label for="title" class="control-label">Project Title</label>
                     <input id="title" placeholder="Enter a brief but descriptive title" type="text" class="form-control mt-3">
 
@@ -26,44 +26,44 @@
                     <button  class="btn btn-primary mt-3 pull-right" routerLink="/freelancer/profile">Save</button>
                     <button  class="btn btn-danger mt-3 pull-left" routerLink="/freelancer/profile">Cancel</button>
                 </div> -->
-                <form action="" [formGroup]="form">
-                    <div class="body">
-                        <div class="mt-5 mb-3">
-                            <p class="h3 fw-bold">Title</p>
-                            <input type="text" formControlName="title" class=" form-control" placeholder="write title for your skills">
-                            <div *ngIf="form.controls.title.invalid && isLogged || (form.controls.title.dirty || form.controls.title.touched)">
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.title.hasError('required')">This field is required</small>
+                    <form action="" [formGroup]="form">
+                        <div class="body">
+                            <div class="mt-5 mb-3">
+                                <p class="h3 fw-bold">Title</p>
+                                <input type="text" formControlName="title" class=" form-control" placeholder="write title for your skills">
+                                <div *ngIf="form.controls.title.invalid && isLogged || (form.controls.title.dirty || form.controls.title.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.title.hasError('required')">This field is required</small>
 
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="text-primary mt-3">
-                            <input type="file" class="fw-bold" formControlName="img_link" name="image_link" multiple>
-                            <div *ngIf="form.controls.img_link.invalid && isLogged || (form.controls.img_link.dirty || form.controls.img_link.touched)">
-                              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.img_link.hasError('required')">This field is required</small>
+                            <div class="text-primary mt-3">
+                                <input type="file" class="fw-bold" formControlName="image_link" name="image_link" multiple>
+                                <div *ngIf="form.controls.img_link.invalid && isLogged || (form.controls.img_link.dirty || form.controls.img_link.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.img_link.hasError('required')">This field is required</small>
 
-                        </div>
+                                </div>
 
-                        <div class="overview card-haeder mt-3">
-                            <p class="h3 fw-bold">Overview</p>
-                            <textarea formControlName="overview" name="overview" class="form-control" placeholder="type an overview about yourself" value=""></textarea>
-                            <div *ngIf="form.controls.overview.invalid && isLogged || (form.controls.overview.dirty || form.controls.overview.touched)">
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('required')">This field is required</small>
+                                <div class="overview card-haeder mt-3">
+                                    <p class="h3 fw-bold">Overview</p>
+                                    <textarea formControlName="overview" name="overview" class="form-control" placeholder="type an overview about yourself" value=""></textarea>
+                                    <div *ngIf="form.controls.overview.invalid && isLogged || (form.controls.overview.dirty || form.controls.overview.touched)">
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('required')">This field is required</small>
 
+                                    </div>
+                                </div>
                             </div>
+                            <div class=" footer lg-6 d-sm-flex">
+                                <button class="btn btn-primary mt-3 pull-right" (click)="save()" type="submit">Save</button>
+                                <button class="btn btn-danger mt-3 pull-left" routerLink="/freelancer/profile">Cancel</button>
+                            </div>
+
                         </div>
-                    </div>
-                    <div class=" footer lg-6 d-sm-flex">
-                        <button  class="btn btn-primary mt-3 pull-right" (click)="save()" type="submit" >Save</button>
-                        <button  class="btn btn-danger mt-3 pull-left" routerLink="/freelancer/profile">Cancel</button>
-                    </div>
+                    </form>
+                </div>
+            </div>
 
-              </div>
-                </form>
-          </div>
-          </div>
+        </section>
 
-      </section>
-
-  </div>
+    </div>
 </div>
