@@ -45,8 +45,6 @@ class JobController extends Controller
             'experience_id' => 'required|exists:experience_levels,id',
             'payment_style_id' => 'required|exists:payment_styles,id',
             'category_id' => 'required|exists:categories,id',
-            'language_id' => 'required|exists:languages,id',
-            'language_level_id' => 'required|exists:language_levels,id',
         ]);
 
         if ($validate->fails()) {
@@ -89,8 +87,6 @@ class JobController extends Controller
             'experience_id' => 'required|exists:experience_levels,id',
             'payment_style_id' => 'required|exists:payment_styles,id',
             'category_id' => 'required|exists:categories,id',
-            'language_id' => 'required|exists:languages,id',
-            'language_level_id' => 'required|exists:language_levels,id',
         ]);
 
         if ($validate->fails()) {
