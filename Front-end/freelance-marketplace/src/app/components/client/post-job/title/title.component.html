@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                      <form action="" [formGroup]="form">
+                        <form action="" [formGroup]="form">
 
                             <div class="card mb-5">
                                 <div class="card-header">
@@ -23,13 +23,13 @@
                                     </p>
                                     <input class="form-control mb-3" name="job_title" formControlName="job_title" type="text" placeholder="Enter the title of the job" aria-label="default input example">
                                     <div *ngIf="form.controls.job_title.invalid && isLogged || (form.controls.job_title.dirty || form.controls.job_title.touched)">
-                                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('required')">This field is required
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('required')">This field is required
 
                                       </small>
-                                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('minLength')">This field is required min 20 char
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('minLength')">This field is required min 20 char
 
                                       </small>
-                                  </div>
+                                    </div>
                                     <p class="fw-bold">
                                         Here are some good examples:
                                     </p>
@@ -127,7 +127,7 @@
                                 </div>
                                 <div class="card-footer py-4">
                                     <a routerLink="/client/post-job/getting-start" class="btn btn-light px-5 mx-3 py-2 border rounded-pill text-primary">Back</a>
-                                    <button class="btn btn-primary px-5 mx-3 py-2 rounded-pill" type="submit" (click)="next()">next</button>
+                                    <button class="btn btn-primary px-5 mx-3 py-2 rounded-pill" type="submit" (click)="next();callDb()">next</button>
 
                                 </div>
                             </div>
@@ -140,6 +140,3 @@
 
     </div>
 </div>
-
-
-

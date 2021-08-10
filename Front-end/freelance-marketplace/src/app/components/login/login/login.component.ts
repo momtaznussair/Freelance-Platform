@@ -40,8 +40,7 @@ export class LoginComponent implements OnInit {
       // localStorage.setItem("token" , "response");
       this.userService.login(this.form.getRawValue()).subscribe(response=>{
         console.log(response);
-        
-        this.router.navigateByUrl('/freelancer');
+        // this.router.navigateByUrl('/freelancer');
       },error=>console.error);
 
     }

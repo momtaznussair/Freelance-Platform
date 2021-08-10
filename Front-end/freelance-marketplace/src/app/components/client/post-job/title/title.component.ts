@@ -55,20 +55,28 @@ export class TitleComponent implements OnInit {
   }
 
   //=====================================test request =====================//
-  // data = {
-  //   description : 'this is test desc',
-  //   payment_amount : 20,
-  //   job_title : 'this is test title',
-  //   skill : ['html' , 'css'],
+  data = {
+    description : 'this is test desc',
+    payment_amount : 20,
+    job_title : 'this is test title',
+    skill : ['html' , 'css'],
+    client_id : 5,
+    duration_id : 1,
+    payment_type : 1,
+    attatchment : 'this is test attatchment',
+    experience_id : 2,
+    payment_style_id : 1,
+    category_id : 1,
+    language_id : 1,
+    language_level_id : 1,
+  }
 
-  // }
-
-  // callDb()
-  // {
-  //   this.apiService.post(`${environment.apiUrl}/jobs` , this.data).subscribe(response=>{
-  //     console.log(response);
-  //   })
-  // }
+  callDb()
+  {
+    // this.apiService.post(`${environment.apiUrl}/jobs` , this.data).subscribe(response=>{
+    //   console.log(response);
+    // })
+  }
 
 
 
