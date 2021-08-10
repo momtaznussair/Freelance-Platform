@@ -19,6 +19,8 @@ class Job extends Model
         'experience_id',
         'payment_style_id',
         'category_id',
+        'from',
+        'to',
     ];
 
     protected $hidden = ['pivot'];

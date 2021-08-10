@@ -36,15 +36,17 @@ class JobController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'description' => 'required|min:10',
-            'payment_amount' => 'required|numeric',
+            'payment_amount' => 'numeric',
             'job_title' => 'required|min:3',
             'attachment' => 'min:5',
             'skill' => 'required|exists:skills,id',
             'client_id' => 'required|exists:clients,id',
-            'duration_id' => 'required|exists:durations,id',
+            'duration_id' => 'exists:durations,id',
             'experience_id' => 'required|exists:experience_levels,id',
             'payment_style_id' => 'required|exists:payment_styles,id',
             'category_id' => 'required|exists:categories,id',
+            'from' => 'numeric',
+            'to' => 'numeric',
         ]);
 
         if ($validate->fails()) {
@@ -78,15 +80,17 @@ class JobController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'description' => 'required|min:10',
-            'payment_amount' => 'required|numeric',
+            'payment_amount' => 'numeric',
             'job_title' => 'required|min:3',
             'attachment' => 'min:5',
             'skill' => 'required|exists:skills,id',
             'client_id' => 'required|exists:clients,id',
-            'duration_id' => 'required|exists:durations,id',
+            'duration_id' => 'exists:durations,id',
             'experience_id' => 'required|exists:experience_levels,id',
             'payment_style_id' => 'required|exists:payment_styles,id',
             'category_id' => 'required|exists:categories,id',
+            'from' => 'numeric',
+            'to' => 'numeric',
         ]);
 
         if ($validate->fails()) {

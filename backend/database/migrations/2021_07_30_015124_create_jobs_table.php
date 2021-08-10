@@ -19,6 +19,8 @@ class CreateJobsTable extends Migration
             $table->decimal('payment_amount',8,2)->nullable();
             $table->string('job_title');
             $table->text('attachment')->nullable();
+            $table->decimal('from',8,2)->nullable();
+            $table->decimal('to',8,2)->nullable();
             $table->timestamps();
         });
     }
