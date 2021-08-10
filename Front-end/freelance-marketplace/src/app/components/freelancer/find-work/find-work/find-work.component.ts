@@ -1,6 +1,7 @@
-import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {JobPostsService} from '../../../../services/job-posts.service'
+import {JobPostsService} from '../../../../services/job-posts.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-find-work',
@@ -10,7 +11,7 @@ import {JobPostsService} from '../../../../services/job-posts.service'
 export class FindWorkComponent implements OnInit {
 query:string='';
 jobs=[
- 
+
   {
     "id":1,
   "title":"photoshop to html and css ",
@@ -43,32 +44,42 @@ responsive:string="true"
 currentIndex:number=0;
   constructor(private jobsPosts:JobPostsService) { }
 
+  successAlertNotification(){
+    Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
+  }
+
   ngOnInit(): void {
+    this.successAlertNotification();
     this.fetchPosts();
-  }  
+  }
 
   fetchPosts(): void {
-    
-    this.jobsPosts.getAllPosts(HttpParams)
-      .subscribe(
-        response => {
-          this.POSTS = response;
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        });
+
+    // this.jobsPosts.getAllPosts(HttpParams)
+    //   .subscribe(
+    //     response => {
+    //       this.POSTS = response;
+    //       console.log(response);
+    //     },
+    //     error => {
+    //       console.log(error);
+    //     });
   }
 
   onTableDataChange(event:any){
     this.page = event;
     this.fetchPosts();
-  }  
+  }
 
   onTableSizeChange(event:any): void {
     this.tableSize = event.target.value;
     this.page = 1;
     this.fetchPosts();
-  }  
+  }
+
+  search(){
+    console.log(this.query)
+    // this.POSTS=this.POSTS | searchFilter : this.query;
+  }
 
 }

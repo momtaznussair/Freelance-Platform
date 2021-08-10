@@ -11,5 +11,13 @@ export class JoinWorldComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  freelancer(){
+    // put the route freelancer =>/user
+    // this.router.navigateByUrl("/user");
+  }
+  jobs(){
+     // put the route jobs =>/user
+    // this.router.navigateByUrl("/user");
+  }
 
 }

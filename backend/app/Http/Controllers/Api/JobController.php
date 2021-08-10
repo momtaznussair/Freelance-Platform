@@ -18,7 +18,11 @@ class JobController extends Controller
 
     public function index()
     {
+<<<<<<< HEAD
         $jobs = Job::with('skills')->get();
+=======
+        $jobs = Job::all();
+>>>>>>> d679bb8e91cdb035768c19396505a008e705b618
         return $this->apiResponse($jobs);
     }
 

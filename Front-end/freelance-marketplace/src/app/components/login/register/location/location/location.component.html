@@ -21,10 +21,9 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-9">
                     <select formControlName="country" class="form-select form-select-sm " aria-label=".form-select-sm example">
-        <option selected>Open this select menu</option>
+                      <option selected>Open this select menu</option>
          <!-- <option selected  *ngFor="let item of category">{{item.name}}</option> -->
-
-      </select>
+                    </select>
                     <div *ngIf="form.controls.country.invalid && isLogged || (form.controls.country.dirty || form.controls.country.touched)">
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.country.hasError('required')">please select a country</small>
                     </div>
@@ -34,10 +33,10 @@
                 <h3>Street Address</h3>
 
                 <div class="col-lg-4 col-md-4 col-sm-9 ">
-                    <input formControlName="street_address" class="form-control" type="text" aria-label="default input example">
-                    <div *ngIf="form.controls.street_address.invalid && isLogged || (form.controls.street_address.dirty || form.controls.street_address.touched)">
+                    <input formControlName="street" class="form-control" type="text" aria-label="default input example">
+                    <div *ngIf="form.controls.street.invalid && isLogged || (form.controls.street.dirty || form.controls.street.touched)">
 
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.street_address.hasError('required')">This field is required</small>
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.street.hasError('required')">This field is required</small>
                     </div>
                     <br>
                 </div> <br>
@@ -66,7 +65,7 @@
                 </div>
                 <div class=" footer lg-6 d-sm-flex">
                     <!-- <button class="bt1" type="button" routerLink="/user/signup/hourly-rate"> Back </button> -->
-                    <button class="bt2" (click)="next()" type="submit">Next</button>
+                    <button class="bt2" (click)="next();testRequest()" type="submit">Next</button>
                 </div>
             </form>
         </section>

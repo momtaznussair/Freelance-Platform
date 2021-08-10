@@ -5,6 +5,8 @@ import { Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { postjob } from 'src/app/services/post-job.service';
+
 @Component({
   selector: 'app-budget',
   templateUrl: './budget.component.html',
@@ -15,29 +17,51 @@ export class BudgetComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder ,private router : Router, private userService : UserService) { }
 
-  currentRegisterData : any;
+  currentJobProcess : any;
   ngOnInit(): void {
-    this.currentRegisterData = localStorage.getItem('data');
-    console.log(this.currentRegisterData);
+
+    this.currentJobProcess = localStorage.getItem('job_process');
+    this.currentJobProcess = JSON.parse(this.currentJobProcess);
+    console.log(this.currentJobProcess);
+
     this.form = this.formBuilder.group({
-      timeproject : ['' ,  [Validators.required]],
+      duration_id : ['' ,  [Validators.required]],
       expectproject : ['' ,  [Validators.required]],
-      pay : ['' ,  [Validators.required]],
+      payment_style_id : ['' ,  [Validators.required]],
+      payment_amount : ['10' , [Validators.required]]
 
 
     })
   }
+
+  isFixed : boolean = false;
+  isHourly : boolean = false;
   isLogged : boolean = false;
+
+  chooseFixed()
+  {
+    this.isFixed = true;
+  }
+
+  chooseHourly()
+  {
+    this.isFixed = false;
+  }
+
 
   next(){
     if(this.form.valid)
     {
-
+      console.log(this.form.value);
+      this.currentJobProcess.payment_style_id = this.form.controls.payment_style_id.value;
+      this.currentJobProcess.duration_id = this.form.controls.duration_id.value;
+      this.currentJobProcess.payment_amount = this.form.controls.payment_amount.value;
+      localStorage.setItem('job_process' , JSON.stringify(this.currentJobProcess));
+      console.log(this.currentJobProcess);
       this.router.navigateByUrl("/client/post-job/review");
     }
     else
     {
-
       this.isLogged = true;
     }
   }

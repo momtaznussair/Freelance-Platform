@@ -1,0 +1,53 @@
+web site of the api https://www.universal-tutorial.com/rest-apis/free-rest-api-for-country-state-city
+
+
+how to use:
+
+1- to get a list of countries
+
+GET https://www.universal-tutorial.com/api/countries
+headers:
+accept application/json
+authorization Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtb210YXpfZWxzaGVyYmluaUB5YWhvby5jb20iLCJhcGlfdG9rZW4iOiI3NGZiTm9aekJpRUhEZ0JTS0VlOWJjQUh6NFRMUGJCX01reVRhYk1iYlV5Zmcwa1hKWV9KbzNsa014Mmd2c21NQlFvIn0sImV4cCI6MTYyODU0MTA4N30.ynELBmabF5GGnmmornktwlAN4lkRrHSFGJLLuJ1evMg
+
+here's an example of the response
+
+[
+    {
+        "country_name": "Afghanistan",
+        "country_short_name": "AF",
+        "country_phone_code": 93
+    },
+    {
+        "country_name": "Albania",
+        "country_short_name": "AL",
+        "country_phone_code": 355
+    }
+]
+
+
+
+2- use the value of the countries field (let's say egypt)
+
+GET https://www.universal-tutorial.com/api/states/egypt
+
+headers: (the same header as above)
+accept application/json
+authorization Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtb210YXpfZWxzaGVyYmluaUB5YWhvby5jb20iLCJhcGlfdG9rZW4iOiI3NGZiTm9aekJpRUhEZ0JTS0VlOWJjQUh6NFRMUGJCX01reVRhYk1iYlV5Zmcwa1hKWV9KbzNsa014Mmd2c21NQlFvIn0sImV4cCI6MTYyODU0MTA4N30.ynELBmabF5GGnmmornktwlAN4lkRrHSFGJLLuJ1evMg
+
+
+here's an example of the response 
+
+[
+    {
+        "state_name": "ad-Daqahliyah"
+    },
+    {
+        "state_name": "al-Bahr-al-Ahmar"
+    },
+    {
+        "state_name": "al-Buhayrah"
+    }
+]
+
+Momtaz Nussair
