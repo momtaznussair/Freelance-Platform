@@ -18,12 +18,12 @@ export class HireAProComponent implements OnInit {
   skills:Skill[]=[];
 
   ngOnInit(): void {
-    this.cat.getCategories("categories").subscribe(response=>{
+    this.cat.getCategories().subscribe(response=>{
       this.categories=response['data'] as Category[];
     },error=>{console.error('wrong')}
     );
 
-    this.skill.getSkills("skills").subscribe(response=>{
+    this.skill.getSkills().subscribe(response=>{
       this.skills=response['data'] as Skill[]
     })
 

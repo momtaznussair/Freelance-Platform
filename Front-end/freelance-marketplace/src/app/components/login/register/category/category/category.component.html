@@ -15,24 +15,27 @@
 
                 <div class="header">
                     <h3> Category </h3>
-                    <p>1 of 8</p>
+                    <p>1 of 7</p>
                 </div>
 
 
                 <br>
                 <p class="h5"> Tell us about the work you do </p>
                 <h3> <b> what is the main service you offer ? </b></h3><br>
-                <form action="" class="mb-5" [formGroup]="form">
-                    <select class="form-select form-select-sm" formControlName="category_id" name="category_id" aria-label=".form-select-sm example">
-                      <option selected   value="1" >front_end</option>
-                    </select>
+                <form *ngIf="isCategoryGet" action="" class="mb-5" [formGroup]="form">
 
-<br>
+                    <select class="form-select form-select-sm" placeholder="select" formControlName="category_id" name="category_id" aria-label=".form-select-sm example">
+                      <option selected *ngFor="let item of categories.data" value="{{item.id}}" >{{item.name}}</option>
+                    </select>
+                    <div *ngIf="form.controls.category_id.invalid && isDone || (form.controls.category_id.dirty || form.controls.category_id.touched)">
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.category_id.hasError('required')"> Please select your category</small>
+                    </div>
+                    <br>
 
                     <div class="md-6 lg-6  footer">
 
                         <!-- (click)="next(1)" -->
-                        <button class="bt2" type="submit" (click)="submit()">Next</button>
+                        <button class="bt2" type="submit" (click)="submit();test()">Next</button>
                     </div>
                 </form>
             </div>

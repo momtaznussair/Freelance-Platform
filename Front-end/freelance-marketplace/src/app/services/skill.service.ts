@@ -8,8 +8,8 @@ import { ApiService } from './api.service';
 export class SkillService {
 
   constructor(private api:ApiService) { }
-  getSkills(url:string):Observable<any>{
-   return this.api.get(url)
+  getSkills():Observable<any>{
+   return this.api.get("http://127.0.0.1:8000/api/skills")
   }
  
 }

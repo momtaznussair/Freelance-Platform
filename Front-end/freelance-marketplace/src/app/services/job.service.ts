@@ -10,12 +10,12 @@ export class JobService {
 
   constructor(private api:ApiService) { }
 
-  getJobs(url:string):Observable<any>{
-    return this.api.get(url);
+  getJobs():Observable<any>{
+    return this.api.get("http://127.0.0.1:8000/api/jobs");
    
   }
-  addJob(url:string,body:any):Observable<any>{
-    return this.api.post("url",body);
+  addJob(body:any):Observable<any>{
+    return this.api.post("http://127.0.0.1:8000/api/jobs",body);
   }
 
   // delete(id:number){

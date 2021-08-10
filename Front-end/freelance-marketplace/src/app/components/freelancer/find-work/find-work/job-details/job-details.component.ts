@@ -14,9 +14,10 @@ export class JobDetailsComponent implements OnInit {
   constructor(private jobDetails:JobService) { }
 job_details:Job[]=[];
   ngOnInit(): void {
-    this.jobDetails.getJobs("jobs/{id}").subscribe(Response=>{
-      this.job_details=Response['data'] as Job[];
-    },error=>{console.error()});
+    this.jobDetails.getJobs().subscribe(response=>{
+      // console.log(response);
+      this.job_details=response['data'] as Job[];
+    },error=>console.error);
 
   
 
@@ -25,7 +26,7 @@ job_details:Job[]=[];
   submitproposal(){
       let jop:Job=new Job();
       // jop.id=id;
-      this.jobDetails.addJob("jobs",jop).subscribe(response=>{
+      this.jobDetails.addJob(jop).subscribe(response=>{
         // jop.id=response['data']['id'] as number;
         console.log(response);
       },erroe=>{console.error()}

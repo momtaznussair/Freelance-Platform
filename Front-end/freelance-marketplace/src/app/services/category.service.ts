@@ -8,8 +8,8 @@ import { ApiService } from './api.service';
 export class CategoryService {
 
   constructor(private api:ApiService) { }
-  getCategories(url:string):Observable<any>{
-    return this.api.get(url)
+  getCategories():Observable<any>{
+    return this.api.get("http://127.0.0.1:8000/api/categories")
   };
   post(url:string,body:any){
     return this.api.post(url,body);

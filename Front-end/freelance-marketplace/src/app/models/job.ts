@@ -12,5 +12,5 @@ export class Job {
     language_level_id:number=0
     experience_id:number=0
 }
-				
-		
+
+

@@ -32,8 +32,6 @@ const routes : Routes = [
   declarations: [
     GettingStartComponent,
     AsideComponent,
-    TitleComponent,
-    DescriptionComponent,
     DetailsComponent,
     ExpertiseComponent,
     VisibilityComponent,

@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('street')->nullable();
             $table->string('zip_code')->nullable();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->enum('type',['freelancer','client']);
             $table->rememberToken();
             $table->timestamps();
         });

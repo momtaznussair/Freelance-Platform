@@ -76,16 +76,20 @@
                                             <input class="form-check-input" type="radio" name="gender" id="male" value="male" formControlName="gender" />
                                             <label class="form-check-label" for="maleGender">Male</label>
                                         </div>
+                                        <div *ngIf="form.controls.gender.invalid && isLogged || (form.controls.gender.dirty || form.controls.gender.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.gender.hasError('required')"> Please select your gender</small>
+                                        </div>
 
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label fw-bold" for="phone_number">Phone Number</label>
-                                        <input type="text" name="phone_number" class="form-control " formControlName="phone_number" />
+                                        <input type="number" name="phone_number" class="form-control " formControlName="phone_number" />
                                         <div *ngIf="form.controls.phone_number.invalid && isLogged || (form.controls.phone_number.dirty || form.controls.phone_number.touched)">
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('required')">This field is required</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('minlength')"> You should write more than three characters</small>
                                             <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('maxlength')"> You should write less than 250 characters</small>
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('pattern')"> You should write valid number</small>
                                         </div>
                                     </div>
 
@@ -125,6 +129,10 @@
                                         <div class="form-check form-check-inline mb-0 me-4">
                                             <input class="form-check-input" type="radio" name="type" id="freelancer" value="freelancer" formControlName="type" />
                                             <label class="form-check-label fw-bold" for="freelancerLogin">Work as a freelancer</label>
+                                        </div>
+
+                                        <div *ngIf="form.controls.type.invalid && isLogged || (form.controls.type.dirty || form.controls.type.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.type.hasError('required')"> Please select your account type</small>
                                         </div>
 
                                     </div>

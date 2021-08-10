@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from "angularx-social-login";
@@ -11,13 +12,20 @@ import { GoogleLoginProvider , FacebookLoginProvider } from "angularx-social-log
 })
 export class ConnectionTypeComponent implements OnInit {
 
-  constructor(private authService: SocialAuthService , private router : Router) { }
+  constructor(private authService: SocialAuthService , private router : Router , private userService : UserService) { }
 
   user: SocialUser = new SocialUser();
   GoogleLoginProvider = GoogleLoginProvider;
   loggedIn: boolean = false;
 
   ngOnInit(): void {
+
+    //check if user logged
+    if(this.userService.isLogged())
+    {
+      this.userService.logout();
+    }
+
     this.authService.authState.subscribe(user => {
       this.loggedIn = (user != null);
       this.user = user;
@@ -44,7 +52,5 @@ export class ConnectionTypeComponent implements OnInit {
   refreshGoogleToken(): void {
     this.authService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
-
-
 
 }
