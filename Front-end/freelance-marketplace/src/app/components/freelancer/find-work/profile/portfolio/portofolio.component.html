@@ -30,23 +30,23 @@
                     <div class="body">
                         <div class="mt-5 mb-3">
                             <p class="h3 fw-bold">Title</p>
-                            <input type="text" formControlName="portofolioTitle" class=" form-control" placeholder="write title for your skills">
-                            <div *ngIf="form.controls.portofolioTitle.invalid && isLogged || (form.controls.portofolioTitle.dirty || form.controls.portofolioTitle.touched)">
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.portofolioTitle.hasError('required')">This field is required</small>
+                            <input type="text" formControlName="title" class=" form-control" placeholder="write title for your skills">
+                            <div *ngIf="form.controls.title.invalid && isLogged || (form.controls.title.dirty || form.controls.title.touched)">
+                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.title.hasError('required')">This field is required</small>
 
                             </div>
                         </div>
 
                         <div class="text-primary mt-3">
-                            <input type="file" class="fw-bold" formControlName="imglink" name="image_link" multiple>
-                            <div *ngIf="form.controls.imglink.invalid && isLogged || (form.controls.imglink.dirty || form.controls.imglink.touched)">
-                              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.imglink.hasError('required')">This field is required</small>
+                            <input type="file" class="fw-bold" formControlName="img_link" name="image_link" multiple>
+                            <div *ngIf="form.controls.img_link.invalid && isLogged || (form.controls.img_link.dirty || form.controls.img_link.touched)">
+                              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.img_link.hasError('required')">This field is required</small>
 
                         </div>
 
                         <div class="overview card-haeder mt-3">
                             <p class="h3 fw-bold">Overview</p>
-                            <textarea formControlName="overview" class="form-control" placeholder="type an overview about yourself" value=""></textarea>
+                            <textarea formControlName="overview" name="overview" class="form-control" placeholder="type an overview about yourself" value=""></textarea>
                             <div *ngIf="form.controls.overview.invalid && isLogged || (form.controls.overview.dirty || form.controls.overview.touched)">
                                 <small class="text-danger fw-bold mb-3" *ngIf="form.controls.overview.hasError('required')">This field is required</small>
 

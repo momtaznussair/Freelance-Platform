@@ -14,10 +14,15 @@ export class PortofolioService {
 
   }
 
-  // post(body:any){
-  //   return this.port.post("http://127.0.0.1:8000/portfolios", body);
+  post(body:any){
+    return this.port.post("http://127.0.0.1:8000/api/portfolios", body);
 
-  // }
+  }
+
+   postImage(body:any){
+    return this.port.post("http://127.0.0.1:8000/api/portfolios/images", body);
+
+  }
 
 
 }

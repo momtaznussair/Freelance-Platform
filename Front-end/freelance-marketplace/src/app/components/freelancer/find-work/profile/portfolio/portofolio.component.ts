@@ -23,29 +23,33 @@ export class PortofolioComponent implements OnInit {
     this.portofolioData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
-      portofolioTitle : ['' , [Validators.required]],
+      title : ['' , [Validators.required]],
       overview : ['' , [ Validators.required]],
-      imglink :['', [Validators.required]]
+      img_link :['', [Validators.required]]
     })
-
-
-    // this._portofolio.post().subscribe(Response=>{
-    //   this.portfolio=Response as Portofolio[];
-    // },error=>{console.error}
-    // );
 
   }
 
   isLogged : boolean = false;
 
-  save(){
+    save(){
     if(this.form.valid)
     {
-      this.portofolioData  = JSON.parse(this.portofolioData )
-      this.portofolioData.overview = this.form.controls.overview.value;
-      this.portofolioData.portofolioTitle = this.form.controls.portofolioTitle.value;
-      localStorage.setItem('data' ,JSON.stringify(this.portofolioData ));
-      this.router.navigateByUrl("/freelancer/profile");
+      this.portfolio= this.form.value;
+      console.log(this.portfolio);
+
+      this._portofolio.post(this.portfolio).subscribe(res=>{
+        console.log(res);
+      },error=>{console.error}
+      );
+
+      console.log(this.form.controls.img_link.value)
+      this._portofolio.postImage({image_path:this.form.controls.img_link.value, portfolio_id:2}).subscribe(res=>{
+        console.log(res);
+        this.router.navigateByUrl("/freelancer/profile");
+      },error=>{console.error}
+      );
+
     }
     else
     {
@@ -54,4 +58,8 @@ export class PortofolioComponent implements OnInit {
 
   }
 
+
+
 }
+
+
