@@ -35,6 +35,8 @@ queryloc:string=""
  arrayOfCities:any
  arrayOfStates:any
   response_data : any;
+  isLocationGet : boolean = false;
+
   ngOnInit(): void {
 
     if(localStorage.getItem('user_data'))
@@ -62,6 +64,7 @@ queryloc:string=""
     -------------------------------------------*/
     this.country.getCountries().subscribe(res=>{
       this.arrayOfCountries =res
+      this.isLocationGet = true;
     // console.log(this.arrayOfCountries[0].country_name)
   });
   //////////////////////////////////
@@ -223,6 +226,6 @@ queryloc:string=""
     }
 
 
-    
+
   }
 

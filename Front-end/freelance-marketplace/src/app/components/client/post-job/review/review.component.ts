@@ -34,7 +34,7 @@ export class ReviewComponent implements OnInit {
     this.apiService.post(`${environment.apiUrl}/jobs` , this.currentJobProcess).subscribe(response=>{
       console.log(response);
       // localStorage.clear();
-    } , error=>console.error);
+    } , error => console.error);
   }
 
 }// End Of Class
