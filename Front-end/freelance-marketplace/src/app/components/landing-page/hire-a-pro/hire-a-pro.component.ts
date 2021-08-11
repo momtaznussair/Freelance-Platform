@@ -1,3 +1,4 @@
+import { environment } from './../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
@@ -18,12 +19,12 @@ export class HireAProComponent implements OnInit {
   skills:Skill[]=[];
 
   ngOnInit(): void {
-    this.cat.getCategories("categories").subscribe(response=>{
+    this.cat.getCategories(`categories`).subscribe(response=>{
       this.categories=response['data'] as Category[];
     },error=>{console.error('wrong')}
     );
 
-    this.skill.getSkills("skills").subscribe(response=>{
+    this.skill.getSkills(`skills`).subscribe(response=>{
       this.skills=response['data'] as Skill[]
     })
 

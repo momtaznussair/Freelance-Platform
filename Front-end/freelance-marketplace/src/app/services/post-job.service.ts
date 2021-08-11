@@ -11,7 +11,7 @@ export class postjob {
 
 
     postjobProcess:any = {
-      client_id:0,
+      client_id:3,
       job_title:"",
       description:"",
       attachment:"",

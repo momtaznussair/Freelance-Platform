@@ -18,6 +18,7 @@ export class ReviewComponent implements OnInit {
   ngOnInit(): void {
     this.currentJobProcess = localStorage.getItem('job_process');
     this.currentJobProcess = JSON.parse(this.currentJobProcess);
+    console.log(this.currentJobProcess);
     this.skillsData = localStorage.getItem('skills_data');
     this.skillsData = JSON.parse(this.skillsData);
     this.category_name = localStorage.getItem('category_name');
@@ -28,7 +29,7 @@ export class ReviewComponent implements OnInit {
   {
     this.apiService.post(`${environment.apiUrl}/jobs` , this.currentJobProcess).subscribe(response=>{
       console.log(response);
-      localStorage.clear();
+      // localStorage.clear();
     } , error=>console.error);
   }
 

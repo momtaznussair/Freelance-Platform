@@ -172,19 +172,9 @@ queryloc:string=""
       }
       else //=> invalid data or error validation
       {
-      this.isLogged = true;
+        this.isLogged = true;
       }
 
-    }
-
-    //test request
-    testRequest(){
-      // this.http.post(`${environment.apiUrl}/register` ,this.test).subscribe(response=>{
-      //   console.log(response);
-      //   console.log(this.data);
-      // }, error=>{
-      //   console.log('error message');
-      // })
     }
 
     //==============start use notification ===============
@@ -231,5 +221,8 @@ queryloc:string=""
 
       console.log(a.innerText)
     }
+
+
+    
   }
 
