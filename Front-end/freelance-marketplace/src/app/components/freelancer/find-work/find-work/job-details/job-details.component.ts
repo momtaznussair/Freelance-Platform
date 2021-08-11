@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Category } from 'src/app/models/category';
 import { Job } from 'src/app/models/job';
 import { ApiService } from 'src/app/services/api.service';
 import { JobService } from 'src/app/services/job.service';
@@ -18,14 +19,20 @@ export class JobDetailsComponent implements OnInit {
    }
 
 job_details:Job[]=[];
+// job_details:any;
   ngOnInit(): void {
     this.jobDetails.getJob(this.id).subscribe(response=>{
       this.job_details=response['data'] as Job[];
       console.log(this.job_details);
+
     },error=>console.error);
 
   
+    // this.portofolio.get().subscribe(res=>{
+    //   console.log(res);
 
+    //   this.portofolioData = res;
+    //   console.log(this.portofolioData.data);
   
   }
   submitproposal(){

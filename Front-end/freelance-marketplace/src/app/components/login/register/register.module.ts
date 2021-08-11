@@ -17,9 +17,6 @@ import { OverviewComponent } from './overview/overview.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { SharedModule } from '../../freelancer/shared/shared.module';
 import { FreelancerAuthorization } from 'src/app/guards/freelancer-authorization.guard';
-import { LayoutModule } from '../../layout/layout.module';
-// import { searchFilter } from 'src/app/pipes/search-filter.pipe';
-
 
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
@@ -51,7 +48,6 @@ const routes : Routes=[
     CategoryComponent,
     ConnectionTypeComponent,
     OverviewComponent,
-    // searchFilter
 
   ],
   imports: [

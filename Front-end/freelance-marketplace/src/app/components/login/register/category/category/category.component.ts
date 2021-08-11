@@ -6,6 +6,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -29,14 +31,18 @@ export class CategoryComponent implements OnInit {
   currentRegisterData : any;
   form : FormGroup = new FormGroup({});
 
+  successAlertNotification(){
+    Swal.fire('Welcome', 'Only some steps to finish your registrations', 'success')
+  }
 
   ngOnInit(): void {
+
+    this.successAlertNotification();
 
     //test request location
     this.apiService.get("https://www.universal-tutorial.com/api/countries/",{ 'headers': {
       'Accept' : 'application/json',
       'Authorization' : `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJhbWlyYTk1YmFkckBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJvSXFDZEdkbkFzSGNVbE8zQTc4UGl4VENEelpqUHZGc0dJZ`
-    // Authorization:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7IEzMn0.yrPObnULTAJDiGtXZlC1hBA77tHimLhitgmaQWF_2Z8"
     }}).subscribe(res =>{
       console.log(res)
     },error=>{console.log(error)});
@@ -97,6 +103,9 @@ export class CategoryComponent implements OnInit {
     //   console.log(response);
     // })
   }
+
+
+  //==============
 
 
 }

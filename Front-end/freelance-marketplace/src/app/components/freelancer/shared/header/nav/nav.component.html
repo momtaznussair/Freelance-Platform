@@ -4,11 +4,9 @@
             <div class="container-fluid">
                 <!-- Start Logo -->
                 <a class="navbar-brand ms-md-2" routerLink="/freelancer">UpWork</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
                 <!-- End Logo -->
 
                 <!-- Start Links-->
@@ -17,17 +15,16 @@
                         <!-- Start Seaarch -->
                         <form class="d-flex mx-md-2 search-form">
                             <!-- <a href="#">
-                                <span class="glyphicon glyphicon-search"></span>
-                            </a> -->
-                            <input class="form-control search-input me-md-2" type="search" placeholder="Search"
-                                aria-label="Search">
+                              <span class="glyphicon glyphicon-search"></span>
+                          </a> -->
+                            <input class="form-control search-input me-md-2" type="search" placeholder="Search" aria-label="Search">
                         </form>
                         <!-- End search -->
 
                         <!-- Start Find Work -->
                         <li class="nav-item dropdown ms-md-4 me-md-2">
                             <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown"> Find
-                                Work </a>
+                              Work </a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a class="dropdown-item" routerLink="/freelancer/work">Find Work</a>
@@ -51,7 +48,7 @@
                         <!-- Start My Jobs -->
                         <li class="nav-item dropdown me-md-2">
                             <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown"> My Jobs
-                            </a>
+                          </a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a class="dropdown-item" routerLink="/freelancer/myjobs/jobs">My Jobs</a>
@@ -69,7 +66,7 @@
                         <!-- Start Reports -->
                         <li class="nav-item dropdown me-md-2">
                             <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown"> Reports
-                            </a>
+                          </a>
                             <ul class="dropdown-menu">
                                 <li>
                                     <a class="dropdown-item" routerLink="/freelancer/reports/overview">Oveview</a>
@@ -79,20 +76,18 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item" routerLink="/freelancer/reports/billings-earnings">Billings
-                                        & Earnings</a>
+                                      & Earnings</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" routerLink="/freelancer/reports/connects-history">Connects
-                                        History</a>
+                                      History</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item"
-                                        routerLink="/freelancer/reports/transaction-history">Transaction History</a>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/transaction-history">Transaction History</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item"
-                                        routerLink="/freelancer/reports/certificate-of-earnings">Certificate of
-                                        Earnings</a>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/certificate-of-earnings">Certificate of
+                                      Earnings</a>
                                 </li>
                             </ul>
                         </li>
@@ -133,14 +128,11 @@
 
                                 <!-- Start Image -->
                                 <li class="nav-item dropdown me-md-2">
-                                    <img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg"
-                                        alt="">
+                                    <img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt="">
                                     <!-- Drop down-->
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" routerLink=""><img
-                                                    src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg"
-                                                    alt=""><span>Omar Badr <br><small>Freelancer</small></span></a>
+                                            <a class="dropdown-item" routerLink=""><img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt=""><span>Omar Badr <br><small>Freelancer</small></span></a>
 
                                         </li>
                                         <li>
@@ -148,18 +140,18 @@
                                         </li>
                                         <li>
                                             <a class="dropdown-item" routerLink="/freelancer/settings"><span
-                                                    class="fas fa-cog"></span>
-                                                Settings
-                                            </a>
+                                                  class="fas fa-cog"></span>
+                                              Settings
+                                          </a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
                                             <a class="dropdown-item" routerLink="localhost:4200"><span
-                                                    class="fas fa-sign-out-alt"></span>
-                                                Log Out
-                                            </a>
+                                                  class="fas fa-sign-out-alt"></span>
+                                              Log Out
+                                          </a>
                                         </li>
                                     </ul>
                                 </li>
@@ -197,14 +189,15 @@
 
                                 <!-- Settings -->
                                 <li>
-                                    <a routerLink="#">
-                                        <i class="fas fa-cog me-2"></i>
-                                    </a>
-                                    Settings
+                                    <button type="submit" (click)="setting()">
+                                      <span class="fas fa-cog me-2"></span>
+                                      Settings
+                                  </button>
+
                                 </li>
                                 <!-- Logout -->
                                 <li>
-                                    <a routerLink="#" (click)="logout()">
+                                    <a (click)="logout()">
                                         <i class="fas fa-sign-out-alt me-2"></i>
                                     </a>
                                     Logout
@@ -230,13 +223,13 @@
 
 <!-- Srart Scripts -->
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
         // make it as accordion for smaller screens
         if (window.innerWidth > 992) {
 
-            document.querySelectorAll('.navbar .nav-item').forEach(function (everyitem) {
+            document.querySelectorAll('.navbar .nav-item').forEach(function(everyitem) {
 
-                everyitem.addEventListener('mouseover', function (e) {
+                everyitem.addEventListener('mouseover', function(e) {
 
                     let el_link = this.querySelector('a[data-bs-toggle]');
 
@@ -247,7 +240,7 @@
                     }
 
                 });
-                everyitem.addEventListener('mouseleave', function (e) {
+                everyitem.addEventListener('mouseleave', function(e) {
                     let el_link = this.querySelector('a[data-bs-toggle]');
 
                     if (el_link != null) {

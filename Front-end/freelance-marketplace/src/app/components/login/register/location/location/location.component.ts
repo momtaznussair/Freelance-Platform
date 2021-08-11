@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { CountriesService } from 'src/app/services/countries.service';
+import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
+import { HttpHeaders } from '@angular/common/http';
+import { ApiService } from 'src/app/services/api.service';
+import { countries } from 'src/app/models/location/countries';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-location',
@@ -13,35 +20,20 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-
+  location:RespondedLocationToken=new RespondedLocationToken
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  ,private http : HttpClient , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder , private api:ApiService,private country:CountriesService , private router : Router , private userService : UserService) { }
 
-  test = {
-    username : 'ali',
-    first_name : 'ali',
-    last_name : 'mohamed',
-    email : 'alii@gmail.com',
-    password : '11111111',
-    password_confirmation : '11111111',
-    img_link : '',
-    phone_number : 11111111111,
-    country : 'any',
-    city : 'any',
-    street : 'any',
-    zip_code : 2222,
-    gender : 'male',
-    type : 'client'
-  }
-
-
-
+  placeholder="Start typing your city"
+ countries :countries []=[]
   // data comes from social sign up
   user_data : any = ''
-
+queryloc:string=""
   // data comes from manually signUp
   data : any = '';
-
+ arrayOfCountries:any
+ arrayOfCities:any
+ arrayOfStates:any
   response_data : any;
   ngOnInit(): void {
 
@@ -65,10 +57,23 @@ export class LocationComponent implements OnInit {
       zip_code: ['' , [Validators.required ]]
 
     })
+   /*-------------------------------------------
+           using rest api for location
+    -------------------------------------------*/
+    this.country.getCountries().subscribe(res=>{
+      this.arrayOfCountries =res
+    // console.log(this.arrayOfCountries[0].country_name)
+  });
+  //////////////////////////////////
+
+
+
   }
+
 
     isLogged : boolean = false;
     next() {
+
       if(this.form.valid)
       {
 
@@ -94,6 +99,7 @@ export class LocationComponent implements OnInit {
         //if signUp with socialite done
         if(this.user_data.response)
         {
+          this.alertConfirmation();
           console.log(this.user_data.user_data);
 
           localStorage.setItem('token' , this.response_data.data.access_token);
@@ -120,6 +126,7 @@ export class LocationComponent implements OnInit {
         }
         else //=> if logged manually
         {
+          this.alertConfirmation();
           console.log(this.data.user_data)
           //send request
           this.userService.register(this.data.user_data).subscribe(response=>{
@@ -130,6 +137,7 @@ export class LocationComponent implements OnInit {
             this.response_data = response;
             if(this.response_data.data != null)
             {
+
               localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.id);
@@ -179,6 +187,49 @@ export class LocationComponent implements OnInit {
       // })
     }
 
+    //==============start use notification ===============
+    successAlertNotification(){
+      Swal.fire('Hi', 'Congrats! operation successfull', 'success')
+    }
 
+    alertConfirmation(){
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'Your Action cannot be rollback.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, go ahead.',
+        cancelButtonText: 'No, let me think again'
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire(
+            'Done!',
+            'Action performed successfully.',
+            'success'
+          )
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          Swal.fire(
+            'Cancelled',
+            'Performed action record present in cloud and databstore.)',
+            'error'
+          )
+        }
+      })
+    }
+    //=================End of notifications ==============
+
+
+    selectCountry(selectedCountry:string){
+        console.log(selectedCountry)
+        this.country.getCities(selectedCountry).subscribe(res=>{
+          this.arrayOfCities=res
+          // console.log(this.arrayOfCities[0].state_name)
+        })
+    }
+    selectState(a:HTMLElement){
+      this.placeholder=a.innerText
+
+      console.log(a.innerText)
+    }
   }
 

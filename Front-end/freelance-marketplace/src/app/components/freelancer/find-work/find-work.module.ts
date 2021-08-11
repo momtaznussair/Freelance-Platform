@@ -25,7 +25,10 @@ const routes : Routes = [
   {path : 'submit-proposal' , component :SubmitProposalComponent},
   {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
   {path : 'work/details/:id' , component :JobDetailsComponent},
-  {path:'', component:FindWorkComponent}
+  {path:'', component:FindWorkComponent},
+  {path : 'filter-jobs' , component :FilterJobsComponent},
+  {path:'', component:FindWorkComponent},
+
 ]
 
 @NgModule({
@@ -38,7 +41,7 @@ const routes : Routes = [
     JobDetailsComponent,
     SubmitProposalComponent,
     PortofolioComponent,
-    FilterJobsComponent
+    FilterJobsComponent,
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule

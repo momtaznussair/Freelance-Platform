@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -101,12 +103,21 @@ export class SignupComponent implements OnInit {
       console.log(this.form.value);
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
       localStorage.setItem('data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
+
       this.router.navigateByUrl('/user/signup/location');
     }
     else
     {
-      alert('error values please complete your information');
+      this.simpleAlert();
       this.isLogged = true;
     }
   };//end of register function
+
+
+  //================add notification methods
+  simpleAlert(){
+    Swal.fire('please complete your information first');
+  }
+  //==================end of notification method
+
 }

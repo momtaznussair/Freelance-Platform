@@ -36,7 +36,7 @@ const routes : Routes = [
   
   ],
   imports: [
-    CommonModule,MyJobsModule,RouterModule.forChild(routes),SharedModule,
+    CommonModule,MyJobsModule,RouterModule.forChild(routes),SharedModule,FormsModule
   ],
   exports : [
     MyJobsModule,FindWorkModule,ReportsModule,FreelancerSettingModule
