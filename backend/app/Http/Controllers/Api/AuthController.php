@@ -60,6 +60,7 @@ class AuthController extends Controller
         $user->city = $request->city;
         $user->street = $request->street;
         $user->zip_code = $request->zip_code;
+        $user->type = $request->type;
 
         if ($request->hasFile('img_link'))
         {
@@ -67,21 +68,23 @@ class AuthController extends Controller
             $user->img_link = $path;
         }
         $user->save();
+        
+        $token = $user->createToken('auth_token')->plainTextToken;
+        
+        $data = [
+            'access_token' => $token,
+            'user' => $user,
+        ];
+        
         // add as a  client
         if ($request->type == 'client')
         {
-            $client = Client::create([
-                'user_id' => $user->id,
-            ]);
+            $client = new Client();
+            $client->user_id = $user->id;
+            $client->registration_date = now();
+            $client->save();
         }
         
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        $data = [
-                'access_token' => $token,
-                'user' => $user,
-        ];
-
         return $this->apiResponse($data,'User registered successfully');
     }
 
