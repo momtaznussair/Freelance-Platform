@@ -118,25 +118,29 @@ export class LocationComponent implements OnInit {
               localStorage.setItem('user_id' , this.response_data.data.user.id);
               localStorage.setItem('success_msg' , this.response_data.msg);
               localStorage.setItem('logged_status' , this.response_data.status);
+              if(this.response_data.data.user.client_id)
+              {
+                localStorage.setItem('client_id' , this.response_data.data.user.client_id);
+              }
 
               console.log(response);
-              if(this.user_data.type == 'client')
-              {
-                localStorage.setItem('clientType' , 'client');
-                this.router.navigateByUrl('/client/main');
-              }
-              else
-              {
-                localStorage.setItem('freelancerType' , 'freelancer');
-                this.router.navigateByUrl('/user/signup/category');
-              }
+              // if(this.user_data.type == 'client')
+              // {
+              //   localStorage.setItem('clientType' , 'client');
+              //   this.router.navigateByUrl('/client/main');
+              // }
+              // else
+              // {
+              //   localStorage.setItem('freelancerType' , 'freelancer');
+              //   this.router.navigateByUrl('/user/signup/category');
+              // }
 
           }
           else
           {
-            // this.router.navigateByUrl('/user/signup/register');
-            // alert(this.response_data.msg.email);
-            // localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
+            this.router.navigateByUrl('/user/signup/register');
+            alert(this.response_data.msg.email);
+            localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
           }
           })//end of request
 
@@ -157,9 +161,16 @@ export class LocationComponent implements OnInit {
 
               localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
-              localStorage.setItem('user_id' , this.response_data.data.user.id);
+              localStorage.setItem('user_id' , this.response_data.data.user.user_id);
+              console.log(localStorage.getItem('user_id'));
               localStorage.setItem('success_msg' , this.response_data.msg);
               localStorage.setItem('logged_status' , this.response_data.status);
+              if(this.response_data.data.user.client_id)
+              {
+                localStorage.setItem('client_id' , this.response_data.data.user.client_id);
+              }else{
+                localStorage.setItem('freelancer_id' , this.response_data.data.user.freelancer_id);
+              }
 
               //redirect user
               if(this.data.user_data.type == 'client')
