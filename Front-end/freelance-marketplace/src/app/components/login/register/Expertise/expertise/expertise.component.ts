@@ -63,14 +63,17 @@ export class ExpertiseComponent implements OnInit {
     {
       for (let i = 0; i < this.skills.length; i++) {
         if(this.skills[i].selected == true){
-          this.name.push({name : this.skills[i].name , category_id : this.skills[i].category_id});
+          // this.name.push({name : this.skills[i].name , category_id : this.skills[i].category_id});
+          this.name.push(this.skills[i].id);
         }
       }
 
       if(this.name.length != 0)
       {
-        console.log({user_id : 30 , skills : this.name})
-        this.apiService.post(`${environment.apiUrl}/skills`, {user_id : 30 , skills : this.name}).subscribe(response=>{
+        // console.log({user_id : 30 , skills : this.name})
+        // this.apiService.post(`${environment.apiUrl}/skills`, {user_id : 30 , skills : this.name}).subscribe(response=>{
+        this.apiService.post(`${environment.apiUrl}/skills`, {skills : this.name}).subscribe(response=>{
+
           console.log(response);
           this.router.navigateByUrl('/user/signup/education');
         },error=>console.error);

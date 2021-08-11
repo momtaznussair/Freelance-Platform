@@ -42,12 +42,13 @@ export class HourlyrateComponent implements OnInit {
     this.currentRegisterData = JSON.parse(this.currentRegisterData)
     this.currentRegisterData.hourly_rate = this.form.controls.hourly_rate.value;
     this.currentRegisterData.user_id = +this.user_id;
+    localStorage.setItem('data',JSON.stringify(this.currentRegisterData));
     console.log(this.currentRegisterData);
 
     //sent request
     this.apiService.post(`${environment.apiUrl}/freelancer` , this.currentRegisterData).subscribe(response=>{
       console.log(response);
-      localStorage.removeItem('data');
+      // localStorage.removeItem('data');
       this.router.navigateByUrl('freelancer');
     }, error => console.error);
   }
