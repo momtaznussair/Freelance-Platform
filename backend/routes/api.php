@@ -25,6 +25,7 @@ use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\UserLanguagesController;
 
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -158,7 +159,7 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
     // clients
     Route::post('/clients/{client}',[ClientController::class,'update']);
     Route::delete('/clients/delete/{client}',[ClientController::class,'destroy']);
-    
+
     // jobs
     Route::post('jobs/{job}' ,[JobController::class,'update']);
     Route::delete('jobs/delete/{job}' ,[JobController::class,'destroy']);
@@ -216,4 +217,5 @@ Route::post('userLanguages',[UserLanguagesController::class,'store']);
 Route::post('/userLanguages/{userLanguage}',[UserLanguagesController::class,'update']);
 Route::delete('/userLanguages/delete/{userLanguage}',[UserLanguagesController::class,'destroy']);
 
-Route::post('/register/socialite/{data}', [SocialiteAuthController::class, 'registerOrLoginUser'])->middleware('token.guest');
+
+Route::post('/register/socialite', [SocialiteAuthController::class, 'registerOrLoginUser'])->middleware('token.guest');

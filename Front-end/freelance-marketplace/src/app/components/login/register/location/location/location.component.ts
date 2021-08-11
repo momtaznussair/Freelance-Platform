@@ -43,7 +43,7 @@ queryloc:string=""
     {
       this.user_data = localStorage.getItem('user_data');
       this.user_data = JSON.parse(this.user_data);
-      console.log(this.user_data.user_data);
+      console.log(this.user_data);
     }
     else if(localStorage.getItem('data'))
     {
@@ -83,11 +83,11 @@ queryloc:string=""
         // check exists
         if(localStorage.getItem('user_data'))
         {
-          this.user_data.user_data.city = this.form.controls['city'].value;
-          this.user_data.user_data.country = this.form.controls['country'].value;
-          this.user_data.user_data.zip_code = this.form.controls['zip_code'].value;
-          this.user_data.user_data.street = this.form.controls['street'].value;
-          console.log(this.user_data.user_data)
+          this.user_data.city = this.form.controls['city'].value;
+          this.user_data.country = this.form.controls['country'].value;
+          this.user_data.zip_code = this.form.controls['zip_code'].value;
+          this.user_data.street = this.form.controls['street'].value;
+          console.log(this.user_data)
         }
         else if(localStorage.getItem('data'))
         {
@@ -103,27 +103,41 @@ queryloc:string=""
         if(this.user_data.response)
         {
           this.alertConfirmation();
-          console.log(this.user_data.user_data);
-
-          localStorage.setItem('token' , this.response_data.data.access_token);
-          localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
-          localStorage.setItem('user_id' , this.response_data.data.user.id);
-          localStorage.setItem('success_msg' , this.response_data.msg);
-          localStorage.setItem('logged_status' , this.response_data.status);
+          console.log(this.user_data);
 
           //send request
-          this.userService.register(this.user_data.user_data).subscribe(response=>{
+          this.userService.registerWithSocialite(this.user_data).subscribe(response=>{
 
-            console.log(response);
-            if(this.user_data.type == 'client')
+            this.response_data = response;
+            console.log(this.response_data);
+            if(this.response_data.data != null)
             {
-              localStorage.setItem('clientType' , 'client');
-              this.router.navigateByUrl('/client/main');
-            }else
-            {
-              localStorage.setItem('freelancerType' , 'freelancer');
-              this.router.navigateByUrl('/user/signup/category');
-            }
+
+              localStorage.setItem('token' , this.response_data.data.token);
+              localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
+              localStorage.setItem('user_id' , this.response_data.data.user.id);
+              localStorage.setItem('success_msg' , this.response_data.msg);
+              localStorage.setItem('logged_status' , this.response_data.status);
+
+              console.log(response);
+              if(this.user_data.type == 'client')
+              {
+                localStorage.setItem('clientType' , 'client');
+                this.router.navigateByUrl('/client/main');
+              }
+              else
+              {
+                localStorage.setItem('freelancerType' , 'freelancer');
+                this.router.navigateByUrl('/user/signup/category');
+              }
+
+          }
+          else
+          {
+            // this.router.navigateByUrl('/user/signup/register');
+            // alert(this.response_data.msg.email);
+            // localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
+          }
           })//end of request
 
         }
@@ -226,6 +240,5 @@ queryloc:string=""
     }
 
 
-
-  }
+}//End Of Class
 
