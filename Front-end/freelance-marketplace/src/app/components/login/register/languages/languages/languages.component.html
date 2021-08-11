@@ -17,21 +17,9 @@
                     <input type="hidden" formControlName="user_id" name="user_id">
                 </div>
                 <br>
-                <pre>    <h3> What is your English proficiency? </h3></pre>
-                <div class="container">
-                    <div class="row ">
-                        <select *ngIf="isLanguageLevelGet" class="col form-select form-select-sm " name="language_level_id" formControlName="language_level_id">
-                          <option *ngFor="let item of languageLevels.data"  value="{{item.id}}">{{item.name}}</option>
-                        </select>
-                        <div *ngIf="form.controls.language_level_id.invalid && isLogged || (form.controls.language_level_id.dirty || form.controls.language_level_id.touched)">
-                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.language_level_id.hasError('required')">please choose your level</small>
-                        </div>
-                    </div>
-                </div>
-                <br>
 
 
-                <pre>    <h3> What other Languages do you speak? </h3></pre>
+                <h3 class="mx-2"> What Language do you speak? </h3>
 
                 <div class="container">
                     <div class="row ">
@@ -43,6 +31,19 @@
                         </div>
                     </div>
                 </div>
+
+                <h3 class="mx-2 mt-5"> What is your language proficiency? </h3>
+                <div class="container">
+                    <div class="row ">
+                        <select *ngIf="isLanguageLevelGet" class="col form-select form-select-sm " name="language_level_id" formControlName="language_level_id">
+                          <option *ngFor="let item of languageLevels.data"  value="{{item.id}}">{{item.name}}</option>
+                        </select>
+                        <div *ngIf="form.controls.language_level_id.invalid && isLogged || (form.controls.language_level_id.dirty || form.controls.language_level_id.touched)">
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.language_level_id.hasError('required')">please choose your level</small>
+                        </div>
+                    </div>
+                </div>
+                <br>
                 <div class="md-6 lg-6 d-sm-flex footer mt-5">
 
                     <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button>
