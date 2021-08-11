@@ -13,44 +13,37 @@
                 <p>6 of 8</p>
             </div>
             <form action="" [formGroup]="form">
-                <br>
-                <h3> What is your English proficiency? </h3>
-                <select class="form-select form-select-sm" name="proficiency" formControlName="proficiency" aria-label=".form-select-sm example">
-                  <option  value="1">Beginner</option>
-                  <option  value="2">Intermediate</option>
-                  <option  value="3">Fluent</option>
-                </select>
-                <div *ngIf="form.controls.proficiency.invalid && isLogged || (form.controls.proficiency.dirty || form.controls.proficiency.touched)">
-                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.proficiency.hasError('required')">choose your level </small>
+                <div>
+                    <input type="hidden" formControlName="user_id" name="user_id">
                 </div>
                 <br>
-
-
-                <h3> What other Languages do you speak? </h3> <br>
-                <div class="flex">
-                    <p> <b> Language  </b></p>
-                    <p> <b>proficiency </b></p>
-                </div>
-
-                <div class="container px-3">
+                <pre>    <h3> What is your English proficiency? </h3></pre>
+                <div class="container">
                     <div class="row ">
-                        <select class="col form-select form-select-sm " name="name" formControlName="name">
-                          <option value="arabic" >Arabic</option>
-                          <option value="english">English</option>
+                        <select *ngIf="isLanguageLevelGet" class="col form-select form-select-sm " name="language_level_id" formControlName="language_level_id">
+                          <option *ngFor="let item of languageLevels.data"  value="{{item.id}}">{{item.name}}</option>
                         </select>
-                        <div *ngIf="form.controls.name.invalid && isLogged || (form.controls.name.dirty || form.controls.name.touched)">
-                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.name.hasError('required')">please choose your language </small>
+                        <div *ngIf="form.controls.language_level_id.invalid && isLogged || (form.controls.language_level_id.dirty || form.controls.language_level_id.touched)">
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.language_level_id.hasError('required')">please choose your level</small>
                         </div>
-                        <!-- <select class="col form-select form-select-sm " name="name" formControlName="name">
-                          <option class="p-3 border bg-light" value="native" >Native</option>
-                          <option value="fluent">Fluent</option>
-                        </select> -->
                     </div>
                 </div>
-                <br> <br>
-                <button class="bt1" type="button">  + Add Language </button>
-                <br> <br>
-                <div class="md-6 lg-6 d-sm-flex footer">
+                <br>
+
+
+                <pre>    <h3> What other Languages do you speak? </h3></pre>
+
+                <div class="container">
+                    <div class="row ">
+                        <select *ngIf="isLanguageGet" class="col form-select form-select-sm " name="language_id" formControlName="language_id">
+                          <option *ngFor="let item of languages.data" value="{{item.id}}" >{{item.name}}</option>
+                        </select>
+                        <div *ngIf="form.controls.language_id.invalid && isLogged || (form.controls.language_id.dirty || form.controls.language_id.touched)">
+                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.language_id.hasError('required')">please choose your language </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="md-6 lg-6 d-sm-flex footer mt-5">
 
                     <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button>
 

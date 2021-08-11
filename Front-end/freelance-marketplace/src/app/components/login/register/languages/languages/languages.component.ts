@@ -18,11 +18,35 @@ export class LanguagesComponent implements OnInit {
   constructor(private formBuilder : FormBuilder  , private router : Router , private apiService : ApiService) { }
 
   currentRegisterData : any;
+  user_id : any;
+  languages : any;
+  languageLevels : any;
+  isLanguageGet : boolean = false;
+  isLanguageLevelGet : boolean = false;
 
   ngOnInit(): void {
+
+    //get languages
+    this.apiService.get(`${environment.apiUrl}/languages`).subscribe(response=>{
+      console.log(response);
+      this.languages = response;
+      this.isLanguageGet = true;
+    })
+
+    //get language levels
+    this.apiService.get(`${environment.apiUrl}/languageLevel`).subscribe(response=>{
+      console.log(response);
+      this.languageLevels = response;
+      this.isLanguageLevelGet = true;
+    })
+
+    this.user_id = localStorage.getItem('user_id');
+    console.log(this.user_id)
+
     this.form = this.formBuilder.group({
-      proficiency : ['' , [ Validators.required ]],
-      name : ['' , [ Validators.required]],
+      user_id : [this.user_id , [ Validators.required]],
+      language_level_id : ['' , [ Validators.required]],
+      language_id : ['' , [ Validators.required ]],
     })
   }
   isLogged : boolean = false;
@@ -33,7 +57,7 @@ export class LanguagesComponent implements OnInit {
     if(this.form.valid)
     {
       console.log(this.form.value);
-      this.apiService.post(`${environment.apiUrl}/languageLevel` , {name : this.form.controls['name'].value}).subscribe(response=>{
+      this.apiService.post(`${environment.apiUrl}/userLanguages` , this.form.value).subscribe(response=>{
         console.log(response);
         this.router.navigateByUrl("/user/signup/freelancer");
       },error=>console.error);
