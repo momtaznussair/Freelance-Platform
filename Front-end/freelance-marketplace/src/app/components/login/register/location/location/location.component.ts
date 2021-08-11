@@ -113,7 +113,7 @@ export class LocationComponent implements OnInit {
             if(this.response_data.data != null)
             {
 
-              localStorage.setItem('token' , this.response_data.data.access_token);
+              localStorage.setItem('token' , this.response_data.data.token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.id);
               localStorage.setItem('success_msg' , this.response_data.msg);

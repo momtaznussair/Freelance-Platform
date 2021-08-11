@@ -218,4 +218,4 @@ Route::post('/userLanguages/{userLanguage}',[UserLanguagesController::class,'upd
 Route::delete('/userLanguages/delete/{userLanguage}',[UserLanguagesController::class,'destroy']);
 
 
-Route::post('/register/socialite/{data}', [SocialiteAuthController::class, 'registerOrLoginUser'])->middleware('token.guest');
+Route::post('/register/socialite', [SocialiteAuthController::class, 'registerOrLoginUser'])->middleware('token.guest');

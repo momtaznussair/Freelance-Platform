@@ -28,7 +28,7 @@ export class UserService {
 
   registerWithSocialite(body : any)
   {
-    return this.apiService.post(this.regSocialUrl , body)
+    return this.apiService.post(this.regSocialUrl,body);
   }//end of registerUser
 
   login(body : any)
