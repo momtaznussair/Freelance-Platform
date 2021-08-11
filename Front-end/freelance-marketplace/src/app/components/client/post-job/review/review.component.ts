@@ -16,6 +16,8 @@ export class ReviewComponent implements OnInit {
   category_name : any;
   experience_level : any;
   ngOnInit(): void {
+
+    //==================================== Get Data From Local Storage ====================================
     this.currentJobProcess = localStorage.getItem('job_process');
     this.currentJobProcess = JSON.parse(this.currentJobProcess);
     console.log(this.currentJobProcess);
@@ -23,7 +25,9 @@ export class ReviewComponent implements OnInit {
     this.skillsData = JSON.parse(this.skillsData);
     this.category_name = localStorage.getItem('category_name');
     this.experience_level = localStorage.getItem('experience_level');
-  }
+
+  }// End Of ngOnInit
+
 
   submit()
   {
@@ -33,4 +37,4 @@ export class ReviewComponent implements OnInit {
     } , error=>console.error);
   }
 
-}
+}// End Of Class
