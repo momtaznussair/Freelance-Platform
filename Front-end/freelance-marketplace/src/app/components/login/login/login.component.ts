@@ -57,9 +57,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('user_id' , this.response_data.data.user.user_id);
           if(this.response_data.data.user.client_id)
           {
-            localStorage.setItem('client_id' , this.response_data.data.user.user_id);
+            localStorage.setItem('client_id' , this.response_data.data.user.client_id);
           }else{
-            localStorage.setItem('freelancer_id' , this.response_data.data.user.user_id);
+            localStorage.setItem('freelancer_id' , this.response_data.data.user.freelancer_id);
           }
           localStorage.setItem('success_msg' , this.response_data.msg);
           localStorage.setItem('logged_status' , this.response_data.status);
