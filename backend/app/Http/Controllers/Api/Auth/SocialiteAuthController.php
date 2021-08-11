@@ -12,6 +12,7 @@ use App\Traits\ApiResponseTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
+use App\Http\Resources\UserResource;
 
 
 
@@ -72,7 +73,7 @@ class SocialiteAuthController extends Controller
 
         $data = [
             'token' => $token,
-            'user' => $user,
+            'user' => new UserResource($user),
             // 'client_id' => $client_id,
             // 'freelancer_id' => $freelancer_id
         ];

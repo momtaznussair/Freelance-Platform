@@ -73,7 +73,7 @@ class AuthController extends Controller
         
         $data = [
             'access_token' => $token,
-            'user' => $user,
+            'user' => new UserResource($user),
         ];
         
         // add as a  client
