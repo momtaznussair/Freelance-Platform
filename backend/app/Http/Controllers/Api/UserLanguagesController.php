@@ -32,7 +32,7 @@ class UserLanguagesController extends Controller
         $validate = Validator::make($request->all(),[
             'user_id' => 'required|exists:users,id',
             'language_id' => 'required|exists:languages,id',
-            'language_level_id' => 'required|exists:languageLevels,id',
+            'language_level_id' => 'required|exists:language_levels,id',
         ]);
 
         if($validate->fails()){
@@ -55,7 +55,7 @@ class UserLanguagesController extends Controller
         $validate = Validator::make($request->all(),[
             'user_id' => 'required|exists:users,id',
             'language_id' => 'required|exists:languages,id',
-            'language_level_id' => 'required|exists:languageLevels,id',
+            'language_level_id' => 'required|exists:language_levels,id',
         ]);
 
         if($validate->fails()){
