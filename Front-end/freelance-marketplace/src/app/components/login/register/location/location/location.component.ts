@@ -28,12 +28,12 @@ export class LocationComponent implements OnInit {
  countries :countries []=[]
   // data comes from social sign up
   user_data : any = ''
-queryloc:string=""
+  queryloc:string=""
   // data comes from manually signUp
   data : any = '';
- arrayOfCountries:any
- arrayOfCities:any
- arrayOfStates:any
+  arrayOfCountries:any
+  arrayOfCities:any
+  arrayOfStates:any
   response_data : any;
   isLocationGet : boolean = false;
 
