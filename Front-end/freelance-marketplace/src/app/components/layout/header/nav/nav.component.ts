@@ -13,10 +13,10 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  sign(){
-    this.router.navigateByUrl("/user/signup");
+  signUp(){
+    this.router.navigateByUrl("/user/signup/main");
   }
-  log(){
+  login(){
     this.router.navigateByUrl("/user");
   }
   freelancer(){
