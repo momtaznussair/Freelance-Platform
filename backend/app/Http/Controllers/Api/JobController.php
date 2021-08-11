@@ -73,7 +73,8 @@ class JobController extends Controller
             return $this->apiResponse($job);
         }
 
-        return $this->UnknownError();
+        // return $this->UnknownError();
+        return $this->apiResponse(true ,'',200);
     }
 
     public function update(Request $request, $id)

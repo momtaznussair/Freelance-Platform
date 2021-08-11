@@ -103,7 +103,6 @@ export class SignupComponent implements OnInit {
       console.log(this.form.value);
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
       localStorage.setItem('data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
-
       this.router.navigateByUrl('/user/signup/location');
     }
     else
