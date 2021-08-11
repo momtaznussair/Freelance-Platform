@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Proposal } from 'src/app/models/proposal';
 import { ProposalService } from 'src/app/services/proposal.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { JobService } from 'src/app/services/job.service';
+import { Job } from 'src/app/models/job';
 
 
 @Component({
@@ -16,8 +18,12 @@ export class SubmitProposalComponent implements OnInit {
 
     form:FormGroup=new FormGroup({});
  
- 
-  constructor(private proposalservice:ProposalService, private _formBuilder:FormBuilder,private router:Router) { }
+    job_details:Job[]=[];
+    id:string;
+  constructor(private proposalservice:ProposalService, private _formBuilder:FormBuilder,private router:Router,private jobDetails:JobService,private route:ActivatedRoute) { 
+    this.id = this.route.snapshot.params['id'];
+
+  }
 
   ngOnInit(): void {
     this.form=this._formBuilder.group({
@@ -27,6 +33,12 @@ export class SubmitProposalComponent implements OnInit {
        attatchment:['',[Validators.required,Validators.minLength(2)]],
        cover_letter:['',[Validators.required,Validators.minLength(2)]],
     });
+
+    //get job details
+    this.jobDetails.getJob(this.id).subscribe(response=>{
+      this.job_details=response['data'] as Job[];
+      console.log(this.job_details);
+    },error=>console.error);
   }
   islogged:boolean=false;
   submitproposal(){
@@ -40,24 +52,9 @@ export class SubmitProposalComponent implements OnInit {
     }else{
       this.islogged=true;
     }
-  //       let proposals:Proposal=new Proposal();
-  //   proposals.letter=letter;
-  //   proposals.attachment=attatchment;
-  //   this.proposalservice.addproposal(proposals).subscribe(Response=>{
-  //     console.log(Response);
-  //   },error=>console.error);
+
    }
   
 
-  // fixed() {
-  //   this.fx=!this.fx;
-  //   this.status=!this.status;
-   
-  //  }
-   
-  //   statuss() {
-  //    this.status=!this.status;
-  //    this.fx=!this.fx;
-  //  }
 
 }

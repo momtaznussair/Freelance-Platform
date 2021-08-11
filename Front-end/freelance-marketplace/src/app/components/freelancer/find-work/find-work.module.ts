@@ -23,6 +23,8 @@ const routes : Routes = [
   {path:'profile/portofolio', component:PortofolioComponent},
   {path : 'proposals' , component : ProposalsComponent},
   {path : 'submit-proposal' , component :SubmitProposalComponent},
+  {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
+  {path : 'work/details/:id' , component :JobDetailsComponent},
   {path:'', component:FindWorkComponent}
 ]
 

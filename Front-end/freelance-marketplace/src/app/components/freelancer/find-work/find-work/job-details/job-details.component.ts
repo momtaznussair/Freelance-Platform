@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Job } from 'src/app/models/job';
 import { ApiService } from 'src/app/services/api.service';
 import { JobService } from 'src/app/services/job.service';
@@ -10,13 +11,17 @@ import { JobService } from 'src/app/services/job.service';
   styleUrls: ['./job-details.component.css']
 })
 export class JobDetailsComponent implements OnInit {
+  id:string;
+  constructor(private jobDetails:JobService,private route:ActivatedRoute) {
+    this.id = this.route.snapshot.params['id'];
 
-  constructor(private jobDetails:JobService) { }
+   }
+
 job_details:Job[]=[];
   ngOnInit(): void {
-    this.jobDetails.getJobs().subscribe(response=>{
-      // console.log(response);
+    this.jobDetails.getJob(this.id).subscribe(response=>{
       this.job_details=response['data'] as Job[];
+      console.log(this.job_details);
     },error=>console.error);
 
   
