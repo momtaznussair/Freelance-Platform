@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   isLogged : boolean = false;
+  response_data : any;
 
   login(){
     console.log(this.form.value);
@@ -40,7 +41,18 @@ export class LoginComponent implements OnInit {
       // localStorage.setItem("token" , "response");
       this.userService.login(this.form.getRawValue()).subscribe(response=>{
         console.log(response);
-        // this.router.navigateByUrl('/freelancer');
+        this.response_data = response
+
+        if(this.response_data.data != null)
+        {
+          localStorage.setItem('token' , this.response_data.data.token);
+          localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
+          localStorage.setItem('user_id' , this.response_data.data.user.user_id);
+          localStorage.setItem('success_msg' , this.response_data.msg);
+          localStorage.setItem('logged_status' , this.response_data.status);
+
+          this.router.navigateByUrl('/freelancer');
+        }
       },error=>console.error);
 
     }
