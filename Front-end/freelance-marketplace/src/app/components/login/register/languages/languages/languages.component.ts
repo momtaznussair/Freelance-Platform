@@ -35,7 +35,7 @@ export class LanguagesComponent implements OnInit {
       console.log(this.form.value);
       this.apiService.post(`${environment.apiUrl}/languageLevel` , {name : this.form.controls['name'].value}).subscribe(response=>{
         console.log(response);
-        // this.router.navigateByUrl("/user/signup/hourly-rate");
+        this.router.navigateByUrl("/user/signup/freelancer");
       },error=>console.error);
     }
   else

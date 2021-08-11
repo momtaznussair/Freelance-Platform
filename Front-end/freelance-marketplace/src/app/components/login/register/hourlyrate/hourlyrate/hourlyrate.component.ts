@@ -46,10 +46,9 @@ export class HourlyrateComponent implements OnInit {
     console.log(this.currentRegisterData);
 
     //sent request
-    this.apiService.post(`${environment.apiUrl}/freelancer` , this.currentRegisterData).subscribe(response=>{
+    this.apiService.post(`${environment.apiUrl}/freelancers` , this.currentRegisterData).subscribe(response=>{
       console.log(response);
-      // localStorage.removeItem('data');
-      this.router.navigateByUrl('freelancer');
+      this.router.navigateByUrl('/user/signup/education');
     }, error => console.error);
   }
 

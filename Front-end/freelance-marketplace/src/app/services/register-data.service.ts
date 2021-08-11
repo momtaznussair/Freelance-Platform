@@ -14,6 +14,7 @@ export class FreelancerRegisterProcess {
       overview:"",
       job_title:"",
       experience_id:0,
+      skills : [],
       hourly_rate:0,
     }
 
