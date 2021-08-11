@@ -32,7 +32,7 @@ export class ReviewComponent implements OnInit {
   submit()
   {
     this.apiService.post(`${environment.apiUrl}/jobs` , this.currentJobProcess).subscribe(response=>{
-      // console.log(response);
+      console.log(response);
       console.log('success process');
       // localStorage.clear();
     } , error => {

@@ -11,8 +11,9 @@ export class FreelancerAuthorization implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      let isFreelancer = this.userService
+      let isFreelancer = this.userService.isUserFreelancer();
       if(!isFreelancer){
+        this.router.navigateByUrl('/user')
         return false;
       }
 

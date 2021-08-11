@@ -15,12 +15,10 @@ export class NavComponent implements OnInit {
   }
   setting(){
     this.router.navigateByUrl("/freelancer/settings/info");
-
   }
 
   logout(){
-    // this.userService.logout();
-    this.router.navigateByUrl("/user");
+    this.userService.logout()
   }
 
 }

@@ -28,7 +28,7 @@ const routes : Routes=[
   {path : 'education' , component : EductionComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
   {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
   {path : 'hourly-rate' , component : HourlyrateComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
-  {path : 'location' , component : LocationComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
+  {path : 'location' , component : LocationComponent},
   {path : '' , component : ConnectionTypeComponent},
 ]
 

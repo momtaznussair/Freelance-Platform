@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { ApiService } from './api.service';
@@ -15,7 +16,7 @@ export class UserService {
   private loginUrl = `${environment.apiUrl}/login`;
   private logoutUrl = `${environment.apiUrl}/logout`;
 
-  constructor(private apiService : ApiService)
+  constructor(private apiService : ApiService , private router : Router)
   {
     this.logged.next(this.isLogged());
   }//end of constructor
@@ -40,6 +41,7 @@ export class UserService {
   {
     localStorage.clear();
     this.logged.next(false);
+    this.router.navigateByUrl('/user')
   }//end of logout
 
   setLoggedStatus(status : boolean)
