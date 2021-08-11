@@ -11,6 +11,7 @@ export class UserService {
   logged = new Subject<boolean>();
 
   private registerUrl = `${environment.apiUrl}/register`;
+  private regSocialUrl = `${environment.apiUrl}/register/socialite`
   private loginUrl = `${environment.apiUrl}/login`;
   private logoutUrl = `${environment.apiUrl}/logout`;
 
@@ -23,6 +24,11 @@ export class UserService {
   register(body : any)
   {
     return this.apiService.post(this.registerUrl , body)
+  }//end of registerUser
+
+  registerWithSocialite(body : any)
+  {
+    return this.apiService.post(this.regSocialUrl , body)
   }//end of registerUser
 
   login(body : any)
