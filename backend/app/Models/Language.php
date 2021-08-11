@@ -13,8 +13,5 @@ class Language extends Model
         'name',
     ];
 
-    public function jobs(){
-        return $this->hasMany(Job::class);
-    }
 
 }

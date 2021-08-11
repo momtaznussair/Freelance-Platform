@@ -18,7 +18,6 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 import { SharedModule } from '../../freelancer/shared/shared.module';
 import { FreelancerAuthorization } from 'src/app/guards/freelancer-authorization.guard';
 
-
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
   {path : 'register' , component : SignupComponent},

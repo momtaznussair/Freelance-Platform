@@ -6,7 +6,13 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { CountriesService } from 'src/app/services/countries.service';
+import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
+import { HttpHeaders } from '@angular/common/http';
+import { ApiService } from 'src/app/services/api.service';
+import { countries } from 'src/app/models/location/countries';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-location',
@@ -14,35 +20,20 @@ import Swal from 'sweetalert2';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-
+  location:RespondedLocationToken=new RespondedLocationToken
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  ,private http : HttpClient , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder , private api:ApiService,private country:CountriesService , private router : Router , private userService : UserService) { }
 
-  test = {
-    username : 'ali',
-    first_name : 'ali',
-    last_name : 'mohamed',
-    email : 'alii@gmail.com',
-    password : '11111111',
-    password_confirmation : '11111111',
-    img_link : '',
-    phone_number : 11111111111,
-    country : 'any',
-    city : 'any',
-    street : 'any',
-    zip_code : 2222,
-    gender : 'male',
-    type : 'client'
-  }
-
-
-
+  placeholder="Start typing your city"
+ countries :countries []=[]
   // data comes from social sign up
   user_data : any = ''
-
+queryloc:string=""
   // data comes from manually signUp
   data : any = '';
-
+ arrayOfCountries:any
+ arrayOfCities:any
+ arrayOfStates:any
   response_data : any;
   ngOnInit(): void {
 
@@ -66,10 +57,23 @@ export class LocationComponent implements OnInit {
       zip_code: ['' , [Validators.required ]]
 
     })
+   /*-------------------------------------------
+           using rest api for location
+    -------------------------------------------*/
+    this.country.getCountries().subscribe(res=>{
+      this.arrayOfCountries =res
+    // console.log(this.arrayOfCountries[0].country_name)
+  });
+  //////////////////////////////////
+
+
+
   }
+
 
     isLogged : boolean = false;
     next() {
+
       if(this.form.valid)
       {
 
@@ -168,19 +172,9 @@ export class LocationComponent implements OnInit {
       }
       else //=> invalid data or error validation
       {
-      this.isLogged = true;
+        this.isLogged = true;
       }
 
-    }
-
-    //test request
-    testRequest(){
-      // this.http.post(`${environment.apiUrl}/register` ,this.test).subscribe(response=>{
-      //   console.log(response);
-      //   console.log(this.data);
-      // }, error=>{
-      //   console.log('error message');
-      // })
     }
 
     //==============start use notification ===============
@@ -215,5 +209,20 @@ export class LocationComponent implements OnInit {
     //=================End of notifications ==============
 
 
+    selectCountry(selectedCountry:string){
+        console.log(selectedCountry)
+        this.country.getCities(selectedCountry).subscribe(res=>{
+          this.arrayOfCities=res
+          // console.log(this.arrayOfCities[0].state_name)
+        })
+    }
+    selectState(a:HTMLElement){
+      this.placeholder=a.innerText
+
+      console.log(a.innerText)
+    }
+
+
+    
   }
 

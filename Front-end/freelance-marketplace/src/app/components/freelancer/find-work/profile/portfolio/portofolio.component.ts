@@ -25,7 +25,7 @@ export class PortofolioComponent implements OnInit {
     this.form = this.formBuilder.group({
       title : ['' , [Validators.required]],
       overview : ['' , [ Validators.required]],
-      img_link :['', [Validators.required]]
+      image_link :['', [Validators.required]]
     })
 
   }
@@ -44,7 +44,7 @@ export class PortofolioComponent implements OnInit {
       );
 
       console.log(this.form.controls.img_link.value)
-      this._portofolio.postImage({image_path:this.form.controls.img_link.value, portfolio_id:2}).subscribe(res=>{
+      this._portofolio.postImage({image_path:this.form.controls.image_link.value, portfolio_id:2}).subscribe(res=>{
         console.log(res);
         this.router.navigateByUrl("/freelancer/profile");
       },error=>{console.error}

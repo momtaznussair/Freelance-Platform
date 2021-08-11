@@ -44,7 +44,7 @@ class SocialiteAuthController extends Controller
 
         if (!$user){
             $user = new User();
-            $user->username = $data->name;
+            $user->name = $data->name;
             $user->email = $data->email;
             $user->password = Hash::make("hgxv2Sm/g5F3qLk");
             $user->auth_id = $data->id;
@@ -54,7 +54,6 @@ class SocialiteAuthController extends Controller
             $user->city = $data->location->city;
             $user->street = $data->location->street_address;
             $user->zip_code = $data->location->zip_code;
-            $user->type = $data->type;
             $user->save();
         }
 
