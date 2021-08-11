@@ -50,6 +50,10 @@ queryloc:string=""
  arrayOfCities:any
  arrayOfStates:any
   response_data : any;
+  empty:boolean=false;
+  dummyCities=['cairo','Alex','ElSodan','Al-maghreb']
+  dummyCountries=['egypt', 'USA']
+
   ngOnInit(): void {
 
     if(localStorage.getItem('user_data'))
@@ -78,7 +82,11 @@ queryloc:string=""
     this.country.getCountries().subscribe(res=>{
       this.arrayOfCountries =res 
     // console.log(this.arrayOfCountries[0].country_name)
-  });
+  },error=>
+  {
+    this.empty=true;
+    console.log(this.empty);
+});
   //////////////////////////////////
  
 
