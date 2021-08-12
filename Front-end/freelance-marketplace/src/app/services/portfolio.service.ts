@@ -11,15 +11,15 @@ export class PortfolioService {
   constructor(private port:ApiService) { }
 
   get(){
-    return this.port.get(`${environment}/portfolios`);
+    return this.port.get(`${environment.apiUrl}/portfolios`);
   }
 
   post(body:any){
-    return this.port.post(`${environment}/portfolios`, body);
+    return this.port.post(`${environment.apiUrl}/portfolios`, body);
   }
 
-   postImage(body:any){
-    return this.port.post(`${environment}/portfolios`, body);
+  postImage(body:any){
+    return this.port.post(`${environment.apiUrl}/portfolios/images`, body);
   }
 
 

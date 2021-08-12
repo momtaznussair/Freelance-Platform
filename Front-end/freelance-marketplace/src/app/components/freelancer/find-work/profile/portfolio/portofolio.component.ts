@@ -17,15 +17,20 @@ export class PortofolioComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   portofolioData: any;
   portfolio:Portofolio[]=[];
+  freelancer_id : any;
+  responseData : any;
+  portfolio_id : any;
+
   constructor(private formBuilder : FormBuilder, private router : Router, private _portofolio:PortfolioService) { }
   ngOnInit(): void {
+    this.freelancer_id = localStorage.getItem('freelancer_id')
 
     this.portofolioData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
-      title : ['' , [Validators.required]],
-      overview : ['' , [ Validators.required]],
-      image_link :['', [Validators.required]]
+      title : ['' , [Validators.required , Validators.minLength(3)]],
+      description : ['' , [ Validators.required , Validators.minLength(10)]],
+      portfolio_image :['', [Validators.required]]
     })
 
   }
@@ -33,28 +38,34 @@ export class PortofolioComponent implements OnInit {
   isLogged : boolean = false;
 
     save(){
-    if(this.form.valid)
-    {
-      this.portfolio= this.form.value;
-      console.log(this.portfolio);
+      console.log(this.form.value);
+      console.log(this.freelancer_id)
+      console.log({freelancer_id : this.freelancer_id ,title : this.form.controls.title.value , description : this.form.controls.description.value , image : this.form.controls.portfolio_image.value})
+        if(this.form.valid)
+        {
+          this.form.value;
+          this._portofolio.post({freelancer_id : this.freelancer_id ,title : this.form.controls.title.value , description : this.form.controls.description.value , image : this.form.controls.portfolio_image.value}).subscribe(res=>{
+            console.log(res);
+            this.responseData = res;
+            this.portfolio_id = this.responseData.data.id;
+            console.log(this.portfolio_id);
+              if(this.responseData.data != null)
+              {
+                this._portofolio.postImage({portfolio_id : this.portfolio_id , image_path:this.form.controls.portfolio_image.value}).subscribe(res=>{
+                  console.log(res);
+                  this.router.navigateByUrl("/freelancer/profile");
+                },error => console.error);
+              }
+          },error=>{
+            console.log(error);
+          });
 
-      this._portofolio.post(this.portfolio).subscribe(res=>{
-        console.log(res);
-      },error=>{console.error}
-      );
 
-      console.log(this.form.controls.img_link.value)
-      this._portofolio.postImage({image_path:this.form.controls.image_link.value, portfolio_id:2}).subscribe(res=>{
-        console.log(res);
-        this.router.navigateByUrl("/freelancer/profile");
-      },error=>{console.error}
-      );
-
-    }
-    else
-    {
-      this.isLogged = true;
-    }
+        }
+        else
+        {
+          this.isLogged = true;
+        }
 
   }
 
