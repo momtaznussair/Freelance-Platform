@@ -72,7 +72,10 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/freelancer');
           }
         }
-      },error=>console.error);
+      },error=>{
+        alert('please check your data and try again');
+        console.log(error);
+      });
 
     }
     else

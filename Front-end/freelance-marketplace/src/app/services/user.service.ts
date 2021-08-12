@@ -15,6 +15,7 @@ export class UserService {
   private regSocialUrl = `${environment.apiUrl}/register/socialite`
   private loginUrl = `${environment.apiUrl}/login`;
   private logoutUrl = `${environment.apiUrl}/logout`;
+  private update = `${environment.apiUrl}/user`;
 
   constructor(private apiService : ApiService , private router : Router)
   {
@@ -79,6 +80,12 @@ export class UserService {
     const clientType = localStorage.getItem('clientType');
     if(!clientType) return false;
     return true;
+  }
+
+
+  updateUser(url : any , body : any)
+  {
+    return this.apiService.post(`${this.update}/${url}` , body)
   }
 
 }
