@@ -19,6 +19,7 @@ class CreateFreelancersTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->text('overview');
             $table->string('job_title');
+            $table->tinyInteger('hourly_rate');
             $table->unsignedBigInteger('experience_id');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');

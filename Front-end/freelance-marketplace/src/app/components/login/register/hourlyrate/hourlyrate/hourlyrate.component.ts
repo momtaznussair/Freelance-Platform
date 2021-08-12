@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class HourlyrateComponent implements OnInit {
 
   user_id : any;
+  freelancer_id : any;
+  freelancer_data  :  any;
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder , private apiService : ApiService,private router : Router ) { }
 
@@ -22,6 +24,8 @@ export class HourlyrateComponent implements OnInit {
     this.user_id = localStorage.getItem('user_id');
     console.log(this.user_id);
     this.currentRegisterData = localStorage.getItem('data');
+    this.currentRegisterData = JSON.parse(this.currentRegisterData)
+
     this.form = this.formBuilder.group({
       hourly_rate : ['' , [ Validators.required]],
     })
@@ -39,16 +43,18 @@ export class HourlyrateComponent implements OnInit {
 
   submit()
   {
-    this.currentRegisterData = JSON.parse(this.currentRegisterData)
     this.currentRegisterData.hourly_rate = this.form.controls.hourly_rate.value;
-    this.currentRegisterData.user_id = +this.user_id;
+    this.currentRegisterData.user_id = this.user_id;
+    localStorage.setItem('data',JSON.stringify(this.currentRegisterData));
     console.log(this.currentRegisterData);
 
     //sent request
-    this.apiService.post(`${environment.apiUrl}/freelancer` , this.currentRegisterData).subscribe(response=>{
+    this.apiService.post(`${environment.apiUrl}/freelancers` , this.currentRegisterData).subscribe(response=>{
       console.log(response);
-      localStorage.removeItem('data');
-      this.router.navigateByUrl('freelancer');
+      this.freelancer_data = response;
+      this.freelancer_id = this.freelancer_data.data.id;
+      localStorage.setItem('freelancer_id' , this.freelancer_id);
+      this.router.navigateByUrl('/user/signup/education');
     }, error => console.error);
   }
 

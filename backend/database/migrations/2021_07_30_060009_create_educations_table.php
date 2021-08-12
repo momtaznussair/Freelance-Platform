@@ -18,6 +18,7 @@ class CreateEducationsTable extends Migration
             $table->string('institute');
             $table->string('area_of_study');
             $table->string('degree');
+            $table->date('start_date');
             $table->date('graduation_date');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

@@ -14,6 +14,7 @@ class Education extends Model
         'institute',
         'area_of_study',
         'degree',
+        'start_date',
         'graduation_date',
         'user_id'
     ];

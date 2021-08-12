@@ -23,6 +23,8 @@ use App\Http\Controllers\Api\SkillController;
 use App\Models\Education;
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\UserLanguagesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -150,12 +152,14 @@ Route::get('educations/{education}',[EducationController::class,'show']);
 
 // authenticated client routes
 Route::post('jobs' ,[JobController::class,'store']);
+Route::post('educations',[EducationController::class,'store']);
+
 
 Route::middleware(['client','auth:sanctum'])->group(function () {
     // clients
     Route::post('/clients/{client}',[ClientController::class,'update']);
     Route::delete('/clients/delete/{client}',[ClientController::class,'destroy']);
-    
+
     // jobs
     Route::post('jobs/{job}' ,[JobController::class,'update']);
     Route::delete('jobs/delete/{job}' ,[JobController::class,'destroy']);
@@ -192,7 +196,6 @@ Route::middleware(['freelancer','auth:sanctum'])->group(function () {
     //Education
     Route::post('/educations/{education}',[EducationController::class,'update']);
     Route::delete('/educations/delete/{education}',[EducationController::class,'destroy']);
-    Route::post('educations',[EducationController::class,'store']);
 
 });
 
@@ -205,3 +208,14 @@ Route::get('/notifications/{id}' ,[NotificationController::class,'allNotificatio
 Route::get('/readNotifications/{id}' ,[NotificationController::class,'readNotifications'])->name('readNotifications');
 Route::get('/unreadNotifications/{id}' ,[NotificationController::class,'unreadNotifications'])->name('unreadNotifications');
 Route::post('/markAsRead/{id}/{notifyID}' ,[NotificationController::class,'markAsRead'])->name('markAsRead');
+
+
+// CRUD for UserLanguages
+Route::get('userLanguages',[UserLanguagesController::class,'index']);
+Route::get('userLanguages/{userLanguage}',[UserLanguagesController::class,'show']);
+Route::post('userLanguages',[UserLanguagesController::class,'store']);
+Route::post('/userLanguages/{userLanguage}',[UserLanguagesController::class,'update']);
+Route::delete('/userLanguages/delete/{userLanguage}',[UserLanguagesController::class,'destroy']);
+
+
+Route::post('/register/socialite', [SocialiteAuthController::class, 'registerOrLoginUser'])->middleware('token.guest');

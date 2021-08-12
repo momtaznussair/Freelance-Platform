@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -8,8 +9,9 @@ import { ApiService } from './api.service';
 export class SkillService {
 
   constructor(private api:ApiService) { }
-  getSkills():Observable<any>{
-   return this.api.get("http://127.0.0.1:8000/api/skills")
+  
+  getSkills(url : string):Observable<any>{
+    return this.api.get(`${environment.apiUrl}/${url}`)
   }
- 
+
 }

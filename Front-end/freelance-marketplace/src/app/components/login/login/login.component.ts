@@ -21,7 +21,14 @@ export class LoginComponent implements OnInit {
 
     if(this.userService.isLogged())
     {
-      this.router.navigateByUrl('/client/main')
+      if(localStorage.getItem('clientType'))
+      {
+        this.router.navigateByUrl('/client/main')
+      }
+      else
+      {
+        this.router.navigateByUrl('/freelancer')
+      }
     }
 
     this.form = this.formBuilder.group({
@@ -31,6 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   isLogged : boolean = false;
+  response_data : any;
 
   login(){
     console.log(this.form.value);
@@ -40,12 +48,40 @@ export class LoginComponent implements OnInit {
       // localStorage.setItem("token" , "response");
       this.userService.login(this.form.getRawValue()).subscribe(response=>{
         console.log(response);
-        // this.router.navigateByUrl('/freelancer');
+        this.response_data = response
+
+        if(this.response_data.data != null)
+        {
+          localStorage.setItem('token' , this.response_data.data.token);
+          localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
+          localStorage.setItem('user_id' , this.response_data.data.user.user_id);
+          if(this.response_data.data.user.client_id)
+          {
+            localStorage.setItem('client_id' , this.response_data.data.user.client_id);
+          }else{
+            localStorage.setItem('freelancer_id' , this.response_data.data.user.freelancer_id);
+          }
+          localStorage.setItem('success_msg' , this.response_data.msg);
+          localStorage.setItem('logged_status' , this.response_data.status);
+
+          //redirect user
+          if(this.response_data.data.user.client_id != null)
+          {
+            localStorage.setItem('clientType' , 'client');
+            this.router.navigateByUrl('/client/main');
+          }
+          else if(this.response_data.data.user.freelancer_id != null)
+          {
+            localStorage.setItem('freelancerType' , 'freelancer');
+            this.router.navigateByUrl('/freelancer');
+          }
+        }
       },error=>console.error);
 
     }
     else
     {
+      alert('credentials are incorrect')
       this.isLogged = true;
       console.log(this.isLogged);
     }

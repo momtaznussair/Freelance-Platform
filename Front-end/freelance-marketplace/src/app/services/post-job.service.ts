@@ -11,7 +11,7 @@ export class postjob {
 
 
     postjobProcess:any = {
-      client_id:0,
+      client_id : localStorage.getItem('client_id'),
       job_title:"",
       description:"",
       attachment:"",

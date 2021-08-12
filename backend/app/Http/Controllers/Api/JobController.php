@@ -25,7 +25,7 @@ class JobController extends Controller
     public function show($id)
     {
         $job = Job::with('skills')->find($id);
-       
+
         if (!$job) {
             $this->NotFoundError();
         }
@@ -63,7 +63,7 @@ class JobController extends Controller
         if ($job) {
             $skillsIDs = $job->skills;
             $freelancersIDs =  FreelancerSkill::select('freelancer_id')->whereIn('skill_id',$skillsIDs)->get();
-            
+
             foreach($freelancersIDs as $id){
                 $freelancer = Freelancer::where('id' , $id->freelancer_id)->first();
                 $user = User::where('id' , $freelancer->user_id)->first();
@@ -73,7 +73,8 @@ class JobController extends Controller
             return $this->apiResponse($job);
         }
 
-        return $this->UnknownError();
+        // return $this->UnknownError();
+        return $this->apiResponse(true ,'',200);
     }
 
     public function update(Request $request, $id)

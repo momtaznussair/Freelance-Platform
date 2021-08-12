@@ -69,8 +69,8 @@
 
             <!-- sign in / up -->
             <div class="text-center sign-container">
-                <a class="mx-3 ms-md-4" href="/user" routerLinkActive="router-link-active" id="login">Log In</a>
-                <a type="button" href="/user/signup/register" class="btn rounded-pill sign-Up-Button">Sign Up</a>
+                <a class="mx-3 ms-md-4" routerLinkActive="router-link-active" id="login" (click)="login()">Log In</a>
+                <a type="button" (click)="signUp()" class="btn rounded-pill sign-Up-Button">Sign Up</a>
             </div>
         </div>
     </div>

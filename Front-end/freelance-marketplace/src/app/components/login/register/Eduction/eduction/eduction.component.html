@@ -28,8 +28,8 @@
 
                     <div *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('required')">This field is required</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('minlength')">You should write more than 255 letter </small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('maxlength')"> You can not write more than 500 letter</small>
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('minlength')">You should write more than 5 letter </small>
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('maxlength')"> You can not write more than 255 letter</small>
 
                     </div>
                 </div>
@@ -40,8 +40,8 @@
                     <input type="text" formControlName="area_of_study" name="area_of_study" class="form-control" placeholder="EX:computer science">
                     <div *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('required')">This field is required</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('minlength')">You should write more than 255 letter </small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can not write more than 500 letter</small>
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('minlength')">You should write more than 5 letter </small>
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can not write more than 255 letter</small>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                     <input type="text" formControlName="degree" class="form-control" placeholder="EX:Bachelor's">
                     <div *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('required')">This field is required</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('minlength')">You should write more than 255 letter </small>
+                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('minlength')">You should write more than 4 letter </small>
                     </div>
                 </div>
                 <p class="mt-5"><b> Start Date</b></p>
@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="md-6 lg-6 d-sm-flex footer">
-                    <button class="bt1" type="button" routerLink="/user/signup/skills"> Back </button>
+                    <button class="bt1" type="button" routerLink="/user/signup/hourly-rate"> Back </button>
                     <button class="bt2" (click)="next()" type="submit">next</button>
                 </div>
             </form>
