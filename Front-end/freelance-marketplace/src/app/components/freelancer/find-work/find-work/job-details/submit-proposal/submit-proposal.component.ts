@@ -18,7 +18,9 @@ export class SubmitProposalComponent implements OnInit {
 
     form:FormGroup=new FormGroup({});
  
-    job_details:Job[]=[];
+    job_details:any;
+    job_skills:any;
+
     id:string;
   constructor(private proposalservice:ProposalService, private _formBuilder:FormBuilder,private router:Router,private jobDetails:JobService,private route:ActivatedRoute) { 
     this.id = this.route.snapshot.params['id'];
@@ -27,17 +29,19 @@ export class SubmitProposalComponent implements OnInit {
 
   ngOnInit(): void {
     this.form=this._formBuilder.group({
-      //  hourlyrate:['',[Validators.required,Validators.minLength(2)]],
-       description:['',[Validators.required,Validators.minLength(50),Validators.maxLength(255)]],
+      job_id:[this.id],
+      description:['',[Validators.required,Validators.minLength(20),Validators.maxLength(255)]],
        payment_amount:['',[Validators.required,Validators.minLength(2)]],
-       attatchment:['',[Validators.required,Validators.minLength(2)]],
-       cover_letter:['',[Validators.required,Validators.minLength(2)]],
+       attatchment:['',[Validators.required]],
+       cover_letter:['',[Validators.required,Validators.minLength(2),Validators.maxLength(255)]],
     });
 
     //get job details
     this.jobDetails.getJob(this.id).subscribe(response=>{
       this.job_details=response['data'] as Job[];
       console.log(this.job_details);
+      this.job_skills=this.job_details.skills;
+      console.log(this.job_skills);
     },error=>console.error);
   }
   islogged:boolean=false;

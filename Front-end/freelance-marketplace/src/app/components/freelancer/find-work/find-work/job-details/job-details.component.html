@@ -7,7 +7,7 @@
         <div class="col-12 col-lg-9 ">
             <div class="row border-bottom py-3 pt-md-4">
 
-                <p class="po" >
+                <p class="po">{{job_details.job_title}}
                     <br><span class="sp">Posted 4 days ago</span>
 
                     <span><i class="fas fa-route ii"></i>WorldWide</span>
@@ -15,7 +15,7 @@
 
             </div>
             <div class="row border-bottom mt-4 py-md-1">
-                <p class="po">ccdccdcdccdscdscdc</p>
+                <p class="po">{{job_details.description}}</p>
             </div>
             <div class="row border-bottom py-3 pt-md-3">
                 <div class="col-md-4 ">
@@ -52,10 +52,10 @@
                 <p class="po ii"><b>Skills and expertise </b></p><br>
                 <p class="po">Web Design Languages </p>
                 <ul class="nav free mb-md-4">
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">CSS3</a>
+                    <li class="nav-item" *ngFor="let skill of job_skills">
+                        <a class="nav-link " href="#">{{skill.name}}</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">WordPress</a>
                     </li>
                     <li class="nav-item">
@@ -63,7 +63,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#">HTML</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <div class="row border-bottom pt-3 pt-md-3">
@@ -82,7 +82,7 @@
         <!-- right col -->
         <div class=" right d-none d-lg-block col-lg-3 border-start pt-md-4">
             <div class="row border-bottom ps-3">
-                <button type="button" class="btn btnn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3 submitproposal " [routerLink]="['/freelancer/work/details',id]">submit a proposal</button>
+                <button type="button" class="btn btnn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3 submitproposal ">submit a proposal</button>
                 <button type="button" class="btn btnn2 btnn btn-lg rounded-pill  border border-1  p-0 mt-4 me-3  savejob ">Save Job</button>
                 <br>
 
@@ -119,7 +119,7 @@
         <!--end of right col -->
         <div class="container fixed-bottom d-lg-none d-md-block">
 
-            <button type="button" class="btn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3  mx-5 "[routerLink]="['/freelancer/work/details',id]" (click)="submitproposal()">Submit a proposal</button>
+            <button type="button" class="btn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3  mx-5 "  (click)="submitproposal()">Submit a proposal</button>
 
             <button type="button" class="btn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3  mx-5 ">Save Job</button>
 

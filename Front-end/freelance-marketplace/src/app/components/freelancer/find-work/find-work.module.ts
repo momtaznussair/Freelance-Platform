@@ -25,9 +25,9 @@ const routes : Routes = [
   {path : 'submit-proposal' , component :SubmitProposalComponent},
   {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
   {path : 'work/details/:id' , component :JobDetailsComponent},
-  {path:'', component:FindWorkComponent},
   {path : 'filter-jobs' , component :FilterJobsComponent},
   {path:'', component:FindWorkComponent},
+
 
 ]
 
