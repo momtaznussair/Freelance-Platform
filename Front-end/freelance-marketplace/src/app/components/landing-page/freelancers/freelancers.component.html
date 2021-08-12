@@ -3,7 +3,7 @@
   
 
     <!-- search section -->
-    <div class="row border-bottom">
+    <div class="row">
         <div class="col my-md-4">
          <input type="text" placeholder="search" class="form-control  ms-md-3 d-inline"><i class="fas fa-search ms-2"></i>
 
@@ -13,46 +13,43 @@
 
 
         <!-- freelancer section -->
-        <div class="row border-bottom">
-            <div class="col-md-3 d-flex align-items-md-center justify-content-md-center">
-                <img class="side " src="1.png" >
-                
-            </div>
-            <div class="col-md-9">
+        <div class="row border-bottom mt-3 " *ngFor="let freelancer of freelancers">
+          
+            <div class="col-md-12" >
                 <div class="row">
                     <div class="col ">
-                        <div class="mb-md-1 mt-md-3 d-flex">
+                        <div class=" mt-md-3 d-flex">
                             <span>
-                            <img class="d-inline-block ms-3 pro" src="2.png"/><br>
+                            <img class="d-inline-block ms-3 pro imag" src="../../../../assets/images/sam.jpg"/><br>
                                <p class="ms-md-4 mt-md-3 m"> $15.00 /hr</p>
+
                             </span>
+
                             <span>
-                            <h4 class="d-inline-block mt-4 ms-3">ahmed nabil</h4> <br>
+                            <h4 class="d-inline-block mt-4 ms-3">{{freelancer.job_title}}</h4> <br>
                             <p class="ms-md-2 ms-sm-4 f">full stack developer wordpress</p></span>
-                            <i class="far fa-heart me-md-4"></i>
-                            <button type="button" class="btn btnn btn-lg rounded-pill  border border-1 b1 p-0 mt-4 me-3  bs " >Hire</button>
-                            <!-- <button type="button" class="btn btnn btn-lg rounded-pill  border border-1 b2 p-0 mt-4 me-3 " >Invite job</button> -->
+                            <br>
                         </div>
-                        <span class="ms-md-4 ">
-                        <i class="far fa-file-alt"></i> <a href="">completed 6 CSS3 jobs on site_name</a>
+                        <span class="ms-md-4">
+                            <p class="mb-2 desc"> {{freelancer.overview}}</p>
+
+                        <i class="far fa-file-alt"></i> <a href="" class="ms-1">completed 6 CSS3 jobs on site_name</a>
                         <p class="ms-md-4 mt-md-2">Has <b>9 relevant skills</b> to your job</p>
                         </span>
                         <ul class="nav free mb-md-4">
-                            <li class="nav-item">
+                            <li class="nav-item my-sm-1">
                               <a class="nav-link " href="#">CSS3[top1%]</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item my-sm-1">
                               <a class="nav-link" href="#">WordPress[top1%]</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item my-sm-1">
                               <a class="nav-link" href="#">PHP[top5%]</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item my-sm-1">
                               <a class="nav-link " href="#">HTML[top5%]</a>
                             </li>
                           </ul>
-                          <button type="button" class="btn btn2 btn-lg rounded-pill  border border-1 b1 p-0  me-3 bb " >Hire</button>
-                            <!-- <button type="button" class="btn btn2 btn-lg rounded-pill  border border-1 b2 p-0  me-3 " >Invite job</button> -->
                     </div>
                 </div>
               

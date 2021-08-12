@@ -28,25 +28,28 @@ cursor: pointer;
     height: 2.2rem;
     width: 7rem;
     color: white;
-    background-color: #0D265F;
+    background-color: var(--mc);
 }
 .btnn:hover{
     background-color:#f7f7f7 ;
-    color:#0D265F ;
+    color:var(--mc) ;
 }
 .btn2{
     display: none;
     margin-bottom: 1rem;
 }
  li{
-    width: 10rem;
+    width: auto;
     height: 2rem;
-    color: #0D265F;
+    background-color: var(--mc);
 
+}
+.imag{
+    border-radius: 50%;
 }
 a{
     text-decoration: none;
-    color: #0D265F;
+    color: var(--mc);
 
 } 
 .free li {
@@ -56,35 +59,38 @@ a{
     background:#f7f7f7;
     border-radius: 2rem;
     color: black;
-    color: #0D265F;
+    color: var(--mc);
 
 }
 .free li a{
-    color: #0D265F;
+    color: var(--mc);
 
 }
 .free li a:hover{
-    color: #0D265F;
+    color: var(--mc);
     
 }
 
 h4{
-    color: #0D265F;
+    color: var(--mc);
 }
 p{
     font-size: 1rem;
 }
-.search,.fa-search{
-    /* background-color: #0D265F; */
+.fa-search{
+    /* background-color: var(--mc); */
     border-color: white;
     color: var(--mc);
     /* height: 2.5rem; */
     border: none;
 
 }
+.desc{
+    margin-top: -1rem;
+}
 input{
     width: 25.5rem;
-    border-color:  #0D265F;
+    border-color:  var(--mc);
     height: 2.5rem;
     padding: 1rem;
 
@@ -95,7 +101,7 @@ input{
 } */
 /* .tabs1{
     height: 4rem;
-    background-color:#0D265F ;
+    background-color:var(--mc) ;
     margin-bottom: 5rem;
 
 } */
@@ -123,7 +129,7 @@ h5{
     font-size: 1rem;
 }
 .ii{
-    color: #0D265F;
+    color: var(--mc);
     padding: .4rem;
 }
 
