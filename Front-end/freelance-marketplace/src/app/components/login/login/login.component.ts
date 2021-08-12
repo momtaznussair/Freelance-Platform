@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
     if(this.form.valid)
     {
 
-      // localStorage.setItem("token" , "response");
       this.userService.login(this.form.getRawValue()).subscribe(response=>{
         console.log(response);
         this.response_data = response
@@ -61,8 +60,6 @@ export class LoginComponent implements OnInit {
           }else{
             localStorage.setItem('freelancer_id' , this.response_data.data.user.freelancer_id);
           }
-          localStorage.setItem('success_msg' , this.response_data.msg);
-          localStorage.setItem('logged_status' , this.response_data.status);
 
           //redirect user
           if(this.response_data.data.user.client_id != null)
@@ -86,33 +83,6 @@ export class LoginComponent implements OnInit {
       console.log(this.isLogged);
     }
 
-
-
-    // if(token)
-    // {
-    //   console.log(token);
-    //   alert(JSON.stringify(this.form.getRawValue()));
-    //   localStorage.setItem('token' , token);
-    //   this.router.navigateByUrl('freelancer');
-    // }
-    // else
-    // {
-    //   this.router.navigateByUrl('/user');
-    //   alert('login unsuccessfully');
-    // }
-
   }//end of login function
-
-  // submit():void{
-  //   this.userService.login(this.form.getRawValue()).subscribe(response=>{
-  //     alert(JSON.stringify( response));
-  //   })
-  // }
-
-
-
-
-
-
 
 }

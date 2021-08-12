@@ -1,5 +1,3 @@
-import { environment } from './../../../../../../environments/environment.prod';
-import { HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -116,8 +114,8 @@ export class LocationComponent implements OnInit {
               localStorage.setItem('token' , this.response_data.data.token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.id);
-              localStorage.setItem('success_msg' , this.response_data.msg);
-              localStorage.setItem('logged_status' , this.response_data.status);
+              // localStorage.setItem('success_msg' , this.response_data.msg);
+              // localStorage.setItem('logged_status' , this.response_data.status);
               if(this.response_data.data.user.client_id)
               {
                 localStorage.setItem('client_id' , this.response_data.data.user.client_id);
@@ -162,9 +160,8 @@ export class LocationComponent implements OnInit {
               localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.user_id);
-              console.log(localStorage.getItem('user_id'));
-              localStorage.setItem('success_msg' , this.response_data.msg);
-              localStorage.setItem('logged_status' , this.response_data.status);
+              // localStorage.setItem('success_msg' , this.response_data.msg);
+              // localStorage.setItem('logged_status' , this.response_data.status);
               if(this.response_data.data.user.client_id)
               {
                 localStorage.setItem('client_id' , this.response_data.data.user.client_id);
