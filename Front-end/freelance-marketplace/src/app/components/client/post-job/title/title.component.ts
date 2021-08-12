@@ -25,12 +25,11 @@ export class TitleComponent implements OnInit {
 
     this.apiService.get(`${environment.apiUrl}/categories`).subscribe(res=>{
       this.categoryData = res;
-      console.log(this.categoryData);
       this.isCategoryGet = true;
     })
 
     this.form = this.formBuilder.group({
-      job_title : ['' , [ Validators.required ,, Validators.minLength(20) ]],
+      job_title : ['' , [ Validators.required ,Validators.minLength(3), Validators.maxLength(255)]],
       category_id : ['', [Validators.required]]
     })
   }
@@ -43,8 +42,11 @@ export class TitleComponent implements OnInit {
       this.jobprocess.postjobProcess.job_title=this.form.controls.job_title.value;
       this.jobprocess.postjobProcess.category_id=this.form.controls.category_id.value;
 
-      console.log(this.jobprocess.postjobProcess);
-
+      for(let i = 0 ; i< this.categoryData.data.length ; i++){
+        if(this.categoryData.data[i].id == this.form.controls.category_id.value){
+          localStorage.setItem('category_name', this.categoryData.data[i].name);
+        }
+      }
       localStorage.setItem('job_process',JSON.stringify(this.jobprocess.postjobProcess));
       this.router.navigateByUrl("/client/post-job/description");
     }
@@ -54,29 +56,7 @@ export class TitleComponent implements OnInit {
     }
   }
 
-  //=====================================test request =====================//
-  data = {
-    description : 'this is test desc',
-    payment_amount : 20,
-    job_title : 'this is test title',
-    skill : ['html' , 'css'],
-    client_id : 5,
-    duration_id : 1,
-    payment_type : 1,
-    attatchment : 'this is test attatchment',
-    experience_id : 2,
-    payment_style_id : 1,
-    category_id : 1,
-    language_id : 1,
-    language_level_id : 1,
-  }
 
-  callDb()
-  {
-    // this.apiService.post(`${environment.apiUrl}/jobs` , this.data).subscribe(response=>{
-    //   console.log(response);
-    // })
-  }
 
 
 

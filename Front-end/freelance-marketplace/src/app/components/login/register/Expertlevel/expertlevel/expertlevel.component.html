@@ -14,9 +14,9 @@
                 <br />
                 <div class="card my-2">
                     <label class="radio-inline"><input formControlName="experience_id" type="radio"
-           name="experience_id" value="1"  />Entry
+           name="experience_id" value="1"  /> Entry
           level<br />
-          <p>I am relatively new to this field</p>
+          <p class="mx-4">I am relatively new to this field</p>
         </label>
                 </div>
 
@@ -25,8 +25,8 @@
             type="radio"
             name="experience_id" value="2"
 
-          />Intermediate<br />
-          <p>I have substantial experience in this field</p>
+          /> Intermediate<br />
+          <p class="mx-4">I have substantial experience in this field</p>
         </label>
                 </div>
                 <div class="card my-2">
@@ -34,8 +34,8 @@
             type="radio"
             name="experience_id" value="3"
 
-          />Expert<br />
-          <p>I have comprehensive and deep expertise in this field</p>
+          /> Expert<br />
+          <p class="mx-4">I have comprehensive and deep expertise in this field</p>
         </label>
                 </div>
                 <div *ngIf="form.controls.experience_id.invalid && isLogged">

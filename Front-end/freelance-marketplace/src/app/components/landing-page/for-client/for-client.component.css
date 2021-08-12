@@ -20,24 +20,18 @@
 .text ,.links{
     z-index: 9;
 }
-.container .text p {
-    font-size: 18px !important;
 
-}
 
 .container .text h1 {
     font-size: 64px !important;
-    /* color: var(--mc); */
-    color: white;
-    z-index: 99999;
+    color: var(--bg);
 }
 
 .container .links a {
     z-index: 9999;
     border-radius: 20px;
     text-decoration: none;
-    /* background-color: var(--sc); */
-    /* border-color: var(--sc); */
+    background-color: var(--mc);
     color: var(--bg);
     cursor: pointer;
     -webkit-transition: all .3s ease-in-out;
@@ -46,7 +40,7 @@
 
 .container .links a:hover {
     background-color: var(--bg);
-    color: var(--mc);
+    color: black;
 }
 
 @media (max-width: 991.99px) {

@@ -12,6 +12,7 @@ use App\Traits\ApiResponseTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
+use App\Http\Resources\UserResource;
 
 
 
@@ -39,7 +40,8 @@ class SocialiteAuthController extends Controller
         // dd($user);
     }
 
-    protected function registerOrLoginUser($data){
+    protected function registerOrLoginUser(Request $request){
+        $data = $request;
         $user = User::where('email','=',$data->email)->first();
 
         if (!$user){
@@ -50,23 +52,30 @@ class SocialiteAuthController extends Controller
             $user->auth_id = $data->id;
             $user->first_name = $data->firstName;
             $user->last_name = $data->lastName;
-            $user->country = $data->location->country;
-            $user->city = $data->location->city;
-            $user->street = $data->location->street_address;
-            $user->zip_code = $data->location->zip_code;
+            $user->country = $data->country;
+            $user->city = $data->city;
+            $user->street = $data->street_address;
+            $user->zip_code = $data->zip_code;
+            $user->type = $data->type;
             $user->save();
         }
 
+        // $client_id ='';
+        // $freelancer_id = '';
+        // if($user->type == 'client'){
+        //     $client_id = $user->client->id;
+        // }
+        // else{
+        //     $freelancer_id = $user->freelancer->id;
+        // }
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // return response()->json([
-        //         'access_token' => $token,
-        //         'token_type' => 'Bearer',
-        // ]);
-
         $data = [
-                'token' => $token,
-                'token_type' => 'Bearer',
+            'token' => $token,
+            'user' => new UserResource($user),
+            // 'client_id' => $client_id,
+            // 'freelancer_id' => $freelancer_id
         ];
 
         return $this->apiResponse($data);
