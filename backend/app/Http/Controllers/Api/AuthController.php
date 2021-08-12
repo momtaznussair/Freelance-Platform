@@ -128,7 +128,7 @@ class AuthController extends Controller
 
 
 
-    public function updateUser(Request $request ,$id){
+    public function updateUserEmailAndUsername(Request $request ,$id){
         $user = User::find($id);
 
         if(!$user){
@@ -136,23 +136,12 @@ class AuthController extends Controller
         }
 
         if(!Hash::check($request->password, $user->password)){
-            return 'Password Not matched';
+            return $this->apiResponse(null , 'Password Not Matches' , 200);
         }
 
         $validator = Validator::make($request->all(), [
             'username'=> ['required','string','max:255','min:3'],
-            'first_name' => 'required|string|min:3|max:255',
-            'last_name' => 'required|string|min:3|max:255',
             'email' => ['required','email','unique:users,email','max:255'],
-            'password' => ['required', 'string', 'min:8','max:255'],
-            'gender' => 'required|in:male,female',
-            'img_link' => 'nullable|image|max:512|mimes:png,jpg',
-            'phone_number' => 'min:11|numeric',
-            'country' => 'required',
-            'city' => 'required',
-            'street' => 'required',
-            'zip_code' => 'required',
-            'type' => 'required',
         ]);
 
 
@@ -161,23 +150,47 @@ class AuthController extends Controller
             return $this->apiResponse(null,$validator->errors(),200);
         }
 
-        // $user->update($request->all());
         $user->name = $request->username;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->first_name = $request->first_name;
-        $user->last_name = $request->last_name;
-        $user->gender = $request->gender;
-        $user->phone_number = $request->phone_number;
-        $user->country =$request->country;
-        $user->city = $request->city;
-        $user->street = $request->street;
-        $user->zip_code = $request->zip_code;
-        $user->type = $request->type;
-
+        
         $user->save();
 
-        dd('updated');
+        if($user){
+            return $this->apiResponse($user,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
+
+    public function updateUserPhoneAndLocation(Request $request ,$id){
+        $user = User::find($id);
+
+        if(!$user){
+            return $this->NotFoundError();
+        }
+
+        if(!Hash::check($request->password, $user->password)){
+            return $this->apiResponse(null , 'Password Not Matches' , 200);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'phone_number' => 'min:11|numeric',
+            'country' => 'required',
+            'city' => 'required',
+            'street' => 'required',
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $user->phone_number = $request->phone_number;
+        $user->country = $request->country;
+        $user->city = $request->city;
+        $user->street = $request->street;
+        $user->save();
 
         if($user){
             return $this->apiResponse($user,'',201);
