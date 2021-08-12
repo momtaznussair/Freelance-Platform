@@ -124,16 +124,16 @@ export class LocationComponent implements OnInit {
               }
 
               console.log(response);
-              // if(this.user_data.type == 'client')
-              // {
-              //   localStorage.setItem('clientType' , 'client');
-              //   this.router.navigateByUrl('/client/main');
-              // }
-              // else
-              // {
-              //   localStorage.setItem('freelancerType' , 'freelancer');
-              //   this.router.navigateByUrl('/user/signup/category');
-              // }
+              if(this.user_data.type == 'client')
+              {
+                localStorage.setItem('clientType' , 'client');
+                this.router.navigateByUrl('/client/main');
+              }
+              else
+              {
+                localStorage.setItem('freelancerType' , 'freelancer');
+                this.router.navigateByUrl('/user/signup/category');
+              }
 
           }
           else

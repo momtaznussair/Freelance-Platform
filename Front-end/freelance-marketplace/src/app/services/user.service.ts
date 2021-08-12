@@ -41,7 +41,7 @@ export class UserService {
   {
     localStorage.clear();
     this.logged.next(false);
-    this.router.navigateByUrl('/user')
+    this.router.navigateByUrl('/')
   }//end of logout
 
   setLoggedStatus(status : boolean)
