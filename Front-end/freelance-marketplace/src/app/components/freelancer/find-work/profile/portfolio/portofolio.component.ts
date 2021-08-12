@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Portofolio } from 'src/app/models/portofolio';
-import { PortofolioService } from 'src/app/services/portofolio.service';
+import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-portofolio',
@@ -17,7 +17,7 @@ export class PortofolioComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   portofolioData: any;
   portfolio:Portofolio[]=[];
-  constructor(private formBuilder : FormBuilder, private router : Router, private _portofolio:PortofolioService) { }
+  constructor(private formBuilder : FormBuilder, private router : Router, private _portofolio:PortfolioService) { }
   ngOnInit(): void {
 
     this.portofolioData = localStorage.getItem('data');

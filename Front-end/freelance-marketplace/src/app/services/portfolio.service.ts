@@ -1,3 +1,4 @@
+import { environment } from '../../environments/environment';
 // import { environment } from './environments/environment.prod';
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
@@ -5,23 +6,20 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PortofolioService {
+export class PortfolioService {
 
   constructor(private port:ApiService) { }
 
   get(){
-    return this.port.get(`http://127.0.0.1:8000/api/portfolios`);
-
+    return this.port.get(`${environment}/portfolios`);
   }
 
   post(body:any){
-    return this.port.post("http://127.0.0.1:8000/api/portfolios", body);
-
+    return this.port.post(`${environment}/portfolios`, body);
   }
 
    postImage(body:any){
-    return this.port.post("http://127.0.0.1:8000/api/portfolios/images", body);
-
+    return this.port.post(`${environment}/portfolios`, body);
   }
 
 
