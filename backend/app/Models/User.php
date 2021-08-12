@@ -68,10 +68,10 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
         return $this->hasMany(Education::class);
     }
 
-    protected static function booted()
-    {
-        static::updated(queueable(function ($customer) {
-            $customer->syncStripeCustomerDetails();
-        }));
-    }
+    // protected static function booted()
+    // {
+    //     static::updated(queueable(function ($customer) {
+    //         $customer->syncStripeCustomerDetails();
+    //     }));
+    // }
 }

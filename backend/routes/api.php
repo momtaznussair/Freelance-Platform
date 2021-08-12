@@ -219,3 +219,6 @@ Route::delete('/userLanguages/delete/{userLanguage}',[UserLanguagesController::c
 
 
 Route::post('/register/socialite', [SocialiteAuthController::class, 'registerOrLoginUser'])->middleware('token.guest');
+
+Route::post('/user/update/{id}' , [AuthController::class,'updateUserEmailAndUsername']);
+Route::post('/user/updateLocation/{id}' , [AuthController::class,'updateUserPhoneAndLocation']);
