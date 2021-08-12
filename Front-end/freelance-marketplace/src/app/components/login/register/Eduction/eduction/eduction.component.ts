@@ -25,12 +25,12 @@ export class EductionComponent implements OnInit {
     this.currentRegisterstart_date = localStorage.getItem('start_date');
 
     this.form = this.formBuilder.group({
-      user_id : ['1' , [ Validators.required]],
-      institute : ['' , [ Validators.required , Validators.minLength(10) , Validators.maxLength(250) ]],
-      area_of_study : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(250) ]],
-      degree : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(250) ]],
-      start_date : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(250) ]],
-      graduation_date : ['' , [Validators.required , Validators.minLength(10) , Validators.maxLength(250) ]],
+      user_id : [this.user_id , [ Validators.required]],
+      institute : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+      area_of_study : ['' , [Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+      degree : ['' , [Validators.required , Validators.minLength(4) , Validators.maxLength(250) ]],
+      start_date : ['' , [Validators.required ]],
+      graduation_date : ['' , [Validators.required]],
     })
   }
   isLogged : boolean = false;

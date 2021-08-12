@@ -15,7 +15,7 @@ class Freelancer extends Model
         'overview',
         'job_title',
         'experience_id',
-        'hourly-rate',
+        'hourly_rate',
     ];
 
     public function portfolios(){

@@ -1,6 +1,7 @@
 import { environment } from 'src/environments/environment.prod';
 import { ApiService } from 'src/app/services/api.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-review',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewComponent implements OnInit {
 
-  constructor(private apiService : ApiService) { }
+  constructor(private apiService : ApiService, private router:Router) { }
 
   currentJobProcess : any;
   skillsData : any;
@@ -33,8 +34,16 @@ export class ReviewComponent implements OnInit {
   {
     this.apiService.post(`${environment.apiUrl}/jobs` , this.currentJobProcess).subscribe(response=>{
       console.log(response);
+      console.log('success process');
       // localStorage.clear();
-    } , error=>console.error);
+      localStorage.removeItem('job_process')
+      localStorage.removeItem('skills_data')
+      localStorage.removeItem('experience_level')
+      localStorage.removeItem('category_name')
+      this.router.navigateByUrl('/client/main')
+    } , error => {
+      console.log('field process');
+    });
   }
 
 }// End Of Class
