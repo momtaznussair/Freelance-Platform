@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -9,7 +10,7 @@ export class JobService {
 
   constructor(private _apiservice:ApiService,private http:HttpClient) { }
 
-  get(){
+  get():Observable<any>{
     return this._apiservice.get("http://127.0.0.1:8000/api/jobs");
   
   }

@@ -43,7 +43,7 @@
             <div class="col-md-8 card py-3 ">
 
                 <div class="input-group mb-md-3 d-sm-none d-md-flex">
-                    <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs" [(ngModel)]="query">
+                    <input type="text" class="form-control p-md-2" [(ngModel)]="query" aria-label="search" placeholder="Search for jobs" [(ngModel)]="query">
                     <a  class="input-group-text" (click)="search()">
                         <i class="fas fa-search"></i>
                     </a>
@@ -114,15 +114,15 @@
                   
 
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
-                    <div class="card-body" *ngFor="let post of POSTS | paginate : {
-                        itemsPerPage: 2,
+                    <div  [routerLink]="['/freelancer/work/details/', post.id]" class="card-body" *ngFor="let post of jobPost |searchFilter:query | paginate : {
+                        itemsPerPage: 5,
                         currentPage: page,
                         totalItems: count
                       };
                 let i = index" [class.active]="i == currentIndex">
                         <!-- Job Title -->
                         <div class="header d-flex">
-                            <a routerLink="#"> {{post.title}}</a>
+                            <a routerLink="#"> {{post.job_title}}</a>
                             <span class="ms-auto">
                                 <i class="far fa-thumbs-down fa-2x mx-md-2"></i>
                                 <i class="far fa-heart fa-2x mx-2 d-none"></i>
@@ -138,16 +138,13 @@
 
                         <!-- Job Description -->
                         <p class="job-desc fw-bold">
-                            {{post.body}}
+                            {{post.description}}
                         </p>
 
-                        <!-- Job Skills -->
-                        <div class="skills text-center">
-                            <span class="mx-2">Web Design</span>
-                            <span class="mx-2">Web Aplication</span>
-                            <span class="mx-2">PHP</span>
-                            <span class="mx-2">Laravel</span>
-                        </div>
+                       <!-- Job Skills -->
+                    <div class="skills text-center">
+                        <span class="mx-2"  *ngFor="let skill of post.skills">{{skill.name}}</span>
+                    </div>
 
                         -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
 
@@ -169,7 +166,7 @@
 
                             <!-- Money spent -->
                             <span class="spent mx-md-2">
-                                <span class="money-spent fw-bold">$10</span> spent
+                                <span class="money-spent fw-bold">${{post.payment_amount}}</span> spent
                             </span>
 
                             <!-- Location -->

@@ -16,24 +16,29 @@
                 <h2 class="mb-md-5">Filter By</h2>
 
                 <!---------------------------------------------------category----------------------------------------------------------------->
-                <button class="alert alert-light my-3 " (click)="changeCatgoryIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample0" aria-expanded="false" aria-controls="collapseExample0">
+                <button class="alert alert-light my-3 " (click)="changeCatgoryIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapsesearch" aria-expanded="false" aria-controls="collapseExample0">
     <span >
-      <strong>category</strong>
-   <i class=" fa fa-{{shape1}} fa-chevron-down"></i>
+        <!-- <div class="d-flex  justify-space-between"> -->
+            <strong>category</strong>
+            <i class=" fa fa-{{shape1}} fa-chevron-down"></i>
+        <!-- </div> -->
+    
  </span>
 </button>
+<div class="collapse" id="collapsesearch">
+    
+<div class="col-lg-12 col-md-12 col-sm-9">
+    <select formControlName="city"  #o  (change)="addCategories(o.value)" class="form-select form-select-sm " aria-label=".form-select-sm example">
+        <input class="form-check-input" type="radio"name="p" value="fixed" id="flexRadioDefault1" (change)="addCategories($event)">
+        <label class="form-check-label" for="flexRadioDefault1">
+             fixed hours
+            </label>           
+        <option   [value]="item1"  *ngFor="let item1 of cat" >{{item1.name}}</option>
+       
+</select> 
 
-
-                <div class="collapse" id="collapseExample0">
-                    <div class="card card-body">
-                        <div class="form-check">
-                            <a *ngFor="let item of cat" (click)="addParams($event)">
-              {{item.name}}
-           </a>
-                        </div>
-
-                    </div>
-                </div>
+   
+</div></div>
            
             <!--------------------------------------------------------Hourly rate----------------------------------------------------------->
             <button class="alert alert-light my-3 " (click)=" changeHourlyRateIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -47,13 +52,13 @@
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" (change)="addParams($event)">
+                        <input class="form-check-input" type="radio" name="p" value="fixed" id="flexRadioDefault1" (change)="addPayment($event)">
                         <label class="form-check-label" for="flexRadioDefault1">
                              fixed hours
                             </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" (change)="addParams($event)">
+                        <input class="form-check-input" type="radio" name="p" value="hourly" id="flexRadioDefault2" (change)="addPayment($event)">
                         <label class="form-check-label" for="flexRadioDefault2">
                            hourly rate
                             </label>
@@ -63,30 +68,36 @@
 
 
             <!-------------------------------------------------------------------------------->
-            <button class=" alert alert-light " (click)="changeSkillsIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+            <button class=" alert alert-light " (click)="changeSkillsIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
                 <span >
                     <strong>Experience level</strong>
                  <i class=" fa fa-{{shape3}} fa-chevron-down"></i>
                </span>
              </button>
 
-
-            <div class="collapse" id="collapseExample1">
+             <div class="collapse" id="collapseExample3">
                 <div class="card card-body">
                     <div class="form-check">
-                        <input #s1 class="form-check-input" type="checkbox" value="html" id="flexCheckDefault" (change)="addParams($event)">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          html
+                        <input class="form-check-input" type="radio" name='r' [(ngModel)]="radioSelected" value="entry" id="RadioDefault1" (change)="addExpermentLevel($event)">
+                        <label class="form-check-label" for="RadioDefault1">
+                             entry
                             </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="php" id="flexCheckChecked" (change)="addParams($event)">
-                        <label class="form-check-label" for="flexCheckChecked">
-                          php
+                        <input class="form-check-input" type="radio" name='r' [(ngModel)]="radioSelected" value="intermidiate" id="RadioDefault2" (change)="addExpermentLevel($event)">
+                        <label class="form-check-label" for="RadioDefault2">
+                           Intermidiate
+                            </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name='r' [(ngModel)]="radioSelected" value="advanced" id="RadioDefault2" (change)="addExpermentLevel($event)">
+                        <label class="form-check-label" for="RadioDefault2">
+                           Advanced
                             </label>
                     </div>
                 </div>
             </div>
+
         </div>
     
         <!-- End filter side -->
@@ -167,15 +178,17 @@
               
 
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
-                <div class="card-body" *ngFor="let post of POSTS | paginate : {
-                    itemsPerPage: 2,
+                <div class="card-body"  *ngFor="let post of jobPost | searchFilter:query |paginate : {
+                    itemsPerPage: 5,
                     currentPage: page,
                     totalItems: count
                   };
+                  
             let i = index" [class.active]="i == currentIndex">
+           
                     <!-- Job Title -->
                     <div class="header d-flex">
-                        <a routerLink="#"> {{post.title}}</a>
+                        <a [routerLink]="['/freelancer/work/details',post.id]" >  {{post.job_title}}</a>
                         <span class="ms-auto">
                             <i class="far fa-thumbs-down fa-2x mx-md-2"></i>
                             <i class="far fa-heart fa-2x mx-2 d-none"></i>
@@ -191,15 +204,12 @@
 
                     <!-- Job Description -->
                     <p class="job-desc fw-bold">
-                        {{post.body}}
+                        {{post.description}}
                     </p>
 
                     <!-- Job Skills -->
                     <div class="skills text-center">
-                        <span class="mx-2">Web Design</span>
-                        <span class="mx-2">Web Aplication</span>
-                        <span class="mx-2">PHP</span>
-                        <span class="mx-2">Laravel</span>
+                        <span class="mx-2"  *ngFor="let skill of post.skills">{{skill.name}}</span>
                     </div>
 
                     -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
@@ -222,7 +232,7 @@
 
                         <!-- Money spent -->
                         <span class="spent mx-md-2">
-                            <span class="money-spent fw-bold">$10</span> spent
+                            <span class="money-spent fw-bold">${{post.payment_amount}}</span> spent
                         </span>
 
                         <!-- Location -->
