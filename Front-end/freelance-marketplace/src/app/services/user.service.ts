@@ -34,19 +34,20 @@ export class UserService {
 
   login(body : any)
   {
+    this.logged.next(true);
     return this.apiService.post(this.loginUrl, body );
   }//end of loginUser
 
   logout()
   {
     localStorage.clear();
-    this.logged.next(false);
     this.router.navigateByUrl('/user')
+    this.setLoggedStatus(false);
   }//end of logout
 
   setLoggedStatus(status : boolean)
   {
-    this.logged.next(status)
+    return this.logged.next(status);
   }
 
   getLoggedStatus()
