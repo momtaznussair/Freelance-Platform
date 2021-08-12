@@ -9,10 +9,11 @@ use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use App\Models\Client;
+
 
 class AuthController extends Controller
 {
@@ -33,7 +34,8 @@ class AuthController extends Controller
             'country' => 'required',
             'city' => 'required',
             'street' => 'required',
-            'zip_code' => 'required'
+            'zip_code' => 'required',
+            'type' => 'required',
         ]);
 
 
@@ -45,7 +47,7 @@ class AuthController extends Controller
         $user = new User();
 
         if(!$token){
-            $user->username = $request->username;
+            $user->name = $request->username;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
         }
@@ -65,7 +67,14 @@ class AuthController extends Controller
             $user->img_link = $path;
         }
         $user->save();
-
+        // add as a  client
+        if ($request->type == 'client')
+        {
+            $client = Client::create([
+                'user_id' => $user->id,
+            ]);
+        }
+        
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $data = [

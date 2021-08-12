@@ -17,6 +17,7 @@ class CreateTestsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('link');
+            $table->timestamps();
         });
     }
 

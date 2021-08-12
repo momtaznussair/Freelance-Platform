@@ -14,7 +14,7 @@ class AddDurationIdToJobsTable extends Migration
     public function up()
     {
         Schema::table('jobs', function (Blueprint $table) {
-                $table->unsignedBigInteger('duration_id');
+                $table->unsignedBigInteger('duration_id')->nullable();
             
                 $table->foreign('duration_id')->references('id')->on('durations');
             
