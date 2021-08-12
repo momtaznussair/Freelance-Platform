@@ -48,15 +48,10 @@ export class ContactInfoComponent implements OnInit {
 
   saveAccountData(){
 
-
-
     console.log(this.form.value);
     if(this.form.valid)
     {
-      this.userService.updateUser(this.user_id , this.form.value).subscribe(response=>{
-        console.log(response);
-        alert('updated successfully');
-      })
+      
     }
     else
     {
@@ -67,16 +62,16 @@ export class ContactInfoComponent implements OnInit {
   }
 
   saveLocationData(){
-    console.log(this.formLocation.value)
-    if(this.formLocation.valid)
-    {
-      alert('updated successfully');
-    }
-    else
-    {
-      this.isLogged = true;
-      console.log(this.isLogged);
-    }
+  //   console.log(this.formLocation.value)
+  //   if(this.formLocation.valid)
+  //   {
+  //     alert('updated successfully');
+  //   }
+  //   else
+  //   {
+  //     this.isLogged = true;
+  //     console.log(this.isLogged);
+  //   }
   }
 
 

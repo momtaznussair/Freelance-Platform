@@ -17,9 +17,13 @@ export class MyInfoComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   formLocation : FormGroup = new FormGroup({});
 
-  constructor(private formBuilder : FormBuilder  , private router : Router  , private apiService : ApiService) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router  , private userService : UserService) { }
+
+  user_id : any;
 
   ngOnInit(): void {
+
+    this.user_id = localStorage.getItem('user_id');
 
     //get countries
     // this.apiService.get("https://www.universal-tutorial.com/api/countries" , { header:{"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtb210YXpfbnVzc2FpckB5YWhvby5jb20iLCJhcGlfdG9rZW4iOiJZbUJNQnVfZUE5OVB5dlJ3bTFWRlNJWWZYQkZ0WjR6cmJ1UTMzakJrYUQ5N2d6OVk5eEJacVkzME5SQjZFU2J4OFU0In0sImV4cCI6MTYyNzkyNjAzNH0.BiJp1Za9pdFSZOLlKtU3ktU5TIILqTmpzbJS1CvkkSU","Accept": "application/json"}})
@@ -49,17 +53,14 @@ export class MyInfoComponent implements OnInit {
   isLogged : boolean = false;
 
   saveAccountData(){
+
     console.log(this.form.value);
     if(this.form.valid)
     {
-
-      alert('updated successfully');
-      // this.apiService.post(`${environment.apiUrl}/update` , this.form.getRawValue() , {header:{"token" : `Bearer ${localStorage.getItem('token')}`}}).subscribe(response=>{
-      //   alert ('updated successfully');
-      //   console.log(response);
-      // this.router.navigateByUrl('/client/info');
-      // },error=>console.error);
-
+      this.userService.updateUser(this.user_id , this.form.value).subscribe(response=>{
+        console.log(response);
+        // alert('updated successfully');
+      } , error => console.error);
     }
     else
     {
