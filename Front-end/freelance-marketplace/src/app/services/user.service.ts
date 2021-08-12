@@ -15,7 +15,7 @@ export class UserService {
   private regSocialUrl = `${environment.apiUrl}/register/socialite`
   private loginUrl = `${environment.apiUrl}/login`;
   private logoutUrl = `${environment.apiUrl}/logout`;
-  private update = `${environment.apiUrl}/user/update`;
+  private update = `${environment.apiUrl}/user`;
 
   constructor(private apiService : ApiService , private router : Router)
   {
@@ -83,9 +83,9 @@ export class UserService {
   }
 
 
-  updateUser(id : number , body : any)
+  updateUser(url : any , body : any)
   {
-    return this.apiService.post(`${this.update}/${id}` , body)
+    return this.apiService.post(`${this.update}/${url}` , body)
   }
 
 }

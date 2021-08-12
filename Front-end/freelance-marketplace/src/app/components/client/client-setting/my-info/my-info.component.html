@@ -68,7 +68,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
-                                <button type="submit" (click)="saveAccountData()" class="btn">Save</button>
+                                <button type="submit" (click)="saveAccountData()" data-bs-dismiss="modal" class="btn">Save</button>
                             </div>
                         </form>
                     </div>
@@ -166,12 +166,15 @@
                                     <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.phone_number.hasError('maxlength')"> You should write less than 250 characters</small>
                                 </div>
                                 <label class="small form-check-label mt-3 ">Country</label>
-                                <select name="country" class="form-select" name="country">
+                                <select name="country" formControlName="country" class="form-select" name="country">
                                   <option value="mans" selected>Egypt</option>
+                                  <option value="mans" selected>china</option>
+                                  <option value="Espania" selected>Espania</option>
                                 </select>
                                 <label class="small form-check-label mt-3">city</label>
-                                <select name="city" class="form-select mb-3">
-                                  <option value="1" selected>Mansoura</option>
+                                <select name="city" formControlName="city" class="form-select mb-3">
+                                  <option value="Mansoura" selected></option>
+                                  <option value="almahalla" selected>almahalla</option>
                                 </select>
                                 <label class="small form-check-label mt-3">street</label><br>
                                 <input formControlName="street" name="street" type=" text " class="form-control ">
@@ -222,35 +225,6 @@
 </div>
 
 <pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
