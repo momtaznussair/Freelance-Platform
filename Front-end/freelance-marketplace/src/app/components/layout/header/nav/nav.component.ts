@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+  x='search';
   constructor(private router : Router) { }
 
   ngOnInit(): void {
@@ -22,10 +22,13 @@ export class NavComponent implements OnInit {
   freelancer(){
     // put the route freelancer =>/user
     // this.router.navigateByUrl("/user");
+    this.x="search in freelancer";
   }
   jobs(){
      // put the route jobs =>/user
     // this.router.navigateByUrl("/user");
+    this.x="search in jobs";
+
   }
 }
 
