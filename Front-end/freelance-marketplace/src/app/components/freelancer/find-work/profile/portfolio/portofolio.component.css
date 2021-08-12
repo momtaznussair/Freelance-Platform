@@ -1,0 +1,20 @@
+.drag-drop{
+  border: .125rem dotted  var(--mc);
+  height: 5rem;
+}
+
+.drag-drop span{
+  color: var(--tc);
+}
+
+.drag-drop span:hover{
+  cursor: pointer;
+  text-decoration: underline ;
+}
+#one{
+  color: var(--mc);
+}
+#two{
+  background-color: var(--mc);
+}
+

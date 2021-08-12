@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,25 +9,44 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   x='search';
-  constructor(private router : Router) { }
+  // constructor(private router : Router) { }
+
+  isUserLogged : boolean = false;
+
+  constructor(private router : Router , private userService : UserService) {}
 
   ngOnInit(): void {
+
+    // this.userService.getLoggedStatus().subscribe(res=>{
+    //   console.log(res);
+    //   this.isUserLogged = res;
+    // })
+
+    if(this.userService.isLogged()){
+      this.isUserLogged = true;
+    }
   }
 
   signUp(){
     this.router.navigateByUrl("/user/signup/main");
   }
+
   login(){
     this.router.navigateByUrl("/user");
   }
-  freelancer(){
-    // put the route freelancer =>/user
-    // this.router.navigateByUrl("/user");
-    this.x="search in freelancer";
+
+  logout(){
+    this.userService.logout();
   }
+
+  freelancer(){
+ 
+    this.x="search in freelancer";
+    this.router.navigateByUrl("/freelancer");
+  }
+
   jobs(){
-     // put the route jobs =>/user
-    // this.router.navigateByUrl("/user");
+   
     this.x="search in jobs";
 
   }

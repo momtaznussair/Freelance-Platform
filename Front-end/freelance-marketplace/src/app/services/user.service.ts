@@ -15,6 +15,7 @@ export class UserService {
   private regSocialUrl = `${environment.apiUrl}/register/socialite`
   private loginUrl = `${environment.apiUrl}/login`;
   private logoutUrl = `${environment.apiUrl}/logout`;
+  private update = `${environment.apiUrl}/user`;
 
   constructor(private apiService : ApiService , private router : Router)
   {
@@ -34,19 +35,20 @@ export class UserService {
 
   login(body : any)
   {
+    this.logged.next(true);
     return this.apiService.post(this.loginUrl, body );
   }//end of loginUser
 
   logout()
   {
     localStorage.clear();
-    this.logged.next(false);
     this.router.navigateByUrl('/user')
+    this.setLoggedStatus(false);
   }//end of logout
 
   setLoggedStatus(status : boolean)
   {
-    this.logged.next(status)
+    return this.logged.next(status);
   }
 
   getLoggedStatus()
@@ -78,6 +80,12 @@ export class UserService {
     const clientType = localStorage.getItem('clientType');
     if(!clientType) return false;
     return true;
+  }
+
+
+  updateUser(url : any , body : any)
+  {
+    return this.apiService.post(`${this.update}/${url}` , body)
   }
 
 }
