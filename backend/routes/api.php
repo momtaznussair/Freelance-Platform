@@ -222,3 +222,4 @@ Route::post('/register/socialite', [SocialiteAuthController::class, 'registerOrL
 
 Route::post('/user/update/{id}' , [AuthController::class,'updateUserEmailAndUsername']);
 Route::post('/user/updateLocation/{id}' , [AuthController::class,'updateUserPhoneAndLocation']);
+Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPassword']);

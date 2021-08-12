@@ -198,4 +198,35 @@ class AuthController extends Controller
 
         return  $this->UnknownError();
     }
+
+    public function updateUserPassword(Request $request ,$id){
+        $user = User::find($id);
+
+        if(!$user){
+            return $this->NotFoundError();
+        }
+
+        if(!Hash::check($request->password, $user->password)){
+            return $this->apiResponse(null , 'Password Not Matches' , 200);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'new_password' => ['required', 'string', 'min:8','max:255', 'confirmed']
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        if($user){
+            return $this->apiResponse($user,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
 }
