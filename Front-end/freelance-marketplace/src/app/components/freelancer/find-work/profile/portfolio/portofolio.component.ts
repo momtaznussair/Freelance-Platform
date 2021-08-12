@@ -24,8 +24,8 @@ export class PortofolioComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       title : ['' , [Validators.required]],
-      overview : ['' , [ Validators.required]],
-      img_link :['', [Validators.required]]
+      description : ['' , [ Validators.required]],
+      image :['', [Validators.required]]
     })
 
   }
@@ -43,8 +43,11 @@ export class PortofolioComponent implements OnInit {
       },error=>{console.error}
       );
 
-      console.log(this.form.controls.img_link.value)
-      this._portofolio.postImage({image_path:this.form.controls.img_link.value, portfolio_id:2}).subscribe(res=>{
+      // this.portfolio_id = localStorage.getItem('portofolio_id');
+      // this.portfolio_id = JSON.parse(this.portfolio_id);
+
+      console.log(this.form.controls.image.value)
+      this._portofolio.postImage({image:this.form.controls.image.value, portfolio_id:this.portofolioData.data.id}).subscribe(res=>{
         console.log(res);
         this.router.navigateByUrl("/freelancer/profile");
       },error=>{console.error}

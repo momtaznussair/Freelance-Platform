@@ -8,6 +8,7 @@ import { PortofolioService } from 'src/app/services/portofolio.service';
 })
 export class ProfileComponent implements OnInit {
 
+  isDataGet: boolean =false;
   constructor(private portofolio:PortofolioService) { }
   portofolioData:any;
   ngOnInit(): void {
@@ -16,6 +17,9 @@ export class ProfileComponent implements OnInit {
 
       this.portofolioData = res;
       console.log(this.portofolioData.data);
+      this.isDataGet = true;
+      localStorage.setItem('portofolio_id',this.portofolioData.data.id);
+      this.portofolioData.data.id
     })
 
   }
