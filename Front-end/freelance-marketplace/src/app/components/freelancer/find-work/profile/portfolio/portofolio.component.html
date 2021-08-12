@@ -27,12 +27,12 @@
                             </p>
                             <div class="drag-drop">
                                 <p class=" text-center mt-4">
-                                    <input type="file" name="portfolio_image" formControlName="portfolio_image" multiple>
+                                    <input type="file" name="image" formControlName="image" multiple>
                                 </p>
 
                             </div>
-                            <div *ngIf="form.controls.portfolio_image.invalid && isLogged || (form.controls.portfolio_image.dirty || form.controls.portfolio_image.touched)">
-                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.portfolio_image.hasError('required')">This field is required</small>
+                            <div *ngIf="form.controls.image.invalid && isLogged || (form.controls.image.dirty || form.controls.image.touched)">
+                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.image.hasError('required')">This field is required</small>
                             </div>
 
                             <div class="description card-haeder mt-3">

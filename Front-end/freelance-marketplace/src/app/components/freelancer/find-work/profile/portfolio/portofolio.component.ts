@@ -28,9 +28,10 @@ export class PortofolioComponent implements OnInit {
     this.portofolioData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
+      freelancer_id : [this.freelancer_id , [Validators.required]],
       title : ['' , [Validators.required , Validators.minLength(3)]],
       description : ['' , [ Validators.required , Validators.minLength(10)]],
-      portfolio_image :['', [Validators.required]]
+      image :['', [Validators.required]]
     })
 
   }
@@ -40,26 +41,13 @@ export class PortofolioComponent implements OnInit {
     save(){
       console.log(this.form.value);
       console.log(this.freelancer_id)
-      console.log({freelancer_id : this.freelancer_id ,title : this.form.controls.title.value , description : this.form.controls.description.value , image : this.form.controls.portfolio_image.value})
         if(this.form.valid)
         {
           this.form.value;
-          this._portofolio.post({freelancer_id : this.freelancer_id ,title : this.form.controls.title.value , description : this.form.controls.description.value , image : this.form.controls.portfolio_image.value}).subscribe(res=>{
+          this._portofolio.post(this.form.value).subscribe(res=>{
             console.log(res);
             this.responseData = res;
-            this.portfolio_id = this.responseData.data.id;
-            console.log(this.portfolio_id);
-              if(this.responseData.data != null)
-              {
-                this._portofolio.postImage({portfolio_id : this.portfolio_id , image_path:this.form.controls.portfolio_image.value}).subscribe(res=>{
-                  console.log(res);
-                  this.router.navigateByUrl("/freelancer/profile");
-                },error => console.error);
-              }
-          },error=>{
-            console.log(error);
-          });
-
+          },error=> console.error);
 
         }
         else
