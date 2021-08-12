@@ -10,15 +10,17 @@ import { GetPaidComponent } from './get-paid/get-paid.component';
 import { PassowrdSecurityComponent } from './passowrd-security/passowrd-security.component';
 import { CreatClientAccountComponent } from './contact-info/creat-client-account/creat-client-account.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 const routes : Routes = [
-  {path : 'settings/deposit-method' , component :BillingMethodComponent},
-  {path : 'settings/membership' , component :MembershipComponent},
-  {path : 'settings/info' , component : ContactInfoComponent},
-  {path : 'settings/tax-info' , component : TaxInformationComponent}, 
-  {path : 'settings/get-paid' , component : GetPaidComponent},
-  {path : 'settings/security' , component : PassowrdSecurityComponent},
+  {path : 'deposit-method' , component :BillingMethodComponent},
+  {path : 'membership' , component :MembershipComponent},
+  {path : 'info' , component : ContactInfoComponent},
+  {path : 'tax-info' , component : TaxInformationComponent},
+  {path : 'get-paid' , component : GetPaidComponent},
+  {path : 'security' , component : PassowrdSecurityComponent},
   {path : 'client-account' , component : CreatClientAccountComponent},
+  {path : '' , component : ContactInfoComponent},
 ]
 
 
@@ -34,7 +36,7 @@ const routes : Routes = [
     CreatClientAccountComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),ReactiveFormsModule,FormsModule
+    CommonModule,RouterModule.forChild(routes),ReactiveFormsModule,FormsModule,SharedModule
   ],
   exports : [
     SidebarComponent
