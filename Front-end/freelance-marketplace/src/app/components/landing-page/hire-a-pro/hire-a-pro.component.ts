@@ -21,6 +21,7 @@ export class HireAProComponent implements OnInit {
   ngOnInit(): void {
     this.cat.getCategories(`categories`).subscribe(response=>{
       this.categories=response['data'] as Category[];
+      console.log(response);
     },error=>{console.error('wrong')}
     );
 
