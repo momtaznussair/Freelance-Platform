@@ -4,20 +4,16 @@
     border-radius: 20px;
 }
 
-.container .text p {
-    font-size: 18px !important;
-}
 
 .container .text h1 {
     font-size: 64px !important;
-    color: var(--mc);
-    /* color: var(--sc); */
+    color: var(--bg);
 }
 
 .container .links a {
     border-radius: 20px;
     text-decoration: none;
-    background-color: var(--sc);
+    background-color: var(--mc);
     color: var(--bg);
     cursor: pointer;
     -webkit-transition: all .3s ease-in-out;
@@ -26,7 +22,7 @@
 
 .container .links a:hover {
     background-color: var(--bg);
-    color: var(--mc);
+    color: black;
 }
 
 @media (max-width: 991.99px) {
