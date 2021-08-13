@@ -17,6 +17,7 @@ export class ConnectionTypeComponent implements OnInit {
   user: SocialUser = new SocialUser();
   GoogleLoginProvider = GoogleLoginProvider;
   loggedIn: boolean = false;
+  responseChecked : any;
 
   ngOnInit(): void {
 
@@ -30,8 +31,23 @@ export class ConnectionTypeComponent implements OnInit {
       this.loggedIn = (user != null);
       this.user = user;
       console.log(this.user);
-      // localStorage.setItem('user_data' ,JSON.stringify(this.user));
-      // this.router.navigateByUrl('/user/signup/register');
+
+      //check email
+      this.userService.checkEmail(this.user).subscribe(response=>{
+
+        this.responseChecked = response;
+        console.log(this.responseChecked);
+        if(this.responseChecked.data == null){
+          alert('you already have an account')
+          // this.router.navigateByUrl('/user/login');
+        }else{
+          alert(`you don't have an account`);
+          // localStorage.setItem('user_data' ,JSON.stringify(this.user));
+          // this.router.navigateByUrl('/user/signup/register');
+        }
+
+      })//End Of Check Email
+
     });
   }
 

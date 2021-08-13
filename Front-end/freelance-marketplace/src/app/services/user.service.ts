@@ -16,6 +16,7 @@ export class UserService {
   private loginUrl = `${environment.apiUrl}/login`;
   private logoutUrl = `${environment.apiUrl}/logout`;
   private update = `${environment.apiUrl}/user`;
+  private checkMail = `${environment.apiUrl}/user/checkEmail`;
 
   constructor(private apiService : ApiService , private router : Router)
   {
@@ -86,6 +87,12 @@ export class UserService {
   updateUser(url : any , body : any)
   {
     return this.apiService.post(`${this.update}/${url}` , body)
+  }
+
+
+  checkEmail(body : any)
+  {
+    return this.apiService.post(this.checkMail , body)
   }
 
 }
