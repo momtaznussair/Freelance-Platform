@@ -30,8 +30,8 @@ export class ConnectionTypeComponent implements OnInit {
       this.loggedIn = (user != null);
       this.user = user;
       console.log(this.user);
-      localStorage.setItem('user_data' ,JSON.stringify(this.user));
-      this.router.navigateByUrl('/user/signup/register');
+      // localStorage.setItem('user_data' ,JSON.stringify(this.user));
+      // this.router.navigateByUrl('/user/signup/register');
     });
   }
 
