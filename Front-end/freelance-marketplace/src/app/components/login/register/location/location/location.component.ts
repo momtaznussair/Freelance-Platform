@@ -11,7 +11,6 @@ import { ApiService } from 'src/app/services/api.service';
 import { countries } from 'src/app/models/location/countries';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
@@ -64,7 +63,10 @@ export class LocationComponent implements OnInit {
       this.arrayOfCountries =res
       this.isLocationGet = true;
     // console.log(this.arrayOfCountries[0].country_name)
-  });
+  },error=>
+  {
+    
+});
   //////////////////////////////////
 
 
