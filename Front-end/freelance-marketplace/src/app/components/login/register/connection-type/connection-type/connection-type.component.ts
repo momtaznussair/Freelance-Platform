@@ -38,12 +38,34 @@ export class ConnectionTypeComponent implements OnInit {
         this.responseChecked = response;
         console.log(this.responseChecked);
         if(this.responseChecked.data != false){
-          alert('you already have an account')
-          // this.router.navigateByUrl('/user/login');
+          alert('you already have an account');
+          localStorage.setItem('token' , this.responseChecked.data.token);
+          localStorage.setItem('user_data' , JSON.stringify(this.responseChecked.data.user));
+          localStorage.setItem('user_id' , this.responseChecked.data.user.user_id);
+          
+          if(this.responseChecked.data.user.client_id)
+          {
+            localStorage.setItem('client_id' , this.responseChecked.data.user.client_id);
+          }else{
+            localStorage.setItem('freelancer_id' , this.responseChecked.data.user.freelancer_id);
+          }
+
+          //redirect user
+          if(this.responseChecked.data.user.client_id != null)
+          {
+            localStorage.setItem('clientType' , 'client');
+            this.router.navigateByUrl('/client/main');
+          }
+          else if(this.responseChecked.data.user.freelancer_id != null)
+          {
+            localStorage.setItem('freelancerType' , 'freelancer');
+            this.router.navigateByUrl('/freelancer');
+          }
+
         }else{
           alert(`you don't have an account`);
-          // localStorage.setItem('user_data' ,JSON.stringify(this.user));
-          // this.router.navigateByUrl('/user/signup/register');
+          localStorage.setItem('user_data' ,JSON.stringify(this.user));
+          this.router.navigateByUrl('/user/signup/register');
         }
 
       })//End Of Check Email
