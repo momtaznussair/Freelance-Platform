@@ -23,7 +23,7 @@
 
                             </div>
                             <p class="fw-bold h3" id="one">
-                                Image
+                                Images
                             </p>
                             <div class="drag-drop">
                                 <p class=" text-center mt-4">
@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="description card-haeder mt-3">
-                                <p class="h3 " id="one">Overview</p>
+                                <p class="h3 " id="one">Description</p>
                                 <textarea formControlName="description" name="description" class="form-control" placeholder="type an description about yourself" value=""></textarea>
                                 <div *ngIf="form.controls.description.invalid && isLogged || (form.controls.description.dirty || form.controls.description.touched)">
                                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.description.hasError('required')">This field is required</small>
