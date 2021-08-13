@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import {JobPostsService} from '../../../../services/job-posts.service'
 import { HttpParams } from '@angular/common/http';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
@@ -14,9 +13,12 @@ import { JobService } from 'src/app/services/job.service';
 export class FilterJobsComponent implements OnInit {
   r:any;
   query:any;
-  shape1='solid';
-  shape2='solid';
-  shape3='solid';
+    
+  shape0='fa-chevron-down';
+  shape1='fa-chevron-down';
+  shape2='fa-chevron-down';
+  shape3='fa-chevron-down';
+  shape4='fa-chevron-down';
   params= new Set();
   count = 0;
   currentIndex:number=0;
@@ -46,7 +48,7 @@ export class FilterJobsComponent implements OnInit {
     console.log(this.jobPost)
       },error=>console.error);
       ///////////
-    this.catService .getCategories('http://127.0.0.1:8000/api/categories').subscribe(response=>{
+    this.catService .getCategories('categories').subscribe(response=>{
       this.cat=response ['data'] as Category[];
       console.log(this.cat)
     }
@@ -56,7 +58,7 @@ export class FilterJobsComponent implements OnInit {
 
   }
 
-  addPayment(e:any){
+  addParams(e:any){
     //  console.log(e.target.tagName)
       // console.log(e.target.innerText)
       if(e.target.checked){
@@ -84,25 +86,40 @@ export class FilterJobsComponent implements OnInit {
   /*-------------------------
      change icon methods 
   -------------------------- */ 
-  changeCatgoryIcon(){
-    if(this.shape1=='solid'){
-      this.shape1='chevron-up'
+  changeCategoryIcon(){
+    if(this.shape0=='fa-chevron-down'){
+      this.shape0='fa-chevron-up'
     }else{
-      this.shape1='solid'
+      this.shape0='fa-chevron-down'
+    }
+  }
+  changenoOfPrposalsIcon(){
+    if(this.shape1=='fa-chevron-down'){
+      this.shape1='fa-chevron-up'
+    }else{
+      this.shape2='fa-chevron-down'
     }
   }
   changeHourlyRateIcon(){
- if(this.shape2=='solid'){
-   this.shape2='chevron-up'
- }else{
-   this.shape2='solid'
- }
+    if(this.shape2=='fa-chevron-down'){
+      this.shape2='fa-chevron-up'
+    }else{
+      this.shape2='fa-chevron-down'
+    }
   }
   changeSkillsIcon(){
-    if(this.shape3=='solid'){
-      this.shape3='chevron-up'
+    if(this.shape3=='fa-chevron-down'){
+      this.shape3='fa-chevron-up'
     }else{
-      this.shape3='solid'
+      this.shape3='fa-chevron-down'
+    }
+  
+  }
+  changeExperienceIcon(){
+    if(this.shape4=='fa-chevron-down'){
+      this.shape4='fa-chevron-up'
+    }else{
+      this.shape4='fa-chevron-down'
     }
   
   }
