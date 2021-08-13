@@ -68,7 +68,7 @@ jobPost:Job=new Job()
     //     });
    
 
-    this.job.get().subscribe(res=>{
+    this.job.getJobs().subscribe(res=>{
 
       console.log(res)
 
