@@ -68,11 +68,11 @@ jobPost:Job=new Job()
     //     });
    
 
-    this.job.get().subscribe(res=>{
+    // this.job.get().subscribe(res=>{
 
-      console.log(res)
+    //   console.log(res)
 
-    },error=>console.log)
+    // },error=>console.log)
     
   }
 
