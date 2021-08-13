@@ -226,4 +226,4 @@ Route::post('/user/updateLocation/{id}' , [AuthController::class,'updateUserPhon
 Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPassword']);
 
 
-Route::post('user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);
+Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);

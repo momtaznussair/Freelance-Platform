@@ -37,14 +37,14 @@ export class ConnectionTypeComponent implements OnInit {
 
         this.responseChecked = response;
         console.log(this.responseChecked);
-        if(this.responseChecked.data == null){
-          alert('you already have an account')
-          // this.router.navigateByUrl('/user/login');
-        }else{
-          alert(`you don't have an account`);
-          // localStorage.setItem('user_data' ,JSON.stringify(this.user));
-          // this.router.navigateByUrl('/user/signup/register');
-        }
+        // if(this.responseChecked.data == null){
+        //   alert('you already have an account')
+        //   // this.router.navigateByUrl('/user/login');
+        // }else{
+        //   alert(`you don't have an account`);
+        //   // localStorage.setItem('user_data' ,JSON.stringify(this.user));
+        //   // this.router.navigateByUrl('/user/signup/register');
+        // }
 
       })//End Of Check Email
 

@@ -72,7 +72,10 @@ class SocialiteAuthController extends Controller
     public function checkEmail(Request $request){
         $user = User::where('email','=',$request->email)->first();
         
-        if($user){
+        if(!$user){
+            return $this->apiResponse(false,'Welcome new user',200);
+        }
+        else{
             $token = $user->createToken('auth_token')->plainTextToken;
 
             $data = [
@@ -81,9 +84,6 @@ class SocialiteAuthController extends Controller
             ];
 
             return $this->apiResponse($data);
-        }
-        else{
-            return $this->apiResponse(null,'Email Not exists in DB');
         }
     }
 }
