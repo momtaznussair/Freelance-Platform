@@ -36,7 +36,7 @@
 
                         </div>
                         <ul class="menubox card list-group" *ngIf="inpt.value">
-                            <div class="psearch" *ngFor="let item of skills |searchFilter: query">
+                            <div class="psearch" *ngFor="let item of skills |searchFilter:query">
                                 <a class="list-group-item list-group-item-light" #a (click)="addSkillFromDropDown(a,inpt)"> {{item.name}}</a>
                             </div>
                         </ul>

@@ -10,14 +10,13 @@ import { FormsModule } from '@angular/forms';
 //start of import social login modules
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {GoogleLoginProvider , FacebookLoginProvider} from 'angularx-social-login';
-import { FilterByPipe } from './pipes/filter-by.pipe';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterByPipe,
 
 
 

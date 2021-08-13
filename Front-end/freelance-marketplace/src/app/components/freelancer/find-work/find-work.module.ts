@@ -13,6 +13,7 @@ import { SubmitProposalComponent } from './find-work/job-details/submit-proposal
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PortofolioComponent } from './profile/portfolio/portofolio.component';
+// import { FilterByPipe } from 'src/app/pipes/filter-by.pipe';
 
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},

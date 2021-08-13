@@ -278,7 +278,9 @@
               
 
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
-                <div class="card-body"  *ngFor="let post of jobPost | searchFilter:query |paginate : {
+                <div class="card-body"  *ngFor="let post of jobPost  
+                | searchFilter:query
+                |paginate : {
                     itemsPerPage: 5,
                     currentPage: page,
                     totalItems: count
