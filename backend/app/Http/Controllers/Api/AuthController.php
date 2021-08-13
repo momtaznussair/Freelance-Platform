@@ -70,8 +70,11 @@ class AuthController extends Controller
             $user->img_link = 'uploads/users/' . $user_image_new_name;
 
             // $path = Storage::putFile('users', $request->file('img_link'));
+            // $user->img_link = $request->$path;
+
             // Storage::putFile('users', $request->file('img_link'));
             // $user->img_link = $request->img_link;
+            
             // $user->save();
         }
         $user->save();
