@@ -39,7 +39,7 @@ class PortfolioController extends Controller
         ]);
 
         if($validate->fails()){
-            return  $this->apiResponse(null,$validate->errors(),200);
+            return  $this->apiResponse(null,$validate->errors(),422);
         }
 
         $portfolio = new Portfolio();
