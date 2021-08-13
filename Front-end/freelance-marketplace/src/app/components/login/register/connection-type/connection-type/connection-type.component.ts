@@ -38,11 +38,9 @@ export class ConnectionTypeComponent implements OnInit {
         this.responseChecked = response;
         console.log(this.responseChecked);
         if(this.responseChecked.data != false){
-          alert('you already have an account');
           localStorage.setItem('token' , this.responseChecked.data.token);
           localStorage.setItem('user_data' , JSON.stringify(this.responseChecked.data.user));
           localStorage.setItem('user_id' , this.responseChecked.data.user.user_id);
-          // console.log(this.responseChecked.data.user.user_id);
           if(this.responseChecked.data.user.client_id)
           {
             localStorage.setItem('client_id' , this.responseChecked.data.user.client_id);
@@ -63,7 +61,6 @@ export class ConnectionTypeComponent implements OnInit {
           }
 
         }else{
-          alert(`you don't have an account`);
           localStorage.setItem('user_data' ,JSON.stringify(this.user));
           this.router.navigateByUrl('/user/signup/register');
         }
