@@ -40,46 +40,50 @@ class SocialiteAuthController extends Controller
         // dd($user);
     }
 
-    protected function registerOrLoginUser(Request $request){
+    public function registerOrLoginUser(Request $request){
         $data = $request;
-        $user = User::where('email','=',$data->email)->first();
+        // $user = User::where('email','=',$data->email)->first();
 
-        if (!$user){
-            $user = new User();
-            $user->name = $data->name;
-            $user->email = $data->email;
-            $user->password = Hash::make("hgxv2Sm/g5F3qLk");
-            $user->auth_id = $data->id;
-            $user->first_name = $data->firstName;
-            $user->last_name = $data->lastName;
-            $user->country = $data->country;
-            $user->city = $data->city;
-            $user->street = $data->street_address;
-            $user->zip_code = $data->zip_code;
-            $user->type = $data->type;
-            $user->save();
-        }
-
-        // $client_id ='';
-        // $freelancer_id = '';
-        // if($user->type == 'client'){
-        //     $client_id = $user->client->id;
-        // }
-        // else{
-        //     $freelancer_id = $user->freelancer->id;
-        // }
+        $user = new User();
+        $user->name = $data->name;
+        $user->email = $data->email;
+        $user->password = Hash::make("hgxv2Sm/g5F3qLk");
+        $user->auth_id = $data->id;
+        $user->first_name = $data->firstName;
+        $user->last_name = $data->lastName;
+        $user->country = $data->country;
+        $user->city = $data->city;
+        $user->street = $data->street_address;
+        $user->zip_code = $data->zip_code;
+        $user->type = $data->type;
+        $user->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $data = [
             'token' => $token,
             'user' => new UserResource($user),
-            // 'client_id' => $client_id,
-            // 'freelancer_id' => $freelancer_id
         ];
 
         return $this->apiResponse($data);
 
     }
 
+    public function checkEmail(Request $request){
+        $user = User::where('email','=',$request->email)->first();
+        
+        if($user){
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            $data = [
+                'token' => $token,
+                'user' => new UserResource($user),
+            ];
+
+            return $this->apiResponse($data);
+        }
+        else{
+            return $this->apiResponse(null,'Email Not exists in DB');
+        }
+    }
 }

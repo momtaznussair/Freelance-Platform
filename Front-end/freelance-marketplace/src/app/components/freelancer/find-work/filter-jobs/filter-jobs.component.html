@@ -34,11 +34,11 @@
 
                     </div>
                 </div>
-            </div>
+           
             <!--------------------------------------------------------Hourly rate----------------------------------------------------------->
             <button class="alert alert-light my-3 " (click)=" changeHourlyRateIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                  <span >
-                   <strong>Hour Rate</strong>
+                   <strong>Payment</strong>
                 <i class=" fa fa-{{shape2}} fa-chevron-down"></i>
               </span>
             </button>
@@ -65,7 +65,7 @@
             <!-------------------------------------------------------------------------------->
             <button class=" alert alert-light " (click)="changeSkillsIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
                 <span >
-                    <strong>skills</strong>
+                    <strong>Experience level</strong>
                  <i class=" fa fa-{{shape3}} fa-chevron-down"></i>
                </span>
              </button>
@@ -88,18 +88,16 @@
                 </div>
             </div>
         </div>
-
+    
         <!-- End filter side -->
 
-        <!----------------------------------------------- Start Main  ------------------------------------->
+          <!-- Start Main  -->
 
-        <div class="col-md-8 card py-3 ">
-
-            <!-----------------------------------------------------------------test dropdown--------------------------------------------->
+          <div class="col-md-8 card py-3 ">
 
             <div class="input-group mb-md-3 d-sm-none d-md-flex">
                 <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs" [(ngModel)]="query">
-                <a class="input-group-text">
+                <a  class="input-group-text" (click)="search()">
                     <i class="fas fa-search"></i>
                 </a>
             </div>
@@ -107,8 +105,8 @@
 
             <!-- Button trigger modal -->
             <a href="#" class="d-sm-none d-md-flex" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Advanced Search
-                </a>
+                Advanced Search
+            </a>
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -165,23 +163,24 @@
                     </div>
                 </h5>
                 <!---//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!-------------------------------------------------------------------start paginaion------------------------------------->
+              
 
-                <!----/////////////////////////////////////////////end card /////////////////////////////////////////////////////////////////-->
-                <div class="card-body" *ngFor="let post of POSTS |searchFilter: 'title': 'eum et est occaecat'
-                    | paginate : {
-                        itemsPerPage: 5,
-                        currentPage: page,
-                        totalItems: count
-                      };
-                let i = index" [class.active]="i == currentIndex">
+<!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
+                <div class="card-body" *ngFor="let post of POSTS | paginate : {
+                    itemsPerPage: 2,
+                    currentPage: page,
+                    totalItems: count
+                  };
+            let i = index" [class.active]="i == currentIndex">
                     <!-- Job Title -->
                     <div class="header d-flex">
                         <a routerLink="#"> {{post.title}}</a>
                         <span class="ms-auto">
-                                <i class="far fa-thumbs-down fa-2x mx-md-2"></i>
-                                <i class="far fa-heart fa-2x mx-2 d-none"></i>
-                                <i class="fas fa-heart fa-2x mx-2"></i>
-                            </span>
+                            <i class="far fa-thumbs-down fa-2x mx-md-2"></i>
+                            <i class="far fa-heart fa-2x mx-2 d-none"></i>
+                            <i class="fas fa-heart fa-2x mx-2"></i>
+                        </span>
                         <br>
                     </div>
 
@@ -209,27 +208,27 @@
                     <div class="more-info">
                         <!-- start Verified -->
                         <span class="unverified">
-                                <i class="far fa-check-circle me-md-2"></i> <span class="fw-bold">Payment unverified</span>
+                            <i class="far fa-check-circle me-md-2"></i> <span class="fw-bold">Payment unverified</span>
                         </span>
                         <span class="verified d-none">
-                                <i class="fas fa-check-circle mee-md-2"></i> <span class="fw-bold">Payment verified</span>
+                            <i class="fas fa-check-circle mee-md-2"></i> <span class="fw-bold">Payment verified</span>
                         </span>
                         <!-- End Verified -->
 
                         <!-- Rating -->
                         <span class="payment-rating mx-md-2">
-                                rating with stars
-                            </span>
+                            rating with stars
+                        </span>
 
                         <!-- Money spent -->
                         <span class="spent mx-md-2">
-                                <span class="money-spent fw-bold">$10</span> spent
+                            <span class="money-spent fw-bold">$10</span> spent
                         </span>
 
                         <!-- Location -->
                         <span class="location ms-md-2">
-                                <i class="fas fa-map-marker-alt me-2"></i>
-                                <span class="fw-bold">United state</span>
+                            <i class="fas fa-map-marker-alt me-2"></i>
+                            <span class="fw-bold">United state</span>
                         </span>
                     </div>
 
@@ -238,12 +237,7 @@
 
             </div>
         </div>
-        <!------------------------------------------------------- End main ------------------------------------------------>
 
-
-    </div>
-</div>
-<!-- </div> -->
 <!---------------------------------------------------------------- pagination controls------------------------------------------------------->
 <div class="container">
 
