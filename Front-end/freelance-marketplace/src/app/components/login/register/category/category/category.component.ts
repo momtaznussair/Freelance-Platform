@@ -35,7 +35,11 @@ export class CategoryComponent implements OnInit {
     Swal.fire('Welcome', 'Only some steps to finish your registrations', 'success')
   }
 
+  freelancer_id :any;
   ngOnInit(): void {
+
+    this.freelancer_id = localStorage.getItem('freelancer_id');
+    console.log(this.freelancer_id);
 
     this.successAlertNotification();
 
@@ -53,7 +57,6 @@ export class CategoryComponent implements OnInit {
 
     this.currentRegisterData = localStorage.getItem('user_data');
     this.currentRegisterData = JSON.parse(this.currentRegisterData);
-    console.log(this.currentRegisterData.id);
     this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response=>{
       this.isCategoryGet = true;
       // console.log(response);
