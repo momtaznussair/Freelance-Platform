@@ -65,7 +65,7 @@ export class SignupComponent implements OnInit {
       phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
       password_confirmation : ['' , [Validators.required ]],
-      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255) ]],
+      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
       type:['' , [Validators.required]],
     })
 
@@ -97,7 +97,7 @@ export class SignupComponent implements OnInit {
   isLogged : boolean = false;
 
   register(){
-
+    console.log(this.form.value)
     if(this.form.valid && this.password == this.password_confirmation)
     {
       console.log(this.form.value);
