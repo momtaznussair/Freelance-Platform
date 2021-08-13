@@ -39,6 +39,7 @@ class EducationController extends Controller
             'institute' => $request->institute,
             'area_of_study' => $request->area_of_study,
             'degree' => $request->degree,
+            'start_date' => $request->start_date,
             'graduation_date' => $request->graduation_date,
             'user_id' => $request->user_id,
         ]);
@@ -88,6 +89,7 @@ class EducationController extends Controller
             'institute' => 'required|string|min:3|max:255',
             'area_of_study' => 'required|string|min:2|max:255',
             'degree' => 'required|string|min:3|max:255',
+            'start_date' => 'required|date',
             'graduation_date' => 'required|date',
             'user_id' => 'required|exists:users,id'
         ];

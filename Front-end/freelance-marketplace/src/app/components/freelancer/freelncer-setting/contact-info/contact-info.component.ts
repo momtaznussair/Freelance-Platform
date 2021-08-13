@@ -1,9 +1,9 @@
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-contact-info',
@@ -16,9 +16,15 @@ export class ContactInfoComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   formLocation : FormGroup = new FormGroup({});
 
-  constructor(private formBuilder : FormBuilder  , private router : Router  , private apiService : ApiService) { }
+
+  user_id : any;
+
+  constructor(private formBuilder : FormBuilder  , private router : Router  , private userService : UserService) { }
   ngOnInit(): void {
-  
+
+    this.user_id = localStorage.getItem('user_id');
+    console.log(this.user_id);
+
     //validate email and name form
     this.form = this.formBuilder.group({
       email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
@@ -34,18 +40,18 @@ export class ContactInfoComponent implements OnInit {
       city : ['' , [Validators.required] ],
       street : ['' , [Validators.minLength(10) ,Validators.maxLength(255) , Validators.required] ],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15)]]
-    }) 
+    })
   }
 
-  
+
   isLogged : boolean = false;
 
   saveAccountData(){
+
     console.log(this.form.value);
     if(this.form.valid)
     {
-
-      alert('updated successfully');
+      
     }
     else
     {
@@ -56,16 +62,16 @@ export class ContactInfoComponent implements OnInit {
   }
 
   saveLocationData(){
-    console.log(this.formLocation.value)
-    if(this.formLocation.valid)
-    {
-      alert('updated successfully');
-    }
-    else
-    {
-      this.isLogged = true;
-      console.log(this.isLogged);
-    }
+  //   console.log(this.formLocation.value)
+  //   if(this.formLocation.valid)
+  //   {
+  //     alert('updated successfully');
+  //   }
+  //   else
+  //   {
+  //     this.isLogged = true;
+  //     console.log(this.isLogged);
+  //   }
   }
 
 

@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <!-- find a talent tab -->
-        <a class="navbar-brand" href="">Freelance</a>
+        <!-- <a class="navbar-brand" href="/freelancer/work/work">Freelance</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      </button> -->
+        <a class="navbar-brand" routerLink="/freelancer">Freelance</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -65,9 +68,13 @@
             <!-- end of search -->
 
             <!-- sign in / up -->
-            <div class="text-center sign-container">
-                <a class="mx-3 ms-md-4" href="/user" routerLinkActive="router-link-active" id="login">Log In</a>
-                <a type="button" href="/user/signup/register" class="btn rounded-pill sign-Up-Button">Sign Up</a>
+            <div class="text-center sign-container" *ngIf="!isUserLogged">
+                <a class="mx-3 ms-md-4" routerLinkActive="router-link-active" id="login" (click)="login()">Log In</a>
+                <a type="button" (click)="signUp()" class="btn rounded-pill sign-Up-Button">Sign Up</a>
+            </div>
+            <div class="text-center sign-container mx-2" *ngIf="isUserLogged">
+                <!-- <a class="mx-3 ms-md-4" routerLinkActive="router-link-active" id="login" (click)="login()">Log In</a> -->
+                <a type="button" (click)="logout()" class="btn rounded-pill sign-Up-Button">Logout</a>
             </div>
         </div>
     </div>

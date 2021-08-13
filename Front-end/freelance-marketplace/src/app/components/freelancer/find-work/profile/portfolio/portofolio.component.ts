@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Portofolio } from 'src/app/models/portofolio';
-import { PortofolioService } from 'src/app/services/portofolio.service';
+import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-portofolio',
@@ -17,15 +17,20 @@ export class PortofolioComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   portofolioData: any;
   portfolio:Portofolio[]=[];
-  constructor(private formBuilder : FormBuilder, private router : Router, private _portofolio:PortofolioService) { }
+  freelancer_id : any;
+  responseData : any;
+  portfolio_id : any;
+
+  constructor(private formBuilder : FormBuilder, private router : Router, private _portofolio:PortfolioService) { }
   ngOnInit(): void {
+    this.freelancer_id = localStorage.getItem('freelancer_id')
 
     this.portofolioData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
-      title : ['' , [Validators.required]],
-      description : ['' , [ Validators.required]],
-      image :['', [Validators.required]]
+      title : ['' , [Validators.required , Validators.minLength(3)]],
+      description : ['' , [ Validators.required , Validators.minLength(10)]],
+      portfolio_image :['', [Validators.required]]
     })
 
   }
@@ -33,31 +38,34 @@ export class PortofolioComponent implements OnInit {
   isLogged : boolean = false;
 
     save(){
-    if(this.form.valid)
-    {
-      this.portfolio= this.form.value;
-      console.log(this.portfolio);
+      console.log(this.form.value);
+      console.log(this.freelancer_id)
+      console.log({freelancer_id : this.freelancer_id ,title : this.form.controls.title.value , description : this.form.controls.description.value , image : this.form.controls.portfolio_image.value})
+        if(this.form.valid)
+        {
+          this.form.value;
+          this._portofolio.post({freelancer_id : this.freelancer_id ,title : this.form.controls.title.value , description : this.form.controls.description.value , image : this.form.controls.portfolio_image.value}).subscribe(res=>{
+            console.log(res);
+            this.responseData = res;
+            this.portfolio_id = this.responseData.data.id;
+            console.log(this.portfolio_id);
+              if(this.responseData.data != null)
+              {
+                this._portofolio.postImage({portfolio_id : this.portfolio_id , image_path:this.form.controls.portfolio_image.value}).subscribe(res=>{
+                  console.log(res);
+                  this.router.navigateByUrl("/freelancer/profile");
+                },error => console.error);
+              }
+          },error=>{
+            console.log(error);
+          });
 
-      this._portofolio.post(this.portfolio).subscribe(res=>{
-        console.log(res);
-      },error=>{console.error}
-      );
 
-      // this.portfolio_id = localStorage.getItem('portofolio_id');
-      // this.portfolio_id = JSON.parse(this.portfolio_id);
-
-      console.log(this.form.controls.image.value)
-      this._portofolio.postImage({image:this.form.controls.image.value, portfolio_id:this.portofolioData.data.id}).subscribe(res=>{
-        console.log(res);
-        this.router.navigateByUrl("/freelancer/profile");
-      },error=>{console.error}
-      );
-
-    }
-    else
-    {
-      this.isLogged = true;
-    }
+        }
+        else
+        {
+          this.isLogged = true;
+        }
 
   }
 

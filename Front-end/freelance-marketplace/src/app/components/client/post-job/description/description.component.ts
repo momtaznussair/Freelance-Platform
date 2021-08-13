@@ -3,9 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
-import { postjob } from 'src/app/services/post-job.service';
-
 
 @Component({
   selector: 'app-description',
@@ -17,16 +14,18 @@ export class DescriptionComponent implements OnInit {
 
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  , private router : Router ,private jobprocess:postjob) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router) { }
 
-  post_job : any;
+  currentJobProcess : any;
 
   ngOnInit(): void {
 
-    this.post_job = localStorage.getItem('postjob');
+    this.currentJobProcess = localStorage.getItem('job_process');
+    this.currentJobProcess = JSON.parse(this.currentJobProcess);
 
     this.form = this.formBuilder.group({
-      description : ['' , [ Validators.required , Validators.minLength(50) ]],
+      description : ['' , [ Validators.required , Validators.minLength(10) ]],
+      attachment : ['']
     })
   }
   isLogged : boolean = false;
@@ -35,12 +34,10 @@ next(){
   if(this.form.valid)
   {
 
-      this.jobprocess.postjobProcess.description=this.form.controls.description;
+    this.currentJobProcess.description = this.form.controls.description.value;
+    localStorage.setItem('job_process' ,JSON.stringify(this.currentJobProcess))
 
-        this.post_job = JSON.parse(this.post_job)
-      this.post_job.description= this.form.controls.description.value;
-      localStorage.setItem('postjob' ,JSON.stringify(this.jobprocess.postjobProcess));
-    this.router.navigateByUrl("/client/post-job/details");
+    this.router.navigateByUrl("/client/post-job/expertise");
   }
   else
   {

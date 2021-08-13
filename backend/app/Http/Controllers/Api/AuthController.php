@@ -9,10 +9,11 @@ use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use App\Models\Client;
+
 
 class AuthController extends Controller
 {
@@ -33,7 +34,8 @@ class AuthController extends Controller
             'country' => 'required',
             'city' => 'required',
             'street' => 'required',
-            'zip_code' => 'required'
+            'zip_code' => 'required',
+            'type' => 'required',
         ]);
 
 
@@ -45,7 +47,7 @@ class AuthController extends Controller
         $user = new User();
 
         if(!$token){
-            $user->username = $request->username;
+            $user->name = $request->username;
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
         }
@@ -58,6 +60,7 @@ class AuthController extends Controller
         $user->city = $request->city;
         $user->street = $request->street;
         $user->zip_code = $request->zip_code;
+        $user->type = $request->type;
 
         if ($request->hasFile('img_link'))
         {
@@ -65,14 +68,23 @@ class AuthController extends Controller
             $user->img_link = $path;
         }
         $user->save();
-
+        
         $token = $user->createToken('auth_token')->plainTextToken;
-
+        
         $data = [
-                'access_token' => $token,
-                'user' => $user,
+            'access_token' => $token,
+            'user' => new UserResource($user),
         ];
-
+        
+        // add as a  client
+        if ($request->type == 'client')
+        {
+            $client = new Client();
+            $client->user_id = $user->id;
+            $client->registration_date = now();
+            $client->save();
+        }
+        
         return $this->apiResponse($data,'User registered successfully');
     }
 
@@ -112,5 +124,109 @@ class AuthController extends Controller
     public function logout(Request $request){
         $request->user()->currentAccessToken()->delete();
         return $this->apiResponse(true,'User logout successfully',200);
+    }
+
+
+
+    public function updateUserEmailAndUsername(Request $request ,$id){
+        $user = User::find($id);
+
+        if(!$user){
+            return $this->NotFoundError();
+        }
+
+        if(!Hash::check($request->password, $user->password)){
+            return $this->apiResponse(null , 'Password Not Matches' , 200);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'username'=> ['required','string','max:255','min:3'],
+            'email' => ['required','email','unique:users,email','max:255'],
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $user->name = $request->username;
+        $user->email = $request->email;
+        
+        $user->save();
+
+        if($user){
+            return $this->apiResponse($user,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
+
+    public function updateUserPhoneAndLocation(Request $request ,$id){
+        $user = User::find($id);
+
+        if(!$user){
+            return $this->NotFoundError();
+        }
+
+        if(!Hash::check($request->password, $user->password)){
+            return $this->apiResponse(null , 'Password Not Matches' , 200);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'phone_number' => 'min:11|numeric',
+            'country' => 'required',
+            'city' => 'required',
+            'street' => 'required',
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $user->phone_number = $request->phone_number;
+        $user->country = $request->country;
+        $user->city = $request->city;
+        $user->street = $request->street;
+        $user->save();
+
+        if($user){
+            return $this->apiResponse($user,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
+
+    public function updateUserPassword(Request $request ,$id){
+        $user = User::find($id);
+
+        if(!$user){
+            return $this->NotFoundError();
+        }
+
+        if(!Hash::check($request->password, $user->password)){
+            return $this->apiResponse(null , 'Password Not Matches' , 200);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'new_password' => ['required', 'string', 'min:8','max:255', 'confirmed']
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        if($user){
+            return $this->apiResponse($user,'',201);
+        }
+
+        return  $this->UnknownError();
     }
 }

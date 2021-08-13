@@ -1,5 +1,6 @@
+import { ApiService } from 'src/app/services/api.service';
 import { Component, OnInit } from '@angular/core';
-import { PortofolioService } from 'src/app/services/portofolio.service';
+import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-profile',
@@ -9,19 +10,19 @@ import { PortofolioService } from 'src/app/services/portofolio.service';
 export class ProfileComponent implements OnInit {
 
   isDataGet: boolean =false;
-  constructor(private portofolio:PortofolioService) { }
-  portofolioData:any;
+
+  constructor(private portfolio:PortfolioService , private api : ApiService) { }
+  portfoliosData:any;
+
   ngOnInit(): void {
-    this.portofolio.get().subscribe(res=>{
+    this.portfolio.get().subscribe(res=>{
       console.log(res);
-
-      this.portofolioData = res;
-      console.log(this.portofolioData.data);
+      this.portfoliosData = res;
+      console.log(this.portfoliosData.data);
       this.isDataGet = true;
-      localStorage.setItem('portofolio_id',this.portofolioData.data.id);
-      this.portofolioData.data.id
     })
-
   }
 
+
 }
+

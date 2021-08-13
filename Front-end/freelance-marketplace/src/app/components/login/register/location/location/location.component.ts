@@ -1,12 +1,16 @@
-import { environment } from './../../../../../../environments/environment.prod';
-import { HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
+import { CountriesService } from 'src/app/services/countries.service';
+import { RespondedLocationToken } from 'src/app/models/location/responded-location-token';
+import { HttpHeaders } from '@angular/common/http';
+import { ApiService } from 'src/app/services/api.service';
+import { countries } from 'src/app/models/location/countries';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-location',
@@ -14,43 +18,30 @@ import Swal from 'sweetalert2';
   styleUrls: ['./location.component.css']
 })
 export class LocationComponent implements OnInit {
-
+  location:RespondedLocationToken=new RespondedLocationToken
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  ,private http : HttpClient , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder , private api:ApiService,private country:CountriesService , private router : Router , private userService : UserService) { }
 
-  test = {
-    username : 'ali',
-    first_name : 'ali',
-    last_name : 'mohamed',
-    email : 'alii@gmail.com',
-    password : '11111111',
-    password_confirmation : '11111111',
-    img_link : '',
-    phone_number : 11111111111,
-    country : 'any',
-    city : 'any',
-    street : 'any',
-    zip_code : 2222,
-    gender : 'male',
-    type : 'client'
-  }
-
-
-
+  placeholder="Start typing your city"
+ countries :countries []=[]
   // data comes from social sign up
   user_data : any = ''
-
+  queryloc:string=""
   // data comes from manually signUp
   data : any = '';
-
+  arrayOfCountries:any
+  arrayOfCities:any
+  arrayOfStates:any
   response_data : any;
+  isLocationGet : boolean = false;
+
   ngOnInit(): void {
 
     if(localStorage.getItem('user_data'))
     {
       this.user_data = localStorage.getItem('user_data');
       this.user_data = JSON.parse(this.user_data);
-      console.log(this.user_data.user_data);
+      console.log(this.user_data);
     }
     else if(localStorage.getItem('data'))
     {
@@ -66,21 +57,35 @@ export class LocationComponent implements OnInit {
       zip_code: ['' , [Validators.required ]]
 
     })
+   /*-------------------------------------------
+           using rest api for location
+    -------------------------------------------*/
+    this.country.getCountries().subscribe(res=>{
+      this.arrayOfCountries =res
+      this.isLocationGet = true;
+    // console.log(this.arrayOfCountries[0].country_name)
+  });
+  //////////////////////////////////
+
+
+
   }
+
 
     isLogged : boolean = false;
     next() {
+
       if(this.form.valid)
       {
 
         // check exists
         if(localStorage.getItem('user_data'))
         {
-          this.user_data.user_data.city = this.form.controls['city'].value;
-          this.user_data.user_data.country = this.form.controls['country'].value;
-          this.user_data.user_data.zip_code = this.form.controls['zip_code'].value;
-          this.user_data.user_data.street = this.form.controls['street'].value;
-          console.log(this.user_data.user_data)
+          this.user_data.city = this.form.controls['city'].value;
+          this.user_data.country = this.form.controls['country'].value;
+          this.user_data.zip_code = this.form.controls['zip_code'].value;
+          this.user_data.street = this.form.controls['street'].value;
+          console.log(this.user_data)
         }
         else if(localStorage.getItem('data'))
         {
@@ -96,27 +101,47 @@ export class LocationComponent implements OnInit {
         if(this.user_data.response)
         {
           this.alertConfirmation();
-          console.log(this.user_data.user_data);
-
-          localStorage.setItem('token' , this.response_data.data.access_token);
-          localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
-          localStorage.setItem('user_id' , this.response_data.data.user.id);
-          localStorage.setItem('success_msg' , this.response_data.msg);
-          localStorage.setItem('logged_status' , this.response_data.status);
+          console.log(this.user_data);
 
           //send request
-          this.userService.register(this.user_data.user_data).subscribe(response=>{
+          this.userService.registerWithSocialite(this.user_data).subscribe(response=>{
 
-            console.log(response);
-            if(this.user_data.type == 'client')
+            this.response_data = response;
+            console.log(this.response_data);
+            if(this.response_data.data != null)
             {
-              localStorage.setItem('clientType' , 'client');
-              this.router.navigateByUrl('/client/main');
-            }else
-            {
-              localStorage.setItem('freelancerType' , 'freelancer');
-              this.router.navigateByUrl('/user/signup/category');
-            }
+
+              // localStorage.setItem('token' , this.response_data.data.token);
+              localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
+              localStorage.setItem('user_id' , this.response_data.data.user.id);
+              // localStorage.setItem('success_msg' , this.response_data.msg);
+              // localStorage.setItem('logged_status' , this.response_data.status);
+              if(this.response_data.data.user.client_id)
+              {
+                localStorage.setItem('client_id' , this.response_data.data.user.client_id);
+              }
+
+              console.log(response);
+              if(this.user_data.type == 'client')
+              {
+                localStorage.setItem('token' , this.response_data.data.token);
+                localStorage.setItem('clientType' , 'client');
+                this.router.navigateByUrl('/client/main');
+              }
+              else
+              {
+                localStorage.setItem('user_token' , this.response_data.data.token);
+                localStorage.setItem('freelancerType' , 'freelancer');
+                this.router.navigateByUrl('/user/signup/category');
+              }
+
+          }
+          else
+          {
+            this.router.navigateByUrl('/user/signup/register');
+            alert(this.response_data.msg.email);
+            localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
+          }
           })//end of request
 
         }
@@ -124,6 +149,7 @@ export class LocationComponent implements OnInit {
         {
           this.alertConfirmation();
           console.log(this.data.user_data)
+
           //send request
           this.userService.register(this.data.user_data).subscribe(response=>{
 
@@ -134,20 +160,28 @@ export class LocationComponent implements OnInit {
             if(this.response_data.data != null)
             {
 
-              localStorage.setItem('token' , this.response_data.data.access_token);
+              // localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
-              localStorage.setItem('user_id' , this.response_data.data.user.id);
-              localStorage.setItem('success_msg' , this.response_data.msg);
-              localStorage.setItem('logged_status' , this.response_data.status);
+              localStorage.setItem('user_id' , this.response_data.data.user.user_id);
+              if(this.response_data.data.user.client_id)
+              {
+                localStorage.setItem('client_id' , this.response_data.data.user.client_id);
+              }else{
+                localStorage.setItem('freelancer_id' , this.response_data.data.user.freelancer_id);
+              }
 
               //redirect user
               if(this.data.user_data.type == 'client')
               {
+                localStorage.setItem('token' , this.response_data.data.access_token);
                 localStorage.setItem('clientType' , 'client');
                 this.router.navigateByUrl('/client/main');
               }
               else
               {
+                //we can't save token because we need freelancer information
+                localStorage.setItem('user_token' , this.response_data.data.access_token);
+
                 localStorage.setItem('freelancerType' , 'freelancer');
                 this.router.navigateByUrl('/user/signup/category');
               }
@@ -168,19 +202,9 @@ export class LocationComponent implements OnInit {
       }
       else //=> invalid data or error validation
       {
-      this.isLogged = true;
+        this.isLogged = true;
       }
 
-    }
-
-    //test request
-    testRequest(){
-      // this.http.post(`${environment.apiUrl}/register` ,this.test).subscribe(response=>{
-      //   console.log(response);
-      //   console.log(this.data);
-      // }, error=>{
-      //   console.log('error message');
-      // })
     }
 
     //==============start use notification ===============
@@ -215,5 +239,19 @@ export class LocationComponent implements OnInit {
     //=================End of notifications ==============
 
 
-  }
+    selectCountry(selectedCountry:string){
+        console.log(selectedCountry)
+        this.country.getCities(selectedCountry).subscribe(res=>{
+          this.arrayOfCities=res
+          // console.log(this.arrayOfCities[0].state_name)
+        })
+    }
+    selectState(a:HTMLElement){
+      this.placeholder=a.innerText
+
+      console.log(a.innerText)
+    }
+
+
+}//End Of Class
 

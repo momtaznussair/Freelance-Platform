@@ -19,8 +19,8 @@
                 <div class="body">
                     <div class="sec sec1">
                         <p><b>Select your skills</b></p>
-                        <div class="skills">
-                            <button #b class=" mx-1 my-1  bt1s" *ngFor="let i of skills" [ngClass]="{'bt2s':i.selected}" (click)="addSkill(i,b)">{{i.name}} </button>
+                        <div class="skills"   >
+                            <button #b *ngFor="let item of skills " class=" mx-1 my-1  bt1s" [ngClass]="{'bt2s':item.selected}" (click)="addSkill(item,b)">{{item.name}}</button>
                         </div>
                         <div *ngIf="require">
                             <small class="text-danger fw-bold mb-3" *ngIf="require"> please select your skills</small>

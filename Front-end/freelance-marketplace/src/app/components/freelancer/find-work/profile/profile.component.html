@@ -90,13 +90,13 @@
                     </div>
                     <div class="card" style="width: 18rem;" *ngIf="isDataGet">
                         <!-- <img src="..." class="card-img-top" alt="..."> -->
-                        <div class="d-flex mt-3" *ngFor="let i of portofolioData.data">
-                        <img src="../../../../../assets/images/clearly-rated.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title d-flex">{{i.title}}</h5>
-                            <p class="card-text d-flex">{{i.description}}</p>
+                        <div class="d-flex mt-3" *ngFor="let i of portfoliosData.data">
+                            <img src="../../../../../assets/images/clearly-rated.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex">{{i.title}}</h5>
+                                <p class="card-text d-flex">{{i.description}}</p>
+                            </div>
                         </div>
-                    </div>
                     </div>
 
                 </div>

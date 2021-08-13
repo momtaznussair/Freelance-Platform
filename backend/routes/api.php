@@ -21,6 +21,10 @@ use App\Http\Controllers\Api\portfolioImagesController;
 use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SkillController;
 use App\Models\Education;
+use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\UserLanguagesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +37,7 @@ use App\Models\Education;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum' ,'verified'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
@@ -79,7 +83,7 @@ Route::get('portfolios',[PortfolioController::class,'index']);
 Route::get('portfolios/{portfolio}',[PortfolioController::class,'show']);
 
 
-// CRUD for Jobs
+// CRUD for Jobs/
 Route::get('jobs',[JobController::class,'index']);
 Route::get('jobs/{job}',[JobController::class,'show']);
 
@@ -144,7 +148,12 @@ Route::post('clients',[ClientController::class,'store']);
 Route::get('educations',[EducationController::class,'index']);
 Route::get('educations/{education}',[EducationController::class,'show']);
 
+
+
 // authenticated client routes
+Route::post('jobs' ,[JobController::class,'store']);
+Route::post('educations',[EducationController::class,'store']);
+
 
 Route::middleware(['client','auth:sanctum'])->group(function () {
     // clients
@@ -152,7 +161,6 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
     Route::delete('/clients/delete/{client}',[ClientController::class,'destroy']);
 
     // jobs
-    Route::post('jobs' ,[JobController::class,'store']);
     Route::post('jobs/{job}' ,[JobController::class,'update']);
     Route::delete('jobs/delete/{job}' ,[JobController::class,'destroy']);
 
@@ -166,15 +174,16 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
 
 // authenticated freelancer routes
 
+Route::post('portfolios' ,[PortfolioController::class,'store']);
+Route::post('portfolios/images', [portfolioImagesController::class, 'store']);
+
 Route::middleware(['freelancer','auth:sanctum'])->group(function () {
-   // portfolios
-    Route::post('portfolios' ,[PortfolioController::class,'store']);
+    // portfolios
     Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
     Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
 
     // portfolios images
     Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
-    Route::post('portfolios/images', [portfolioImagesController::class, 'store']);
 
     //proposals
     Route::post('proposals' ,[ProposalController::class,'store']);
@@ -188,6 +197,30 @@ Route::middleware(['freelancer','auth:sanctum'])->group(function () {
     //Education
     Route::post('/educations/{education}',[EducationController::class,'update']);
     Route::delete('/educations/delete/{education}',[EducationController::class,'destroy']);
-    Route::post('educations',[EducationController::class,'store']);
 
 });
+
+// Verification Email
+Route::post('email/verification-notification', [EmailVerificationController::class, 'sendVerificationEmail'])->middleware('auth:sanctum');
+Route::get('verify-email/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('auth:sanctum');
+
+
+Route::get('/notifications/{id}' ,[NotificationController::class,'allNotifications'])->name('allNotifications');
+Route::get('/readNotifications/{id}' ,[NotificationController::class,'readNotifications'])->name('readNotifications');
+Route::get('/unreadNotifications/{id}' ,[NotificationController::class,'unreadNotifications'])->name('unreadNotifications');
+Route::post('/markAsRead/{id}/{notifyID}' ,[NotificationController::class,'markAsRead'])->name('markAsRead');
+
+
+// CRUD for UserLanguages
+Route::get('userLanguages',[UserLanguagesController::class,'index']);
+Route::get('userLanguages/{userLanguage}',[UserLanguagesController::class,'show']);
+Route::post('userLanguages',[UserLanguagesController::class,'store']);
+Route::post('/userLanguages/{userLanguage}',[UserLanguagesController::class,'update']);
+Route::delete('/userLanguages/delete/{userLanguage}',[UserLanguagesController::class,'destroy']);
+
+
+Route::post('/register/socialite', [SocialiteAuthController::class, 'registerOrLoginUser'])->middleware('token.guest');
+
+Route::post('/user/update/{id}' , [AuthController::class,'updateUserEmailAndUsername']);
+Route::post('/user/updateLocation/{id}' , [AuthController::class,'updateUserPhoneAndLocation']);
+Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPassword']);
