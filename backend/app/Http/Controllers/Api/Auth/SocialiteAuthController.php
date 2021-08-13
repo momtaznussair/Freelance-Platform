@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
 use App\Http\Resources\UserResource;
-
+use App\Models\Client;
 
 
 class SocialiteAuthController extends Controller
@@ -47,7 +47,7 @@ class SocialiteAuthController extends Controller
         $user = new User();
         $user->name = $data->name;
         $user->email = $data->email;
-        $user->password = Hash::make("hgxv2Sm/g5F3qLk");
+        $user->password = "";
         $user->auth_id = $data->id;
         $user->first_name = $data->firstName;
         $user->last_name = $data->lastName;
@@ -64,6 +64,15 @@ class SocialiteAuthController extends Controller
             'token' => $token,
             'user' => new UserResource($user),
         ];
+
+        // add as a  client
+        if ($request->type == 'client')
+        {
+            $client = new Client();
+            $client->user_id = $user->id;
+            $client->registration_date = now();
+            $client->save();
+        }
 
         return $this->apiResponse($data);
 
