@@ -17,10 +17,10 @@ export class SubmitProposalComponent implements OnInit {
 
 
     form:FormGroup=new FormGroup({});
- 
+    isDataGet:any;
     job_details:any;
     job_skills:any;
-
+    user_id:any;
     id:string;
   constructor(private proposalservice:ProposalService, private _formBuilder:FormBuilder,private router:Router,private jobDetails:JobService,private route:ActivatedRoute) { 
     this.id = this.route.snapshot.params['id'];
@@ -28,8 +28,11 @@ export class SubmitProposalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user_id=localStorage.getItem('user_id');
+    console.log(this.user_id);
     this.form=this._formBuilder.group({
       job_id:[this.id],
+      user_id:[this.user_id],
       description:['',[Validators.required,Validators.minLength(20),Validators.maxLength(255)]],
        payment_amount:['',[Validators.required,Validators.minLength(2)]],
        attatchment:['',[Validators.required]],
@@ -42,6 +45,8 @@ export class SubmitProposalComponent implements OnInit {
       console.log(this.job_details);
       this.job_skills=this.job_details.skills;
       console.log(this.job_skills);
+      this.isDataGet=true;
+
     },error=>console.error);
   }
   islogged:boolean=false;

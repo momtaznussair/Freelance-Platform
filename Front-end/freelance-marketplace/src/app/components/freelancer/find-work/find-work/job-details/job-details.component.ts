@@ -4,6 +4,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Category } from 'src/app/models/category';
 import { Job } from 'src/app/models/job';
 import { ApiService } from 'src/app/services/api.service';
+import { ClientService } from 'src/app/services/client.service';
 import { JobService } from 'src/app/services/job.service';
 
 @Component({
@@ -13,24 +14,40 @@ import { JobService } from 'src/app/services/job.service';
 })
 export class JobDetailsComponent implements OnInit {
   id:string;
-  constructor(private jobDetails:JobService,private route:ActivatedRoute,private router:Router) {
+  isDataGet:any;
+  constructor(private jobDetails:JobService,private route:ActivatedRoute,private router:Router,private client:ClientService) {
     this.id = this.route.snapshot.params['id'];
 
    }
 
 // job_details:Job[]=[];
 job_details:any;
+clients:any;
 job_skills:any;
+client_id:any;
   ngOnInit(): void {
     this.jobDetails.getJob(this.id).subscribe(response=>{
       this.job_details=response['data'] as Job;
-      console.log(this.job_details);
+      // console.log(this.job_details);
+      this.client_id=this.job_details.client_id;
+      console.log(this.client_id);
       this.job_skills=this.job_details.skills;
-      console.log(this.job_skills);
+      // console.log(this.job_skills);
+      this.isDataGet=true;
 
+      //client====
+      this.client.getClient(this.client_id).subscribe(res=>{
+        this.clients=res.data;
+        console.log(this.clients);
+      },error=>console.error);
+      //====
     },error=>console.error);
 
-  
+    //getclient
+  // this.client.getClient(this.client_id).subscribe(res=>{
+  //   this.clients=res.data;
+  //   console.log(this.clients);
+  // },error=>console.error);
   
   
   }
