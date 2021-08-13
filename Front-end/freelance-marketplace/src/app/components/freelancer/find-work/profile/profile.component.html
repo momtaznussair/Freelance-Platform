@@ -7,8 +7,10 @@
                 <i class="fas fa-camera ca ii ms-4 mt-2"></i>
                 <img class="d-inline-block ms-3" src="./assets/images/profile.jpg" />
                 <h4 class="d-inline-block mt-4 ms-3">Name</h4>
-                <button type="button" class="btn btn-lg rounded-pill  border border-1 b1 mt-4 me-3 ms-auto">Primary button</button>
-                <button type="button" class="btn btn-lg rounded-pill  border border-1 b2  mt-4 me-3 ">Primary button</button>
+                <button type="button" class="btn btn-lg rounded-pill  border border-1 b1 mt-4 me-3 ms-auto">Primary
+                    button</button>
+                <button type="button" class="btn btn-lg rounded-pill  border border-1 b2  mt-4 me-3 ">Primary
+                    button</button>
 
 
 
@@ -23,7 +25,7 @@
         <div class="col-md-4 v_pro border-end rounded-start d-none d-lg-block">
             <div class="row fleft border-bottom order-sm-2 order-xs-2 ">
                 <div class="col ">
-                    <p>View profile </p><i class="fas fa-plus ii"></i> <i class="far fa-edit ii"></i><br/>
+                    <p>View profile </p><i class="fas fa-plus ii"></i> <i class="far fa-edit ii"></i><br />
                     <!-- <p class="my-md-4 "style= "width:90%">All work</p><i class="fas fa-chevron-right ii"></i><br/> -->
 
 
@@ -33,14 +35,14 @@
 
             <div class="row ">
                 <div class="col">
-                    <p class="mt-md-4">Video introduction</p><i class="fas fa-plus ii"></i><br/>
+                    <p class="mt-md-4">Video introduction</p><i class="fas fa-plus ii"></i><br />
 
                     <p class="mt-md-4">Hours</p><i class="far fa-edit ii"></i>
                     <h1></h1>
                     <h1></h1>
-                    <p class="mt-md-4">Language </p><i class="fas fa-plus ii"></i> <i class="far fa-edit ii"></i><br/>
+                    <p class="mt-md-4">Language </p><i class="fas fa-plus ii"></i> <i class="far fa-edit ii"></i><br />
                     <h1></h1>
-                    <p class="mt-md-4">Education </p><i class="fas fa-plus ii"></i> <i class="far fa-edit ii"></i><br/>
+                    <p class="mt-md-4">Education </p><i class="fas fa-plus ii"></i> <i class="far fa-edit ii"></i><br />
 
                 </div>
             </div>
@@ -52,13 +54,16 @@
                 <div class="col mt-md-3 ">
                     <div class="row">
                         <div class="col-md-5">
-                            <span> <p ><b>Add your title</b> </p><i class="fas fa-plus ii rounded-circle"></i> </span>
+                            <span>
+                                <p><b>Add your title</b> </p><i class="fas fa-plus ii rounded-circle"></i>
+                            </span>
 
                         </div>
                         <div class="col-md-5 ms-3">
-                            <span class="ms-auto"> <p><b>hourly rate</b> </p><i class="fas fa-plus ii"></i>
-                              <i class="far fa-copy ms-md-3 ii"></i>
-                          </span>
+                            <span class="ms-auto">
+                                <p><b>hourly rate</b> </p><i class="fas fa-plus ii"></i>
+                                <i class="far fa-copy ms-md-3 ii"></i>
+                            </span>
                         </div>
                     </div>
 
@@ -68,7 +73,9 @@
             <div class="row border-bottom ">
                 <div class="col " style="height:20%;">
                     <div class="d-flex align-items-center work mt-2">
-                        <span class="d-flex"> <p>Work history </p><i class="fas fa-plus ii ms-md-3"></i> </span>
+                        <span class="d-flex">
+                            <p>Work history </p><i class="fas fa-plus ii ms-md-3"></i>
+                        </span>
 
                     </div>
                 </div>
@@ -76,20 +83,30 @@
             <div class="row border-bottom">
                 <div class="col">
                     <div class="portifolio d-flex align-items-center work mt-2">
-                        <span class="d-flex"> <p>Add portifolio </p><i class="fas fa-plus ii ms-md-3"></i> </span>
+                        <span class="d-flex">
+                            <p>Add portifolio </p><a href="/freelancer/profile/portofolio"><i class="fas fa-plus ii ms-md-3"></i>
+                            </a></span>
 
                     </div>
-                    <div class="d-flex align-items-center work mt-2">
-                        <span class="d-flex" *ngFor="let i of portofolioData.data">{{i.title}}</span>
-
+                    <div class="card" style="width: 18rem;" *ngIf="isDataGet">
+                        <!-- <img src="..." class="card-img-top" alt="..."> -->
+                        <div class="d-flex mt-3" *ngFor="let i of portfoliosData.data">
+                            <img src="../../../../../assets/images/clearly-rated.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title d-flex">{{i.title}}</h5>
+                                <p class="card-text d-flex">{{i.description}}</p>
+                            </div>
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="row ">
                 <div class="col">
-                    <div class="skills d-flex align-items-center work mt-2">
-                        <span class="d-flex"> <p>Add skills </p><i class="fas fa-plus ii ms-md-3"></i> </span>
+                    <div class="skills d-flex align-items-center work mt-5">
+                        <span class="d-flex">
+                            <p>Add skills </p><i class="fas fa-plus ii ms-md-3"></i>
+                        </span>
 
                     </div>
                 </div>
@@ -106,7 +123,8 @@
         <div class="col">
             <div class="card ps-0 my-3">
                 <div class="card-header bg-transparent d-flex">
-                    <h4>Testimonials </h4> <i class="fas fa-plus ii ms-auto"></i></div>
+                    <h4>Testimonials </h4> <i class="fas fa-plus ii ms-auto"></i>
+                </div>
                 <div class="card-body ">
                     <h5 class="card-title ">Showcase your skills with non-Upwork client testimonials
                     </h5><br>
@@ -124,7 +142,8 @@
         <div class="col">
             <div class="card ps-0 my-3">
                 <div class="card-header bg-transparent d-flex">
-                    <h4>Certifications </h4> <i class="fas fa-plus ii ms-auto"></i></div>
+                    <h4>Certifications </h4> <i class="fas fa-plus ii ms-auto"></i>
+                </div>
                 <div class="card-body ">
                     <h5 class="card-title mt-md-5">Showcase your Certifications with your client
                     </h5><br>
@@ -142,7 +161,8 @@
         <div class="col">
             <div class="card ps-0 my-3">
                 <div class="card-header bg-transparent d-flex">
-                    <h4>Employment history </h4> <i class="fas fa-plus ii ms-auto"></i></div>
+                    <h4>Employment history </h4> <i class="fas fa-plus ii ms-auto"></i>
+                </div>
                 <div class="card-body ">
                     <h5 class="card-title mt-md-5">Showcase your Employment history with your client
                     </h5><br>
@@ -161,7 +181,8 @@
         <div class="col">
             <div class="card ps-0 my-3">
                 <div class="card-header bg-transparent d-flex">
-                    <h4>Other experiences </h4> <i class="fas fa-plus ii ms-auto"></i></div>
+                    <h4>Other experiences </h4> <i class="fas fa-plus ii ms-auto"></i>
+                </div>
                 <div class="card-body ">
                     <h5 class="card-title mt-md-5">Showcase your Other experiences with your client
                     </h5><br>

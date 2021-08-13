@@ -41,7 +41,7 @@ class PortfolioController extends Controller
         if($validate->fails()){
             return  $this->apiResponse(null,$validate->errors(),422);
         }
-        
+
         $portfolio = new Portfolio();
         $portfolio->freelancer_id = $request->freelancer_id;
         $portfolio->title = $request->title;
@@ -58,11 +58,11 @@ class PortfolioController extends Controller
         foreach($request->file('image') as $image)
         {
             $path = Storage::putFile('portfolios', $image);
-            
+
             $image = PortfolioImages::create([
                 'portfolio_id' => $portfolio->id,
                 'image_path' => $path,
-            ]);  
+            ]);
 
         }
 
@@ -92,7 +92,7 @@ class PortfolioController extends Controller
         }
 
         $attachment_path = $portfolio->attachment_link;
-        
+
         if ($request->hasFile('attachment'))
         {
             Storage::delete("$attachment_path");
@@ -119,10 +119,10 @@ class PortfolioController extends Controller
             $images = $portfolio->images;
             foreach ($images as $image ){
 
-                Storage::delete($image);            
+                Storage::delete($image);
             }
             $images->delete();
-            
+
             $portfolio->delete();
             return $this->apiResponse(true,'',200);
         }

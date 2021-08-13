@@ -1,136 +1,139 @@
+<app-nav></app-nav>
+
+
 <div class="container py-5 px-3">
 
-  <div class="row">
+    <div class="row">
 
 
-      <section class="sidebar d-none d-md-block col-md-3">
-          <app-sidebar></app-sidebar>
-      </section>
-      <section class="myinfo col-12 col-md-9">
-          <p class="h2 fw-bold mb-5">Password & security</p>
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
+        </section>
+        <section class="myinfo col-12 col-md-9">
+            <p class="h2 fw-bold mb-5">Password & security</p>
 
-          <!-- Password  -->
-          <div class="password card mb-5">
+            <!-- Password  -->
+            <div class="password card mb-5">
 
-              <div class="card-header p-4">
-                  <span class="h2">Password</span>
-                  <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#company"></span></span>
-              </div>
-              <div class="card-footer">
-                  <div class="d-flex py-4">
-                      <div class=" mx-2">
-                          <span class="fa fa-pencil"></span>
-                      </div>
-                      <div class="mx-0">
-                          <p>Password has been set</p>
-                          <p class="small fw-bold">You currently use <span class="link"><a href="#"> Google Sign-in</a></span> to login. We will only ask for your Upwork password if we need to verify your identity.</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
- <!-- password section modal  -->
- <div class="modal fade" id="company" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Change Password</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="card-header p-4">
+                    <span class="h2">Password</span>
+                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#company"></span></span>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex py-4">
+                        <div class=" mx-2">
+                            <span class="fa fa-pencil"></span>
+                        </div>
+                        <div class="mx-0">
+                            <p>Password has been set</p>
+                            <p class="small fw-bold">You currently use <span class="link"><a href="#"> Google Sign-in</a></span> to login. We will only ask for your Upwork password if we need to verify your identity.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <form class="form" [formGroup]="form">
-                    <label class="small form-check-label mt-3">Old Password</label>
-                    <input type="password" name="password" formControlName="password" class="form-control">
-                    <div *ngIf="form.controls.password.invalid && isLogged || (form.controls.password.dirty || form.controls.password.touched)">
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('required')">Password is required</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('minlength')">You have to write more than 8 characters</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('maxlength')">You have to write less than 15 characters</small>
-                    </div>
+            <!-- password section modal  -->
+            <div class="modal fade" id="company" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Change Password</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form" [formGroup]="form">
+                                <label class="small form-check-label mt-3">Old Password</label>
+                                <input type="password" name="password" formControlName="password" class="form-control">
+                                <div *ngIf="form.controls.password.invalid && isLogged || (form.controls.password.dirty || form.controls.password.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('required')">Password is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('minlength')">You have to write more than 8 characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('maxlength')">You have to write less than 15 characters</small>
+                                </div>
 
-                    <label class="small form-check-label mt-3">New password</label>
-                    <input type="password" name="updatedPassword" [(ngModel)]="updatedPassword" formControlName="updatedPassword" class="form-control">
-                    <div *ngIf="form.controls.updatedPassword.invalid && isLogged || (form.controls.updatedPassword.dirty || form.controls.updatedPassword.touched)">
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.updatedPassword.hasError('required')">Password is required</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.updatedPassword.hasError('minlength')">You have to write more than 8 characters</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.updatedPassword.hasError('maxlength')">You have to write less than 15 characters</small>
-                    </div>
+                                <label class="small form-check-label mt-3">New password</label>
+                                <input type="password" name="updatedPassword" [(ngModel)]="updatedPassword" formControlName="updatedPassword" class="form-control">
+                                <div *ngIf="form.controls.updatedPassword.invalid && isLogged || (form.controls.updatedPassword.dirty || form.controls.updatedPassword.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.updatedPassword.hasError('required')">Password is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.updatedPassword.hasError('minlength')">You have to write more than 8 characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.updatedPassword.hasError('maxlength')">You have to write less than 15 characters</small>
+                                </div>
 
-                    <label class="small form-check-label mt-3">Confirm New Password</label>
-                    <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" class="form-control" formControlName="confirmPassword" />
-                    <div *ngIf="form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty || form.controls.confirmPassword.touched">
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.confirmPassword.hasError('required')">This field is required</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="updatedPassword != confirmPassword">You have to write similar password </small>
-                    </div>
+                                <label class="small form-check-label mt-3">Confirm New Password</label>
+                                <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" class="form-control" formControlName="confirmPassword" />
+                                <div *ngIf="form.controls.confirmPassword.invalid && form.controls.confirmPassword.dirty || form.controls.confirmPassword.touched">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.confirmPassword.hasError('required')">This field is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="updatedPassword != confirmPassword">You have to write similar password </small>
+                                </div>
 
-                    <!-- <input type="checkbox" class="mx-2"> <span class="small text-muted">All devices will be required to sign in with new password</span><br> -->
-                    <div class="form-group mt-5 card-footer">
-                        <button type="submit" (click)="saveData()" class="btn" data-bs-dismiss="modalStatus" aria-label="Close">Save</button>
-                        <button type="button" class="btn mx-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                                <!-- <input type="checkbox" class="mx-2"> <span class="small text-muted">All devices will be required to sign in with new password</span><br> -->
+                                <div class="form-group mt-5 card-footer">
+                                    <button type="submit" (click)="saveData()" class="btn" data-bs-dismiss="modalStatus" aria-label="Close">Save</button>
+                                    <button type="button" class="btn mx-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
+            <!-- End password section modal  -->
+
+            <!-- Password  -->
+            <div class="password card mb-5">
+
+                <div class="card-header p-4">
+                    <span class="h2">Two-step verification options</span>
+                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil"></span> </span>
+                    <p class="small mt-3">Add an extra layer of security to block unauthorized access and protect your account.</p>
+                </div>
+
+
+                <div class="card-footer">
+                    <div class="row align-items-center">
+                        <div class="text col-8">
+                            <span class="small fw-bold">Authenticator app code </span>
+                            <span class="fa fa-question-circle mx-2"></span>
+                            <p class="small">Enter a code generated by your authenticator app to confirm it’s you.</p>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn pull-right">Enable</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card-footer">
+                    <div class="row align-items-center">
+                        <div class="text col-8">
+                            <span class="small fw-bold">Mobile app prompt </span>
+                            <span class="fa fa-question-circle mx-2"></span>
+                            <p class="small">Enter a code generated by your authenticator app to confirm it’s you.</p>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn pull-right">Enable</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="row align-items-center">
+                        <div class="text col-8">
+                            <span class="small fw-bold">Text message </span>
+                            <span class="fa fa-question-circle mx-2"></span>
+                            <p class="small">Enter a code generated by your authenticator app to confirm it’s you.</p>
+                        </div>
+                        <div class="col-4">
+                            <button class="btn pull-right">Enable</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </section>
+
     </div>
-</div>
-<!-- End password section modal  -->
-
-          <!-- Password  -->
-          <div class="password card mb-5">
-
-              <div class="card-header p-4">
-                  <span class="h2">Two-step verification options</span>
-                  <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil"></span> </span>
-                  <p class="small mt-3">Add an extra layer of security to block unauthorized access and protect your account.</p>
-              </div>
-
-
-              <div class="card-footer">
-                  <div class="row align-items-center">
-                      <div class="text col-8">
-                          <span class="small fw-bold">Authenticator app code </span>
-                          <span class="fa fa-question-circle mx-2"></span>
-                          <p class="small">Enter a code generated by your authenticator app to confirm it’s you.</p>
-                      </div>
-                      <div class="col-4">
-                          <button class="btn pull-right">Enable</button>
-                      </div>
-                  </div>
-              </div>
-
-
-              <div class="card-footer">
-                  <div class="row align-items-center">
-                      <div class="text col-8">
-                          <span class="small fw-bold">Mobile app prompt </span>
-                          <span class="fa fa-question-circle mx-2"></span>
-                          <p class="small">Enter a code generated by your authenticator app to confirm it’s you.</p>
-                      </div>
-                      <div class="col-4">
-                          <button class="btn pull-right">Enable</button>
-                      </div>
-                  </div>
-              </div>
-
-              <div class="card-footer">
-                  <div class="row align-items-center">
-                      <div class="text col-8">
-                          <span class="small fw-bold">Text message </span>
-                          <span class="fa fa-question-circle mx-2"></span>
-                          <p class="small">Enter a code generated by your authenticator app to confirm it’s you.</p>
-                      </div>
-                      <div class="col-4">
-                          <button class="btn pull-right">Enable</button>
-                      </div>
-                  </div>
-              </div>
-
-          </div>
-
-
-
-
-      </section>
-
-  </div>
 </div>
 
 <pre>
