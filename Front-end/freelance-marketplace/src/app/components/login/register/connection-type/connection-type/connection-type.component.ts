@@ -37,7 +37,7 @@ export class ConnectionTypeComponent implements OnInit {
 
         this.responseChecked = response;
         console.log(this.responseChecked);
-        if(this.responseChecked.data == null){
+        if(this.responseChecked.data != false){
           alert('you already have an account')
           // this.router.navigateByUrl('/user/login');
         }else{
