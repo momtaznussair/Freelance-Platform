@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -7,13 +8,15 @@ import { ApiService } from './api.service';
 })
 export class ProfileService {
 
-  constructor(private profile:HttpClient) { }
+  constructor(private profile:ApiService) { }
 
 
-  get(){
-    return this.profile.get("http://127.0.0.1:8000/freelancers");
+  get():Observable<any>
+  {
+    return this.profile.get(`${environment.apiUrl}/freelancers`);
   }
     getById(){
-    return this.profile.get("http://127.0.0.1:8000/freelancers/id");
+    return this.profile.get(`${environment.apiUrl}/freelancers/id`);
   }
+
 }
