@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, NgClass } from '@angular/common';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { ExpertiseComponent } from './Expertise/expertise/expertise.component';
 import { ExpertlevelComponent } from './Expertlevel/expertlevel/expertlevel.component';
@@ -52,6 +52,7 @@ const routes : Routes=[
   ],
   imports: [
     CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,SharedModule
+    // ,FormGroup
   ],
   exports : [
     SignupComponent , SidebarComponent

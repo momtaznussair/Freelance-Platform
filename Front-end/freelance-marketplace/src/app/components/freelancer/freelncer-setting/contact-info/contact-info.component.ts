@@ -16,10 +16,13 @@ export class ContactInfoComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   formLocation : FormGroup = new FormGroup({});
 
-
+  isDataUpdated : boolean = false;
   user_id : any;
+  isLogged : boolean = false;
+  resData : any;
+  errorUpdate : boolean = false;
 
-  constructor(private formBuilder : FormBuilder  , private router : Router  , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder  ,  private userService : UserService) { }
   ngOnInit(): void {
 
     this.user_id = localStorage.getItem('user_id');
@@ -44,17 +47,30 @@ export class ContactInfoComponent implements OnInit {
   }
 
 
-  isLogged : boolean = false;
+
 
   saveAccountData(){
 
     console.log(this.form.value);
     if(this.form.valid)
     {
-      
+      this.userService.updateUser( `update/${this.user_id}` , this.form.value).subscribe(response=>{
+        console.log(response);
+        this.resData = response;
+        if(this.resData.data != null)
+        {
+          this.isDataUpdated = true;
+        }else
+        {
+          this.errorUpdate = true;
+        }
+      } , error => {
+        this.errorUpdate = true;
+      });
     }
     else
     {
+      alert('please check your data and try again');
       this.isLogged = true;
       console.log(this.isLogged);
     }
@@ -62,18 +78,29 @@ export class ContactInfoComponent implements OnInit {
   }
 
   saveLocationData(){
-  //   console.log(this.formLocation.value)
-  //   if(this.formLocation.valid)
-  //   {
-  //     alert('updated successfully');
-  //   }
-  //   else
-  //   {
-  //     this.isLogged = true;
-  //     console.log(this.isLogged);
-  //   }
+    console.log(this.formLocation.value)
+    if(this.formLocation.valid)
+    {
+      this.userService.updateUser( `updateLocation/${this.user_id}` , this.formLocation.value).subscribe(response=>{
+        console.log(response);
+        if(this.resData.data != null)
+        {
+          this.isDataUpdated = true;
+        }else
+        {
+          this.errorUpdate = true;
+        }
+      } , error => {
+        this.errorUpdate = true;
+      });
+    }
+    else
+    {
+      this.isLogged = true;
+      alert('please check your info and try again');
+      console.log(this.isLogged);
+    }
   }
-
 
 
 

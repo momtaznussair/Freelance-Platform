@@ -36,6 +36,7 @@ export class PortofolioComponent implements OnInit {
 
   }
 
+
   isLogged : boolean = false;
 
     save(){

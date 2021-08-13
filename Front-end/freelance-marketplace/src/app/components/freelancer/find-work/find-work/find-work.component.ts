@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {JobPostsService} from '../../../../services/job-posts.service';
 import Swal from 'sweetalert2';
+import { Job } from 'src/app/models/job';
+import { JobService } from 'src/app/services/job.service';
 
 
 @Component({
@@ -42,7 +43,8 @@ tableSize = 7;
 tableSizes = [3, 6, 9, 12];
 responsive:string="true"
 currentIndex:number=0;
-  constructor(private jobsPosts:JobPostsService) { }
+jobPost:Job=new Job()
+  constructor(private job:JobService) { }
 
   successAlertNotification(){
     Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
@@ -64,6 +66,14 @@ currentIndex:number=0;
     //     error => {
     //       console.log(error);
     //     });
+   
+
+    this.job.get().subscribe(res=>{
+
+      console.log(res)
+
+    },error=>console.log)
+    
   }
 
   onTableDataChange(event:any){

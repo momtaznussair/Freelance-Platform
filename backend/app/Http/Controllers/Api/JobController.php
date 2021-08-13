@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\JobResource;
 use App\Models\Freelancer;
 use App\Models\FreelancerSkill;
 use App\Models\Job;
@@ -24,12 +25,15 @@ class JobController extends Controller
 
     public function show($id)
     {
-        $job = Job::with('skills')->find($id);
+        // $job = Job::with(['skills','category','duration','experience','payment_style','client.user'])->find($id);
+        $job = Job::find($id);
 
         if (!$job) {
             $this->NotFoundError();
         }
-        return $this->apiResponse($job);
+        // return $this->apiResponse($job);
+        return $this->apiResponse(new JobResource($job));
+
     }
 
     public function store(Request $request)

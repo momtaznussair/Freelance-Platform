@@ -19,6 +19,9 @@ export class SecurityComponent implements OnInit {
 
   isTokenFound : boolean = false;
   user_id : any;
+  resData : any;
+  isDataUpdated : boolean = false;
+  errorUpdate : boolean = false;
 
   ngOnInit(): void {
 
@@ -51,7 +54,13 @@ export class SecurityComponent implements OnInit {
     {
       this.userService.updateUser( `updatePassword/${this.user_id}` , this.form.value).subscribe(response=>{
         console.log(response);
-        alert('updated successfully');
+        if(this.resData.data != null)
+        {
+          this.isDataUpdated = true;
+        }else
+        {
+          this.errorUpdate = true;
+        }
       } , error => {
         alert('please check your data and try again');
       });

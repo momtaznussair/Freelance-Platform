@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {JobPostsService} from '../../../../services/job-posts.service'
+// import {JobPostsService} from '../../../../services/job-posts.service'
 import { HttpParams } from '@angular/common/http';
 import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-filter-jobs',
@@ -17,12 +18,12 @@ export class FilterJobsComponent implements OnInit {
   count = 0;
   currentIndex:number=0;
   cat :Category[]=[];
-  constructor(private jobsPosts:JobPostsService) { }
+  constructor(private catService: CategoryService ) { }
 
   ngOnInit(): void {
     this.fetchPosts();
   }
-
+  search(){}
 
    /*-------------------------
      add params to array params
@@ -79,7 +80,7 @@ console.log(e)
     //     error => {
     //       console.log(error);
     //     });
-    this.jobsPosts.getAllCategories('categories').subscribe(response=>{
+    this.catService .getCategories('http://127.0.0.1:8000/api/categories').subscribe(response=>{
       this.cat=response ['data'] as Category[];
       console.log(this.cat)
       
