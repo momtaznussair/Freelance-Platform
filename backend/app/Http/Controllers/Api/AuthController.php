@@ -29,7 +29,7 @@ class AuthController extends Controller
             'email' => [Rule::requiredIf(!$token),'email','unique:users,email','max:255'],
             'password' => [Rule::requiredIf(!$token), 'string', 'min:8','max:255', 'confirmed'],
             'gender' => 'required|in:male,female',
-            'img_link' => 'nullable|image|max:512|mimes:png,jpg',
+            'img_link' => 'nullable|image|mimes:png,jpg',
             'phone_number' => 'min:11|numeric',
             'country' => 'required',
             'city' => 'required',
@@ -64,18 +64,25 @@ class AuthController extends Controller
 
         if ($request->hasFile('img_link'))
         {
-            $path = Storage::putFile('users', $request->file('img_link'));
-            $user->img_link = $path;
+            $user_image = request('img_link');
+            $user_image_new_name = time() . $user_image->getClientOriginalName();
+            $user_image->move('uploads/users', $user_image_new_name);
+            $user->img_link = 'uploads/users/' . $user_image_new_name;
+
+            // $path = Storage::putFile('users', $request->file('img_link'));
+            // Storage::putFile('users', $request->file('img_link'));
+            // $user->img_link = $request->img_link;
+            // $user->save();
         }
         $user->save();
-        
+
         $token = $user->createToken('auth_token')->plainTextToken;
-        
+
         $data = [
             'access_token' => $token,
             'user' => new UserResource($user),
         ];
-        
+
         // add as a  client
         if ($request->type == 'client')
         {
@@ -84,7 +91,7 @@ class AuthController extends Controller
             $client->registration_date = now();
             $client->save();
         }
-        
+
         return $this->apiResponse($data,'User registered successfully');
     }
 
@@ -104,7 +111,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password) && $user->auth_id === null) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
@@ -152,7 +159,7 @@ class AuthController extends Controller
 
         $user->name = $request->username;
         $user->email = $request->email;
-        
+
         $user->save();
 
         if($user){

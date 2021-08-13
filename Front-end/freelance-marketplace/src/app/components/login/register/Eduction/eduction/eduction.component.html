@@ -66,9 +66,9 @@
                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.graduation_date.hasError('required')">please select graduation date  </small>
                 </div>
 
-                <div class="md-6 lg-6 d-sm-flex footer">
-                    <button class="bt1" type="button" routerLink="/user/signup/hourly-rate"> Back </button>
-                    <button class="bt2" (click)="next()" type="submit">next</button>
+                <div class="md-6 lg-6 d-sm-flex justify-content-end footer">
+                    <!-- <button class="bt1" type="button" routerLink="/user/signup/hourly-rate"> Back </button> -->
+                    <button class="bt3" (click)="next()" type="submit">next</button>
                 </div>
             </form>
         </section>

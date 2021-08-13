@@ -111,9 +111,10 @@ export class LocationComponent implements OnInit {
             if(this.response_data.data != null)
             {
 
-              localStorage.setItem('token' , this.response_data.data.token);
+              // localStorage.setItem('token' , this.response_data.data.token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
-              localStorage.setItem('user_id' , this.response_data.data.user.id);
+              localStorage.setItem('user_id' , this.response_data.data.user.user_id);
+              console.log(this.response_data.data.user.user_id);
               // localStorage.setItem('success_msg' , this.response_data.msg);
               // localStorage.setItem('logged_status' , this.response_data.status);
               if(this.response_data.data.user.client_id)
@@ -124,11 +125,13 @@ export class LocationComponent implements OnInit {
               console.log(response);
               if(this.user_data.type == 'client')
               {
+                localStorage.setItem('token' , this.response_data.data.token);
                 localStorage.setItem('clientType' , 'client');
                 this.router.navigateByUrl('/client/main');
               }
               else
               {
+                localStorage.setItem('user_token' , this.response_data.data.token);
                 localStorage.setItem('freelancerType' , 'freelancer');
                 this.router.navigateByUrl('/user/signup/category');
               }
@@ -147,6 +150,7 @@ export class LocationComponent implements OnInit {
         {
           this.alertConfirmation();
           console.log(this.data.user_data)
+
           //send request
           this.userService.register(this.data.user_data).subscribe(response=>{
 
@@ -157,11 +161,9 @@ export class LocationComponent implements OnInit {
             if(this.response_data.data != null)
             {
 
-              localStorage.setItem('token' , this.response_data.data.access_token);
+              // localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.user_id);
-              // localStorage.setItem('success_msg' , this.response_data.msg);
-              // localStorage.setItem('logged_status' , this.response_data.status);
               if(this.response_data.data.user.client_id)
               {
                 localStorage.setItem('client_id' , this.response_data.data.user.client_id);
@@ -172,11 +174,15 @@ export class LocationComponent implements OnInit {
               //redirect user
               if(this.data.user_data.type == 'client')
               {
+                localStorage.setItem('token' , this.response_data.data.access_token);
                 localStorage.setItem('clientType' , 'client');
                 this.router.navigateByUrl('/client/main');
               }
               else
               {
+                //we can't save token because we need freelancer information
+                localStorage.setItem('user_token' , this.response_data.data.access_token);
+
                 localStorage.setItem('freelancerType' , 'freelancer');
                 this.router.navigateByUrl('/user/signup/category');
               }

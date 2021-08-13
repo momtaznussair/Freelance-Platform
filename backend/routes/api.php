@@ -174,13 +174,14 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
 
 // authenticated freelancer routes
 
+
 Route::middleware(['freelancer','auth:sanctum'])->group(function () {
-   // portfolios
-    Route::post('portfolios' ,[PortfolioController::class,'store']);
+    // portfolios
     Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
     Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
 
     // portfolios images
+    Route::post('portfolios' ,[PortfolioController::class,'store']);
     Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
     Route::post('portfolios/images', [portfolioImagesController::class, 'store']);
 
@@ -223,3 +224,6 @@ Route::post('/register/socialite', [SocialiteAuthController::class, 'registerOrL
 Route::post('/user/update/{id}' , [AuthController::class,'updateUserEmailAndUsername']);
 Route::post('/user/updateLocation/{id}' , [AuthController::class,'updateUserPhoneAndLocation']);
 Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPassword']);
+
+
+Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);

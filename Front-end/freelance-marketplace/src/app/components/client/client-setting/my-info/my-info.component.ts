@@ -14,12 +14,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MyInfoComponent implements OnInit {
 
+
+
   form : FormGroup = new FormGroup({});
   formLocation : FormGroup = new FormGroup({});
 
   constructor(private formBuilder : FormBuilder  , private router : Router  , private userService : UserService) { }
 
+  isDataUpdated : boolean = false;
   user_id : any;
+  isLogged : boolean = false;
+  resData : any;
+  errorUpdate : boolean = false;
 
   ngOnInit(): void {
 
@@ -44,12 +50,6 @@ export class MyInfoComponent implements OnInit {
     })
   }
 
-  isLogged : boolean = false;
-
-
-
-
-
   saveAccountData(){
 
     console.log(this.form.value);
@@ -57,9 +57,16 @@ export class MyInfoComponent implements OnInit {
     {
       this.userService.updateUser( `update/${this.user_id}` , this.form.value).subscribe(response=>{
         console.log(response);
-        alert('updated successfully');
+        this.resData = response;
+        if(this.resData.data != null)
+        {
+          this.isDataUpdated = true;
+        }else
+        {
+          this.errorUpdate = true;
+        }
       } , error => {
-        alert('please check your data and try again');
+        this.errorUpdate = true;
       });
     }
     else
@@ -77,9 +84,15 @@ export class MyInfoComponent implements OnInit {
     {
       this.userService.updateUser( `updateLocation/${this.user_id}` , this.formLocation.value).subscribe(response=>{
         console.log(response);
-        alert('updated successfully');
+        if(this.resData.data != null)
+        {
+          this.isDataUpdated = true;
+        }else
+        {
+          this.errorUpdate = true;
+        }
       } , error => {
-        alert('please check your data and try again');
+        this.errorUpdate = true;
       });
     }
     else
