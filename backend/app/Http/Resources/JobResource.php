@@ -28,7 +28,8 @@ class JobResource extends JsonResource
             'duration' => $this->duration->name,
             'experience' => $this->experience->name,
             'payment_style' => $this->payment_style->name,
-            'category' => $this->category->name
+            'category' => $this->category->name,
+            'proposals_number' => count($this->proposals)
         ];
     }
 }
