@@ -15,8 +15,16 @@ export class ProfileComponent implements OnInit {
   portfoliosData:any;
   data :any;
   profileData:any;
+  freelancer_id : any;
 
   ngOnInit(): void {
+
+    this.freelancer_id = localStorage.getItem('freelancer_id');
+
+    this.profileData  = localStorage.getItem('data');
+
+
+
     this.portfolio.get().subscribe(res=>{
       console.log(res);
       this.portfoliosData = res;

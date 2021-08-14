@@ -18,9 +18,4 @@ export class ProfileService {
     getById(){
     return this.profile.get(`${environment.apiUrl}/freelancers/id`);
   }
-
-  getEducation(id:string){
-    return this.profile.get(`${environment.apiUrl}/educations/${id}`);
-  }
-
 }
