@@ -68,6 +68,11 @@ class AuthController extends Controller
             $user->img_link = $path;
         }
         $user->save();
+        $stripeCustomer = $user->createAsStripeCustomer();
+        $user->applyBalance(-5000, 'penality');
+        $user->applyBalance(10000, 'Premium customer top-up.');
+        $transactions = $user->balanceTransactions();
+        $balance = $user->balance();
         // add as a  client
         if ($request->type == 'client')
         {
@@ -80,7 +85,10 @@ class AuthController extends Controller
 
         $data = [
                 'access_token' => $token,
-                'user' => $user,
+                'user' => new UserResource($user),
+                'stripe' => $stripeCustomer,
+                'balance' => $balance,
+                'transactions' => $transactions,
         ];
 
         return $this->apiResponse($data,'User registered successfully');
@@ -102,7 +110,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password) && $user->auth_id === null) {
+        if (! $user || ! Hash::check($request->password, $user->password) || $user->auth_id === null) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);

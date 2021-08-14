@@ -20,7 +20,8 @@ use App\Http\Controllers\Api\PaymentTypeController;
 use App\Http\Controllers\Api\portfolioImagesController;
 use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SkillController;
-use App\Models\Education;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -191,3 +192,15 @@ Route::middleware(['freelancer','auth:sanctum'])->group(function () {
     Route::post('educations',[EducationController::class,'store']);
 
 });
+Route::get('/home', function () {
+    return "billing portal finished";
+})->name('home');
+Route::get('/billing-portal/{user}', function ($id) {
+    $user = User::find($id);
+
+    return $user->redirectToBillingPortal(route('home'));
+});
+
+Route::get('/terms', function () {
+    return "billing portal terms";
+})->name('terms');
