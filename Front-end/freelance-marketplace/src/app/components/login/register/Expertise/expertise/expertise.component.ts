@@ -130,7 +130,7 @@ duplicated:boolean=false
         "selected":true
       });
       this.require=false;
-          this.query=inpt.innerText;
+      this.query=inpt.innerText;
     }
 
   }
