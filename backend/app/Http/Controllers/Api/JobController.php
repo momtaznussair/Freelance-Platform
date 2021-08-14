@@ -20,7 +20,7 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::with('skills')->get();
-        return $this->apiResponse($jobs);
+        return $this->apiResponse(JobResource::collection($jobs));
     }
 
     public function show($id)
