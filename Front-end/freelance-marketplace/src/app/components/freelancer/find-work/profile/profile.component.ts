@@ -15,8 +15,6 @@ export class ProfileComponent implements OnInit {
   portfoliosData:any;
   data :any;
   profileData:any;
-  getUserName:any;
-  educationId:any;
 
   ngOnInit(): void {
     this.portfolio.get().subscribe(res=>{
@@ -34,13 +32,6 @@ export class ProfileComponent implements OnInit {
 
     })
 
-    // this.getUserName=localStorage.getItem('first_name');
-    // console.log(this.getUserName);
-
-    this.profile.getEducation(this.educationId).subscribe(res=>{
-      console.log(res);
-
-    })
 
   }
 

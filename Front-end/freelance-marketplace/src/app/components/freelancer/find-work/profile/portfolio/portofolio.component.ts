@@ -71,7 +71,7 @@ export class PortofolioComponent implements OnInit {
           this._portofolio.post(this.form.value).subscribe(res=>{
             console.log(res);
             this.responseData = res;
-          },error=> console.error);
+          },error=> {console.error});
         }
         else
         {
