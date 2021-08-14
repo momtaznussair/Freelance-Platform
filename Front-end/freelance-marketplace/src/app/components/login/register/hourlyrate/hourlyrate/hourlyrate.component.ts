@@ -1,8 +1,8 @@
+import { environment } from './../../../../../../environments/environment';
+import { ApiService } from './../../../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
-import {FreelancerRegisterProcess} from "../../../../../services/register-data.service";
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,13 +12,26 @@ import { Router } from '@angular/router';
 })
 export class HourlyrateComponent implements OnInit {
 
+  user_id : any;
+  freelancer_id : any;
+  freelancer_data  :  any;
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder , private userService : UserService,private router : Router ) { }
+  constructor(private formBuilder : FormBuilder , private apiService : ApiService,private router : Router ) { }
 
   currentRegisterData : any;
+  token : any;
+
   ngOnInit(): void
   {
+
+    // we need to save token to make freelancer can logged
+    this.token = localStorage.getItem('user_token');
+
+    this.user_id = localStorage.getItem('user_id');
+    console.log(this.user_id);
     this.currentRegisterData = localStorage.getItem('data');
+    this.currentRegisterData = JSON.parse(this.currentRegisterData)
+
     this.form = this.formBuilder.group({
       hourly_rate : ['' , [ Validators.required]],
     })
@@ -36,11 +49,24 @@ export class HourlyrateComponent implements OnInit {
 
   submit()
   {
-    this.currentRegisterData = JSON.parse(this.currentRegisterData)
-    this.currentRegisterData.hourlyRate = this.form.controls.hourly_rate.value;
-    console.log(localStorage.getItem('data'));
-    localStorage.removeItem('data');
-    this.router.navigateByUrl('freelancer');
+    this.currentRegisterData.hourly_rate = this.form.controls.hourly_rate.value;
+    this.currentRegisterData.user_id = this.user_id;
+    localStorage.setItem('data',JSON.stringify(this.currentRegisterData));
+    console.log(this.currentRegisterData);
+
+    //sent request
+    this.apiService.post(`${environment.apiUrl}/freelancers` , this.currentRegisterData).subscribe(response=>{
+
+      //now we can save token to make freelancer authorized
+      localStorage.setItem('token' , this.token);
+      localStorage.removeItem('user_token');
+
+      console.log(response);
+      this.freelancer_data = response;
+      this.freelancer_id = this.freelancer_data.data.id;
+      localStorage.setItem('freelancer_id' , this.freelancer_id);
+      this.router.navigateByUrl('/user/signup/education');
+    }, error => console.error);
   }
 
 

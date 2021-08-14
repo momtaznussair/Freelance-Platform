@@ -17,14 +17,14 @@ export class SidebarComponent implements OnInit {
     console.log(this.currentPath = window.location.href.substring(21))
   }
 
-  
+
   groups : any = [
-    {name : "Contact Info" , shape : "user" , path : "/freelancer/settings/info"},
-    {name : "Billing Methods" , shape : "badger-honey" , path : "/freelancer/settings/deposit-method"},
-    {name : "Password & Security" , shape : "lock" , path : "/freelancer/settings/security"},
-    {name : "Membership" , shape : "badge" , path : "/freelancer/settings/membership"},
-    {name : "Tax Information" , shape : "commenting" , path : "/freelancer/settings/tax-info"},
-    {name : "Get Paid" , shape : "badger-honey" , path : "/freelancer/settings/get-paid"}
+    {name : "Contact Info" , shape : "user" , path : "/freelancer/info"},
+    {name : "Billing Methods" , shape : "badger-honey" , path : "/freelancer/deposit-method"},
+    {name : "Password & Security" , shape : "lock" , path : "/freelancer/security"},
+    {name : "Membership" , shape : "badge" , path : "/freelancer/membership"},
+    {name : "Tax Information" , shape : "commenting" , path : "/freelancer/tax-info"},
+    {name : "Get Paid" , shape : "badger-honey" , path : "/freelancer/get-paid"},
 
   ];
   selectedItem : any = '';

@@ -28,8 +28,8 @@ class Proposal extends Model
         return $this->belongsTo(Job::class);
     }
 
-    public function freelancer(){
-        return $this->belongsTo(freelancer::class);
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
     public function duration(){

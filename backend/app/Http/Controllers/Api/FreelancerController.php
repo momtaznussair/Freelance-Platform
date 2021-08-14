@@ -30,28 +30,31 @@ class FreelancerController extends Controller
     }
 
     public function store(Request $request){
-        
+
         $validate = Validator::make($request->all(),[
-           'user_id' => 'required|exists:users,id|unique:freelancers,user_id',
-           'category_id' => 'required|exists:categories,id',
-           'experience_id' => 'required|exists:experience_levels,id',
-           'overview' => 'required|min:512',
-           'job_title' => 'required|min:10|max:255',
+            'user_id' => 'required|exists:users,id|unique:freelancers,user_id',
+            'category_id' => 'required|exists:categories,id',
+            'experience_id' => 'required|exists:experience_levels,id',
+            'overview' => 'required|min:10',
+            'job_title' => 'required|min:10|max:255',
+            'hourly_rate' => 'required|numeric'
         ]);
 
         if($validate->fails()){
             return  $this->apiResponse(null,$validate->errors(),422);
         }
-        
+
         $freelancer = freelancer::create([
             'user_id' => $request->user_id,
-           'category_id' => $request->category_id,
-           'experience_id' => $request->experience_id,
-           'overview' => $request->overview,
-           'job_title' => $request->job_title,
+            'category_id' => $request->category_id,
+            'experience_id' => $request->experience_id,
+            'overview' => $request->overview,
+            'job_title' => $request->job_title,
+            'hourly_rate' => $request->hourly_rate
         ]);
+
         if($freelancer){
-            $freelancer->skills()->attach([1, 2, 3]);
+            $freelancer->skills()->attach($request->skills === null ? [] : $request->skills);
             return $this->apiResponse($freelancer);
         }
         return  $this->UnknownError();
@@ -61,10 +64,11 @@ class FreelancerController extends Controller
     {
         $validate = Validator::make($request->all(),[
             'user_id' => 'required|exists:users, id',
-           'category_id' => 'required|exists:categories, id',
-           'experience_id' => 'required|exists:experience_levels, id',
-           'overview' => 'required|min:512',
-           'job_title' => 'required|min:10|max:255',
+            'category_id' => 'required|exists:categories, id',
+            'experience_id' => 'required|exists:experience_levels, id',
+            'overview' => 'required|min:10',
+            'job_title' => 'required|min:10|max:255',
+            'hourly_rate' => 'required|numeric'
         ]);
 
         if($validate->fails()){

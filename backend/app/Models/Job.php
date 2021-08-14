@@ -19,8 +19,8 @@ class Job extends Model
         'experience_id',
         'payment_style_id',
         'category_id',
-        'language_id',
-        'language_level_id',
+        'from',
+        'to',
     ];
 
     protected $hidden = ['pivot'];
@@ -37,16 +37,8 @@ class Job extends Model
         return $this->belongsTo(Duration::class);
     }
 
-    public function experience_level(){
+    public function experience(){
         return $this->belongsTo(Experience_level::class);
-    }
-
-    public function language(){
-        return $this->belongsTo(Language::class);
-    }
-
-    public function language_level(){
-        return $this->belongsTo(Language_level::class);
     }
 
     public function payment_style(){

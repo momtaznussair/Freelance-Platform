@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -27,8 +29,12 @@ export class SignupComponent implements OnInit {
   //patterns for validation
   textPattern = "^[a-zA-Z]{3,255}$"
   phonePattern = "/^[0-9]{11,15}$/";
-  passwordPattern = "^[0-9a-zA-Z]{3,255}$"
+  passwordPattern = "^[0-9a-zA-Z]{3,255}$";
 
+  genders = ['male' , 'female'];
+
+
+  //start of ngOnInit()
   ngOnInit(): void {
 
     //check if user logged
@@ -59,11 +65,12 @@ export class SignupComponent implements OnInit {
       phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
       password_confirmation : ['' , [Validators.required ]],
-      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255) ]],
+      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
       type:['' , [Validators.required]],
     })
 
   }//end of ngOnInit
+
 
   nextStepOfSignUp()
   {
@@ -82,27 +89,34 @@ export class SignupComponent implements OnInit {
       this.nextStepOfSignUp();
   }
 
-  // if signup with any socialite
 
-
-
+  // signUp manually
 
   password_confirmation : string = '';
   password : string = '';
   isLogged : boolean = false;
+
   register(){
-    // alert(JSON.stringify( this.form.value))
+    console.log(this.form.value)
     if(this.form.valid && this.password == this.password_confirmation)
     {
       console.log(this.form.value);
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
-      localStorage.setItem('user_data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
+      localStorage.setItem('data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
       this.router.navigateByUrl('/user/signup/location');
     }
     else
     {
-      alert('error values');
+      this.simpleAlert();
       this.isLogged = true;
     }
   };//end of register function
+
+
+  //================add notification methods
+  simpleAlert(){
+    Swal.fire('please complete your information first');
+  }
+  //==================end of notification method
+
 }

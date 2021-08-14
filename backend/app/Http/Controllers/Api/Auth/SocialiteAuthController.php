@@ -12,7 +12,8 @@ use App\Traits\ApiResponseTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
-
+use App\Http\Resources\UserResource;
+use App\Models\Client;
 
 
 class SocialiteAuthController extends Controller
@@ -39,38 +40,59 @@ class SocialiteAuthController extends Controller
         // dd($user);
     }
 
-    protected function registerOrLoginUser($data){
-        $user = User::where('email','=',$data->email)->first();
+    public function registerOrLoginUser(Request $request){
+        $data = $request;
+        // $user = User::where('email','=',$data->email)->first();
 
-        if (!$user){
-            $user = new User();
-            $user->username = $data->name;
-            $user->email = $data->email;
-            $user->password = Hash::make("hgxv2Sm/g5F3qLk");
-            $user->auth_id = $data->id;
-            $user->first_name = $data->firstName;
-            $user->last_name = $data->lastName;
-            $user->country = $data->location->country;
-            $user->city = $data->location->city;
-            $user->street = $data->location->street_address;
-            $user->zip_code = $data->location->zip_code;
-            $user->save();
-        }
+        $user = new User();
+        $user->name = $data->name;
+        $user->email = $data->email;
+        $user->password = Hash::make("hgxv2Sm/g5F3qLk");
+        $user->auth_id = $data->id;
+        $user->first_name = $data->firstName;
+        $user->last_name = $data->lastName;
+        $user->country = $data->country;
+        $user->city = $data->city;
+        $user->street = $data->street_address;
+        $user->zip_code = $data->zip_code;
+        $user->type = $data->type;
+        $user->save();
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // return response()->json([
-        //         'access_token' => $token,
-        //         'token_type' => 'Bearer',
-        // ]);
-
         $data = [
-                'token' => $token,
-                'token_type' => 'Bearer',
+            'token' => $token,
+            'user' => new UserResource($user),
         ];
+
+        // add as a  client
+        if ($request->type == 'client')
+        {
+            $client = new Client();
+            $client->user_id = $user->id;
+            $client->registration_date = now();
+            $client->save();
+        }
 
         return $this->apiResponse($data);
 
     }
 
+    public function checkEmail(Request $request){
+        $user = User::where('email','=',$request->email)->first();
+        
+        if(!$user){
+            return $this->apiResponse(false,'Welcome new user',200);
+        }
+        else{
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            $data = [
+                'token' => $token,
+                'user' => new UserResource($user),
+            ];
+
+            return $this->apiResponse($data);
+        }
+    }
 }

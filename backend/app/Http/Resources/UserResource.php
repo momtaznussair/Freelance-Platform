@@ -25,8 +25,8 @@ class UserResource extends JsonResource
             'city' => $this->city,
             'street' => $this->street,
             'zip_code' => $this->zip_code,
-            'freelancer_id' => $this->freelancer ?? null,
-            'client_id' => $this->client->id ?? null,
+            'freelancer_id' => $this->freelancer->id ?? Null,
+            'client_id' => $this->client->id ?? Null,
         ];
 
     }

@@ -2,33 +2,32 @@
     <div class="row">
 
         <div class="col-md-2 d-sm-none d-md-block">
-            <post-job-aside></post-job-aside>
+            <!-- <post-job-aside></post-job-aside> -->
         </div>
 
         <div class="col-sm-12 col-md-10 mt-3">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                      <form action="" [formGroup]="form">
+                        <form action="" [formGroup]="form">
 
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <h2>Title</h2>
-                                    <p>Step 1 of 7</p>
+                                    <p>Step 1 of 5</p>
                                 </div>
 
                                 <div class="card-body">
                                     <p class="fw-bold">
                                         Enter the name of your job post
                                     </p>
-                                    <input class="form-control mb-3" formControlName="title" type="text" placeholder="Enter the title of the job" aria-label="default input example">
-                                    <div *ngIf="form.controls.title.invalid && isLogged || (form.controls.title.dirty || form.controls.title.touched)">
-                                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.title.hasError('required')">This field is required
-
-                                      </small>
-
-                                  </div>
-                                    <p class="fw-bold">
+                                    <input class="form-control" name="job_title" formControlName="job_title" type="text" placeholder="Enter the title of the job" aria-label="default input example">
+                                    <div *ngIf="form.controls.job_title.invalid && isLogged || (form.controls.job_title.dirty || form.controls.job_title.touched)">
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('required')">This field is required </small>
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('minlength')">Please write more than 3 characters</small>
+                                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.job_title.hasError('maxlength')">Sorry, you can't write more than 255 characters</small>
+                                    </div>
+                                    <p class="fw-bold mt-3">
                                         Here are some good examples:
                                     </p>
                                     <ul>
@@ -47,79 +46,13 @@
                                     </p>
                                     <p>Let's categorize your job, which helps us personalize your job details and match your job to relevant freelancers and agencies.</p>
 
-                                    <!-- Radio button -->
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="mobile" id="mobile">
-                                        <label class="form-check-label fw-bold" for="mobile">
-                                            Mobile Design
-                                        </label>
-                                        <p>
-                                            Mobile design involves designing the user interface (UI) and user experience (UX) for mobile applications.
-                                        </p>
-                                    </div>
+                                    <p class="fw-bold">Category</p>
+                                    <select class="form-select form-select-sm" placeholder="select" formControlName="category_id" name="category_id" aria-label=".form-select-sm example" *ngIf="isCategoryGet">
+                                        <option selected *ngFor="let item of categoryData.data" value="{{item.id}}" >{{item.name}}</option>
+                                    </select>
 
-                                    <!-- Button trigger modal -->
-                                    <a type="button" class="modal-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        See Categories
-                                    </a>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <!-- modal header -->
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Job categorization</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <!-- modal body -->
-                                                <div class="modal-body">
-                                                    <!-- Category -->
-                                                    <h6>Select a category</h6>
-                                                    <p class="fw-bold">Category</p>
-                                                    <select class="form-select category" aria-label="Default select example">
-                                                        <option selected>Select a category</option>
-                                                        <option value="accounting-consulting">Accounting & Consulting</option>
-                                                        <option value="admin-spport">Admin Support</option>
-                                                        <option value="customer-service">Customer Service</option>
-                                                        <option value="data-science">Data Science & Analytics</option>
-                                                        <option value="it-networking">IT & Networking</option>
-                                                        <option value="customer-service">Customer Service</option>
-                                                        <option value="writing">Writing</option>
-                                                        <option value="translation">Translation</option>
-                                                        <option value="web-mobile-software-dev">Web, Mobile & Software Dev</option>
-                                                        <option value="sales-marketing">Sales & Marketing</option>
-                                                        <option value="engineering-architecture">Engineering & Architecture</option>
-                                                    </select>
-                                                    <!-- speciality -->
-                                                    <p class="fw-bold">Specialty</p>
-                                                    <select class="form-select specialty" name="" id="">
-                                                        <option selected>Select a specialty</option>
-                                                        <option value="ar-vr">AR/VR Development</option>
-                                                        <option value="automation-testing">Automation Testing</option>
-                                                        <option value="back-end-development">Back-End Development</option>
-                                                        <option value="database-development">Database Development</option>
-                                                        <option value="desktop-software-development">Desktop Software Development</option>
-                                                        <option value="ecommerce">Ecommerce Development</option>
-                                                        <option value="front-end">Front-End Development</option>
-                                                        <option value="full-stack">Full Stack Development</option>
-                                                        <option value="mobile-app-development">Mobile App Development</option>
-                                                        <option value="mobile-design">Mobile Design</option>
-                                                        <option value="ux-ui">UX/UI Design</option>
-                                                        <option value="web-design">Web Design</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light border rounded-pill" data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary rounded-pill" disabled>Save</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="card-footer py-4">
-                                    <a routerLink="/client/post-job/getting-start" class="btn btn-light px-5 mx-3 py-2 border rounded-pill text-primary">Back</a>
                                     <button class="btn btn-primary px-5 mx-3 py-2 rounded-pill" type="submit" (click)="next()">next</button>
 
                                 </div>
@@ -133,6 +66,3 @@
 
     </div>
 </div>
-
-
-

@@ -1,4 +1,6 @@
+import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +9,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  isUserLogged : boolean = false;
+
+  constructor(private router : Router , private userService : UserService) {}
 
   ngOnInit(): void {
+
+    // this.userService.getLoggedStatus().subscribe(res=>{
+    //   console.log(res);
+    //   this.isUserLogged = res;
+    // })
+
+    if(this.userService.isLogged()){
+      this.isUserLogged = true;
+    }
   }
 
+  signUp(){
+    this.router.navigateByUrl("/user/signup/main");
+  }
+
+  login(){
+    this.router.navigateByUrl("/user");
+  }
+
+  logout(){
+    this.userService.logout();
+  }
+
+  freelancer(){
+    this.router.navigateByUrl("/freelancer");
+  }
+
+  jobs(){
+     // put the route jobs =>/user
+    // this.router.navigateByUrl("/user");
+  }
 }
+

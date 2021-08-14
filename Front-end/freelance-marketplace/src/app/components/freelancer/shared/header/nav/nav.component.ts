@@ -1,6 +1,6 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -13,11 +13,12 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  setting(){
+    this.router.navigateByUrl("/freelancer/settings/info");
+  }
 
   logout(){
-    this.userService.logout();
-    this.router.navigateByUrl('/user');
+    this.userService.logout()
   }
 
 }
