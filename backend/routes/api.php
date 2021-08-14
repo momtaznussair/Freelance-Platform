@@ -24,6 +24,7 @@ use App\Models\Education;
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\UserLanguagesController;
+use App\Models\User;
 
 
 /*
@@ -173,13 +174,15 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
 });
 
 // authenticated freelancer routes
+Route::post('portfolios' ,[PortfolioController::class,'store']);
+Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
+Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
 
 
 Route::middleware(['freelancer','auth:sanctum'])->group(function () {
     // portfolios
     Route::post('portfolios' ,[PortfolioController::class,'store']);
     Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
-    Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
 
     // portfolios images
     Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
@@ -227,3 +230,15 @@ Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPass
 
 
 Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);
+Route::get('/home', function () {
+    return "billing portal finished";
+})->name('home');
+Route::get('/billing-portal/{user}', function ($id) {
+    $user = User::find($id);
+
+    return $user->redirectToBillingPortal(route('home'));
+});
+
+Route::get('/terms', function () {
+    return "billing portal terms";
+})->name('terms');
