@@ -177,11 +177,11 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
 
 Route::middleware(['freelancer','auth:sanctum'])->group(function () {
     // portfolios
+    Route::post('portfolios' ,[PortfolioController::class,'store']);
     Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
     Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
 
     // portfolios images
-    Route::post('portfolios' ,[PortfolioController::class,'store']);
     Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
     Route::post('portfolios/images', [portfolioImagesController::class, 'store']);
 

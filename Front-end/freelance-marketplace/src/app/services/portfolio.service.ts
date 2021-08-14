@@ -6,21 +6,23 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PortfolioService {
 
-  constructor(private port:ApiService) { }
+export class PortfolioService {
+  token : any;
+  constructor(private http:ApiService) { }
 
   get(){
-    return this.port.get(`${environment.apiUrl}/portfolios`);
+    return this.http.get(`${environment.apiUrl}/portfolios`);
   }
 
   post(body:any){
-    return this.port.post(`${environment.apiUrl}/portfolios`, body);
+    this.token = localStorage.getItem('token');
+    console.log(this.token)
+    return this.http.post(`${environment.apiUrl}/portfolios`, body, {'headers': {
+      'Accept' : 'application/json',
+      'Authorization' : `Bearer ${this.token}`
+    }})
   }
-
-  postImage(body:any){
-    return this.port.post(`${environment.apiUrl}/portfolios/images`, body);
-  }
-
-
 }
+
+

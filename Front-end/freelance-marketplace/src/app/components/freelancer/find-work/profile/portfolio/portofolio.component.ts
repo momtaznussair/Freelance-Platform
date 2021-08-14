@@ -20,6 +20,9 @@ export class PortofolioComponent implements OnInit {
   freelancer_id : any;
   responseData : any;
   portfolio_id : any;
+  images = [] as any ;
+
+
 
   constructor(private formBuilder : FormBuilder, private router : Router, private _portofolio:PortfolioService) { }
   ngOnInit(): void {
@@ -36,6 +39,26 @@ export class PortofolioComponent implements OnInit {
 
   }
 
+  onFileChange(event : any) {
+    if (event.target.files && event.target.files[0]) {
+        var imagesAmount = event.target.files.length;
+        for (let i = 0; i < imagesAmount; i++) {
+                var reader = new FileReader();
+   
+                reader.onload = (event:any) => {
+                  console.log(event.target.result);
+                   this.images.push(event.target.result); 
+   
+                   this.form.patchValue({
+                      fileSource: this.images
+                   });
+                }
+  
+                reader.readAsDataURL(event.target.files[i]);
+        }
+    }
+  }
+
 
   isLogged : boolean = false;
 
@@ -49,7 +72,6 @@ export class PortofolioComponent implements OnInit {
             console.log(res);
             this.responseData = res;
           },error=> console.error);
-
         }
         else
         {

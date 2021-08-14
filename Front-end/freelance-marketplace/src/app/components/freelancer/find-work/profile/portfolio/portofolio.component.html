@@ -27,7 +27,7 @@
                             </p>
                             <div class="drag-drop">
                                 <p class=" text-center mt-4">
-                                    <input type="file" name="image" formControlName="image" multiple>
+                                    <input type="file" name="image" formControlName="image" (change)="onFileChange($event)">
                                 </p>
 
                             </div>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class=" card-footer py-4">
-                            <button class="btn btn-light px-5 mx-3 py-2 border rounded-pill " routerLink="/freelancer/profile" id="one">Cancel</button>
+                            <button class="btn btn-light px-5 mx-3 py-2 border rounded-pill " data-bs-dismiss="modal" routerLink="/freelancer/profile" id="one">Cancel</button>
                             <button class="btn btn-dark px-5 mx-3 py-2 rounded-pill" (click)="save()" type="submit" id="two">Save</button>
 
                         </div>
