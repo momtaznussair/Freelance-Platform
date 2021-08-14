@@ -1,6 +1,6 @@
 body {
     font-family: Montserrat, sans-serif;
-    background-color: #f7f7f5;
+    /* background-color: #f7f7f5; */
 }
 
 .container {
@@ -9,9 +9,9 @@ body {
     margin-top: 1.5rem;
 }
 
-.c {
+/* .c {
     background-color: #f7f7f5;
-}
+} */
 
 .side {
     width: 100%;

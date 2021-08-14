@@ -64,7 +64,22 @@ skills:any;
       this.skills=this.jobPost.skills;
       console.log(this.skills);
 
+<<<<<<< HEAD
     },error=>console.error);
+=======
+    // this.jobsPosts.getAllPosts(HttpParams)
+    //   .subscribe(
+    //     response => {
+    //       this.POSTS = response;
+    //       console.log(response);
+    //     },
+    //     error => {
+    //       console.log(error);
+    //     });
+   
+
+    this.job.getJobs().subscribe(res=>{
+>>>>>>> 2931fad9d73c80099c28d800e3ac020dbec15d2c
 
   
     // this.job.get().subscribe(res=>{
