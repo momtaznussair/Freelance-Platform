@@ -37,9 +37,21 @@ span:hover{
 }
 
 .btnn{
-    width: auto;
+    width: 8rem ;
     background-color: var(--mc);
     color: white;
+}
+.btnn:hover{
+    background-color: var(--bg);
+    color: var(--mc);
+}
+.skillname{
+    font-size: 4rem;
+    font-family: cursive;
+    color: var(--mc);
+}
+.skillname:hover{
+    color: blue;
 }
 /* ----------------------------------------------------------------------------------------------------------------- */
 
