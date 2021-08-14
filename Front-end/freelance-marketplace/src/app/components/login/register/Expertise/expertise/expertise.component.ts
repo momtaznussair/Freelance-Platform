@@ -112,29 +112,30 @@ export class ExpertiseComponent implements OnInit {
  }
 /*=============================add skills from drop down  array version ========================*/
 duplicated:boolean=false
- addSkillFromDropDown(a:HTMLElement,inpt:HTMLElement){
+  addSkillFromDropDown(a:HTMLElement,inpt:HTMLElement){
 
-  for(let i=0;i<this.skills.length;i++)
-  {
-    if((this.skills[i].selected)&&(a.innerText===this.skills[i].name))
+    for(let i=0;i<this.skills.length;i++)
     {
-      this.duplicated=true;
-      // break;
+      if((this.skills[i].selected)&&(a.innerText===this.skills[i].name))
+      {
+        this.duplicated=true;
+        // break;
+      }
     }
+
+    if(!this.duplicated){
+      this.skills.push({
+        "id":this.skills.id,
+        "name": a.innerText,
+        "selected":true
+      });
+      this.require=false;
+          this.query=inpt.innerText;
+    }
+
   }
-if(!this.duplicated){
-  this.skills.push({
-    "id":this.skills.id,
-    "name": a.innerText,
-    "selected":true
-  });
-  this.require=false;
-      this.query=inpt.innerText;
+
 }
-
-
-
- }}
 //  search(){
 //   console.log(this.result);
 //  }

@@ -18,15 +18,19 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     if(this.userService.isLogged())
     {
-      if(localStorage.getItem('clientType'))
+      if(localStorage.getItem('clientType') && localStorage.getItem('client_id') != 'null')
       {
         this.router.navigateByUrl('/client/main')
       }
-      else
+      else if(localStorage.getItem('freelancerType') && localStorage.getItem('freelancer_id') != 'null')
       {
         this.router.navigateByUrl('/freelancer')
+      }else
+      {
+        this.userService.logout();
       }
     }
 
