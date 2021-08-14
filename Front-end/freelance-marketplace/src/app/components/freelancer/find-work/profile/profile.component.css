@@ -66,7 +66,7 @@ span {
 .card {
     border: none;
     text-align: center;
-    height: 19rem;
+    height: 12rem;
     color: var(--mc);
 }
 
@@ -183,4 +183,26 @@ h5 {
     b2 {
         display: none;
     }
+}
+#one{
+  width: 210px;
+  height: 150;
+
+}
+#one:hover{
+  cursor: pointer;
+}
+#two
+{
+  cursor: pointer;
+
+}
+#two:hover{
+  text-decoration: underline;
+}
+#three{
+  background-color:var(--mc) ;
+  color: white;
+  border-radius:50%;
+
 }
