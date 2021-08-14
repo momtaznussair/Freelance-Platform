@@ -43,7 +43,7 @@ export class SubmitProposalComponent implements OnInit {
     this.jobDetails.getJob(this.id).subscribe(response=>{
       this.job_details=response['data'] as Job[];
       console.log(this.job_details);
-      this.job_skills=this.job_details.skills;
+      this.job_skills=this.job_details.skill;
       console.log(this.job_skills);
       this.isDataGet=true;
 
