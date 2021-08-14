@@ -78,12 +78,27 @@ class AuthController extends Controller
             // $user->save();
         }
         $user->save();
-
+        $stripeCustomer = $user->createAsStripeCustomer();
+        $user->applyBalance(-5000, 'penality');
+        $user->applyBalance(10000, 'Premium customer top-up.');
+        $transactions = $user->balanceTransactions();
+        $balance = $user->balance();
+        // add as a  client
+        if ($request->type == 'client')
+        {
+            $client = Client::create([
+                'user_id' => $user->id,
+            ]);
+        }
+        
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $data = [
-            'access_token' => $token,
-            'user' => new UserResource($user),
+                'access_token' => $token,
+                'user' => new UserResource($user),
+                'stripe' => $stripeCustomer,
+                'balance' => $balance,
+                'transactions' => $transactions,
         ];
 
         // add as a  client
@@ -114,7 +129,11 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
+<<<<<<< HEAD
         if (! $user || ! Hash::check($request->password, $user->password)) {
+=======
+        if (! $user || ! Hash::check($request->password, $user->password) || $user->auth_id === null) {
+>>>>>>> 5b47b4da9553a7cbeda68c3302d3a48a71deab38
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);

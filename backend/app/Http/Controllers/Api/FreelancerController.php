@@ -27,7 +27,7 @@ class FreelancerController extends Controller
         if($freelancer){
             return $this->apiResponse(new FreelancerResource($freelancer));
         }
-
+ 
         return $this->NotFoundError();
     }
 

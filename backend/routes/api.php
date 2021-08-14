@@ -24,6 +24,7 @@ use App\Models\Education;
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\UserLanguagesController;
+use App\Models\User;
 
 
 /*
@@ -227,3 +228,15 @@ Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPass
 
 
 Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);
+Route::get('/home', function () {
+    return "billing portal finished";
+})->name('home');
+Route::get('/billing-portal/{user}', function ($id) {
+    $user = User::find($id);
+
+    return $user->redirectToBillingPortal(route('home'));
+});
+
+Route::get('/terms', function () {
+    return "billing portal terms";
+})->name('terms');
