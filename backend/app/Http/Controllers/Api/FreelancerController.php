@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FreelancerResource;
 use App\Models\Freelancer;
 use App\Models\User;
 use App\Traits\ApiResponseTrait;
@@ -15,15 +16,16 @@ class FreelancerController extends Controller
 
     public function index(){
         $freelancers = Freelancer::all();
-        return $this->apiResponse($freelancers);
+        return $this->apiResponse(FreelancerResource::collection($freelancers));
     }
 
     public function show($id){
-        $user = User::find($id);
-        $freelancer = $user->freelancer;
+        // $user = User::find($id);
+        // $freelancer = $user->freelancer;
+        $freelancer = Freelancer::find($id);
 
         if($freelancer){
-            return $this->apiResponse($freelancer);
+            return $this->apiResponse(new FreelancerResource($freelancer));
         }
  
         return $this->NotFoundError();
