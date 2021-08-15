@@ -13,6 +13,11 @@ freelancers:any;
 freelancer_id:any;
 query='';
   ngOnInit(): void {
+    // this.freelance.getFreelancers(`freelancers`).subscribe(res=>{
+    //   this.freelancers=res.data;
+    //   console.log(this.freelancers);}
+      // this.freelancer_data=this.freelancers.i;
+      // console.log(this.freelancer_data);
     this.fetchPosts();
   }
 
