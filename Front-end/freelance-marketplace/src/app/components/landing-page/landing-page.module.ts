@@ -10,9 +10,14 @@ import { MyProposalComponent } from './my-proposal/my-proposal.component';
 import { WeareComponent } from './weare/weare/weare.component';
 import { TopskillComponent } from './topskill/topskill/topskill.component';
 import { LayoutModule } from '../layout/layout.module';
+import { FreelancersComponent } from './freelancers/freelancers.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 const routes: Routes = [
   {path : 'main' , component : MainComponent},
+  {path : 'freelancers' , component : FreelancersComponent},
   {path : '' , component : MainComponent},
 ];
 
@@ -25,9 +30,11 @@ const routes: Routes = [
     MyProposalComponent,
     WeareComponent,
     TopskillComponent,
+    FreelancersComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule,LayoutModule
+    CommonModule,RouterModule.forChild(routes),SharedModule,LayoutModule,FormsModule
+    ,NgxPaginationModule
   ],
   exports: [JoinWorldComponent , ForClientComponent , HireAProComponent]
 })

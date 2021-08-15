@@ -17,14 +17,18 @@ import { PortofolioComponent } from './profile/portfolio/portofolio.component';
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},
   {path : 'work/details' , component : JobDetailsComponent},
+  {path : 'work/details/:id' , component : JobDetailsComponent},
   {path : 'stats' , component : MyStatsComponent},
   {path : 'saved-jobs' , component : SavedJobsComponent},
   {path : 'profile' , component : ProfileComponent},
   {path:'profile/portofolio', component:PortofolioComponent},
   {path : 'proposals' , component : ProposalsComponent},
   {path : 'submit-proposal' , component :SubmitProposalComponent},
-  {path : 'filter' , component :FilterJobsComponent},
+  {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
+  {path : 'work/details/:id' , component :JobDetailsComponent},
+  {path : 'filter-jobs' , component :FilterJobsComponent},
   {path:'', component:FindWorkComponent},
+
 
 ]
 

@@ -37,7 +37,7 @@ export class EductionComponent implements OnInit {
 
   next()
 {
-
+  
   console.log({user_id : this.user_id , institute : this.form.controls['institute'].value , area_of_study : this.form.controls['area_of_study'].value});
   if(this.form.valid)
   {

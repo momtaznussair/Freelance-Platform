@@ -11,7 +11,6 @@ import { ApiService } from 'src/app/services/api.service';
 import { countries } from 'src/app/models/location/countries';
 import Swal from 'sweetalert2';
 
-
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',

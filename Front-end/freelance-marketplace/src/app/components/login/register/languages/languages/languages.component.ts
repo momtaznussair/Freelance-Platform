@@ -53,7 +53,7 @@ export class LanguagesComponent implements OnInit {
 
   /*hourly-rate*/
   next()
-  {
+  {  
     if(this.form.valid)
     {
       console.log(this.form.value);

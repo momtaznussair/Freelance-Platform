@@ -2,7 +2,10 @@
     font-size: 80px !important;
     color: var(--mc);
 }
-
+.img-fluid{
+ width: 100vw;
+ height: 60vh;
+}
 .container p {
     font-size: 24px !important;
     color: black;

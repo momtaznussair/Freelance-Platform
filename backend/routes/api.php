@@ -160,7 +160,7 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
     // clients
     Route::post('/clients/{client}',[ClientController::class,'update']);
     Route::delete('/clients/delete/{client}',[ClientController::class,'destroy']);
-
+    
     // jobs
     Route::post('jobs/{job}' ,[JobController::class,'update']);
     Route::delete('jobs/delete/{job}' ,[JobController::class,'destroy']);
