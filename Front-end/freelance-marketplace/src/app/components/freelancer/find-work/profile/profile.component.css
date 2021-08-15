@@ -54,7 +54,7 @@ span {
 .card {
     border: none;
     text-align: center;
-    height: 19rem;
+    height: 14rem;
     color: var(--mc);
 }
 
@@ -155,4 +155,40 @@ h5 {
     b2 {
         display: none;
     }
+}
+#one {
+  width: 210px;
+
+}
+#one:hover{
+  cursor: pointer;
+}
+#two
+{
+  cursor: pointer;
+
+}
+#two:hover{
+  text-decoration: underline;
+}
+#three{
+  background-color:var(--mc) ;
+  color: white;
+  border-radius:50%;
+
+}
+.drag-drop{
+  border: .125rem dotted  var(--mc);
+  height: 5rem;
+  width: 29rem;
+  margin-left: 20px;
+}
+
+.drag-drop span{
+  color: var(--tc);
+}
+
+.drag-drop span:hover{
+  cursor: pointer;
+  text-decoration: underline ;
 }

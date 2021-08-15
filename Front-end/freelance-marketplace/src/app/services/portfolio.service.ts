@@ -2,6 +2,7 @@ import { environment } from '../../environments/environment';
 // import { environment } from './environments/environment.prod';
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class PortfolioService {
       'Authorization' : `Bearer ${this.token}`
     }})
   }
-}
 
+  delete(id:number){
+    return this.http.delete("http://127.0.0.1:8000/api/portfolios/delete/"+id);
+  }
+
+}
 
