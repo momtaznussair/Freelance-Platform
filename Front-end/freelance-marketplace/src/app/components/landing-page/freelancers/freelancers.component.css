@@ -52,6 +52,7 @@ a{
     color: var(--mc);
 
 } 
+
 .free li {
     width: auto;
     font-size: .7rem;
@@ -134,7 +135,9 @@ h5{
 }
 
 
-
+.nav-item{
+    color: var(white);
+}
 
 @media only screen and (max-width: 992px) { 
    .btnn{
