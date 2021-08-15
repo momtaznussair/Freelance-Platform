@@ -19,7 +19,6 @@ export class FilterJobsComponent implements OnInit {
   shape2='fa-chevron-down';
   shape3='fa-chevron-down';
   shape4='fa-chevron-down';
-  params= new Set();
   count = 0;
   currentIndex:number=0;
   cat :Category[]=[];
@@ -35,13 +34,13 @@ export class FilterJobsComponent implements OnInit {
     console.log(this.radioSelectedString)
   }
   ngOnInit(): void {
-    this.fetchPosts();
+    this.fetchJobs();
   }
-  search(){}
+  search(){console.log(this.query)}
 
 
  jobPost:any;
-  fetchPosts(): void {
+  fetchJobs(): void {
   
       this.job.getJobs().subscribe(response=>{
         this.jobPost=response['data'] as Job;
@@ -54,35 +53,101 @@ export class FilterJobsComponent implements OnInit {
     }
     )
   }
-  addCategories(e:any){
-
-  }
-
-  addParams(e:any){
-    //  console.log(e.target.tagName)
-      // console.log(e.target.innerText)
-      if(e.target.checked){
-       this.params.add(e.target.value)
-      }else{
-        console.log(e)
-      }
-      console.log(e.target.name);
-        console.log(this.params);
-     }
+  
    /*------------------------------
       add filters to array params
-  --------------------------------*/ 
-  addExpermentLevel(e:any){
-  //  console.log(e.target.tagName)
-    // console.log(e.target.innerText)
-    if(e.target.checked){
-     this.params.add(e.target.value)
-    }else{
-      console.log(e)
+  --------------------------------*/
+  params=[
+    {
+    name:'Entry',
+    selected:false
+  },
+  {
+    name:'intermediate',
+    selected:false
+  },
+  {
+    name:'expert',
+    selected:false
+  },
+  {
+    name:'hourly',
+    selected:false
+  },
+  {
+    name:'fixed',
+    selected:false
+  },
+  {
+    name:'0',
+    selected:false
+  },
+  {
+    name:'5',
+    selected:false
+  },
+  {
+    name:'10',
+    selected:false
+  },
+  {
+    name:'15',
+    selected:false
+  },
+  {
+    name:'20',
+    selected:false
+  },
+  {
+    name:'p0',
+    selected:false
+  },
+  {
+    name:'p5',
+    selected:false
+  },
+  {
+    name:'p10',
+    selected:false
+  },
+  {
+    name:'p15',
+    selected:false
+  },
+  {
+    name:'p20',
+    selected:false
+  }
+  ]
+  selectedArr=[{name:'',selected:false}]
+  addParams(e:any){
+    for (let i = 0; i < this.params.length; i++)
+    {
+      if(this.params[i].name == e.target.value &&this.params[i].selected==false)
+      {
+        this.params[i].selected=true
+      }
     }
-    console.log(e.target.name);
-      console.log(this.params);
-   }
+  this.selectedArr= this.params.filter(item => item.selected);
+  
+  console.log(this.selectedArr)
+ 
+  }
+    addCat(e:any){
+      for (let i = 0; i < this.selectedArr.length; i++)
+      {
+        if(this.selectedArr[i].name == e.target.value &&this.selectedArr[i].selected==false)
+        {
+          this.selectedArr[i].selected=true
+        }
+      }
+    this.selectedArr.push({
+      name:e.target.value,
+      selected:true
+    })
+    console.log(this.selectedArr)
+    }
+  
   /*-------------------------
      change icon methods 
   -------------------------- */ 
@@ -131,12 +196,12 @@ export class FilterJobsComponent implements OnInit {
   tableSize=7;
   onTableDataChange(event:any){
     this.page = event;
-    this.fetchPosts();
+    this.fetchJobs();
   }  
 
   onTableSizeChange(event:any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.fetchPosts();
+    this.fetchJobs();
   }  
 }
