@@ -22,6 +22,8 @@ export class ProfileComponent implements OnInit {
   portfoliosData: any;
   data: any;
  portfilio_id:any;
+ count = 0;
+  currentIndex:number=0;
   ngOnInit(): void {
 
     this.form = this.formBuilder.group({
@@ -30,6 +32,11 @@ export class ProfileComponent implements OnInit {
       image: ['', [Validators.required]]
     })
 
+    this.fetchpostdata();
+  }
+
+  fetchpostdata()
+    {
     this.portfolio.get().subscribe(res => {
       console.log(res);
       this.portfoliosData = res;
@@ -40,7 +47,7 @@ export class ProfileComponent implements OnInit {
       this.isDataGet = true;
 
     })
-  }
+  };
   isLogged: boolean = false;
 
   submit(id: number) {
@@ -67,6 +74,22 @@ export class ProfileComponent implements OnInit {
       alert('please complite failds..');
       console.log(this.isLogged);
     }
+  }
+
+   /*-------------------------
+       pagination methods
+  -------------------------- */
+  page=1;
+  tableSize=7;
+  onTableDataChange(event:any){
+    this.page = event;
+    this.fetchpostdata();
+  }
+
+  onTableSizeChange(event:any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchpostdata();
   }
 }
 

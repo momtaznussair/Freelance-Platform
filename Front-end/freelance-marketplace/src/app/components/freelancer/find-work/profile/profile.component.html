@@ -101,6 +101,14 @@
 
           <!-- image and icon-->
           <div class="card-group ms-1  " *ngFor="let i of data">
+           <!-- |paginate : {
+            itemsPerPage: 5,
+            currentPage: page,
+            totalItems: count
+          };
+
+            let i = index" [class.active]="i == currentIndex" > -->
+
             <div class="card">
               <div>
                 <img src="./assets/images/a.jpg" class="card-img-top ml-1" id="one" alt="..." data-bs-toggle="modal"
@@ -355,4 +363,13 @@
       </div>
     </div>
   </div>
+</div>
+<!---------------------------------------------------------------- pagination controls------------------------------------------------------->
+<div class="container">
+
+  <div class="d-flex justify-content-center">
+      <pagination-controls nextLabel="next" (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
+  </div>
+
 </div>

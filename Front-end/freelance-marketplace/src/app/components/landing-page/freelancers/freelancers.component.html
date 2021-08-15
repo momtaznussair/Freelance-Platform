@@ -276,7 +276,7 @@
 
 
         <!-- freelancer section -->
-        <div class="row border-bottom mt-3 " *ngFor="let freelancer of freelancers 
+        <!-- <div class="row border-bottom mt-3 " *ngFor="let freelancer of freelancers 
        
         |paginate : {
             itemsPerPage: 5,
@@ -291,27 +291,27 @@
                     <div class="col ">
                         <div class=" mt-md-3 d-flex">
                             <span>
-                            <img class="d-inline-block ms-3 pro imag" src="../../../../assets/images/sam.jpg"/><br>
-                               <p class="ms-md-4 mt-md-3 m"> $15.00 /hr</p>
+                            <img class="d-inline-block ms-3 pro imag" src="../../../assets/images/sam.jpg" /><br>
+                               <p class="ms-md-4 mt-md-3 m"> ${{freelancer.hourly_rate}} /hr</p>
 
                             </span>
 
                             <span>
-                            <h4 class="d-inline-block mt-4 ms-3">{{freelancer.job_title}}</h4> <br>
-                            <p class="ms-md-2 ms-sm-4 f">full stack developer wordpress</p></span>
+                            <h4 class="d-inline-block mt-4 ms-3">{{freelancer.user.name}}</h4> <br>
+                            <p class="ms-md-2 ms-sm-4 f">{{freelancer.category}}</p></span>
                             <br>
+                            <button type="button" class="btn btnn btn-lg rounded-pill  border border-1 b1 p-0 mt-4 me-3  bs ms-auto" >Hire</button>
+
                         </div>
                         <span class="ms-md-4">
                             <p class="mb-2 desc"> {{freelancer.overview}}</p>
 
-                        <i class="far fa-file-alt"></i> <a href="" class="ms-1">completed 6 CSS3 jobs on site_name</a>
-                        <p class="ms-md-4 mt-md-2">Has <b>9 relevant skills</b> to your job</p>
                         </span>
                         <ul class="nav free mb-md-4">
-                            <li class="nav-item my-sm-1">
-                              <a class="nav-link " href="#">CSS3[top1%]</a>
+                            <li class="nav-item my-sm-1" *ngFor="let skill of freelancer.skills">
+                              <a class="nav-link " href="#" >{{skill.name}}</a>
                             </li>
-                            <li class="nav-item my-sm-1">
+                            <!-- <li class="nav-item my-sm-1">
                               <a class="nav-link" href="#">WordPress[top1%]</a>
                             </li>
                             <li class="nav-item my-sm-1">
@@ -319,12 +319,89 @@
                             </li>
                             <li class="nav-item my-sm-1">
                               <a class="nav-link " href="#">HTML[top5%]</a>
-                            </li>
-                          </ul>
+                            </li> -->
+                          <!-- </ul>
                     </div>
                 </div>
               
                 </div>
+            </div> --> 
+
+
+            <!-- jjj -->
+
+
+
+
+            <div class="card-body border"  *ngFor="let freelancer of freelancers  
+            |paginate : {
+                itemsPerPage: 5,
+                currentPage: page,
+                totalItems: count
+              };
+              
+        let i = index" [class.active]="i == currentIndex">
+       
+                <!-- Job Title -->
+                <div class="header d-flex">
+                    <img class="d-inline-block ms-3 pro imag mb-2" src="../../../assets/images/sam.jpg"/><br>
+                    <a class="ms-4 mt-4" [routerLink]="['/freelancer/profile/details',freelancer.id]" >  {{freelancer.user.name}}<br> 
+                      <p>{{freelancer.category}}</p>
+                    </a>
+                    <span class="ms-auto">
+                        <button type="button" class="btn btnn btn-lg rounded-pill  border border-1 b1 p-0  me-3  bs " >Hire</button>
+                        <i class="fas fa-envelope-square msg"></i>
+                                                <!-- <i class="fas fa-heart fa-2x mx-2"></i> -->
+                    </span>
+                    <br>
+                </div>
+
+                <!-- Job Info  -->
+                Hourly: <span class="hourly-rate fw-bold">${{freelancer.hourly_rate}}</span><br>
+                <span class="complex"> - {{freelancer.Experience}}</span> - Est. Time: <span class="job-time"> {{freelancer.user.created_at | date : 'short'}}, Hours to be determined </span><br> - Posted: <span class="job-since"> {{freelancer.user.created_at | date : 'short'}}</span>
+                <br>
+
+                <!-- Job Description -->
+                <p class="job-desc fw-bold">
+                    {{freelancer.overview}}
+                </p>
+
+                <!-- Job Skills -->
+                <div class="skills my-2 text-center">
+                    <span class="mx-2"  *ngFor="let skill of freelancer.skills">{{skill.name}}</span>
+                </div>
+
+                <!-- -Proposals: <span class="proposals fw-bold">5 to 10</span> <br> -->
+
+                <!-- More Info -->
+                <div class="more-info">
+                    <!-- start Verified -->
+                    <!-- <span class="unverified">
+                        <i class="far fa-check-circle me-md-2"></i> <span class="fw-bold">Payment unverified</span>
+                    </span>
+                    <span class="verified d-none">
+                        <i class="fas fa-check-circle mee-md-2"></i> <span class="fw-bold">Payment verified</span>
+                    </span> -->
+                    <!-- End Verified -->
+
+                    <!-- Rating -->
+                    <!-- <span class="payment-rating mx-md-2">
+                        rating with stars
+                    </span> -->
+
+                    <!-- Money spent -->
+                    <span class="spent mx-md-2">
+                        <span class="money-spent fw-bold">${{freelancer.payment_amount}}</span> spent
+                    </span>
+
+                    <!-- Location -->
+                    <span class="location ms-md-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        <span class="fw-bold">{{freelancer.user.city}}</span>
+                    </span>
+                </div>
+
+
             </div>
           </div>
           </div>
