@@ -37,7 +37,7 @@ class Job extends Model
         return $this->belongsTo(Duration::class);
     }
 
-    public function experience_level(){
+    public function experience(){
         return $this->belongsTo(Experience_level::class);
     }
 

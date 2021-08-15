@@ -47,7 +47,7 @@ class SocialiteAuthController extends Controller
         $user = new User();
         $user->name = $data->name;
         $user->email = $data->email;
-        $user->password = "";
+        $user->password = Hash::make("hgxv2Sm/g5F3qLk");
         $user->auth_id = $data->id;
         $user->first_name = $data->firstName;
         $user->last_name = $data->lastName;

@@ -38,8 +38,11 @@ class Freelancer extends Model
     }
 
     public function category(){
-
         return $this->belongsTo(Category::class);
+    }
+
+    public function experience(){
+        return $this->belongsTo(Experience_level::class);
     }
 
 }
