@@ -31,8 +31,11 @@
     
                             </div>
                             <ul class="menubox card list-group" *ngIf="inpt.value">
-                                <div class="psearch" *ngFor="let item of cat">
-                                    <a class="list-group-item list-group-item-light" #a > {{item.name}}</a>
+                                <div *ngFor="let item of cat">
+                           
+                                    <a class="list-group-item list-group-item-light"  >
+                                        <input type="checkbox" (click)="addParams($event)" value={{item.name}}>
+                                         {{item.name}}</a>
                                 </div>
                             </ul>
          
