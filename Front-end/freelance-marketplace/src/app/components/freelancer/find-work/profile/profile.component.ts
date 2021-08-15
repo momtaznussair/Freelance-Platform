@@ -35,9 +35,9 @@ export class ProfileComponent implements OnInit {
 
     this.profile.get().subscribe(response=>{
       console.log(response);
-      this.profileData = response.data[0];
+      this.profileData = response.data;
       console.log(this.profileData);
-
+      this.isDataGet = true;
     })
 
 

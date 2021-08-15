@@ -41,7 +41,7 @@ export class PortofolioComponent implements OnInit {
 
   onFileChange(event : any) {
     if (event.target.files && event.target.files[0]) {
-        var imagesAmount = event.target.files.length;
+        const imagesAmount = event.target.files.length;
         for (let i = 0; i < imagesAmount; i++) {
                 var reader = new FileReader();
    
@@ -68,6 +68,8 @@ export class PortofolioComponent implements OnInit {
         if(this.form.valid)
         {
           this.form.value;
+          const formData : any = new FormData();
+          formData.append('image', this.form.get('image')?.value);
           this._portofolio.post(this.form.value).subscribe(res=>{
             console.log(res);
             this.responseData = res;
