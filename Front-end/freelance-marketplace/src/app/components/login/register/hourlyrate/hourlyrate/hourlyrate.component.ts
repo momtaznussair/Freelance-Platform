@@ -53,7 +53,7 @@ export class HourlyrateComponent implements OnInit {
     this.currentRegisterData.user_id = this.user_id;
     localStorage.setItem('data',JSON.stringify(this.currentRegisterData));
     console.log(this.currentRegisterData);
-
+    
     //sent request
     this.apiService.post(`${environment.apiUrl}/freelancers` , this.currentRegisterData).subscribe(response=>{
 

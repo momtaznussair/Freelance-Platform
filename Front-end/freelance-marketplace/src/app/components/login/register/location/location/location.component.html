@@ -59,7 +59,7 @@
                             <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false" [placeholder]="placeholder" formControlName="city" [(ngModel)]="queryloc" class="form-control">
 
                             <ul class="menubox card list-group" *ngIf="inpt.value">
-                                <div *ngFor="let item of arrayOfCities |searchFilter: queryloc">
+                                <div *ngFor="let item of arrayOfCities |searchFilter:queryloc">
                                     <a class="list-group-item list-group-item-light a" #a (click)="selectState(a)"> {{item.state_name}}</a>
                                 </div>
                             </ul>

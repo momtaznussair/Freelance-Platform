@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Job } from 'src/app/models/job';
 import { JobService } from 'src/app/services/job.service';
+import { Skill } from 'src/app/models/skill';
 
 
 @Component({
@@ -43,39 +44,40 @@ tableSize = 7;
 tableSizes = [3, 6, 9, 12];
 responsive:string="true"
 currentIndex:number=0;
-jobPost:Job=new Job()
+jobPost:any;
+skills:any;
   constructor(private job:JobService) { }
 
   successAlertNotification(){
     Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
   }
-
+  
   ngOnInit(): void {
     this.successAlertNotification();
     this.fetchPosts();
   }
 
   fetchPosts(): void {
-
-    // this.jobsPosts.getAllPosts(HttpParams)
-    //   .subscribe(
-    //     response => {
-    //       this.POSTS = response;
-    //       console.log(response);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     });
-   
-
+     
     this.job.getJobs().subscribe(res=>{
+      this.jobPost=res['data'] as Job;
+      console.log(this.jobPost);
+      this.skills=this.jobPost.skills;
+      console.log(this.skills);
+  
+    // this.job.get().subscribe(res=>{
+    //   this.jobPost=res.data as Job[]
+    //   this.skills=this.jobPost.skills
+    //   console.log(this.skills)
+    //   console.log(this.jobPost)
 
-      console.log(res)
-
-    },error=>console.log)
+    // },error=>console.log)
     
-  }
+  })}
 
+/*-------------------------------
+    pagination methods        
+--------------------------------*/
   onTableDataChange(event:any){
     this.page = event;
     this.fetchPosts();

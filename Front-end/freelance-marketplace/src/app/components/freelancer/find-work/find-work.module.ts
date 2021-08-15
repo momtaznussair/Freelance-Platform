@@ -17,6 +17,7 @@ import { PortofolioComponent } from './profile/portfolio/portofolio.component';
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},
   {path : 'work/details' , component : JobDetailsComponent},
+  {path : 'work/details/:id' , component : JobDetailsComponent},
   {path : 'stats' , component : MyStatsComponent},
   {path : 'saved-jobs' , component : SavedJobsComponent},
   {path : 'profile' , component : ProfileComponent},
@@ -26,7 +27,6 @@ const routes : Routes = [
   {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
   {path : 'work/details/:id' , component :JobDetailsComponent},
   {path : 'filter-jobs' , component :FilterJobsComponent},
-  // {path : 'filter' , component :FilterJobsComponent},
   {path:'', component:FindWorkComponent},
 
 
