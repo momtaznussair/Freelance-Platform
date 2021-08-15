@@ -88,13 +88,13 @@ p{
 .desc{
     margin-top: -1rem;
 }
-input{
+/* input{
     width: 25.5rem;
     border-color:  var(--mc);
     height: 2.5rem;
     padding: 1rem;
 
-}
+} */
 /* .filter{
     width: 6rem;
     font-size: 1.2rem;

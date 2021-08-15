@@ -58,29 +58,12 @@ skills:any;
   }
 
   fetchPosts(): void {
-    this.job.get().subscribe(response=>{
-      this.jobPost=response['data'] as Job;
+     
+    this.job.getJobs().subscribe(res=>{
+      this.jobPost=res['data'] as Job;
       console.log(this.jobPost);
       this.skills=this.jobPost.skills;
       console.log(this.skills);
-
-<<<<<<< HEAD
-    },error=>console.error);
-=======
-    // this.jobsPosts.getAllPosts(HttpParams)
-    //   .subscribe(
-    //     response => {
-    //       this.POSTS = response;
-    //       console.log(response);
-    //     },
-    //     error => {
-    //       console.log(error);
-    //     });
-   
-
-    this.job.getJobs().subscribe(res=>{
->>>>>>> 2931fad9d73c80099c28d800e3ac020dbec15d2c
-
   
     // this.job.get().subscribe(res=>{
     //   this.jobPost=res.data as Job[]
@@ -90,7 +73,7 @@ skills:any;
 
     // },error=>console.log)
     
-  }
+  })}
 
 /*-------------------------------
     pagination methods        

@@ -43,7 +43,7 @@ export class FilterJobsComponent implements OnInit {
  jobPost:any;
   fetchPosts(): void {
   
-      this.job.get().subscribe(response=>{
+      this.job.getJobs().subscribe(response=>{
         this.jobPost=response['data'] as Job;
     console.log(this.jobPost)
       },error=>console.error);
