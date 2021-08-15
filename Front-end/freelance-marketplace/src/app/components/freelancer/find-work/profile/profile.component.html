@@ -84,7 +84,7 @@
         <div class="col">
           <div class="portifolio d-flex align-items-center work mt-2">
             <span class="d-flex">
-              <p>Add portifolio (1) </p><a href="/freelancer/profile/portofolio"><i class="fas fa-plus ii ms-md-3 "></i>
+              <p>Add portifolio </p><a href="/freelancer/profile/portofolio"><i class="fas fa-plus ii ms-md-3 "></i>
               </a>
             </span>
 
@@ -100,7 +100,7 @@
                     </div> -->
 
           <!-- image and icon-->
-          <div class="card-group ms-1 justify-content-between " *ngFor="let i of data" >
+          <div class="card-group ms-1  " *ngFor="let i of data">
             <div class="card">
               <div>
                 <img src="./assets/images/a.jpg" class="card-img-top ml-1" id="one" alt="..." data-bs-toggle="modal"
@@ -109,7 +109,7 @@
                 <div> <br> <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="three"> <i
                       class="far fa-trash-alt"></i> </button> &nbsp; <button type="button" data-bs-toggle="modal"
                     data-bs-target="#edit" id="three"> <i class="fas fa-pencil-alt"></i></button> </div>
-                      <p class="card-text" id="two">{{i.title}}</p>
+                <p class="card-text" id="two">{{i.title}}</p>
 
               </div>
 
@@ -147,15 +147,14 @@
                     </div> <br>
                     <!-- commnt-->
                     Title <br>
-                      <p class="card-text" id="two">{{i.title}}</p>
+                    <p class="card-text" id="two">{{i.title}}</p>
 
                     <br>
-                     ID <br>
-                      <p class="card-text" id="two">{{i.id}}</p>
+
 
                     description <br>
-                      <p class="card-text" id="two">{{i.description}}</p>
-                   
+                    <p class="card-text" id="two">{{i.description}}</p>
+
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
@@ -179,7 +178,7 @@
                       </p>
                       <div class="modal-body">
 
-                        <input type="text" formControlName="title" class="form-control"
+                        <input type="text" formControlName="title" new="new_title" class="form-control"
                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div
@@ -195,7 +194,7 @@
                       </p>
                       <div class="modal-body">
 
-                        <input type="text" formControlName="description" class="form-control"
+                        <input type="text" formControlName="description" name="new_description" class="form-control"
                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div
@@ -224,7 +223,7 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary" (click)="save()" type="submit">Save</button>
+                        <button class="btn btn-primary" (click)="save()" type="submit">Save</button>
                       </div>
 
                     </div>
@@ -251,7 +250,7 @@
                         Do You Want Delete This portfolio ?</div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn btn-primary"  (click)="submit(i.id)">yes</button>
+                        <button type="button" class="btn btn-primary" (click)="submit(i.id)">yes</button>
                       </div>
                     </div>
                   </div>

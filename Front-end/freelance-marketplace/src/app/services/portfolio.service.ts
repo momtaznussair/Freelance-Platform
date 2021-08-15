@@ -20,7 +20,7 @@ export class PortfolioService {
   }
 
   delete(id:number){
-    return this.port.delete(`http://127.0.0.1:8000/api/portfolios/delete/`+id);
+    return this.port.delete("http://127.0.0.1:8000/api/portfolios/delete/"+id);
   }
 
 }
