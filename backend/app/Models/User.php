@@ -68,6 +68,10 @@ class User extends \TCG\Voyager\Models\User implements MustVerifyEmail
         return $this->hasMany(Education::class);
     }
 
+    public function languages(){
+        return $this->belongsToMany(Language::class,'user_languages');
+    }
+
     // protected static function booted()
     // {
     //     static::updated(queueable(function ($customer) {
