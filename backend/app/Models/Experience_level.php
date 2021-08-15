@@ -16,4 +16,8 @@ class Experience_level extends Model
         return $this->hasMany(Job::class);
     }
 
+    public function freelancers(){
+        return $this->hasMany(Freelancer::class);
+    }
+
 }
