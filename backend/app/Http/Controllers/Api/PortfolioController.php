@@ -121,7 +121,7 @@ class PortfolioController extends Controller
 
                 Storage::delete($image);
             }
-            $images->delete();
+            $portfolio->images()->delete();
 
             $portfolio->delete();
             return $this->apiResponse(true,'',200);
