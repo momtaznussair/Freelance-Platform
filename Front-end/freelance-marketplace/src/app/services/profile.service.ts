@@ -11,7 +11,7 @@ export class ProfileService {
 
   constructor(private profile:HttpClient ,private apiService : ApiService) { }
 
-  private update = `${environment.apiUrl}/freelancer/work/profile`;
+  private update = `${environment.apiUrl}/portfolios`;
 
   get(){
     return this.profile.get("http://127.0.0.1:8000/freelancers");

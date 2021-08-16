@@ -100,7 +100,7 @@
                     </div> -->
 
           <!-- image and icon-->
-          <div class="card-group ms-1  " *ngFor="let i of data">
+          <div class="card-group ms-1 " id="am" *ngFor="let i of data">
            <!-- |paginate : {
             itemsPerPage: 5,
             currentPage: page,
@@ -154,13 +154,9 @@
                       </button>
                     </div> <br>
                     <!-- commnt-->
-                    Title <br>
-                    <p class="card-text" id="two">{{i.title}}</p>
 
-                    <br>
+                    <p class="card-text" id="two">{{i.title}} </p>
 
-
-                    description <br>
                     <p class="card-text" id="two">{{i.description}}</p>
 
                     <div class="modal-footer">
@@ -181,13 +177,38 @@
                         <h5 class="modal-title" id="exampleModalLabel">Edit your portfolio</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
-                      <p class="fw-bold h3" id="one">
+                     <div> <button type="button" id="nine"> <i class="fas fa-times"></i> </button></div>
+                      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="./assets/images/a.jpg" class="d-block w-100">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="./assets/images/b.jpg" class="d-block w-100">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="./assets/images/c.jpg" class="d-block w-100">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                          data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                          data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div> <br>
+                      <input type="hidden" id="lname" name="lname" value="{{i.freelancer_id}}">
+                      <p class="fw-bold h3" id="six">
                         Title
                       </p>
                       <div class="modal-body">
-
-                        <input type="text" formControlName="title" new="new_title" class="form-control"
-                          aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input type="text" value="{{i.title}}" name="title"  class="form-control"
+                          aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                          >
                       </div>
                       <div
                         *ngIf="form.controls.title.invalid && isLogged || (form.controls.title.dirty || form.controls.title.touched)">
@@ -197,12 +218,12 @@
                           have to write more than 3 characters</small>
 
                       </div>
-                      <p class="fw-bold h3" id="one">
+                      <p class="fw-bold h3"id="five">
                         description
                       </p>
                       <div class="modal-body">
 
-                        <input type="text" formControlName="description" name="new_description" class="form-control"
+                        <input type="text" value="{{i.description}}"name="description"  class="form-control"
                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                       </div>
                       <div
@@ -214,24 +235,26 @@
                           characters</small>
 
                       </div>
-                      <p class="fw-bold h3" id="one">
+                      <p class="fw-bold h3" id="four">
                         Image
                       </p>
                       <div class="drag-drop">
                         <p class=" text-center mt-4">
-                          <input type="file" name="image" formControlName="image" multiple>
+                          <input type="file" name="image" formControlName="image"  hidden id="files">
+
+                          <label for="files">Upload your portfilo image</label>
                         </p>
 
                       </div>
 
-                      <div
+                      <!-- <div
                         *ngIf="form.controls.image.invalid && isLogged || (form.controls.image.dirty || form.controls.image.touched)">
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.image.hasError('required')">This
                           field is required</small>
-                      </div>
+                      </div> -->
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button class="btn btn-primary" (click)="save()" type="submit">Save</button>
+                        <button class="btn btn-primary" (click)="save(i.id)" type="submit">Save</button>
                       </div>
 
                     </div>

@@ -160,7 +160,7 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
     // clients
     Route::post('/clients/{client}',[ClientController::class,'update']);
     Route::delete('/clients/delete/{client}',[ClientController::class,'destroy']);
-    
+
     // jobs
     Route::post('jobs/{job}' ,[JobController::class,'update']);
     Route::delete('jobs/delete/{job}' ,[JobController::class,'destroy']);
@@ -174,6 +174,8 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
 });
 
 // authenticated freelancer routes
+Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
+
 Route::post('portfolios' ,[PortfolioController::class,'store']);
 Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
 Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
@@ -181,7 +183,6 @@ Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'dest
 
 Route::middleware(['freelancer','auth:sanctum'])->group(function () {
     // portfolios
-    Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
 
     // portfolios images
     Route::post('portfolios/images', [portfolioImagesController::class, 'store']);

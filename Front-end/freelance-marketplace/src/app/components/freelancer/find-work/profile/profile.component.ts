@@ -29,7 +29,8 @@ export class ProfileComponent implements OnInit {
     this.form = this.formBuilder.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      image: ['', [Validators.required]]
+      freelancer_id:[''],
+      // image: ['', [Validators.required]]
     })
 
     this.fetchpostdata();
@@ -57,23 +58,28 @@ export class ProfileComponent implements OnInit {
       this.router.navigateByUrl("/freelancer/work/profile");
     });
   }
+
+
   new_title: string = '';
   new_description: string = '';
-  save() {
+
+  save(id:number) {
+
     console.log(this.form.value)
+
     if (this.form.valid) {
-      this.portfile.updateportfilo(`updatePassword/${this.portfilio_id}`, this.form.value).subscribe(response => {
+      this.portfile.updateportfilo(id, this.form.value).subscribe(response => {
         console.log(response);
-        this.portfilio_id = localStorage.getItem('portfilio_id');
-      }, error => {
+      },
+       error => {
         alert('please check your data and try again');
       });
     }
-    else {
-      this.isLogged = true;
-      alert('please complite failds..');
-      console.log(this.isLogged);
-    }
+    // else {
+    //   this.isLogged = true;
+    //   alert('please complite failds..');
+    //   console.log(this.isLogged);
+    // }
   }
 
    /*-------------------------
