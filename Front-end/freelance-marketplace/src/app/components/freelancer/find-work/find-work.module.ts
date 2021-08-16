@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MyStatsComponent } from './my-stats/my-stats.component';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedGlobalModule } from '../../sharedGlobal/shared.module';
 import { SharedModule } from '../shared/shared.module';
 import { ProposalsComponent } from './proposals/proposals.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -27,6 +28,7 @@ const routes : Routes = [
   {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
   {path : 'work/details/:id' , component :JobDetailsComponent},
   {path : 'filter-jobs' , component :FilterJobsComponent},
+  {path : 'filter-jobs/:query' , component :FilterJobsComponent},
   {path:'', component:FindWorkComponent},
 
 
@@ -45,7 +47,7 @@ const routes : Routes = [
     FilterJobsComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule
+    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule,SharedModule,SharedGlobalModule
   ],
   exports : [MyStatsComponent]
 })

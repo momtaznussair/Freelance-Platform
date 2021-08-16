@@ -6,7 +6,6 @@ import {FormControl} from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { SkillsService } from 'src/app/services/skills.service';
 import { FormsModule } from '@angular/forms';
-import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 

@@ -6,7 +6,6 @@ import { FindWorkModule } from './find-work/find-work.module';
 import { ReportsModule } from './reports/reports.module';
 import { SharedModule } from './shared/shared.module';
 import { FreelancerSettingModule } from './freelncer-setting/freelancer-setting.module';
-import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 

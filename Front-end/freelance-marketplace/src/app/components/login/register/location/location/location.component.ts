@@ -9,7 +9,7 @@ import { RespondedLocationToken } from 'src/app/models/location/responded-locati
 import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
 import { countries } from 'src/app/models/location/countries';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-location',
@@ -208,33 +208,33 @@ export class LocationComponent implements OnInit {
     }
 
     //==============start use notification ===============
-    successAlertNotification(){
-      Swal.fire('Hi', 'Congrats! operation successfull', 'success')
-    }
+    // successAlertNotification(){
+    //   Swal.fire('Hi', 'Congrats! operation successfull', 'success')
+    // }
 
     alertConfirmation(){
-      Swal.fire({
-        title: 'Are you sure?',
-        text: 'Your Action cannot be rollback.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, go ahead.',
-        cancelButtonText: 'No, let me think again'
-      }).then((result) => {
-        if (result.value) {
-          Swal.fire(
-            'Done!',
-            'Action performed successfully.',
-            'success'
-          )
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          Swal.fire(
-            'Cancelled',
-            'Performed action record present in cloud and databstore.)',
-            'error'
-          )
-        }
-      })
+      // Swal.fire({
+      //   title: 'Are you sure?',
+      //   text: 'Your Action cannot be rollback.',
+      //   icon: 'warning',
+      //   showCancelButton: true,
+      //   confirmButtonText: 'Yes, go ahead.',
+      //   cancelButtonText: 'No, let me think again'
+      // }).then((result) => {
+      //   if (result.value) {
+          // Swal.fire(
+          //   'Done!',
+          //   'Action performed successfully.',
+          //   'success'
+          // )
+        // } else if (result.dismiss === Swal.DismissReason.cancel) {
+          // Swal.fire(
+          //   'Cancelled',
+          //   'Performed action record present in cloud and databstore.)',
+          //   'error'
+          // )
+        // }
+      // })
     }
     //=================End of notifications ==============
 

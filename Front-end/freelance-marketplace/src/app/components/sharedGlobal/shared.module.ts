@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from './footer/footer/footer.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 const routes: Routes = [
 
@@ -11,11 +12,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [
 
-    FooterComponent
+    FooterComponent,searchFilter
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),  NgxPaginationModule,
   ],
-  exports : [FooterComponent]
+  exports : [FooterComponent,searchFilter]
 })
-export class SharedModule { }
+export class SharedGlobalModule { }

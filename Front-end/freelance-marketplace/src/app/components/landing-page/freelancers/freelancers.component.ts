@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FreelancersService } from 'src/app/services/freelancers.service';
 
 @Component({
@@ -8,10 +9,11 @@ import { FreelancersService } from 'src/app/services/freelancers.service';
 })
 export class FreelancersComponent implements OnInit {
 
-  constructor(private freelance:FreelancersService) { }
+  constructor(private freelance:FreelancersService,private activatedRoute:ActivatedRoute) { }
 freelancers:any;
 freelancer_id:any;
 query='';
+urlQuery:string=''
   ngOnInit(): void {
     // this.freelance.getFreelancers(`freelancers`).subscribe(res=>{
     //   this.freelancers=res.data;
@@ -19,6 +21,8 @@ query='';
       // this.freelancer_data=this.freelancers.i;
       // console.log(this.freelancer_data);
     this.fetchPosts();
+    this.urlQuery=this.activatedRoute.snapshot.params.query;
+  this.query=this.urlQuery;
   }
 
 fetchPosts(){
@@ -130,6 +134,5 @@ onTableSizeChange(event:any): void {
 
 search(){
   console.log(this.query)
-  // this.POSTS=this.POSTS | searchFilter : this.query;
 }
 }

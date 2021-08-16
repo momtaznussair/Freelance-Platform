@@ -95,7 +95,7 @@
       data-bs-toggle="collapse" data-bs-target="#jobType" aria-expanded="false"
        aria-controls="collapseExample0">
       
-          <strong>Job Type</strong>
+          <strong>Payment Type</strong>
           <div class="icon ">
               <i class=" fa fa-solid {{shape2}}"></i>
           </div>
@@ -158,7 +158,7 @@
       data-bs-toggle="collapse" data-bs-target="#noOfPrposals" aria-expanded="false"
        aria-controls="collapseExample0">
       
-          <strong>Number of Porposals</strong>
+          <strong>Languages</strong>
           <div class="icon ">
               <i class=" fa fa-solid {{shape1}}"></i>
           </div>
@@ -167,30 +167,16 @@
           <div class="mt-10">
               <fieldset>
                   <div class="up-checkbox ">
-                      <input type="checkbox" (click)="addParams($event)" value="0">
-                      Less than 5
+                      <input type="checkbox" (click)="addParams($event)" value="Ar">
+                      Arabic
                       <small  class="text-muted">(1)</small> 
                   </div>
                   <div class="up-checkbox ">
-                      <input type="checkbox" (click)="addParams($event)" value="5">
-                            5 To 10
+                      <input type="checkbox" (click)="addParams($event)" value="En">
+                           English
                       <small  class="text-muted">(5)</small> 
                   </div>
-                  <div class="up-checkbox ">
-                      <input type="checkbox" (click)="addParams($event)" value="10">
-                            10 To 15
-                      <small  class="text-muted">(9)</small> 
-                  </div>
-                  <div class="up-checkbox ">
-                      <input type="checkbox" (click)="addParams($event)" value="15">
-                            15 To 20
-                      <small  class="text-muted">(15)</small> 
-                  </div>
-                  <div class="up-checkbox ">
-                      <input type="checkbox" (click)="addParams($event)" value="20">
-                            20 To 50
-                      <small  class="text-muted">(11)</small> 
-                  </div>
+               
               </fieldset>
          </div>
       </div>
@@ -204,7 +190,7 @@
         <div class="col-md-8 card py-3 ">
 
           <div class="input-group mb-md-3 d-sm-none d-md-flex">
-              <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs">
+              <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for freelancers">
               <a  class="input-group-text" [(ngModel)]="query" (click)="search()">
                   <i class="fas fa-search"></i>
               </a>
@@ -334,6 +320,7 @@
 
 
             <div class="card-body border"  *ngFor="let freelancer of freelancers  
+            |searchFilter :query
             |paginate : {
                 itemsPerPage: 5,
                 currentPage: page,

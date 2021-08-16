@@ -23,13 +23,13 @@ export class NavComponent implements OnInit {
   freelancer(){
  
     this.x="search in freelancer";
-    this.router.navigateByUrl("/freelancer");
+    this.router.navigateByUrl("/freelancers");
   }
 
   jobs(){
    
     this.x="search in jobs";
-
+    // this.router.navigateByUrl("/jobs");
   }
 
 }

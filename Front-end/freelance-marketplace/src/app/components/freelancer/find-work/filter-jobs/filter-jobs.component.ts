@@ -4,6 +4,7 @@ import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { Job } from 'src/app/models/job';
 import { JobService } from 'src/app/services/job.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-filter-jobs',
@@ -22,12 +23,13 @@ export class FilterJobsComponent implements OnInit {
   count = 0;
   currentIndex:number=0;
   cat :Category[]=[];
-  constructor(private catService: CategoryService,private job:JobService ) { }
+  constructor(private catService: CategoryService,private job:JobService, private activatedRoute: ActivatedRoute) { }
 
 
   radioSelected:any
   radioSel:any;
   radioSelectedString:string=''
+  urlQuery:string=''
   getSelecteditem(){
     this.radioSel = this.cat.find(Item => Item.name === this.radioSelected);
     this.radioSelectedString = JSON.stringify(this.radioSel);
@@ -35,6 +37,8 @@ export class FilterJobsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.fetchJobs();
+  this.urlQuery=this.activatedRoute.snapshot.params.query;
+  this.query=this.urlQuery;
   }
   search(){console.log(this.query)}
 

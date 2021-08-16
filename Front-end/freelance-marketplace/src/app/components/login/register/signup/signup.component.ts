@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
 
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -107,16 +107,16 @@ export class SignupComponent implements OnInit {
     }
     else
     {
-      this.simpleAlert();
+      // this.simpleAlert();
       this.isLogged = true;
     }
   };//end of register function
 
 
   //================add notification methods
-  simpleAlert(){
-    Swal.fire('please complete your information first');
-  }
+  // simpleAlert(){
+  //   Swal.fire('please complete your information first');
+  // }
   //==================end of notification method
 
 }
