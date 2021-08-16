@@ -91,7 +91,7 @@ class ProposalController extends Controller
             'client_comment' => 'string|min:5',
             'freelancer_grade' => 'numeric',
             'freelancer_comment' => 'string|min:5',
-            'payment_style_id' => 'required|exists:payment_styles,id',
+            // 'payment_style_id' => 'required|exists:payment_styles,id',
             'duration_id' => 'required|exists:durations,id',
             'user_id' => 'required|exists:users,id',
             'job_id' => 'required|exists:jobs,id'
