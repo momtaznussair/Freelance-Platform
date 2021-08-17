@@ -27,7 +27,7 @@ export class CreatClientAccountComponent implements OnInit {
     // this.registration_date = localStorage.getItem('registration_date');
 
     this.form=this._formBuilder.group({
-      company_name:['',[Validators.required,Validators.minLength(5)]],
+      company_name:['',[Validators.minLength(3),Validators.maxLength(255)]],
       user_id:[this.user_id],
       // registration_date:[this.registration_date]
     });
