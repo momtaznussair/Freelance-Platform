@@ -9,8 +9,6 @@ import { BudgetComponent } from './budget/budget.component';
 import { ReviewComponent } from './review/review.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
 const routes : Routes = [
   {path:"title" , component:TitleComponent},
   {path:"description" , component:DescriptionComponent},

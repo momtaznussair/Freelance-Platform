@@ -65,21 +65,31 @@ export class UserService {
   isLogged():boolean
   {
     const token = localStorage.getItem('token');
-    if(!token) return false;
-    return true;
+    const freelancerType = localStorage.getItem('freelancerType');
+    const clientType = localStorage.getItem('clientType');
+    const user_id = localStorage.getItem('user_id');
+
+    if(token && user_id != 'null' && (freelancerType || clientType)){
+      return true;
+    };
+
+    return false;
+
   }
 
   isUserFreelancer():boolean
   {
     const freelancerType = localStorage.getItem('freelancerType');
-    if(!freelancerType) return false;
+    const freelancer_id = localStorage.getItem('freelancer_id');
+    if(!freelancerType || freelancer_id == 'null') return false;
     return true;
   }
 
   isUserClient():boolean
   {
     const clientType = localStorage.getItem('clientType');
-    if(!clientType) return false;
+    const client_id = localStorage.getItem('client_id');
+    if(!clientType || client_id  == 'null') return false;
     return true;
   }
 

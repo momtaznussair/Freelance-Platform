@@ -1,0 +1,154 @@
+/* Start Aside Find Job */
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+.active{
+    border-left: 5px solid var(--mc);
+    
+}
+.icon{
+    font-size: 20px;
+    color: var(--mc);
+}
+strong, h2{
+    color: var(--mc);
+}
+/* .card-collaps{
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    position: relative;
+    margin: 0;
+} */
+.card-collaps i{
+    position: absolute;
+    top: 25%;
+    bottom: 35%;
+    left: 90%;
+}
+
+.edit a{
+    border: 1px solid #999;
+    border-radius: 50%;
+    background-color: #F9F9F9;
+}
+
+.edit a:hover{
+    background-color: white;
+}
+/* End Aside Find Job */
+
+
+/* Start main */
+
+.input-group .form-control:focus{
+    border: 1px solid #999;
+}
+
+
+/* Fess Card */
+/* Card header */
+.card-header {background-color: white;}
+
+.card-header a{
+    border: 1px solid #999;
+    border-radius: 50%;
+}
+
+/* Card Body */
+.card-body{
+    border-bottom:3px solid #b8b8b8;
+}
+
+.card-body:hover{
+    cursor: pointer;
+    background-color: #F9F9F9;
+}
+
+.card-body:hover a{
+    color: var(--mc);
+    text-decoration: underline;
+}
+
+/* Job skills */
+.skills span{
+    border: 1px solid #999;
+    border-radius: 1rem;
+    padding: .3125rem;
+    background-color: rgb(238, 238, 238);
+}
+img{
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+}
+.btnn,.btn2{
+    font-size: 1rem;
+    height: 2.2rem;
+    width: 7rem;
+    color: white;
+    background-color: #0D265F;
+    margin-top: -1rem;
+}
+.btnn:hover{
+    background-color:#f7f7f7 ;
+    color:#0D265F ;
+}
+p{
+    color: var(--mc);
+}
+
+.msg{
+    font-size: 2rem;
+    color: var(--mc);
+}
+
+.skills span:hover{
+    background-color: rgb(216, 216, 216);
+}
+/* End main */
+
+.menubox{
+    overflow-y: auto;
+    max-height: 250px;
+}
+.menubox a{
+    text-decoration: none;
+    color: var(--mc);
+}
+.menubox a:hover{
+    background-color: var(--bg);
+}
+
+
+/* Start Profile Aside */
+.profile img{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}
+/* End Profile Aside */
+
+
+
+/* --------------------------------------------------------------------------------------------------------------------- */
+
+/* Media Query */
+
+@media (max-width:770px){
+    .header span i{
+        font-size: 1.2rem;
+
+    }
+  span .edit{
+        font-size: .2rem;
+    }
+}
+@media(min-width:770px) {
+   .edit{
+        font-size: .6rem;
+    }
+}

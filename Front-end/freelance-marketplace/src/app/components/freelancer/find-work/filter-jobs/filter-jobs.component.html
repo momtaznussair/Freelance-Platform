@@ -2,96 +2,210 @@
 <!---------------------------------------
 
 ------------------------------------------>
-
-
-
-
-
-<div class="container-fluid">
+<div class="container-fluid"  >
     <div class="container">
         <div class="row mt-md-5">
 
             <!-- Start filter side-->
-            <div class="col-md-2 d-sm-none d-md-block">
-                <h2 class="mb-md-5">Filter By</h2>
+            <div class="col-md-3 d-sm-none d-md-block">
+               
+                <h2 class="mb-md-5 ">Filter By</h2>
+<!------------------------------------------------ start category------------------------------------->
 
-                <!---------------------------------------------------category----------------------------------------------------------------->
-                <button class="alert alert-light my-3 " (click)="changeCatgoryIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample0" aria-expanded="false" aria-controls="collapseExample0">
-    <span >
-      <strong>category</strong>
-   <i class=" fa fa-{{shape1}} fa-chevron-down"></i>
- </span>
-</button>
-
-
-                <div class="collapse" id="collapseExample0">
-                    <div class="card card-body">
-                        <div class="form-check">
-                            <a *ngFor="let item of cat" (click)="addParams($event)">
-              {{item.name}}
-           </a>
-                        </div>
-
-                    </div>
-                </div>
-           
-            <!--------------------------------------------------------Hourly rate----------------------------------------------------------->
-            <button class="alert alert-light my-3 " (click)=" changeHourlyRateIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                 <span >
-                   <strong>Payment</strong>
-                <i class=" fa fa-{{shape2}} fa-chevron-down"></i>
-              </span>
-            </button>
-
-
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" (change)="addParams($event)">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                             fixed hours
-                            </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" (change)="addParams($event)">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                           hourly rate
-                            </label>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-------------------------------------------------------------------------------->
-            <button class=" alert alert-light " (click)="changeSkillsIcon()" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
-                <span >
-                    <strong>Experience level</strong>
-                 <i class=" fa fa-{{shape3}} fa-chevron-down"></i>
-               </span>
-             </button>
-
-
-            <div class="collapse" id="collapseExample1">
-                <div class="card card-body">
-                    <div class="form-check">
-                        <input #s1 class="form-check-input" type="checkbox" value="html" id="flexCheckDefault" (change)="addParams($event)">
-                        <label class="form-check-label" for="flexCheckDefault">
-                          html
-                            </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="php" id="flexCheckChecked" (change)="addParams($event)">
-                        <label class="form-check-label" for="flexCheckChecked">
-                          php
-                            </label>
-                    </div>
-                </div>
+<div class="border-top">
+    <div class="card1 p-2">
+        <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeCategoryIcon() "
+        data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false"
+         aria-controls="collapseExample0">
+        
+            <strong>Category</strong>
+            <div class="icon ">
+                <i class=" fa fa-solid {{shape0}}"></i>
             </div>
         </div>
+        <div class="up-c-collapse collapse border-0" id="category" >
+            
+          
+                            <div class="card1 dropdown">
+                                <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="query"  class="form-control" placeholder="search">
+    
+                            </div>
+                            <ul class="menubox card list-group" *ngIf="inpt.value">
+                                <div *ngFor="let item of cat">
+                           
+                                    <a class="list-group-item list-group-item-light"  >
+                                        <input type="checkbox" (click)="addParams($event)" value={{item.name}}>
+                                         {{item.name}}</a>
+                                </div>
+                            </ul>
+         
+        </div>
+
+
+
+
+
+    </div>
+ </div>
+
+
+
+<!---------------------- Start Experience level------------------------------------------->
+             <div class="border-top">
+                <div class="card1 p-2">
+                    <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeExperienceIcon() "
+                    data-bs-toggle="collapse" data-bs-target="#experienceLevel" aria-expanded="false"
+                     aria-controls="collapseExample0">
+                    
+                        <strong>Experience level</strong>
+                        <div class="icon ">
+                            <i class=" fa fa-solid {{shape4}}"></i>
+                        </div>
+                    </div>
+                    <div class="up-c-collapse collapse border-0" id="experienceLevel" >
+                        <div class="mt-10">
+                            <fieldset>
+                                <div class="up-checkbox ">
+                                    <input type="checkbox" (click)="addParams($event)" value="Entry">
+                                            Entry Level - $
+                                    <small  class="text-muted">(1)</small> 
+                                </div>
+                                <div class="up-checkbox ">
+                                    <input type="checkbox" (click)="addParams($event)" value="intermediate">
+                                            Intermediate - $$
+                                    <small  class="text-muted">(5)</small> 
+                                </div>
+                                <div class="up-checkbox ">
+                                    <input type="checkbox" (click)="addParams($event)" value="expert">
+                                           Expert - $$$
+                                    <small  class="text-muted">(25)</small> 
+                                </div>
+                  
+                            </fieldset>
+                       </div>
+                    </div>
+
+
+
+
+
+                </div>
+             </div>
+
+
+<!---------------------- Start Job Type level------------------------------------------->
+<div class="border-top">
+    <div class="card1 p-2">
+        <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeHourlyRateIcon() "
+        data-bs-toggle="collapse" data-bs-target="#jobType" aria-expanded="false"
+         aria-controls="collapseExample0">
+        
+            <strong>Job Type</strong>
+            <div class="icon ">
+                <i class=" fa fa-solid {{shape2}}"></i>
+            </div>
+        </div>
+        <div class="up-c-collapse collapse border-0" id="jobType" >
+            <div class="mt-10">
+                <fieldset>
+                    <div class="up-checkbox ">
+                        <input type="checkbox" (click)="addParams($event)" value="hourly">
+                               Hourly 
+                        <small  class="text-muted">(5)</small> 
+                    </div>
+                    <div class="up-checkbox ">
+                        <input type="checkbox" (click)="addParams($event)" value="fixed">
+                        Fixed Price
+                    </div>
+                        <fieldset class="px-4">
+                            <div class="up-checkbox  ">
+                                <input type="checkbox" (click)="addParams($event)" value="0">
+                                Less than 5
+                                <small  class="text-muted">(1)</small> 
+                            </div>
+                            <div class="up-checkbox ">
+                                <input type="checkbox" (click)="addParams($event)" value="5">
+                                      5 To 10
+                                <small  class="text-muted">(5)</small> 
+                            </div>
+                            <div class="up-checkbox ">
+                                <input type="checkbox" (click)="addParams($event)" value="10">
+                                      10 To 15
+                                <small  class="text-muted">(9)</small> 
+                            </div>
+                            <div class="up-checkbox ">
+                                <input type="checkbox" (click)="addParams($event)" value="15">
+                                      15 To 20
+                                <small  class="text-muted">(15)</small> 
+                            </div>
+                            <div class="up-checkbox ">
+                                <input type="checkbox" (click)="addParams($event)" value="20">
+                                      20 To 50
+                                <small  class="text-muted">(11)</small> 
+                            </div>
+                        </fieldset>
+                </fieldset>
+           </div>
+        </div>
+
+
+
+
+
+    </div>
+ </div>
+
+
+<!----------------------Start Number of Porposals------------------------------------------->
+<div class="border-top">
+    <div class="card1 p-2">
+        <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changenoOfPrposalsIcon() "
+        data-bs-toggle="collapse" data-bs-target="#noOfPrposals" aria-expanded="false"
+         aria-controls="collapseExample0">
+        
+            <strong>Number of Porposals</strong>
+            <div class="icon ">
+                <i class=" fa fa-solid {{shape1}}"></i>
+            </div>
+        </div>
+        <div class="up-c-collapse collapse border-0" id="noOfPrposals" >
+            <div class="mt-10">
+                <fieldset>
+                    <div class="up-checkbox ">
+                        <input type="checkbox" (click)="addParams($event)" value="0">
+                        Less than 5
+                        <small  class="text-muted">(1)</small> 
+                    </div>
+                    <div class="up-checkbox ">
+                        <input type="checkbox" (click)="addParams($event)" value="5">
+                              5 To 10
+                        <small  class="text-muted">(5)</small> 
+                    </div>
+                    <div class="up-checkbox ">
+                        <input type="checkbox" (click)="addParams($event)" value="10">
+                              10 To 15
+                        <small  class="text-muted">(9)</small> 
+                    </div>
+                    <div class="up-checkbox ">
+                        <input type="checkbox" (click)="addParams($event)" value="15">
+                              15 To 20
+                        <small  class="text-muted">(15)</small> 
+                    </div>
+                    <div class="up-checkbox ">
+                        <input type="checkbox" (click)="addParams($event)" value="20">
+                              20 To 50
+                        <small  class="text-muted">(11)</small> 
+                    </div>
+                </fieldset>
+           </div>
+        </div>
+    </div>
+ </div>
+        </div> 
     
         <!-- End filter side -->
 
-          <!-- Start Main  -->
+          <!---------------------------------------------- Start Main  ------------------------------------------------------------------------->
 
           <div class="col-md-8 card py-3 ">
 
@@ -167,15 +281,19 @@
               
 
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
-                <div class="card-body" *ngFor="let post of POSTS | paginate : {
-                    itemsPerPage: 2,
+                <div class="card-body"  *ngFor="let post of jobPost  
+                | searchFilter:query
+                |paginate : {
+                    itemsPerPage: 5,
                     currentPage: page,
                     totalItems: count
                   };
+                  
             let i = index" [class.active]="i == currentIndex">
+           
                     <!-- Job Title -->
                     <div class="header d-flex">
-                        <a routerLink="#"> {{post.title}}</a>
+                        <a [routerLink]="['/freelancer/work/details',post.id]" >  {{post.job_title}}</a>
                         <span class="ms-auto">
                             <i class="far fa-thumbs-down fa-2x mx-md-2"></i>
                             <i class="far fa-heart fa-2x mx-2 d-none"></i>
@@ -191,15 +309,12 @@
 
                     <!-- Job Description -->
                     <p class="job-desc fw-bold">
-                        {{post.body}}
+                        {{post.description}}
                     </p>
 
                     <!-- Job Skills -->
                     <div class="skills text-center">
-                        <span class="mx-2">Web Design</span>
-                        <span class="mx-2">Web Aplication</span>
-                        <span class="mx-2">PHP</span>
-                        <span class="mx-2">Laravel</span>
+                        <span class="mx-2"  *ngFor="let skill of post.skills">{{skill.name}}</span>
                     </div>
 
                     -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
@@ -222,7 +337,7 @@
 
                         <!-- Money spent -->
                         <span class="spent mx-md-2">
-                            <span class="money-spent fw-bold">$10</span> spent
+                            <span class="money-spent fw-bold">${{post.payment_amount}}</span> spent
                         </span>
 
                         <!-- Location -->

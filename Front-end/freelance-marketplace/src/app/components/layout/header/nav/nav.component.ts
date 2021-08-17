@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  x='search';
+  // constructor(private router : Router) { }
 
   isUserLogged : boolean = false;
 
@@ -38,12 +40,15 @@ export class NavComponent implements OnInit {
   }
 
   freelancer(){
+ 
+    this.x="search in freelancer";
     this.router.navigateByUrl("/freelancer");
   }
 
   jobs(){
-     // put the route jobs =>/user
-    // this.router.navigateByUrl("/user");
+   
+    this.x="search in jobs";
+
   }
 }
 

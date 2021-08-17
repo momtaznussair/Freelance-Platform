@@ -1,12 +1,18 @@
 h1{
-    font-weight: bold !important;
+    font-size: 80px;
+    font-weight: 600 !important;
+    color:var(--mc)
 }
 
 li a{
     text-decoration: none;
     color:#999;
 }
-
+.img-fluid{
+    /* width: 60vw; */
+    height: 400px;
+    object-fit: contain;
+}
 li a:hover{
     color: blue;
 }
@@ -31,9 +37,21 @@ span:hover{
 }
 
 .btnn{
-    width: auto;
+    width: 8rem ;
     background-color: var(--mc);
     color: white;
+}
+.btnn:hover{
+    background-color: var(--bg);
+    color: var(--mc);
+}
+.skillname{
+    font-size: 4rem;
+    font-family: cursive;
+    color: var(--mc);
+}
+.skillname:hover{
+    color: blue;
 }
 /* ----------------------------------------------------------------------------------------------------------------- */
 
@@ -43,5 +61,13 @@ span:hover{
 @media (min-width: 300px) and (max-width:768px) { 
     a{
         font-size: 1.4rem;
+    }
+    /* h1{
+
+    } */
+    @media screen and (max-width: 992px)  {
+        h1{
+            font-size:2.5rem
+        }
     }
 }

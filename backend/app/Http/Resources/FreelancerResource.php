@@ -23,6 +23,8 @@ class FreelancerResource extends JsonResource
             'category' => $this->category->name,
             'Experience' => $this->experience->name,
             'skills' => $this->skills,
+            'education' => $this->user->educations,
+            'languages' => $this->user->languages
         ];
     }
 }

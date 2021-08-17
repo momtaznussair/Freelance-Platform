@@ -20,11 +20,12 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::with('skills')->get();
-        return $this->apiResponse($jobs);
+        return $this->apiResponse(JobResource::collection($jobs));
     }
 
     public function show($id)
     {
+
         // $job = Job::with(['skills','category','duration','experience','payment_style','client.user'])->find($id);
         $job = Job::find($id);
 
@@ -38,6 +39,7 @@ class JobController extends Controller
 
     public function store(Request $request)
     {
+
         $validate = Validator::make($request->all(), [
             'description' => 'required|min:10',
             'payment_amount' => 'numeric',
@@ -67,7 +69,6 @@ class JobController extends Controller
         if ($job) {
             $skillsIDs = $job->skills;
             $freelancersIDs =  FreelancerSkill::select('freelancer_id')->whereIn('skill_id',$skillsIDs)->get();
-
             foreach($freelancersIDs as $id){
                 $freelancer = Freelancer::where('id' , $id->freelancer_id)->first();
                 $user = User::where('id' , $freelancer->user_id)->first();
