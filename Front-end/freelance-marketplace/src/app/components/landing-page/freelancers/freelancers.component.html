@@ -363,9 +363,9 @@
                 <!-- Job Title -->
                 <div class="header d-flex">
                     <img class="d-inline-block ms-3 pro imag mb-2" src="../../../assets/images/sam.jpg"/><br>
-                    <a class="ms-4 mt-4" [routerLink]="['/freelancer/profile/details',freelancer.id]" >  {{freelancer.user.name}}<br> 
-                      <p>{{freelancer.category}}</p>
-                    </a>
+                   <div class="mt-4"> <a class="ms-4 mt-5 name" [routerLink]="['/freelancer/profile/details',freelancer.id]" >  {{freelancer.user.name}}<br> 
+                     </a> <span class="ms-4 mt-3">{{freelancer.category}}</span></div>
+                    
                     <span class="ms-auto">
                         <button type="button" class="btn btnn btn-lg rounded-pill  border border-1 b1 p-0  me-3  bs " >Hire</button>
                         <i class="fas fa-envelope-square msg"></i>
