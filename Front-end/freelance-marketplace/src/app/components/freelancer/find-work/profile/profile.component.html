@@ -84,7 +84,7 @@
         <div class="col">
           <div class="portifolio d-flex align-items-center work mt-2">
             <span class="d-flex">
-              <p>Add portifolio </p><a href="/freelancer/profile/portofolio"><i class="fas fa-plus ii ms-md-3 "></i>
+              <p>Add portifolio </p><a href="/freelancer/profile/portofolio"><i class="fas fa-plus ii ms-md-3 " data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
               </a>
             </span>
 
@@ -114,7 +114,8 @@
                 <img src="./assets/images/a.jpg" class="card-img-top ml-1" id="one" alt="..." data-bs-toggle="modal"
                   data-bs-target="#image">
                 <br>
-                <div> <br> <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="three"> <i
+                <div> <br>
+                   <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="three"> <i
                       class="far fa-trash-alt"></i> </button> &nbsp; <button type="button" data-bs-toggle="modal"
                     data-bs-target="#edit" id="three"> <i class="fas fa-pencil-alt"></i></button> </div>
                 <p class="card-text" id="two">{{i.title}}</p>
@@ -201,7 +202,7 @@
                           <span class="visually-hidden">Next</span>
                         </button>
                       </div> <br>
-                      <input type="hidden" id="lname" name="lname" value="{{i.freelancer_id}}">
+                      <input type="hidden" id="lname" name="lname"  value="{{i.freelancer_id}}">
                       <p class="fw-bold h3" id="six">
                         Title
                       </p>

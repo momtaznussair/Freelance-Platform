@@ -49,6 +49,7 @@ export class ProfileComponent implements OnInit {
 
     })
   };
+  
   isLogged: boolean = false;
 
   submit(id: number) {
