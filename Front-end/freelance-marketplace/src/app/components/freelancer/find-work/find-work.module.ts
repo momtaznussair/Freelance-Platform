@@ -13,6 +13,7 @@ import { SubmitProposalComponent } from './find-work/job-details/submit-proposal
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PortofolioComponent } from './profile/portfolio/portofolio.component';
+import { LayoutModule } from '../../layout/layout.module';
 
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},
@@ -27,9 +28,7 @@ const routes : Routes = [
   {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
   {path : 'work/details/:id' , component :JobDetailsComponent},
   {path : 'filter-jobs' , component :FilterJobsComponent},
-  // {path : 'filter' , component :FilterJobsComponent},
-  {path:'', component:FindWorkComponent},
-
+  {path : 'filter-jobs/:query' , component :FilterJobsComponent},
 
 ]
 
@@ -46,7 +45,7 @@ const routes : Routes = [
     FilterJobsComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule
+    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule,SharedModule,LayoutModule
   ],
   exports : [MyStatsComponent]
 })

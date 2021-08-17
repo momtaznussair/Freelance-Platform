@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import { Job } from 'src/app/models/job';
 import { JobService } from 'src/app/services/job.service';
 import { Skill } from 'src/app/models/skill';
@@ -48,12 +48,12 @@ jobPost:any;
 skills:any;
   constructor(private job:JobService) { }
 
-  successAlertNotification(){
-    Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
-  }
-
+  // successAlertNotification(){
+  //   Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
+  // }
+  
   ngOnInit(): void {
-    this.successAlertNotification();
+    // this.successAlertNotification();
     this.fetchPosts();
   }
 
@@ -91,7 +91,6 @@ skills:any;
 
   search(){
     console.log(this.query)
-    // this.POSTS=this.POSTS | searchFilter : this.query;
   }
 
 }

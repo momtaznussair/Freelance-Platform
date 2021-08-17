@@ -9,6 +9,8 @@ import { ApiService } from './api.service';
 export class FreelancersService {
 
   constructor(private api:ApiService) { }
+
+  
   getFreelancers(url : string):Observable<any>{
     return this.api.get(`${environment.apiUrl}/${url}`)
 
