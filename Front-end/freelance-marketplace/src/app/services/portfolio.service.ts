@@ -7,20 +7,27 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class PortfolioService {
+  token : any;
+  constructor(private http:ApiService) { }
 
-  constructor(private port:ApiService) { }
-
-  get():Observable<any>{
-    return this.port.get(`${environment.apiUrl}/portfolios`);
+  get(){
+    return this.http.get(`${environment.apiUrl}/portfolios`);
   }
 
   post(body:any){
-    return this.port.post(`${environment.apiUrl}/portfolios`, body);
+    this.token = localStorage.getItem('token');
+    console.log(this.token)
+    return this.http.post(`${environment.apiUrl}/portfolios`, body, {'headers': {
+      'Accept' : 'application/json',
+      'Authorization' : `Bearer ${this.token}`
+    }})
   }
 
   delete(id:number){
-    return this.port.delete("http://127.0.0.1:8000/api/portfolios/delete/"+id);
+    return this.http.delete("http://127.0.0.1:8000/api/portfolios/delete/"+id);
   }
 
 }
+

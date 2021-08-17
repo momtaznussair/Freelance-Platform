@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
+import { ApiService } from './api.service';
 
 
 @Injectable({
@@ -9,21 +9,22 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ProfileService {
 
-  constructor(private profile:HttpClient ,private apiService : ApiService) { }
+  constructor(private profile : ApiService) { }
 
   private update = `${environment.apiUrl}/portfolios`;
 
-  get(){
-    return this.profile.get("http://127.0.0.1:8000/freelancers");
+  get():Observable<any>
+  {
+    return this.profile.get(`${environment.apiUrl}/freelancers`);
   }
     getById(){
-    return this.profile.get("http://127.0.0.1:8000/freelancers/id");
+    return this.profile.get(`${environment.apiUrl}/freelancers/id`);
   }
   delete(id:number){
     return this.profile.delete("http://127.0.0.1:8000/api/portfolios/delete/"+id);
   }
   updateportfilo(url : any , body : any)
   {
-    return this.apiService.post(`${this.update}/${url}`, body)
+    return this.profile.post(`${this.update}/${url}`, body)
   }
 }

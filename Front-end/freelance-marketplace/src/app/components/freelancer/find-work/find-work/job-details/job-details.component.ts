@@ -58,6 +58,7 @@ client_id:any;
       this.jobDetails.addJob(jop).subscribe(response=>{
         console.log(response);
       },erroe=>{console.error()}
+      
       );
       this.router.navigate(['/freelancer/work/details',this.id]);
   }

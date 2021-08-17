@@ -33,8 +33,7 @@ const routes: Routes = [
     FreelancersComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule,LayoutModule,FormsModule
-    ,NgxPaginationModule
+    CommonModule,RouterModule.forChild(routes),SharedModule,LayoutModule,FormsModule,NgxPaginationModule
   ],
   exports: [JoinWorldComponent , ForClientComponent , HireAProComponent]
 })

@@ -1,12 +1,13 @@
-import { ApiService } from 'src/app/services/api.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { Portofolio } from 'src/app/models/portofolio';
 import { ProfileService } from 'src/app/services/profile.service';
+import { ApiService } from 'src/app/services/api.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -18,44 +19,63 @@ export class ProfileComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   isDataGet: boolean = false;
 
-  constructor(private portfolio: PortfolioService, private api: ApiService, private router: Router, private formBuilder: FormBuilder, private portfile: ProfileService) { }
-  portfoliosData: any;
-  data: any;
- portfilio_id:any;
- count = 0;
-  currentIndex:number=0;
+  constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router : Router) { }
+  portfoliosData:any;
+  data :any;
+  profileData:any;
+  freelancer_id : any;
+  user_id : any;
+  portfilio_id:any;
+  count = 0;
+   currentIndex:number=0;
+  isLogged : boolean = false;
+
   ngOnInit(): void {
 
-    this.form = this.formBuilder.group({
-      title: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['', [Validators.required, Validators.minLength(10)]],
-      freelancer_id:[''],
-      // image: ['', [Validators.required]]
+    this.freelancer_id = localStorage.getItem('freelancer_id');
+    this.user_id = localStorage.getItem('user_id');
+
+        this.form = this.formBuilder.group({
+      title : ['' , [Validators.required , Validators.minLength(3)]],
+      description : ['' , [ Validators.required , Validators.minLength(10)]],
+      image :['', [Validators.required]]
     })
 
-    this.fetchpostdata();
-  }
+    this.form = this.formBuilder.group({
+      user_id : [this.user_id , [ Validators.required]],
+      institute : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+      area_of_study : ['' , [Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+      degree : ['' , [Validators.required , Validators.minLength(4) , Validators.maxLength(250) ]],
+      start_date : ['' , [Validators.required ]],
+      graduation_date : ['' , [Validators.required]],
+    })
 
-  fetchpostdata()
-    {
-    this.portfolio.get().subscribe(res => {
+
+
+    this.portfolio.get().subscribe(res=>{
       console.log(res);
       this.portfoliosData = res;
       console.log(this.portfoliosData.data);
 
       this.data = this.portfoliosData.data.splice(0, 3);
-      (this.data.id);
       this.isDataGet = true;
 
+    });
+
+    this.profile.get().subscribe(response=>{
+      console.log(response);
+      this.profileData = response.data[0];
+      console.log(this.profileData);
+      this.isDataGet = true;
     })
   };
-  
-  isLogged: boolean = false;
+
+
 
   submit(id: number) {
-    this.portfile.delete(id).subscribe(responses => {
+    this.profile.delete(id).subscribe(res => {
       // this.items.splics(id,1);
-      console.log("dlff")
+      console.log(res)
       this.router.navigateByUrl("/freelancer/work/profile");
     });
   }
@@ -69,7 +89,7 @@ export class ProfileComponent implements OnInit {
     console.log(this.form.value)
 
     if (this.form.valid) {
-      this.portfile.updateportfilo(id, this.form.value).subscribe(response => {
+      this.profile.updateportfilo(id, this.form.value).subscribe(response => {
         console.log(response);
       },
        error => {
@@ -83,21 +103,25 @@ export class ProfileComponent implements OnInit {
     // }
   }
 
-   /*-------------------------
-       pagination methods
-  -------------------------- */
-  page=1;
-  tableSize=7;
-  onTableDataChange(event:any){
-    this.page = event;
-    this.fetchpostdata();
+saveEducationData(){
+  if(this.form.valid)
+  {
+    this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{
+      console.log(response);
+    },error=>console.error);
   }
+  else
+  {
+    this.isLogged = true;
+    alert('please check your data and try again');
+  }
+}
 
-  onTableSizeChange(event:any): void {
-    this.tableSize = event.target.value;
-    this.page = 1;
-    this.fetchpostdata();
-  }
+updateEducationData(){
+
+}
+
+
 }
 
 

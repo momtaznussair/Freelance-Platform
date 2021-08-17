@@ -63,7 +63,10 @@ export class LocationComponent implements OnInit {
       this.arrayOfCountries =res
       this.isLocationGet = true;
     // console.log(this.arrayOfCountries[0].country_name)
-  });
+  },error=>
+  {
+
+});
   //////////////////////////////////
 
 

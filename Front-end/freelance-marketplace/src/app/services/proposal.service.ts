@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { ApiService } from './api.service';
 
 @Injectable({
@@ -7,7 +7,6 @@ import { ApiService } from './api.service';
 })
 export class ProposalService {
   token : any;
-
   constructor(private _apiservice:ApiService) { }
 
 addproposal(body:any){
@@ -18,7 +17,6 @@ addproposal(body:any){
     'Accept' : 'application/json',
     'Authorization' : `Bearer ${this.token}`
   }})
-
 }
 update(body:any){
   return this._apiservice.put("http://127.0.0.1:8000/api/proposals",body);

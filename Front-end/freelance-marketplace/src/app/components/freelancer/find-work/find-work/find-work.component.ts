@@ -51,20 +51,20 @@ skills:any;
   successAlertNotification(){
     Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
   }
-  
+
   ngOnInit(): void {
     this.successAlertNotification();
     this.fetchPosts();
   }
 
   fetchPosts(): void {
-     
+
     this.job.getJobs().subscribe(res=>{
       this.jobPost=res['data'] as Job;
       console.log(this.jobPost);
       this.skills=this.jobPost.skills;
       console.log(this.skills);
-  
+
     // this.job.get().subscribe(res=>{
     //   this.jobPost=res.data as Job[]
     //   this.skills=this.jobPost.skills
@@ -72,11 +72,11 @@ skills:any;
     //   console.log(this.jobPost)
 
     // },error=>console.log)
-    
+
   })}
 
 /*-------------------------------
-    pagination methods        
+    pagination methods
 --------------------------------*/
   onTableDataChange(event:any){
     this.page = event;

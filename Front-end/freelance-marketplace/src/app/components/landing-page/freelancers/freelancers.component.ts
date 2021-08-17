@@ -49,7 +49,7 @@ addParams(e:any){
    }
  /*------------------------------
     add filters to array params
---------------------------------*/ 
+--------------------------------*/
 addExpermentLevel(e:any){
 //  console.log(e.target.tagName)
   // console.log(e.target.innerText)
@@ -62,8 +62,8 @@ addExpermentLevel(e:any){
     console.log(this.params);
  }
  /*-------------------------
-     change icon methods 
-  -------------------------- */ 
+     change icon methods
+  -------------------------- */
   shape0='fa-chevron-down';
   shape1='fa-chevron-down';
   shape2='fa-chevron-down';
@@ -97,7 +97,7 @@ addExpermentLevel(e:any){
     }else{
       this.shape3='fa-chevron-down'
     }
-  
+
   }
   changeExperienceIcon(){
     if(this.shape4=='fa-chevron-down'){
@@ -105,11 +105,11 @@ addExpermentLevel(e:any){
     }else{
       this.shape4='fa-chevron-down'
     }
-  
+
   }
 
   /*-------------------------------
-    pagination methods        
+    pagination methods
 --------------------------------*/
 page = 1;
 count = 0;

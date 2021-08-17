@@ -25,15 +25,9 @@ h5 {
 
 .ii {
     padding: 0.3125rem;
-    /* border: 1px solid black; */
-    /* border-radius: 80% ; */
     margin-left: .5rem;
 }
 
-
-/* .arrow{
-  margin-left: 130px;
-} */
 
 i:hover {
     cursor: pointer;
@@ -56,12 +50,6 @@ span {
 .skills {
     height: 4.53rem;
 }
-
-
-/* .skills{
-  height: 3.125rem;
-
-} */
 
 .card {
     border: none;
@@ -95,7 +83,6 @@ h4 {
 
 img {
     height: 6.25rem;
-    /* padding: 1rem; */
 }
 
 h4,
@@ -106,7 +93,6 @@ h5 {
 
 .ca {
     position: absolute;
-    /* margin: 12px 0 0 8px; */
 }
 
 .b1 {
@@ -119,8 +105,8 @@ h5 {
 }
 
 .b1:hover {
-    /* color: white; */
-    background-color: var(--bg);
+    background-color: var(--mc);
+    color:white;
 }
 
 .b2 {
@@ -137,25 +123,22 @@ h5 {
     background-color: var(--bg);
 }
 
+.skillname{
+    width: 6rem ;
+    height: 2rem;
+    background-color: var(--mc);
+    color: white;
+}
+.skillname:hover{
+    background-color: var(--bg);
+    color: var(--mc);
+}
+
 @media only screen and (max-width: 992px) {
     .b1,
     .b2 {
         display: none;
     }
-    /* h4{
-
-      font-size: 1.25rem;
-  }
-  .v_pro{
-      padding: 1rem;
-  }
-  .card{
-      height:12.5rem ;
-      margin-top: 3.125rem;
-  }
-  .car{
-      margin-top: 1rem;
-  }  */
 }
 
 @media only screen and (max-width: 768px) {
