@@ -110,7 +110,12 @@
                                                 <option value={{dur.id}}  *ngFor="let dur of duration">{{dur.name}}</option>
                                                 
                                               </select>
-                                       
+                                              <div
+                                              *ngIf="form.controls.duration_id.invalid && islogged || (form.controls.duration_id.dirty || form.controls.duration_id.touched)">
+                                              <small class="text-danger fw-bold mb-3"
+                                                  *ngIf="form.controls.duration_id.hasError('required')">This field is
+                                                  required</small>
+                                          </div>
         
                                     </div>
 
