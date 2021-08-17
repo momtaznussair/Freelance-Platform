@@ -11,7 +11,8 @@ import { WeareComponent } from './weare/weare/weare.component';
 import { TopskillComponent } from './topskill/topskill/topskill.component';
 import { LayoutModule } from '../layout/layout.module';
 import { FreelancersComponent } from './freelancers/freelancers.component';
-
+import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 const routes: Routes = [
   {path : 'main' , component : MainComponent},
   {path : 'freelancers' , component : FreelancersComponent},
@@ -30,7 +31,7 @@ const routes: Routes = [
     FreelancersComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule,LayoutModule
+    CommonModule,RouterModule.forChild(routes),SharedModule,LayoutModule,FormsModule,NgxPaginationModule
   ],
   exports: [JoinWorldComponent , ForClientComponent , HireAProComponent]
 })

@@ -123,6 +123,17 @@ h5 {
     background-color: var(--bg);
 }
 
+.skillname{
+    width: 6rem ;
+    height: 2rem;
+    background-color: var(--mc);
+    color: white;
+}
+.skillname:hover{
+    background-color: var(--bg);
+    color: var(--mc);
+}
+
 @media only screen and (max-width: 992px) {
     .b1,
     .b2 {
