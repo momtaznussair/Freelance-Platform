@@ -13,23 +13,23 @@ import { CompanyService } from 'src/app/services/company.service';
 export class CreatClientAccountComponent implements OnInit {
   form:FormGroup=new FormGroup({});
   user_id:any;
-  fulldate= new Date();
-  year=this.fulldate.getFullYear();
-  month=this.fulldate.getMonth();
-  day=this.fulldate.getDay();
-  registration_date=this.year+'-'+this.month+'-'+this.day;
+  // fulldate= new Date();
+  // year=this.fulldate.getFullYear();
+  // month=this.fulldate.getMonth();
+  // day=this.fulldate.getDay();
+  // registration_date=this.year+'-'+this.month+'-'+this.day;
   constructor( private comp:CompanyService,private router:Router,private _formBuilder:FormBuilder ) { }
   company:any[]=[];
   ngOnInit(): void {
     this.user_id = localStorage.getItem('user_id');
     console.log(this.user_id );
-    console.log(this.registration_date );
+    // console.log(this.registration_date );
     // this.registration_date = localStorage.getItem('registration_date');
 
     this.form=this._formBuilder.group({
       company_name:['',[Validators.required,Validators.minLength(5)]],
       user_id:[this.user_id],
-      registration_date:[this.registration_date]
+      // registration_date:[this.registration_date]
     });
    
     // this.company.push(this.user_id);

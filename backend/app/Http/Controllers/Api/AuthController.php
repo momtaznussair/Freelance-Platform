@@ -91,7 +91,6 @@ class AuthController extends Controller
         {
             $client = new Client();
             $client->user_id = $user->id;
-            $client->registration_date = now();
             $client->save();
         }
 

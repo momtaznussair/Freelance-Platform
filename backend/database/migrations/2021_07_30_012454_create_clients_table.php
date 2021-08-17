@@ -15,7 +15,6 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->date('registration_date');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('company_id')->nullable();;
             $table->timestamps();
