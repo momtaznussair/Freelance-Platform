@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  selector: 'landing-nav',
+  templateUrl: './landingNav.component.html',
+  styleUrls: ['./landingNav.component.css']
 })
-export class NavComponent implements OnInit {
+export class LandingNavComponent implements OnInit {
   x='search';
   // queryInJobs='';
   isUserLogged : boolean = false;
