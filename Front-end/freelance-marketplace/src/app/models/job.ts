@@ -11,6 +11,7 @@ export class Job {
     language_id	:number=0
     language_level_id:number=0
     experience_id:number=0
+    skills=[]
 }
 
 

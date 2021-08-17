@@ -23,11 +23,11 @@
 
                             </div>
                             <p class="fw-bold h3" id="one">
-                                Image
+                                Images
                             </p>
                             <div class="drag-drop">
                                 <p class=" text-center mt-4">
-                                    <input type="file" name="image" formControlName="image" multiple>
+                                    <input type="file" name="image"(change)="uploadImage($event)">
                                 </p>
 
                             </div>
@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="description card-haeder mt-3">
-                                <p class="h3 " id="one">Overview</p>
+                                <p class="h3 " id="one">Description</p>
                                 <textarea formControlName="description" name="description" class="form-control" placeholder="type an description about yourself" value=""></textarea>
                                 <div *ngIf="form.controls.description.invalid && isLogged || (form.controls.description.dirty || form.controls.description.touched)">
                                     <small class="text-danger fw-bold mb-3" *ngIf="form.controls.description.hasError('required')">This field is required</small>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class=" card-footer py-4">
-                            <button class="btn btn-light px-5 mx-3 py-2 border rounded-pill " routerLink="/freelancer/profile" id="one">Cancel</button>
+                            <button class="btn btn-light px-5 mx-3 py-2 border rounded-pill " data-bs-dismiss="modal" routerLink="/freelancer/profile" id="one">Cancel</button>
                             <button class="btn btn-dark px-5 mx-3 py-2 rounded-pill" (click)="save()" type="submit" id="two">Save</button>
 
                         </div>

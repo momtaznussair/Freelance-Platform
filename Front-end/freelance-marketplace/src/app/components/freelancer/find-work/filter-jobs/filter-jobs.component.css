@@ -9,6 +9,13 @@ a:hover{
     border-left: 5px solid var(--mc);
     
 }
+.icon{
+    font-size: 20px;
+    color: var(--mc);
+}
+strong, h2{
+    color: var(--mc);
+}
 /* .card-collaps{
     display: flex;
     justify-content: space-between;

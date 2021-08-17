@@ -6,18 +6,16 @@ import {HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AccordionModule} from 'primeng/accordion';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { FormsModule } from '@angular/forms';
-// import { FilterByPipe } from 'ng-pipes';
 //start of import social login modules
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {GoogleLoginProvider , FacebookLoginProvider} from 'angularx-social-login';
-// import { FilterByPipe } from './pipes/filter-by.pipe';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    // FilterByPipe,
 
 
 
