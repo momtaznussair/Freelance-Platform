@@ -158,6 +158,9 @@ export class LocationComponent implements OnInit {
 
             console.log(response);
 
+            const formData = new FormData()
+            // formData.append('image', )
+
             //if response has token
             this.response_data = response;
             if(this.response_data.data != null)

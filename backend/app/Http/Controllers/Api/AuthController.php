@@ -78,17 +78,14 @@ class AuthController extends Controller
             // $user->save();
         }
         $user->save();
-        $stripeCustomer = $user->createAsStripeCustomer();
-        $user->applyBalance(-5000, 'penality');
-        $user->applyBalance(10000, 'Premium customer top-up.');
-        $transactions = $user->balanceTransactions();
-        $balance = $user->balance();
+        // add as a  client
         // add as a  client
         if ($request->type == 'client')
         {
-            $client = Client::create([
-                'user_id' => $user->id,
-            ]);
+            $client = new Client();
+            $client->user_id = $user->id;
+            $client->registration_date = now();
+            $client->save();
         }
         
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -96,9 +93,6 @@ class AuthController extends Controller
         $data = [
                 'access_token' => $token,
                 'user' => new UserResource($user),
-                'stripe' => $stripeCustomer,
-                'balance' => $balance,
-                'transactions' => $transactions,
         ];
 
         // add as a  client
