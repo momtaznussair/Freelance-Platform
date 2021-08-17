@@ -30,6 +30,12 @@ export class ProfileComponent implements OnInit {
    currentIndex:number=0;
   isLogged : boolean = false;
 
+  files:any;
+  uploadImage(event:any){
+    this.files = event.target.files[0]
+    // console.log(this.files)
+  }
+
   ngOnInit(): void {
 
     this.freelancer_id = localStorage.getItem('freelancer_id');
