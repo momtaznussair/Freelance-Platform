@@ -187,6 +187,8 @@ Route::middleware(['freelancer','auth:sanctum'])->group(function () {
     Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
 
     // portfolios images
+
+
     Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
     Route::post('portfolios/images', [portfolioImagesController::class, 'store']);
 
