@@ -2,27 +2,28 @@
     <div class="row">
         <div class="col-md-6">
             <h1 class="display-2 mb-md-4">Hire a pro <br> for any skill</h1>
-            <table>
-                <tr *ngFor="let skill of skills">
-          <td> <ul class="list-unstyled display-6">
-                <li >
-                    <a href="#" >{{skill.name}}</a>
-                </li></ul></td>
-                </tr>
-                </table>
-        </div>
-        <div class="col-md-6">
-            <img src="../../../../assets/images/craig-mckay-jmURdhtm7Ng-unsplash.jpg" class="img-fluid mb-3 mx-2" alt="">
-            <img src="../../../../assets/images/ludovic-migneault-EZ4TYgXPNWk-unsplash.jpg" class="img-fluid mb-3 mx-2" alt="">
-            
-            <div class="p-md-3">
-              
-                    <button class="btnn border rounded-pill mx-1 my-2 p-2" *ngFor="let cat of categories">{{cat.name}}</button>
-                    
-                   
-                  
-           
+          <div class="d-flex flex-column pl-4">
+
+                <ul class="list-unstyled display-6" *ngFor="let skill of skills|slice :1:6">
+                    <li class="skillname">{{skill.name}}</li>
+                </ul>
+                <ul class="list-unstyled display-6">
+                    <li class ="skillname">
+                        See All Specialization
+                    </li>
+                </ul>
             </div>
+        </div>
+        <div class="col-md-6 p-2">
+            <img src="../../../../assets/images/it.jpg" class="img-fluid mb-3" alt="">
+            <div class="d-flex ">
+            <div class=" d-flex flex-column">
+            <button class="btnn border rounded-pill mx-2 my-1 px-3 py-2" *ngFor="let cat of categories|slice :0:4">{{cat.name}}</button>
+            </div>
+            <div class=" d-flex flex-column">
+                <button class="btnn border rounded-pill  my-1 px-3 py-2" *ngFor="let cat of categories|slice :5:9">{{cat.name}}</button>
+            </div>
+        </div>
         </div>
     </div>
 </div>

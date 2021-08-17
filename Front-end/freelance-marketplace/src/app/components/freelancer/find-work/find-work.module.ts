@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MyStatsComponent } from './my-stats/my-stats.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
 import { ProposalsComponent } from './proposals/proposals.component';
 import { ProfileComponent } from './profile/profile.component';
 import { JobDetailsComponent } from './find-work/job-details/job-details.component';
@@ -13,6 +12,8 @@ import { SubmitProposalComponent } from './find-work/job-details/submit-proposal
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PortofolioComponent } from './profile/portfolio/portofolio.component';
+import { LayoutModule } from '../../layout/layout.module';
+import { SharedModule } from '../shared/shared.module';
 
 const routes : Routes = [
   {path : 'work' , component : FindWorkComponent},
@@ -24,10 +25,10 @@ const routes : Routes = [
   {path:'profile/portofolio', component:PortofolioComponent},
   {path : 'proposals' , component : ProposalsComponent},
   {path : 'submit-proposal' , component :SubmitProposalComponent},
+  {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
   {path : 'work/details/:id' , component :JobDetailsComponent},
   {path : 'filter-jobs' , component :FilterJobsComponent},
-  {path:'', component:FindWorkComponent},
-
+  {path : 'filter-jobs/:query' , component :FilterJobsComponent},
 
 ]
 
@@ -44,7 +45,11 @@ const routes : Routes = [
     FilterJobsComponent,
   ],
   imports: [
+<<<<<<< HEAD
     CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule,SharedModule
+=======
+    CommonModule,RouterModule.forChild(routes),NgxPaginationModule,FormsModule,ReactiveFormsModule,LayoutModule,SharedModule,
+>>>>>>> 31ac0ff1203f6097ed52339d9705442a7c6a2086
   ],
   exports : [MyStatsComponent]
 })

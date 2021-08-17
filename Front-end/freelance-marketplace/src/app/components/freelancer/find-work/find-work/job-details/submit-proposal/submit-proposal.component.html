@@ -19,7 +19,7 @@
                             <div class="row">
                                 <h4 class="m-3">{{job_details.job_title}} </h4>
                                 <div>
-                                     &nbsp; {{job_details.created_at | date:'yyyy-MM-dd hh:mm'}}
+                                     &nbsp; posted at: {{job_details.created_at | date:'yyyy-MM-dd hh:mm'}}
                                 </div>
 
      
@@ -38,7 +38,7 @@
                                 class="bi bi-lightbulb" viewBox="0 0 16 16">
                                 <path
                                     d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z" />
-                            </svg>Intermediate <br> &nbsp;&nbsp; Experience Level
+                            </svg>{{job_details.experience}} <br> &nbsp;&nbsp; Experience Level
                             <br>
                             <br>
                         <p style="font-weight: bold;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -54,7 +54,7 @@
                                     d="M6.445 11.688V6.354h-.633A12.6 12.6 0 0 0 4.5 7.16v.695c.375-.257.969-.62 1.258-.777h.012v4.61h.675zm1.188-1.305c.047.64.594 1.406 1.703 1.406 1.258 0 2-1.066 2-2.871 0-1.934-.781-2.668-1.953-2.668-.926 0-1.797.672-1.797 1.809 0 1.16.824 1.77 1.676 1.77.746 0 1.23-.376 1.383-.79h.027c-.004 1.316-.461 2.164-1.305 2.164-.664 0-1.008-.45-1.05-.82h-.684zm2.953-2.317c0 .696-.559 1.18-1.184 1.18-.601 0-1.144-.383-1.144-1.2 0-.823.582-1.21 1.168-1.21.633 0 1.16.398 1.16 1.23z" />
                                 <path
                                     d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                            </svg> Less than a month <br> &nbsp;&nbsp;&nbsp; Project Length
+                            </svg> {{job_details.duration}} <br> &nbsp;&nbsp;&nbsp; Project Length
                     </div>
 
                 </div>
@@ -69,8 +69,8 @@
 
         <br>
 
-        <div class="skills" style="margin-left: 3vh;" *ngFor="let skill of job_skills">
-            <button class=" mx-1 my-1  bt1 ">{{skill.name}}<b>+</b> </button>
+        <div class="skills" style="margin-left: 3vh;" >
+            <button class=" mx-1 my-2  bt1 " *ngFor="let skill of job_skills">{{skill.name}}<b>+</b> </button>
 
         </div>
 
@@ -93,7 +93,6 @@
 
 
                     <h4 class="m-5">What is that rate you'd like to bid for this job</h4>
-                    <p style="margin-left: 7vh;"> Your Full stack Development profile rate: $16.00/hr</p>
                     <form action="" [formGroup]="form">
                         <div class="card-body">
                             <div class="row">
@@ -104,17 +103,14 @@
                                 <div class="row justify-content-around">
                                     <div class="col-4">
                                         <!-- <label>Description</label><br> -->
-                                        <input type="text" class="form-control" formControlName="description"
-                                            name="description" placeholder="Description" style="width: 22rem;">
-                                        <div
-                                            *ngIf="form.controls.description.invalid && islogged || (form.controls.description.dirty || form.controls.description.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.description.hasError('required')">This field is
-                                                required</small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.description.hasError('minlength')">You should write
-                                                more than 20 letter </small>
-                                        </div>
+                                        <!-- <input type="text" class="form-control" formControlName="description"
+                                            name="description" placeholder="Description" style="width: 22rem;"> -->
+
+                                            <select formControlName="duration_id" name="duration_id" class="form-select" aria-label="Default select example">
+                                                <option value={{dur.id}} selected *ngFor="let dur of duration">{{dur.name}}</option>
+                                                
+                                              </select>
+        
                                     </div>
 
                                     <div class="col-4">

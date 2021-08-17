@@ -6,13 +6,11 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class FreelancersService {
+export class DurationsService {
 
   constructor(private api:ApiService) { }
 
-  
-  getFreelancers(url : string):Observable<any>{
+  get(url : string):Observable<any>{
     return this.api.get(`${environment.apiUrl}/${url}`)
-
-}
+  }
 }

@@ -54,7 +54,7 @@ span {
 .card {
     border: none;
     text-align: center;
-    height: 19rem;
+    height: 14rem;
     color: var(--mc);
 }
 
@@ -123,6 +123,17 @@ h5 {
     background-color: var(--bg);
 }
 
+.skillname{
+    width: 6rem ;
+    height: 2rem;
+    background-color: var(--mc);
+    color: white;
+}
+.skillname:hover{
+    background-color: var(--bg);
+    color: var(--mc);
+}
+
 @media only screen and (max-width: 992px) {
     .b1,
     .b2 {
@@ -155,4 +166,66 @@ h5 {
     b2 {
         display: none;
     }
+}
+#one {
+  width: 210px;
+
+}
+#one:hover{
+  cursor: pointer;
+}
+#two
+{
+  cursor: pointer;
+  width: 68px;
+
+}
+#two:hover{
+  text-decoration: underline;
+}
+#three{
+  background-color:var(--mc) ;
+  color: white;
+  border-radius:50%;
+
+}
+.drag-drop{
+  border: .125rem dotted  var(--mc);
+  height: 5rem;
+  width: 29rem;
+  margin-left: 20px;
+}
+
+.drag-drop span{
+  color: var(--tc);
+}
+
+.drag-drop span:hover{
+  cursor: pointer;
+  text-decoration: underline ;
+}
+#four {
+  width: 90px;
+
+}
+#five {
+  width: 126px;
+
+}
+#six{
+  width: 70px;
+}
+#nine{
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color:var(--mc) ;
+  color: white;
+  border-radius:50%;
+  margin-left: 450px;
+}
+#am{
+  text-align: center;
+  display: inline-block;
+  margin: 20px;
 }

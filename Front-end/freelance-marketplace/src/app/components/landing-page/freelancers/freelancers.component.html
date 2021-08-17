@@ -1,61 +1,336 @@
 <app-nav></app-nav>
-<div class="container">
-  
 
-    <!-- search section -->
-    <div class="row">
-        <div class="col my-md-4">
-         <input type="text" placeholder="search" class="form-control  ms-md-3 d-inline"><i class="fas fa-search ms-2"></i>
+<div class="container-fluid"  >
+  <div class="container">
+      <div class="row mt-md-5">
+
+          <!-- Start filter side-->
+          <div class="col-md-3 d-sm-none d-md-block">
+
+              <h2 class="mb-md-5 ">Filter By</h2>
+<!------------------------------------------------ start category------------------------------------->
+
+<div class="border-top">
+  <div class="card1 p-2">
+      <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeCategoryIcon() "
+      data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false"
+       aria-controls="collapseExample0">
+
+          <strong>Category</strong>
+          <div class="icon ">
+              <i class=" fa fa-solid {{shape0}}"></i>
+          </div>
+      </div>
+      <div class="up-c-collapse collapse border-0" id="category" >
+
+
+                          <div class="card1 dropdown">
+                              <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false"  class="form-control" placeholder="search">
+
+                          </div>
+                          <ul class="menubox card list-group" *ngIf="inpt.value">
+                              <div class="psearch" *ngFor="let item of freelancers">
+                                  <a class="list-group-item list-group-item-light" #a > {{item.name}}</a>
+                              </div>
+                          </ul>
+
+      </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+<!---------------------- Start Experience level------------------------------------------->
+           <div class="border-top">
+              <div class="card1 p-2">
+                  <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeExperienceIcon() "
+                  data-bs-toggle="collapse" data-bs-target="#experienceLevel" aria-expanded="false"
+                   aria-controls="collapseExample0">
+
+                      <strong>Experience level</strong>
+                      <div class="icon ">
+                          <i class=" fa fa-solid {{shape4}}"></i>
+                      </div>
+                  </div>
+                  <div class="up-c-collapse collapse border-0" id="experienceLevel" >
+                      <div class="mt-10">
+                          <fieldset>
+                              <div class="up-checkbox ">
+                                  <input type="checkbox" (click)="addParams($event)" value="Entry">
+                                          Entry Level - $
+                                  <small  class="text-muted">(1)</small>
+                              </div>
+                              <div class="up-checkbox ">
+                                  <input type="checkbox" (click)="addParams($event)" value="intermediate">
+                                          Intermediate - $$
+                                  <small  class="text-muted">(5)</small>
+                              </div>
+                              <div class="up-checkbox ">
+                                  <input type="checkbox" (click)="addParams($event)" value="expert">
+                                         Expert - $$$
+                                  <small  class="text-muted">(25)</small>
+                              </div>
+
+                          </fieldset>
+                     </div>
+                  </div>
+
+
+
+
+
+              </div>
+           </div>
+
+
+<!---------------------- Start Job Type level------------------------------------------->
+<div class="border-top">
+  <div class="card1 p-2">
+      <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeHourlyRateIcon() "
+      data-bs-toggle="collapse" data-bs-target="#jobType" aria-expanded="false"
+       aria-controls="collapseExample0">
+          </div>
+      </div>
+          <div class="mt-10">
+               <fieldset >
+                        
+                          <div class="up-checkbox ">
+                              <input type="checkbox" (click)="addParams($event)" value="5">
+                                    5 To 10
+                              <small  class="text-muted">(5)</small>
+                          </div>
+                          <div class="up-checkbox ">
+                              <input type="checkbox" (click)="addParams($event)" value="10">
+                                    10 To 15
+                              <small  class="text-muted">(9)</small>
+                          </div>
+                          <div class="up-checkbox ">
+                              <input type="checkbox" (click)="addParams($event)" value="15">
+                                    15 To 20
+                              <small  class="text-muted">(15)</small>
+                          </div>
+                          <div class="up-checkbox ">
+                              <input type="checkbox" (click)="addParams($event)" value="20">
+                                    20 To 50
+                              <small  class="text-muted">(11)</small>
+                          </div>
+                      </fieldset>
+         </div>
+      </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<!----------------------Start Number of Porposals------------------------------------------->
+<div class="border-top">
+  <div class="card1 p-2">
+      <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changenoOfPrposalsIcon() "
+      data-bs-toggle="collapse" data-bs-target="#noOfPrposals" aria-expanded="false"
+       aria-controls="collapseExample0">
+      
+          <strong>Languages</strong>
+          <div class="icon ">
+              <i class=" fa fa-solid {{shape1}}"></i>
+          </div>
+      </div>
+      <div class="up-c-collapse collapse border-0" id="noOfPrposals" >
+          <div class="mt-10">
+              <fieldset>
+                  <div class="up-checkbox ">
+                      <input type="checkbox" (click)="addParams($event)" value="Ar">
+                      Arabic
+                      <small  class="text-muted">(1)</small> 
+                  </div>
+                  <div class="up-checkbox ">
+                      <input type="checkbox" (click)="addParams($event)" value="En">
+                           English
+                      <small  class="text-muted">(5)</small> 
+                  </div>
+               
+              </fieldset>
+         </div>
+      </div>
+  </div>
+</div>
+      </div>
+
+      <!-- End filter side -->
+        <!---------------------------------------------- Start Main  ------------------------------------------------------------------------->
+
+        <div class="col-md-8 card py-3 ">
+
+          <div class="input-group mb-md-3 d-sm-none d-md-flex">
+              <input type="text" class="form-control p-md-2" [(ngModel)]="query" ngDefaultControl
+              aria-label="search" placeholder="Search for freelancers">
+              <a  class="input-group-text"  (click)="search()">
+                  <i class="fas fa-search"></i>
+              </a>
+          </div>
+
+
+          <!-- Button trigger modal -->
+          <a href="#" class="d-sm-none d-md-flex" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Advanced Search
+          </a>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <!-- Header -->
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Advanced Search</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+
+                      <!-- Body -->
+                      <div class="modal-body">
+                          <form>
+
+                              <label for="AllOfTheseWords" class="form-label">All of these words</label>
+                              <input type="text" class="form-control" id="AllOfTheseWords">
+
+                              <label for="AnyOfTheseWords" class="form-label">Any of these words</label>
+                              <input type="text" class="form-control" id="AnyOfTheseWords">
+
+                              <label for="TheExactPhrase" class="form-label">The exact phrase</label>
+                              <input type="text" class="form-control" id="TheExactPhrase">
+
+                              <label for="ExcludeTheseWords" class="form-label">Exclude these words</label>
+                              <input type="text" class="form-control" id="ExcludeTheseWords">
+
+                              <label for="TitleSearch" class="form-label">Title Search</label>
+                              <input type="text" class="form-control" id="TitleSearch">
+
+                              <label for="SkillsSearch" class="form-label">Skills Search</label>
+                              <input type="text" class="form-control" id="SkillsSearch">
+
+                          </form>
+                      </div>
+
+                      <!-- Footer -->
+                      <div class="modal-footer">
+                          <a href="#" class="btn text-primary" data-bs-dismiss="modal">Cancle</a>
+                          <a href="#" class="btn btn-primary rounded-pill">Search</a>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+
+          <div class="card mt-md-3 mt-sm-4">
+              <h5 class="card-header fw-bold px-md-3 py-md-4 d-flex">
+                  My Feed
+                  <div class="d-inline-block ms-auto">
+                      <a href="" class="text-reset p-1">
+                          <i class="fas fa-ellipsis-h"></i>
+                      </a>
+                  </div>
+              </h5>
+              <!---//////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!-------------------------------------------------------------------start paginaion------------------------------------->
+
+
+
+
+
+
+
+            <div class="card-body border"  *ngFor="let freelancer of freelancers  
+            |searchFilter :query
+            |searchFilter :urlQuery
+            |paginate : {
+                itemsPerPage: 5,
+                currentPage: page,
+                totalItems: count
+              };
+
+        let i = index" [class.active]="i == currentIndex">
+
+                <!-- Job Title -->
+                <div class="header d-flex">
+                    <img class="d-inline-block ms-3 pro imag mb-2" src="../../../assets/images/sam.jpg"/><br>
+                    <a class="ms-4 mt-4" [routerLink]="['/freelancer/profile/details',freelancer.id]" >  {{freelancer.user.name}}<br>
+                      <p>{{freelancer.category}}</p>
+                    </a>
+                    <span class="ms-auto">
+                        <button type="button" class="btn btnn btn-lg rounded-pill  border border-1 b1 p-0  me-3  bs " >Hire</button>
+                        <i class="fas fa-envelope-square msg"></i>
+                                                <!-- <i class="fas fa-heart fa-2x mx-2"></i> -->
+                    </span>
+                    <br>
+                </div>
+
+                <!-- Job Info  -->
+                Hourly: <span class="hourly-rate fw-bold">${{freelancer.hourly_rate}}</span><br>
+                <span class="complex"> - {{freelancer.Experience}}</span> - Est. Time: <span class="job-time"> {{freelancer.user.created_at | date : 'short'}}, Hours to be determined </span><br> - Posted: <span class="job-since"> {{freelancer.user.created_at | date : 'short'}}</span>
+                <br>
+
+                <!-- Job Description -->
+                <p class="job-desc fw-bold">
+                    {{freelancer.overview}}
+                </p>
+
+                <!-- Job Skills -->
+                <div class="skills my-2 text-center">
+                    <span class="mx-2"  *ngFor="let skill of freelancer.skills">{{skill.name}}</span>
+                </div>
+
+                <!-- -Proposals: <span class="proposals fw-bold">5 to 10</span> <br> -->
+
+                <!-- More Info -->
+                <div class="more-info">
+                    <!-- start Verified -->
+                    <!-- <span class="unverified">
+                        <i class="far fa-check-circle me-md-2"></i> <span class="fw-bold">Payment unverified</span>
+                    </span>
+                    <span class="verified d-none">
+                        <i class="fas fa-check-circle mee-md-2"></i> <span class="fw-bold">Payment verified</span>
+                    </span> -->
+                    <!-- End Verified -->
+
+                    <!-- Rating -->
+                    <!-- <span class="payment-rating mx-md-2">
+                        rating with stars
+                    </span> -->
+
+                    <!-- Money spent -->
+                    <span class="spent mx-md-2">
+                        <span class="money-spent fw-bold">${{freelancer.payment_amount}}</span> spent
+                    </span>
+
+                    <!-- Location -->
+                    <span class="location ms-md-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        <span class="fw-bold">{{freelancer.user.city}}</span>
+                    </span>
+                </div>
+
+
+            </div>
+          </div>
+          </div>
+
 
         </div>
+          <!---------------------------------------------------------------- pagination controls------------------------------------------------------->
+<div class="container">
+
+  <div class="d-flex justify-content-center">
+      <pagination-controls
+        nextLabel="load more "
+        (pageChange)="onTableDataChange($event)">
+      </pagination-controls>
     </div>
-                <!--end search section -->
-
-
-        <!-- freelancer section -->
-        <div class="row border-bottom mt-3 " *ngFor="let freelancer of freelancers">
-          
-            <div class="col-md-12" >
-                <div class="row">
-                    <div class="col ">
-                        <div class=" mt-md-3 d-flex">
-                            <span>
-                            <img class="d-inline-block ms-3 pro imag" src="../../../../assets/images/sam.jpg"/><br>
-                               <p class="ms-md-4 mt-md-3 m"> $15.00 /hr</p>
-
-                            </span>
-
-                            <span>
-                            <h4 class="d-inline-block mt-4 ms-3">{{freelancer.job_title}}</h4> <br>
-                            <p class="ms-md-2 ms-sm-4 f">full stack developer wordpress</p></span>
-                            <br>
-                        </div>
-                        <span class="ms-md-4">
-                            <p class="mb-2 desc"> {{freelancer.overview}}</p>
-
-                        <i class="far fa-file-alt"></i> <a href="" class="ms-1">completed 6 CSS3 jobs on site_name</a>
-                        <p class="ms-md-4 mt-md-2">Has <b>9 relevant skills</b> to your job</p>
-                        </span>
-                        <ul class="nav free mb-md-4">
-                            <li class="nav-item my-sm-1">
-                              <a class="nav-link " href="#">CSS3[top1%]</a>
-                            </li>
-                            <li class="nav-item my-sm-1">
-                              <a class="nav-link" href="#">WordPress[top1%]</a>
-                            </li>
-                            <li class="nav-item my-sm-1">
-                              <a class="nav-link" href="#">PHP[top5%]</a>
-                            </li>
-                            <li class="nav-item my-sm-1">
-                              <a class="nav-link " href="#">HTML[top5%]</a>
-                            </li>
-                          </ul>
-                    </div>
-                </div>
-              
-                </div>
-            </div>
-        
-       
 
 </div>

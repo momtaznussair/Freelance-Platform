@@ -31,8 +31,11 @@
     
                             </div>
                             <ul class="menubox card list-group" *ngIf="inpt.value">
-                                <div class="psearch" *ngFor="let item of cat">
-                                    <a class="list-group-item list-group-item-light" #a > {{item.name}}</a>
+                                <div *ngFor="let item of cat">
+                           
+                                    <a class="list-group-item list-group-item-light"  >
+                                        <input type="checkbox" (click)="addCat($event)"  value={{item.name}}>
+                                         {{item.name}}</a>
                                 </div>
                             </ul>
          
@@ -63,17 +66,17 @@
                         <div class="mt-10">
                             <fieldset>
                                 <div class="up-checkbox ">
-                                    <input type="checkbox" (click)="addParams($event)" value="Entry">
+                                    <input type="checkbox" [(ngModel)]="params[0].selected" value="Entry">
                                             Entry Level - $
                                     <small  class="text-muted">(1)</small> 
                                 </div>
                                 <div class="up-checkbox ">
-                                    <input type="checkbox" (click)="addParams($event)" value="intermediate">
+                                    <input type="checkbox" [(ngModel)]="params[1].selected" value="intermediate">
                                             Intermediate - $$
                                     <small  class="text-muted">(5)</small> 
                                 </div>
                                 <div class="up-checkbox ">
-                                    <input type="checkbox" (click)="addParams($event)" value="expert">
+                                    <input type="checkbox" [(ngModel)]="params[2].selected" value="expert">
                                            Expert - $$$
                                     <small  class="text-muted">(25)</small> 
                                 </div>
@@ -106,37 +109,37 @@
             <div class="mt-10">
                 <fieldset>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="hourly">
+                        <input type="checkbox" [(ngModel)]="params[3].selected" value="hourly">
                                Hourly 
                         <small  class="text-muted">(5)</small> 
                     </div>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="fixed">
+                        <input type="checkbox"  [(ngModel)]="params[4].selected" value="fixed">
                         Fixed Price
                     </div>
                         <fieldset class="px-4">
                             <div class="up-checkbox  ">
-                                <input type="checkbox" (click)="addParams($event)" value="0">
+                                <input type="checkbox"  [(ngModel)]="params[5].selected" value="0">
                                 Less than 5
                                 <small  class="text-muted">(1)</small> 
                             </div>
                             <div class="up-checkbox ">
-                                <input type="checkbox" (click)="addParams($event)" value="5">
+                                <input type="checkbox"  [(ngModel)]="params[6].selected" value="5">
                                       5 To 10
                                 <small  class="text-muted">(5)</small> 
                             </div>
                             <div class="up-checkbox ">
-                                <input type="checkbox" (click)="addParams($event)" value="10">
+                                <input type="checkbox"  [(ngModel)]="params[7].selected" value="10">
                                       10 To 15
                                 <small  class="text-muted">(9)</small> 
                             </div>
                             <div class="up-checkbox ">
-                                <input type="checkbox" (click)="addParams($event)" value="15">
+                                <input type="checkbox"  [(ngModel)]="params[8].selected" value="15">
                                       15 To 20
                                 <small  class="text-muted">(15)</small> 
                             </div>
                             <div class="up-checkbox ">
-                                <input type="checkbox" (click)="addParams($event)" value="20">
+                                <input type="checkbox"  [(ngModel)]="params[9].selected" value="20">
                                       20 To 50
                                 <small  class="text-muted">(11)</small> 
                             </div>
@@ -144,10 +147,6 @@
                 </fieldset>
            </div>
         </div>
-
-
-
-
 
     </div>
  </div>
@@ -169,27 +168,27 @@
             <div class="mt-10">
                 <fieldset>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="0">
+                        <input type="checkbox" [(ngModel)]="params[10].selected" value="0">
                         Less than 5
                         <small  class="text-muted">(1)</small> 
                     </div>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="5">
+                        <input type="checkbox" [(ngModel)]="params[11].selected" value="5">
                               5 To 10
                         <small  class="text-muted">(5)</small> 
                     </div>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="10">
+                        <input type="checkbox" [(ngModel)]="params[12].selected" value="10">
                               10 To 15
                         <small  class="text-muted">(9)</small> 
                     </div>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="15">
+                        <input type="checkbox" [(ngModel)]="params[13].selected" value="15">
                               15 To 20
                         <small  class="text-muted">(15)</small> 
                     </div>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="20">
+                        <input type="checkbox" [(ngModel)]="params[14].selected" value="20">
                               20 To 50
                         <small  class="text-muted">(11)</small> 
                     </div>
@@ -278,7 +277,9 @@
               
 
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
-                <div class="card-body"  *ngFor="let post of jobPost | searchFilter:query |paginate : {
+                <div class="card-body"  *ngFor="let post of jobPost  
+                | searchFilter:query
+                |paginate : {
                     itemsPerPage: 5,
                     currentPage: page,
                     totalItems: count
@@ -298,8 +299,8 @@
                     </div>
 
                     <!-- Job Info  -->
-                    Hourly: <span class="hourly-rate fw-bold">$5.00 - $15.00</span>
-                    <span class="complex"> - Intermidiate</span> - Est. Time: <span class="job-time"> More than 6 months, Hours to be determined </span> - Posted: <span class="job-since"> 1 day ago</span>
+                    {{post.payment_style}}: <span class="hourly-rate fw-bold">$5.00 - $15.00</span>
+                    <span class="complex"> - {{post.experience}}</span> - Est. Time: <span class="job-time"> More than 6 months, Hours to be determined </span> - Posted: <span class="job-since"> 1 day ago</span>
                     <br>
 
                     <!-- Job Description -->
@@ -312,7 +313,7 @@
                         <span class="mx-2"  *ngFor="let skill of post.skills">{{skill.name}}</span>
                     </div>
 
-                    -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
+                    -Proposals: <span class="proposals fw-bold">{{post.proposals_number}}</span> <br>
 
                     <!-- More Info -->
                     <div class="more-info">

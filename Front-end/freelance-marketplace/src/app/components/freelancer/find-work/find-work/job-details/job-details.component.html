@@ -9,9 +9,9 @@
             <div class="row border-bottom py-3 pt-md-4">
 
                 <p class="po">{{job_details.job_title}}
-                    <br><span class="sp">Posted 4 days ago</span>
+                    <br><span class="sp">posted at: {{job_details.created_at | date:'yyyy-MM-dd hh:mm'}}</span>
 
-                    <span><i class="fas fa-route ii"></i>WorldWide</span>
+                    <!-- <span><i class="fas fa-route ii"></i>WorldWide</span> -->
                 </p>
 
             </div>
@@ -21,34 +21,22 @@
             <div class="row border-bottom py-3 pt-md-3">
                 <div class="col-md-4 ">
                     <i class="far fa-clock ii"></i>
-                    <p class="d-inline ms-md-1 po">More than 30hrs/week
-                        <br><span class="ms-md-4 sp">Hourly</span>
+                    <p class="d-inline ms-md-1 po">{{job_details.duration}}
 
                     </p>
                 </div>
-                <div class=" col-md-4 ">
-
-                    <i class="fas fa-calendar-week ii"></i>
-                    <p class="d-inline ms-md-1 po">1 to 3 monthes
-
-                        <br><span class="ms-md-4 sp">Project Length</span>
-
-                    </p>
-
-                </div>
+          
                 <div class=" col-md-4 ">
                     <i class="fas fa-dollar-sign ii"></i>
-                    <p class="d-inline ms-md-1 po">Entry level
-                        <br><span class=" sp">freelancers with the lowest rates</span>
+                    <p class="d-inline ms-md-1 po">{{job_details.experience}}
+                        <!-- <br><span class=" sp">freelancers with the lowest rates</span> -->
 
                     </p>
 
                 </div>
 
             </div>
-            <div class="row border-bottom pt-3 pt-md-3">
-                <p class="ii"><b>Project Type:</b> &nbsp; One-time project</p>
-            </div>
+         
             <div class="row border-bottom py-3 pt-md-3">
                 <p class="po ii"><b>Skills and expertise </b></p><br>
                 <p class="po">Web Design Languages </p>
@@ -56,21 +44,13 @@
                     <li class="nav-item" *ngFor="let skill of job_skills">
                         <a class="nav-link " href="#">{{skill.name}}</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#">WordPress</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">PHP</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="#">HTML</a>
-                    </li> -->
+          
                 </ul>
             </div>
             <div class="row border-bottom pt-3 pt-md-3">
                 <div class="col ">
                     <p class="po ii"><b>Activity on this job </b></p>
-                    <p class="po ">Proposals: Less than 5
+                    <p class="po ">Proposals: {{job_details.proposals_number}}
                         <br><br> Last viewed by client: 3 days ago <br> Interviewing: 0 <br> Invites sent: 0 <br> Unanswered invites: 0 <br>
 
 
@@ -83,7 +63,7 @@
         <!-- right col -->
         <div class=" right d-none d-lg-block col-lg-3 border-start pt-md-4">
             <div class="row border-bottom ps-3">
-                <button type="button" class="btn btnn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3 submitproposal " routerLink="/submit-proposal" >submit a proposal</button>
+                <button type="button" class="btn btnn btnn2 btn-lg rounded-pill  border border-1  p-0 mt-4 me-3 submitproposal " routerLink="/freelancer/work/details/submit-proposal" >submit a proposal</button>
                 <button type="button" class="btn btnn2 btnn btn-lg rounded-pill  border border-1  p-0 mt-4 me-3  savejob ">Save Job</button>
                 <br>
 
@@ -97,7 +77,7 @@
             <div class="row py-3 border-bottom">
                 <h5><b>About client</b></h5>
                 <p class="ps-3 pt-2"><i class="fas fa-check-circle pe-1"></i>Payment method verified</p>
-                <p class="ps-3 pt-2">Germany<br> Munich 3:04 pm
+                <p class="ps-3 pt-2">{{clients.country}}<br> Munich 3:04 pm
                 </p>
                 <p>
                     45 jobs posted<br> 47% hire rate, 1 open job<br><br> $300+ total spent<br> 22 hires, 0 active</p>
@@ -132,7 +112,7 @@
 
 <!-- //second container -->
 
-<div class="container border py-4">
+<div class="container border py-4 " *ngIf="isDataGet">
     <div class="row border-bottom">
         <div class="col">
             <h4>Client's recent history</h4>
@@ -144,7 +124,7 @@
     <div class="row pt-3">
         <div class="col">
             <h5><b>PHP Developer Require For a small Assignment Task</b></h5>
-            <p> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>A perfect client to work with, friendly and right on the point!
+            <p> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>A perfect client to work with {{clients.name}}, friendly and right on the point!
                 <br> To freelancer: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> Rating is 5 out of 5. Its really pleasure to work with George Lioympas, He delivered the work on time, efficient code, good quality and
                 always available to discuss the things. I must recommend him for future work!! Thanks
             </p>

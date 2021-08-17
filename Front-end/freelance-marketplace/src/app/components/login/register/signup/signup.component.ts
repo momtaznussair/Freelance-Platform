@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
 
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +16,8 @@ export class SignupComponent implements OnInit {
 
   userResponse : User = new User();
   imgPattern = '([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)';
+
+  file: File | null = null; // Variable to store file
 
 
   form : FormGroup = new FormGroup({});
@@ -77,7 +79,9 @@ export class SignupComponent implements OnInit {
 
   }//end of ngOnInit
 
-
+  onChange(event : any) {
+    this.file = event.target.files[0];
+  }
   nextStepOfSignUp()
   {
 
@@ -117,16 +121,16 @@ export class SignupComponent implements OnInit {
     }
     else
     {
-      this.simpleAlert();
+      // this.simpleAlert();
       this.isLogged = true;
     }
   };//end of register function
 
 
   //================add notification methods
-  simpleAlert(){
-    Swal.fire('please complete your information first');
-  }
+  // simpleAlert(){
+  //   Swal.fire('please complete your information first');
+  // }
   //==================end of notification method
 
 }

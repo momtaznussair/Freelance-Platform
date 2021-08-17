@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark text-light">
             <div class="container-fluid">
                 <!-- Start Logo -->
-                <a class="navbar-brand ms-md-2" routerLink="/">UpWork</a>
+                <a class="navbar-brand ms-md-2" routerLink="/freelancer">Freelancer</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
               </button>
@@ -12,14 +12,34 @@
                 <!-- Start Links-->
                 <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2  mb-lg-0">
-                        <!-- Start Seaarch -->
-                        <form class="d-flex mx-md-2 search-form">
-                            <!-- <a href="#">
-                              <span class="glyphicon glyphicon-search"></span>
-                          </a> -->
-                            <input class="form-control search-input me-md-2" type="search" placeholder="Search" aria-label="Search">
-                        </form>
-                        <!-- End search -->
+                              <!-- search -->
+            <form class="d-flex mt-1">
+                <div class="btn-group">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+
+                    <!-- search type dropdown -->
+                    <ul class="dropdown-menu mt-2 ms-3">
+                        <li>
+                            <a class="dropdown-item"  (click)="freelancer()">
+                                <span class="fa fa-user me-3" style="font-size:24px"></span> Freelancers
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" [routerLink]="['/freelancer/work/filter-jobs','5']" (click)="jobs()">
+                                <span class="fa fa-briefcase me-3" style="font-size:24px"></span> Jobs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--end  search type  dropdown-->
+                <!-- search box -->
+                <input class="form-control me-2 rounded-pill" type="search" [placeholder]="x" aria-label="Search">
+                <button class="fa fa-search border-0 bg-transparent"></button>
+            </form>
+            <!-- end of search -->
 
                         <!-- Start Find Work -->
                         <li class="nav-item dropdown ms-md-4 me-md-2">
@@ -132,7 +152,14 @@
                                     <!-- Drop down-->
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" routerLink=""><img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt=""><span>Omar Badr <br><small>Freelancer</small></span></a>
+                                            <a class="dropdown-item d-flex justify-content-between " routerLink="">
+                                                <img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt="">
+                                            
+                                                <div class="d-flex flex-column justify-content-center">
+                                                <div class="font-weight-bold font-size-14">Omar Badr</div>
+                                                <div class="font-size-10"><small>Freelancer</small></div>
+                                            </div>
+                                            </a>
 
                                         </li>
                                         <li>

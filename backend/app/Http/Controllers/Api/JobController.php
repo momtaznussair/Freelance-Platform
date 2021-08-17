@@ -25,13 +25,10 @@ class JobController extends Controller
 
     public function show($id)
     {
-<<<<<<< HEAD
-        $job = Job::with('skills')->find($id);
-=======
+
         // $job = Job::with(['skills','category','duration','experience','payment_style','client.user'])->find($id);
         $job = Job::find($id);
 
->>>>>>> a52d40483100376209388b41546435eda06d042d
         if (!$job) {
             $this->NotFoundError();
         }
@@ -42,6 +39,7 @@ class JobController extends Controller
 
     public function store(Request $request)
     {
+
         $validate = Validator::make($request->all(), [
             'description' => 'required|min:10',
             'payment_amount' => 'numeric',

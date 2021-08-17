@@ -6,7 +6,6 @@ import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
 import { SkillsService } from 'src/app/services/skills.service';
-import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 
 @Component({

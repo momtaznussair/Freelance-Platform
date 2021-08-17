@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+  x='search';
   constructor(private userService : UserService , private router:Router) { }
 
   ngOnInit(): void {
@@ -19,6 +19,17 @@ export class NavComponent implements OnInit {
 
   logout(){
     this.userService.logout()
+  }
+  freelancer(){
+ 
+    this.x="search in freelancer";
+    this.router.navigateByUrl("/freelancers");
+  }
+
+  jobs(){
+   
+    this.x="search in jobs";
+    // this.router.navigateByUrl("/jobs");
   }
 
 }

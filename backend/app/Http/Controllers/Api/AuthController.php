@@ -74,25 +74,25 @@ class AuthController extends Controller
 
             // Storage::putFile('users', $request->file('img_link'));
             // $user->img_link = $request->img_link;
-            
+
             // $user->save();
         }
         $user->save();
-        // add as a  client
-        // add as a  client
-        if ($request->type == 'client')
-        {
-            $client = new Client();
-            $client->user_id = $user->id;
-            $client->registration_date = now();
-            $client->save();
-        }
+<<<<<<< HEAD
+
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        $data = [
+            'access_token' => $token,
+            'user' => new UserResource($user),
+=======
         
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $data = [
                 'access_token' => $token,
                 'user' => new UserResource($user),
+>>>>>>> a362b16613e9de3794c4bdfd5084926f5cfffbb3
         ];
 
         // add as a  client
@@ -100,7 +100,6 @@ class AuthController extends Controller
         {
             $client = new Client();
             $client->user_id = $user->id;
-            $client->registration_date = now();
             $client->save();
         }
 
@@ -123,7 +122,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        if (! $user || ! Hash::check($request->password, $user->password) || $user->auth_id === null) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);

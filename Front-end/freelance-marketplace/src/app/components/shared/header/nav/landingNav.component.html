@@ -46,7 +46,7 @@
                     <!-- search type dropdown -->
                     <ul class="dropdown-menu mt-2 ms-3">
                         <li>
-                            <a class="dropdown-item" href="#" (click)="freelancer()">
+                            <a class="dropdown-item"  (click)="freelancer(inpt)">
                                 <span class="fa fa-user me-3" style="font-size:24px"></span> Freelancers
                             </a>
                         </li>
@@ -54,7 +54,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" href="/freelancer/work" (click)="jobs()">
+                            <a class="dropdown-item" (click)="jobs(inpt)">
                                 <span class="fa fa-briefcase me-3" style="font-size:24px"></span> Jobs
                             </a>
                         </li>
@@ -62,7 +62,8 @@
                 </div>
                 <!--end  search type  dropdown-->
                 <!-- search box -->
-                <input class="form-control me-2 rounded-pill" type="search" [placeholder]="x" aria-label="Search">
+                
+                <input class="form-control me-2 rounded-pill" [placeholder]="x"  type="search" #inpt aria-label="Search">
                 <button class="fa fa-search border-0 bg-transparent"></button>
             </form>
             <!-- end of search -->
