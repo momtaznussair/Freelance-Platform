@@ -45,11 +45,7 @@ const routes : Routes = [
     FilterJobsComponent,
   ],
   imports: [
-<<<<<<< HEAD
-    CommonModule,RouterModule.forChild(routes),SharedModule,NgxPaginationModule,FormsModule,ReactiveFormsModule,SharedModule
-=======
     CommonModule,RouterModule.forChild(routes),NgxPaginationModule,FormsModule,ReactiveFormsModule,LayoutModule,SharedModule,
->>>>>>> 31ac0ff1203f6097ed52339d9705442a7c6a2086
   ],
   exports : [MyStatsComponent]
 })
