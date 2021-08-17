@@ -17,6 +17,8 @@ export class SignupComponent implements OnInit {
   userResponse : User = new User();
   imgPattern = '([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)';
 
+  file: File | null = null; // Variable to store file
+
 
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  ,private userService : UserService ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
@@ -71,7 +73,9 @@ export class SignupComponent implements OnInit {
 
   }//end of ngOnInit
 
-
+  onChange(event : any) {
+    this.file = event.target.files[0];
+  }
   nextStepOfSignUp()
   {
 
