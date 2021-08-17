@@ -1,57 +1,39 @@
 h1{
-    font-size: 80px;
-    font-weight: 600 !important;
-    color:var(--mc)
+    font-size: 8vh;
+    font-weight: 630 !important;
+    color:black
 }
 
-li a{
-    text-decoration: none;
-    color:#999;
-}
 .img-fluid{
-    /* width: 60vw; */
-    height: 400px;
+    height: 345px;
     object-fit: contain;
 }
-li a:hover{
-    color: blue;
-}
 
-a.active{
-    color: var(--mc) !important;
-}
 
 img{
     border-radius: 10px;
 }
 
-span{
-    border: 1px solid gray;
-    padding: 5px;
-    border-radius: 1.5rem;
-}
-
-span:hover{
-    background-color: rgb(216, 216, 216);
-    cursor: pointer;
-}
-
 .btnn{
-    width: 8rem ;
-    background-color: var(--mc);
-    color: white;
+    background-color: var(--bg);
+    color: var(--bc);
+    padding: 2px;
 }
 .btnn:hover{
-    background-color: var(--bg);
-    color: var(--mc);
+    background-color: #c6d2db ;
+
 }
-.skillname{
-    font-size: 4rem;
+
+ li{
+    font-size: 30px;
     font-family: cursive;
-    color: var(--mc);
+    text-decoration: none;
+    font-weight: 600;
+    color:rgb(146, 145, 145);
 }
-.skillname:hover{
-    color: blue;
+ li:hover{
+     cursor: pointer;
+    color:var(--mc);
 }
 /* ----------------------------------------------------------------------------------------------------------------- */
 

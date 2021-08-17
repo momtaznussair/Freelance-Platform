@@ -1,23 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { NavComponent } from './header/nav/mainNav.component';
+// import { NavComponent } from '../shared/header/nav/nav.component';
 import { FormsModule } from '@angular/forms';
+import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 const routes : Routes =[
 
 ]
-
-
 @NgModule({
   declarations: [
-    NavComponent
+    searchFilter
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),FormsModule
+    CommonModule,RouterModule.forChild(routes),FormsModule,
   ],
   exports : [
-    NavComponent
+  searchFilter
   ],
 })
 export class LayoutModule { }

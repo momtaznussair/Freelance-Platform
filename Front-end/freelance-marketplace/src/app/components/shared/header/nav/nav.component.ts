@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: './mainNav.component.html',
-  styleUrls: ['./mainNav.component.css']
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
   x='search';

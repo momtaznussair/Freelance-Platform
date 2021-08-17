@@ -12,7 +12,7 @@ import { LayoutModule } from '../layout/layout.module';
 import { FreelancersComponent } from './freelancers/freelancers.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedGlobalModule } from '../sharedGlobal/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {path : 'main' , component : MainComponent},
@@ -35,7 +35,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),LayoutModule,FormsModule
-    ,NgxPaginationModule,SharedGlobalModule
+    ,NgxPaginationModule,SharedModule
   ],
   exports: [JoinWorldComponent , ForClientComponent , HireAProComponent,]
 })

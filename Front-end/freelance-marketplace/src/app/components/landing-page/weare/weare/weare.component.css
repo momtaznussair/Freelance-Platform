@@ -6,8 +6,10 @@
   background-color: var(--mc);
 }
 h1{
- font-size: 10vh;
- font-weight: 900;
+ font-size: 9vh;
+ font-weight: 600;
+ margin-bottom: 10vh;
+ margin-left: 5px;
 
 }
 .roo{

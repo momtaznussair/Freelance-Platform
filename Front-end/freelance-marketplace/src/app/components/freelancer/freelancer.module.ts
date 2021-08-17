@@ -7,6 +7,7 @@ import { ReportsModule } from './reports/reports.module';
 import { SharedModule } from './shared/shared.module';
 import { FreelancerSettingModule } from './freelncer-setting/freelancer-setting.module';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '../layout/layout.module';
 
 
 const routes : Routes = [
@@ -35,7 +36,7 @@ const routes : Routes = [
   
   ],
   imports: [
-    CommonModule,MyJobsModule,RouterModule.forChild(routes),SharedModule,FormsModule
+    CommonModule,MyJobsModule,RouterModule.forChild(routes),SharedModule,FormsModule,LayoutModule
   ],
   exports : [
     MyJobsModule,FindWorkModule,ReportsModule,FreelancerSettingModule

@@ -18,19 +18,20 @@ urlQuery:string=''
     // this.freelance.getFreelancers(`freelancers`).subscribe(res=>{
     //   this.freelancers=res.data;
     //   console.log(this.freelancers);}
-      // this.freelancer_data=this.freelancers.i;
-      // console.log(this.freelancer_data);
+    //   this.freelancer_data=this.freelancers.i;
+    //   console.log(this.freelancer_data);
     this.fetchPosts();
     this.urlQuery=this.activatedRoute.snapshot.params.query;
-  this.query=this.urlQuery;
+  // this.query=this.urlQuery;
+  console.log(this.urlQuery)
   }
 
 fetchPosts(){
   this.freelance.getFreelancers(`freelancers`).subscribe(res=>{
     this.freelancers=res.data;
     console.log(this.freelancers);
-    this.freelancer_id=this.freelancers[1].id;
-    console.log(this.freelancer_id);
+    // this.freelancer_id=this.freelancers[1].id;
+    // console.log(this.freelancer_id);
 
   },error=>console.error)
 }
