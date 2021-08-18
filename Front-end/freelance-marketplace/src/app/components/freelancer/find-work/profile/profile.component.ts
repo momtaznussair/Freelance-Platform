@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
   titleform : FormGroup = new FormGroup({});
   overviewform : FormGroup = new FormGroup({});
   educationform : FormGroup = new FormGroup({});
+  hourlyrateform : FormGroup = new FormGroup({});
+  portForm : FormGroup = new FormGroup({});
   isDataGet: boolean =false;
   isUserGet: boolean = false;
   isSkillsGet : boolean =false;
@@ -35,13 +37,18 @@ export class ProfileComponent implements OnInit {
   resData : any;
   isDataUpdated : any;
   errorUpdate : any;
+  languages : any;
+  languageLevels : any;
+  isLanguageGet : boolean = false;
+  isLanguageLevelGet : boolean = false;
+  isHoulryGet : boolean =false;
 
   ngOnInit(): void {
 
     this.freelancer_id = localStorage.getItem('freelancer_id');
     this.user_id = localStorage.getItem('user_id');
 
-        this.form = this.formBuilder.group({
+        this.portForm = this.formBuilder.group({
       title : ['' , [Validators.required , Validators.minLength(3)]],
       description : ['' , [ Validators.required , Validators.minLength(10)]],
       image :['', [Validators.required]]
@@ -57,18 +64,21 @@ export class ProfileComponent implements OnInit {
     })
 
     this.languageform = this.formBuilder.group({
-      user_id : [this.user_id , [ Validators.required]],
-      name : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+      user_id : [this.user_id],
+      language_id: ['' , [ Validators.required ]],
+      language_level_id: ['' , [ Validators.required ]],
     })
 
     this.titleform = this.formBuilder.group({
-      user_id : [this.user_id , [ Validators.required]],
       job_title : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
     })
 
        this.overviewform = this.formBuilder.group({
-      user_id : [this.user_id , [ Validators.required]],
       overview : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+    })
+
+    this.hourlyrateform = this.formBuilder.group({
+      hourly_rate : ['' , [ Validators.required ]]
     })
 
 
@@ -79,7 +89,7 @@ export class ProfileComponent implements OnInit {
       this.portfoliosData = res;
       console.log(this.portfoliosData.data);
 
-      this.data = this.portfoliosData.data.splice(0,1);
+      this.data = this.portfoliosData.data.splice(0,2);
       this.isDataGet = true;
 
     });
@@ -90,7 +100,24 @@ export class ProfileComponent implements OnInit {
       console.log(this.profileData.user.name);
 
       this.isUserGet = true;
+      this.isHoulryGet = true;
     })
+
+    //get languages
+this.apiService.get(`${environment.apiUrl}/languages`).subscribe(response=>{
+  console.log(response);
+  this.languages = response;
+  this.isLanguageGet = true;
+})
+
+//get language levels
+this.apiService.get(`${environment.apiUrl}/languageLevel`).subscribe(response=>{
+  console.log(response);
+  this.languageLevels = response;
+  this.isLanguageLevelGet = true;
+})
+
+
 
 
   }
@@ -100,7 +127,26 @@ export class ProfileComponent implements OnInit {
       console.log(res)
 
   });
+
   }
+
+  save(id:number) {
+    console.log(this.portForm.value)
+    if(this.portForm.valid) {      
+      this.profile.updateportfilo(id, this.portForm.value).subscribe(response => {
+        alert('done');
+        console.log(response);
+        location.reload();
+      },
+       error => {
+        alert('please check your data and try again');
+      });
+  
+  }
+  }
+
+ 
+
 // Educations
 saveEducationData(){
   console.log(this.educationform.value);
@@ -157,10 +203,10 @@ deleteEducation(id: number) {
 // Languages
 
 saveLanguageData(){
-
+console.log(this.languageform.value)
   if(this.languageform.valid)
   {
-    this.apiService.post(`${environment.apiUrl}/languages` , this.languageform.value).subscribe(response=>{
+    this.apiService.post(`${environment.apiUrl}/userLanguages` , this.languageform.value).subscribe(response=>{
       console.log(response);
       // this.router.navigateByUrl("/freelancer/profile");
     },error=>console.error);
@@ -213,8 +259,30 @@ deletelanguage(id : number){
 // Title 
 
 updateTitle(){
-
+  if(this.titleform.valid)
+  {
+    this.profile.updateJobTitle(this.freelancer_id,this.titleform.value).subscribe(response=>{
+      console.log(response);
+      this.resData = response;
       location.reload();
+      if(this.resData.data != null)
+      {
+        this.isDataUpdated = true;
+      }else
+      {
+        this.errorUpdate = true;
+      }
+    } , error => {
+      this.errorUpdate = true;
+    });
+  }
+  else
+  {
+    alert('please check your data and try again');
+    this.isLogged = true;
+    console.log(this.isLogged);
+  }
+      
 
 }
 
@@ -222,9 +290,59 @@ updateTitle(){
 //overview
 
 updateOverview(){
+  if(this.overviewform.valid)
+  {
+    this.profile.updateOver(this.freelancer_id,this.overviewform.value).subscribe(response=>{
+      console.log(response);
+      this.resData = response;
+      location.reload();
+      if(this.resData.data != null)
+      {
+        this.isDataUpdated = true;
+      }else
+      {
+        this.errorUpdate = true;
+      }
+    } , error => {
+      this.errorUpdate = true;
+    });
+  }
+  else
+  {
+    alert('please check your data and try again');
+    this.isLogged = true;
+    console.log(this.isLogged);
+  }
+      
 
-  location.reload();
+}
 
+updateHourlyRate(){
+
+  if(this.hourlyrateform.valid)
+  {
+    this.profile.updateHourly(this.freelancer_id,this.hourlyrateform.value).subscribe(response=>{
+      console.log(response);
+      this.resData = response;
+      location.reload();
+      if(this.resData.data != null)
+      {
+        this.isDataUpdated = true;
+      }else
+      {
+        this.errorUpdate = true;
+      }
+    } , error => {
+      this.errorUpdate = true;
+    });
+  }
+  else
+  {
+    alert('please check your data and try again');
+    this.isLogged = true;
+    console.log(this.isLogged);
+  }
+      
 }
 
 }

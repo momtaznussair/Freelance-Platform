@@ -34,14 +34,34 @@ token = localStorage.getItem('token');
   // Languages
 
   updateLanguage(url : any , body : any) {
-    return this.profile.post(`${environment.apiUrl}/languages/${url}` , body)
+    return this.profile.post(`${environment.apiUrl}/userLanguages/${url}` , body)
 
   }
 
   deleteLang(id:number){
-    return this.profile.delete(`${environment.apiUrl}/languages/delete/${id}`)
+    return this.profile.delete(`${environment.apiUrl}/userLanguages/delete/${id}`)
 
   }
+
+  updateJobTitle(url : any, body : any){
+    return this.profile.post(`${environment.apiUrl}/freelancer/updateJobTitle/${url}` , body)
+  }
+
+  updateHourly(url : any, body : any){
+    return this.profile.post(`${environment.apiUrl}/freelancer/updateHourlyRate/${url}` , body)
+
+  }
+
+  updateOver(url : any, body : any){
+    return this.profile.post(`${environment.apiUrl}/freelancer/updateOverview/${url}` , body)
+
+  }
+
+  updateportfilo(url : any , body : any)
+  {
+    return this.profile.post(`${environment.apiUrl}/portfolios${url}`, body)
+  }
+
 
 }
 
