@@ -20,7 +20,10 @@ export class ProfileComponent implements OnInit {
   languageform : FormGroup = new FormGroup({});
   titleform : FormGroup = new FormGroup({});
   overviewform : FormGroup = new FormGroup({});
+  educationform : FormGroup = new FormGroup({});
   isDataGet: boolean =false;
+  isUserGet: boolean = false;
+  isSkillsGet : boolean =false;
 
   constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router: Router) { }
   portfoliosData:any;
@@ -44,7 +47,7 @@ export class ProfileComponent implements OnInit {
       image :['', [Validators.required]]
     })
 
-    this.form = this.formBuilder.group({
+    this.educationform = this.formBuilder.group({
       user_id : [this.user_id , [ Validators.required]],
       institute : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
       area_of_study : ['' , [Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
@@ -84,8 +87,9 @@ export class ProfileComponent implements OnInit {
     this.profile.get().subscribe(response=>{
       console.log(response);
       this.profileData = response.data[0];
-      console.log(this.profileData);
-      this.isDataGet = true;
+      console.log(this.profileData.user.name);
+
+      this.isUserGet = true;
     })
 
 
@@ -99,11 +103,12 @@ export class ProfileComponent implements OnInit {
   }
 // Educations
 saveEducationData(){
-  if(this.form.valid)
+  console.log(this.educationform.value);
+  if(this.educationform.valid)
   {
-    this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{
+    this.apiService.post(`${environment.apiUrl}/educations` , this.educationform.value).subscribe(response=>{
       console.log(response);
-      this.router.navigateByUrl("/freelancer/profile");
+      location.reload();
     },error=>console.error);
   }
   else
@@ -115,13 +120,12 @@ saveEducationData(){
 
 updateEducationData(id : any){
 
-  console.log(this.form.value);
-  if(this.form.valid)
+  if(this.educationform.valid)
   {
-    this.profile.updateEducation( id ,this.form.value).subscribe(response=>{
+    this.profile.updateEducation( id ,this.educationform.value).subscribe(response=>{
       console.log(response);
       this.resData = response;
-      this.router.navigateByUrl("/freelancer/profile");
+      location.reload();
       if(this.resData.data != null)
       {
         this.isDataUpdated = true;
@@ -146,7 +150,7 @@ updateEducationData(id : any){
 deleteEducation(id: number) {
   this.profile.deleteEdu(id).subscribe(res => {
     console.log(res)
-    this.router.navigateByUrl("/freelancer/profile");
+    location.reload();
   });
 }
 
@@ -176,7 +180,7 @@ updataLanguageName(id : any){
     this.profile.updateLanguage( id ,this.languageform.value).subscribe(response=>{
       console.log(response);
       this.resData = response;
-      this.router.navigateByUrl("/freelancer/profile");
+      location.reload();
       if(this.resData.data != null)
       {
         this.isDataUpdated = true;
@@ -202,7 +206,7 @@ deletelanguage(id : number){
 
   this.profile.deleteLang(id).subscribe(res => {
     console.log(res)
-    this.router.navigateByUrl("/freelancer/profile");
+    location.reload();
   });
 }
 
@@ -210,12 +214,16 @@ deletelanguage(id : number){
 
 updateTitle(){
 
+      location.reload();
+
 }
 
 
 //overview
 
 updateOverview(){
+
+  location.reload();
 
 }
 

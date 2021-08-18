@@ -20,7 +20,7 @@ export class ApiService {
     this.httpClient.put(url , body);
   }
 
-  delete(url:string, option: any){
+  delete(url:string, option ?: any){
     return this.httpClient.delete(url, option);
   }
 

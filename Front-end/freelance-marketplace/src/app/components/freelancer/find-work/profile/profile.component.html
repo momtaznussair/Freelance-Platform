@@ -1,7 +1,7 @@
 <app-nav></app-nav>
-<div class="container firstcon border rounded mt-md-5" *ngIf="isDataGet">
+<div class="container firstcon border rounded mt-md-5">
     <!-- image container -->
-    <div class="row rounded-top">
+    <div class="row rounded-top" *ngIf="isUserGet">
         <div class="col border-bottom ">
             <div class="my-md-4 d-flex">
                 <i class="fas fa-camera ca ii ms-4 mt-2"></i>
@@ -19,7 +19,7 @@
     <div class="row view rounded ">
         <div class="col-md-4 v_pro border-end rounded-start d-none d-lg-block">
             <div class="row ">
-                <div class="col">
+                <div class="col"  *ngIf="isUserGet">
 
                     <div class="mt-md-4 border-bottom fw-bold">Video introduction <i class="fas fa-plus ii"></i><i
                             class="far fa-edit ii"></i></div>
@@ -49,7 +49,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form class="form" [formGroup]="form">
+                                    <form class="form" [formGroup]="languageform">
                                         <div class="modal-body">
                                             <div>
                                                 <input type="hidden" formControlName="user_id" name="user_id">
@@ -94,7 +94,7 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="languageDelete"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-danger"
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
                                             (click)="deletelanguage(language.id)">Delete</button>
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form class="form" [formGroup]="form">
+                                    <form class="form" [formGroup]="languageform">
                                         <div class="modal-body">
                                             <div>
                                                 <input type="hidden" formControlName="user_id" name="user_id">
@@ -176,7 +176,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form class="form" [formGroup]="form">
+                                    <form class="form" [formGroup]="educationform">
                                         <div class="modal-body">
                                             <div>
                                                 <input type="hidden" formControlName="user_id" name="user_id">
@@ -187,35 +187,35 @@
                                                 placeholder="EX: Mansoura university">
 
                                             <div
-                                                *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
+                                                *ngIf="educationform.controls.institute.invalid && isLogged || (educationform.controls.institute.dirty || educationform.controls.institute.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.institute.hasError('required')">This field is
+                                                    *ngIf="educationform.controls.institute.hasError('required')">This field is
                                                     required</small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.institute.hasError('minlength')">You should
+                                                    *ngIf="educationform.controls.institute.hasError('minlength')">You should
                                                     write
                                                     more than 5 letter </small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.institute.hasError('maxlength')"> You can not
+                                                    *ngIf="educationform.controls.institute.hasError('maxlength')"> You can not
                                                     write
                                                     more than 255 letter</small>
 
                                             </div>
 
-                                            <label class="small form-check-label mt-3">Area Of Study</label>
+                                            <label class="smaeducationform-check-label mt-3">Area Of Study</label>
                                             <input type="text" formControlName="area_of_study" name="area_of_study"
                                                 class="form-control" placeholder="EX:computer science">
                                             <div
-                                                *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
+                                                *ngIf="educationform.controls.area_of_study.invalid && isLogged || (educationform.controls.area_of_study.dirty || educationform.controls.area_of_study.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.area_of_study.hasError('required')">This field
+                                                    *ngIf="educationform.controls.area_of_study.hasError('required')">This field
                                                     is
                                                     required</small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.area_of_study.hasError('minlength')">You should
+                                                    *ngIf="educationform.controls.area_of_study.hasError('minlength')">You should
                                                     write more than 5 letter </small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can
+                                                    *ngIf="educationform.controls.area_of_study.hasError('maxlength')"> You can
                                                     not
                                                     write more than 255 letter</small>
                                             </div>
@@ -224,12 +224,12 @@
                                             <input type="text" formControlName="degree" class="form-control"
                                                 placeholder="EX:Bachelor's">
                                             <div
-                                                *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
+                                                *ngIf="educationform.controls.degree.invalid && isLogged || (educationform.controls.degree.dirty || educationform.controls.degree.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.degree.hasError('required')">This field is
+                                                    *ngIf="educationform.controls.degree.hasError('required')">This field is
                                                     required</small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.degree.hasError('minlength')">You should write
+                                                    *ngIf="educationform.controls.degree.hasError('minlength')">You should write
                                                     more
                                                     than 4 letter </small>
                                             </div>
@@ -238,9 +238,9 @@
                                             <input type="date" formControlName="start_date" name="start_date"
                                                 class="form-control">
                                             <div
-                                                *ngIf="form.controls.start_date.invalid && isLogged || (form.controls.start_date.dirty || form.controls.start_date.touched)">
+                                                *ngIf="educationform.controls.start_date.invalid && isLogged || (educationform.controls.start_date.dirty || educationform.controls.start_date.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.start_date.hasError('required')">please select
+                                                    *ngIf="educationform.controls.start_date.hasError('required')">please select
                                                     your
                                                     date </small>
                                             </div>
@@ -249,9 +249,9 @@
                                             <input type="date" formControlName="graduation_date" name="graduation_date"
                                                 class="form-control">
                                             <div
-                                                *ngIf="form.controls.graduation_date.invalid && isLogged || (form.controls.graduation_date.dirty || form.controls.graduation_date.touched)">
+                                                *ngIf="educationform.controls.graduation_date.invalid && isLogged || (educationform.controls.graduation_date.dirty || educationform.controls.graduation_date.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.graduation_date.hasError('required')">please
+                                                    *ngIf="educationform.controls.graduation_date.hasError('required')">please
                                                     select
                                                     graduation date </small>
                                             </div>
@@ -282,7 +282,7 @@
                                         <button type="button" class="btn btn-secondary" data-dismiss="educationDelete"
                                             data-bs-dismiss="modal">Close</button>
                                         <button type="button" class="btn btn-danger"
-                                            (click)="deleteEducation(education.id)">Delete</button>
+                                            (click)="deleteEducation(education.id)" data-bs-dismiss="modal" href="/freelancer/profile">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +299,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form class="form" [formGroup]="form">
+                                    <form class="form" [formGroup]="educationform">
                                         <div class="modal-body">
                                             <div>
                                                 <input type="hidden" formControlName="user_id" name="user_id">
@@ -310,16 +310,16 @@
                                                 placeholder="EX: Mansoura university">
 
                                             <div
-                                                *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
+                                                *ngIf="educationform.controls.institute.invalid && isLogged || (educationform.controls.institute.dirty || educationform.controls.institute.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.institute.hasError('required')">This field is
+                                                    *ngIf="educationform.controls.institute.hasError('required')">This field is
                                                     required</small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.institute.hasError('minlength')">You should
+                                                    *ngIf="educationform.controls.institute.hasError('minlength')">You should
                                                     write
                                                     more than 5 letter </small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.institute.hasError('maxlength')"> You can not
+                                                    *ngIf="educationform.controls.institute.hasError('maxlength')"> You can not
                                                     write
                                                     more than 255 letter</small>
 
@@ -329,16 +329,16 @@
                                             <input type="text" formControlName="area_of_study" name="area_of_study"
                                                 class="form-control" placeholder="EX:computer science">
                                             <div
-                                                *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
+                                                *ngIf="educationform.controls.area_of_study.invalid && isLogged || (educationform.controls.area_of_study.dirty || educationform.controls.area_of_study.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.area_of_study.hasError('required')">This field
+                                                    *ngIf="educationform.controls.area_of_study.hasError('required')">This field
                                                     is
                                                     required</small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.area_of_study.hasError('minlength')">You should
+                                                    *ngIf="educationform.controls.area_of_study.hasError('minlength')">You should
                                                     write more than 5 letter </small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can
+                                                    *ngIf="educationform.controls.area_of_study.hasError('maxlength')"> You can
                                                     not
                                                     write more than 255 letter</small>
                                             </div>
@@ -347,12 +347,12 @@
                                             <input type="text" formControlName="degree" class="form-control"
                                                 placeholder="EX:Bachelor's">
                                             <div
-                                                *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
+                                                *ngIf="educationform.controls.degree.invalid && isLogged || (educationform.controls.degree.dirty || educationform.controls.degree.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.degree.hasError('required')">This field is
+                                                    *ngIf="educationform.controls.degree.hasError('required')">This field is
                                                     required</small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.degree.hasError('minlength')">You should write
+                                                    *ngIf="educationform.controls.degree.hasError('minlength')">You should write
                                                     more
                                                     than 4 letter </small>
                                             </div>
@@ -361,9 +361,9 @@
                                             <input type="date" formControlName="start_date" name="start_date"
                                                 class="form-control">
                                             <div
-                                                *ngIf="form.controls.start_date.invalid && isLogged || (form.controls.start_date.dirty || form.controls.start_date.touched)">
+                                                *ngIf="educationform.controls.start_date.invalid && isLogged || (educationform.controls.start_date.dirty || educationform.controls.start_date.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.start_date.hasError('required')">please select
+                                                    *ngIf="educationform.controls.start_date.hasError('required')">please select
                                                     your
                                                     date </small>
                                             </div>
@@ -372,9 +372,9 @@
                                             <input type="date" formControlName="graduation_date" name="graduation_date"
                                                 class="form-control">
                                             <div
-                                                *ngIf="form.controls.graduation_date.invalid && isLogged || (form.controls.graduation_date.dirty || form.controls.graduation_date.touched)">
+                                                *ngIf="educationform.controls.graduation_date.invalid && isLogged || (educationform.controls.graduation_date.dirty || educationform.controls.graduation_date.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="form.controls.graduation_date.hasError('required')">please
+                                                    *ngIf="educationform.controls.graduation_date.hasError('required')">please
                                                     select
                                                     graduation date </small>
                                             </div>
@@ -399,12 +399,12 @@
         <div class="col-12 col-lg-8   rounded-end">
             <div class="row border-bottom r">
                 <div class="col mt-md-3 ">
-                    <div class="row">
+                    <div class="row"  *ngIf="isUserGet">
                         <div class="col-md-5 fw-bold">
                             {{profileData.job_title}} <i class="far fa-edit ii" data-bs-toggle="modal"
                                 data-bs-target="#titleEdit"></i>
                         </div>
-                        <!-- Start Edit Language Modal -->
+                        <!-- Start Edit title Modal -->
                         <div class="modal fade" id="titleEdit" tabindex="-1">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -413,11 +413,11 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form class="form" [formGroup]="form">
+                                    <form class="form" [formGroup]="titleform">
                                         <div class="modal-body">
                                             <div>
                                                 <input type="hidden" formControlName="user_id" name="user_id">
-                                            </div>
+                                            </div>`
 
                                             <label class="small form-check-label mt-3">Job Title</label>
                                             <input type="text" formControlName="job_title" class="form-control"
@@ -455,7 +455,7 @@
                             {{profileData.overview}} <i class="far fa-edit ii" data-bs-toggle="modal"
                                 data-bs-target="#overviewEdit"></i>
                         </div>
-                        <!-- Start Edit Language Modal -->
+                        <!-- Start Edit Overview Modal -->
                         <div class="modal fade" id="overviewEdit" tabindex="-1">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -464,23 +464,20 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form class="form" [formGroup]="form">
+                                    <form class="form" [formGroup]="overviewform" *ngIf="isDataGet">
                                         <div class="modal-body">
-                                            <div>
-                                                <input type="hidden" formControlName="user_id" name="user_id">
-                                            </div>
 
                                             <label class="small form-check-label mt-3">Overview</label>
-                                            <input type="text" formControlName="overview" class="form-control"
+                                            <input type="text" formControlName="overview" name="overview" class="form-control"
                                                 placeholder="Overview">
                                             <div
-                                                *ngIf="overviewform.controls.job_title.invalid && isLogged || (overviewform.controls.job_title.dirty || overviewform.controls.job_title.touched)">
+                                                *ngIf="overviewform.controls.overview.invalid && isLogged || (overviewform.controls.overview.dirty || overviewform.controls.overview.touched)">
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="overviewform.controls.job_title.hasError('required')">This field
+                                                    *ngIf="overviewform.controls.overview.hasError('required')">This field
                                                     is
                                                     required</small>
                                                 <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="overviewform.controls.job_title.hasError('minlength')">You
+                                                    *ngIf="overviewform.controls.overview.hasError('minlength')">You
                                                     should
                                                     write
                                                     more than 5 letter </small>
@@ -533,7 +530,7 @@
                 </div>
             </div>
             <div class="row ">
-                <div class="col">
+                <div class="col"  *ngIf="isUserGet">
                     <div class="skills py-30">
                         <div class="fw-bold">Add skills <i class="fas fa-plus ii"></i></div>
                         <ul class="list-unstyled d-flex flex-wrap">
