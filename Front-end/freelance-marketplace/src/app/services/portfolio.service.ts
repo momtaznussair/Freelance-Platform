@@ -26,7 +26,10 @@ export class PortfolioService {
   }
 
   delete(id:number){
-    return this.http.delete("http://127.0.0.1:8000/api/portfolios/delete/"+id);
+    return this.http.delete("http://127.0.0.1:8000/api/portfolios/delete/"+id, {'headers': {
+      'Accept' : 'application/json',
+      'Authorization' : `Bearer ${this.token}`
+    }});
   }
 
 }

@@ -16,10 +16,23 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+<<<<<<< HEAD
   form: FormGroup = new FormGroup({});
   isDataGet: boolean = false;
 
   constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router : Router) { }
+=======
+  form : FormGroup = new FormGroup({});
+  languageform : FormGroup = new FormGroup({});
+  titleform : FormGroup = new FormGroup({});
+  overviewform : FormGroup = new FormGroup({});
+  educationform : FormGroup = new FormGroup({});
+  isDataGet: boolean =false;
+  isUserGet: boolean = false;
+  isSkillsGet : boolean =false;
+
+  constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router: Router) { }
+>>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
   portfoliosData:any;
   data :any;
   profileData:any;
@@ -29,6 +42,9 @@ export class ProfileComponent implements OnInit {
   count = 0;
    currentIndex:number=0;
   isLogged : boolean = false;
+  resData : any;
+  isDataUpdated : any;
+  errorUpdate : any;
 
 
 
@@ -43,7 +59,7 @@ export class ProfileComponent implements OnInit {
       image :['', [Validators.required]]
     })
 
-    this.form = this.formBuilder.group({
+    this.educationform = this.formBuilder.group({
       user_id : [this.user_id , [ Validators.required]],
       institute : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
       area_of_study : ['' , [Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
@@ -51,6 +67,22 @@ export class ProfileComponent implements OnInit {
       start_date : ['' , [Validators.required ]],
       graduation_date : ['' , [Validators.required]],
     })
+
+    this.languageform = this.formBuilder.group({
+      user_id : [this.user_id , [ Validators.required]],
+      name : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+    })
+
+    this.titleform = this.formBuilder.group({
+      user_id : [this.user_id , [ Validators.required]],
+      job_title : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+    })
+
+       this.overviewform = this.formBuilder.group({
+      user_id : [this.user_id , [ Validators.required]],
+      overview : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+    })
+
 
 
 
@@ -67,16 +99,24 @@ export class ProfileComponent implements OnInit {
     this.profile.get().subscribe(response=>{
       console.log(response);
       this.profileData = response.data[0];
-      console.log(this.profileData);
-      this.isDataGet = true;
+      console.log(this.profileData.user.name);
+
+      this.isUserGet = true;
     })
   };
 
 
+<<<<<<< HEAD
 
   submit(id: number) {
     this.profile.delete(id).subscribe(res => {
       // this.items.splics(id,1);
+=======
+  }
+  submit(id:number)
+  {
+      this.portfolio.delete(id).subscribe(res=>{
+>>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
       console.log(res)
       this.router.navigateByUrl("/freelancer/work/profile");
     });
@@ -104,12 +144,14 @@ export class ProfileComponent implements OnInit {
     //   console.log(this.isLogged);
     // }
   }
-
+// Educations
 saveEducationData(){
-  if(this.form.valid)
+  console.log(this.educationform.value);
+  if(this.educationform.valid)
   {
-    this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{
+    this.apiService.post(`${environment.apiUrl}/educations` , this.educationform.value).subscribe(response=>{
       console.log(response);
+      location.reload();
     },error=>console.error);
   }
   else
@@ -119,10 +161,114 @@ saveEducationData(){
   }
 }
 
-updateEducationData(){
+updateEducationData(id : any){
+
+  if(this.educationform.valid)
+  {
+    this.profile.updateEducation( id ,this.educationform.value).subscribe(response=>{
+      console.log(response);
+      this.resData = response;
+      location.reload();
+      if(this.resData.data != null)
+      {
+        this.isDataUpdated = true;
+      }else
+      {
+        this.errorUpdate = true;
+      }
+    } , error => {
+      this.errorUpdate = true;
+    });
+  }
+  else
+  {
+    alert('please check your data and try again');
+    this.isLogged = true;
+    console.log(this.isLogged);
+  }
 
 }
 
+
+deleteEducation(id: number) {
+  this.profile.deleteEdu(id).subscribe(res => {
+    console.log(res)
+    location.reload();
+  });
+}
+
+// Languages
+
+saveLanguageData(){
+
+  if(this.languageform.valid)
+  {
+    this.apiService.post(`${environment.apiUrl}/languages` , this.languageform.value).subscribe(response=>{
+      console.log(response);
+      // this.router.navigateByUrl("/freelancer/profile");
+    },error=>console.error);
+  }
+  else
+  {
+    this.isLogged = true;
+    alert('please check your data and try again');
+  }
+
+}
+
+updataLanguageName(id : any){
+
+  if(this.languageform.valid)
+  {
+    this.profile.updateLanguage( id ,this.languageform.value).subscribe(response=>{
+      console.log(response);
+      this.resData = response;
+      location.reload();
+      if(this.resData.data != null)
+      {
+        this.isDataUpdated = true;
+      }else
+      {
+        this.errorUpdate = true;
+      }
+    } , error => {
+      this.errorUpdate = true;
+    });
+  }
+  else
+  {
+    alert('please check your data and try again');
+    this.isLogged = true;
+    console.log(this.isLogged);
+  }
+
+
+}
+
+deletelanguage(id : number){
+
+  this.profile.deleteLang(id).subscribe(res => {
+    console.log(res)
+    location.reload();
+  });
+}
+
+// Title 
+
+updateTitle(){
+
+      location.reload();
+
+}
+
+
+//overview
+
+updateOverview(){
+
+  location.reload();
+
+}
 
 }
 
