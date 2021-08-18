@@ -126,11 +126,4 @@ export class SignupComponent implements OnInit {
     }
   };//end of register function
 
-
-  //================add notification methods
-  // simpleAlert(){
-  //   Swal.fire('please complete your information first');
-  // }
-  //==================end of notification method
-
 }

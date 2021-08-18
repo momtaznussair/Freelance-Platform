@@ -22,6 +22,12 @@ export class PortofolioComponent implements OnInit {
   portfolio_id : any;
   images = [] as any ;
 
+  //=================================== test for how to store image ============================
+  files:any;
+  uploadImages(event:any){
+    this.files = event.target.files[0]
+  }
+
 
 
   constructor(private formBuilder : FormBuilder, private router : Router, private _portofolio:PortfolioService) { }
@@ -31,10 +37,11 @@ export class PortofolioComponent implements OnInit {
     this.portofolioData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
-      freelancer_id : [this.freelancer_id , [Validators.required]],
+      // freelancer_id : [this.freelancer_id , [Validators.required]],
+      freelancer_id : [ 1 , [Validators.required]],
       title : ['' , [Validators.required , Validators.minLength(3)]],
       description : ['' , [ Validators.required , Validators.minLength(10)]],
-      image :['', [Validators.required]]
+      image :['', []],
     })
 
   }
@@ -49,22 +56,22 @@ export class PortofolioComponent implements OnInit {
       this.form.get('image')?.updateValueAndValidity();
       console.log(this.form.get('image')?.value);
     }
-  
+
 
     // if (event.target.files && event.target.files[0]) {
     //     const imagesAmount = event.target.files.length;
     //     for (let i = 0; i < imagesAmount; i++) {
     //             var reader = new FileReader();
-   
+
     //             reader.onload = (event:any) => {
     //               console.log(event.target.result);
-    //                this.images.push(event.target.result); 
-   
+    //                this.images.push(event.target.result);
+
     //                this.form.patchValue({
     //                   fileSource: this.images
     //                });
     //             }
-  
+
     //             reader.readAsDataURL(event.target.files[i]);
     //     }
     // }
@@ -75,12 +82,12 @@ export class PortofolioComponent implements OnInit {
   isLogged : boolean = false;
 
     save(){
-      console.log(this.form.value);
-      console.log(this.freelancer_id)
+      console.log(this.files);
+      console.log({freelancer_id : 1 ,title : this.form.controls.title.value , image : this.files.name , description : this.form.controls.description.value});
+      // console.log(this.freelancer_id)
         if(this.form.valid)
         {
-          this.form.value;
-          this._portofolio.post(this.form.value).subscribe(res=>{
+          this._portofolio.post({freelancer_id : 1 , title : this.form.controls.title.value , image : this.files.name , description : this.form.controls.description.value}).subscribe(res=>{
             console.log(res);
             this.responseData = res;
             const formData : any = new FormData();
