@@ -32,7 +32,7 @@ export class PortofolioComponent implements OnInit {
 
   constructor(private formBuilder : FormBuilder, private router : Router, private _portofolio:PortfolioService) { }
   ngOnInit(): void {
-    this.freelancer_id = localStorage.getItem('freelancer_id')
+    this.freelancer_id = localStorage.getItem('freelancer_id');
 
     this.portofolioData = localStorage.getItem('data');
 
@@ -81,16 +81,16 @@ export class PortofolioComponent implements OnInit {
   isLogged : boolean = false;
 
     save(){
+      console.log(this.form.controls.image.value);
       console.log(this.files);
       console.log({freelancer_id : this.form.controls.freelancer_id.value ,title : this.form.controls.title.value , image : this.files , description : this.form.controls.description.value});
-      // console.log(this.freelancer_id)
         if(this.form.valid)
         {
-          this._portofolio.post({freelancer_id : this.freelancer_id , title : this.form.controls.title.value , image : this.files , description : this.form.controls.description.value}).subscribe(res=>{
+          this._portofolio.post({freelancer_id : this.freelancer_id , title : this.form.controls.title.value , image : this.files.name , description : this.form.controls.description.value}).subscribe(res=>{
             console.log(res);
             this.responseData = res;
-            const formData : any = new FormData();
-            formData.append('image', this.form.get('image')?.value);
+            // const formData : any = new FormData();
+            // formData.append('image', this.form.get('image')?.value);
           },error=> {console.error});
         }
         else
