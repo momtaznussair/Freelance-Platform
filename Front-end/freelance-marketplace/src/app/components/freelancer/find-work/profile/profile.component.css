@@ -177,7 +177,7 @@ h5 {
 #two
 {
   cursor: pointer;
-  width: 68px;
+  /* width: 68px; */
 
 }
 #two:hover{
@@ -228,4 +228,8 @@ h5 {
   text-align: center;
   display: inline-block;
   margin: 20px;
+}
+
+.portImage{
+    height: 275px;
 }

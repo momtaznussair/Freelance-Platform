@@ -246,3 +246,8 @@ Route::get('/billing-portal/{user}', function ($id) {
 Route::get('/terms', function () {
     return "billing portal terms";
 })->name('terms');
+
+
+Route::post('/freelancer/updateJobTitle/{id}',[FreelancerController::class,'updateFreelancerTitle']);
+Route::post('/freelancer/updateOverview/{id}',[FreelancerController::class,'updateFreelancerOverview']);
+Route::post('/freelancer/updateHourlyRate/{id}',[FreelancerController::class,'updateFreelancerHourly']);

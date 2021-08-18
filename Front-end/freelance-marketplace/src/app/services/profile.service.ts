@@ -8,10 +8,11 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class ProfileService {
-
   constructor(private profile : ApiService) { }
+  
+  auth = environment.Token(localStorage.getItem('token'));
 
-  private update = `${environment.apiUrl}/portfolios`;
+  // private update = `${environment.apiUrl}/portfolios`;
 
   get():Observable<any>
   {
@@ -23,8 +24,9 @@ export class ProfileService {
   delete(id:number){
     return this.profile.delete("http://127.0.0.1:8000/api/portfolios/delete/"+id);
   }
+
   updateportfilo(url : any , body : any)
   {
-    return this.profile.post(`${this.update}/${url}`, body)
+    return this.profile.post(`${environment.apiUrl}/portfolios/${url}`, body, this.auth)
   }
 }
