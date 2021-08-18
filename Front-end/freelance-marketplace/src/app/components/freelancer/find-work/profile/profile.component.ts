@@ -16,12 +16,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-<<<<<<< HEAD
-  form: FormGroup = new FormGroup({});
-  isDataGet: boolean = false;
-
-  constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router : Router) { }
-=======
   form : FormGroup = new FormGroup({});
   languageform : FormGroup = new FormGroup({});
   titleform : FormGroup = new FormGroup({});
@@ -32,21 +26,15 @@ export class ProfileComponent implements OnInit {
   isSkillsGet : boolean =false;
 
   constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router: Router) { }
->>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
   portfoliosData:any;
   data :any;
   profileData:any;
   freelancer_id : any;
   user_id : any;
-  portfilio_id:any;
-  count = 0;
-   currentIndex:number=0;
   isLogged : boolean = false;
   resData : any;
   isDataUpdated : any;
   errorUpdate : any;
-
-
 
   ngOnInit(): void {
 
@@ -91,7 +79,7 @@ export class ProfileComponent implements OnInit {
       this.portfoliosData = res;
       console.log(this.portfoliosData.data);
 
-      this.data = this.portfoliosData.data.splice(0, 3);
+      this.data = this.portfoliosData.data.splice(0,1);
       this.isDataGet = true;
 
     });
@@ -103,46 +91,15 @@ export class ProfileComponent implements OnInit {
 
       this.isUserGet = true;
     })
-  };
 
 
-<<<<<<< HEAD
-
-  submit(id: number) {
-    this.profile.delete(id).subscribe(res => {
-      // this.items.splics(id,1);
-=======
   }
   submit(id:number)
   {
       this.portfolio.delete(id).subscribe(res=>{
->>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
       console.log(res)
-      this.router.navigateByUrl("/freelancer/work/profile");
-    });
-  }
 
-
-  new_title: string = '';
-  new_description: string = '';
-
-  save(id:number) {
-
-    console.log(this.form.value)
-
-    if (this.form.valid) {
-      this.profile.updateportfilo(id, this.form.value).subscribe(response => {
-        console.log(response);
-      },
-       error => {
-        alert('please check your data and try again');
-      });
-    }
-    // else {
-    //   this.isLogged = true;
-    //   alert('please complite failds..');
-    //   console.log(this.isLogged);
-    // }
+  });
   }
 // Educations
 saveEducationData(){
@@ -253,7 +210,7 @@ deletelanguage(id : number){
   });
 }
 
-// Title 
+// Title
 
 updateTitle(){
 
@@ -271,5 +228,3 @@ updateOverview(){
 }
 
 }
-
-

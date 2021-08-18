@@ -18,84 +18,10 @@
     <div class="row view rounded ">
         <div class="col-md-4 v_pro border-end rounded-start d-none d-lg-block">
             <div class="row ">
-                <div class="col"  *ngIf="isUserGet">
+                <div class="col" *ngIf="isUserGet">
 
                     <div class="mt-md-4 border-bottom fw-bold">Video introduction <i class="fas fa-plus ii"></i><i class="far fa-edit ii"></i></div>
 
-<<<<<<< HEAD
-                    <div class="mt-md-4 border-bottom fw-bold">Language <i class="fas fa-plus ii"></i><i class="far fa-edit ii"></i>
-                    </div>
-                    <ul class="p-md-3 mb-3 list-unstyled" *ngFor="let languge of profileData.languages">
-                        <li>
-                            <h5 class="me-2">{{languge.name}}</h5>
-                        </li>
-                    </ul>
-
-                    <div class="mt-md-4 border-bottom fw-bold">Education
-                        <i class="fas fa-plus ii" data-bs-toggle="modal" data-bs-target="#education"></i>
-                    </div>
-                    <ul class="p-md-3 mb-3 list-unstyled row" *ngFor="let education of profileData.education">
-
-                        <li class="col-6">
-                            <div>
-                                <h5 class="me-2">{{education.institute}}</h5>
-                                <div>{{education.area_of_study}}</div>
-                                <div>{{education.degree}}</div>
-                            </div>
-                        </li>
-
-                        <li class="col-6">
-                            <div class="d-inline-block"><i class="far fa-edit ii" data-bs-toggle="modal" data-bs-target="#educationEdit"></i></div>
-                            <div class="d-inline-block"><i class="far fa-trash-alt" data-bs-toggle="modal" data-bs-target="#educationDelete"></i></div>
-                        </li>
-
-                    </ul>
-                    <!-- Start Education Modal For Update -->
-                    <div class="modal fade" id="educationEdit" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Edit Your Education</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <form class="form" [formGroup]="form">
-                                    <div class="modal-body">
-                                        <div>
-                                            <input type="hidden" formControlName="user_id" name="user_id">
-                                        </div>
-
-                                        <label class="small form-check-label mt-3">Institute</label>
-                                        <input type="text" formControlName="institute" class="form-control" placeholder="EX: Mansoura university">
-
-                                        <div *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('required')">This field is
-                                                required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('minlength')">You should write
-                                                more than 5 letter </small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('maxlength')"> You can not write
-                                                more than 255 letter</small>
-
-                                        </div>
-
-                                        <label class="small form-check-label mt-3">Area Of Study</label>
-                                        <input type="text" formControlName="area_of_study" name="area_of_study" class="form-control" placeholder="EX:computer science">
-                                        <div *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('required')">This field is
-                                                required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('minlength')">You should
-                                                write more than 5 letter </small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can not
-                                                write more than 255 letter</small>
-                                        </div>
-
-                                        <label class="small form-check-label mt-3">Degree</label>
-                                        <input type="text" formControlName="degree" class="form-control" placeholder="EX:Bachelor's">
-                                        <div *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('required')">This field is
-                                                required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('minlength')">You should write more
-                                                than 4 letter </small>
-=======
                     <div class="mt-md-4 border-bottom fw-bold">Language
                         <i class="fas fa-plus ii" data-bs-toggle="modal" data-bs-target="#languageSave"></i>
                     </div>
@@ -105,10 +31,8 @@
                                 <h5 class="me-2">{{language.name}}</h5>
                             </li>
                             <li class="col-6">
-                                <div class="d-inline-block"><i class="far fa-edit ii" data-bs-toggle="modal"
-                                        data-bs-target="#languageEdit"></i></div>
-                                <div class="d-inline-block"><i class="far fa-trash-alt" data-bs-toggle="modal"
-                                        data-bs-target="#langugeDelete"></i></div>
+                                <div class="d-inline-block"><i class="far fa-edit ii" data-bs-toggle="modal" data-bs-target="#languageEdit"></i></div>
+                                <div class="d-inline-block"><i class="far fa-trash-alt" data-bs-toggle="modal" data-bs-target="#langugeDelete"></i></div>
                             </li>
                         </ul>
 
@@ -118,8 +42,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Add New Language</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form class="form" [formGroup]="languageform">
                                         <div class="modal-body">
@@ -128,26 +51,19 @@
                                             </div>
 
                                             <label class="small form-check-label mt-3">Language Name</label>
-                                            <input type="text" formControlName="name" class="form-control"
-                                                placeholder="EX: Arabic">
-                                            <div
-                                                *ngIf="languageform.controls.name.invalid && isLogged || (languageform.controls.name.dirty || languageform.controls.name.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="languageform.controls.name.hasError('required')">This field
+                                            <input type="text" formControlName="name" class="form-control" placeholder="EX: Arabic">
+                                            <div *ngIf="languageform.controls.name.invalid && isLogged || (languageform.controls.name.dirty || languageform.controls.name.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="languageform.controls.name.hasError('required')">This field
                                                     is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="languageform.controls.name.hasError('minlength')">You should
+                                                <small class="text-danger fw-bold mb-3" *ngIf="languageform.controls.name.hasError('minlength')">You should
                                                     write
                                                     more than 5 letter </small>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn" data-bs-dismiss="modal"
-                                                aria-label="Close">cancel</button>
-                                            <button type="submit" (click)="saveLanguageData()" data-bs-dismiss="modal"
-                                                class="btn">Save</button>
->>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
+                                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                            <button type="submit" (click)="saveLanguageData()" data-bs-dismiss="modal" class="btn">Save</button>
                                         </div>
                                     </form>
                                 </div>
@@ -155,40 +71,17 @@
                         </div>
                         <!-- End Add Language Modal -->
 
-<<<<<<< HEAD
-                                        <label class="small form-check-label mt-3">Start Date</label>
-                                        <input type="date" formControlName="start_date" name="start_date" class="form-control">
-                                        <div *ngIf="form.controls.start_date.invalid && isLogged || (form.controls.start_date.dirty || form.controls.start_date.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.start_date.hasError('required')">please select your
-                                                date </small>
-                                        </div>
-
-                                        <label class="small form-check-label mt-3">Graduation Date</label>
-                                        <input type="date" formControlName="graduation_date" name="graduation_date" class="form-control">
-                                        <div *ngIf="form.controls.graduation_date.invalid && isLogged || (form.controls.graduation_date.dirty || form.controls.graduation_date.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.graduation_date.hasError('required')">please select
-                                                graduation date </small>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
-                                        <button type="submit" (click)="saveEducationData()" data-bs-dismiss="modal" class="btn">Save</button>
-=======
                         <!-- Start Delete Language Modal -->
 
-                        <div class="modal fade" id="langugeDelete" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal fade" id="langugeDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-body fw-bold">
                                         Do you want To Delete Language
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="languageDelete"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                                            (click)="deletelanguage(language.id)">Delete</button>
->>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
+                                        <button type="button" class="btn btn-secondary" data-dismiss="languageDelete" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deletelanguage(language.id)">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -200,8 +93,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Update Your Language</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form class="form" [formGroup]="languageform">
                                         <div class="modal-body">
@@ -210,25 +102,19 @@
                                             </div>
 
                                             <label class="small form-check-label mt-3">Language Name</label>
-                                            <input type="text" formControlName="name" class="form-control"
-                                                placeholder="EX: Arabic">
-                                            <div
-                                                *ngIf="languageform.controls.name.invalid && isLogged || (languageform.controls.name.dirty || languageform.controls.name.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="languageform.controls.name.hasError('required')">This field
+                                            <input type="text" formControlName="name" class="form-control" placeholder="EX: Arabic">
+                                            <div *ngIf="languageform.controls.name.invalid && isLogged || (languageform.controls.name.dirty || languageform.controls.name.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="languageform.controls.name.hasError('required')">This field
                                                     is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="languageform.controls.name.hasError('minlength')">You should
+                                                <small class="text-danger fw-bold mb-3" *ngIf="languageform.controls.name.hasError('minlength')">You should
                                                     write
                                                     more than 5 letter </small>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn" data-bs-dismiss="modal"
-                                                aria-label="Close">cancel</button>
-                                            <button type="submit" (click)="updataLanguageName(language.id)"
-                                                data-bs-dismiss="modal" class="btn">Save</button>
+                                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                            <button type="submit" (click)="updataLanguageName(language.id)" data-bs-dismiss="modal" class="btn">Save</button>
                                         </div>
                                     </form>
                                 </div>
@@ -240,17 +126,6 @@
                     <div class="mt-md-4 border-bottom fw-bold">Education
                         <i class="fas fa-plus ii" data-bs-toggle="modal" data-bs-target="#educationSave"></i>
                     </div>
-<<<<<<< HEAD
-                    <!-- End Education Modal For Update -->
-
-                    <!-- Start Education Modal For Edit -->
-                    <div class="modal fade" id="education" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Update Your Education</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-=======
 
                     <div *ngFor="let education of profileData.education">
                         <ul class="p-md-3 mb-3 list-unstyled row">
@@ -260,30 +135,14 @@
                                     <h5 class="me-2">{{education.institute}}</h5>
                                     <div>{{education.area_of_study}}</div>
                                     <div>{{education.degree}}</div>
->>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
                                 </div>
                             </li>
 
-<<<<<<< HEAD
-                                        <label class="small form-check-label mt-3">Institute</label>
-                                        <input type="text" formControlName="institute" class="form-control" placeholder="EX: Mansoura university">
-
-                                        <div *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('required')">This field is
-                                                required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('minlength')">You should write
-                                                more than 5 letter </small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('maxlength')"> You can not write
-                                                more than 255 letter</small>
-=======
                             <li class="col-6">
-                                <div class="d-inline-block"><i class="far fa-edit ii" data-bs-toggle="modal"
-                                        data-bs-target="#educationEdit"></i></div>
-                                <div class="d-inline-block"><i class="far fa-trash-alt" data-bs-toggle="modal"
-                                        data-bs-target="#educationDelete"></i></div>
+                                <div class="d-inline-block"><i class="far fa-edit ii" data-bs-toggle="modal" data-bs-target="#educationEdit"></i></div>
+                                <div class="d-inline-block"><i class="far fa-trash-alt" data-bs-toggle="modal" data-bs-target="#educationDelete"></i></div>
                             </li>
                         </ul>
->>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
 
                         <!-- Start Add Education Modal -->
                         <div class="modal fade" id="educationSave" tabindex="-1">
@@ -291,8 +150,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Update Your Education</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form class="form" [formGroup]="educationform">
                                         <div class="modal-body">
@@ -301,97 +159,62 @@
                                             </div>
 
                                             <label class="small form-check-label mt-3">Institute</label>
-                                            <input type="text" formControlName="institute" class="form-control"
-                                                placeholder="EX: Mansoura university">
+                                            <input type="text" formControlName="institute" class="form-control" placeholder="EX: Mansoura university">
 
-                                            <div
-                                                *ngIf="educationform.controls.institute.invalid && isLogged || (educationform.controls.institute.dirty || educationform.controls.institute.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.institute.hasError('required')">This field is
+                                            <div *ngIf="educationform.controls.institute.invalid && isLogged || (educationform.controls.institute.dirty || educationform.controls.institute.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.institute.hasError('required')">This field is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.institute.hasError('minlength')">You should
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.institute.hasError('minlength')">You should
                                                     write
                                                     more than 5 letter </small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.institute.hasError('maxlength')"> You can not
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.institute.hasError('maxlength')"> You can not
                                                     write
                                                     more than 255 letter</small>
 
                                             </div>
 
                                             <label class="smaeducationform-check-label mt-3">Area Of Study</label>
-                                            <input type="text" formControlName="area_of_study" name="area_of_study"
-                                                class="form-control" placeholder="EX:computer science">
-                                            <div
-                                                *ngIf="educationform.controls.area_of_study.invalid && isLogged || (educationform.controls.area_of_study.dirty || educationform.controls.area_of_study.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.area_of_study.hasError('required')">This field
+                                            <input type="text" formControlName="area_of_study" name="area_of_study" class="form-control" placeholder="EX:computer science">
+                                            <div *ngIf="educationform.controls.area_of_study.invalid && isLogged || (educationform.controls.area_of_study.dirty || educationform.controls.area_of_study.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.area_of_study.hasError('required')">This field
                                                     is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.area_of_study.hasError('minlength')">You should
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.area_of_study.hasError('minlength')">You should
                                                     write more than 5 letter </small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.area_of_study.hasError('maxlength')"> You can
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.area_of_study.hasError('maxlength')"> You can
                                                     not
                                                     write more than 255 letter</small>
                                             </div>
 
                                             <label class="small form-check-label mt-3">Degree</label>
-                                            <input type="text" formControlName="degree" class="form-control"
-                                                placeholder="EX:Bachelor's">
-                                            <div
-                                                *ngIf="educationform.controls.degree.invalid && isLogged || (educationform.controls.degree.dirty || educationform.controls.degree.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.degree.hasError('required')">This field is
+                                            <input type="text" formControlName="degree" class="form-control" placeholder="EX:Bachelor's">
+                                            <div *ngIf="educationform.controls.degree.invalid && isLogged || (educationform.controls.degree.dirty || educationform.controls.degree.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.degree.hasError('required')">This field is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.degree.hasError('minlength')">You should write
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.degree.hasError('minlength')">You should write
                                                     more
                                                     than 4 letter </small>
                                             </div>
 
                                             <label class="small form-check-label mt-3">Start Date</label>
-                                            <input type="date" formControlName="start_date" name="start_date"
-                                                class="form-control">
-                                            <div
-                                                *ngIf="educationform.controls.start_date.invalid && isLogged || (educationform.controls.start_date.dirty || educationform.controls.start_date.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.start_date.hasError('required')">please select
+                                            <input type="date" formControlName="start_date" name="start_date" class="form-control">
+                                            <div *ngIf="educationform.controls.start_date.invalid && isLogged || (educationform.controls.start_date.dirty || educationform.controls.start_date.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.start_date.hasError('required')">please select
                                                     your
                                                     date </small>
                                             </div>
 
                                             <label class="small form-check-label mt-3">Graduation Date</label>
-                                            <input type="date" formControlName="graduation_date" name="graduation_date"
-                                                class="form-control">
-                                            <div
-                                                *ngIf="educationform.controls.graduation_date.invalid && isLogged || (educationform.controls.graduation_date.dirty || educationform.controls.graduation_date.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.graduation_date.hasError('required')">please
+                                            <input type="date" formControlName="graduation_date" name="graduation_date" class="form-control">
+                                            <div *ngIf="educationform.controls.graduation_date.invalid && isLogged || (educationform.controls.graduation_date.dirty || educationform.controls.graduation_date.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.graduation_date.hasError('required')">please
                                                     select
                                                     graduation date </small>
                                             </div>
                                         </div>
-<<<<<<< HEAD
-
-                                        <label class="small form-check-label mt-3">Area Of Study</label>
-                                        <input type="text" formControlName="area_of_study" name="area_of_study" class="form-control" placeholder="EX:computer science">
-                                        <div *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('required')">This field is
-                                                required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('minlength')">You should
-                                                write more than 5 letter </small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can not
-                                                write more than 255 letter</small>
-=======
                                         <div class="modal-footer">
-                                            <button type="button" class="btn" data-bs-dismiss="modal"
-                                                aria-label="Close">cancel</button>
-                                            <button type="submit" (click)="saveEducationData()" data-bs-dismiss="modal"
-                                                class="btn">Save</button>
->>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
+                                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                            <button type="submit" (click)="saveEducationData()" data-bs-dismiss="modal" class="btn">Save</button>
                                         </div>
                                     </form>
                                 </div>
@@ -399,50 +222,18 @@
                         </div>
                         <!-- End Add Education Modal -->
 
-<<<<<<< HEAD
-                                        <label class="small form-check-label mt-3">Degree</label>
-                                        <input type="text" formControlName="degree" class="form-control" placeholder="EX:Bachelor's">
-                                        <div *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('required')">This field is
-                                                required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('minlength')">You should write more
-                                                than 4 letter </small>
-                                        </div>
-
-                                        <label class="small form-check-label mt-3">Start Date</label>
-                                        <input type="date" formControlName="start_date" name="start_date" class="form-control">
-                                        <div *ngIf="form.controls.start_date.invalid && isLogged || (form.controls.start_date.dirty || form.controls.start_date.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.start_date.hasError('required')">please select your
-                                                date </small>
-                                        </div>
-
-                                        <label class="small form-check-label mt-3">Graduation Date</label>
-                                        <input type="date" formControlName="graduation_date" name="graduation_date" class="form-control">
-                                        <div *ngIf="form.controls.graduation_date.invalid && isLogged || (form.controls.graduation_date.dirty || form.controls.graduation_date.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.graduation_date.hasError('required')">please select
-                                                graduation date </small>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
-                                        <button type="submit" (click)="updateEducationData()" data-bs-dismiss="modal" class="btn">Save</button>
-=======
 
                         <!-- Start Delete Education  Modal -->
 
-                        <div class="modal fade" id="educationDelete" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal fade" id="educationDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-body fw-bold">
                                         Do you want To Delete Education
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="educationDelete"
-                                            data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-danger"
-                                            (click)="deleteEducation(education.id)" data-bs-dismiss="modal" href="/freelancer/profile">Delete</button>
->>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
+                                        <button type="button" class="btn btn-secondary" data-dismiss="educationDelete" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-danger" (click)="deleteEducation(education.id)" data-bs-dismiss="modal" href="/freelancer/profile">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -456,8 +247,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Update Your Education</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form class="form" [formGroup]="educationform">
                                         <div class="modal-body">
@@ -466,84 +256,62 @@
                                             </div>
 
                                             <label class="small form-check-label mt-3">Institute</label>
-                                            <input type="text" formControlName="institute" class="form-control"
-                                                placeholder="EX: Mansoura university">
+                                            <input type="text" formControlName="institute" class="form-control" placeholder="EX: Mansoura university">
 
-                                            <div
-                                                *ngIf="educationform.controls.institute.invalid && isLogged || (educationform.controls.institute.dirty || educationform.controls.institute.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.institute.hasError('required')">This field is
+                                            <div *ngIf="educationform.controls.institute.invalid && isLogged || (educationform.controls.institute.dirty || educationform.controls.institute.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.institute.hasError('required')">This field is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.institute.hasError('minlength')">You should
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.institute.hasError('minlength')">You should
                                                     write
                                                     more than 5 letter </small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.institute.hasError('maxlength')"> You can not
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.institute.hasError('maxlength')"> You can not
                                                     write
                                                     more than 255 letter</small>
 
                                             </div>
 
                                             <label class="small form-check-label mt-3">Area Of Study</label>
-                                            <input type="text" formControlName="area_of_study" name="area_of_study"
-                                                class="form-control" placeholder="EX:computer science">
-                                            <div
-                                                *ngIf="educationform.controls.area_of_study.invalid && isLogged || (educationform.controls.area_of_study.dirty || educationform.controls.area_of_study.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.area_of_study.hasError('required')">This field
+                                            <input type="text" formControlName="area_of_study" name="area_of_study" class="form-control" placeholder="EX:computer science">
+                                            <div *ngIf="educationform.controls.area_of_study.invalid && isLogged || (educationform.controls.area_of_study.dirty || educationform.controls.area_of_study.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.area_of_study.hasError('required')">This field
                                                     is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.area_of_study.hasError('minlength')">You should
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.area_of_study.hasError('minlength')">You should
                                                     write more than 5 letter </small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.area_of_study.hasError('maxlength')"> You can
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.area_of_study.hasError('maxlength')"> You can
                                                     not
                                                     write more than 255 letter</small>
                                             </div>
 
                                             <label class="small form-check-label mt-3">Degree</label>
-                                            <input type="text" formControlName="degree" class="form-control"
-                                                placeholder="EX:Bachelor's">
-                                            <div
-                                                *ngIf="educationform.controls.degree.invalid && isLogged || (educationform.controls.degree.dirty || educationform.controls.degree.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.degree.hasError('required')">This field is
+                                            <input type="text" formControlName="degree" class="form-control" placeholder="EX:Bachelor's">
+                                            <div *ngIf="educationform.controls.degree.invalid && isLogged || (educationform.controls.degree.dirty || educationform.controls.degree.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.degree.hasError('required')">This field is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.degree.hasError('minlength')">You should write
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.degree.hasError('minlength')">You should write
                                                     more
                                                     than 4 letter </small>
                                             </div>
 
                                             <label class="small form-check-label mt-3">Start Date</label>
-                                            <input type="date" formControlName="start_date" name="start_date"
-                                                class="form-control">
-                                            <div
-                                                *ngIf="educationform.controls.start_date.invalid && isLogged || (educationform.controls.start_date.dirty || educationform.controls.start_date.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.start_date.hasError('required')">please select
+                                            <input type="date" formControlName="start_date" name="start_date" class="form-control">
+                                            <div *ngIf="educationform.controls.start_date.invalid && isLogged || (educationform.controls.start_date.dirty || educationform.controls.start_date.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.start_date.hasError('required')">please select
                                                     your
                                                     date </small>
                                             </div>
 
                                             <label class="small form-check-label mt-3">Graduation Date</label>
-                                            <input type="date" formControlName="graduation_date" name="graduation_date"
-                                                class="form-control">
-                                            <div
-                                                *ngIf="educationform.controls.graduation_date.invalid && isLogged || (educationform.controls.graduation_date.dirty || educationform.controls.graduation_date.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="educationform.controls.graduation_date.hasError('required')">please
+                                            <input type="date" formControlName="graduation_date" name="graduation_date" class="form-control">
+                                            <div *ngIf="educationform.controls.graduation_date.invalid && isLogged || (educationform.controls.graduation_date.dirty || educationform.controls.graduation_date.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="educationform.controls.graduation_date.hasError('required')">please
                                                     select
                                                     graduation date </small>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn" data-bs-dismiss="modal"
-                                                aria-label="Close">cancel</button>
-                                            <button type="submit" (click)="updateEducationData(education.id)"
-                                                data-bs-dismiss="modal" class="btn">Save</button>
+                                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                            <button type="submit" (click)="updateEducationData(education.id)" data-bs-dismiss="modal" class="btn">Save</button>
                                         </div>
                                     </form>
                                 </div>
@@ -559,10 +327,9 @@
         <div class="col-12 col-lg-8   rounded-end">
             <div class="row border-bottom r">
                 <div class="col mt-md-3 ">
-                    <div class="row"  *ngIf="isUserGet">
+                    <div class="row" *ngIf="isUserGet">
                         <div class="col-md-5 fw-bold">
-                            {{profileData.job_title}} <i class="far fa-edit ii" data-bs-toggle="modal"
-                                data-bs-target="#titleEdit"></i>
+                            {{profileData.job_title}} <i class="far fa-edit ii" data-bs-toggle="modal" data-bs-target="#titleEdit"></i>
                         </div>
                         <!-- Start Edit title Modal -->
                         <div class="modal fade" id="titleEdit" tabindex="-1">
@@ -570,8 +337,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Update Your Job Title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form class="form" [formGroup]="titleform">
                                         <div class="modal-body">
@@ -580,26 +346,20 @@
                                             </div>`
 
                                             <label class="small form-check-label mt-3">Job Title</label>
-                                            <input type="text" formControlName="job_title" class="form-control"
-                                                placeholder="Job [title]">
-                                            <div
-                                                *ngIf="titleform.controls.job_title.invalid && isLogged || (titleform.controls.job_title.dirty || titleform.controls.job_title.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="titleform.controls.job_title.hasError('required')">This field
+                                            <input type="text" formControlName="job_title" class="form-control" placeholder="Job [title]">
+                                            <div *ngIf="titleform.controls.job_title.invalid && isLogged || (titleform.controls.job_title.dirty || titleform.controls.job_title.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="titleform.controls.job_title.hasError('required')">This field
                                                     is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="titleform.controls.job_title.hasError('minlength')">You
+                                                <small class="text-danger fw-bold mb-3" *ngIf="titleform.controls.job_title.hasError('minlength')">You
                                                     should
                                                     write
                                                     more than 5 letter </small>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn" data-bs-dismiss="modal"
-                                                aria-label="Close">cancel</button>
-                                            <button type="submit" (click)="updateTitle()" data-bs-dismiss="modal"
-                                                class="btn">Save</button>
+                                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                            <button type="submit" (click)="updateTitle()" data-bs-dismiss="modal" class="btn">Save</button>
                                         </div>
                                     </form>
                                 </div>
@@ -608,12 +368,10 @@
                         <!-- End Edit Title Modal -->
 
                         <div class="col-md-5  fw-bold me-5">
-                            ${{profileData.hourly_rate}}/hr <i class="far fa-edit ii" data-bs-toggle="modal"
-                                data-bs-target="#overviewEdit"></i>
+                            ${{profileData.hourly_rate}}/hr <i class="far fa-edit ii" data-bs-toggle="modal" data-bs-target="#overviewEdit"></i>
                         </div>
                         <div class="col-md-5 mt-5">
-                            {{profileData.overview}} <i class="far fa-edit ii" data-bs-toggle="modal"
-                                data-bs-target="#overviewEdit"></i>
+                            {{profileData.overview}} <i class="far fa-edit ii" data-bs-toggle="modal" data-bs-target="#overviewEdit"></i>
                         </div>
                         <!-- Start Edit Overview Modal -->
                         <div class="modal fade" id="overviewEdit" tabindex="-1">
@@ -621,33 +379,26 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title">Update Your OverView</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form class="form" [formGroup]="overviewform" *ngIf="isDataGet">
                                         <div class="modal-body">
 
                                             <label class="small form-check-label mt-3">Overview</label>
-                                            <input type="text" formControlName="overview" name="overview" class="form-control"
-                                                placeholder="Overview">
-                                            <div
-                                                *ngIf="overviewform.controls.overview.invalid && isLogged || (overviewform.controls.overview.dirty || overviewform.controls.overview.touched)">
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="overviewform.controls.overview.hasError('required')">This field
+                                            <input type="text" formControlName="overview" name="overview" class="form-control" placeholder="Overview">
+                                            <div *ngIf="overviewform.controls.overview.invalid && isLogged || (overviewform.controls.overview.dirty || overviewform.controls.overview.touched)">
+                                                <small class="text-danger fw-bold mb-3" *ngIf="overviewform.controls.overview.hasError('required')">This field
                                                     is
                                                     required</small>
-                                                <small class="text-danger fw-bold mb-3"
-                                                    *ngIf="overviewform.controls.overview.hasError('minlength')">You
+                                                <small class="text-danger fw-bold mb-3" *ngIf="overviewform.controls.overview.hasError('minlength')">You
                                                     should
                                                     write
                                                     more than 5 letter </small>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn" data-bs-dismiss="modal"
-                                                aria-label="Close">cancel</button>
-                                            <button type="submit" (click)="updateOverview()" data-bs-dismiss="modal"
-                                                class="btn">Save</button>
+                                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                            <button type="submit" (click)="updateOverview()" data-bs-dismiss="modal" class="btn">Save</button>
                                         </div>
                                     </form>
                                 </div>
@@ -667,309 +418,117 @@
                     </div>
                 </div>
             </div>
-            <!-- Portfolio -->
             <div class="row border-bottom">
                 <div class="col">
                     <div class="portifolio d-flex align-items-center work mt-2">
-                        <span class="d-flex">
-                    <p>Add portifolio </p><a href="/freelancer/profile/portofolio"><i class="fas fa-plus ii ms-md-3 " data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-                    </a>
-                  </span>
+                        <span class="d-flex fw-bold">
+                            <p>Add portifolio </p><a href="/freelancer/profile/portofolio"><i
+                                    class="fas fa-plus ii ms-md-3"></i>
+                            </a>
+                        </span>
 
                     </div>
-                    <!-- <div class="card" style="width: 18rem;" *ngIf="isDataGet">
-                              <div class="d-flex mt-3" *ngFor="let i of portfoliosData.data">
-                                  <img src="../../../../../assets/images/clearly-rated.jpg" class="card-img-top" alt="...">
-                                  <div class="card-body">
-                                      <h5 class="card-title d-flex">{{i.title}}</h5>
-                                      <p class="card-text d-flex">{{i.description}}</p>
-                                  </div>
-                              </div>
-                          </div> -->
-
-                    <!-- image and icon-->
-                    <div class="card-group ms-1 " id="am" *ngFor="let i of data">
-                        <!-- |paginate : {
-                  itemsPerPage: 5,
-                  currentPage: page,
-                  totalItems: count
-                };
-                  let i = index" [class.active]="i == currentIndex" > -->
-
-                        <div class="card">
-                            <div>
-                                <img src="./assets/images/a.jpg" class="card-img-top ml-1" id="one" alt="..." data-bs-toggle="modal" data-bs-target="#image">
-                                <br>
-                                <div> <br>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="three"> <i
-                            class="far fa-trash-alt"></i> </button> &nbsp; <button type="button" data-bs-toggle="modal" data-bs-target="#edit" id="three"> <i class="fas fa-pencil-alt"></i></button> </div>
-                                <p class="card-text" id="two">{{i.title}}</p>
-
-                            </div>
-
-                            <!--image tatils model-->
-                            <div class="modal fade" id="image" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Details</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-
-                                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner">
-                                                <div class="carousel-item active">
-                                                    <img src="./assets/images/a.jpg" class="d-block w-100">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="./assets/images/b.jpg" class="d-block w-100">
-                                                </div>
-                                                <div class="carousel-item">
-                                                    <img src="./assets/images/c.jpg" class="d-block w-100">
-                                                </div>
-                                            </div>
-                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-                                        </div> <br>
-                                        <!-- commnt-->
-
-                                        <p class="card-text" id="two">{{i.title}} </p>
-
-                                        <p class="card-text" id="two">{{i.description}}</p>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End image model detils-->
-
-                            <!-- edit model -->
-                            <form action="" [formGroup]="form">
-                                <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit your portfolio</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div> <button type="button" id="nine"> <i class="fas fa-times"></i> </button></div>
-                                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <div class="carousel-item active">
-                                                        <img src="./assets/images/a.jpg" class="d-block w-100">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img src="./assets/images/b.jpg" class="d-block w-100">
-                                                    </div>
-                                                    <div class="carousel-item">
-                                                        <img src="./assets/images/c.jpg" class="d-block w-100">
-                                                    </div>
-                                                </div>
-                                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                              </button>
-                                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                              </button>
-                                            </div> <br>
-                                            <input type="hidden" id="lname" name="lname" value="{{i.freelancer_id}}">
-                                            <p class="fw-bold h3" id="six">
-                                                Title
-                                            </p>
-                                            <div class="modal-body">
-                                                <input type="text" value="{{i.title}}" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            </div>
-                                            <div *ngIf="form.controls.title.invalid && isLogged || (form.controls.title.dirty || form.controls.title.touched)">
-                                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.title.hasError('required')">This
-                                field is required</small>
-                                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.title.hasError('minlength')">You
-                                have to write more than 3 characters</small>
-
-                                            </div>
-                                            <p class="fw-bold h3" id="five">
-                                                description
-                                            </p>
-                                            <div class="modal-body">
-
-                                                <input type="text" value="{{i.description}}" name="description" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                            </div>
-                                            <div *ngIf="form.controls.description.invalid && isLogged || (form.controls.description.dirty || form.controls.description.touched)">
-                                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.description.hasError('required')">This field is required</small>
-                                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.description.hasError('minlength')">You have to write more than 3
-                                characters</small>
-
-                                            </div>
-                                            <p class="fw-bold h3" id="four">
-                                                Image
-                                            </p>
-                                            <div class="drag-drop">
-                                                <p class=" text-center mt-4">
-                                                    <input type="file" name="image" formControlName="image" id="files">
-
-                                                    <label for="files">Upload your portfilo image</label>
-                                                </p>
-
-                                            </div>
-
-                                            <!-- <div
-                              *ngIf="form.controls.image.invalid && isLogged || (form.controls.image.dirty || form.controls.image.touched)">
-                              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.image.hasError('required')">This
-                                field is required</small>
-                            </div> -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                <button class="btn btn-primary" (click)="save(i.id)" type="submit">Save</button>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </form>
-
-                            <!-- End of Updata model-->
-
-                            <!-- start model delete-->
+                    <div class="card" style="width: 18rem;">
+                        <div class=" card d-flex" *ngFor="let item of data">
+                            <img src="../../../../../assets/images/clearly-rated.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Delete portfolio project</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Do You Want Delete This portfolio ?</div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                <button type="button" class="btn btn-primary" (click)="submit(i.id)">yes</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--End model delete-->
-                                <!-- from database-->
+                                <p class="card-text" id="two">{{item.title}}</p>
 
                             </div>
                         </div>
                     </div>
+
                 </div>
-<<<<<<< HEAD
-                <!-- End portfolio -->
-                <div class="row ">
-                    <div class="col">
-                        <div class="skills py-30">
-                            <div class="fw-bold">Add skills <i class="fas fa-plus ii"></i></div>
-                            <ul class="list-unstyled d-flex flex-wrap">
-                                <li class="skillname border rounded-pill text-center mb-0 pr-5" *ngFor="let skill of profileData.skills">{{skill.name}}
-                                </li>
-                            </ul>
-                        </div>
-=======
             </div>
             <div class="row ">
-                <div class="col"  *ngIf="isUserGet">
+                <div class="col" *ngIf="isUserGet">
                     <div class="skills py-30">
                         <div class="fw-bold">Add skills <i class="fas fa-plus ii"></i></div>
                         <ul class="list-unstyled d-flex flex-wrap">
-                            <li class="skillname border rounded-pill text-center mb-0 pr-5"
-                                *ngFor="let skill of profileData.skills">{{skill.name}}
+                            <li class="skillname border rounded-pill text-center mb-0 pr-5" *ngFor="let skill of profileData.skills">{{skill.name}}
                             </li>
                         </ul>
->>>>>>> c1f9ecc620446f4a43f3e782dd72d079c855e389
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
-
-    <div class="container Testimonials rounded mt-md-4">
-        <div class="row car">
-            <div class="col">
-                <div class="card ps-0 my-3">
-                    <div class="card-header bg-transparent d-flex fw-bold">
-                        <h4>Testimonials </h4> <i class="fas fa-plus ii ms-auto"></i>
-                    </div>
-                    <div class="card-body ">
-                        <h5 class="card-title ">Showcase your skills with non-Upwork client testimonials
-                        </h5><br>
-                        <p class="card-text "><a href="">Request a testimonial</a></p>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
-    <!-- certifications -->
+</div>
 
-    <div class="container Certifications rounded mt-md-4">
-        <div class="row  car">
-            <div class="col">
-                <div class="card ps-0 my-3">
-                    <div class="card-header bg-transparent d-flex fw-bold">
-                        <h4>Certifications </h4> <i class="fas fa-plus ii ms-auto"></i>
-                    </div>
-                    <div class="card-body ">
-                        <h5 class="card-title mt-md-5">Showcase your Certifications with your client
-                        </h5><br>
-                        <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
-                    </div>
+
+<div class="container Testimonials rounded mt-md-4">
+    <div class="row car">
+        <div class="col">
+            <div class="card ps-0 my-3">
+                <div class="card-header bg-transparent d-flex fw-bold">
+                    <h4>Testimonials </h4> <i class="fas fa-plus ii ms-auto"></i>
+                </div>
+                <div class="card-body ">
+                    <h5 class="card-title ">Showcase your skills with non-Upwork client testimonials
+                    </h5><br>
+                    <p class="card-text "><a href="">Request a testimonial</a></p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Employment history -->
+<!-- certifications -->
 
-    <div class="container Employment history rounded mt-md-4">
-        <div class="row car">
-            <div class="col">
-                <div class="card ps-0 my-3">
-                    <div class="card-header bg-transparent d-flex fw-bold">
-                        <h4>Employment history </h4> <i class="fas fa-plus ii ms-auto"></i>
-                    </div>
-                    <div class="card-body ">
-                        <h5 class="card-title mt-md-5">Showcase your Employment history with your client
-                        </h5><br>
-                        <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
-                    </div>
+<div class="container Certifications rounded mt-md-4">
+    <div class="row  car">
+        <div class="col">
+            <div class="card ps-0 my-3">
+                <div class="card-header bg-transparent d-flex fw-bold">
+                    <h4>Certifications </h4> <i class="fas fa-plus ii ms-auto"></i>
                 </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Employment history -->
-
-    <div class="container Other experiences rounded my-md-4">
-        <div class="row car">
-            <div class="col">
-                <div class="card ps-0 my-3">
-                    <div class="card-header bg-transparent d-flex fw-bold">
-                        <h4>Other experiences </h4> <i class="fas fa-plus ii ms-auto"></i>
-                    </div>
-                    <div class="card-body ">
-                        <h5 class="card-title mt-md-5">Showcase your Other experiences with your client
-                        </h5><br>
-                        <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
-                    </div>
+                <div class="card-body ">
+                    <h5 class="card-title mt-md-5">Showcase your Certifications with your client
+                    </h5><br>
+                    <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Employment history -->
+
+<div class="container Employment history rounded mt-md-4">
+    <div class="row car">
+        <div class="col">
+            <div class="card ps-0 my-3">
+                <div class="card-header bg-transparent d-flex fw-bold">
+                    <h4>Employment history </h4> <i class="fas fa-plus ii ms-auto"></i>
+                </div>
+                <div class="card-body ">
+                    <h5 class="card-title mt-md-5">Showcase your Employment history with your client
+                    </h5><br>
+                    <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Employment history -->
+
+<div class="container Other experiences rounded my-md-4">
+    <div class="row car">
+        <div class="col">
+            <div class="card ps-0 my-3">
+                <div class="card-header bg-transparent d-flex fw-bold">
+                    <h4>Other experiences </h4> <i class="fas fa-plus ii ms-auto"></i>
+                </div>
+                <div class="card-body ">
+                    <h5 class="card-title mt-md-5">Showcase your Other experiences with your client
+                    </h5><br>
+                    <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
