@@ -18,7 +18,7 @@ export class JoinWorldComponent implements OnInit {
   }
   jobs(){
      // put the route jobs =>/user
-    this.router.navigateByUrl("/freelancer");
+    this.router.navigateByUrl("freelancer/work");
   }
 
 }
