@@ -20,8 +20,8 @@ export class ApiService {
     this.httpClient.put(url , body);
   }
 
-  delete(url:string){
-    return this.httpClient.delete(url);
+  delete(url:string, option: any){
+    return this.httpClient.delete(url, option);
   }
 
 }

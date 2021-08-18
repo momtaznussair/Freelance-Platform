@@ -17,15 +17,21 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfileComponent implements OnInit {
   form : FormGroup = new FormGroup({});
+  languageform : FormGroup = new FormGroup({});
+  titleform : FormGroup = new FormGroup({});
+  overviewform : FormGroup = new FormGroup({});
   isDataGet: boolean =false;
 
-  constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder) { }
+  constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router: Router) { }
   portfoliosData:any;
   data :any;
   profileData:any;
   freelancer_id : any;
   user_id : any;
   isLogged : boolean = false;
+  resData : any;
+  isDataUpdated : any;
+  errorUpdate : any;
 
   ngOnInit(): void {
 
@@ -46,6 +52,22 @@ export class ProfileComponent implements OnInit {
       start_date : ['' , [Validators.required ]],
       graduation_date : ['' , [Validators.required]],
     })
+
+    this.languageform = this.formBuilder.group({
+      user_id : [this.user_id , [ Validators.required]],
+      name : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+    })
+
+    this.titleform = this.formBuilder.group({
+      user_id : [this.user_id , [ Validators.required]],
+      job_title : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+    })
+
+       this.overviewform = this.formBuilder.group({
+      user_id : [this.user_id , [ Validators.required]],
+      overview : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+    })
+
 
 
 
@@ -70,20 +92,18 @@ export class ProfileComponent implements OnInit {
   }
   submit(id:number)
   {
-
- 
       this.portfolio.delete(id).subscribe(res=>{
-      // this.items.splics(id,1);
       console.log(res)
 
   });
   }
-
+// Educations
 saveEducationData(){
   if(this.form.valid)
   {
     this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{
       console.log(response);
+      this.router.navigateByUrl("/freelancer/profile");
     },error=>console.error);
   }
   else
@@ -93,10 +113,111 @@ saveEducationData(){
   }
 }
 
-updateEducationData(){
+updateEducationData(id : any){
+
+  console.log(this.form.value);
+  if(this.form.valid)
+  {
+    this.profile.updateEducation( id ,this.form.value).subscribe(response=>{
+      console.log(response);
+      this.resData = response;
+      this.router.navigateByUrl("/freelancer/profile");
+      if(this.resData.data != null)
+      {
+        this.isDataUpdated = true;
+      }else
+      {
+        this.errorUpdate = true;
+      }
+    } , error => {
+      this.errorUpdate = true;
+    });
+  }
+  else
+  {
+    alert('please check your data and try again');
+    this.isLogged = true;
+    console.log(this.isLogged);
+  }
 
 }
 
+
+deleteEducation(id: number) {
+  this.profile.deleteEdu(id).subscribe(res => {
+    console.log(res)
+    this.router.navigateByUrl("/freelancer/profile");
+  });
+}
+
+// Languages
+
+saveLanguageData(){
+
+  if(this.languageform.valid)
+  {
+    this.apiService.post(`${environment.apiUrl}/languages` , this.languageform.value).subscribe(response=>{
+      console.log(response);
+      // this.router.navigateByUrl("/freelancer/profile");
+    },error=>console.error);
+  }
+  else
+  {
+    this.isLogged = true;
+    alert('please check your data and try again');
+  }
+
+}
+
+updataLanguageName(id : any){
+
+  if(this.languageform.valid)
+  {
+    this.profile.updateLanguage( id ,this.languageform.value).subscribe(response=>{
+      console.log(response);
+      this.resData = response;
+      this.router.navigateByUrl("/freelancer/profile");
+      if(this.resData.data != null)
+      {
+        this.isDataUpdated = true;
+      }else
+      {
+        this.errorUpdate = true;
+      }
+    } , error => {
+      this.errorUpdate = true;
+    });
+  }
+  else
+  {
+    alert('please check your data and try again');
+    this.isLogged = true;
+    console.log(this.isLogged);
+  }
+
+
+}
+
+deletelanguage(id : number){
+
+  this.profile.deleteLang(id).subscribe(res => {
+    console.log(res)
+    this.router.navigateByUrl("/freelancer/profile");
+  });
+}
+
+// Title 
+
+updateTitle(){
+
+}
+
+
+//overview
+
+updateOverview(){
+
+}
 
 }
 
