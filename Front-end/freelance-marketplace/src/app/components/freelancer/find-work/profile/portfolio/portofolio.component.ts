@@ -40,7 +40,7 @@ export class PortofolioComponent implements OnInit {
       freelancer_id : [this.freelancer_id , [Validators.required]],
       title : ['' , [Validators.required , Validators.minLength(3)]],
       description : ['' , [ Validators.required , Validators.minLength(10)]],
-      image :['', []],
+      image :['', [Validators.required]],
     })
 
   }
