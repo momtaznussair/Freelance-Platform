@@ -78,21 +78,19 @@ class AuthController extends Controller
             // $user->save();
         }
         $user->save();
-<<<<<<< HEAD
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $data = [
             'access_token' => $token,
             'user' => new UserResource($user),
-=======
+        ];
         
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $data = [
                 'access_token' => $token,
                 'user' => new UserResource($user),
->>>>>>> a362b16613e9de3794c4bdfd5084926f5cfffbb3
         ];
 
         // add as a  client
