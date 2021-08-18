@@ -37,8 +37,7 @@ export class PortofolioComponent implements OnInit {
     this.portofolioData = localStorage.getItem('data');
 
     this.form = this.formBuilder.group({
-      // freelancer_id : [this.freelancer_id , [Validators.required]],
-      freelancer_id : [ 1 , [Validators.required]],
+      freelancer_id : [this.freelancer_id , [Validators.required]],
       title : ['' , [Validators.required , Validators.minLength(3)]],
       description : ['' , [ Validators.required , Validators.minLength(10)]],
       image :['', []],
@@ -83,11 +82,11 @@ export class PortofolioComponent implements OnInit {
 
     save(){
       console.log(this.files);
-      console.log({freelancer_id : 1 ,title : this.form.controls.title.value , image : this.files.name , description : this.form.controls.description.value});
+      console.log({freelancer_id : this.form.controls.freelancer_id.value ,title : this.form.controls.title.value , image : this.files , description : this.form.controls.description.value});
       // console.log(this.freelancer_id)
         if(this.form.valid)
         {
-          this._portofolio.post({freelancer_id : 1 , title : this.form.controls.title.value , image : this.files.name , description : this.form.controls.description.value}).subscribe(res=>{
+          this._portofolio.post({freelancer_id : this.freelancer_id , title : this.form.controls.title.value , image : this.files , description : this.form.controls.description.value}).subscribe(res=>{
             console.log(res);
             this.responseData = res;
             const formData : any = new FormData();
