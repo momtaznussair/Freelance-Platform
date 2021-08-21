@@ -20,10 +20,10 @@
                     <div class="sec sec1">
                         <p><b>Select your skills</b></p>
                         <div class="skills"   >
-                            <button #b *ngFor="let item of skills " class=" mx-1 my-1  bt1s" [ngClass]="{'bt2s':item.selected}" (click)="addSkill(item,b)">{{item.name}}</button>
+                            <button  *ngFor="let item of skills " class=" mx-1 my-1  bt1s" [ngClass]="{'bt2s':item.selected}" (click)="addSkill(item)">{{item.name}}</button>
                         </div>
-                        <div *ngIf="require">
-                            <small class="text-danger fw-bold mb-3" *ngIf="require"> please select your skills</small>
+                        <div *ngIf="Added">
+                            <small class="text-danger fw-bold mb-3" *ngIf="Added"> please select your skills</small>
                         </div>
                     </div>
                     <div class="sec sec2">
@@ -36,15 +36,12 @@
 
                         </div>
                         <ul class="menubox card list-group" *ngIf="inpt.value">
-                            <div class="psearch" *ngFor="let item of skills |searchFilter:query">
-                                <a class="list-group-item list-group-item-light" #a (click)="addSkillFromDropDown(a,inpt)"> {{item.name}}</a>
+                            <div class="psearch" *ngFor="let item of searchSkills |searchFilter:query">
+                                <a class="list-group-item list-group-item-light" #a (click)="addSkillFromDropDown(item,inpt)"> {{item.name}}</a>
                             </div>
                         </ul>
                         <!------------------------------------end search bar -------------------------------------------------->
-                        <div *ngIf="form.controls.searchSkill.invalid && form.controls.searchSkill.dirty || form.controls.searchSkill.touched">
-                            <!-- <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('required')">This field is required</small> -->
-                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.searchSkill.hasError('maxlength')"> You can not write more than 500 letter</small>
-                        </div>
+                      
                     </div>
                     <div class=" footer lg-6 d-sm-flex">
                         <button class="bt1" routerLink="/user/signup/experience-level">back</button>
