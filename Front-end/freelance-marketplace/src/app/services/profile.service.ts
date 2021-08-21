@@ -10,8 +10,6 @@ import { ApiService } from './api.service';
 export class ProfileService {
   constructor(private profile : ApiService) { }
   
-  auth = environment.Token(localStorage.getItem('token'));
-
   // private update = `${environment.apiUrl}/portfolios`;
 
   get():Observable<any>
@@ -27,7 +25,7 @@ export class ProfileService {
 
   updateportfilo(url : any , body : any)
   {
-    return this.profile.post(`${environment.apiUrl}/portfolios/${url}`, body, this.auth)
+    return this.profile.post(`${environment.apiUrl}/portfolios/${url}`, body)
   }
 
   
