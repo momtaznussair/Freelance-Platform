@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 })
 
 export class PortfolioService {
-  token : any;
   constructor(private http:ApiService) { }
 
   get(){
@@ -17,12 +16,7 @@ export class PortfolioService {
   }
 
   post(body:any){
-    this.token = localStorage.getItem('token');
-    console.log(this.token)
-    return this.http.post(`${environment.apiUrl}/portfolios`, body, {'headers': {
-      'Accept' : 'application/json',
-      'Authorization' : `Bearer ${this.token}`
-    }})
+    return this.http.post(`${environment.apiUrl}/portfolios`, body)
   }
 
   delete(id:number){
@@ -32,5 +26,13 @@ export class PortfolioService {
     }});
   }
 
+  show(id:number){
+    return this.http.get(`${environment.apiUrl}/portfolios/`+id);
+  }
+
+  update(id:number,body:any){
+    return this.http.post(`${environment.apiUrl}/portfolios/`+id,body);
+  }
+  
 }
 

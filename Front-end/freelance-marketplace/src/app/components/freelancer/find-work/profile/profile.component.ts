@@ -9,13 +9,13 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+<<<<<<< HEAD
   form : FormGroup = new FormGroup({});
   languageform : FormGroup = new FormGroup({});
   titleform : FormGroup = new FormGroup({});
@@ -26,25 +26,41 @@ export class ProfileComponent implements OnInit {
   isSkillsGet : boolean =false;
 
   constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router: Router) { }
+=======
+  form: FormGroup = new FormGroup({});
+  portForm: FormGroup = new FormGroup({});
+  isDataGet: boolean = false;
+
+  constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router : Router) { }
+>>>>>>> 70f22226b9a2932e27aef4192950d4f6567f8261
   portfoliosData:any;
   data :any;
   profileData:any;
   freelancer_id : any;
   user_id : any;
+<<<<<<< HEAD
   isLogged : boolean = false;
   resData : any;
   isDataUpdated : any;
   errorUpdate : any;
+=======
+  portfilio_id:any;
+  count = 0;
+  currentIndex:number=0;
+  isLogged : boolean = false;
+  id:number =1;
+>>>>>>> 70f22226b9a2932e27aef4192950d4f6567f8261
 
   ngOnInit(): void {
 
     this.freelancer_id = localStorage.getItem('freelancer_id');
     this.user_id = localStorage.getItem('user_id');
 
-        this.form = this.formBuilder.group({
-      title : ['' , [Validators.required , Validators.minLength(3)]],
-      description : ['' , [ Validators.required , Validators.minLength(10)]],
-      image :['', [Validators.required]]
+    this.portForm = this.formBuilder.group({
+      title : [,[Validators.required , Validators.minLength(3)]],
+      description : [, [ Validators.required , Validators.minLength(10)]],
+      image :[],
+      freelancer_id:[+this.freelancer_id]
     })
 
     this.educationform = this.formBuilder.group({
@@ -79,7 +95,11 @@ export class ProfileComponent implements OnInit {
       this.portfoliosData = res;
       console.log(this.portfoliosData.data);
 
+<<<<<<< HEAD
       this.data = this.portfoliosData.data.splice(0,1);
+=======
+      this.data = this.portfoliosData.data;
+>>>>>>> 70f22226b9a2932e27aef4192950d4f6567f8261
       this.isDataGet = true;
 
     });
@@ -93,6 +113,7 @@ export class ProfileComponent implements OnInit {
     })
 
 
+<<<<<<< HEAD
   }
   submit(id:number)
   {
@@ -135,6 +156,12 @@ updateEducationData(id : any){
       }
     } , error => {
       this.errorUpdate = true;
+=======
+  submit(id: number) {
+    this.profile.delete(id).subscribe(res => {
+      console.log(res)
+      location.reload()
+>>>>>>> 70f22226b9a2932e27aef4192950d4f6567f8261
     });
   }
   else
@@ -147,6 +174,7 @@ updateEducationData(id : any){
 }
 
 
+<<<<<<< HEAD
 deleteEducation(id: number) {
   this.profile.deleteEdu(id).subscribe(res => {
     console.log(res)
@@ -209,6 +237,39 @@ deletelanguage(id : number){
     location.reload();
   });
 }
+=======
+  save(id:number) {
+    console.log(this.portForm.value)
+    if(this.portForm.valid) {      
+      this.profile.updateportfilo(id, this.portForm.value).subscribe(response => {
+        alert('done');
+        console.log(response);
+        location.reload()
+      },
+      error => {
+        alert('please check your data and try again');
+      });
+    }
+  }
+
+  saveEducationData(){
+    if(this.form.valid)
+    {
+      this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{
+        console.log(response);
+      },error=>console.error);
+    }
+    else
+    {
+      this.isLogged = true;
+      alert('please check your data and try again');
+    }
+  }
+
+  updateEducationData(){
+
+  }
+>>>>>>> 70f22226b9a2932e27aef4192950d4f6567f8261
 
 // Title
 
@@ -216,7 +277,7 @@ updateTitle(){
 
       location.reload();
 
-}
+  }
 
 
 //overview
