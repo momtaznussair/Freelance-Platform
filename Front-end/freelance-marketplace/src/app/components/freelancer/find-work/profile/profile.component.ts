@@ -9,7 +9,6 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -17,6 +16,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ProfileComponent implements OnInit {
   form: FormGroup = new FormGroup({});
+  portForm: FormGroup = new FormGroup({});
   isDataGet: boolean = false;
 
   constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router : Router) { }
@@ -27,8 +27,9 @@ export class ProfileComponent implements OnInit {
   user_id : any;
   portfilio_id:any;
   count = 0;
-   currentIndex:number=0;
+  currentIndex:number=0;
   isLogged : boolean = false;
+  id:number =1;
 
 
 
@@ -37,10 +38,11 @@ export class ProfileComponent implements OnInit {
     this.freelancer_id = localStorage.getItem('freelancer_id');
     this.user_id = localStorage.getItem('user_id');
 
-        this.form = this.formBuilder.group({
-      title : ['' , [Validators.required , Validators.minLength(3)]],
-      description : ['' , [ Validators.required , Validators.minLength(10)]],
-      image :['', [Validators.required]]
+    this.portForm = this.formBuilder.group({
+      title : [,[Validators.required , Validators.minLength(3)]],
+      description : [, [ Validators.required , Validators.minLength(10)]],
+      image :[],
+      freelancer_id:[+this.freelancer_id]
     })
 
     this.form = this.formBuilder.group({
@@ -59,7 +61,7 @@ export class ProfileComponent implements OnInit {
       this.portfoliosData = res;
       console.log(this.portfoliosData.data);
 
-      this.data = this.portfoliosData.data.splice(0, 3);
+      this.data = this.portfoliosData.data;
       this.isDataGet = true;
 
     });
@@ -76,9 +78,8 @@ export class ProfileComponent implements OnInit {
 
   submit(id: number) {
     this.profile.delete(id).subscribe(res => {
-      // this.items.splics(id,1);
       console.log(res)
-      this.router.navigateByUrl("/freelancer/work/profile");
+      location.reload()
     });
   }
 
@@ -87,43 +88,38 @@ export class ProfileComponent implements OnInit {
   new_description: string = '';
 
   save(id:number) {
-
-    console.log(this.form.value)
-
-    if (this.form.valid) {
-      this.profile.updateportfilo(id, this.form.value).subscribe(response => {
+    console.log(this.portForm.value)
+    if(this.portForm.valid) {      
+      this.profile.updateportfilo(id, this.portForm.value).subscribe(response => {
+        alert('done');
         console.log(response);
+        location.reload()
       },
-       error => {
+      error => {
         alert('please check your data and try again');
       });
     }
-    // else {
-    //   this.isLogged = true;
-    //   alert('please complite failds..');
-    //   console.log(this.isLogged);
-    // }
   }
 
-saveEducationData(){
-  if(this.form.valid)
-  {
-    this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{
-      console.log(response);
-    },error=>console.error);
+  saveEducationData(){
+    if(this.form.valid)
+    {
+      this.apiService.post(`${environment.apiUrl}/educations` , this.form.value).subscribe(response=>{
+        console.log(response);
+      },error=>console.error);
+    }
+    else
+    {
+      this.isLogged = true;
+      alert('please check your data and try again');
+    }
   }
-  else
-  {
-    this.isLogged = true;
-    alert('please check your data and try again');
+
+  updateEducationData(){
+
   }
-}
-
-updateEducationData(){
-
-}
 
 
-}
+  }
 
 

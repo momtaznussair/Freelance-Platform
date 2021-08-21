@@ -227,3 +227,20 @@ Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPass
 
 
 Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);
+Route::get('/home', function () {
+    return "billing portal finished";
+})->name('home');
+Route::get('/billing-portal/{user}', function ($id) {
+    $user = User::find($id);
+
+    return $user->redirectToBillingPortal(route('home'));
+});
+
+Route::get('/terms', function () {
+    return "billing portal terms";
+})->name('terms');
+
+
+Route::post('/freelancer/updateJobTitle/{id}',[FreelancerController::class,'updateFreelancerTitle']);
+Route::post('/freelancer/updateOverview/{id}',[FreelancerController::class,'updateFreelancerOverview']);
+Route::post('/freelancer/updateHourlyRate/{id}',[FreelancerController::class,'updateFreelancerHourly']);
