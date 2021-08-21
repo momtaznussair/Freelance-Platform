@@ -21,7 +21,7 @@ const routes : Routes = [
   {path : 'stats' , component : MyStatsComponent},
   {path : 'saved-jobs' , component : SavedJobsComponent},
   {path : 'profile' , component : ProfileComponent},
-  {path:'profile/portofolio', component:PortofolioComponent},
+  {path : 'profile/portofolio', component:PortofolioComponent},
   {path : 'proposals' , component : ProposalsComponent},
   {path : 'submit-proposal' , component :SubmitProposalComponent},
   {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
@@ -30,6 +30,10 @@ const routes : Routes = [
   // {path : 'filter' , component :FilterJobsComponent},
   {path:'', component:FindWorkComponent},
 
+  {
+    path: 'portfolios',
+    loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
+  }
 
 ]
 

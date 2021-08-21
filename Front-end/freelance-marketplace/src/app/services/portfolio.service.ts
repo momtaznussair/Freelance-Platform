@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 
 export class PortfolioService {
   token : any;
+  auth = environment.Token(localStorage.getItem('token'));
   constructor(private http:ApiService) { }
 
   get(){
@@ -29,5 +30,13 @@ export class PortfolioService {
     return this.http.delete("http://127.0.0.1:8000/api/portfolios/delete/"+id);
   }
 
+  show(id:number){
+    return this.http.get(`${environment.apiUrl}/portfolios/`+id);
+  }
+
+  update(id:number,body:any){
+    return this.http.post(`${environment.apiUrl}/portfolios/`+id,body,this.auth);
+  }
+  
 }
 

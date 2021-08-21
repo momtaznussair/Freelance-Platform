@@ -18,7 +18,7 @@ export class ProfileService {
   {
     return this.profile.get(`${environment.apiUrl}/freelancers`);
   }
-    getById(){
+  getById(){
     return this.profile.get(`${environment.apiUrl}/freelancers/id`);
   }
   delete(id:number){
@@ -29,4 +29,6 @@ export class ProfileService {
   {
     return this.profile.post(`${environment.apiUrl}/portfolios/${url}`, body, this.auth)
   }
+
+  
 }

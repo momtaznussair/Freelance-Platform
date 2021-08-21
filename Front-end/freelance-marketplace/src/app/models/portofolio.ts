@@ -1,7 +1,8 @@
 export class Portofolio {
   freelancer_id:number=0;
+  id:number =0;
   title:string="";
-  overveiw:string="";
+  description:string="";
   // attachment_link:string="";
-  image_path:string="";
+  images=[];
 }

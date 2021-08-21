@@ -294,17 +294,21 @@
                     <div class="card-group ms-1 " id="am" *ngFor="let i of data;let index = index">
                         <div class="card">
                             <div>
-                                <img src='{{ i.images[index].images_path }}' class="card-img-top ml-1" id="one" alt="..." data-bs-toggle="modal"
-                                    data-bs-target="#image">
+                                <a routerLink="/freelancer/work/portfolios/show/{{ i.id }}">
+                                    <img src='{{ i.images[index].images_path }}' class="card-img-top ml-1" id="one"/>
+                                </a>
                                 <br>
                                 <div> <br>
-                                    <button type="button" class="me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" id="three">
+                                    <!-- <button type="button" class="me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" id="three">
                                         <i class="far fa-trash-alt"></i>
                                     </button>
 
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#edit" id="three">
+                                    <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="id" id="three">
                                         <i class="fas fa-pencil-alt"></i>
-                                    </button>
+                                    </button> -->
+
+                                    <a class="btn btn-primary rounded-circle me-2" routerLink=""><i class="far fa-trash-alt"></i></a>
+                                    <a class="btn btn-primary rounded-circle me-2" routerLink="/freelancer/work/portfolios/edit/{{ i.id }}"><i class="fas fa-pencil-alt"></i></a>
                                 </div>
 
                                 <p class="card-text" id="two">{{i.title}}</p>
@@ -312,54 +316,7 @@
                             </div>
 
                             <!--Portfolio Details Modal-->
-                            <div class="modal fade" id="image" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Details</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-
-                                    <!-- Start DEtails Slider -->
-                                    <div id="detailsSlider" class="carousel slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner">
-
-                                        <div class="carousel-item active">
-                                            <img src="{{ i.images[index].images_path }}" class="d-block w-100 portImage" alt="...">
-                                            <!-- <div class="carousel-caption d-none d-md-block">
-                                                <h5 class="text-danger"><i class="fas fa-times-circle"></i></h5>
-                                            </div> -->
-                                        </div>
-                                        <div class="carousel-item" *ngFor="let item of i.images">
-                                            <img src="{{ item.images_path }}" class="d-block w-100 portImage" alt="...">
-                                            <!-- <div class="carousel-caption d-none d-md-block">
-                                                <h5 class="text-danger"><i class="fas fa-times-circle"></i></h5>
-                                            </div> -->
-                                        </div>
-
-                                    </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#detailsSlider" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#detailsSlider" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                    </div>
-                                    <!-- End DEtails Slider -->
-
-                                    <p class="card-text ms-2 text-start" id="two">{{i.title}} </p>
-
-                                    <p class="card-text ms-2 text-start" id="two">{{i.description}}</p>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- <portfolio-show></portfolio-show> -->
                             <!-- End Portfolio Details Modal-->
 
                             <!-- Portfolio Edit Modal-->

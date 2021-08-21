@@ -9,7 +9,6 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -30,6 +29,7 @@ export class ProfileComponent implements OnInit {
   count = 0;
   currentIndex:number=0;
   isLogged : boolean = false;
+  id:number =1;
 
   ngOnInit(): void {
 
