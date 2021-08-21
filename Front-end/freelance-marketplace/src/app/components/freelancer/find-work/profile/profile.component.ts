@@ -48,57 +48,45 @@ export class ProfileComponent implements OnInit {
     this.freelancer_id = localStorage.getItem('freelancer_id');
     this.user_id = localStorage.getItem('user_id');
 
-        this.portForm = this.formBuilder.group({
+
+      this.portForm = this.formBuilder.group({
       title : ['' , [Validators.required , Validators.minLength(3)]],
       description : ['' , [ Validators.required , Validators.minLength(10)]],
       image :['', [Validators.required]]
     })
 
-    this.educationform = this.formBuilder.group({
-      user_id : [this.user_id , [ Validators.required]],
-      institute : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
-      area_of_study : ['' , [Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
-      degree : ['' , [Validators.required , Validators.minLength(4) , Validators.maxLength(250) ]],
-      start_date : ['' , [Validators.required ]],
-      graduation_date : ['' , [Validators.required]],
-    })
-
-    this.languageform = this.formBuilder.group({
-      user_id : [this.user_id],
-      language_id: ['' , [ Validators.required ]],
-      language_level_id: ['' , [ Validators.required ]],
-    })
-
-    this.titleform = this.formBuilder.group({
-      job_title : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
-    })
-
-       this.overviewform = this.formBuilder.group({
-      overview : ['' , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
-    })
-
-    this.hourlyrateform = this.formBuilder.group({
-      hourly_rate : ['' , [ Validators.required ]]
-    })
-
-
-
-
-    this.portfolio.get().subscribe(res=>{
-      console.log(res);
-      this.portfoliosData = res;
-      console.log(this.portfoliosData.data);
-
-      this.data = this.portfoliosData.data.splice(0,2);
-      this.isDataGet = true;
-
-    });
-
+ // Validation
+ // Get Freelancer Data 
     this.profile.get().subscribe(response=>{
       console.log(response);
       this.profileData = response.data[0];
-      console.log(this.profileData.user.name);
+      this.titleform = this.formBuilder.group({
+        job_title : [ this.profileData.job_title, [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+      })
+      this.overviewform = this.formBuilder.group({
+        overview : [this.profileData.overview , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+      })
+      
+    this.hourlyrateform = this.formBuilder.group({
+      hourly_rate : [this.profileData.hourly_rate , [ Validators.required ]]
+    })
+    
+    for (let education of this.profileData.education){
+      this.educationform = this.formBuilder.group({
+        user_id : [this.user_id , [ Validators.required]],
+        institute : [education.institute , [ Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+        area_of_study : [education.area_of_study , [Validators.required , Validators.minLength(5) , Validators.maxLength(250) ]],
+        degree : [education.degree , [Validators.required , Validators.minLength(4) , Validators.maxLength(250) ]],
+        start_date : [education.start_date , [Validators.required ]],
+        graduation_date : [education.graduation_date , [Validators.required]],
+      })
+    }
 
+    for(let language of this.profileData.languages){
+
+    }
+      console.log(this.profileData.user.name);
+    
       this.isUserGet = true;
       this.isHoulryGet = true;
     })
@@ -346,5 +334,7 @@ updateHourlyRate(){
 }
 
 }
+
+
 
 
