@@ -65,7 +65,7 @@ export class LocationComponent implements OnInit {
     // console.log(this.arrayOfCountries[0].country_name)
   },error=>
   {
-    
+
 });
   //////////////////////////////////
 
@@ -157,6 +157,9 @@ export class LocationComponent implements OnInit {
           this.userService.register(this.data.user_data).subscribe(response=>{
 
             console.log(response);
+
+            const formData = new FormData()
+            // formData.append('image', )
 
             //if response has token
             this.response_data = response;

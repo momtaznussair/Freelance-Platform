@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
-use App\Models\Company;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -38,17 +37,10 @@ class ClientController extends Controller
         
         $client = Client::create([
             'user_id' => $request->user_id,
+            'Company_id' => $request->Company_id,
         ]);
 
         if($client){
-
-            if ($request->company_name)
-            {
-                Company::create([
-                    'founder_id' => $client->id,
-                    'name' => $request->company_name,
-                ]);
-            }
             return $this->apiResponse($client);
         }
 
@@ -92,7 +84,7 @@ class ClientController extends Controller
     public function Rules(){
         return [
             'user_id' => 'required|exists:users,id',
-            'company_name' => 'string|min:3|max:255'
+            'company_id' => 'exists:companies,id'
         ];
     }
 }

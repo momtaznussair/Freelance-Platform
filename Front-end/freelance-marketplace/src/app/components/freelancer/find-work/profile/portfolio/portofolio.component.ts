@@ -39,24 +39,36 @@ export class PortofolioComponent implements OnInit {
 
   }
 
-  onFileChange(event : any) {
-    if (event.target.files && event.target.files[0]) {
-        var imagesAmount = event.target.files.length;
-        for (let i = 0; i < imagesAmount; i++) {
-                var reader = new FileReader();
-   
-                reader.onload = (event:any) => {
-                  console.log(event.target.result);
-                   this.images.push(event.target.result); 
-   
-                   this.form.patchValue({
-                      fileSource: this.images
-                   });
-                }
-  
-                reader.readAsDataURL(event.target.files[i]);
-        }
+  uploadImage(event : any) {
+
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0].name;
+      this.form.patchValue({
+        image: file,
+      });
+      this.form.get('image')?.updateValueAndValidity();
+      console.log(this.form.get('image')?.value);
     }
+  
+
+    // if (event.target.files && event.target.files[0]) {
+    //     const imagesAmount = event.target.files.length;
+    //     for (let i = 0; i < imagesAmount; i++) {
+    //             var reader = new FileReader();
+   
+    //             reader.onload = (event:any) => {
+    //               console.log(event.target.result);
+    //                this.images.push(event.target.result); 
+   
+    //                this.form.patchValue({
+    //                   fileSource: this.images
+    //                });
+    //             }
+  
+    //             reader.readAsDataURL(event.target.files[i]);
+    //     }
+    // }
+
   }
 
 
@@ -71,7 +83,9 @@ export class PortofolioComponent implements OnInit {
           this._portofolio.post(this.form.value).subscribe(res=>{
             console.log(res);
             this.responseData = res;
-          },error=> console.error);
+            const formData : any = new FormData();
+            formData.append('image', this.form.get('image')?.value);
+          },error=> {console.error});
         }
         else
         {

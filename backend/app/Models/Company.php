@@ -11,7 +11,8 @@ class Company extends Model
 
     protected $fillable = [
         'name',
-        'founder_id'
+        'location',
+
     ];
 
     public function clients()

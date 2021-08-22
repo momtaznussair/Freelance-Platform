@@ -27,7 +27,7 @@ class FreelancerController extends Controller
         if($freelancer){
             return $this->apiResponse(new FreelancerResource($freelancer));
         }
-
+ 
         return $this->NotFoundError();
     }
 
@@ -106,6 +106,7 @@ class FreelancerController extends Controller
         return $this->NotFoundError();
     }
 
+
     public function updateFreelancerTitle(Request $request ,$id){
         $freelancer = Freelancer::find($id);
 
@@ -161,12 +162,8 @@ class FreelancerController extends Controller
 
         return  $this->UnknownError();
     }
-<<<<<<< HEAD
 
     public function updateFreelancerHourly(Request $request ,$id){
-=======
-public function updateFreelancerHourly(Request $request ,$id){
->>>>>>> d1ce6aa253b7ea8df40c04d91f4d36b41d6c946d
         $freelancer = Freelancer::find($id);
 
         if(!$freelancer){
@@ -193,10 +190,4 @@ public function updateFreelancerHourly(Request $request ,$id){
 
         return  $this->UnknownError();
     }
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> d1ce6aa253b7ea8df40c04d91f4d36b41d6c946d
 }
