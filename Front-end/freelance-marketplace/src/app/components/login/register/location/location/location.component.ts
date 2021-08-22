@@ -102,7 +102,6 @@ export class LocationComponent implements OnInit {
         //if signUp with socialite done
         if(this.user_data.response)
         {
-          this.alertConfirmation();
           console.log(this.user_data);
 
           //send request
@@ -150,7 +149,6 @@ export class LocationComponent implements OnInit {
         }
         else //=> if logged manually
         {
-          this.alertConfirmation();
           console.log(this.data.user_data)
 
           //send request
@@ -220,30 +218,7 @@ export class LocationComponent implements OnInit {
     //   Swal.fire('Hi', 'Congrats! operation successfull', 'success')
     // }
 
-    alertConfirmation(){
-      // Swal.fire({
-      //   title: 'Are you sure?',
-      //   text: 'Your Action cannot be rollback.',
-      //   icon: 'warning',
-      //   showCancelButton: true,
-      //   confirmButtonText: 'Yes, go ahead.',
-      //   cancelButtonText: 'No, let me think again'
-      // }).then((result) => {
-      //   if (result.value) {
-          // Swal.fire(
-          //   'Done!',
-          //   'Action performed successfully.',
-          //   'success'
-          // )
-        // } else if (result.dismiss === Swal.DismissReason.cancel) {
-          // Swal.fire(
-          //   'Cancelled',
-          //   'Performed action record present in cloud and databstore.)',
-          //   'error'
-          // )
-        // }
-      // })
-    }
+    
     //=================End of notifications ==============
 
 

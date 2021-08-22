@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PortfolioResource;
 use App\Models\Portfolio;
 use App\Models\PortfolioImages;
 use App\Traits\ApiResponseTrait;
@@ -16,7 +17,7 @@ class PortfolioController extends Controller
 
     public function index(){
         $portfolios = Portfolio::all();
-        return $this->apiResponse($portfolios);
+        return $this->apiResponse(PortfolioResource::collection($portfolios));
     }
 
     public function show($id){
@@ -25,7 +26,7 @@ class PortfolioController extends Controller
         if(!$portfolio){
             $this->NotFoundError();
         }
-        return $this->apiResponse($portfolio);
+        return $this->apiResponse(new PortfolioResource($portfolio));
     }
 
     public function store(Request $request){
@@ -67,7 +68,7 @@ class PortfolioController extends Controller
         }
 
         if($portfolio){
-            return $this->apiResponse($portfolio);
+            return $this->apiResponse(new PortfolioResource($portfolio));
         }
 
         return $this->UnknownError();
@@ -106,7 +107,7 @@ class PortfolioController extends Controller
         $portfolio->save();
 
         if($portfolio){
-            return $this->apiResponse($portfolio,'',201);
+            return $this->apiResponse(new PortfolioResource($portfolio),'',201);
         }
 
         return  $this->UnknownError();

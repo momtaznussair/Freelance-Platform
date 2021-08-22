@@ -107,4 +107,88 @@ class FreelancerController extends Controller
         return $this->NotFoundError();
     }
 
+
+    public function updateFreelancerTitle(Request $request ,$id){
+        $freelancer = Freelancer::find($id);
+
+        if(!$freelancer){
+            return $this->NotFoundError();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'job_title'=> ['required','string','max:255','min:3'],
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $freelancer->job_title = $request->job_title;
+
+        $freelancer->save();
+
+        if($freelancer){
+            return $this->apiResponse($freelancer,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
+
+    public function updateFreelancerOverview(Request $request ,$id){
+        $freelancer = Freelancer::find($id);
+
+        if(!$freelancer){
+            return $this->NotFoundError();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'overview'=> 'required|min:10',
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $freelancer->overview = $request->overview;
+
+        $freelancer->save();
+
+        if($freelancer){
+            return $this->apiResponse($freelancer,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
+
+    public function updateFreelancerHourly(Request $request ,$id){
+        $freelancer = Freelancer::find($id);
+
+        if(!$freelancer){
+            return $this->NotFoundError();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'hourly_rate' => 'required|numeric'
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $freelancer->hourly_rate = $request->hourly_rate;
+
+        $freelancer->save();
+
+        if($freelancer){
+            return $this->apiResponse($freelancer,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
 }

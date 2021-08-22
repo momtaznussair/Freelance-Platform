@@ -23,11 +23,11 @@ export class SignupComponent implements OnInit {
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  ,private userService : UserService ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
 
-  files:any;
-  uploadImage(event:any){
-    this.files = event.target.files[0]
-    // console.log(this.files)
-  }
+  // files:any;
+  // uploadImage(event:any){
+  //   this.files = event.target.files[0]
+  //   // console.log(this.files)
+  // }
 
   isTokenFound : boolean = false;
 
@@ -107,13 +107,13 @@ export class SignupComponent implements OnInit {
   isLogged : boolean = false;
 
   register(){
-    console.log(this.files)
+    console.log(this.file)
     if(this.form.valid && this.password == this.password_confirmation)
     {
-      console.log(this.files)
+      // console.log(this.files)
       // console.log(this.form.value);
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
-      this.sharedProcess.sharedSignUpProcess.files = this.files;
+      // this.sharedProcess.sharedSignUpProcess.files = this.files;
       // console.log(this.sharedProcess.sharedSignUpProcess)
       localStorage.setItem('data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
       localStorage.setItem('files' , JSON.stringify(this.sharedProcess.sharedSignUpProcess.files));

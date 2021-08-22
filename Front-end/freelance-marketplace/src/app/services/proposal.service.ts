@@ -6,25 +6,19 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class ProposalService {
-  token : any;
   constructor(private _apiservice:ApiService) { }
 
-addproposal(body:any){
-  // return this._apiservice.post("http://127.0.0.1:8000/api/proposals",body);
-  this.token = localStorage.getItem('token');
-  console.log(this.token)
-  return this._apiservice.post(`${environment.apiUrl}/proposals`, body, {'headers': {
-    'Accept' : 'application/json',
-    'Authorization' : `Bearer ${this.token}`
-  }})
-}
-update(body:any){
-  return this._apiservice.put("http://127.0.0.1:8000/api/proposals",body);
-}
-get(){
-  return this._apiservice.get("http://127.0.0.1:8000/api/proposals");
+  addproposal(body:any){
+    // return this._apiservice.post("http://127.0.0.1:8000/api/proposals",body);
 
-}
+    return this._apiservice.post(`${environment.apiUrl}/proposals`, body)
+  }
+  update(body:any){
+    return this._apiservice.put("http://127.0.0.1:8000/api/proposals",body);
+  }
+  get(){
+    return this._apiservice.get("http://127.0.0.1:8000/api/proposals");
+  }
 // delete(id:number){
 //   return this._apiservice.put(""+id);
 
