@@ -193,7 +193,7 @@ h5 {
   border: .125rem dotted  var(--mc);
   height: 5rem;
   width: 29rem;
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 
 .drag-drop span{

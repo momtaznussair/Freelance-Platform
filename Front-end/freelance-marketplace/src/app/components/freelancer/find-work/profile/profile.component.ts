@@ -32,6 +32,9 @@ export class ProfileComponent implements OnInit {
   id:number =1;
 
 
+  _portfolio:any;
+  portfolioData:any;
+  isLoaded:boolean= false;
 
   ngOnInit(): void {
 
@@ -117,6 +120,19 @@ export class ProfileComponent implements OnInit {
 
   updateEducationData(){
 
+  }
+
+  showPortfolio(id:number){
+    this.portfolio.show(id).subscribe(res=>{
+      console.log(res)
+      this.isLoaded= true;
+      this._portfolio = res;
+      this.portfolioData = this._portfolio.data
+    })
+  }
+
+  changeISLoaded(){
+    this.isLoaded= false;
   }
 
 
