@@ -6,7 +6,7 @@
 
           <!-- Start filter side-->
           <div class="col-md-3 d-sm-none d-md-block">
-
+             
               <h2 class="mb-md-5 ">Filter By</h2>
 <!------------------------------------------------ start category------------------------------------->
 
@@ -15,25 +15,25 @@
       <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeCategoryIcon() "
       data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false"
        aria-controls="collapseExample0">
-
+      
           <strong>Category</strong>
           <div class="icon ">
               <i class=" fa fa-solid {{shape0}}"></i>
           </div>
       </div>
       <div class="up-c-collapse collapse border-0" id="category" >
-
-
+          
+        
                           <div class="card1 dropdown">
                               <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false"  class="form-control" placeholder="search">
-
+  
                           </div>
                           <ul class="menubox card list-group" *ngIf="inpt.value">
                               <div class="psearch" *ngFor="let item of freelancers">
                                   <a class="list-group-item list-group-item-light" #a > {{item.name}}</a>
                               </div>
                           </ul>
-
+       
       </div>
 
 
@@ -51,7 +51,7 @@
                   <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeExperienceIcon() "
                   data-bs-toggle="collapse" data-bs-target="#experienceLevel" aria-expanded="false"
                    aria-controls="collapseExample0">
-
+                  
                       <strong>Experience level</strong>
                       <div class="icon ">
                           <i class=" fa fa-solid {{shape4}}"></i>
@@ -63,19 +63,19 @@
                               <div class="up-checkbox ">
                                   <input type="checkbox" (click)="addParams($event)" value="Entry">
                                           Entry Level - $
-                                  <small  class="text-muted">(1)</small>
+                                  <small  class="text-muted">(1)</small> 
                               </div>
                               <div class="up-checkbox ">
                                   <input type="checkbox" (click)="addParams($event)" value="intermediate">
                                           Intermediate - $$
-                                  <small  class="text-muted">(5)</small>
+                                  <small  class="text-muted">(5)</small> 
                               </div>
                               <div class="up-checkbox ">
                                   <input type="checkbox" (click)="addParams($event)" value="expert">
                                          Expert - $$$
-                                  <small  class="text-muted">(25)</small>
+                                  <small  class="text-muted">(25)</small> 
                               </div>
-
+                
                           </fieldset>
                      </div>
                   </div>
@@ -94,30 +94,35 @@
       <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeHourlyRateIcon() "
       data-bs-toggle="collapse" data-bs-target="#jobType" aria-expanded="false"
        aria-controls="collapseExample0">
+      
+          <strong>Hourly rate</strong>
+          <div class="icon ">
+              <i class=" fa fa-solid {{shape2}}"></i>
           </div>
       </div>
+      <div class="up-c-collapse collapse border-0" id="jobType" >
           <div class="mt-10">
                <fieldset >
                         
                           <div class="up-checkbox ">
                               <input type="checkbox" (click)="addParams($event)" value="5">
                                     5 To 10
-                              <small  class="text-muted">(5)</small>
+                              <small  class="text-muted">(5)</small> 
                           </div>
                           <div class="up-checkbox ">
                               <input type="checkbox" (click)="addParams($event)" value="10">
                                     10 To 15
-                              <small  class="text-muted">(9)</small>
+                              <small  class="text-muted">(9)</small> 
                           </div>
                           <div class="up-checkbox ">
                               <input type="checkbox" (click)="addParams($event)" value="15">
                                     15 To 20
-                              <small  class="text-muted">(15)</small>
+                              <small  class="text-muted">(15)</small> 
                           </div>
                           <div class="up-checkbox ">
                               <input type="checkbox" (click)="addParams($event)" value="20">
                                     20 To 50
-                              <small  class="text-muted">(11)</small>
+                              <small  class="text-muted">(11)</small> 
                           </div>
                       </fieldset>
          </div>
@@ -162,8 +167,8 @@
       </div>
   </div>
 </div>
-      </div>
-
+      </div> 
+  
       <!-- End filter side -->
         <!---------------------------------------------- Start Main  ------------------------------------------------------------------------->
 
@@ -254,13 +259,13 @@
                 currentPage: page,
                 totalItems: count
               };
-
+              
         let i = index" [class.active]="i == currentIndex">
-
+       
                 <!-- Job Title -->
                 <div class="header d-flex">
                     <img class="d-inline-block ms-3 pro imag mb-2" src="../../../assets/images/sam.jpg"/><br>
-                    <a class="ms-4 mt-4" [routerLink]="['/freelancer/profile/details',freelancer.id]" >  {{freelancer.user.name}}<br>
+                    <a class="ms-4 mt-4" [routerLink]="['/freelancer/profile/details',freelancer.id]" >  {{freelancer.user.name}}<br> 
                       <p>{{freelancer.category}}</p>
                     </a>
                     <span class="ms-auto">
@@ -325,10 +330,11 @@
         </div>
           <!---------------------------------------------------------------- pagination controls------------------------------------------------------->
 <div class="container">
-
+   
   <div class="d-flex justify-content-center">
-      <pagination-controls
-        nextLabel="load more "
+      <pagination-controls 
+     
+        nextLabel="load more " 
         (pageChange)="onTableDataChange($event)">
       </pagination-controls>
     </div>
