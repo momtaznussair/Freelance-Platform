@@ -7,7 +7,6 @@ import { ReportsModule } from '../client/reports/reports.module';
 import { MessagesModule } from './messages/messages.module';
 import { ClientSettingModule } from './client-setting/client-setting.module';
 import { MainComponent } from './main/main.component';
-import { SharedModule } from '../freelancer/shared/shared.module';
 
 
 const routes : Routes = [
@@ -32,7 +31,12 @@ const routes : Routes = [
   {
     path: 'setting',
     loadChildren: () => import('./client-setting/client-setting.module').then(m => m.ClientSettingModule)
-  }
+  },
+  {
+    path: 'post-job',
+    loadChildren: () => import('./post-job/post-job.module').then(m => m.PostJobModule)
+  },
+
 ]
 
 @NgModule({
@@ -42,7 +46,7 @@ const routes : Routes = [
     MainComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule,
+    CommonModule,RouterModule.forChild(routes)
   ],
   exports : [
     JobsModule, TalentModule , ReportsModule,MessagesModule,ClientSettingModule

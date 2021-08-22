@@ -1,121 +1,188 @@
+<app-nav></app-nav>
 <div class="container py-5 px-3">
 
-  <div class="row">
+    <div class="row">
 
 
-      <section class="sidebar d-none d-md-block col-md-3">
-          <app-sidebar></app-sidebar>
+        <section class="sidebar d-none d-md-block col-md-3">
+            <app-sidebar></app-sidebar>
 
-      </section>
+        </section>
 
-      <section class="myinfo col-12 col-md-9">
-          <p class="h2 mx-2 fw-bold mb-5">Contact Info</p>
-
-
-          <!-- account section  -->
-          <div class="card mb-5">
-
-              <div class="card-header p-4">
-                  <span class="h2">Account</span>
-                  <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#account"></span> </span>
-              </div>
-              <div class="card-footer  px-4">
-                  <p class="fw-bold">User ID</p>
-                  <p>f1d8081d</p>
-                  <p class="fw-bold">Name</p>
-                  <p>Omar Badr</p>
-                  <p class="fw-bold">Email</p>
-                  <p>o******67@gmail.com</p>
-              </div>
-          </div>
-
-          <!-- account section modal  -->
-          <div class="modal fade" id="account" tabindex="-1">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title">Re-enter password</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                          <p class="h6 fw-bold">I***mali</p>
-                          <p class="text-muted fw-bold">eng.....@gmail.com</p>
-                          <a href="#" class="small fw-bold">Not you?</a><br>
-                          <form class="form">
-                              <label class="small form-check-label">password</label><br>
-                              <input type="password" class="form-control w-50"><br>
-                              <a href="#" class="small fw-bold">Forget Password</a>
-                          </form>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
-                          <button type="button" class="btn">Save</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- End account section modal  -->
-
-          <div class="card mb-5">
-
-            <div class="card-header p-4">
-                <span class="h2">Additional Account</span><br>
-                <span>Creating a new account allows you to use Upwork in different ways, while still having just one login.</span>
+        <section class="myinfo col-12 col-md-9">
+            <div *ngIf="isDataUpdated" class="alert alert-info alert-dismissible fade show" role="alert">
+                <strong>Good Work</strong> Your data is updated successfully.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <div class="card-footer px-4">
-                <p class="fw-bold mt-2">Client Account</p>
-                <span class="text-justify">Hire, manage and pay as a different company. Each client company has its own freelancers, payment methods and reports.</span>
-                <button routerLink="/setting/client-account" type="button" class="btn pull-right">New Client Account</button>
+
+            <!-- alert for error update -->
+            <div *ngIf="errorUpdate" class="alert alert-primary align-items-center fade show" role="alert">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg> please check your password and try again
+                    <button type="button" class="btn-close pull-right" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             </div>
-        </div>
+            <p class="h2 mx-2 fw-bold mb-5">Contact Info</p>
 
 
+            <!-- account section  -->
+            <div class="card mb-5">
 
-          <!-- Company details -->
-          <div class="card mb-5">
-
-              <div class="card-header p-4 ">
-                  <span class="h2">Location</span>
-                  <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#company"></span></span>
-              </div>
-              <div class="card-footer  px-4">
-                <p class="fw-bold">Time Zone</p>
-                <p>UTC+02:00 Cairo</p>
-                <p class="fw-bold">Address</p>
-                <p>Mecca 2 St. new torel Mansoura 50 Al Mansurah, DK 35511 Egypt</p>
-                <p class="fw-bold">Phone</p>
-                <p>+20 1067642806</p>
+                <div class="card-header p-4">
+                    <span class="h2">Account</span>
+                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#account"></span> </span>
+                </div>
+                <div class="card-footer  px-4">
+                    <p class="fw-bold">Name</p>
+                    <p>Omar Badr</p>
+                    <p class="fw-bold">Email</p>
+                    <p>o******67@gmail.com</p>
+                </div>
             </div>
-          </div>
-          <!-- Location section modal  -->
-          <div class="modal fade" id="location" tabindex="-1">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-body">
-                          <form class="form">
-                              <label class="small form-check-label">Time Zone</label><br>
-                              <input type="text" class="form-control"><br>
-                              <label class="small form-check-label">Street Address</label><br>
-                              <input type="text" class="form-control"><br>
-                              <input type="text" class="form-control"><br>
-                              <label class="small form-check-label">city</label><br>
-                              <input type="text" class="form-control"><br>
-                              <label class="small form-check-label">Zip/Postal Code</label><br>
-                              <input type="text" class="form-control"><br>
-                              <label class="small form-check-label">Phone</label><br>
-                              <input type="phone" class="form-control"><br>
-                              <button type="button" class="btn" data-bs-dismiss="modal">Update</button>
-                              <button type="button" class="btn mx-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <!-- End Location section modal  -->
 
-      </section>
+            <!-- account section modal  -->
+            <div class="modal fade" id="account" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Update Your Info</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form class="form" [formGroup]="form">
+                            <div class="modal-body">
+                                <label class="small form-check-label  mt-3">Email</label><br>
+                                <input type="text" formControlName="email" class="form-control" placeholder="update your account">
+                                <div *ngIf="form.controls.email.invalid && isLogged || (form.controls.email.dirty || form.controls.email.touched)">
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.email.hasError( 'required') ">Email is required</small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.email.hasError( 'email') ">Invalid Email </small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.email.hasError( 'maxlength') "> this is big email</small>
+                                </div>
 
-  </div>
+                                <label class="small form-check-label mt-3">User name</label><br>
+                                <input type="text" formControlName="username" class="form-control" placeholder="update your user name">
+                                <div *ngIf="form.controls.username.invalid && isLogged || (form.controls.username.dirty || form.controls.username.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('required')">User name is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('minlength')"> You gen der.write more than three characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('maxlength')"> You should write less than 250 characters</small>
+                                </div>
+
+                                <label class="small form-check-label  mt-3">password</label><br>
+                                <input type="password" formControlName="password" class="form-control">
+                                <div *ngIf="form.controls.password.invalid && isLogged || (form.controls.password.dirty || form.controls.password.touched)">
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.password.hasError( 'required') ">Password is required</small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.password.hasError( 'minlength') ">You have to write more than 8 characters</small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="form.controls.password.hasError( 'maxlength') ">You have to write less than 15 characters</small>
+                                </div>
+                                <!-- <a href="#" class="small fw-bold">Forget Password</a> -->
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                <button type="submit" (click)="saveAccountData()" data-bs-dismiss="modal" class="btn">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- End account section modal  -->
+            <!-- Additional Accounts -->
+            <div class="card mb-5">
+
+                <div class="card-header p-4">
+                    <span class="h2">Additional Account</span><br>
+                    <span>Creating a new account allows you to use Upwork in different ways, while still having just one login.</span>
+                </div>
+                <div class="card-footer px-4">
+                    <p class="fw-bold mt-2">Client Account</p>
+                    <span class="text-justify">Hire, manage and pay as a different company. Each client company has its own freelancers, payment methods and reports.</span>
+                    <button routerLink="/setting/client-account" type="button" class="btn pull-right">New Client Account</button>
+                </div>
+            </div>
+            <!-- End of additional account -->
+
+
+            <!-- Company details -->
+            <div class="card mb-5">
+
+                <div class="card-header p-4 ">
+                    <span class="h2">Company contacts
+                  </span>
+                    <span class="h2">Company details</span>
+                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#location"></span></span>
+                    <!-- <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil"></span></span> -->
+                </div>
+                <div class="card-footer  px-4 pt-3">
+                    <p class="h6 fw-bold">Owner</p>
+                    <p class="text-muted fw-bold">I*** ali</p>
+                </div>
+                <div class="card-footer  px-4 pt-3">
+                    <p class="h6 fw-bold">Phone</p>
+                    <p class="text-muted fw-bold">0***1030</p>
+                </div>
+                <div class="card-footer  px-4 pt-3">
+                    <p class="h6 fw-bold">Address</p>
+                    <p class="text-muted fw-bold">A***bya</p>
+                    <p class="text-muted fw-bold">A***1111</p>
+                    <p class="text-muted fw-bold">Egypt GH</p>
+                </div>
+            </div>
+            <!-- End company details -->
+
+            <!-- start of company location modal -->
+            <div class="modal fade" id="location" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <form class="form" [formGroup]="formLocation">
+                                <label class="small form-check-label mt-3">Phone number</label><br>
+                                <input formControlName="phone_number" name="phone_number" type=" text " class="form-control ">
+                                <div *ngIf="formLocation.controls.phone_number.invalid && isLogged || (formLocation.controls.phone_number.dirty || formLocation.controls.phone_number.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.phone_number.hasError('required')">This field is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.phone_number.hasError('minlength')"> You should write more than three characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.phone_number.hasError('maxlength')"> You should write less than 250 characters</small>
+                                </div>
+                                <label class="small form-check-label mt-3 ">Country</label>
+                                <select name="country" formControlName="country" class="form-select" name="country">
+                                <option value="mans" selected>Egypt</option>
+                                <option value="mans" selected>china</option>
+                                <option value="Espania" selected>Espania</option>
+                              </select>
+                                <label class="small form-check-label mt-3">city</label>
+                                <select name="city" formControlName="city" class="form-select mb-3">
+                                <option value="Mansoura" selected></option>
+                                <option value="almahalla" selected>almahalla</option>
+                              </select>
+                                <label class="small form-check-label mt-3">street</label><br>
+                                <input formControlName="street" name="street" type=" text " class="form-control ">
+                                <div class="mb-3" *ngIf="formLocation.controls.street.invalid && isLogged || (formLocation.controls.street.dirty || formLocation.controls.street.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.street.hasError('required')">Street is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.street.hasError('minlength')"> write more than three characters</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.street.hasError('maxlength')"> You should write less than 250 characters</small>
+                                </div>
+                                <label class="small form-check-label mt-3 ">password</label><br>
+                                <input formControlName="password" name="password" type="password" class="form-control">
+                                <div class="mb-3" *ngIf="formLocation.controls.password.invalid && isLogged || (formLocation.controls.password.dirty || formLocation.controls.password.touched)">
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="formLocation.controls.password.hasError( 'required') ">Password is required</small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="formLocation.controls.password.hasError( 'minlength') ">You have to write more than 8 characters</small>
+                                    <small class="text-danger fw-bold mb-3 " *ngIf="formLocation.controls.password.hasError( 'maxlength') ">You have to write less than 15 characters</small>
+                                </div>
+
+                                <div class="mt-3">
+                                    <button type="submit" (click)="saveLocationData()" data-bs-dismiss="modal" class="btn">Save</button>
+                                    <button type="button" class="btn mx-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of company location modal -->
+
+
+        </section>
+
+    </div>
 </div>
 
 <pre>

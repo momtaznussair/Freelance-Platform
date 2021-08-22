@@ -22,10 +22,10 @@ export class SidebarComponent implements OnInit {
     {name : "Overview" , shape : "user" , path : "/user/signup/overview"},
     {name : "experience level" , shape : "lock" , path : "/user/signup/experience-level"},
     {name : "skills" , shape : "badger-honey" , path : "/user/signup/skills"},
+    {name : "Hourly rate" , shape : "group" , path : "/user/signup/hourly-rate"},
     {name : "Education" , shape : "badge" , path : "/user/signup/education"},
     {name : "Language" , shape : "group" , path : "/user/signup/lang"},
-    {name : "Hourly rate" , shape : "group" , path : "/user/signup/hourly-rate"},
-    {name : "Location" , shape : "calculator" , path : "/user/signup/location"},
+    // {name : "Location" , shape : "calculator" , path : "/user/signup/location"},
   ];
 
 

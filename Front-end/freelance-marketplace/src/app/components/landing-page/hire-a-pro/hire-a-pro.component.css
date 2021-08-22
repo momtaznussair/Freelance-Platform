@@ -1,12 +1,18 @@
 h1{
-    font-weight: bold !important;
+    font-size: 80px;
+    font-weight: 600 !important;
+    color:var(--mc)
 }
 
 li a{
     text-decoration: none;
     color:#999;
 }
-
+.img-fluid{
+    /* width: 60vw; */
+    height: 400px;
+    object-fit: contain;
+}
 li a:hover{
     color: blue;
 }
@@ -30,7 +36,11 @@ span:hover{
     cursor: pointer;
 }
 
-
+.btnn{
+    width: auto;
+    background-color: var(--mc);
+    color: white;
+}
 /* ----------------------------------------------------------------------------------------------------------------- */
 
 /* Media Query */

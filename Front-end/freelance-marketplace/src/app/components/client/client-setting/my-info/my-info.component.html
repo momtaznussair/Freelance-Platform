@@ -11,6 +11,22 @@
         <section class="myinfo col-12 col-md-9">
             <p class="h2 mx-2 fw-bold mb-5">My Info</p>
 
+            <!-- alert for update data successfully -->
+            <div *ngIf="isDataUpdated" class="alert alert-info alert-dismissible fade show" role="alert">
+                <strong>Good Work</strong> Your data is updated successfully.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <!-- alert for error update -->
+            <div *ngIf="errorUpdate" class="alert alert-primary align-items-center fade show" role="alert">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg> please check your password and try again
+                    <button type="button" class="btn-close pull-right" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+
 
             <!-- account section  -->
             <div class="card mb-5">
@@ -68,7 +84,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
-                                <button type="submit" (click)="saveAccountData()" class="btn">Save</button>
+                                <button type="submit" (click)="saveAccountData()" data-bs-dismiss="modal" class="btn">Save</button>
                             </div>
                         </form>
                     </div>
@@ -136,14 +152,6 @@
                     <p class="text-muted fw-bold">0***1030</p>
                 </div>
                 <div class="card-footer  px-4 pt-3">
-                    <p class="h6 fw-bold">VAT ID</p>
-                    <a href="#"><span class="click btn-link fw-bold text-capitalize">Enter your VAT ID </span></a><span class="small fw-bold mx-3"> to enable VAT invoicing</span>
-                </div>
-                <div class="card-footer  px-4 pt-3">
-                    <p class="h6 fw-bold">Time Zone</p>
-                    <p class="text-muted fw-bold">UTC+02:00 Cairo</p>
-                </div>
-                <div class="card-footer  px-4 pt-3">
                     <p class="h6 fw-bold">Address</p>
                     <p class="text-muted fw-bold">A***bya</p>
                     <p class="text-muted fw-bold">A***1111</p>
@@ -166,12 +174,15 @@
                                     <small class="text-danger fw-bold mb-3" *ngIf="formLocation.controls.phone_number.hasError('maxlength')"> You should write less than 250 characters</small>
                                 </div>
                                 <label class="small form-check-label mt-3 ">Country</label>
-                                <select name="country" class="form-select" name="country">
+                                <select name="country" formControlName="country" class="form-select" name="country">
                                   <option value="mans" selected>Egypt</option>
+                                  <option value="mans" selected>china</option>
+                                  <option value="Espania" selected>Espania</option>
                                 </select>
                                 <label class="small form-check-label mt-3">city</label>
-                                <select name="city" class="form-select mb-3">
-                                  <option value="1" selected>Mansoura</option>
+                                <select name="city" formControlName="city" class="form-select mb-3">
+                                  <option value="Mansoura" selected></option>
+                                  <option value="almahalla" selected>almahalla</option>
                                 </select>
                                 <label class="small form-check-label mt-3">street</label><br>
                                 <input formControlName="street" name="street" type=" text " class="form-control ">
@@ -189,7 +200,7 @@
                                 </div>
 
                                 <div class="mt-3">
-                                    <button type="submit" (click)="saveLocationData()" class="btn">Save</button>
+                                    <button type="submit" (click)="saveLocationData()" data-bs-dismiss="modal" class="btn">Save</button>
                                     <button type="button" class="btn mx-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
                                 </div>
                             </form>
@@ -222,35 +233,6 @@
 </div>
 
 <pre>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

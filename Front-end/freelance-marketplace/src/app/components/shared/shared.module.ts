@@ -14,7 +14,7 @@ const routes: Routes = [
     FooterComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),  NgxPaginationModule
+    CommonModule,RouterModule.forChild(routes),  NgxPaginationModule,
   ],
   exports : [FooterComponent]
 })
