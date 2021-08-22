@@ -55,6 +55,12 @@ export class ProfileComponent implements OnInit {
       image :['', [Validators.required]]
     })
 
+    this.languageform = this.formBuilder.group({
+      user_id : [this.user_id , [Validators.required]],
+      language_id : ['' , [Validators.required]],
+      language_level_id : ['' , [Validators.required]],
+    })
+
  // Validation
  // Get Freelancer Data 
     this.profile.get().subscribe(response=>{
