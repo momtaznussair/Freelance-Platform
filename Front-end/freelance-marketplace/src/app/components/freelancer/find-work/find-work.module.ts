@@ -29,12 +29,6 @@ const routes : Routes = [
   {path : 'filter-jobs' , component :FilterJobsComponent},
   // {path : 'filter' , component :FilterJobsComponent},
   {path:'', component:FindWorkComponent},
-
-  {
-    path: 'portfolios',
-    loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
-  }
-
 ]
 
 @NgModule({
