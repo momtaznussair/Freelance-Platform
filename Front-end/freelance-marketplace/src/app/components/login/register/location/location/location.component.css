@@ -11,14 +11,3 @@ select {
     width: 20%;
     margin-bottom: 15px;
 }
-.a{
-  color:var(--mc);
-}
-.a:hover{
-    background-color: var(--bg);
-    cursor: pointer;
-}
-.menubox{
-    overflow-y: auto;
-    max-height: 180px;
-}

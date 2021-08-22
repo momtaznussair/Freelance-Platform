@@ -10,12 +10,11 @@ export class FreelancerRegisterProcess {
   constructor() { }
 
     registerProcess:any = {
-      category_id:"",
-      overview:"",
-      job_title:"",
-      experience_id:0,
-      skills : [],
-      hourly_rate:0,
+      "category":"",
+      "overview":"",
+      "jobTitle":"",
+      "experienceLevel":0,
+      "hourlyRate":0,
     }
 
 }

@@ -6,8 +6,7 @@ import { FindWorkModule } from './find-work/find-work.module';
 import { ReportsModule } from './reports/reports.module';
 import { SharedModule } from './shared/shared.module';
 import { FreelancerSettingModule } from './freelncer-setting/freelancer-setting.module';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutModule } from '../layout/layout.module';
+import { searchFilter } from 'src/app/pipes/search-filter.pipe';
 
 
 const routes : Routes = [
@@ -36,7 +35,7 @@ const routes : Routes = [
   
   ],
   imports: [
-    CommonModule,MyJobsModule,RouterModule.forChild(routes),SharedModule,FormsModule,LayoutModule
+    CommonModule,MyJobsModule,RouterModule.forChild(routes),SharedModule
   ],
   exports : [
     MyJobsModule,FindWorkModule,ReportsModule,FreelancerSettingModule

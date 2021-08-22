@@ -1,11 +1,8 @@
-import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
-
-// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -17,17 +14,10 @@ export class SignupComponent implements OnInit {
   userResponse : User = new User();
   imgPattern = '([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)';
 
-  file: File | null = null; // Variable to store file
-
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  ,private userService : UserService ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
+  constructor(private formBuilder : FormBuilder  ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
 
-  // files:any;
-  // uploadImage(event:any){
-  //   this.files = event.target.files[0]
-  //   // console.log(this.files)
-  // }
 
   isTokenFound : boolean = false;
 
@@ -35,20 +25,11 @@ export class SignupComponent implements OnInit {
 
   //patterns for validation
   textPattern = "^[a-zA-Z]{3,255}$"
-  phonePattern = "/^[0-9]{11,15}$/";
-  passwordPattern = "^[0-9a-zA-Z]{3,255}$";
+  phonePattern = "/^[0-9]{11,15}$/"
+  passwordPattern = "^[0-9a-zA-Z]{3,255}$"
 
-  genders = ['male' , 'female'];
-
-
-  //start of ngOnInit()
   ngOnInit(): void {
 
-    //check if user logged
-    if(this.userService.isLogged())
-    {
-      this.userService.logout();
-    }
 
 
     if(localStorage.getItem('user_data'))
@@ -67,26 +48,17 @@ export class SignupComponent implements OnInit {
       first_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) , Validators.pattern(this.textPattern)]],
       last_name : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255), Validators.pattern(this.textPattern) ]],
       username : ['' , [Validators.required , Validators.minLength(3) , Validators.maxLength(255) , Validators.pattern(this.textPattern)]],
-      email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required] ],
+      email : ['' , [Validators.email ,Validators.maxLength(255) , Validators.required , Validators.pattern(this.textPattern)] ],
       gender:['' , [Validators.required]],
-      phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
+      phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255) , Validators.pattern(this.phonePattern)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
       password_confirmation : ['' , [Validators.required ]],
-<<<<<<< HEAD
-      // img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
-      img_link : [null, []],
-=======
-      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
-      // img_link : [null, [Validators.required]],
->>>>>>> 70f22226b9a2932e27aef4192950d4f6567f8261
-      type:['' , [Validators.required]],
+      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255) ]],
+      type:['' , [Validators.required , Validators.pattern(this.textPattern)]],
     })
 
   }//end of ngOnInit
 
-  onChange(event : any) {
-    this.file = event.target.files[0];
-  }
   nextStepOfSignUp()
   {
 
@@ -104,31 +76,25 @@ export class SignupComponent implements OnInit {
       this.nextStepOfSignUp();
   }
 
+  // if signup with any socialite
 
-  // signUp manually
+
+
 
   password_confirmation : string = '';
   password : string = '';
   isLogged : boolean = false;
-
   register(){
-    console.log(this.files)
+    // alert(JSON.stringify( this.form.value))
     if(this.form.valid && this.password == this.password_confirmation)
     {
-      // console.log(this.files)
-      // console.log(this.form.value);
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
-      // this.sharedProcess.sharedSignUpProcess.files = this.files;
-      // console.log(this.sharedProcess.sharedSignUpProcess)
-      localStorage.setItem('data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
-      localStorage.setItem('files' , JSON.stringify(this.sharedProcess.sharedSignUpProcess.files));
+      localStorage.setItem('user_data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
       this.router.navigateByUrl('/user/signup/location');
     }
     else
     {
-      // this.simpleAlert();
       this.isLogged = true;
     }
   };//end of register function
-
 }

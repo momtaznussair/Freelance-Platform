@@ -1,74 +1,73 @@
-<app-nav></app-nav>
 <div class="container py-5 px-3">
 
-    <div class="row">
+  <div class="row">
 
 
-        <section class="sidebar d-none d-md-block col-md-3">
-            <app-sidebar></app-sidebar>
+      <section class="sidebar d-none d-md-block col-md-3">
+          <app-sidebar></app-sidebar>
 
-        </section>
+      </section>
 
-        <section class="myinfo col-12 col-md-9">
-            <p class="h2 mx-2 fw-bold mb-5">Tax Information</p>
+      <section class="myinfo col-12 col-md-9">
+          <p class="h2 mx-2 fw-bold mb-5">Tax Information</p>
 
 
-            <!-- account section  -->
-            <div class="card mb-5">
+          <!-- account section  -->
+          <div class="card mb-5">
 
-                <div class="card-header p-4">
-                    <span class="h2">Tax Residence</span>
-                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#tax-residence"></span> </span>
-                </div>
-                <div class="card-footer  px-4">
-                    <p>This address will be displayed on invoices.</p>
-                    <p class="fw-bold">Address</p>
-                    <p>Mecca 2 St. new torel Mansoura 50 Al Mansurah 35511 Egypt</p>
-                </div>
-            </div>
-            <!-- Location section modal  -->
-            <div class="modal fade" id="tax-residence" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <form class="form">
-                                <label class="small form-check-label">Country</label><br>
-                                <input type="text" class="form-control"><br>
-                                <label class="small form-check-label">Address</label><br>
-                                <input type="text" class="form-control"><br>
-                                <input type="text" class="form-control"><br>
-                                <label class="small form-check-label">city</label><br>
-                                <input type="text" class="form-control"><br>
-                                <label class="small form-check-label">Zip/Postal Code</label><br>
-                                <input type="text" class="form-control"><br>
-                                <button type="button" class="btn" data-bs-dismiss="modal">Save</button>
-                                <button type="button" class="btn mx-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-                            </form>
-                        </div>
+              <div class="card-header p-4">
+                  <span class="h2">Tax Residence</span>
+                  <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#tax-residence"></span> </span>
+              </div>
+              <div class="card-footer  px-4">
+                  <p>This address will be displayed on invoices.</p>
+                  <p class="fw-bold">Address</p>
+                  <p>Mecca 2 St. new torel Mansoura 50 Al Mansurah 35511 Egypt</p>
+              </div>
+          </div>
+           <!-- Location section modal  -->
+           <div class="modal fade" id="tax-residence" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form class="form">
+                          <label class="small form-check-label">Country</label><br>
+                          <input type="text" class="form-control"><br>
+                            <label class="small form-check-label">Address</label><br>
+                            <input type="text" class="form-control"><br>
+                            <input type="text" class="form-control"><br>
+                            <label class="small form-check-label">city</label><br>
+                            <input type="text" class="form-control"><br>
+                            <label class="small form-check-label">Zip/Postal Code</label><br>
+                            <input type="text" class="form-control"><br>
+                            <button type="button" class="btn" data-bs-dismiss="modal">Save</button>
+                            <button type="button" class="btn mx-2" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <!-- End Location section modal  -->
+        </div>
+        <!-- End Location section modal  -->
 
-            <!-- Company details -->
-            <div class="card mb-5">
+          <!-- Company details -->
+          <div class="card mb-5">
 
-                <div class="card-header p-4 ">
-                    <span class="h2">W-8BEN</span>
-                    <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#company"></span></span>
-                </div>
-                <div class="card-footer  px-4">
-                    <p class="text-muted">Before withdrawing funds, all non-U.S. persons must provide their W-8BEN tax information.</p>
-                    <p class="fw-bold">Legal Name of Business </p>
-                    <p>Omar Mohamed Mohamed Badr</p>
-                    <p class="fw-bold">Federal Tax Classification</p>
-                    <p>N/A - Non-US</p>
-                </div>
+              <div class="card-header p-4 ">
+                  <span class="h2">W-8BEN</span>
+                  <span class="btn rounded-circle  pull-right pt-2"><span class="fa fa-pencil" data-bs-toggle="modal" data-bs-target="#company"></span></span>
+              </div>
+              <div class="card-footer  px-4">
+                <p class="text-muted">Before withdrawing funds, all non-U.S. persons must provide their W-8BEN tax information.</p>
+                <p class="fw-bold">Legal Name of Business </p>
+                <p>Omar Mohamed Mohamed Badr</p>
+                <p class="fw-bold">Federal Tax Classification</p>
+                <p>N/A - Non-US</p>
             </div>
+          </div>
+         
+      </section>
 
-        </section>
-
-    </div>
+  </div>
 </div>
 
 <pre>

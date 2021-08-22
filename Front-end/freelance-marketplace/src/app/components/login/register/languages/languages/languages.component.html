@@ -12,45 +12,44 @@
                 <h3>Languages </h3>
                 <p>6 of 8</p>
             </div>
-            <form action="" [formGroup]="form">
-                <div>
-                    <input type="hidden" formControlName="user_id" name="user_id">
+            <br>
+            <h3> What is your English proficienvy? </h3>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+            <br>
+
+
+            <h3> What other Languages do you speak? </h3> <br>
+            <div class="flex">
+                <p> <b> Language  </b></p>
+                <p> <b>proficiency </b></p>
+            </div>
+
+            <div class="container px-3">
+                <div class="row ">
+                    <select class="col form-select form-select-sm ">
+         <option   class="p-3 border bg-light"  selected>Arabic</option>
+         <option value="1">English</option>
+        </select>
+                    <select class="col form-select form-select-sm ">
+          <option class="p-3 border bg-light"  selected>Native</option>
+          <option value="1">Fluent</option>
+        </select>
                 </div>
-                <br>
+            </div>
+            <br> <br>
+            <button class="bt1" type="button">  + Add Language </button>
+            <br> <br>
+            <div class="md-6 lg-6 d-sm-flex footer">
 
+                <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button>
 
-                <h3 class="mx-2"> What Language do you speak? </h3>
-
-                <div class="container">
-                    <div class="row ">
-                        <select *ngIf="isLanguageGet" class="col form-select form-select-sm " name="language_id" formControlName="language_id">
-                          <option *ngFor="let item of languages.data" value="{{item.id}}" >{{item.name}}</option>
-                        </select>
-                        <div *ngIf="form.controls.language_id.invalid && isLogged || (form.controls.language_id.dirty || form.controls.language_id.touched)">
-                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.language_id.hasError('required')">please choose your language </small>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="mx-2 mt-5"> What is your language proficiency? </h3>
-                <div class="container">
-                    <div class="row ">
-                        <select *ngIf="isLanguageLevelGet" class="col form-select form-select-sm " name="language_level_id" formControlName="language_level_id">
-                          <option *ngFor="let item of languageLevels.data"  value="{{item.id}}">{{item.name}}</option>
-                        </select>
-                        <div *ngIf="form.controls.language_level_id.invalid && isLogged || (form.controls.language_level_id.dirty || form.controls.language_level_id.touched)">
-                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.language_level_id.hasError('required')">please choose your level</small>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="md-6 lg-6 d-sm-flex justify-content-end footer mt-5">
-
-                    <!-- <button class="bt1" type="button" routerLink="/user/signup/education"> Back </button> -->
-
-                    <button class="bt3 " type="button" (click)="next()">Next</button>
-                </div>
-            </form>
+                <button class="bt2" type="button" (click)="submit()" routerLink="/user/signup/hourly-rate">Next</button>
+            </div>
         </section>
 
     </div>

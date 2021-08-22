@@ -26,10 +26,8 @@ export class searchFilter implements PipeTransform {
   //  *
   //  */
   static filter(items: Array<{ [key: string]: any }>, term: string, excludes: any): Array<{ [key: string]: any }> {
- 
 
-  const toCompare = term.toLowerCase();
-
+    const toCompare = term.toLowerCase();
 
     function checkInside(item: any, term: string) {
       

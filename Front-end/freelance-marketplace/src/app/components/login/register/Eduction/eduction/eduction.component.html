@@ -5,7 +5,6 @@
 
         <section class="sidebar d-none d-md-block col-md-3">
             <app-sidebar></app-sidebar>
-
         </section>
         <section class="myinfo col-12 col-md-9">
             <div class="header">
@@ -13,68 +12,26 @@
                 <p>5 of 8</p>
 
             </div>
-            <form action="" [formGroup]="form">
-                <!-- input to send user_id in form -->
-                <div>
-                    <input type="hidden" formControlName="user_id" name="user_id">
-                </div>
 
-                <br>
-                <p><b> Institute </b></p>
+            <br>
+            <p><b> School </b></p>
+
+            <div class="col-12 md-6"> <input type="text" class="form-control" placeholder="EX: Mansoura university"> </div>
+            <br>
+            <p><b>  Area of study </b></p>
+            <input type="text" class="form-control" placeholder="EX:computer science">
+            <br>
+            <p><b>  Degree</b></p>
+            <input type="text" class="form-control" placeholder="EX:Bachelor's"> <br>
+
+            <p><b> Dates Attended</b></p>
+            <input type="date" class="form-control"> <br>
+            <div class="md-6 lg-6 d-sm-flex footer">
+                <button class="bt1" type="button" routerLink="/user/signup/skills"> Back </button>
+                <button class="bt2 " type="button " (click)="submit()" routerLink="/user/signup/lang">Next</button>
+            </div>
 
 
-                <div class="col-12 md-6">
-                    <input type="text" formControlName="institute" class="form-control" placeholder="EX: Mansoura university">
-
-                    <div *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('required')">This field is required</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('minlength')">You should write more than 5 letter </small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('maxlength')"> You can not write more than 255 letter</small>
-
-                    </div>
-                </div>
-                <br>
-
-                <p><b> Area of study </b></p>
-                <div>
-                    <input type="text" formControlName="area_of_study" name="area_of_study" class="form-control" placeholder="EX:computer science">
-                    <div *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('required')">This field is required</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('minlength')">You should write more than 5 letter </small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can not write more than 255 letter</small>
-                    </div>
-                </div>
-
-                <br>
-                <p><b> Degree</b></p>
-                <div>
-                    <input type="text" formControlName="degree" class="form-control" placeholder="EX:Bachelor's">
-                    <div *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('required')">This field is required</small>
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('minlength')">You should write more than 4 letter </small>
-                    </div>
-                </div>
-                <p class="mt-5"><b> Start Date</b></p>
-                <input type="date" formControlName="start_date" name="start_date" class="form-control">
-                <div *ngIf="form.controls.start_date.invalid && isLogged || (form.controls.start_date.dirty || form.controls.start_date.touched)">
-                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.start_date.hasError('required')">please select your date </small>
-                </div>
-
-                <p class="mt-4"><b> Graduation Date</b></p>
-                <input type="date" formControlName="graduation_date" name="graduation_date" class="form-control">
-                <div *ngIf="form.controls.graduation_date.invalid && isLogged || (form.controls.graduation_date.dirty || form.controls.graduation_date.touched)">
-                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.graduation_date.hasError('required')">please select graduation date  </small>
-                </div>
-
-                <div class="md-6 lg-6 d-sm-flex justify-content-end footer">
-                    <!-- <button class="bt1" type="button" routerLink="/user/signup/hourly-rate"> Back </button> -->
-                    <button class="bt3" (click)="next()" type="submit">next</button>
-                </div>
-            </form>
-        </section>
-
-        <!-- <div class="container2 ">
+            <!-- <div class="container2 ">
 
 </div> -->
-    </div>
-</div>

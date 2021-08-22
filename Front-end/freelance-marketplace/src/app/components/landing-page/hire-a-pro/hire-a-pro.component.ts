@@ -1,11 +1,6 @@
-import { environment } from './../../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
-import { Skill } from 'src/app/models/skill';
 import { ApiService } from 'src/app/services/api.service';
-import { CategoryService } from 'src/app/services/category.service';
-import { SkillService } from 'src/app/services/skill.service';
 
 @Component({
   selector: 'app-hire-a-pro',
@@ -14,24 +9,20 @@ import { SkillService } from 'src/app/services/skill.service';
 })
 export class HireAProComponent implements OnInit {
 
-  constructor(private cat:CategoryService,private skill:SkillService) { }
+  constructor(private _apiservice:ApiService) { }
   categories:Category[]=[];
-  skills:Skill[]=[];
+  skills:Category[]=[];
 
   ngOnInit(): void {
-    this.cat.getCategories(`categories`).subscribe(response=>{
-      this.categories=response['data'] as Category[];
-      console.log(response);
-    },error=>{console.error('wrong')}
-    );
+    // this._apiservice.get("http://127.0.0.1:8000/api/categories").subscribe(Response=>{
+    //   this.categories=Response as Category[];
+    // },error=>{}
+    // );
 
-    this.skill.getSkills(`skills`).subscribe(response=>{
-      this.skills=response['data'] as Skill[]
-    })
 
-    // this.http.get("http://127.0.0.1:8000/api/skills").subscribe(response=>{
-    //   this.skills=response as Category[];
-    // },error=>{console.error('wrong')}
+    // this._apiservice.get("http://127.0.0.1:8000/api/skills").subscribe(Response=>{
+    //   this.skills=Response as Category[];
+    // },error=>{}
     // );
   }
 

@@ -1,6 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -8,28 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  x='search';
+
   constructor(private userService : UserService , private router:Router) { }
 
   ngOnInit(): void {
   }
-  setting(){
-    this.router.navigateByUrl("/freelancer/settings/info");
-  }
+
 
   logout(){
-    this.userService.logout()
-  }
-  freelancer(){
- 
-    this.x="search in freelancer";
-    this.router.navigateByUrl("/freelancers");
-  }
-
-  jobs(){
-   
-    this.x="search in jobs";
-    // this.router.navigateByUrl("/jobs");
+    this.userService.logout();
+    this.router.navigateByUrl('/user');
   }
 
 }

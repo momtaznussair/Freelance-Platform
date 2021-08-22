@@ -1,29 +1,19 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobService {
-  // id:string;
 
-  constructor(private api:ApiService) {
-    // this.id = this.route.snapshot.params['id'];
+  constructor(private _apiservice:ApiService) { }
 
-   }
-   getJob(id:string):Observable<any>{
-     return this.api.get("http://127.0.0.1:8000/api/jobs/"+id);
-   }
-
-  getJobs():Observable<any>{
-    return this.api.get("http://127.0.0.1:8000/api/jobs");
-   
+  get(){
+    return this._apiservice.get("");
+  
   }
-  addJob(body:any):Observable<any>{
-    return this.api.post("http://127.0.0.1:8000/api/jobs",body);
+  addJob(body:any){
+    return this._apiservice.post("",body);
   }
 
   // delete(id:number){

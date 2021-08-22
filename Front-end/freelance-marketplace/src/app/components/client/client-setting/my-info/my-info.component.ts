@@ -14,23 +14,19 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MyInfoComponent implements OnInit {
 
-
-
   form : FormGroup = new FormGroup({});
   formLocation : FormGroup = new FormGroup({});
 
-  constructor(private formBuilder : FormBuilder  , private router : Router  , private userService : UserService) { }
-
-  isDataUpdated : boolean = false;
-  user_id : any;
-  isLogged : boolean = false;
-  resData : any;
-  errorUpdate : boolean = false;
+  constructor(private formBuilder : FormBuilder  , private router : Router  , private apiService : ApiService) { }
 
   ngOnInit(): void {
 
-    this.user_id = localStorage.getItem('user_id');
-
+    //get countries
+    // this.apiService.get("https://www.universal-tutorial.com/api/countries" , { header:{"Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtb210YXpfbnVzc2FpckB5YWhvby5jb20iLCJhcGlfdG9rZW4iOiJZbUJNQnVfZUE5OVB5dlJ3bTFWRlNJWWZYQkZ0WjR6cmJ1UTMzakJrYUQ5N2d6OVk5eEJacVkzME5SQjZFU2J4OFU0In0sImV4cCI6MTYyNzkyNjAzNH0.BiJp1Za9pdFSZOLlKtU3ktU5TIILqTmpzbJS1CvkkSU","Accept": "application/json"}})
+    //   .subscribe(response=>{
+    //     alert('success');
+    //     console.log(response);
+    // },error=>console.error)
 
     //validate email and name form
     this.form = this.formBuilder.group({
@@ -43,35 +39,30 @@ export class MyInfoComponent implements OnInit {
     //validate email and name form
     this.formLocation = this.formBuilder.group({
       phone_number : ['' , [Validators.maxLength(255) , Validators.required] ],
-      country : ['' , [Validators.required] ],
-      city : ['' , [Validators.required] ],
+      // country : ['' , [Validators.required] ],
+      // city : ['' , [Validators.required] ],
       street : ['' , [Validators.minLength(10) ,Validators.maxLength(255) , Validators.required] ],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15)]]
     })
   }
 
-  saveAccountData(){
+  isLogged : boolean = false;
 
+  saveAccountData(){
     console.log(this.form.value);
     if(this.form.valid)
     {
-      this.userService.updateUser( `update/${this.user_id}` , this.form.value).subscribe(response=>{
-        console.log(response);
-        this.resData = response;
-        if(this.resData.data != null)
-        {
-          this.isDataUpdated = true;
-        }else
-        {
-          this.errorUpdate = true;
-        }
-      } , error => {
-        this.errorUpdate = true;
-      });
+
+      alert('updated successfully');
+      // this.apiService.post(`${environment.apiUrl}/update` , this.form.getRawValue() , {header:{"token" : `Bearer ${localStorage.getItem('token')}`}}).subscribe(response=>{
+      //   alert ('updated successfully');
+      //   console.log(response);
+      // this.router.navigateByUrl('/client/info');
+      // },error=>console.error);
+
     }
     else
     {
-      alert('please check your data and try again');
       this.isLogged = true;
       console.log(this.isLogged);
     }
@@ -82,23 +73,12 @@ export class MyInfoComponent implements OnInit {
     console.log(this.formLocation.value)
     if(this.formLocation.valid)
     {
-      this.userService.updateUser( `updateLocation/${this.user_id}` , this.formLocation.value).subscribe(response=>{
-        console.log(response);
-        if(this.resData.data != null)
-        {
-          this.isDataUpdated = true;
-        }else
-        {
-          this.errorUpdate = true;
-        }
-      } , error => {
-        this.errorUpdate = true;
-      });
+      alert('updated successfully');
+      // this.router.navigateByUrl('/client/info');
     }
     else
     {
       this.isLogged = true;
-      alert('please check your info and try again');
       console.log(this.isLogged);
     }
   }

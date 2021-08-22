@@ -48,15 +48,11 @@
     border: 0;
     font-size: 16px;
     line-height: 1;
-    /* display: inline; */
+    display: inline-block;
     border-radius: 30px;
     color:white;
     background-color:var(--mc);
     cursor: pointer;
-  }
-  .skills{
-    display: flex;
-    flex-direction: row;
   }
   .bt2 {
     margin-left: 20px;
@@ -70,19 +66,10 @@
     background-color:white;
     cursor: pointer;
   }
-  .dropdown-toggle{
-    width: 10rem;
-  }
-
-
-  .amr{
-    font-size: .8rem;
-    width: auto;
-}
   @media only screen and (max-width: 480px) {
     .amr{
-      font-size: .5rem;
-      width: auto;
+      font-size: 1rem;
+      width: 6rem;
   }
     }
   

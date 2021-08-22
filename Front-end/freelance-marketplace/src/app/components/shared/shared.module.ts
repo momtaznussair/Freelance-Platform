@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from './footer/footer/footer.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { LandingNavComponent } from './header/nav/landingNav.component';
 
 const routes: Routes = [
 
@@ -12,11 +11,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [
 
-    FooterComponent,LandingNavComponent
+    FooterComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),  NgxPaginationModule,
+    CommonModule,RouterModule.forChild(routes),  NgxPaginationModule
   ],
-  exports : [FooterComponent,LandingNavComponent]
+  exports : [FooterComponent]
 })
 export class SharedModule { }

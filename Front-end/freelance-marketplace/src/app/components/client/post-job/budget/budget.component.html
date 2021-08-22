@@ -14,7 +14,7 @@
                             <div class="card mb-5">
                                 <div class="card-header">
                                     <h2>Budget</h2>
-                                    <p>Step 4 of 5</p>
+                                    <p>Step 6 of 7</p>
                                 </div>
                                 <div class="card-body">
                                     <p class="fw-bold">
@@ -28,7 +28,7 @@
                                                 <div id="hour-card" class="card mb-4">
                                                     <div class="card-body py-md-4" role="button">
                                                         <h5 class="card-title">
-                                                            <input id="hour" type="radio" (change)="chooseHourly()" name="payment_style_id" formControlName="payment_style_id" value="1">
+                                                            <input id="hour" value="1" type="radio" formControlName="pay">
                                                         </h5>
                                                         <div class="text-center pb-5">
                                                             <i class="fas fa-clock"></i>
@@ -45,7 +45,7 @@
                                                 <div id="fixed-card" class="card mb-4">
                                                     <div class="card-body py-md-4" role="button">
                                                         <h5 class="card-title">
-                                                            <input id="fixed" (change)="chooseFixed()" type="radio" name="payment_style_id" formControlName="payment_style_id" value="2">
+                                                            <input id="fixed" value="2" type="radio" formControlName="pay">
                                                         </h5>
                                                         <div class="text-center pb-3">
                                                             <i class="fas fa-comment-dollar"></i>
@@ -56,27 +56,28 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div *ngIf="form.controls.payment_style_id.invalid && isLogged">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.pay.hasError('required')">You have to choose one of the above first</small>
-                                        </div>
+                                        <div *ngIf="form.controls.pay.invalid && isLogged">
+                                          <small class="text-danger fw-bold mb-3" *ngIf="form.controls.pay.hasError('required')">You have to choose one of the above first</small>
+                                      </div>
                                     </div>
 
                                     <!-- IF pay by hour Checked -->
-                                    <div class="by-hour" *ngIf="!isFixed">
+                                    <div class="by-hour">
                                         <!-- Hourly range -->
                                         <div class="hourly-range">
                                             <hr>
                                             <div class="form-check">
-                                                <label class="form-check-label fw-bold" for="hour-range">
+                                                <input class="form-check-input" type="radio" name="payment" id="hour-range" value="hourly-range" checked>
+                                                <label class="form-check-label" for="hour-range">
                                                     Set your own hourly range
                                                 </label>
                                             </div>
                                             <div class="input-group mb-3 w-md-50">
                                                 <span class="input-group-text">$</span>
-                                                <input type="text" formControlName="from" name="from" class="form-control" placeholder="0">
+                                                <input type="text" class="form-control" placeholder="0">
                                                 <span class="mt-2"> &nbsp;&nbsp; /hr to &nbsp;&nbsp; </span>
                                                 <span class="input-group-text">$</span>
-                                                <input type="text" formControlName="to" name="to" class="form-control" placeholder="0">
+                                                <input type="text" class="form-control" placeholder="0">
                                             </div>
                                             <hr>
                                         </div>
@@ -84,6 +85,13 @@
                                         <!-- period -->
                                         <div class="period">
 
+                                            <div class="form-check mb-4">
+                                                <input class="form-check-input" type="radio" name="payment" id="period-range" value="period-range">
+                                                <label class="form-check-label" for="hour-range">
+                                                    Don’t add an hourly range to your job <br>
+                                                    <small class="text-muted">Showing your budget can increase the number of relevant proposals</small>
+                                                </label>
+                                            </div>
 
                                             <p class="fw-bold">
                                                 How long do you expect this project to last?
@@ -95,7 +103,7 @@
                                                         <div id="more6-card" class="card mb-4">
                                                             <div class="card-body py-md-4" role="button">
                                                                 <h5 class="card-title">
-                                                                    <input id="more6" value="1" type="radio" name="duration_id" formControlName="duration_id" checked>
+                                                                    <input id="more6" value="1" type="radio" formControlName="expectproject">
                                                                 </h5>
                                                                 <div class="text-center">
                                                                     <i class="fas fa-calendar-week"></i>
@@ -111,7 +119,7 @@
                                                         <div id="from3to6-card" class="card mb-4">
                                                             <div class="card-body py-md-4" role="button">
                                                                 <h5 class="card-title">
-                                                                    <input id="from3to6" value="2" type="radio" name="duration_id" formControlName="duration_id">
+                                                                    <input id="from3to6" value="2" type="radio" formControlName="expectproject">
                                                                 </h5>
                                                                 <div class="text-center">
                                                                     <i class="fas fa-calendar-week"></i>
@@ -127,7 +135,7 @@
                                                         <div id="from1to3-card" class="card mb-4">
                                                             <div class="card-body py-md-4" role="button">
                                                                 <h5 class="card-title">
-                                                                    <input id="from1to3" value="3" type="radio" name="duration_id" formControlName="duration_id">
+                                                                    <input id="from1to3" value="3" type="radio" formControlName="expectproject">
                                                                 </h5>
                                                                 <div class="text-center">
                                                                     <i class="fas fa-calendar-week"></i>
@@ -143,7 +151,7 @@
                                                         <div id="less1-card" class="card mb-4">
                                                             <div class="card-body py-md-4" role="button">
                                                                 <h5 class="card-title">
-                                                                    <input id="less1" value="4" type="radio" name="duration_id" formControlName="duration_id">
+                                                                    <input id="less1" value="4" type="radio" formControlName="expectproject">
                                                                 </h5>
                                                                 <div class="text-center">
                                                                     <i class="fas fa-calendar-week"></i>
@@ -155,8 +163,66 @@
                                                 </div>
 
                                             </div>
-                                            <div *ngIf="form.controls.duration_id.invalid && isLogged">
-                                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.duration_id.hasError('required')">You have to choose one of the above first </small>
+                                            <div *ngIf="form.controls.expectproject.invalid && isLogged">
+                                              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.expectproject.hasError('required')">You have to choose one of the above first </small>
+                                          </div>
+
+
+                                            <p class="fw-bold">
+                                                Do you have a time requirement for this project?
+                                            </p>
+                                            <div class="form-group row">
+
+                                                <div class=" col-12 col-md-4">
+                                                    <div class="card-deck">
+                                                        <div id="more30-card" class="card mb-4">
+                                                            <div class="card-body py-md-4" role="button">
+                                                                <h5 class="card-title">
+                                                                    <input formControlName="timeproject" id="more30" value="1" type="radio">
+                                                                </h5>
+                                                                <div class="text-center">
+                                                                    <i class="far fa-clock"></i>
+                                                                    <h5>More than 30 hrs/week</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class=" col-12 col-md-4">
+                                                    <div class="card-deck">
+                                                        <div id="less30-card" class="card mb-4">
+                                                            <div class="card-body py-md-4" role="button">
+                                                                <h5 class="card-title">
+                                                                    <input formControlName="timeproject" id="less30" value="2" type="radio" >
+                                                                </h5>
+                                                                <div class="text-center">
+                                                                    <i class="far fa-clock"></i>
+                                                                    <h5>Less than 30 hrs/week</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class=" col-12 col-md-4">
+                                                    <div class="card-deck">
+                                                        <div id="not-yet-card" class="card mb-4">
+                                                            <div class="card-body py-md-4" role="button">
+                                                                <h5 class="card-title">
+                                                                    <input formControlName="timeproject" id="not-yet" value="3" type="radio">
+                                                                </h5>
+                                                                <div class="text-center">
+                                                                    <i class="far fa-clock"></i>
+                                                                    <h5>I don't know yet</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="form.controls.timeproject.invalid && isLogged">
+                                                  <small class="text-danger fw-bold mb-3" *ngIf="form.controls.timeproject.hasError('required')">You have to choose one of the above first </small>
+                                              </div>
                                             </div>
                                         </div>
 
@@ -164,24 +230,23 @@
 
                                     <!-- If Fixed Payment Checked -->
                                     <!-- *ngIf="fixed" -->
-                                    <div class="fixed" *ngIf="isFixed">
-                                        <form [formGroup]="fixedForm">
-                                            <div class="">
-                                                <p class="fw-bold">Do you have a specific budget?</p>
-                                            </div>
-                                            <div class="input-group mb-3 w-25">
-                                                <span class="input-group-text">$</span>
-                                                <input type="number" class="form-control" formControlName="payment_amount" name="payment_amount" placeholder="0" aria-label="Amount (to the nearest dollar)">
-                                            </div>
-                                        </form>
+                                    <div class="fixed" >
+                                        <div class="">
+                                            <p class="fw-bold">Do you have a specific budget?</p>
+                                        </div>
+
+                                        <div class="input-group mb-3 w-25">
+                                            <span class="input-group-text">$</span>
+                                            <input type="text" class="form-control" placeholder="0" aria-label="Amount (to the nearest dollar)">
+                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- footer -->
                                 <div class="card-footer py-4">
-                                    <a routerLink="/client/post-job/expertise" class="btn btn-light px-5 mx-3 py-2 border rounded-pill text-primary">Back</a>
+                                    <a routerLink="/client/post-job/visibility" class="btn btn-light px-5 mx-3 py-2 border rounded-pill text-primary">Back</a>
                                     <button class="btn btn-primary px-5 mx-3 py-2 border rounded-pill " type="submit" (click)="next()">Next</button>
-                                </div>
+                                  </div>
                             </div>
 
                         </form>
@@ -194,16 +259,16 @@
 </div>
 
 <!-- scripts -->
-<!-- <script>
-    $(document).ready(function() {
-        $('input:radio').change(function() { //Clicking input radio
+<script>
+    $(document).ready(function () {
+        $('input:radio').change(function () {//Clicking input radio
             var radioClicked = $(this).attr('id');
             unclickRadio();
             removeActive();
             clickRadio(radioClicked);
             makeActive(radioClicked);
         });
-        $(".card").click(function() { //Clicking the card
+        $(".card").click(function () {//Clicking the card
             var inputElement = $(this).find('input[type=radio]').attr('id');
             unclickRadio();
             removeActive();
@@ -228,4 +293,4 @@
     function makeActive(element) {
         $("#" + element + "-card").addClass("active");
     }
-</script> -->
+</script>

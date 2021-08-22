@@ -1,29 +1,31 @@
-.container {
-  border-radius: 50px;
+.right{
+  background-color: #0D265F;
 }
 
-.right{
-  background-color: var(--mc);
+body{
+ font-family: Montserrat, sans-serif;
 }
 h1{
- font-size: 9vh;
- font-weight: 600;
- margin-bottom: 10vh;
- margin-left: 5px;
+ font-size: 10vh;
+
 
 }
 .roo{
-  background-color: var(--mc) ;
+  background-color:#0D265F ;
+}
+.bott{
+  margin-top: 120px;
+
 }
 .card{
   border: none;
-  color: var(--mc);
+  color: #0D265F;
 
 }
 .card h5{
   font-weight:bold ;
   font-family: Montserrat, sans-serif;
-  color: var(--mc);
+  color: #0D265F;
 
 
 }
@@ -31,7 +33,7 @@ h1{
   border-radius: 10px;
 }
 .last h1{
-  color: var(--mc);
+  color: #0D265F;
 
 }
 @media only screen and (max-width: 1200px) {

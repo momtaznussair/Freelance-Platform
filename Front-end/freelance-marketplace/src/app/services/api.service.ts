@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -20,8 +21,8 @@ export class ApiService {
     this.httpClient.put(url , body);
   }
 
-  delete(url:string, option ?: any){
-    return this.httpClient.delete(url, option);
+  delete(url:string){
+    return this.httpClient.delete(url);
   }
 
 }

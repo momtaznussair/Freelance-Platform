@@ -14,7 +14,7 @@
                             <div class="card mb-5">
                                 <div class="card-header d-flex py-3">
                                     <span class="h2">Review and post</span>
-                                    <input type="button" class="btn btn-primary rounded-pill ms-auto" (click)="submit()" value="Post Job Now">
+                                    <input type="button" class="btn btn-primary rounded-pill ms-auto" value="Post Job Now">
                                 </div>
 
                                 <!-- Title -->
@@ -32,12 +32,15 @@
                                         </div>
                                     </div>
 
-                                    <p class="mb-3">{{currentJobProcess.job_title}}</p>
+                                    <p class="fw-bold">
+                                        Title
+                                    </p>
+                                    <p class="mb-3">Developer needed for creating a responsive WordPress Theme</p>
 
                                     <p class="fw-bold">
                                         Category
                                     </p>
-                                    <span>{{category_name}}</span>
+                                    <span>Web Design</span>
                                 </div>
                             </div>
 
@@ -57,11 +60,45 @@
                                         </div>
                                     </div>
 
-                                    <p class="mb-3 col-6">{{currentJobProcess.description}}</p>
+                                    <p class="fw-bold">
+                                        Description
+                                    </p>
+                                    <p class="mb-3 col-6">What the deliverable is
+                                        Type of freelancer or agency you're looking for
+                                        Anything unique about the project, team, or your company
+                                    </p>
                                 </div>
                             </div>
 
+                            <!-- Details -->
+                            <div class="card mb-5">
+                                <div class="card-body">
 
+                                    <div class="card-head d-flex">
+                                        <h4 class="fw-bold d-inline-block">
+                                            Title
+                                        </h4>
+
+                                        <div class="edit mt-md-3 d-inline-block ms-auto">
+                                            <a routerLink="/client/post-job/details" class="p-2">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <hr>
+
+                                    <p class="fw-bold h4">
+                                        Screening Questions
+                                    </p>
+
+                                    <p class="fw-bold">
+                                        Require Cover Letter
+                                    </p>
+                                    <span>Yes</span>
+                                </div>
+                            </div>
 
                             <!-- Expertise -->
                             <div class="card mb-5">
@@ -81,21 +118,101 @@
                                     <p class="fw-bold">
                                         Web Design Skills
                                     </p>
-                                    <span class="skill border rounded-pill px-3 py-2 mx-2 bg-info" *ngFor="let item of skillsData">{{item.name}}</span>
+                                    <span class="skill border rounded-pill px-3 py-2">Mobile App Design</span>
 
                                     <hr>
 
                                     <p class="fw-bold">
                                         Expertise Level
                                     </p>
-                                    <span>{{experience_level}}</span>
+                                    <span>Expert</span>
+                                </div>
+                            </div>
+
+                            <!-- Visibilty -->
+                            <div class="card mb-5">
+                                <div class="card-body">
+
+                                    <div class="head d-flex">
+                                        <h4 class="fw-bold d-inline-block">
+                                            Visibility
+                                        </h4>
+
+                                        <div class="edit mt-md-3 d-inline-block ms-auto">
+                                            <a routerLink="/client/post-job/visibility" class="p-2">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <p class="fw-bold">
+                                        Job Posting Visibility
+                                    </p>
+                                    <p class="mb-3">Freelancers and agencies using Upwork and public search engines can find this job.</p>
+                                </div>
+                            </div>
+
+                            <!-- Budget -->
+                            <div class="card mb-5">
+                                <div class="card-body">
+                                    <div class="head d-flex">
+                                        <h4 class="fw-bold d-inline-block">
+                                            Budget
+                                        </h4>
+
+                                        <div class="edit mt-md-3 d-inline-block ms-auto">
+                                            <a routerLink="/client/post-job/budget" class="p-2">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="row ps-3 mt-3">
+
+                                        <div class="col-5">
+                                            <p class="fw-bold">
+                                                Hourly or Fixed-Price
+                                            </p>
+                                            <p class="mb-3">Pay by the hour</p>
+                                        </div>
+
+                                        <div class="col-5">
+                                            <p class="fw-bold">
+                                                Project Duration
+                                            </p>
+                                            <p class="mb-3">More than 6 months</p>
+                                        </div>
+
+                                        <!-- If Hourly Rated -->
+                                        <div class="col-5">
+                                            <p class="fw-bold">
+                                                Hourly
+                                            </p>
+                                            <p class="mb-3">No hourly range added</p>
+                                        </div>
+
+                                        <div class="col-5">
+                                            <p class="fw-bold">
+                                                Time Commitment
+                                            </p>
+                                            <p class="mb-3">More than 30 hrs/week</p>
+                                        </div>
+
+                                        <!-- If Fixed -->
+                                        <div class="col-5">
+                                            <p class="fw-bold">
+                                                Budget
+                                            </p>
+                                            <p class="mb-3">$ 50</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <!-- submit Job -->
                             <div class="card mb-3">
                                 <div class="card-body">
-                                    <a class="btn btn-primary px-5 mx-3 py-2 rounded-pill" (click)="submit()">Post Job Now</a>
+                                    <a routerLink="#" class="btn btn-primary px-5 mx-3 py-2 rounded-pill">Post Job Now</a>
                                 </div>
                             </div>
                         </form>
@@ -106,3 +223,6 @@
 
     </div>
 </div>
+
+
+
