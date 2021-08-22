@@ -107,7 +107,7 @@ export class SignupComponent implements OnInit {
   isLogged : boolean = false;
 
   register(){
-    // console.log(this.files)
+    console.log(this.file)
     if(this.form.valid && this.password == this.password_confirmation)
     {
       // console.log(this.files)

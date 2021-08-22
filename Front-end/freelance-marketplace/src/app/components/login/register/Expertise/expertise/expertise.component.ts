@@ -7,6 +7,7 @@ import { SkillsService } from 'src/app/services/skills.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Skill } from 'src/app/models/skill';
+import { stringify } from '@angular/compiler/src/util';
 
 
 @Component({
@@ -18,9 +19,6 @@ export class ExpertiseComponent implements OnInit {
 
   placeholder="Start typing to search for skills";
   form : FormGroup = new FormGroup({});
-
-
-  added :number=0;
   query="";
   constructor(private router : Router , private apiService : ApiService ,private formBuilder : FormBuilder ,private skillServices:SkillsService) { }
 
@@ -35,10 +33,11 @@ export class ExpertiseComponent implements OnInit {
   ngOnInit(): void {
 
     this.currentRegisterData = localStorage.getItem('data');
-    this.currentRegisterData = JSON.parse(this.currentRegisterData)
-    console.log(this.currentRegisterData);
+    this.currentRegisterData = JSON.parse(this.currentRegisterData);
+    // console.log(this.currentRegisterData);
     this.apiService.get(`${environment.apiUrl}/skills`).subscribe(response=>{
       this.getData = response;
+    
       this.AllSkills = this.getData.data;
       for(let skill of this.AllSkills){
         skill.selected=false
@@ -48,103 +47,47 @@ export class ExpertiseComponent implements OnInit {
     })
 
     this.form = this.formBuilder.group({
-      // searchSkill : ['' , [  Validators.maxLength(10) , Validators.minLength(3)]],
+      searchSkill : ['' , [  Validators.maxLength(10) , Validators.minLength(3)]],
       user_id : ['', [Validators.required]],
     })
   }
+ is_skills_notselected:boolean=false
 
-  isLogged : boolean = false;
-  Added:boolean=false
+submit()
+{
 
-  // =============== start test request ===============
-  dataToSend : [] = [];
+   let skillsToSend=this.skills.filter((skill:any) => {return skill.selected})
+   if(skillsToSend.length==0)
+    { 
+      this.is_skills_notselected=true
+    }
+    else
+    {
+      this.is_skills_notselected=false;
+    this.currentRegisterData.skills=skillsToSend;
+    localStorage.setItem('data',JSON.stringify(this.currentRegisterData));
+    this.router.navigateByUrl('/user/signup/hourly-rate');
+    }
 
-// =============== end test request ===============
- status: boolean = false;
-submit(){
-if(this.dataToSend.length==0){
-  this.Added=true
 }
-}
 
-arr:any;
- addSkill(i:any){
-i.selected = ! i.selected;
-// console.log(this.dataToSend)
- if(i.selected ){
- this.Added=false
-  //  this.dataToSend.push({
-    //  id:i.id,
-    //  selected:i.selected,
-    //  name:i.name,
-    //  category:i.category_id,
-  //  })
-  }else 
-   {
-    this.dataToSend.slice(0,1)
-   }
- 
- console.log(this.dataToSend)
-    // this.isLogged = true;
-    // this.skillServices.addSkill(b.innerText);
+ addSkill(skill:any){
+let index=this.skills.indexOf(skill);
+this.skills[index].selected=! this.skills[index].selected;
+
    
-    // console.log(i)
  }
 /*============================= add skills from drop down  ========================*/
-  addSkillFromDropDown(a:any,inpt:HTMLElement)
+  addSkillFromDropDown(skill:any,inpt:HTMLElement)
   {
-        this.Added=false;
-        this.Added=!this.Added;
-
-
-        // this.skillServices.addSkill(a.innerText);
-      this.skills.push({
-        id:a.id,
-        name:a.name,
-        selected:true
-      });
-      this.dataToSend.push({
-        id:a.id,
-        selected:true
-        // name:a.name,
-        // category:a.category_id,
-       
-      })
-console.log(this.dataToSend)
+      let index=this.searchSkills.indexOf(skill);
+      skill.selected=true;
+      this.skills.push(skill);
+      this.searchSkills.splice(index, 1);
+      let idx=this.searchSkills.indexOf(skill);
+      this.searchSkills[idx].selected=! this.searchSkills[idx].selected;
       this.query=inpt.innerText;
     }
 
   }
 
-//  search(){
-//   console.log(this.result);
-//  }
-
-// if(this.Added == false)
-//     {
-//       for (let i = 0; i < this.skills.length; i++) {
-//         if(this.skills[i].selected == true){
-//           this.name.push({name : this.skills[i].name , category_id : this.skills[i].category_id});
-//           this.name.push(this.skills[i].id);
-//         }
-//       }
-
-    //   if(this.name.length != 0)
-    //   {
-    //     console.log(this.name);
-    //     this.currentRegisterData.skills = this.name;
-    //     localStorage.setItem('data' , JSON.stringify(this.currentRegisterData));
-    //     // console.log({user_id : 30 , skills : this.name})
-    //     // this.apiService.post(`${environment.apiUrl}/skills`, {user_id : 30 , skills : this.name}).subscribe(response=>{
-    //     // this.apiService.post(`${environment.apiUrl}/skills`, {skills : this.name}).subscribe(response=>{
-
-    //       // console.log(response);
-    //       this.router.navigateByUrl('/user/signup/hourly-rate');
-    //     // },error=>console.error);
-    //   }
-
-    // }
-    // else if(this.name.length == 0)
-    // {
-    //   this.Added = true;
-    // }

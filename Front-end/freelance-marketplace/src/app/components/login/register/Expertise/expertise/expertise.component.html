@@ -22,8 +22,8 @@
                         <div class="skills"   >
                             <button  *ngFor="let item of skills " class=" mx-1 my-1  bt1s" [ngClass]="{'bt2s':item.selected}" (click)="addSkill(item)">{{item.name}}</button>
                         </div>
-                        <div *ngIf="Added">
-                            <small class="text-danger fw-bold mb-3" *ngIf="Added"> please select your skills</small>
+                        <div *ngIf="is_skills_notselected">
+                            <small class="text-danger fw-bold mb-3" *ngIf="is_skills_notselected"> please select your skills</small>
                         </div>
                     </div>
                     <div class="sec sec2">
@@ -32,12 +32,12 @@
 
                         
                         <div class="card dropdown">
-                            <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false" [(ngModel)]="query" formControlName="searchSkill" class="form-control" [placeholder]="placeholder">
+                            <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false"  formControlName="searchSkill" class="form-control" [placeholder]="placeholder">
 
                         </div>
                         <ul class="menubox card list-group" *ngIf="inpt.value">
                             <div class="psearch" *ngFor="let item of searchSkills |searchFilter:query">
-                                <a class="list-group-item list-group-item-light" #a (click)="addSkillFromDropDown(item,inpt)"> {{item.name}}</a>
+                                <a class="list-group-item list-group-item-light"  (click)="addSkillFromDropDown(item,inpt)"> {{item.name}}</a>
                             </div>
                         </ul>
                         <!------------------------------------end search bar -------------------------------------------------->
