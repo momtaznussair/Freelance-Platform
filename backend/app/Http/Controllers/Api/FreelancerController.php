@@ -39,7 +39,8 @@ class FreelancerController extends Controller
             'experience_id' => 'required|exists:experience_levels,id',
             'overview' => 'required|min:10',
             'job_title' => 'required|min:10|max:255',
-            'hourly_rate' => 'required|numeric'
+            'hourly_rate' => 'required|numeric',
+            'skills' => 'required|exists:skills,id',
         ]);
 
         if($validate->fails()){
