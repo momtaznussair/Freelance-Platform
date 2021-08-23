@@ -161,7 +161,8 @@ class FreelancerController extends Controller
 
         return  $this->UnknownError();
     }
-public function updateFreelancerHourly(Request $request ,$id){
+
+    public function updateFreelancerHourly(Request $request ,$id){
         $freelancer = Freelancer::find($id);
 
         if(!$freelancer){
@@ -188,7 +189,4 @@ public function updateFreelancerHourly(Request $request ,$id){
 
         return  $this->UnknownError();
     }
-
-
-
 }

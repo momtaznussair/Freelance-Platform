@@ -26,5 +26,13 @@ class TokenGuest
         }
 
         return $next($request);
+
+        // if($token == "null"){
+        //     return $next($request);
+        // }
+
+        // return response()->json(
+        //     ['msg' => 'You are logged , logout and try again']
+        // );
     }
 }

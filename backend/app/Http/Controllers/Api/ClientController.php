@@ -37,7 +37,6 @@ class ClientController extends Controller
         
         $client = Client::create([
             'user_id' => $request->user_id,
-            'registration_date' => $request->registration_date,
             'Company_id' => $request->Company_id,
         ]);
 
@@ -84,7 +83,6 @@ class ClientController extends Controller
 
     public function Rules(){
         return [
-            'registration_date' => 'date',
             'user_id' => 'required|exists:users,id',
             'company_id' => 'exists:companies,id'
         ];

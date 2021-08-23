@@ -3,21 +3,20 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { ApiService } from './api.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-
-token = localStorage.getItem('token');
-
-  constructor(private profile:ApiService) { }
+  constructor(private profile : ApiService) { }
+  
+  // private update = `${environment.apiUrl}/portfolios`;
 
  
   get():Observable<any>
   {
     return this.profile.get(`${environment.apiUrl}/freelancers`);
   }
-
   delete(id:number){
     return this.profile.delete(`${environment.apiUrl}/portfolios/delete/${id}`);
   }

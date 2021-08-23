@@ -103,17 +103,14 @@
                                 <div class="row justify-content-around">
                                     <div class="col-4">
                                         <!-- <label>Description</label><br> -->
-                                        <input type="text" class="form-control" formControlName="description"
-                                            name="description" placeholder="Description" style="width: 22rem;">
-                                        <div
-                                            *ngIf="form.controls.description.invalid && islogged || (form.controls.description.dirty || form.controls.description.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.description.hasError('required')">This field is
-                                                required</small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.description.hasError('minlength')">You should write
-                                                more than 20 letter </small>
-                                        </div>
+                                        <!-- <input type="text" class="form-control" formControlName="description"
+                                            name="description" placeholder="Description" style="width: 22rem;"> -->
+
+                                            <select formControlName="duration_id" name="duration_id" class="form-select" aria-label="Default select example">
+                                                <option value={{dur.id}} selected *ngFor="let dur of duration">{{dur.name}}</option>
+                                                
+                                              </select>
+        
                                     </div>
 
                                     <div class="col-4">

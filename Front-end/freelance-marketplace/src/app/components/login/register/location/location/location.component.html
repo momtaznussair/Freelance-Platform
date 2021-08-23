@@ -32,9 +32,9 @@
 
                     </select>
                     <select formControlName="country"  #o  (change)="selectCountry(o.value)" class="form-select form-select-sm " aria-label=".form-select-sm example">
-                     
+
                             <option   [value]="item1"  *ngFor="let item1 of arrayOfCountries" >{{item1}}</option>
-                           
+
                     </select>
                     <div  *ngIf="form.controls.country.invalid && isLogged || (form.controls.country.dirty || form.controls.country.touched)">
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.country.hasError('required')">please select a country</small>
@@ -64,7 +64,7 @@
                             <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false" [placeholder]="placeholder" formControlName="city" [(ngModel)]="queryloc" class="form-control">
 
                             <ul class="menubox card list-group" *ngIf="inpt.value">
-                                <div *ngFor="let item of arrayOfCities |searchFilter: queryloc">
+                                <div *ngFor="let item of arrayOfCities |searchFilter:queryloc">
                                     <a class="list-group-item list-group-item-light a" #a (click)="selectState(a)"> {{item.state_name}}</a>
                                 </div>
                             </ul>

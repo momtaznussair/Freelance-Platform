@@ -177,6 +177,7 @@ h5 {
 #two
 {
   cursor: pointer;
+  /* width: 68px; */
 
 }
 #two:hover{
@@ -202,4 +203,33 @@ h5 {
 .drag-drop span:hover{
   cursor: pointer;
   text-decoration: underline ;
+}
+#four {
+  width: 90px;
+
+}
+#five {
+  width: 126px;
+
+}
+#six{
+  width: 70px;
+}
+#nine{
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color:var(--mc) ;
+  color: white;
+  border-radius:50%;
+  margin-left: 450px;
+}
+#am{
+  text-align: center;
+  display: inline-block;
+  margin: 20px;
+}
+
+.portImage{
+    height: 275px;
 }

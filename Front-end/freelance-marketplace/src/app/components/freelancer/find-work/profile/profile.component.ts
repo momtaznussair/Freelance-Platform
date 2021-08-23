@@ -9,7 +9,6 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ApiService } from 'src/app/services/api.service';
 import { environment } from 'src/environments/environment';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -26,6 +25,7 @@ export class ProfileComponent implements OnInit {
   isDataGet: boolean =false;
   isUserGet: boolean = false;
   isSkillsGet : boolean =false;
+  ibrahim : any;
 
   constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router: Router) { }
   portfoliosData:any;
@@ -33,6 +33,9 @@ export class ProfileComponent implements OnInit {
   profileData:any;
   freelancer_id : any;
   user_id : any;
+  portfilio_id:any;
+  count = 0;
+  currentIndex:number=0;
   isLogged : boolean = false;
   resData : any;
   isDataUpdated : any;
@@ -41,18 +44,18 @@ export class ProfileComponent implements OnInit {
   languageLevels : any;
   isLanguageGet : boolean = false;
   isLanguageLevelGet : boolean = false;
-  isHoulryGet : boolean =false;
+  isHoulryGet : boolean = false;
+  id:number =1;
 
   ngOnInit(): void {
 
     this.freelancer_id = localStorage.getItem('freelancer_id');
     this.user_id = localStorage.getItem('user_id');
-
-
-      this.portForm = this.formBuilder.group({
-      title : ['' , [Validators.required , Validators.minLength(3)]],
-      description : ['' , [ Validators.required , Validators.minLength(10)]],
-      image :['', [Validators.required]]
+    this.portForm = this.formBuilder.group({
+      title : [,[Validators.required , Validators.minLength(3)]],
+      description : [, [ Validators.required , Validators.minLength(10)]],
+      image :[],
+      freelancer_id:[+this.freelancer_id]
     })
 
     this.languageform = this.formBuilder.group({
@@ -87,10 +90,6 @@ export class ProfileComponent implements OnInit {
         graduation_date : [education.graduation_date , [Validators.required]],
       })
     }
-
-    for(let language of this.profileData.languages){
-
-    }
       console.log(this.profileData.user.name);
     
       this.isUserGet = true;
@@ -112,17 +111,18 @@ this.apiService.get(`${environment.apiUrl}/languageLevel`).subscribe(response=>{
 })
 
 
-
-
   }
-  submit(id:number)
-  {
-      this.portfolio.delete(id).subscribe(res=>{
+
+  submit(id: number) {
+    this.profile.delete(id).subscribe(res => {
       console.log(res)
-
-  });
-
+      location.reload()
+    });
   }
+
+
+  new_title: string = '';
+  new_description: string = '';
 
   save(id:number) {
     console.log(this.portForm.value)
@@ -150,13 +150,12 @@ saveEducationData(){
       console.log(response);
       location.reload();
     },error=>console.error);
+  }else
+    {
+      this.isLogged = true;
+      alert('please check your data and try again');
+    }
   }
-  else
-  {
-    this.isLogged = true;
-    alert('please check your data and try again');
-  }
-}
 
 updateEducationData(id : any){
 
@@ -202,7 +201,7 @@ console.log(this.languageform.value)
   {
     this.apiService.post(`${environment.apiUrl}/userLanguages` , this.languageform.value).subscribe(response=>{
       console.log(response);
-      // this.router.navigateByUrl("/freelancer/profile");
+      location.reload();
     },error=>console.error);
   }
   else
@@ -211,7 +210,7 @@ console.log(this.languageform.value)
     alert('please check your data and try again');
   }
 
-}
+  }
 
 updataLanguageName(id : any){
 
@@ -338,6 +337,7 @@ updateHourlyRate(){
   }
       
 }
+
 
 }
 
