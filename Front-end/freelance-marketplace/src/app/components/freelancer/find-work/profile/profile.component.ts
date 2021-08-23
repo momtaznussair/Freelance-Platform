@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit {
   isDataGet: boolean =false;
   isUserGet: boolean = false;
   isSkillsGet : boolean =false;
-  ibrahim : any;
 
   constructor(private portfolio:PortfolioService, private profile:ProfileService, private apiService: ApiService, private formBuilder :FormBuilder, private router: Router) { }
   portfoliosData:any;
@@ -206,8 +205,8 @@ console.log(this.languageform.value)
       console.log(response);
       location.reload();
     },error=>console.error);
-
   }
+
 
   }
 

@@ -1,0 +1,63 @@
+/* nav bar */
+.navbar-brand
+{
+    font-weight:700;
+}
+
+#navbarDropdown, .fa-search, .navbar-brand
+{
+    color: var(--mc);
+}
+
+.fa-search:hover, #navbarDropdown:hover, .navbar-brand:hover
+{
+    color: var(--tc);
+}
+.dropdown-menu li a
+{
+    transition: .25s;
+}
+.dropdown-menu li a:hover
+{
+    background-color: #fff !important;
+    color: var(--tc) !important;
+    font-weight: bold;
+}
+
+.navbar
+{
+    border-bottom: 1px solid #ddd;
+}
+
+
+ /* start of sign in / up buttons */
+.sign-Up-Button{
+    background-color: var(--sc);
+    color: #fff;
+    font-weight: bold;
+}
+
+.sign-Up-Button:hover
+{
+    background-color: var(--mc);
+}
+
+#login
+{
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--mc);
+    transition: .25s;
+}
+#login:hover
+{
+    font-weight: 700;
+}
+ /* end of sign in / up buttons */
+
+/* media queries */
+@media only screen and (max-width: 991px) {
+    .sign-container {
+      margin-top: 1rem;
+    }
+  }

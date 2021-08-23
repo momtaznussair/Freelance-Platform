@@ -15,11 +15,14 @@ export class ProfileService {
   get():Observable<any>
   {
     return this.profile.get(`${environment.apiUrl}/freelancers`);
-  }
-  delete(id:number){
-    return this.profile.delete(`${environment.apiUrl}/portfolios/delete/${id}`);
+
   }
 
+  delete(id:number){
+    return this.profile.delete(`${environment.apiUrl}/portfolios/delete/${id}`);
+  
+  }
+  
   deleteEdu(id:number){
     return this.profile.delete(`${environment.apiUrl}/educations/delete/${id}`);
   }
@@ -62,4 +65,3 @@ export class ProfileService {
 
 
 }
-
