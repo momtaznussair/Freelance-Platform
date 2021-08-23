@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <!-- find a talent tab -->
+        <!-- <a class="navbar-brand" href="/freelancer/work/work">Freelance</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      </button> -->
+        <a class="navbar-brand" routerLink="/freelancer">Freelance</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-1">
+                <li class="nav-item dropdown position-static  p-0">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Find Talent
+              </a>
+                    <ul class="dropdown-menu mt-0 w-100 shadow border-outline-success p-0" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item p-4" href="#">Post a job</a></li>
+                        <li>
+                            <hr class="dropdown-divider m-0">
+                        </li>
+                        <li><a class="dropdown-item p-4" href="#">Find the right pro</a></li>
+                    </ul>
+                </li>
+                <!-- find work tab -->
+                <li class="nav-item dropdown position-static  p-0">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Find Work &nbsp;
+              </a>
+                    <ul class="dropdown-menu mt-0 w-100 shadow border-outline-success p-0" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item p-4" href="#">Ways To earn</a></li>
+                        <li>
+                            <hr class="dropdown-divider m-0">
+                        </li>
+                        <li><a class="dropdown-item p-4" href="#">Find work for your skills</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+
+            <!-- search -->
+            <form class="d-flex mt-1">
+                <div class="btn-group">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+
+                    <!-- search type dropdown -->
+                    <ul class="dropdown-menu mt-2 ms-3">
+                        <li>
+                            <a class="dropdown-item"  (click)="freelancer(inpt)">
+                                <span class="fa fa-user me-3" style="font-size:24px"></span> Freelancers
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" (click)="jobs(inpt)">
+                                <span class="fa fa-briefcase me-3" style="font-size:24px"></span> Jobs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--end  search type  dropdown-->
+                <!-- search box -->
+                
+                <input class="form-control me-2 rounded-pill" [placeholder]="x"  type="search" #inpt aria-label="Search">
+                <button class="fa fa-search border-0 bg-transparent"></button>
+            </form>
+            <!-- end of search -->
+
+            <!-- sign in / up -->
+            <div class="text-center sign-container" *ngIf="!isUserLogged">
+                <a class="mx-3 ms-md-4" routerLinkActive="router-link-active" id="login" (click)="login()">Log In</a>
+                <a type="button" (click)="signUp()" class="btn rounded-pill sign-Up-Button">Sign Up</a>
+            </div>
+            <div class="text-center sign-container mx-2" *ngIf="isUserLogged">
+                <!-- <a class="mx-3 ms-md-4" routerLinkActive="router-link-active" id="login" (click)="login()">Log In</a> -->
+                <a type="button" (click)="logout()" class="btn rounded-pill sign-Up-Button">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
