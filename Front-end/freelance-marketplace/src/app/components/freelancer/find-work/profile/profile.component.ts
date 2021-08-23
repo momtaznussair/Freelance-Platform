@@ -46,6 +46,9 @@ export class ProfileComponent implements OnInit {
   isLanguageLevelGet : boolean = false;
   isHoulryGet : boolean = false;
   id:number =1;
+  _portfolio:any;
+  portfolioData:any;
+  isLoaded:boolean= false;
 
   ngOnInit(): void {
 
@@ -203,11 +206,7 @@ console.log(this.languageform.value)
       console.log(response);
       location.reload();
     },error=>console.error);
-  }
-  else
-  {
-    this.isLogged = true;
-    alert('please check your data and try again');
+
   }
 
   }
@@ -338,8 +337,21 @@ updateHourlyRate(){
       
 }
 
+  showPortfolio(id:number){
+    this.portfolio.show(id).subscribe(res=>{
+      console.log(res)
+      this.isLoaded= true;
+      this._portfolio = res;
+      this.portfolioData = this._portfolio.data
+    })
+  }
 
-}
+  changeISLoaded(){
+    this.isLoaded= false;
+  }
+
+
+  }
 
 
 

@@ -12,7 +12,6 @@ export class ProfileService {
   
   // private update = `${environment.apiUrl}/portfolios`;
 
- 
   get():Observable<any>
   {
     return this.profile.get(`${environment.apiUrl}/freelancers`);

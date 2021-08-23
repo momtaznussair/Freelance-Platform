@@ -61,6 +61,58 @@
                                                     <small class="text-danger fw-bold mb-3" *ngIf="languageform.controls.language_id.hasError('required')">please choose your language </small>
                                                 </div>
                                             </div>
+                    <div class="mt-md-4 border-bottom fw-bold">Education
+                        <i class="fas fa-plus ii" data-bs-toggle="modal" data-bs-target="#education"></i>
+                    </div>
+                    <ul class="p-md-3 mb-3 list-unstyled row" *ngFor="let education of profileData.education">
+
+                        <li class="col-6">
+                            <div>
+                                <h5 class="me-2">{{education.institute}}</h5>
+                                <div>{{education.area_of_study}}</div>
+                                <div>{{education.degree}}</div>
+                            </div>
+                        </li>
+
+                        <li class="col-6">
+                            <div class="d-inline-block"><i class="far fa-edit ii" data-bs-toggle="modal"
+                                    data-bs-target="#educationEdit"></i></div>
+                            <div class="d-inline-block"><i class="far fa-trash-alt" data-bs-toggle="modal"
+                                    data-bs-target="#educationDelete"></i></div>
+                        </li>
+
+                    </ul>
+                    <!-- Start Education Modal For Update -->
+                    <div class="modal fade" id="educationEdit" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Edit Your Education</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <form class="form" [formGroup]="form">
+                                    <div class="modal-body">
+                                        <div>
+                                            <input type="hidden" formControlName="user_id" name="user_id">
+                                        </div>
+
+                                        <label class="small form-check-label mt-3">Institute</label>
+                                        <input type="text" formControlName="institute" class="form-control"
+                                            placeholder="EX: Mansoura university">
+
+                                        <div
+                                            *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
+                                            <small class="text-danger fw-bold mb-3"
+                                                *ngIf="form.controls.institute.hasError('required')">This field is
+                                                required</small>
+                                            <small class="text-danger fw-bold mb-3"
+                                                *ngIf="form.controls.institute.hasError('minlength')">You should write
+                                                more than 5 letter </small>
+                                            <small class="text-danger fw-bold mb-3"
+                                                *ngIf="form.controls.institute.hasError('maxlength')"> You can not write
+                                                more than 255 letter</small>
+
                                         </div>
                         
                                         <h3 class="mx-2 mt-5"> What is your language proficiency? </h3>
@@ -79,11 +131,11 @@
                                                 aria-label="Close">cancel</button>
                                             <button type="submit" (click)="saveLanguageData()"
                                                 data-bs-dismiss="modal" class="btn">Add</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                        </div>
                         <!-- End Add Language Modal -->
 
                         <!-- Start Delete Language Modal -->
@@ -395,12 +447,6 @@
                             </div>
                         </div>
                         <!-- End Education Modal For Edit -->
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
         <div class="col-12 col-lg-8   rounded-end">
             <div class="row border-bottom r">
                 <div class="col mt-md-3 ">
@@ -542,78 +588,38 @@
                     </div>
                 </div>
             </div>
-                <div class="row border-bottom">
-              <div class="col">
-                <div class="portifolio d-flex align-items-center work mt-2">
-                  <span class="d-flex">
-                    <p>Add portifolio </p><a href="/freelancer/profile/portofolio"><i class="fas fa-plus ii ms-md-3 " data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-                    </a>
-                  </span>
 
-                </div>
-                <!-- <div class="card" style="width: 18rem;" *ngIf="isDataGet">
-                              <div class="d-flex mt-3" *ngFor="let i of portfoliosData.data">
-                                  <img src="../../../../../assets/images/clearly-rated.jpg" class="card-img-top" alt="...">
-                                  <div class="card-body">
-                                      <h5 class="card-title d-flex">{{i.title}}</h5>
-                                      <p class="card-text d-flex">{{i.description}}</p>
-                                  </div>
-                              </div>
-                          </div> -->
-
-                <!-- image and icon-->
-                <div class="card-group ms-1 " id="am" *ngFor="let i of data;let index = index">
-                 <!-- |paginate : {
-                  itemsPerPage: 5,
-                  currentPage: page,
-                  totalItems: count
-                };
-                  let i = index" [class.active]="i == currentIndex" > -->
-                  <div class="card">
-                    <div>
-                      <img src='{{ i.images[index].images_path }}' class="card-img-top ml-1" id="one" alt="..." data-bs-toggle="modal"
-                        data-bs-target="#image">
-                      <br>
-                      <div> <br>
-                        <button type="button" class="me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" id="three">
-                            <i class="far fa-trash-alt"></i>
-                         </button>
-
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#edit" id="three">
-                            <i class="fas fa-pencil-alt"></i>
-                        </button>
-                        </div>
-
-                      <p class="card-text" id="two">{{i.title}}</p>
+            <!-- Portfolio Card -->
+            <div class="row border-bottom">
+                <div class="col">
+                    <div class="portifolio d-flex align-items-center work mt-2">
+                    <span class="d-flex">
+                        <p>Add Portfolio</p><a href="/freelancer/profile/portofolio"><i class="fas fa-plus ii ms-md-3 " data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                        </a>
+                    </span>
 
                     </div>
 
-                    <!--Portfolio Details Modal-->
-                    <div class="modal fade" id="image" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Details</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
+                    <!-- image and icon-->
+                    <div class="card-group ms-1 " id="am" *ngFor="let i of data;let index = index">
+                        <div class="card">
+                            <div>
+                                <img src='{{ i.images[index].images_path }}' class="card-img-top ml-1" id="one"/>
+                                <br>
+                                <div> <br>
+                                    <button type="button" (click)="showPortfolio(i.id)" class="me-2" data-bs-toggle="modal" data-bs-target="#show" id="three">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    
+                                    <button type="button" data-bs-toggle="modal" (click)="showPortfolio(i.id)" data-bs-target="#edit" id="three">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
 
-                            <!-- Start DEtails Slider -->
-                            <div id="detailsSlider" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-
-                                <div class="carousel-item active">
-                                    <img src="{{ i.images[index].images_path }}" class="d-block w-100 portImage" alt="...">
-                                    <!-- <div class="carousel-caption d-none d-md-block">
-                                        <h5 class="text-danger"><i class="fas fa-times-circle"></i></h5>
-                                    </div> -->
+                                    <button type="button" class="ms-2" data-bs-toggle="modal" (click)="showPortfolio(i.id)" data-bs-target="#delete" id="three">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
                                 </div>
-                                <div class="carousel-item" *ngFor="let item of i.images">
-                                    <img src="{{ item.images_path }}" class="d-block w-100 portImage" alt="...">
-                                    <!-- <div class="carousel-caption d-none d-md-block">
-                                        <h5 class="text-danger"><i class="fas fa-times-circle"></i></h5>
-                                    </div> -->
-                                </div>
-
+                                <p class="card-text" id="two">{{i.title}}</p>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#detailsSlider" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -637,278 +643,144 @@
                             </div>
                         </div>
                     </div>
-                    <!-- End Portfolio Details Modal-->
+                </div>
+            </div>
+            <!-- End portfolio Card -->
 
-                    <!-- image and icon-->
-                    <div class="card-group ms-1 " id="am" *ngFor="let i of data;let index = index">
-                        <div class="card">
-                            <div>
-                                <a routerLink="/freelancer/work/portfolios/show/{{ i.id }}">
-                                    <img src='{{ i.images[index].images_path }}' class="card-img-top ml-1" id="one"/>
-                                </a>
-                                <br>
-                                <div> <br>
-                                    <!-- <button type="button" class="me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" id="three">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
 
-                                    <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="id" id="three">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </button> -->
+            <!-- Show Portfolio -->
+            <div class="modal fade" id="show" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="isLoaded">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="changeISLoaded()"></button>
+                        </div>
 
-                                    <a class="btn btn-primary rounded-circle me-2" routerLink=""><i class="far fa-trash-alt"></i></a>
-                                    <a class="btn btn-primary rounded-circle me-2" routerLink="/freelancer/work/portfolios/edit/{{ i.id }}"><i class="fas fa-pencil-alt"></i></a>
-                                </div>
-
-                                <p class="card-text" id="two">{{i.title}}</p>
-
-                            </div>
-
-                            <!--Portfolio Details Modal-->
-                            <!-- <portfolio-show></portfolio-show> -->
-                            <!-- End Portfolio Details Modal-->
-
-                            <!-- Portfolio Edit Modal-->
-                            <form action="" [formGroup]="portForm">
-                                <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                    <div class="modal-content">
-
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Edit your portfolio</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-
-                                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner" >
-
-                                                <div class="carousel-item active">
-                                                    <img src="{{ i.images[index].images_path }}" class="d-block w-100 portImage" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h5 class="text-danger"><i class="fas fa-times-circle"></i></h5>
-                                                    </div>
-                                                </div>
-                                                <div class="carousel-item" *ngFor="let item of i.images">
-                                                    <img src="{{ item.images_path }}" class="d-block w-100 portImage" alt="...">
-                                                    <div class="carousel-caption d-none d-md-block">
-                                                        <h5 class="text-danger"><i class="fas fa-times-circle"></i></h5>
-                                                    </div>
-                                                </div>
-                                            
-                                            </div>
-
-                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                                                data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                                                data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
-                                        </div> <br>
-                                        <!-- <input type="hidden" id="lname" name="lname" value="{{i.freelancer_id}}"> -->
-                                        <p class="fw-bold h3" id="six">Title</p>
-                                        <div class="modal-body">
-                                            <input type="text" value="{{i.title}}" name="title" formControlName="title"  class="form-control"
-                                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                        </div>
-                                        <div *ngIf="portForm.controls.title.invalid && isLogged || (portForm.controls.title.dirty || portForm.controls.title.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="portForm.controls.title.hasError('required')">This
-                                                field is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="portForm.controls.title.hasError('minlength')">You
-                                                have to write more than 3 characters</small>
-                                        </div>
-                                        <p class="fw-bold h3"id="five">description</p>
-                                    <div class="modal-body">
-
-                                    <input type="text" value="{{i.description}}"name="description" formControlName="description"  class="form-control"
-                                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                    </div>
-                                    <div
-                                    *ngIf="portForm.controls.description.invalid && isLogged || (portForm.controls.description.dirty || portForm.controls.description.touched)">
-                                    <small class="text-danger fw-bold mb-3"
-                                        *ngIf="portForm.controls.description.hasError('required')">This field is required</small>
-                                    <small class="text-danger fw-bold mb-3"
-                                        *ngIf="portForm.controls.description.hasError('minlength')">You have to write more than 3
-                                        characters</small>
-
-                                    </div>
-                                    <p class="fw-bold h3" id="four">
-                                    Image
-                                    </p>
-                                    <div class="drag-drop">
-                                    <p class=" text-center mt-4">
-                                        <input type="file" name="image" formControlName="image"  hidden id="files">
-
-                                        <label for="files">Upload your portfilo image</label>
-                                    </p>
-
-                                    </div>
-
-                                    <!-- <div
-                                    *ngIf="form.controls.image.invalid && isLogged || (form.controls.image.dirty || form.controls.image.touched)">
-                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.image.hasError('required')">This
-                                        field is required</small>
-                                    </div> -->
-                                    <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button class="btn btn-primary" (click)="save(i.id)" type="submit">Save</button>
-                                    </div>
-
-                                </div>
-
-                                </div>
-
-                    <!-- Portfolio Edit Modal-->
-                    <form action="" [formGroup]="portForm">
-                      <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Edit your portfolio</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                              <div class="carousel-inner" >
-
+                        <div id="ShowPortfolio" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{ i.images[index].images_path }}" class="d-block w-100 portImage" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5 class="text-danger"><i class="fas fa-times-circle"></i></h5>
-                                    </div>
+                                    <img src="{{ portfolioData.images[0].images_path }}" class="d-block w-100 portImage" alt="...">
                                 </div>
-                                <div class="carousel-item" *ngFor="let item of i.images">
-                                    <img src="{{ item.images_path }}" class="d-block w-100 portImage" alt="...">
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5 class="text-danger"><i class="fas fa-times-circle"></i></h5>
-                                    </div>
+                                <div class="carousel-item" *ngFor="let image of portfolioData.images">
+                                    <img src="{{ image.images_path }}" class="d-block w-100 portImage" alt="...">
                                 </div>
-                                
-                              </div>
-                              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                                data-bs-slide="prev">
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#ShowPortfolio" data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Previous</span>
-                              </button>
-                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                                data-bs-slide="next">
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#ShowPortfolio" data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="visually-hidden">Next</span>
-                              </button>
-                            </div> <br>
-                            <!-- <input type="hidden" id="lname" name="lname" value="{{i.freelancer_id}}"> -->
-                            <p class="fw-bold h3" id="six">
-                              Title
-                            </p>
-                            <div class="modal-body">
-                              <input type="text" value="{{i.title}}" name="title" formControlName="title"  class="form-control"
-                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
-                                >
-                            </div>
-                            <div
-                              *ngIf="portForm.controls.title.invalid && isLogged || (portForm.controls.title.dirty || portForm.controls.title.touched)">
-                              <small class="text-danger fw-bold mb-3" *ngIf="portForm.controls.title.hasError('required')">This
-                                field is required</small>
-                              <small class="text-danger fw-bold mb-3" *ngIf="portForm.controls.title.hasError('minlength')">You
-                                have to write more than 3 characters</small>
+                            </button>
+                        </div> <br>
 
-                            </div>
-                            <p class="fw-bold h3"id="five">
-                              description
-                            </p>
-                            <div class="modal-body">
 
-                              <input type="text" value="{{i.description}}"name="description" formControlName="description"  class="form-control"
-                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div
-                              *ngIf="portForm.controls.description.invalid && isLogged || (portForm.controls.description.dirty || portForm.controls.description.touched)">
-                              <small class="text-danger fw-bold mb-3"
-                                *ngIf="portForm.controls.description.hasError('required')">This field is required</small>
-                              <small class="text-danger fw-bold mb-3"
-                                *ngIf="portForm.controls.description.hasError('minlength')">You have to write more than 3
-                                characters</small>
+                        <p class="card-text" id="two">{{portfolioData.title}} </p>
 
-                            </div>
-                            <p class="fw-bold h3" id="four">
-                              Image
-                            </p>
-                            <div class="drag-drop">
-                              <p class=" text-center mt-4">
-                                <input type="file" name="image" formControlName="image"  hidden id="files">
+                        <p class="card-text" id="two">{{portfolioData.description}}</p>
 
-                                <label for="files">Upload your portfilo image</label>
-                              </p>
-
-                            </div>
-
-                            <!-- <div
-                              *ngIf="form.controls.image.invalid && isLogged || (form.controls.image.dirty || form.controls.image.touched)">
-                              <small class="text-danger fw-bold mb-3" *ngIf="form.controls.image.hasError('required')">This
-                                field is required</small>
-                            </div> -->
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                              <button class="btn btn-primary" (click)="save(i.id)" type="submit">Save</button>
-                            </div>
-
-                          </div>
-
-                        </div>
-
-                      </div>
-                    </form>
-                    <!-- End of Portfolio Edit Modal-->
-
-                    <!-- Portfolio Delete Modal-->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete portfolio project</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    Do You Want Delete This portfolio ?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-primary" (click)="submit(i.id)">yes</button>
-                                </div>
-                            </div>
-                        
-                            <!-- End of Portfolio Edit Modal-->
-
-                            <!-- Portfolio Delete Modal-->
-                            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Delete portfolio project</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            Do You Want Delete This portfolio ?
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-primary" (click)="submit(i.id)">yes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            End Portfolio Delete Modal
-
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="changeISLoaded()">Cancel</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="changeISLoaded()">OK</button>
                         </div>
                     </div>
-                </div> -->
-        
-            <!-- End portfolio -->
+                </div>
+            </div>
+            <!-- End Show Portfolio -->
 
+            <!-- Edit Portfolio -->
+            <form action="" [formGroup]="portForm" *ngIf="isLoaded">
+                <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit your portfolio</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="changeISLoaded()"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="EditPortfolio" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner" >
+                                        <div class="carousel-item active">
+                                            <img src="{{ portfolioData.images[0].images_path }}" class="d-block w-100 portImage" alt="...">
+                                        </div>
+                                        <div class="carousel-item" *ngFor="let item of portfolioData.images">
+                                            <img src="{{ item.images_path }}" class="d-block w-100 portImage" alt="...">
+                                        </div>
+                                    
+                                    </div>
+
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#EditPortfolio"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#EditPortfolio"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div> <br>
+
+                                <p class="fw-bold h3" id="six">Title</p>
+                                <input type="text" value="{{portfolioData.title}}" name="title" formControlName="title"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                                <!-- validation for title -->
+                                <div *ngIf="portForm.controls.title.invalid && isLogged || (portForm.controls.title.dirty || portForm.controls.title.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="portForm.controls.title.hasError('required')">This field is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="portForm.controls.title.hasError('minlength')">You have to write more than 3 characters</small>
+                                </div>
+
+                                <p class="fw-bold h3"id="five">description</p>
+                                <input type="text" value="{{portfolioData.description}}"name="description" formControlName="description"  class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                                <!-- validation for description -->
+                                <div *ngIf="portForm.controls.description.invalid && isLogged || (portForm.controls.description.dirty || portForm.controls.description.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="portForm.controls.description.hasError('required')">This field is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="portForm.controls.description.hasError('minlength')">You have to write more than 3 characters</small>
+                                </div>
+
+                                <p class="fw-bold h3" id="four"> Image </p>
+                                <div class="drag-drop text-center">
+                                    <p class="mt-4">
+                                        <input type="file" name="image" formControlName="image" hidden id="files">
+                                        <label for="files">Upload your Portfolio image</label>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="changeISLoaded()">Cancel</button>
+                                <button class="btn btn-primary" (click)="save(portfolioData.id)" type="submit" (click)="changeISLoaded()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- End Edit PortFolio -->
+
+            <!-- Delete Portfolio -->
+            <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="delete" aria-hidden="true" *ngIf="isLoaded">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete portfolio project</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="changeISLoaded()"></button>
+                        </div>
+                        <div class="modal-body">
+                            Do You Want Delete This portfolio ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="changeISLoaded()">Cancel</button>
+                            <button type="button" class="btn btn-primary" (click)="submit(portfolioData.id);changeISLoaded()">yes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Delete Portfolio -->
+
+            <!-- Skills -->
             <div class="row ">
                 <div class="col" *ngIf="isUserGet">
                     <div class="skills py-30">
@@ -921,7 +793,8 @@
                     </div>
                 </div>
             </div>
-    
+            <!-- End Skills -->
+   
 
 
 <div class="container Testimonials rounded mt-md-4">

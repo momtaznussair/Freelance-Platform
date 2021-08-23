@@ -19,20 +19,20 @@ class TokenGuest
         $token = $request->bearerToken();
         // dd($request->bearerToken());
 
-        if($token){
-            return response()->json(
-                ['msg' => 'You are logged , logout and try again']
-            );
-        }
-
-        return $next($request);
-
-        // if($token == "null"){
-        //     return $next($request);
+        // if($token){
+        //     return response()->json(
+        //         ['msg' => 'You are logged , logout and try again']
+        //     );
         // }
 
-        // return response()->json(
-        //     ['msg' => 'You are logged , logout and try again']
-        // );
+        // return $next($request);
+
+        if($token == "null"){
+            return $next($request);
+        }
+
+        return response()->json(
+            ['msg' => 'You are logged , logout and try again']
+        );
     }
 }
