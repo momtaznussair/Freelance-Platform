@@ -19,10 +19,11 @@ import { countries } from 'src/app/models/location/countries';
 export class LocationComponent implements OnInit {
   location:RespondedLocationToken=new RespondedLocationToken
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder , private api:ApiService,private country:CountriesService , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder , private api:ApiService,private countryAndCities:CountriesService , private router : Router , private userService : UserService) { }
 
-  placeholder="Start typing your city"
+ placeholder="Start typing your city"
  countries :countries []=[]
+
   // data comes from social sign up
   user_data : any = ''
   queryloc:string=""
@@ -33,7 +34,7 @@ export class LocationComponent implements OnInit {
   arrayOfStates:any
   response_data : any;
   isLocationGet : boolean = false;
-
+  locationAccessToken:any;
   ngOnInit(): void {
 
     if(localStorage.getItem('user_data'))
@@ -59,7 +60,9 @@ export class LocationComponent implements OnInit {
    /*-------------------------------------------
            using rest api for location
     -------------------------------------------*/
-    this.country.getCountries().subscribe(res=>{
+    //getting access token
+    this.locationAccessToken = this.countryAndCities.getToken();
+    this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
       alert(res);
       this.arrayOfCountries =res
       this.isLocationGet = true;
@@ -225,7 +228,7 @@ export class LocationComponent implements OnInit {
 
     selectCountry(selectedCountry:string){
         console.log(selectedCountry)
-        this.country.getCities(selectedCountry).subscribe(res=>{
+        this.countryAndCities.getCities(selectedCountry, this.locationAccessToken).subscribe(res=>{
           this.arrayOfCities=res
           // console.log(this.arrayOfCities[0].state_name)
         })

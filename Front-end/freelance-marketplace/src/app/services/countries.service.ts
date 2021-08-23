@@ -18,25 +18,25 @@ export class CountriesService {
     .append('api-token', 'oIqCdGdnAsHcUlO3A78PixTCDzZjPvFsGIecAYheq39c3RdI0LI7i9udeKlNY4D_Iig')
     .append('user-email', 'amira95badr@gmail.com');
   
-  this.api.get("https://www.universal-tutorial.com/api/getaccesstoken",{ 'headers': {'content-type': 'application/json'} }).subscribe(res=>{
+  this.api.get("https://www.universal-tutorial.com/api/getaccesstoken",{ 'headers': headers }).subscribe(res=>{
     return res;
-  }, error=> {return error});
- 
+  }, error=> {return error}); 
 }
+
 // get all countries
- getCountries(){
+ getCountries(accessToken:any){
   const headers= new HttpHeaders()
   .set("Accept", "application/json")
-  .set("Authorization", `Bearer ${this.getToken()}`)
+  .set("Authorization", `Bearer ${accessToken}`)
   console.log(this.getToken());
   return  this.api.get("https://www.universal-tutorial.com/api/countries",{ 'headers': headers });
 
  }
 // get cities of a scpicific 
- getCities(countrySelected:string){
+ getCities(countrySelected:string, accessToken:any){
   const headers= new HttpHeaders()
   .set("Accept", "application/json")
-  .set("Authorization",`Bearer ${this.getToken()}`)
+  .set("Authorization",`Bearer ${accessToken}`)
   return  this.api.get(`https://www.universal-tutorial.com/api/states/${countrySelected}`,{ 'headers': headers });
 
  }
