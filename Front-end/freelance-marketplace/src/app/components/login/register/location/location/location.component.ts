@@ -19,10 +19,11 @@ import Swal from 'sweetalert2';
 export class LocationComponent implements OnInit {
   location:RespondedLocationToken=new RespondedLocationToken
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder , private api:ApiService,private country:CountriesService , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder , private api:ApiService,private countryAndCities:CountriesService , private router : Router , private userService : UserService) { }
 
-  placeholder="Start typing your city"
+ placeholder="Start typing your city"
  countries :countries []=[]
+
   // data comes from social sign up
   user_data : any = ''
   queryloc:string=""
@@ -33,7 +34,7 @@ export class LocationComponent implements OnInit {
   arrayOfStates:any
   response_data : any;
   isLocationGet : boolean = false;
-
+  locationAccessToken:any;
   ngOnInit(): void {
 
     if(localStorage.getItem('user_data'))
@@ -59,7 +60,10 @@ export class LocationComponent implements OnInit {
    /*-------------------------------------------
            using rest api for location
     -------------------------------------------*/
-    this.country.getCountries().subscribe(res=>{
+    //getting access token
+    this.locationAccessToken = this.countryAndCities.getToken();
+    this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
+      alert(res);
       this.arrayOfCountries =res
       this.isLocationGet = true;
     // console.log(this.arrayOfCountries[0].country_name)
@@ -102,7 +106,6 @@ export class LocationComponent implements OnInit {
         //if signUp with socialite done
         if(this.user_data.response)
         {
-          this.alertConfirmation();
           console.log(this.user_data);
 
           //send request
@@ -150,7 +153,6 @@ export class LocationComponent implements OnInit {
         }
         else //=> if logged manually
         {
-          this.alertConfirmation();
           console.log(this.data.user_data)
 
           //send request
@@ -220,36 +222,13 @@ export class LocationComponent implements OnInit {
       Swal.fire('Hi', 'Congrats! operation successfull', 'success')
     }
 
-    alertConfirmation(){
-      Swal.fire({
-        title: 'Are you sure?',
-        text: 'Your Action cannot be rollback.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, go ahead.',
-        cancelButtonText: 'No, let me think again'
-      }).then((result) => {
-        if (result.value) {
-          Swal.fire(
-            'Done!',
-            'Action performed successfully.',
-            'success'
-          )
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          Swal.fire(
-            'Cancelled',
-            'Performed action record present in cloud and databstore.)',
-            'error'
-          )
-        }
-      })
-    }
+    
     //=================End of notifications ==============
 
 
     selectCountry(selectedCountry:string){
         console.log(selectedCountry)
-        this.country.getCities(selectedCountry).subscribe(res=>{
+        this.countryAndCities.getCities(selectedCountry, this.locationAccessToken).subscribe(res=>{
           this.arrayOfCities=res
           // console.log(this.arrayOfCities[0].state_name)
         })

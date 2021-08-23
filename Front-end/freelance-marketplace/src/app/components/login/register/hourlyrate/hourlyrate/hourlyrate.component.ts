@@ -46,7 +46,7 @@ export class HourlyrateComponent implements OnInit {
   submit()
   {
     this.currentRegisterData.hourly_rate = this.form.controls.hourly_rate.value;
-    this.currentRegisterData.user_id = this.user_id;
+    this.currentRegisterData.user_id = +this.user_id;
     localStorage.setItem('data',JSON.stringify(this.currentRegisterData));
     console.log(this.currentRegisterData);
 

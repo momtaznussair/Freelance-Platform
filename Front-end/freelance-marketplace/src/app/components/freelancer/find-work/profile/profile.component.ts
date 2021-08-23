@@ -53,6 +53,7 @@ export class ProfileComponent implements OnInit {
 
     this.freelancer_id = localStorage.getItem('freelancer_id');
     this.user_id = localStorage.getItem('user_id');
+ 
     this.portForm = this.formBuilder.group({
       title : [,[Validators.required , Validators.minLength(3)]],
       description : [, [ Validators.required , Validators.minLength(10)]],

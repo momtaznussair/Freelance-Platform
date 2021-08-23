@@ -55,7 +55,7 @@ class PortfolioController extends Controller
         }
 
         $portfolio->save();
-
+        
         foreach($request->file('image') as $image)
         {
             $path = Storage::putFile('portfolios', $image);

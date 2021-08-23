@@ -39,7 +39,8 @@ class FreelancerController extends Controller
             'experience_id' => 'required|exists:experience_levels,id',
             'overview' => 'required|min:10',
             'job_title' => 'required|min:10|max:255',
-            'hourly_rate' => 'required|numeric'
+            'hourly_rate' => 'required|numeric',
+            'skills' => 'required|exists:skills,id',
         ]);
 
         if($validate->fails()){
@@ -57,7 +58,7 @@ class FreelancerController extends Controller
 
         if($freelancer){
             $freelancer->skills()->attach($request->skills === null ? [] : $request->skills);
-            return $this->apiResponse($freelancer);
+            return $this->apiResponse($request->skills);
         }
         return  $this->UnknownError();
     }
