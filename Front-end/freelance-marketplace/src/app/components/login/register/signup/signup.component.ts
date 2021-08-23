@@ -72,8 +72,8 @@ export class SignupComponent implements OnInit {
       phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
       password_confirmation : ['' , [Validators.required ]],
-      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
-      // img_link : [null, [Validators.required]],
+      // img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
+      img_link : [null, []],
       type:['' , [Validators.required]],
     })
 

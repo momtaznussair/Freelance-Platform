@@ -111,7 +111,7 @@ class JobController extends Controller
 
         $job->update($request->all());
 
-        $job->skills()->sync($request->skill === null ? [] : $request->skills);
+        $job->skills()->sync($request->skill === null ? [] : $request->skill);
         if ($job) {
             return $this->apiResponse($job, '', 201);
         }

@@ -61,8 +61,15 @@ submit()
     }
     else
     {
-      this.is_skills_notselected=false;
-    this.currentRegisterData.skills=skillsToSend;
+    this.is_skills_notselected=false;
+
+    // get selected skills ids
+    let skillsToSendIds:number[] = [];
+    skillsToSend.forEach((skill:any) => {
+        skillsToSendIds.push(skill.id);
+    });
+    
+    this.currentRegisterData.skills=skillsToSendIds;
     localStorage.setItem('data',JSON.stringify(this.currentRegisterData));
     this.router.navigateByUrl('/user/signup/hourly-rate');
     }
@@ -88,4 +95,3 @@ this.skills[index].selected=! this.skills[index].selected;
     }
 
   }
-
