@@ -60,6 +60,7 @@ export class LocationComponent implements OnInit {
            using rest api for location
     -------------------------------------------*/
     this.country.getCountries().subscribe(res=>{
+      alert(res);
       this.arrayOfCountries =res
       this.isLocationGet = true;
     // console.log(this.arrayOfCountries[0].country_name)

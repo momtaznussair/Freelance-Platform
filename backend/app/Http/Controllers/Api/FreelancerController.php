@@ -58,7 +58,7 @@ class FreelancerController extends Controller
 
         if($freelancer){
             $freelancer->skills()->attach($request->skills === null ? [] : $request->skills);
-            return $this->apiResponse($freelancer);
+            return $this->apiResponse($request->skills);
         }
         return  $this->UnknownError();
     }

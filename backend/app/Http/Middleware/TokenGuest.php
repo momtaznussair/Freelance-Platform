@@ -17,15 +17,13 @@ class TokenGuest
     public function handle(Request $request, Closure $next)
     {
         $token = $request->bearerToken();
-        dd($request->bearerToken());
-
         if($token){
             return response()->json(
                 ['msg' => 'You are logged , logout and try again']
             );
         }
 
-        // return $next($request);
+        return $next($request);
         
         // if($token == "null"){
         //     return $next($request);

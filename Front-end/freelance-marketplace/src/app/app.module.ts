@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AccordionModule} from 'primeng/accordion';
-import { TokenInterceptorService } from './services/token-interceptor.service';
+// import { TokenInterceptorService } from './services/token-interceptor.service';
 import { FormsModule } from '@angular/forms';
 //start of import social login modules
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
@@ -29,11 +29,11 @@ import {GoogleLoginProvider , FacebookLoginProvider} from 'angularx-social-login
     SocialLoginModule
   ],
   providers: [
-    {
-      provide : HTTP_INTERCEPTORS,
-      useClass : TokenInterceptorService,
-      multi : true,
-    },
+    // {
+    //   provide : HTTP_INTERCEPTORS,
+    //   useClass : TokenInterceptorService,
+    //   multi : true,
+    // },
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {

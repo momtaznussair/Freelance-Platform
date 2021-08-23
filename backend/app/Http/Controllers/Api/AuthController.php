@@ -74,13 +74,6 @@ class AuthController extends Controller
             // $user->save();
         }
         $user->save();
-
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        $data = [
-            'access_token' => $token,
-            'user' => new UserResource($user),
-        ];
         
         $token = $user->createToken('auth_token')->plainTextToken;
 
@@ -116,7 +109,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password) || $user->auth_id === null) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
