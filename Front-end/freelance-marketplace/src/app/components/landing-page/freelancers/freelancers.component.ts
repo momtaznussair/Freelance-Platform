@@ -11,15 +11,10 @@ export class FreelancersComponent implements OnInit {
 
   constructor(private freelance:FreelancersService,private activatedRoute:ActivatedRoute) { }
 freelancers:any;
-freelancer_id:any;
+// freelancer_id:any;
 query='';
 urlQuery:string=''
   ngOnInit(): void {
-    // this.freelance.getFreelancers(`freelancers`).subscribe(res=>{
-    //   this.freelancers=res.data;
-    //   console.log(this.freelancers);}
-    //   this.freelancer_data=this.freelancers.i;
-    //   console.log(this.freelancer_data);
     this.fetchPosts();
     this.urlQuery=this.activatedRoute.snapshot.params.query;
   // this.query=this.urlQuery;

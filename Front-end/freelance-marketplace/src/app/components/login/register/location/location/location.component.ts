@@ -62,11 +62,12 @@ export class LocationComponent implements OnInit {
     -------------------------------------------*/
     //getting access token
     this.locationAccessToken = this.countryAndCities.getToken();
+    console.log(this.locationAccessToken)
     this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
       alert(res);
       this.arrayOfCountries =res
       this.isLocationGet = true;
-    // console.log(this.arrayOfCountries[0].country_name)
+    // console.log(this.arrayOfCountries)
   },error=>
   {
 
@@ -162,12 +163,10 @@ export class LocationComponent implements OnInit {
 
             const formData = new FormData()
             // formData.append('image', )
-
             //if response has token
             this.response_data = response;
             if(this.response_data.data != null)
             {
-
               // localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.user_id);
@@ -191,7 +190,6 @@ export class LocationComponent implements OnInit {
               {
                 //we can't save token because we need freelancer information
                 // localStorage.setItem('user_token' , this.response_data.data.access_token);
-
                 localStorage.setItem('freelancerType' , 'freelancer');
                 this.router.navigateByUrl('/user/signup/category');
               }
@@ -241,4 +239,3 @@ export class LocationComponent implements OnInit {
 
 
 }//End Of Class
-

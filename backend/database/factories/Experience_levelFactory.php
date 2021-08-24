@@ -22,8 +22,10 @@ class Experience_levelFactory extends Factory
      */
     public function definition()
     {
+        $levels=['entry','intermediate','expert'];
+        $level=$levels[rand(0,2)];
         return [
-            'name' => $this->faker->word()
+            'name' => $this->$level,
         ];
     }
 }

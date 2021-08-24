@@ -38,6 +38,7 @@ class ClientController extends Controller
         
         $client = Client::create([
             'user_id' => $request->user_id,
+            'Company_id' => $request->Company_id,
         ]);
 
         if($client){

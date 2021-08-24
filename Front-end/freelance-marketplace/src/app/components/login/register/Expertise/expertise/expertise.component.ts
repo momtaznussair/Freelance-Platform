@@ -6,8 +6,6 @@ import { ApiService } from 'src/app/services/api.service';
 import { SkillsService } from 'src/app/services/skills.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
-import { Skill } from 'src/app/models/skill';
-import { stringify } from '@angular/compiler/src/util';
 
 
 @Component({
@@ -57,7 +55,6 @@ submit()
 {
 
    let skillsToSend=this.skills.filter((skill:any) => {return skill.selected})
-
    if(skillsToSend.length==0)
     { 
       this.is_skills_notselected=true

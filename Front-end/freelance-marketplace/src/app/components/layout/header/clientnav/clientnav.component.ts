@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'landing-nav',
-  templateUrl: './landingNav.component.html',
-  styleUrls: ['./landingNav.component.css']
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.css']
 })
-export class LandingNavComponent implements OnInit {
-  x='search in freelancers';
-  // queryInJobs='';
+export class NavComponent implements OnInit {
+  x='search';
+  // constructor(private router : Router) { }
+
   isUserLogged : boolean = false;
 
   constructor(private router : Router , private userService : UserService) {}
@@ -37,34 +38,17 @@ export class LandingNavComponent implements OnInit {
   logout(){
     this.userService.logout();
   }
+
   freelancer(){
  
-    this.x="search in freelancers";
-    this.searchFlag=true;
- }
-
- jobs(){
-  
-   this.x="search in jobs";
-   this.searchFlag=false;
- }
- searchFlag:boolean=true; //jobs
- Url:string='';
-
- search(searchKeyword:string){
-   
-  if(this.searchFlag) //search in freelancers
-  {
-    this.Url=`freelancers/${searchKeyword}`
- 
-
-  }else //search in jobs
-  {
-    this.Url=`/freelancer/work/filter-jobs/${searchKeyword}`;
- 
+    this.x="search in freelancer";
+    this.router.navigateByUrl("/freelancer");
   }
-  this.router.navigateByUrl(this.Url);
- }
 
+  jobs(){
+   
+    this.x="search in jobs";
+
+  }
 }
 

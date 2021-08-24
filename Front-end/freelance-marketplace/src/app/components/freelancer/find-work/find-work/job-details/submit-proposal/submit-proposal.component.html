@@ -105,16 +105,24 @@
                                         <!-- <label>Description</label><br> -->
                                         <!-- <input type="text" class="form-control" formControlName="description"
                                             name="description" placeholder="Description" style="width: 22rem;"> -->
-
+                                            <label class="mb-2">-duration</label>
                                             <select formControlName="duration_id" name="duration_id" class="form-select" aria-label="Default select example">
-                                                <option value={{dur.id}} selected *ngFor="let dur of duration">{{dur.name}}</option>
+                                                <option value={{dur.id}}  *ngFor="let dur of duration">{{dur.name}}</option>
                                                 
                                               </select>
+                                              <div
+                                              *ngIf="form.controls.duration_id.invalid && islogged || (form.controls.duration_id.dirty || form.controls.duration_id.touched)">
+                                              <small class="text-danger fw-bold mb-3"
+                                                  *ngIf="form.controls.duration_id.hasError('required')">This field is
+                                                  required</small>
+                                          </div>
         
                                     </div>
 
                                     <div class="col-4">
                                         <!-- <label>Amount</label> -->
+                                        <label class="mb-2">-payment_amount</label>
+
                                         <input type="number" class="form-control" formControlName="payment_amount"
                                             name="payment_amount" placeholder="amount" style="width: 15rem;">
                                         <div
@@ -185,7 +193,7 @@
                                 </div>
                                 <br> <br>
                                 <div class="d-grid gap-2 d-md-block">
-                                    <button class="bt1" [disabled]="form.invalid" (click)="submitproposal()"
+                                    <button class="bt1"  (click)="submitproposal()"
                                         type="submit">Submit a proposal</button>
                                     <button class="bt2" type="button">Cancel</button>
                                 </div>

@@ -29,6 +29,8 @@ const routes : Routes = [
   {path : 'work/details/:id' , component :JobDetailsComponent},
   {path : 'filter-jobs' , component :FilterJobsComponent},
   {path : 'filter-jobs/:query' , component :FilterJobsComponent},
+  // {path : 'freelancers/:query' , component :},
+
   // {path : 'filter' , component :FilterJobsComponent},
   {path:'', component:FindWorkComponent},
 ]

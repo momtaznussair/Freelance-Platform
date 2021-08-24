@@ -1,7 +1,13 @@
 h3 {
     color: var(--mc)
 }
-
+.login{
+    color: var(--mc);
+    text-decoration: none;
+}
+.login:hover{
+color: var(--tc);
+}
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
     font-size: 1rem;
     line-height: 2.15;
