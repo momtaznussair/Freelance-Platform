@@ -3,13 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
-// import { HttpClient } from '@angular/common/http';
 import { SkillsService } from 'src/app/services/skills.service';
-<<<<<<< HEAD
-import { FormsModule } from '@angular/forms';
-import { searchFilter } from 'src/app/pipes/search-filter.pipe';
-=======
->>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Skill } from 'src/app/models/skill';

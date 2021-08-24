@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import{Router}from '@angular/router'
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-join-world',
   templateUrl: './join-world.component.html',
@@ -7,7 +8,7 @@ import{Router}from '@angular/router'
 })
 export class JoinWorldComponent implements OnInit {
 
-  constructor( private router:Router) { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -17,11 +18,7 @@ export class JoinWorldComponent implements OnInit {
   }
   jobs(){
      // put the route jobs =>/user
-<<<<<<< HEAD
-    this.router.navigateByUrl("/freelancer/work/filter-jobs");
-=======
     this.router.navigateByUrl("freelancer/work");
->>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
   }
 
 }

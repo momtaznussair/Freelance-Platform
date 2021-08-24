@@ -9,7 +9,7 @@ import { RespondedLocationToken } from 'src/app/models/location/responded-locati
 import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
 import { countries } from 'src/app/models/location/countries';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-location',
@@ -199,9 +199,9 @@ export class LocationComponent implements OnInit {
             }
             else
             {
-              // this.router.navigateByUrl('/user/signup/register');
+              this.router.navigateByUrl('/user/signup/register');
               alert(this.response_data.msg.email);
-              // localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
+              localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
             }
 
 
@@ -218,11 +218,11 @@ export class LocationComponent implements OnInit {
     }
 
     //==============start use notification ===============
-    successAlertNotification(){
-      Swal.fire('Hi', 'Congrats! operation successfull', 'success')
-    }
+    // successAlertNotification(){
+    //   Swal.fire('Hi', 'Congrats! operation successfull', 'success')
+    // }
 
-
+    
     //=================End of notifications ==============
 
 

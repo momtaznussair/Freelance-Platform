@@ -20,7 +20,7 @@
                     <!-- search type dropdown -->
                     <ul class="dropdown-menu mt-2 ms-3">
                         <li>
-                            <a class="dropdown-item" routerLink="/freelancers" (click)="freelancer()">
+                            <a class="dropdown-item"  (click)="freelancer()">
                                 <span class="fa fa-user me-3" style="font-size:24px"></span> Freelancers
                             </a>
                         </li>
@@ -28,7 +28,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" routerLink="/freelancer/work/filter-jobs" (click)="jobs()">
+                            <a class="dropdown-item" [routerLink]="['/freelancer/work/filter-jobs','5']" (click)="jobs()">
                                 <span class="fa fa-briefcase me-3" style="font-size:24px"></span> Jobs
                             </a>
                         </li>
@@ -36,8 +36,10 @@
                 </div>
                 <!--end  search type  dropdown-->
                 <!-- search box -->
+
                 <input class="form-control me-2 rounded-pill" type="search" [placeholder]="x" aria-label="Search">
                 <button class="fa fa-search border-0 bg-transparent"></button>
+                
             </form>
             <!-- end of search -->
 
@@ -152,7 +154,14 @@
                                     <!-- Drop down-->
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item" routerLink=""><img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt=""><span>Omar Badr <br><small>Freelancer</small></span></a>
+                                            <a class="dropdown-item d-flex justify-content-between " routerLink="">
+                                                <img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt="">
+                                            
+                                                <div class="d-flex flex-column justify-content-center">
+                                                <div class="font-weight-bold font-size-14">Omar Badr</div>
+                                                <div class="font-size-10"><small>Freelancer</small></div>
+                                            </div>
+                                            </a>
 
                                         </li>
                                         <li>
@@ -168,7 +177,7 @@
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" (click)="logout()" style="cursor: pointer;"><span
+                                            <a class="dropdown-item" (click)="logout()"><span
                                                   class="fas fa-sign-out-alt"></span>
                                               Log Out
                                           </a>

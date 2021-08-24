@@ -31,14 +31,11 @@ export class ProfileComponent implements OnInit {
   isLogged : boolean = false;
   id:number =1;
 
-<<<<<<< HEAD
-=======
 
   _portfolio:any;
   portfolioData:any;
   isLoaded:boolean= false;
 
->>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
   ngOnInit(): void {
 
     this.freelancer_id = localStorage.getItem('freelancer_id');

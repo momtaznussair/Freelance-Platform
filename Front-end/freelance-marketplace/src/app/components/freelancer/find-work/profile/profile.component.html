@@ -7,8 +7,7 @@
                 <i class="fas fa-camera ca ii ms-4 mt-2"></i>
                 <img class="d-inline-block ms-3" src="./assets/images/profile.jpg" />
                 <h4 class="d-inline-block mt-4 ms-3">{{profileData.user.name}}</h4>
-                <button type="button" class="btn btn-lg rounded-pill  border border-1 b1 mt-4 me-3 ms-auto fw-bold"
-                    routerLink="/freelancer/info">Profile Setting</button>
+                <button type="button" class="btn btn-lg rounded-pill  border border-1 b1 mt-4 me-3 ms-auto fw-bold" routerLink="/freelancer/info">Profile Setting</button>
             </div>
 
         </div>
@@ -21,11 +20,9 @@
             <div class="row ">
                 <div class="col">
 
-                    <div class="mt-md-4 border-bottom fw-bold">Video introduction <i class="fas fa-plus ii"></i><i
-                            class="far fa-edit ii"></i></div>
+                    <div class="mt-md-4 border-bottom fw-bold">Video introduction <i class="fas fa-plus ii"></i><i class="far fa-edit ii"></i></div>
 
-                    <div class="mt-md-4 border-bottom fw-bold">Language <i class="fas fa-plus ii"></i><i
-                            class="far fa-edit ii"></i>
+                    <div class="mt-md-4 border-bottom fw-bold">Language <i class="fas fa-plus ii"></i><i class="far fa-edit ii"></i>
                     </div>
                     <ul class="p-md-3 mb-3 list-unstyled" *ngFor="let languge of profileData.languages">
                         <li>
@@ -47,10 +44,8 @@
                         </li>
 
                         <li class="col-6">
-                            <div class="d-inline-block"><i class="far fa-edit ii" data-bs-toggle="modal"
-                                    data-bs-target="#educationEdit"></i></div>
-                            <div class="d-inline-block"><i class="far fa-trash-alt" data-bs-toggle="modal"
-                                    data-bs-target="#educationDelete"></i></div>
+                            <div class="d-inline-block"><i class="far fa-edit ii" data-bs-toggle="modal" data-bs-target="#educationEdit"></i></div>
+                            <div class="d-inline-block"><i class="far fa-trash-alt" data-bs-toggle="modal" data-bs-target="#educationDelete"></i></div>
                         </li>
 
                     </ul>
@@ -60,8 +55,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Edit Your Education</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form class="form" [formGroup]="form">
                                     <div class="modal-body">
@@ -70,77 +64,55 @@
                                         </div>
 
                                         <label class="small form-check-label mt-3">Institute</label>
-                                        <input type="text" formControlName="institute" class="form-control"
-                                            placeholder="EX: Mansoura university">
+                                        <input type="text" formControlName="institute" class="form-control" placeholder="EX: Mansoura university">
 
-                                        <div
-                                            *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.institute.hasError('required')">This field is
+                                        <div *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('required')">This field is
                                                 required</small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.institute.hasError('minlength')">You should write
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('minlength')">You should write
                                                 more than 5 letter </small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.institute.hasError('maxlength')"> You can not write
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('maxlength')"> You can not write
                                                 more than 255 letter</small>
 
                                         </div>
 
                                         <label class="small form-check-label mt-3">Area Of Study</label>
-                                        <input type="text" formControlName="area_of_study" name="area_of_study"
-                                            class="form-control" placeholder="EX:computer science">
-                                        <div
-                                            *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.area_of_study.hasError('required')">This field is
+                                        <input type="text" formControlName="area_of_study" name="area_of_study" class="form-control" placeholder="EX:computer science">
+                                        <div *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('required')">This field is
                                                 required</small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.area_of_study.hasError('minlength')">You should
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('minlength')">You should
                                                 write more than 5 letter </small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can not
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can not
                                                 write more than 255 letter</small>
                                         </div>
 
                                         <label class="small form-check-label mt-3">Degree</label>
-                                        <input type="text" formControlName="degree" class="form-control"
-                                            placeholder="EX:Bachelor's">
-                                        <div
-                                            *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.degree.hasError('required')">This field is
+                                        <input type="text" formControlName="degree" class="form-control" placeholder="EX:Bachelor's">
+                                        <div *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('required')">This field is
                                                 required</small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.degree.hasError('minlength')">You should write more
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('minlength')">You should write more
                                                 than 4 letter </small>
                                         </div>
 
                                         <label class="small form-check-label mt-3">Start Date</label>
-                                        <input type="date" formControlName="start_date" name="start_date"
-                                            class="form-control">
-                                        <div
-                                            *ngIf="form.controls.start_date.invalid && isLogged || (form.controls.start_date.dirty || form.controls.start_date.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.start_date.hasError('required')">please select your
+                                        <input type="date" formControlName="start_date" name="start_date" class="form-control">
+                                        <div *ngIf="form.controls.start_date.invalid && isLogged || (form.controls.start_date.dirty || form.controls.start_date.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.start_date.hasError('required')">please select your
                                                 date </small>
                                         </div>
 
                                         <label class="small form-check-label mt-3">Graduation Date</label>
-                                        <input type="date" formControlName="graduation_date" name="graduation_date"
-                                            class="form-control">
-                                        <div
-                                            *ngIf="form.controls.graduation_date.invalid && isLogged || (form.controls.graduation_date.dirty || form.controls.graduation_date.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.graduation_date.hasError('required')">please select
+                                        <input type="date" formControlName="graduation_date" name="graduation_date" class="form-control">
+                                        <div *ngIf="form.controls.graduation_date.invalid && isLogged || (form.controls.graduation_date.dirty || form.controls.graduation_date.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.graduation_date.hasError('required')">please select
                                                 graduation date </small>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn" data-bs-dismiss="modal"
-                                            aria-label="Close">cancel</button>
-                                        <button type="submit" (click)="saveEducationData()" data-bs-dismiss="modal"
-                                            class="btn">Save</button>
+                                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                        <button type="submit" (click)="saveEducationData()" data-bs-dismiss="modal" class="btn">Save</button>
                                     </div>
                                 </form>
                             </div>
@@ -154,8 +126,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Update Your Education</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form class="form" [formGroup]="form">
                                     <div class="modal-body">
@@ -164,77 +135,55 @@
                                         </div>
 
                                         <label class="small form-check-label mt-3">Institute</label>
-                                        <input type="text" formControlName="institute" class="form-control"
-                                            placeholder="EX: Mansoura university">
+                                        <input type="text" formControlName="institute" class="form-control" placeholder="EX: Mansoura university">
 
-                                        <div
-                                            *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.institute.hasError('required')">This field is
+                                        <div *ngIf="form.controls.institute.invalid && isLogged || (form.controls.institute.dirty || form.controls.institute.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('required')">This field is
                                                 required</small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.institute.hasError('minlength')">You should write
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('minlength')">You should write
                                                 more than 5 letter </small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.institute.hasError('maxlength')"> You can not write
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.institute.hasError('maxlength')"> You can not write
                                                 more than 255 letter</small>
 
                                         </div>
 
                                         <label class="small form-check-label mt-3">Area Of Study</label>
-                                        <input type="text" formControlName="area_of_study" name="area_of_study"
-                                            class="form-control" placeholder="EX:computer science">
-                                        <div
-                                            *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.area_of_study.hasError('required')">This field is
+                                        <input type="text" formControlName="area_of_study" name="area_of_study" class="form-control" placeholder="EX:computer science">
+                                        <div *ngIf="form.controls.area_of_study.invalid && isLogged || (form.controls.area_of_study.dirty || form.controls.area_of_study.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('required')">This field is
                                                 required</small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.area_of_study.hasError('minlength')">You should
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('minlength')">You should
                                                 write more than 5 letter </small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can not
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.area_of_study.hasError('maxlength')"> You can not
                                                 write more than 255 letter</small>
                                         </div>
 
                                         <label class="small form-check-label mt-3">Degree</label>
-                                        <input type="text" formControlName="degree" class="form-control"
-                                            placeholder="EX:Bachelor's">
-                                        <div
-                                            *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.degree.hasError('required')">This field is
+                                        <input type="text" formControlName="degree" class="form-control" placeholder="EX:Bachelor's">
+                                        <div *ngIf="form.controls.degree.invalid && isLogged || (form.controls.degree.dirty || form.controls.degree.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('required')">This field is
                                                 required</small>
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.degree.hasError('minlength')">You should write more
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.degree.hasError('minlength')">You should write more
                                                 than 4 letter </small>
                                         </div>
 
                                         <label class="small form-check-label mt-3">Start Date</label>
-                                        <input type="date" formControlName="start_date" name="start_date"
-                                            class="form-control">
-                                        <div
-                                            *ngIf="form.controls.start_date.invalid && isLogged || (form.controls.start_date.dirty || form.controls.start_date.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.start_date.hasError('required')">please select your
+                                        <input type="date" formControlName="start_date" name="start_date" class="form-control">
+                                        <div *ngIf="form.controls.start_date.invalid && isLogged || (form.controls.start_date.dirty || form.controls.start_date.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.start_date.hasError('required')">please select your
                                                 date </small>
                                         </div>
 
                                         <label class="small form-check-label mt-3">Graduation Date</label>
-                                        <input type="date" formControlName="graduation_date" name="graduation_date"
-                                            class="form-control">
-                                        <div
-                                            *ngIf="form.controls.graduation_date.invalid && isLogged || (form.controls.graduation_date.dirty || form.controls.graduation_date.touched)">
-                                            <small class="text-danger fw-bold mb-3"
-                                                *ngIf="form.controls.graduation_date.hasError('required')">please select
+                                        <input type="date" formControlName="graduation_date" name="graduation_date" class="form-control">
+                                        <div *ngIf="form.controls.graduation_date.invalid && isLogged || (form.controls.graduation_date.dirty || form.controls.graduation_date.touched)">
+                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.graduation_date.hasError('required')">please select
                                                 graduation date </small>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn" data-bs-dismiss="modal"
-                                            aria-label="Close">cancel</button>
-                                        <button type="submit" (click)="updateEducationData()" data-bs-dismiss="modal"
-                                            class="btn">Save</button>
+                                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">cancel</button>
+                                        <button type="submit" (click)="updateEducationData()" data-bs-dismiss="modal" class="btn">Save</button>
                                     </div>
                                 </form>
                             </div>
@@ -294,26 +243,6 @@
                     <div class="card-group ms-1 " id="am" *ngFor="let i of data;let index = index">
                         <div class="card">
                             <div>
-<<<<<<< HEAD
-                                <a routerLink="/freelancer/work/portfolios/show/{{ i.id }}">
-                                    <img src='{{ i.images[index].images_path }}' class="card-img-top ml-1" id="one"/>
-                                </a>
-                                <br>
-                                <div> <br>
-                                    <!-- <button type="button" class="me-2" data-bs-toggle="modal" data-bs-target="#exampleModal" id="three">
-                                        <i class="far fa-trash-alt"></i>
-                                    </button>
-
-                                    <button type="button" data-bs-toggle="modal" [attr.data-bs-target]="id" id="three">
-                                        <i class="fas fa-pencil-alt"></i>
-                                    </button> -->
-
-                                    <a class="btn btn-primary rounded-circle me-2" routerLink=""><i class="far fa-trash-alt"></i></a>
-                                    <a class="btn btn-primary rounded-circle me-2" routerLink="/freelancer/work/portfolios/edit/{{ i.id }}"><i class="fas fa-pencil-alt"></i></a>
-                                </div>
-
-                                <p class="card-text" id="two">{{i.title}}</p>
-=======
                                 <img src='{{ i.images[index].images_path }}' class="card-img-top ml-1" id="one"/>
                                 <br>
                                 <div> <br>
@@ -385,7 +314,6 @@
                 <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
->>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
 
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">Edit your portfolio</h5>
@@ -489,77 +417,77 @@
 </div>
 
 
-<div class="container Testimonials rounded mt-md-4">
-    <div class="row car">
-        <div class="col">
-            <div class="card ps-0 my-3">
-                <div class="card-header bg-transparent d-flex fw-bold">
-                    <h4>Testimonials </h4> <i class="fas fa-plus ii ms-auto"></i>
-                </div>
-                <div class="card-body ">
-                    <h5 class="card-title ">Showcase your skills with non-Upwork client testimonials
-                    </h5><br>
-                    <p class="card-text "><a href="">Request a testimonial</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- certifications -->
-
-<div class="container Certifications rounded mt-md-4">
-    <div class="row  car">
-        <div class="col">
-            <div class="card ps-0 my-3">
-                <div class="card-header bg-transparent d-flex fw-bold">
-                    <h4>Certifications </h4> <i class="fas fa-plus ii ms-auto"></i>
-                </div>
-                <div class="card-body ">
-                    <h5 class="card-title mt-md-5">Showcase your Certifications with your client
-                    </h5><br>
-                    <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Employment history -->
-
-<div class="container Employment history rounded mt-md-4">
-    <div class="row car">
-        <div class="col">
-            <div class="card ps-0 my-3">
-                <div class="card-header bg-transparent d-flex fw-bold">
-                    <h4>Employment history </h4> <i class="fas fa-plus ii ms-auto"></i>
-                </div>
-                <div class="card-body ">
-                    <h5 class="card-title mt-md-5">Showcase your Employment history with your client
-                    </h5><br>
-                    <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
+    <div class="container Testimonials rounded mt-md-4">
+        <div class="row car">
+            <div class="col">
+                <div class="card ps-0 my-3">
+                    <div class="card-header bg-transparent d-flex fw-bold">
+                        <h4>Testimonials </h4> <i class="fas fa-plus ii ms-auto"></i>
+                    </div>
+                    <div class="card-body ">
+                        <h5 class="card-title ">Showcase your skills with non-Upwork client testimonials
+                        </h5><br>
+                        <p class="card-text "><a href="">Request a testimonial</a></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-</div>
+    <!-- certifications -->
 
-<!-- Employment history -->
-
-<div class="container Other experiences rounded my-md-4">
-    <div class="row car">
-        <div class="col">
-            <div class="card ps-0 my-3">
-                <div class="card-header bg-transparent d-flex fw-bold">
-                    <h4>Other experiences </h4> <i class="fas fa-plus ii ms-auto"></i>
-                </div>
-                <div class="card-body ">
-                    <h5 class="card-title mt-md-5">Showcase your Other experiences with your client
-                    </h5><br>
-                    <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
+    <div class="container Certifications rounded mt-md-4">
+        <div class="row  car">
+            <div class="col">
+                <div class="card ps-0 my-3">
+                    <div class="card-header bg-transparent d-flex fw-bold">
+                        <h4>Certifications </h4> <i class="fas fa-plus ii ms-auto"></i>
+                    </div>
+                    <div class="card-body ">
+                        <h5 class="card-title mt-md-5">Showcase your Certifications with your client
+                        </h5><br>
+                        <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Employment history -->
+
+    <div class="container Employment history rounded mt-md-4">
+        <div class="row car">
+            <div class="col">
+                <div class="card ps-0 my-3">
+                    <div class="card-header bg-transparent d-flex fw-bold">
+                        <h4>Employment history </h4> <i class="fas fa-plus ii ms-auto"></i>
+                    </div>
+                    <div class="card-body ">
+                        <h5 class="card-title mt-md-5">Showcase your Employment history with your client
+                        </h5><br>
+                        <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Employment history -->
+
+    <div class="container Other experiences rounded my-md-4">
+        <div class="row car">
+            <div class="col">
+                <div class="card ps-0 my-3">
+                    <div class="card-header bg-transparent d-flex fw-bold">
+                        <h4>Other experiences </h4> <i class="fas fa-plus ii ms-auto"></i>
+                    </div>
+                    <div class="card-body ">
+                        <h5 class="card-title mt-md-5">Showcase your Other experiences with your client
+                        </h5><br>
+                        <!-- <p class="card-text "><a href="">Request a testimonial</a></p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
