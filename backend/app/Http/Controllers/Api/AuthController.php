@@ -74,7 +74,7 @@ class AuthController extends Controller
             // $user->save();
         }
         $user->save();
-        
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $data = [

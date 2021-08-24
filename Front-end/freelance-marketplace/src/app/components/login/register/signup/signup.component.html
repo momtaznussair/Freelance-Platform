@@ -1,169 +1,221 @@
 <section class="h-100">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col">
-                <div class="card card-registration my-4">
-                    <div class="row g-0">
-                        <div class="col-xl-6">
-                            <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg" alt="Sample photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6">
+              <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/img4.jpg"
+                alt="Sample photo" class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+            </div>
+
+            <div class="col-xl-6">
+
+              <form action="#" method="POST" [formGroup]="form" *ngIf="!isTokenFound">
+
+                <div class="card-body p-md-5 text-black">
+                  <h3 class="mb-5 text-uppercase fw-bold"> registration form</h3>
+
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label fw-bold" for="first_name">First name</label>
+                        <input type="text" name="first_name" class="form-control " formControlName="first_name" />
+                        <div
+                          *ngIf="form.controls.first_name.invalid && isLogged || (form.controls.first_name.dirty || form.controls.first_name.touched)">
+                          <small class="text-danger fw-bold mb-3"
+                            *ngIf="form.controls.first_name.hasError('required')">This field is required</small>
+                          <small class="text-danger fw-bold mb-3"
+                            *ngIf="form.controls.first_name.hasError('minlength')"> You should write more than three
+                            characters</small>
+                          <small class="text-danger fw-bold mb-3"
+                            *ngIf="form.controls.first_name.hasError('maxlength')"> You should write less than 250
+                            characters</small>
+                          <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('pattern')">
+                            You should to write valid text</small>
                         </div>
-
-                        <div class="col-xl-6">
-
-                            <form action="#" method="POST" [formGroup]="form" *ngIf="!isTokenFound">
-
-                                <div class="card-body p-md-5 text-black">
-                                    <h3 class="mb-5 text-uppercase fw-bold"> registration form</h3>
-
-                                    <div class="row">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <label class="form-label fw-bold" for="first_name">First name</label>
-                                                <input type="text" name="first_name" class="form-control " formControlName="first_name" />
-                                                <div *ngIf="form.controls.first_name.invalid && isLogged || (form.controls.first_name.dirty || form.controls.first_name.touched)">
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('required')">This field is required</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('minlength')"> You should write more than three characters</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('maxlength')"> You should write less than 250 characters</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.first_name.hasError('pattern')"> You should to write valid text</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="form-outline">
-                                                <label class="form-label fw-bold" for="last_name">Last name</label>
-                                                <input type="text" name="last_name" class="form-control " formControlName="last_name" />
-                                                <div *ngIf="form.controls.last_name.invalid && isLogged || (form.controls.last_name.dirty || form.controls.last_name.touched)">
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('required')">This field is required</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('minlength')"> You should write more than three characters</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('maxlength')"> You should write less than 250 characters</small>
-                                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('pattern')"> You should to write valid text</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label fw-bold" for="username">User Name</label>
-                                        <input type="text" name="username" class="form-control " formControlName="username" />
-                                        <div *ngIf="form.controls.username.invalid && isLogged || (form.controls.username.dirty || form.controls.username.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('required')">This field is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('minlength')"> You gen der.write more than three characters</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('maxlength')"> You should write less than 250 characters</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('pattern')"> You should to write valid text</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label fw-bold" for="email">Email</label>
-                                        <input type="email" name="email" class="form-control " formControlName="email" />
-                                        <div *ngIf="form.controls.email.invalid && isLogged || (form.controls.email.dirty || form.controls.email.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.email.hasError('required')">Email is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.email.hasError('email')">Invalid Email </small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.email.hasError('maxlength')"> this is big email</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-
-                                        <h6 class="mb-0 me-4 fw-bold">Gender: </h6>
-
-                                        <div class="form-check form-check-inline mb-0 me-4">
-                                            <input class="form-check-input" type="radio" name="gender" id="female" value="female" formControlName="gender" />
-                                            <label class="form-check-label" for="femaleGender">Female</label>
-                                        </div>
-
-                                        <div class="form-check form-check-inline mb-0 me-4">
-                                            <input class="form-check-input" type="radio" name="gender" id="male" value="male" formControlName="gender" />
-                                            <label class="form-check-label" for="maleGender">Male</label>
-                                        </div>
-                                        <div *ngIf="form.controls.gender.invalid && isLogged || (form.controls.gender.dirty || form.controls.gender.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.gender.hasError('required')"> Please select your gender</small>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label fw-bold" for="phone_number">Phone Number</label>
-                                        <input type="number" name="phone_number" class="form-control " formControlName="phone_number" />
-                                        <div *ngIf="form.controls.phone_number.invalid && isLogged || (form.controls.phone_number.dirty || form.controls.phone_number.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('required')">This field is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('minlength')"> You should write more than three characters</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('maxlength')"> You should write less than 250 characters</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('pattern')"> You should write valid number</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label fw-bold" for="password">password</label>
-                                        <input type="password" [(ngModel)]="password" name="password" class="form-control " formControlName="password" />
-                                        <div *ngIf="form.controls.password.invalid && isLogged || (form.controls.password.dirty || form.controls.password.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('required')">Password is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('minlength')">You have to write more than 8 characters</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('maxlength')">You have to write less than 15 characters</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('pattern')"> You should to write valid password</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label fw-bold" for="repeatPassword">repeat password </label>
-                                        <input type="password" [(ngModel)]="password_confirmation" name="password_confirmation" class="form-control " formControlName="password_confirmation" />
-                                        <div *ngIf="form.controls.password_confirmation.invalid && form.controls.password_confirmation.dirty || form.controls.password_confirmation.touched">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password_confirmation.hasError('required')">This field is required</small>
-                                            <small class="text-danger fw-bold mb-3" *ngIf="password != password_confirmation">You have to write similar password </small>
-                                        </div>
-                                    </div>
-
-                                    <div class="text-primary mt-3">
-                                        <!-- <input type="file" class="fw-bold" formControlName="img_link" name="img_link" (change)="uploadImage($event)"> -->
-                                        <input type="file" class="fw-bold" formControlName="img_link" name="img_link">
-                                    </div>
-
-                                    <div class="d-md-flex justify-content-start align-items-center mb-4 py-2 mt-3">
-
-                                        <!-- <h6 class="mb-0 me-4 fw-bold"></h6> -->
-
-                                        <div class="form-check form-check-inline mb-0 me-4">
-                                            <input class="form-check-input" type="radio" name="type" id="client" value="client" formControlName="type" />
-                                            <label class="form-check-label fw-bold" for="clientLogin">Hire for a project</label>
-                                        </div>
-
-                                        <div class="form-check form-check-inline mb-0 me-4">
-                                            <input class="form-check-input" type="radio" name="type" id="freelancer" value="freelancer" formControlName="type" />
-                                            <label class="form-check-label fw-bold" for="freelancerLogin">Work as a freelancer</label>
-                                        </div>
-
-                                        <div *ngIf="form.controls.type.invalid && isLogged || (form.controls.type.dirty || form.controls.type.touched)">
-                                            <small class="text-danger fw-bold mb-3" *ngIf="form.controls.type.hasError('required')"> Please select your account type</small>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="d-flex justify-content-end pt-1">
-                                        <button id="submit" type="submit" (click)="register();" class="fw-bold btn-lg ms-2 form-control" name="submit">Submit </button>
-                                    </div>
-
-                                </div>
-
-                            </form>
-
-                            <!-- if token found -->
-                            <div class="card-body p-md-5 text-black py-5" *ngIf="isTokenFound">
-                                <img src="assets/images/business-team-success-achievement-concept-vector-21618446.jpg" alt="Sample photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <p class="fw-bold h3">Tell us about what you want</p>
-                                <div class="client-login mt-5">
-                                    <button class=" btn form-control my-3 py-3" id="submit" (click)="becameClient()">Hire for a project</button>
-                                </div>
-                                <div class="freelancer-login">
-                                    <button class=" btn form-control my-3 py-3" id="submit" (click)="becameFreelancer()">Work as a freelancer</button>
-                                </div>
-                            </div>
-                        </div>
-
+                      </div>
                     </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline">
+                        <label class="form-label fw-bold" for="last_name">Last name</label>
+                        <input type="text" name="last_name" class="form-control " formControlName="last_name" />
+                        <div
+                          *ngIf="form.controls.last_name.invalid && isLogged || (form.controls.last_name.dirty || form.controls.last_name.touched)">
+                          <small class="text-danger fw-bold mb-3"
+                            *ngIf="form.controls.last_name.hasError('required')">This field is required</small>
+                          <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('minlength')">
+                            You should write more than three characters</small>
+                          <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('maxlength')">
+                            You should write less than 250 characters</small>
+                          <small class="text-danger fw-bold mb-3" *ngIf="form.controls.last_name.hasError('pattern')">
+                            You should to write valid text</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label fw-bold" for="username">User Name</label>
+                    <input type="text" name="username" class="form-control " formControlName="username" />
+                    <div
+                      *ngIf="form.controls.username.invalid && isLogged || (form.controls.username.dirty || form.controls.username.touched)">
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('required')">This
+                        field is required</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('minlength')"> You
+                        gen der.write more than three characters</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('maxlength')"> You
+                        should write less than 250 characters</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.username.hasError('pattern')"> You
+                        should to write valid text</small>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label fw-bold" for="email">Email</label>
+                    <input type="email" name="email" class="form-control " formControlName="email" />
+                    <div
+                      *ngIf="form.controls.email.invalid && isLogged || (form.controls.email.dirty || form.controls.email.touched)">
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.email.hasError('required')">Email is
+                        required</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.email.hasError('email')">Invalid
+                        Email </small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.email.hasError('maxlength')"> this is
+                        big email</small>
+                    </div>
+                  </div>
+
+                  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                    <h6 class="mb-0 me-4 fw-bold">Gender: </h6>
+
+                    <div class="form-check form-check-inline mb-0 me-4">
+                      <input class="form-check-input" type="radio" name="gender" id="female" value="female"
+                        formControlName="gender" />
+                      <label class="form-check-label" for="femaleGender">Female</label>
+                    </div>
+
+                    <div class="form-check form-check-inline mb-0 me-4">
+                      <input class="form-check-input" type="radio" name="gender" id="male" value="male"
+                        formControlName="gender" />
+                      <label class="form-check-label" for="maleGender">Male</label>
+                    </div>
+                    <div
+                      *ngIf="form.controls.gender.invalid && isLogged || (form.controls.gender.dirty || form.controls.gender.touched)">
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.gender.hasError('required')"> Please
+                        select your gender</small>
+                    </div>
+
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label fw-bold" for="phone_number">Phone Number</label>
+                    <input type="number" name="phone_number" class="form-control " formControlName="phone_number" />
+                    <div
+                      *ngIf="form.controls.phone_number.invalid && isLogged || (form.controls.phone_number.dirty || form.controls.phone_number.touched)">
+                      <small class="text-danger fw-bold mb-3"
+                        *ngIf="form.controls.phone_number.hasError('required')">This field is required</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('minlength')">
+                        You should write more than three characters</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('maxlength')">
+                        You should write less than 250 characters</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.phone_number.hasError('pattern')">
+                        You should write valid number</small>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label fw-bold" for="password">password</label>
+                    <input type="password" [(ngModel)]="password" name="password" class="form-control "
+                      formControlName="password" />
+                    <div
+                      *ngIf="form.controls.password.invalid && isLogged || (form.controls.password.dirty || form.controls.password.touched)">
+                      <small class="text-danger fw-bold mb-3"
+                        *ngIf="form.controls.password.hasError('required')">Password is required</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('minlength')">You
+                        have to write more than 8 characters</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('maxlength')">You
+                        have to write less than 15 characters</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.password.hasError('pattern')"> You
+                        should to write valid password</small>
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <label class="form-label fw-bold" for="repeatPassword">repeat password </label>
+                    <input type="password" [(ngModel)]="password_confirmation" name="password_confirmation"
+                      class="form-control " formControlName="password_confirmation" />
+                    <div
+                      *ngIf="form.controls.password_confirmation.invalid && form.controls.password_confirmation.dirty || form.controls.password_confirmation.touched">
+                      <small class="text-danger fw-bold mb-3"
+                        *ngIf="form.controls.password_confirmation.hasError('required')">This field is required</small>
+                      <small class="text-danger fw-bold mb-3" *ngIf="password != password_confirmation">You have to
+                        write similar password </small>
+                    </div>
+                  </div>
+
+                  <div class="text-primary mt-3">
+                    <!-- <input type="file" class="fw-bold" formControlName="img_link" name="img_link" (change)="uploadImage($event)"> -->
+                    <!-- <input type="file" class="fw-bold" formControlName="img_link" name="img_link"> -->
+                    <input formControlName="file" id="file" type="file" class="form-control" (change)="onFileChange($event)">
+                  </div>
+
+                  <div class="d-md-flex justify-content-start align-items-center mb-4 py-2 mt-3">
+
+                    <!-- <h6 class="mb-0 me-4 fw-bold"></h6> -->
+
+                    <div class="form-check form-check-inline mb-0 me-4">
+                      <input class="form-check-input" type="radio" name="type" id="client" value="client"
+                        formControlName="type" />
+                      <label class="form-check-label fw-bold" for="clientLogin">Hire for a project</label>
+                    </div>
+
+                    <div class="form-check form-check-inline mb-0 me-4">
+                      <input class="form-check-input" type="radio" name="type" id="freelancer" value="freelancer"
+                        formControlName="type" />
+                      <label class="form-check-label fw-bold" for="freelancerLogin">Work as a freelancer</label>
+                    </div>
+
+                    <div
+                      *ngIf="form.controls.type.invalid && isLogged || (form.controls.type.dirty || form.controls.type.touched)">
+                      <small class="text-danger fw-bold mb-3" *ngIf="form.controls.type.hasError('required')"> Please
+                        select your account type</small>
+                    </div>
+
+                  </div>
+
+                  <div class="d-flex justify-content-end pt-1">
+                    <button id="submit" type="submit" (click)="register();" class="fw-bold btn-lg ms-2 form-control"
+                      name="submit">Submit </button>
+                  </div>
+
                 </div>
+
+              </form>
+
+              <!-- if token found -->
+              <div class="card-body p-md-5 text-black py-5" *ngIf="isTokenFound">
+                <img src="assets/images/business-team-success-achievement-concept-vector-21618446.jpg"
+                  alt="Sample photo" class="img-fluid"
+                  style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p class="fw-bold h3">Tell us about what you want</p>
+                <div class="client-login mt-5">
+                  <button class=" btn form-control my-3 py-3" id="submit" (click)="becameClient()">Hire for a
+                    project</button>
+                </div>
+                <div class="freelancer-login">
+                  <button class=" btn form-control my-3 py-3" id="submit" (click)="becameFreelancer()">Work as a
+                    freelancer</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>

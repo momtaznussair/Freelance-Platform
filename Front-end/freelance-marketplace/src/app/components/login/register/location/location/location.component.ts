@@ -197,9 +197,9 @@ export class LocationComponent implements OnInit {
             }
             else
             {
-              this.router.navigateByUrl('/user/signup/register');
+              // this.router.navigateByUrl('/user/signup/register');
               alert(this.response_data.msg.email);
-              localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
+              // localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
             }
 
 
