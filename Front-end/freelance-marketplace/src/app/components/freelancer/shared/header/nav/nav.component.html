@@ -13,9 +13,9 @@
                 <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2  mb-lg-0">
                               <!-- search -->
-            <form class="d-flex mt-1">
+            <!-- <form class="d-flex mt-1" > -->
                 <div class="btn-group">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                    <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
 
                     <!-- search type dropdown -->
                     <ul class="dropdown-menu mt-2 ms-3">
@@ -28,7 +28,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item" [routerLink]="['/freelancer/work/filter-jobs','5']" (click)="jobs()">
+                            <a class="dropdown-item"  (click)="jobs()">
                                 <span class="fa fa-briefcase me-3" style="font-size:24px"></span> Jobs
                             </a>
                         </li>
@@ -36,9 +36,9 @@
                 </div>
                 <!--end  search type  dropdown-->
                 <!-- search box -->
-                <input class="form-control me-2 rounded-pill" type="search" [placeholder]="x" aria-label="Search">
+                <input class="form-control me-2 rounded-pill" #inptnav  type="search" (keyup.enter)="search(inptnav.value)" [placeholder]="x" aria-label="Search" >
                 <button class="fa fa-search border-0 bg-transparent"></button>
-            </form>
+            <!-- </form> -->
             <!-- end of search -->
 
                         <!-- Start Find Work -->
@@ -156,7 +156,7 @@
                                                 <img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt="">
                                             
                                                 <div class="d-flex flex-column justify-content-center">
-                                                <div class="font-weight-bold font-size-14">Omar Badr</div>
+                                                <div class="font-weight-bold font-size-14">{{userName}}</div>
                                                 <div class="font-size-10"><small>Freelancer</small></div>
                                             </div>
                                             </a>

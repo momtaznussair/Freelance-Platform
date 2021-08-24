@@ -17,7 +17,7 @@ export class FilterJobsComponent implements OnInit {
 
   // filters
   category : string[] = []; //[]
-  experience : string[] = ['entry', 'expert'];
+  experience : string[] = ['entry','intrmediate', 'expert'];
   payement_style : string[] = [];
   nOfProposals : string[]  = [];
   
@@ -27,8 +27,7 @@ export class FilterJobsComponent implements OnInit {
   shape2='fa-chevron-down';
   shape3='fa-chevron-down';
   shape4='fa-chevron-down';
-  count = 0;
-  currentIndex:number=0;
+
   cat :Category[]=[];
   constructor(private catService: CategoryService,private job:JobService, private activatedRoute: ActivatedRoute) { }
 
@@ -47,17 +46,19 @@ export class FilterJobsComponent implements OnInit {
   this.urlQuery=this.activatedRoute.snapshot.params.query;
   this.query=this.urlQuery;
   }
-  search(){console.log(this.query)}
+  // search(){
+    // console.log(this.query)
+  // }
 
 
  jobPost:any;
   fetchJobs(): void {
-  
+  // get jobs
       this.job.getJobs().subscribe(response=>{
         this.jobPost=response['data'] as Job;
     console.log(this.jobPost)
       },error=>console.error);
-      ///////////
+ // get categories 
     this.catService .getCategories('categories').subscribe(response=>{
       this.cat=response ['data'] as Category[];
       console.log(this.cat)
@@ -159,6 +160,9 @@ export class FilterJobsComponent implements OnInit {
     console.log(this.selectedArr)
     }
   
+
+ 
+  
   /*-------------------------
      change icon methods 
   -------------------------- */ 
@@ -205,6 +209,8 @@ export class FilterJobsComponent implements OnInit {
   -------------------------- */ 
   page=1;
   tableSize=7;
+  count = 0;
+  currentIndex:number=0;
   onTableDataChange(event:any){
     this.page = event;
     this.fetchJobs();
@@ -216,3 +222,10 @@ export class FilterJobsComponent implements OnInit {
     this.fetchJobs();
   }  
 }
+
+
+
+
+   
+
+  

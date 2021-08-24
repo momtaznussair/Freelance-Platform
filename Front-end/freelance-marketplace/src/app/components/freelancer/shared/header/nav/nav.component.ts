@@ -8,10 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  x='search';
+  x='search in freelancers';
   constructor(private userService : UserService , private router:Router) { }
-
+userName:any
+userData:any;
+currentUserData:any
   ngOnInit(): void {
+    this.currentUserData = localStorage.getItem('user_data');
+  this.userData=JSON.parse(this.currentUserData)
+  this.userName=`${this.userData.first_name} ${this.userData.last_name}`;
+   
+// console.log(this.userData)
+
   }
   setting(){
     this.router.navigateByUrl("/freelancer/settings/info");
@@ -22,14 +30,31 @@ export class NavComponent implements OnInit {
   }
   freelancer(){
  
-    this.x="search in freelancer";
-    this.router.navigateByUrl("/freelancers");
+     this.x="search in freelancers";
+     this.searchFlag=true;
   }
 
   jobs(){
    
     this.x="search in jobs";
-    // this.router.navigateByUrl("/jobs");
+    this.searchFlag=false;
+  }
+  searchFlag:boolean=true; //jobs
+  Url:string='';
+
+  search(searchKeyword:string){
+    
+   if(this.searchFlag) //search in freelancers
+   {
+     this.Url=`freelancers/${searchKeyword}`
+  
+
+   }else //search in jobs
+   {
+     this.Url=`/freelancer/work/filter-jobs/${searchKeyword}`;
+  
+   }
+   this.router.navigateByUrl(this.Url);
   }
 
 }
