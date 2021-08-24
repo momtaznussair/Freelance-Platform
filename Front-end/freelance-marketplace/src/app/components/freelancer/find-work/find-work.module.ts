@@ -27,6 +27,7 @@ const routes : Routes = [
   {path : 'submit-proposal/:id' , component :SubmitProposalComponent},
   {path : 'work/details/:id' , component :JobDetailsComponent},
   {path : 'filter-jobs' , component :FilterJobsComponent},
+<<<<<<< HEAD
   // {path : 'filter' , component :FilterJobsComponent},
   {path:'', component:FindWorkComponent},
 
@@ -35,6 +36,11 @@ const routes : Routes = [
     loadChildren: () => import('./portfolio/portfolio.module').then(m => m.PortfolioModule)
   }
 
+=======
+  {path : 'filter-jobs/:query' , component :FilterJobsComponent},
+  // {path : 'filter' , component :FilterJobsComponent},
+  {path:'', component:FindWorkComponent},
+>>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
 ]
 
 @NgModule({

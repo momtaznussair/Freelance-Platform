@@ -12,8 +12,15 @@ import { JobService } from 'src/app/services/job.service';
 })
 export class FilterJobsComponent implements OnInit {
   r:any;
-  query:any;
-    
+  query:any; // search term
+
+  // filters
+  category : string[] = []; //[]
+  experience : string[] = ['entry', 'expert'];
+  payement_style : string[] = [];
+  nOfProposals : string[]  = [];
+  
+  //filters icons
   shape0='fa-chevron-down';
   shape1='fa-chevron-down';
   shape2='fa-chevron-down';

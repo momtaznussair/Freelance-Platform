@@ -234,6 +234,7 @@ Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPass
 
 
 Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);
+<<<<<<< HEAD
 Route::get('/home', function () {
     return "billing portal finished";
 })->name('home');
@@ -251,3 +252,5 @@ Route::get('/terms', function () {
 Route::post('/freelancer/updateJobTitle/{id}',[FreelancerController::class,'updateFreelancerTitle']);
 Route::post('/freelancer/updateOverview/{id}',[FreelancerController::class,'updateFreelancerOverview']);
 Route::post('/freelancer/updateHourlyRate/{id}',[FreelancerController::class,'updateFreelancerHourly']);
+=======
+>>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79

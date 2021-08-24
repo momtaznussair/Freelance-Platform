@@ -96,7 +96,11 @@ export class SignupComponent implements OnInit {
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
       password_confirmation : ['' , [Validators.required ]],
       // img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
+<<<<<<< HEAD
       file : ['', [Validators.required]],
+=======
+      img_link : [null, []],
+>>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
       type:['' , [Validators.required]],
 
 
@@ -132,7 +136,11 @@ export class SignupComponent implements OnInit {
   isLogged : boolean = false;
 
   register(){
+<<<<<<< HEAD
     console.log(this.form.value)
+=======
+    console.log(this.file)
+>>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
     if(this.form.valid && this.password == this.password_confirmation)
     {
       console.log(this.form.value);

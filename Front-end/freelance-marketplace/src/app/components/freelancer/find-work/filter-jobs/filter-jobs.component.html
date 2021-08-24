@@ -14,7 +14,7 @@
 
 <div class="border-top">
     <div class="card1 p-2">
-        <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeCategoryIcon() "
+        <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeCategoryIcon()"
         data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false"
          aria-controls="collapseExample0">
         
@@ -66,17 +66,29 @@
                         <div class="mt-10">
                             <fieldset>
                                 <div class="up-checkbox ">
+<<<<<<< HEAD
                                     <input type="checkbox" (click)="addParams($event)" value="Entry">
+=======
+                                    <input type="checkbox" value="Entry">  <!--[(ngModel)]="experience[0].selected"-->
+>>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
                                             Entry Level - $
                                     <small  class="text-muted">(1)</small> 
                                 </div>
                                 <div class="up-checkbox ">
+<<<<<<< HEAD
                                     <input type="checkbox" (click)="addParams($event)" value="intermediate">
+=======
+                                    <input type="checkbox" value="intermediate"> <!-- [(ngModel)]="experience[1].selected" -->
+>>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
                                             Intermediate - $$
                                     <small  class="text-muted">(5)</small> 
                                 </div>
                                 <div class="up-checkbox ">
+<<<<<<< HEAD
                                     <input type="checkbox" (click)="addParams($event)" value="expert">
+=======
+                                    <input type="checkbox"  value="expert"> <!--[(ngModel)]="experience[2].selected"-->
+>>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
                                            Expert - $$$
                                     <small  class="text-muted">(25)</small> 
                                 </div>
@@ -154,7 +166,6 @@
 
     </div>
  </div>
-
 
 <!----------------------Start Number of Porposals------------------------------------------->
 <div class="border-top">
@@ -282,7 +293,7 @@
 
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
                 <div class="card-body"  *ngFor="let post of jobPost  
-                | searchFilter:query
+                | searchFilter:query | filterJobs:null:null:null:0
                 |paginate : {
                     itemsPerPage: 5,
                     currentPage: page,
