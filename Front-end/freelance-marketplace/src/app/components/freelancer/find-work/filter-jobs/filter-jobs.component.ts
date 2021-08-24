@@ -15,11 +15,7 @@ export class FilterJobsComponent implements OnInit {
   r:any;
   query:any; // search term
 
-  // filters
-  category : string[] = []; //[]
-  experience : string[] = ['entry','intrmediate', 'expert'];
-  payement_style : string[] = [];
-  nOfProposals : string[]  = [];
+
   
   //filters icons
   shape0='fa-chevron-down';
@@ -28,7 +24,7 @@ export class FilterJobsComponent implements OnInit {
   shape3='fa-chevron-down';
   shape4='fa-chevron-down';
 
-  cat :Category[]=[];
+  cat :any[]=[];
   constructor(private catService: CategoryService,private job:JobService, private activatedRoute: ActivatedRoute) { }
 
 
@@ -39,7 +35,7 @@ export class FilterJobsComponent implements OnInit {
   getSelecteditem(){
     this.radioSel = this.cat.find(Item => Item.name === this.radioSelected);
     this.radioSelectedString = JSON.stringify(this.radioSel);
-    console.log(this.radioSelectedString)
+    // console.log(this.radioSelectedString)
   }
   ngOnInit(): void {
     this.fetchJobs();
@@ -52,6 +48,7 @@ export class FilterJobsComponent implements OnInit {
 
 
  jobPost:any;
+  Categories:any;
   fetchJobs(): void {
   // get jobs
       this.job.getJobs().subscribe(response=>{
@@ -60,8 +57,12 @@ export class FilterJobsComponent implements OnInit {
       },error=>console.error);
  // get categories 
     this.catService .getCategories('categories').subscribe(response=>{
-      this.cat=response ['data'] as Category[];
-      console.log(this.cat)
+      // this.cat=response ['data'] as Category[];
+      this.cat=response ['data'] 
+     this.Categories =this.cat
+    for(let category of this.cat){
+      category.selected=false
+    }
     }
     )
   }
@@ -69,99 +70,36 @@ export class FilterJobsComponent implements OnInit {
    /*------------------------------
       add filters to array params
   --------------------------------*/
-  params=[
-    {
-    name:'Entry',
-    selected:false
-  },
-  {
-    name:'intermediate',
-    selected:false
-  },
-  {
-    name:'expert',
-    selected:false
-  },
-  {
-    name:'hourly',
-    selected:false
-  },
-  {
-    name:'fixed',
-    selected:false
-  },
-  {
-    name:'0',
-    selected:false
-  },
-  {
-    name:'5',
-    selected:false
-  },
-  {
-    name:'10',
-    selected:false
-  },
-  {
-    name:'15',
-    selected:false
-  },
-  {
-    name:'20',
-    selected:false
-  },
-  {
-    name:'p0',
-    selected:false
-  },
-  {
-    name:'p5',
-    selected:false
-  },
-  {
-    name:'p10',
-    selected:false
-  },
-  {
-    name:'p15',
-    selected:false
-  },
-  {
-    name:'p20',
-    selected:false
-  }
-  ]
-  selectedArr=[{name:'',selected:false}]
-  addParams(e:any){
-    for (let i = 0; i < this.params.length; i++)
-    {
-      if(this.params[i].name == e.target.value &&this.params[i].selected==false)
-      {
-        this.params[i].selected=true
-      }
-    }
-  this.selectedArr= this.params.filter(item => item.selected);
-  
-  console.log(this.selectedArr)
- 
-  }
-    addCat(e:any){
-      for (let i = 0; i < this.selectedArr.length; i++)
-      {
-        if(this.selectedArr[i].name == e.target.value &&this.selectedArr[i].selected==false)
-        {
-          this.selectedArr[i].selected=true
-        }
-      }
-    this.selectedArr.push({
-      name:e.target.value,
-      selected:true
-    })
-    console.log(this.selectedArr)
-    }
-  
 
- 
+  // filters
+  // categories:any = this.cat.map((c)=>{c.selected=false}); 
+//  this.cat.forEach((element:any) => {element.selected=false});
+
+  experience  = [{name:'entry',selected:false},{name:'intermediate',selected:false},{name:'expert',selected:false}];
+  payment_style  = [{name:'fixed',selected:false},{name:'hourly',selected:false}];
+  payment_amountRange={min:0,max:0};
+  nOfProposals ={min:0,max:0};
+
+selectCategory(input:any){
+  let index=this.Categories.findIndex((element: { name: any; })=>element.name==input.value);
+  this.Categories[index].selected=! this.Categories[index].selected;
+}
+experienceLevel(input:any){
+  let index=this.experience.findIndex((level)=>level.name==input.value);
+  this.experience[index].selected=! this.experience[index].selected;
+}
+paymentStyle(input:any){
+  let index=this.payment_style.findIndex((level)=>level.name==input.value);
+  this.payment_style[index].selected=! this.payment_style[index].selected;
+}
+paymentAmount(min:any,max:any){
+this.payment_amountRange.min=min;
+this.payment_amountRange.max=max;
+}
+selectNOfProposals(min:any,max:any){
+  this.nOfProposals.min=min;
+  this.nOfProposals.max=max;
+}
   
   /*-------------------------
      change icon methods 

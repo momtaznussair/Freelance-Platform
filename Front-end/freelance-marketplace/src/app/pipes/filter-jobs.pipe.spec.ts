@@ -1,4 +1,4 @@
-import { filterJobs } from './filter-jobs';
+import { filterJobs } from './filter-jobs.pipe';
 
 describe('filterJobs', () => {
   it('create an instance', () => {

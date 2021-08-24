@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 // import { NavComponent } from '../shared/header/nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import { searchFilter } from 'src/app/pipes/search-filter.pipe';
-import { filterJobs } from 'src/app/pipes/filter-jobs';
+import { filterJobs } from 'src/app/pipes/filter-jobs.pipe';
 
 const routes : Routes =[
 
