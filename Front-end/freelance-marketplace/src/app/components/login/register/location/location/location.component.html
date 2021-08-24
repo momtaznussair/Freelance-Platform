@@ -26,8 +26,7 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-9" *ngIf="isLocationGet">
                     <select formControlName="country" #s (change)="selectCountry(s.value)" class="form-select form-select-sm " aria-label=".form-select-sm example">
-                      <!-- <option >Open this select menu</option> -->
-
+                  
                            <option   [value]="item.country_name" *ngFor="let item of arrayOfCountries" >{{item.country_name}}</option>
 
                     </select>
@@ -71,7 +70,7 @@
                             <div *ngIf="form.controls.city.invalid && isLogged || (form.controls.city.dirty || form.controls.city.touched)">
 
                                 <small class="text-danger mx-3 my-2 fw-bold mb-3" *ngIf="form.controls.city.hasError('required')">This field is required</small>
-                                <br></div><br>
+                                </div><br>
                         </div>
                     </div>
                 </div>
@@ -86,9 +85,8 @@
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.street.hasError('required')">This field is required</small>
                     </div>
                     <br>
-                </div> <br>
+                </div> 
 
-                <br>
                 <h3>ZIP/Postal Code</h3>
                 <input id="two" formControlName="zip_code" type="number" class="form-control col-lg-4 col-md-6 col-sm-6">
                 <div *ngIf="form.controls.zip_code.invalid && isLogged || (form.controls.zip_code.dirty || form.controls.zip_code.touched)">

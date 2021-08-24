@@ -7,7 +7,7 @@ import { Pipe, PipeTransform, Injectable } from "@angular/core";
 @Injectable()
 export class filterJobs implements PipeTransform {
   
-  transform(jobs: any, category: any []|null , paymentStyle: any [] |null, experienceLevel:any []|null , nOfPoroposals : number[] |null): any {
+  transform(jobs: any, category: any []|null , paymentStyle: any [] |null, experienceLevel:any []|null , nOfPoroposals : {min:number,max:number} |null): any {
       //return the origin jobs if it's empty of not filter is selected
     if (! jobs || (! category && ! paymentStyle && ! experienceLevel && ! nOfPoroposals))
     {
@@ -25,7 +25,7 @@ export class filterJobs implements PipeTransform {
       })
        jobs = jobs.filter((job:any) =>{
          for(let i=0; i< cats.length;i++){
-          if(cats[i]== job.category)    return job;console.log(job)
+          if(cats[i]== job.category)    return job;
          }
            
                })
@@ -41,7 +41,7 @@ export class filterJobs implements PipeTransform {
             Styles.push(Style.name);
           }
        })
-       console.log(Styles)
+      //  console.log(Styles)
         jobs = jobs.filter((job:any) =>{
            if(Styles[0]== job.payment_style)    return job;
            if(Styles[1]== job.payment_style)    return job; 
@@ -60,19 +60,22 @@ export class filterJobs implements PipeTransform {
           }
        })
         jobs = jobs.filter((job:any) =>{
-           if(levels[0]== job.experience)    return job;console.log(job)
-           if(levels[1]== job.experience)    return job; console.log(job)
-           if(levels[2]== job.experience)    return job;  console.log(job) 
+               if (levels[0]== job.experience)    return job;
+           else if(levels[1]== job.experience)    return job;
+           else if(levels[2]== job.experience)    return job;  
+          //  else return job;
                 })
+        
               
     }
 
     // number of proposals filter
     if (nOfPoroposals)
     {
-        jobs = jobs.filter((job:any) =>
-                job.proposals_number === nOfPoroposals
-            );
+        jobs = jobs.filter((job:any) =>{
+          if(( job.proposals_number< nOfPoroposals.max)&&( job.proposals_number> nOfPoroposals.min)) { return job;}
+               
+         } )
     }
 
     return jobs;
