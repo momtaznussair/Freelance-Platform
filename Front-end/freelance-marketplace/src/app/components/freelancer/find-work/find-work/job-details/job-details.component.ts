@@ -37,20 +37,10 @@ client_id:any;
       console.log(this.clients);
       this.isDataGet=true;
 
-      //client====
-      // this.client.getClient(this.client_id).subscribe(res=>{
-      //   this.clients=res.data;
-      //   console.log(this.clients);
-      // },error=>console.error);
-      //====
+
     },error=>console.error);
 
-    //getclient
-  // this.client.getClient(this.client_id).subscribe(res=>{
-  //   this.clients=res.data;
-  //   console.log(this.clients);
-  // },error=>console.error);
-  
+
   
   }
   submitproposal(){
