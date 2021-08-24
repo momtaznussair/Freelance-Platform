@@ -20,16 +20,52 @@ export class NavComponent implements OnInit {
   logout(){
     this.userService.logout()
   }
-  freelancer(){
+  // freelancer(){
+ 
+  //   this.x="search in freelancer";
+  //   this.router.navigateByUrl("/freelancers");
+  // }
+
+  // jobs(){
+   
+  //   this.x="search in jobs";
+  //   // this.router.navigateByUrl("/jobs");
+  // }
+
+
+ freelancer(){
  
     this.x="search in freelancer";
-    this.router.navigateByUrl("/freelancers");
-  }
+    this.searchFlag=true;
+ }
 
-  jobs(){
+ jobs(){
+  
+   this.x="search in jobs";
+   this.searchFlag=false;
+ }
+ searchFlag:boolean=true; //jobs
+ Url:string='';
+
+ search(searchKeyword:string){
    
-    this.x="search in jobs";
-    // this.router.navigateByUrl("/jobs");
+  if(this.searchFlag) //search in freelancers
+  {
+    this.Url=`/freelancers/${searchKeyword}`
+    console.log(this.Url)
+    alert('hi from freelancers');
+
+  }else //search in jobs
+  {
+    this.Url=`/filter-jobs/${searchKeyword}`;
+    console.log(this.Url)
+    alert('hi from jobs')
+
+
   }
+ //  this.router.navigateByUrl(this.Url);
+ }
+
+}
 
 }

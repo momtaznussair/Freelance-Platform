@@ -9,7 +9,6 @@ use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use App\Models\Client;
@@ -28,7 +27,7 @@ class AuthController extends Controller
             'email' => ['required','email','unique:users,email','max:255'],
             'password' => ['required', 'string', 'min:8','max:255', 'confirmed'],
             'gender' => 'required|in:male,female',
-            'img_link' => 'nullable|image|mimes:png,jpg',
+            'img_link' => 'required|image|mimes:png,jpg',
             'phone_number' => 'min:11|numeric',
             'country' => 'required',
             'city' => 'required',
@@ -60,19 +59,10 @@ class AuthController extends Controller
 
         if ($request->hasFile('img_link'))
         {
-            $user_image = request('img_link');
-            $user_image_new_name = time() . $user_image->getClientOriginalName();
-            $user_image->move('uploads/users', $user_image_new_name);
-            $user->img_link = 'uploads/users/' . $user_image_new_name;
-
-            // $path = Storage::putFile('users', $request->file('img_link'));
-            // $user->img_link = $request->$path;
-
-            // Storage::putFile('users', $request->file('img_link'));
-            // $user->img_link = $request->img_link;
-
-            // $user->save();
+            $path = Storage::putFile('users', $request->file('img_link'));
+            $user->img_link = $path;
         }
+
         $user->save();
         
         $token = $user->createToken('auth_token')->plainTextToken;

@@ -29,8 +29,10 @@ export class FilterJobsComponent implements OnInit {
   shape4='fa-chevron-down';
   count = 0;
   currentIndex:number=0;
-  cat :Category[]=[];
-  constructor(private catService: CategoryService,private job:JobService, private activatedRoute: ActivatedRoute) { }
+  constructor(private catService: CategoryService,private job:JobService, private activatedRoute: ActivatedRoute) { 
+    cat :Category[]=[];
+
+  }
 
 
   radioSelected:any
