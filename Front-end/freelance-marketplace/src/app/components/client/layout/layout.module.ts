@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // import { NavComponent } from './header/nav/nav.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { ClientnavComponent} from './clientnav/clientnav.component';
+import { ClientnavComponent} from './clientnav.component';
 
 
 const routes : Routes =[
@@ -21,4 +21,4 @@ const routes : Routes =[
     ClientnavComponent,
   ]
 })
-export class SharedModule { }
+export class LayoutModule { }

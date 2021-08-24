@@ -7,7 +7,7 @@ import { ReportsModule } from '../client/reports/reports.module';
 import { MessagesModule } from './messages/messages.module';
 import { ClientSettingModule } from './client-setting/client-setting.module';
 import { MainComponent } from './main/main.component';
-import { SharedModule } from '../shared/shared.module';
+import { LayoutModule } from './layout/layout.module';
 
 
 const routes : Routes = [
@@ -47,7 +47,7 @@ const routes : Routes = [
     MainComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule
+    CommonModule,RouterModule.forChild(routes),LayoutModule
   ],
   exports : [
     JobsModule, TalentModule , ReportsModule,MessagesModule,ClientSettingModule
