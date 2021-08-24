@@ -12,17 +12,40 @@ import { CompanyService } from 'src/app/services/company.service';
 })
 export class CreatClientAccountComponent implements OnInit {
   form:FormGroup=new FormGroup({});
+  user_id:any;
+  // fulldate= new Date();
+  // year=this.fulldate.getFullYear();
+  // month=this.fulldate.getMonth();
+  // day=this.fulldate.getDay();
+  // registration_date=this.year+'-'+this.month+'-'+this.day;
   constructor( private comp:CompanyService,private router:Router,private _formBuilder:FormBuilder ) { }
-  company:any;
+  company:any[]=[];
   ngOnInit(): void {
+    this.user_id = localStorage.getItem('user_id');
+    console.log(this.user_id );
+    // console.log(this.registration_date );
+    // this.registration_date = localStorage.getItem('registration_date');
+
     this.form=this._formBuilder.group({
-      comp_name:['',[Validators.required,Validators.minLength(5)]]
-    })
+      company_name:['',[Validators.required,Validators.minLength(5)]],
+      user_id:[this.user_id],
+      // registration_date:[this.registration_date]
+    });
+   
+    // this.company.push(this.user_id);
+
+    // this.registration_date = localStorage.getItem('registration_date');
+    // this.company.push(this.registration_date);
+
+
   }
   islogged:boolean=false;
   addcompany(){
     if (this.form.valid){
       this.company=this.form.value;
+
+   
+
       console.log(this.company);
       this.comp.post(`clients`,this.company).subscribe(res=>{
         console.log(res);
@@ -31,19 +54,6 @@ export class CreatClientAccountComponent implements OnInit {
       this.islogged=true;
     }
 
-
-
-    // if(this.validateInput(name)){
-    //     // this.Router.navigate(['/setting/client-account']);
-
-    // }else{
-    //   let company:Company=new Company();
-    //   company.name=name;
-    //   this._apiservice.post("",company).subscribe(Response=>{
-    //     console.log(Response);
-    //   },error=>console.error);
-    //   this.router.navigateByUrl('/setting/client-account');
-    // }
 
 
   }

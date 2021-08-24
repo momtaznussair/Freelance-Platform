@@ -60,7 +60,9 @@ client_id:any;
       },erroe=>{console.error()}
       
       );
-      this.router.navigate(['/freelancer/work/details',this.id]);
+    
+    this.router.navigateByUrl(`freelancer/submit-proposal/${this.id}`);
+
   }
 
 }

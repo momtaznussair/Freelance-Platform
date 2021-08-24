@@ -5,6 +5,12 @@ h4{
     background-color: var(--mc);
   
 }
+.btn2{
+    border: none;
+    background-color: white;
+    color: var(--mc);
+    font-size: 1.5rem;
+}
 input{
     width: 50%;
 }

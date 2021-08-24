@@ -18,22 +18,25 @@
                 </div> -->
                 
             <label class="form-label">Company Name</label>
-            <input type="text" formControlName="comp_name" name="comp_name" class="form-control">
+            <input type="text" formControlName="company_name" name="company_name" class="form-control">
             <div
-            *ngIf="form.controls.comp_name.invalid && islogged || (form.controls.comp_name.dirty || form.controls.comp_name.touched)">
+            *ngIf="form.controls.company_name.invalid && islogged || (form.controls.company_name.dirty || form.controls.company_name.touched)">
             <small class="text-danger fw-bold mb-3"
-                *ngIf="form.controls.comp_name.hasError('required')">This field is
-                required</small>
-            <small class="text-danger fw-bold mb-3"
-                *ngIf="form.controls.comp_name.hasError('minlength')">You should write
-                more than 5 letter </small>
+                *ngIf="form.controls.company_name.hasError('maxlingth')">You should write
+                less than 255 letter</small>
+         `   <small class="text-danger fw-bold mb-3"
+                *ngIf="form.controls.company_name.hasError('minlength')">You should write
+                more than 3 letter </small>
         </div>
-          
+
+        <input type="text" formControlName="user_id" name="user_id" hidden >
+
             <!-- <span>Your company name will NOT appear on job posts unless you have previously worked with the talent or agency on Upwork.</span> -->
             <hr class="mt-5">
             <div class="row mb-3">
                 <div class="col d-flex justify-content-end">
-                    <button  type="submit" class="btn btn-primary rounded-pill "  (click)="addcompany()">Create Client Account</button>
+                    <button  type="submit" class="btn2"  routerLink="/freelancer/setting/info">Cancel</button>
+                    <button  type="submit" class="btn btn-primary rounded-pill ms-3"  (click)="addcompany()">Create Client Account</button>
 
                 </div>
             </div>
