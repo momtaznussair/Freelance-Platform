@@ -74,11 +74,7 @@ class AuthController extends Controller
             // $user->save();
         }
         $user->save();
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $data = [

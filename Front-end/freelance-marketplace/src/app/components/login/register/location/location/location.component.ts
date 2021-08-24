@@ -222,34 +222,7 @@ export class LocationComponent implements OnInit {
       Swal.fire('Hi', 'Congrats! operation successfull', 'success')
     }
 
-<<<<<<< HEAD
-    alertConfirmation(){
-      Swal.fire({
-        title: 'Are you sure?',
-        text: 'Your Action cannot be rollback.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, go ahead.',
-        cancelButtonText: 'No, let me think again'
-      }).then((result) => {
-        if (result.value) {
-          Swal.fire(
-            'Done!',
-            'Action performed successfully.',
-            'success'
-          )
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          Swal.fire(
-            'Cancelled',
-            'Performed action record present in cloud and databstore.)',
-            'error'
-          )
-        }
-      })
-    }
-=======
-    
->>>>>>> b0581348d7c38f224886b6ba0e47f64cabb2ce79
+
     //=================End of notifications ==============
 
 
