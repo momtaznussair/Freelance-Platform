@@ -24,9 +24,10 @@ export class filterJobs implements PipeTransform {
          }
       })
        jobs = jobs.filter((job:any) =>{
-         for(let i=0; i< cats.length;i++){
-          if(cats[i]== job.category)    return job;
-         }
+        //  for(let i=0; i< cats.length;i++){    
+        //   if(cats[i]== job.category)    return job;
+        //  }
+      return cats.indexOf(jobs.category)!=-1 ;
            
                })
       
@@ -43,8 +44,10 @@ export class filterJobs implements PipeTransform {
        })
       //  console.log(Styles)
         jobs = jobs.filter((job:any) =>{
-           if(Styles[0]== job.payment_style)    return job;
-           if(Styles[1]== job.payment_style)    return job; 
+          return Styles.indexOf(jobs.payment_style)!=-1 ;
+       
+          //  if(Styles[0]== job.payment_style)    return job;
+          //  if(Styles[1]== job.payment_style)    return job; 
             
                 })
            
@@ -60,9 +63,11 @@ export class filterJobs implements PipeTransform {
           }
        })
         jobs = jobs.filter((job:any) =>{
-               if (levels[0]== job.experience)    return job;
-           else if(levels[1]== job.experience)    return job;
-           else if(levels[2]== job.experience)    return job;  
+          return levels.indexOf(job.experience)!=-1 ;
+       
+          //      if (levels[0]== job.experience)    return job;
+          //  else if(levels[1]== job.experience)    return job;
+          //  else if(levels[2]== job.experience)    return job;  
           //  else return job;
                 })
         

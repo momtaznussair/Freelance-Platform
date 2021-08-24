@@ -6,7 +6,8 @@ import { AllContractsComponent } from './all-contracts/all-contracts.component';
 import { BringYourOwnTalentComponent } from './bring-your-own-talent/bring-your-own-talent.component';
 import { PostAJobComponent } from './post-a-job/post-a-job.component';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
+import { LayoutModule } from '../layout/layout.module';
+// import { SharedModul } from '../shared/shared.module';
 
 
 
@@ -29,7 +30,7 @@ const routes : Routes = [
     PostAJobComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),SharedModule
+    CommonModule,RouterModule.forChild(routes),LayoutModule
   ],
   exports : [
     AllContractsComponent , AllJobPostsComponent , BringYourOwnTalentComponent,

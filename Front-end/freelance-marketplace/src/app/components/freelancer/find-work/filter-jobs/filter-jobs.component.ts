@@ -61,7 +61,7 @@ export class FilterJobsComponent implements OnInit {
       this.cat=response ['data'] 
      this.Categories =this.cat
     for(let category of this.cat){
-      category.selected=false
+      category.selected=false;
     }
     }
     )
@@ -72,8 +72,6 @@ export class FilterJobsComponent implements OnInit {
   --------------------------------*/
 
   // filters
-  // categories:any = this.cat.map((c)=>{c.selected=false}); 
-//  this.cat.forEach((element:any) => {element.selected=false});
 
   experience  = [{name:'entry',selected:false},{name:'intermediate',selected:false},{name:'expert',selected:false}];
   payment_style  = [{name:'fixed',selected:false},{name:'hourly',selected:false}];
@@ -83,7 +81,9 @@ export class FilterJobsComponent implements OnInit {
 selectCategory(input:any){
   let index=this.Categories.findIndex((element: { name: any; })=>element.name==input.value);
   this.Categories[index].selected=! this.Categories[index].selected;
+ 
 }
+
 experienceLevel(input:any){
   let index=this.experience.findIndex((level)=>level.name==input.value);
   this.experience[index].selected=! this.experience[index].selected;

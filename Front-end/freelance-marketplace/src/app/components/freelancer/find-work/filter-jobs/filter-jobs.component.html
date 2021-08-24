@@ -270,7 +270,7 @@
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
                 <div class="card-body"  *ngFor="let post of jobPost  
                 | searchFilter:query 
-                | filterJobs:Categories:payment_style:experience:nOfProposals
+                | filterJobs:Categories:payment_style:experience:null
                 |paginate : {
                     itemsPerPage: 5,
                     currentPage: page,
