@@ -23,6 +23,18 @@ class JobController extends Controller
         return $this->apiResponse(JobResource::collection($jobs));
     }
 
+    public function showClient($client)
+    {
+        $jobs = Job::where('client_id', $client)->get();
+
+        if($jobs){
+            return $this->apiResponse(JobResource::collection($jobs));
+        }
+
+        return $this->NotFoundError();
+        
+    }
+    
     public function show($id)
     {
 

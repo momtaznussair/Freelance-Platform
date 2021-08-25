@@ -86,8 +86,7 @@ Route::get('portfolios/{portfolio}',[PortfolioController::class,'show']);
 // CRUD for Jobs/
 Route::get('jobs',[JobController::class,'index']);
 Route::get('jobs/{job}',[JobController::class,'show']);
-Route::get('client/jobs{job}', [JobController::class, 'showClient']);
-
+Route::get('client/jobs/{job}', [JobController::class, 'showClient']);
 
 // CRUD for Proposal
 Route::get('proposals',[ProposalController::class,'index']);
