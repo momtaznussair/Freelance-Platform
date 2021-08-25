@@ -31,9 +31,8 @@ export class LocationComponent implements OnInit {
   data : any = '';
   arrayOfCountries:any
   arrayOfCities:any
-  arrayOfStates:any
   response_data : any;
-  isLocationGet : boolean = false;
+  // isLocationGet : boolean = false;
   locationAccessToken:any;
   ngOnInit(): void {
 
@@ -61,13 +60,12 @@ export class LocationComponent implements OnInit {
            using rest api for location
     -------------------------------------------*/
     //getting access token
-    this.locationAccessToken = this.countryAndCities.getToken();
-    console.log(this.locationAccessToken)
-    this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
-      alert(res);
+    // this.locationAccessToken = this.countryAndCities.getToken();
+      this.locationAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJuZXZlcmdpdmV1cDk1OEBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJKM2g4Zl8xeHlCLVFDbGhlZ0QtZUd6NnRuRlFjOVotcXFfY0FfS1JGVmJWQWJCSU5IRnpUa0FQNFpCQ0gycU92Q0xrIn0sImV4cCI6MTYyOTkzNTY4M30.IeyQkVgVtAjdpJPio_LLtlsJ0XnDLJyhPU4dGkTxgm0'
+      this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
       this.arrayOfCountries =res
-      this.isLocationGet = true;
-    // console.log(this.arrayOfCountries)
+      // this.isLocationGet = true;
+    console.log(this.arrayOfCountries)
   },error=>
   {
 
@@ -84,7 +82,6 @@ export class LocationComponent implements OnInit {
 
       if(this.form.valid)
       {
-
         // check exists
         if(localStorage.getItem('user_data'))
         {
@@ -92,7 +89,7 @@ export class LocationComponent implements OnInit {
           this.user_data.country = this.form.controls['country'].value;
           this.user_data.zip_code = this.form.controls['zip_code'].value;
           this.user_data.street = this.form.controls['street'].value;
-          console.log(this.user_data)
+          // console.log(this.user_data)
         }
         else if(localStorage.getItem('data'))
         {
@@ -100,27 +97,24 @@ export class LocationComponent implements OnInit {
           this.data.user_data.country = this.form.controls['country'].value;
           this.data.user_data.zip_code = this.form.controls['zip_code'].value;
           this.data.user_data.street = this.form.controls['street'].value;
-          console.log(this.data.user_data)
+          // console.log(this.data.user_data)
         }
-
 
         //if signUp with socialite done
         if(this.user_data.response)
         {
-          console.log(this.user_data);
-
+          // console.log(this.user_data);
           //send request
           this.userService.registerWithSocialite(this.user_data).subscribe(response=>{
 
             this.response_data = response;
-            console.log(this.response_data);
+            // console.log(this.response_data);
             if(this.response_data.data != null)
             {
-
               // localStorage.setItem('token' , this.response_data.data.token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.user_id);
-              console.log(this.response_data.data.user.user_id);
+              // console.log(this.response_data.data.user.user_id);
               // localStorage.setItem('success_msg' , this.response_data.msg);
               // localStorage.setItem('logged_status' , this.response_data.status);
               if(this.response_data.data.user.client_id)
@@ -128,7 +122,7 @@ export class LocationComponent implements OnInit {
                 localStorage.setItem('client_id' , this.response_data.data.user.client_id);
               }
 
-              console.log(response);
+              // console.log(response);
               if(this.user_data.type == 'client')
               {
                 localStorage.setItem('token' , this.response_data.data.token);
@@ -154,12 +148,12 @@ export class LocationComponent implements OnInit {
         }
         else //=> if logged manually
         {
-          console.log(this.data.user_data)
+          // console.log(this.data.user_data)
 
           //send request
           this.userService.register(this.data.user_data).subscribe(response=>{
 
-            console.log(response);
+            // console.log(response);
 
             const formData = new FormData()
             // formData.append('image', )
@@ -221,20 +215,16 @@ export class LocationComponent implements OnInit {
     // }
 
     
-    //=================End of notifications ==============
-
-
+    //================= End of notifications ==============
     selectCountry(selectedCountry:string){
         console.log(selectedCountry)
         this.countryAndCities.getCities(selectedCountry, this.locationAccessToken).subscribe(res=>{
           this.arrayOfCities=res
-          // console.log(this.arrayOfCities[0].state_name)
         })
     }
-    selectState(a:HTMLElement){
-      this.placeholder=a.innerText
-
-      console.log(a.innerText)
+    selectState(a:string){
+      this.placeholder=a
+      console.log(a)
     }
 
 

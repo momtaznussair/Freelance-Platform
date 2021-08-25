@@ -7,6 +7,8 @@ import { BringYourOwnTalentComponent } from './bring-your-own-talent/bring-your-
 import { PostAJobComponent } from './post-a-job/post-a-job.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutModule } from '../layout/layout.module';
+import { JobDetailsComponent } from './myjobs/job-details/job-details.component';
+import { ProposalsComponent } from './proposals/proposals.component';
 // import { SharedModul } from '../shared/shared.module';
 
 
@@ -18,6 +20,9 @@ const routes : Routes = [
   {path : 'jobposts' , component : AllJobPostsComponent},
   {path : 'bringyouralltalent' , component : BringYourOwnTalentComponent},
   {path : 'contracts' , component : AllContractsComponent},
+  {path : 'job/details' , component : JobDetailsComponent},
+  {path : 'job/details/:id' , component : JobDetailsComponent},
+  {path : 'proposals' , component : ProposalsComponent},
   {path : '' , component : MyjobsComponent},
 ]
 
@@ -27,7 +32,9 @@ const routes : Routes = [
     AllJobPostsComponent,
     AllContractsComponent,
     BringYourOwnTalentComponent,
-    PostAJobComponent
+    PostAJobComponent,
+    JobDetailsComponent,
+    ProposalsComponent
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes),LayoutModule
