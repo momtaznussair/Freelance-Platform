@@ -27,7 +27,7 @@ class AuthController extends Controller
             'email' => ['required','email','unique:users,email','max:255'],
             'password' => ['required', 'string', 'min:8','max:255', 'confirmed'],
             'gender' => 'required|in:male,female',
-            'img_link' => 'required|image|mimes:png,jpg',
+            'img_link' => 'nullable|image|mimes:png,jpg',
             'phone_number' => 'min:11|numeric',
             'country' => 'required',
             'city' => 'required',

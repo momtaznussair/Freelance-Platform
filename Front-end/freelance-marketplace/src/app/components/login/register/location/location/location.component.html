@@ -43,9 +43,9 @@
                     <label class="visually-hidden" for="autoSizingInputGroup"></label>
                     <div class="input-group">
                         <div class=" dropdown col-lg-12 col-md-12 col-sm-9">
-                           <select formControlName="city" #s (change)="selectState(s.value)" class="form-select form-select-sm " aria-label=".form-select-sm example"  formControlName="city" [(ngModel)]="queryloc" >
+                           <select formControlName="city" #state (change)="selectState(state.value)" class="form-select form-select-sm " aria-label=".form-select-sm example"  formControlName="city" [(ngModel)]="queryloc" >
                   
-                                <option   [value]="item.city_name" *ngFor="let item of arrayOfCountries" >{{item.country_name}}</option>
+                                <option   [value]="item.state_name" *ngFor="let item of arrayOfCities" >{{item.state_name}}</option>
      
                          </select>
                            
