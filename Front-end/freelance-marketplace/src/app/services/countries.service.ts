@@ -13,14 +13,16 @@ export class CountriesService {
     location:RespondedLocationToken=new RespondedLocationToken()
     // get access token
   getToken(){
+    ///J3h8f_1xyB-QClhegD-eGz6tnFQc9Z-qq_cA_KRFVbVAbBINHFzTkAP4ZBCH2qOvCLk
+  //
     const headers= new HttpHeaders()
-    .append('content-type', 'application/json')
-    .append('api-token', 'J3h8f_1xyB-QClhegD-eGz6tnFQc9Z-qq_cA_KRFVbVAbBINHFzTkAP4ZBCH2qOvCLk')
+    .append('Accept', 'application/json')
+    .append('api-token', 'AuXnFjES43NqbdODZoc1anLtpO9op_9HsA7hqU56HJoxlbbNrMsUAzmsp6cqoZ0HhWQ')
     .append('user-email', 'nevergiveup958@gmail.com');
   
-  this.api.get("https://www.universal-tutorial.com/api/getaccesstoken",{ 'headers': headers }).subscribe(res=>{
+  this.api.get("https://www.universal-tutorial.com/api/getaccesstoken",{'headers': headers }).subscribe(res=>{
     return res;
-  }, error=> {return error}); 
+  }, error=> console.error); 
 }
 
 // get all countries
