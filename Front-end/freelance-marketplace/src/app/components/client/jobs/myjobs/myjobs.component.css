@@ -2,7 +2,13 @@ h5{
     color: var(--mc);
 }
 .prop:hover{
+    color: var(--mc);
     cursor: pointer;
+}
+button{
+    background-color: var(--mc);
+    color: white;
+    width: 10rem;
 }
 @media (max-width: 767px) {
     p{

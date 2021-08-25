@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { ClientJobService } from 'src/app/services/client-job.service';
 import { JobService } from 'src/app/services/job.service';
 
 @Component({
@@ -8,14 +9,17 @@ import { JobService } from 'src/app/services/job.service';
   styleUrls: ['./myjobs.component.css']
 })
 export class MyjobsComponent implements OnInit {
-
-  constructor(private api:ApiService,private job:JobService) { }
+jobs:any;
+  constructor(private api:ApiService,private job:ClientJobService) { }
 
   ngOnInit(): void {
     this.fetchJobs()
   }
   fetchJobs(){
-
+    this.job.getJobs().subscribe(res=>{
+      this.jobs=res.data;
+      console.log(this.jobs);
+    })
   }
 
  /*-------------------------
