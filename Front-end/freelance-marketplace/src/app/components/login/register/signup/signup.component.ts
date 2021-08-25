@@ -132,7 +132,7 @@ export class SignupComponent implements OnInit {
     {
       // console.log(this.form.value);
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
-      this.sharedProcess.sharedSignUpProcess.files = this.file[0].name;
+      this.sharedProcess.sharedSignUpProcess.files = this.file[0];
       // console.log(this.sharedProcess.sharedSignUpProcess)
       localStorage.setItem('data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
       localStorage.setItem('files' , JSON.stringify(this.sharedProcess.sharedSignUpProcess.files));

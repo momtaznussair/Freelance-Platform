@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutModule } from '../layout/layout.module';
 import { JobDetailsComponent } from './myjobs/job-details/job-details.component';
 import { ProposalsComponent } from './proposals/proposals.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 // import { SharedModul } from '../shared/shared.module';
 
 
@@ -37,7 +38,7 @@ const routes : Routes = [
     ProposalsComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),LayoutModule
+    CommonModule,RouterModule.forChild(routes),LayoutModule,NgxPaginationModule
   ],
   exports : [
     AllContractsComponent , AllJobPostsComponent , BringYourOwnTalentComponent,

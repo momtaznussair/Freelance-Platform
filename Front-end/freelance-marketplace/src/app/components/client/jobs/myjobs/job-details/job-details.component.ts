@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ClientJobService } from 'src/app/services/client-job.service';
 
 @Component({
   selector: 'app-job-details',
@@ -9,12 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 export class JobDetailsComponent implements OnInit {
   id:string;
   isDataGet:any;
-  constructor(private route:ActivatedRoute,) { 
+  jobb:any;
+  constructor(private route:ActivatedRoute,private job:ClientJobService) { 
     this.id = this.route.snapshot.params['id'];
 
   }
 
   ngOnInit(): void {
+    this.job.getJob(this.id).subscribe(res=>{
+      this.jobb=res.data;
+      console.log(this.jobb);
+    },error=>console.error)
   }
 
 }

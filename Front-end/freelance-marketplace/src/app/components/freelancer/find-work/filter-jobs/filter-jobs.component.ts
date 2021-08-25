@@ -160,10 +160,3 @@ selectNOfProposals(min:any,max:any){
     this.fetchJobs();
   }  
 }
-
-
-
-
-   
-
-  

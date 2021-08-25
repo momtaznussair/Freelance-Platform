@@ -221,14 +221,12 @@ export class LocationComponent implements OnInit {
     
     //================= End of notifications ==============
     selectCountry(selectedCountry:string){
-        console.log(selectedCountry)
         this.countryAndCities.getCities(selectedCountry, this.locationAccessToken).subscribe(res=>{
           this.arrayOfCities=res
         })
     }
     selectState(a:string){
       this.placeholder=a
-      console.log(a)
     }
 
 

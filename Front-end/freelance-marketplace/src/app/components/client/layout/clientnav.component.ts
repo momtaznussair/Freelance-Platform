@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./clientnav.component.css']
 })
 export class ClientnavComponent implements OnInit {
-  x='search';
+  x='search in freelancers';
   constructor(private userService : UserService , private router:Router) { }
 
   ngOnInit(): void {
@@ -22,14 +22,32 @@ export class ClientnavComponent implements OnInit {
   }
   freelancer(){
  
-    this.x="search in freelancer";
-    this.router.navigateByUrl("/freelancer");
-  }
+    this.x="search in freelancers";
+    this.searchFlag=true;
+ }
 
-  jobs(){
+ jobs(){
+  
+   this.x="search in jobs";
+   this.searchFlag=false;
+ }
+ searchFlag:boolean=true; //jobs
+ Url:string='';
+
+ search(searchKeyword:string){
    
-    this.x="search in jobs";
+  if(this.searchFlag) //search in freelancers
+  {
+    this.Url=`freelancers/${searchKeyword}`
+ 
 
+  }else //search in jobs
+  {
+    this.Url=`/freelancer/work/filter-jobs/${searchKeyword}`;
+ 
   }
+  this.router.navigateByUrl(this.Url);
+ }
+
 
 }
