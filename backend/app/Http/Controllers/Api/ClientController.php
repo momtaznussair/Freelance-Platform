@@ -30,17 +30,6 @@ class ClientController extends Controller
         return $this->NotFoundError();
     }
 
-    public function showClient($client)
-    {
-        $jobs = Job::where('client_id', $client)->get();
-
-        if($jobs){
-            return $this->apiResponse(JobResource::collection($jobs));
-        }
-
-        return $this->NotFoundError();
-        
-    }
 
     public function store(Request $request){
         
