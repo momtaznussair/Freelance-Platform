@@ -19,7 +19,7 @@ class ClientController extends Controller
     }
 
     public function show($id){
-        $client = Client::find($id);
+        $client = Client::with('jobs')->find($id);
 
         if($client){
             return $this->apiResponse($client);
