@@ -23,11 +23,20 @@ export class FilterJobsComponent implements OnInit {
   shape2='fa-chevron-down';
   shape3='fa-chevron-down';
   shape4='fa-chevron-down';
+
+  cat :any[]=[];
+  constructor(private catService: CategoryService,private job:JobService, private activatedRoute: ActivatedRoute) { }
+
+
+  radioSelected:any
+  radioSel:any;
+  radioSelectedString:string=''
   urlQuery:string=''
-  // getSelecteditem(){
-  //   this.radioSel = this.cat.find(Item => Item.name === this.radioSelected);
-  //   // console.log(this.radioSelectedString)
-  // }
+  getSelecteditem(){
+    this.radioSel = this.cat.find(Item => Item.name === this.radioSelected);
+    this.radioSelectedString = JSON.stringify(this.radioSel);
+    // console.log(this.radioSelectedString)
+  }
   ngOnInit(): void {
     this.fetchJobs();
   this.urlQuery=this.activatedRoute.snapshot.params.query;
@@ -151,10 +160,3 @@ selectNOfProposals(min:any,max:any){
     this.fetchJobs();
   }  
 }
-
-
-
-
-   
-
-  

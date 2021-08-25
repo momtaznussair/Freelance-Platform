@@ -28,34 +28,13 @@ currentUserData:any
   logout(){
     this.userService.logout()
   }
-  // freelancer(){
- 
-  //   this.x="search in freelancer";
-  //   this.router.navigateByUrl("/freelancers");
-  // }
-
-  // jobs(){
-   
-  //   this.x="search in jobs";
-  //   // this.router.navigateByUrl("/jobs");
-  // }
-
-
- freelancer(){
+  freelancer(){
  
      this.x="search in freelancers";
      this.searchFlag=true;
   }
 
- jobs(){
-  
-   this.x="search in jobs";
-   this.searchFlag=false;
- }
- searchFlag:boolean=true; //jobs
- Url:string='';
-
- search(searchKeyword:string){
+  jobs(){
    
     this.x="search in jobs";
     this.searchFlag=false;
@@ -77,9 +56,5 @@ currentUserData:any
    }
    this.router.navigateByUrl(this.Url);
   }
- //  this.router.navigateByUrl(this.Url);
- }
-
-}
 
 }
