@@ -86,7 +86,8 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-
+  error:boolean=false;
+  errorMassage:string='';
   new_title: string = '';
   new_description: string = '';
 
@@ -94,12 +95,13 @@ export class ProfileComponent implements OnInit {
     console.log(this.portForm.value)
     if(this.portForm.valid) {      
       this.profile.updateportfilo(id, this.portForm.value).subscribe(response => {
-        alert('done');
+      
         console.log(response);
         location.reload()
       },
       error => {
-        alert('please check your data and try again');
+        this.error=true;
+      this.errorMassage='please check your info and try again';
       });
     }
   }
@@ -114,7 +116,8 @@ export class ProfileComponent implements OnInit {
     else
     {
       this.isLogged = true;
-      alert('please check your data and try again');
+      this.error=true;
+      this.errorMassage='please check your info and try again';
     }
   }
 

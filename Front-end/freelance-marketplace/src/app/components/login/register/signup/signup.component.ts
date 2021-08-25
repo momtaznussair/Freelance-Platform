@@ -121,7 +121,6 @@ export class SignupComponent implements OnInit {
     }
     else
     {
-      // this.simpleAlert();
       this.isLogged = true;
     }
   };//end of register function
