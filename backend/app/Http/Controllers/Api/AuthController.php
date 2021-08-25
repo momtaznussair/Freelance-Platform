@@ -20,14 +20,13 @@ class AuthController extends Controller
     use ApiResponseTrait;
     public function register(Request $request)
     {
-        $token = $request->bearerToken();
 
         $validator = Validator::make($request->all(), [
-            'username'=> [Rule::requiredIf(!$token),'string','max:255','min:3'],
+            'username'=> ['required','string','max:255','min:3'],
             'first_name' => 'required|string|min:3|max:255',
             'last_name' => 'required|string|min:3|max:255',
-            'email' => [Rule::requiredIf(!$token),'email','unique:users,email','max:255'],
-            'password' => [Rule::requiredIf(!$token), 'string', 'min:8','max:255', 'confirmed'],
+            'email' => ['required','email','unique:users,email','max:255'],
+            'password' => ['required', 'string', 'min:8','max:255', 'confirmed'],
             'gender' => 'required|in:male,female',
             'img_link' => 'nullable|image|mimes:png,jpg',
             'phone_number' => 'min:11|numeric',
@@ -46,12 +45,9 @@ class AuthController extends Controller
 
         $user = new User();
 
-        if(!$token){
-            $user->name = $request->username;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-        }
-
+        $user->name = $request->username;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->gender = $request->gender;
@@ -74,16 +70,16 @@ class AuthController extends Controller
 
             // Storage::putFile('users', $request->file('img_link'));
             // $user->img_link = $request->img_link;
-            
+
             // $user->save();
         }
         $user->save();
-
+        
         $token = $user->createToken('auth_token')->plainTextToken;
 
         $data = [
-            'access_token' => $token,
-            'user' => new UserResource($user),
+                'access_token' => $token,
+                'user' => new UserResource($user),
         ];
 
         // add as a  client

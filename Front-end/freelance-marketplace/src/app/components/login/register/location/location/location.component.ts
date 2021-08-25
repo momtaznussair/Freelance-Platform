@@ -9,7 +9,7 @@ import { RespondedLocationToken } from 'src/app/models/location/responded-locati
 import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
 import { countries } from 'src/app/models/location/countries';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-location',
@@ -19,10 +19,11 @@ import Swal from 'sweetalert2';
 export class LocationComponent implements OnInit {
   location:RespondedLocationToken=new RespondedLocationToken
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder , private api:ApiService,private country:CountriesService , private router : Router , private userService : UserService) { }
+  constructor(private formBuilder : FormBuilder , private api:ApiService,private countryAndCities:CountriesService , private router : Router , private userService : UserService) { }
 
-  placeholder="Start typing your city"
+ placeholder="Start typing your city"
  countries :countries []=[]
+
   // data comes from social sign up
   user_data : any = ''
   queryloc:string=""
@@ -30,10 +31,9 @@ export class LocationComponent implements OnInit {
   data : any = '';
   arrayOfCountries:any
   arrayOfCities:any
-  arrayOfStates:any
   response_data : any;
-  isLocationGet : boolean = false;
-
+  // isLocationGet : boolean = false;
+  locationAccessToken:any;
   ngOnInit(): void {
 
     if(localStorage.getItem('user_data'))
@@ -59,11 +59,17 @@ export class LocationComponent implements OnInit {
    /*-------------------------------------------
            using rest api for location
     -------------------------------------------*/
-    this.country.getCountries().subscribe(res=>{
+    //getting access token
+    // this.locationAccessToken = this.countryAndCities.getToken();
+      this.locationAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJuZXZlcmdpdmV1cDk1OEBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJKM2g4Zl8xeHlCLVFDbGhlZ0QtZUd6NnRuRlFjOVotcXFfY0FfS1JGVmJWQWJCSU5IRnpUa0FQNFpCQ0gycU92Q0xrIn0sImV4cCI6MTYyOTkzNTY4M30.IeyQkVgVtAjdpJPio_LLtlsJ0XnDLJyhPU4dGkTxgm0'
+      this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
       this.arrayOfCountries =res
-      this.isLocationGet = true;
-    // console.log(this.arrayOfCountries[0].country_name)
-  });
+      // this.isLocationGet = true;
+    console.log(this.arrayOfCountries)
+  },error=>
+  {
+
+});
   //////////////////////////////////
 
 
@@ -76,7 +82,6 @@ export class LocationComponent implements OnInit {
 
       if(this.form.valid)
       {
-
         // check exists
         if(localStorage.getItem('user_data'))
         {
@@ -84,7 +89,7 @@ export class LocationComponent implements OnInit {
           this.user_data.country = this.form.controls['country'].value;
           this.user_data.zip_code = this.form.controls['zip_code'].value;
           this.user_data.street = this.form.controls['street'].value;
-          console.log(this.user_data)
+          // console.log(this.user_data)
         }
         else if(localStorage.getItem('data'))
         {
@@ -92,28 +97,24 @@ export class LocationComponent implements OnInit {
           this.data.user_data.country = this.form.controls['country'].value;
           this.data.user_data.zip_code = this.form.controls['zip_code'].value;
           this.data.user_data.street = this.form.controls['street'].value;
-          console.log(this.data.user_data)
+          // console.log(this.data.user_data)
         }
-
 
         //if signUp with socialite done
         if(this.user_data.response)
         {
-          this.alertConfirmation();
-          console.log(this.user_data);
-
+          // console.log(this.user_data);
           //send request
           this.userService.registerWithSocialite(this.user_data).subscribe(response=>{
 
             this.response_data = response;
-            console.log(this.response_data);
+            // console.log(this.response_data);
             if(this.response_data.data != null)
             {
-
               // localStorage.setItem('token' , this.response_data.data.token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.user_id);
-              console.log(this.response_data.data.user.user_id);
+              // console.log(this.response_data.data.user.user_id);
               // localStorage.setItem('success_msg' , this.response_data.msg);
               // localStorage.setItem('logged_status' , this.response_data.status);
               if(this.response_data.data.user.client_id)
@@ -121,7 +122,7 @@ export class LocationComponent implements OnInit {
                 localStorage.setItem('client_id' , this.response_data.data.user.client_id);
               }
 
-              console.log(response);
+              // console.log(response);
               if(this.user_data.type == 'client')
               {
                 localStorage.setItem('token' , this.response_data.data.token);
@@ -147,22 +148,24 @@ export class LocationComponent implements OnInit {
         }
         else //=> if logged manually
         {
-          this.alertConfirmation();
-          console.log(this.data.user_data)
+          // console.log(this.data.user_data)
 
           //send request
           this.userService.register(this.data.user_data).subscribe(response=>{
 
-            console.log(response);
+            // console.log(response);
 
+            const formData = new FormData()
+            // formData.append('image', )
             //if response has token
             this.response_data = response;
             if(this.response_data.data != null)
             {
-
               // localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.user_id);
+              localStorage.setItem('token' , this.response_data.data.access_token);
+
               if(this.response_data.data.user.client_id)
               {
                 localStorage.setItem('client_id' , this.response_data.data.user.client_id);
@@ -173,15 +176,14 @@ export class LocationComponent implements OnInit {
               //redirect user
               if(this.data.user_data.type == 'client')
               {
-                localStorage.setItem('token' , this.response_data.data.access_token);
+                // localStorage.setItem('token' , this.response_data.data.access_token);
                 localStorage.setItem('clientType' , 'client');
                 this.router.navigateByUrl('/client/main');
               }
               else
               {
                 //we can't save token because we need freelancer information
-                localStorage.setItem('user_token' , this.response_data.data.access_token);
-
+                // localStorage.setItem('user_token' , this.response_data.data.access_token);
                 localStorage.setItem('freelancerType' , 'freelancer');
                 this.router.navigateByUrl('/user/signup/category');
               }
@@ -208,50 +210,22 @@ export class LocationComponent implements OnInit {
     }
 
     //==============start use notification ===============
-    successAlertNotification(){
-      Swal.fire('Hi', 'Congrats! operation successfull', 'success')
-    }
+    // successAlertNotification(){
+    //   Swal.fire('Hi', 'Congrats! operation successfull', 'success')
+    // }
 
-    alertConfirmation(){
-      Swal.fire({
-        title: 'Are you sure?',
-        text: 'Your Action cannot be rollback.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, go ahead.',
-        cancelButtonText: 'No, let me think again'
-      }).then((result) => {
-        if (result.value) {
-          Swal.fire(
-            'Done!',
-            'Action performed successfully.',
-            'success'
-          )
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          Swal.fire(
-            'Cancelled',
-            'Performed action record present in cloud and databstore.)',
-            'error'
-          )
-        }
-      })
-    }
-    //=================End of notifications ==============
-
-
+    
+    //================= End of notifications ==============
     selectCountry(selectedCountry:string){
         console.log(selectedCountry)
-        this.country.getCities(selectedCountry).subscribe(res=>{
+        this.countryAndCities.getCities(selectedCountry, this.locationAccessToken).subscribe(res=>{
           this.arrayOfCities=res
-          // console.log(this.arrayOfCities[0].state_name)
         })
     }
-    selectState(a:HTMLElement){
-      this.placeholder=a.innerText
-
-      console.log(a.innerText)
+    selectState(a:string){
+      this.placeholder=a
+      console.log(a)
     }
 
 
 }//End Of Class
-

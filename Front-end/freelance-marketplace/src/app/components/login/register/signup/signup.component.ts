@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
 
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -17,10 +17,17 @@ export class SignupComponent implements OnInit {
   userResponse : User = new User();
   imgPattern = '([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)';
 
+  file: File | null = null; // Variable to store file
+
 
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  ,private userService : UserService ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
 
+  // files:any;
+  // uploadImage(event:any){
+  //   this.files = event.target.files[0]
+  //   // console.log(this.files)
+  // }
 
   isTokenFound : boolean = false;
 
@@ -65,13 +72,16 @@ export class SignupComponent implements OnInit {
       phone_number:['' , [Validators.required , Validators.minLength(11) , Validators.maxLength(255)]],
       password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15), Validators.pattern(this.passwordPattern)]],
       password_confirmation : ['' , [Validators.required ]],
-      img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
+      // img_link : ['' , [Validators.minLength(3) , Validators.maxLength(255)]],
+      img_link : [null, []],
       type:['' , [Validators.required]],
     })
 
   }//end of ngOnInit
 
-
+  onChange(event : any) {
+    this.file = event.target.files[0];
+  }
   nextStepOfSignUp()
   {
 
@@ -97,26 +107,23 @@ export class SignupComponent implements OnInit {
   isLogged : boolean = false;
 
   register(){
-    console.log(this.form.value)
+    console.log(this.file)
     if(this.form.valid && this.password == this.password_confirmation)
     {
-      console.log(this.form.value);
+      // console.log(this.files)
+      // console.log(this.form.value);
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
+      // this.sharedProcess.sharedSignUpProcess.files = this.files;
+      // console.log(this.sharedProcess.sharedSignUpProcess)
       localStorage.setItem('data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
+      localStorage.setItem('files' , JSON.stringify(this.sharedProcess.sharedSignUpProcess.files));
       this.router.navigateByUrl('/user/signup/location');
     }
     else
     {
-      this.simpleAlert();
+      // this.simpleAlert();
       this.isLogged = true;
     }
   };//end of register function
-
-
-  //================add notification methods
-  simpleAlert(){
-    Swal.fire('please complete your information first');
-  }
-  //==================end of notification method
 
 }

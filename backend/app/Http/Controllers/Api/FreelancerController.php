@@ -27,7 +27,7 @@ class FreelancerController extends Controller
         if($freelancer){
             return $this->apiResponse(new FreelancerResource($freelancer));
         }
-
+ 
         return $this->NotFoundError();
     }
 
@@ -39,7 +39,8 @@ class FreelancerController extends Controller
             'experience_id' => 'required|exists:experience_levels,id',
             'overview' => 'required|min:10',
             'job_title' => 'required|min:10|max:255',
-            'hourly_rate' => 'required|numeric'
+            'hourly_rate' => 'required|numeric',
+            'skills' => 'required|exists:skills,id',
         ]);
 
         if($validate->fails()){
@@ -57,7 +58,7 @@ class FreelancerController extends Controller
 
         if($freelancer){
             $freelancer->skills()->attach($request->skills === null ? [] : $request->skills);
-            return $this->apiResponse($freelancer);
+            return $this->apiResponse($request->skills);
         }
         return  $this->UnknownError();
     }
@@ -106,4 +107,88 @@ class FreelancerController extends Controller
         return $this->NotFoundError();
     }
 
+
+    public function updateFreelancerTitle(Request $request ,$id){
+        $freelancer = Freelancer::find($id);
+
+        if(!$freelancer){
+            return $this->NotFoundError();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'job_title'=> ['required','string','max:255','min:3'],
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $freelancer->job_title = $request->job_title;
+
+        $freelancer->save();
+
+        if($freelancer){
+            return $this->apiResponse($freelancer,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
+
+    public function updateFreelancerOverview(Request $request ,$id){
+        $freelancer = Freelancer::find($id);
+
+        if(!$freelancer){
+            return $this->NotFoundError();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'overview'=> 'required|min:10',
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $freelancer->overview = $request->overview;
+
+        $freelancer->save();
+
+        if($freelancer){
+            return $this->apiResponse($freelancer,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
+
+    public function updateFreelancerHourly(Request $request ,$id){
+        $freelancer = Freelancer::find($id);
+
+        if(!$freelancer){
+            return $this->NotFoundError();
+        }
+
+        $validator = Validator::make($request->all(), [
+            'hourly_rate' => 'required|numeric'
+        ]);
+
+
+        if ($validator->fails())
+        {
+            return $this->apiResponse(null,$validator->errors(),200);
+        }
+
+        $freelancer->hourly_rate = $request->hourly_rate;
+
+        $freelancer->save();
+
+        if($freelancer){
+            return $this->apiResponse($freelancer,'',201);
+        }
+
+        return  $this->UnknownError();
+    }
 }

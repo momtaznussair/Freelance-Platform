@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import { Job } from 'src/app/models/job';
 import { JobService } from 'src/app/services/job.service';
 import { Skill } from 'src/app/models/skill';
@@ -48,23 +48,23 @@ jobPost:any;
 skills:any;
   constructor(private job:JobService) { }
 
-  successAlertNotification(){
-    Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
-  }
+  // successAlertNotification(){
+  //   Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
+  // }
   
   ngOnInit(): void {
-    this.successAlertNotification();
+    // this.successAlertNotification();
     this.fetchPosts();
   }
 
   fetchPosts(): void {
-     
+
     this.job.getJobs().subscribe(res=>{
       this.jobPost=res['data'] as Job;
       console.log(this.jobPost);
       this.skills=this.jobPost.skills;
       console.log(this.skills);
-  
+
     // this.job.get().subscribe(res=>{
     //   this.jobPost=res.data as Job[]
     //   this.skills=this.jobPost.skills
@@ -72,11 +72,11 @@ skills:any;
     //   console.log(this.jobPost)
 
     // },error=>console.log)
-    
+
   })}
 
 /*-------------------------------
-    pagination methods        
+    pagination methods
 --------------------------------*/
   onTableDataChange(event:any){
     this.page = event;
@@ -91,7 +91,6 @@ skills:any;
 
   search(){
     console.log(this.query)
-    // this.POSTS=this.POSTS | searchFilter : this.query;
   }
 
 }

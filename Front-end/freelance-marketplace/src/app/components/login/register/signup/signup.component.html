@@ -114,6 +114,7 @@
                                     </div>
 
                                     <div class="text-primary mt-3">
+                                        <!-- <input type="file" class="fw-bold" formControlName="img_link" name="img_link" (change)="uploadImage($event)"> -->
                                         <input type="file" class="fw-bold" formControlName="img_link" name="img_link">
                                     </div>
 
@@ -139,22 +140,19 @@
 
                                     <div class="d-flex justify-content-end pt-1">
                                         <button id="submit" type="submit" (click)="register();" class="fw-bold btn-lg ms-2 form-control" name="submit">Submit </button>
+                                      
                                     </div>
-
-                                </div>
+                                    <div class="d-flex justify-content-center mt-3">
+                                    <a routerLink="/user" class="login">Already registered ?</a>
+                                </div></div>
 
                             </form>
 
                             <!-- if token found -->
                             <div class="card-body p-md-5 text-black py-5" *ngIf="isTokenFound">
-                                <img src="assets/images/business-team-success-achievement-concept-vector-21618446.jpg" alt="Sample photo" class="img-fluid" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <p class="fw-bold h3">Tell us about what you want</p>
+                                <img src="assets/images/business-team-success-achievement-concept-vector-21618446.jpg" alt="Sample photo" class="img-fluid mb-5" style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                                
+                                <p class="fw-bold h3 mt-5">Tell us about what you want</p>
                                 <div class="client-login mt-5">
                                     <button class=" btn form-control my-3 py-3" id="submit" (click)="becameClient()">Hire for a project</button>
                                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Proposal;
+use App\Notifications\ProposalNotification;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -37,6 +38,10 @@ class ProposalController extends Controller
         $proposal = Proposal::create($request->all());
 
         if($proposal){
+            // Send Notification to Client when freelancer make a proposal
+            $client = $proposal->job->client->user;
+            $client->notify(new ProposalNotification($proposal->cover_letter));
+            
             return $this->apiResponse($proposal);
         }
 

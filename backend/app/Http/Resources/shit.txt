@@ -1,0 +1,20 @@
+Amira => landing page (any routes issues or bad styles as discussed)
+        => search in jobs page (filters problem)
+        => search in freelancers page
+        => remove the weird popups and alerts plz
+
+Amr => portofolios [display (pagination and style problems), delete, edit and store] "" As Discussed ""
+    => test post a job form
+
+Menna   => solve submit aproposal issue
+        => improve main page style as discussed (nav , dashboard ...........)
+        => handle the switching from freelance to client and vice versa (including the create client | freelancer buttons as discussed)
+
+Omar => profile page (edit)
+        => test setting pages and solve any issue.
+        => test location  form in registration process 
+        => solve skills form 
+        
+Amira , Amr, Omar and menna  => merge all your work together solve any conflicts , test it as discussed [before our meeting]
+                             => anything else that we agreed apon and I forgot to mention it here.
+Deadline 8 PM

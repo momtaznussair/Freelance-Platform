@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 
 
@@ -31,13 +31,14 @@ export class CategoryComponent implements OnInit {
   currentRegisterData : any;
   form : FormGroup = new FormGroup({});
 
-  successAlertNotification(){
-    Swal.fire('Welcome', 'Only some steps to finish your registrations', 'success')
-  }
+  // successAlertNotification(){
+  //   Swal.fire('Welcome', 'Only some steps to finish your registrations', 'success')
+  // }
 
+  freelancer_id :any;
   ngOnInit(): void {
 
-    this.successAlertNotification();
+    // this.successAlertNotification();
 
     //test request location
     this.apiService.get("https://www.universal-tutorial.com/api/countries/",{ 'headers': {
@@ -53,7 +54,6 @@ export class CategoryComponent implements OnInit {
 
     this.currentRegisterData = localStorage.getItem('user_data');
     this.currentRegisterData = JSON.parse(this.currentRegisterData);
-    console.log(this.currentRegisterData.id);
     this.apiService.get(`${environment.apiUrl}/categories`).subscribe(response=>{
       this.isCategoryGet = true;
       // console.log(response);
@@ -106,6 +106,4 @@ export class CategoryComponent implements OnInit {
 
 
   //==============
-
-
 }

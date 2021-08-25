@@ -14,7 +14,7 @@
 
 <div class="border-top">
     <div class="card1 p-2">
-        <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeCategoryIcon() "
+        <div class="head d-flex justify-content-between mb-2 " role="button" (click)="changeCategoryIcon()"
         data-bs-toggle="collapse" data-bs-target="#category" aria-expanded="false"
          aria-controls="collapseExample0">
         
@@ -31,8 +31,11 @@
     
                             </div>
                             <ul class="menubox card list-group" *ngIf="inpt.value">
-                                <div class="psearch" *ngFor="let item of cat">
-                                    <a class="list-group-item list-group-item-light" #a > {{item.name}}</a>
+                                <div *ngFor="let item of cat">
+                           
+                                    <a class="list-group-item list-group-item-light"  >
+                                        <input type="checkbox"  value={{item.name}} (click)="selectCategory($event.target)">
+                                         {{item.name}}</a>
                                 </div>
                             </ul>
          
@@ -63,17 +66,17 @@
                         <div class="mt-10">
                             <fieldset>
                                 <div class="up-checkbox ">
-                                    <input type="checkbox" (click)="addParams($event)" value="Entry">
+                                    <input type="checkbox" value="entry" (click)="experienceLevel($event.target)" >  
                                             Entry Level - $
                                     <small  class="text-muted">(1)</small> 
                                 </div>
                                 <div class="up-checkbox ">
-                                    <input type="checkbox" (click)="addParams($event)" value="intermediate">
+                                    <input type="checkbox" value="intermediate" (click)="experienceLevel($event.target)"  > 
                                             Intermediate - $$
                                     <small  class="text-muted">(5)</small> 
                                 </div>
                                 <div class="up-checkbox ">
-                                    <input type="checkbox" (click)="addParams($event)" value="expert">
+                                    <input type="checkbox"  value="expert"  (click)="experienceLevel($event.target)" >
                                            Expert - $$$
                                     <small  class="text-muted">(25)</small> 
                                 </div>
@@ -97,7 +100,7 @@
         data-bs-toggle="collapse" data-bs-target="#jobType" aria-expanded="false"
          aria-controls="collapseExample0">
         
-            <strong>Job Type</strong>
+            <strong>payment Style</strong>
             <div class="icon ">
                 <i class=" fa fa-solid {{shape2}}"></i>
             </div>
@@ -106,52 +109,43 @@
             <div class="mt-10">
                 <fieldset>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="hourly">
+                        <input type="checkbox"  value="hourly" (click)="paymentStyle($event.target)">
                                Hourly 
                         <small  class="text-muted">(5)</small> 
                     </div>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="fixed">
+                        <input type="checkbox"   value="fixed" (click)="paymentStyle($event.target)">
                         Fixed Price
                     </div>
                         <fieldset class="px-4">
                             <div class="up-checkbox  ">
-                                <input type="checkbox" (click)="addParams($event)" value="0">
-                                Less than 5
+                                <input type="checkbox"  (click)="paymentAmount(0,100)">
+                                Less than $100
                                 <small  class="text-muted">(1)</small> 
                             </div>
                             <div class="up-checkbox ">
-                                <input type="checkbox" (click)="addParams($event)" value="5">
-                                      5 To 10
+                                <input type="checkbox"  (click)="paymentAmount(100,500)">
+                                      $100 -$500
                                 <small  class="text-muted">(5)</small> 
                             </div>
                             <div class="up-checkbox ">
-                                <input type="checkbox" (click)="addParams($event)" value="10">
-                                      10 To 15
+                                <input type="checkbox"    (click)="paymentAmount(500,1000)">
+                                      $500 -$1000
                                 <small  class="text-muted">(9)</small> 
                             </div>
                             <div class="up-checkbox ">
-                                <input type="checkbox" (click)="addParams($event)" value="15">
-                                      15 To 20
-                                <small  class="text-muted">(15)</small> 
+                                <input type="checkbox"  (click)="paymentAmount(1000,null)">
+                                      $1000+
+                                <small  class="text-muted">(9)</small> 
                             </div>
-                            <div class="up-checkbox ">
-                                <input type="checkbox" (click)="addParams($event)" value="20">
-                                      20 To 50
-                                <small  class="text-muted">(11)</small> 
-                            </div>
+                        
                         </fieldset>
                 </fieldset>
            </div>
         </div>
 
-
-
-
-
     </div>
  </div>
-
 
 <!----------------------Start Number of Porposals------------------------------------------->
 <div class="border-top">
@@ -169,30 +163,26 @@
             <div class="mt-10">
                 <fieldset>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="0">
-                        Less than 5
+                        <input type="checkbox"   (click)="selectNOfProposals(0,10)">
+                        Less than 10
                         <small  class="text-muted">(1)</small> 
                     </div>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="5">
-                              5 To 10
+                        <input type="checkbox"   (click)="selectNOfProposals(10,25)">
+                              10 To 25
                         <small  class="text-muted">(5)</small> 
                     </div>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="10">
-                              10 To 15
+                        <input type="checkbox"  (click)="selectNOfProposals(25,30)">
+                              25 To 30
                         <small  class="text-muted">(9)</small> 
                     </div>
                     <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="15">
-                              15 To 20
+                        <input type="checkbox"   (click)="selectNOfProposals(30,null)">
+                              30+
                         <small  class="text-muted">(15)</small> 
                     </div>
-                    <div class="up-checkbox ">
-                        <input type="checkbox" (click)="addParams($event)" value="20">
-                              20 To 50
-                        <small  class="text-muted">(11)</small> 
-                    </div>
+                  
                 </fieldset>
            </div>
         </div>
@@ -208,7 +198,7 @@
 
             <div class="input-group mb-md-3 d-sm-none d-md-flex">
                 <input type="text" class="form-control p-md-2" aria-label="search" placeholder="Search for jobs" [(ngModel)]="query">
-                <a  class="input-group-text" (click)="search()">
+                <a  class="input-group-text" >
                     <i class="fas fa-search"></i>
                 </a>
             </div>
@@ -279,7 +269,8 @@
 
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
                 <div class="card-body"  *ngFor="let post of jobPost  
-                | searchFilter:query
+                | searchFilter:query 
+                | filterJobs:Categories:payment_style:experience:null
                 |paginate : {
                     itemsPerPage: 5,
                     currentPage: page,
@@ -300,8 +291,8 @@
                     </div>
 
                     <!-- Job Info  -->
-                    Hourly: <span class="hourly-rate fw-bold">$5.00 - $15.00</span>
-                    <span class="complex"> - Intermidiate</span> - Est. Time: <span class="job-time"> More than 6 months, Hours to be determined </span> - Posted: <span class="job-since"> 1 day ago</span>
+                    {{post.payment_style}}: <span class="hourly-rate fw-bold">$5.00 - $15.00</span>
+                    <span class="complex"> - {{post.experience}}</span> - Est. Time: <span class="job-time"> More than 6 months, Hours to be determined </span> - Posted: <span class="job-since"> 1 day ago</span>
                     <br>
 
                     <!-- Job Description -->
@@ -311,10 +302,10 @@
 
                     <!-- Job Skills -->
                     <div class="skills text-center">
-                        <span class="mx-2"  *ngFor="let skill of post.skills">{{skill.name}}</span>
+                        <span class="mx-2"  *ngFor="let skill of post.skill">{{skill.name}}</span>
                     </div>
 
-                    -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
+                    -Proposals: <span class="proposals fw-bold">{{post.proposals_number}}</span> <br>
 
                     <!-- More Info -->
                     <div class="more-info">

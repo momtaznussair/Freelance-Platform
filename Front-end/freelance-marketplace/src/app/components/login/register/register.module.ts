@@ -15,19 +15,19 @@ import { CategoryComponent } from './category/category/category.component';
 import { ConnectionTypeComponent } from './connection-type/connection-type/connection-type.component';
 import { OverviewComponent } from './overview/overview.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { SharedModule } from '../../freelancer/shared/shared.module';
 import { FreelancerAuthorization } from 'src/app/guards/freelancer-authorization.guard';
+import { LayoutModule } from '../../layout/layout.module';
 
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
   {path : 'register' , component : SignupComponent},
-  {path : 'category' , component : CategoryComponent, canActivate:[FreelancerAuthorization]},
-  {path : 'overview' , component : OverviewComponent, canActivate:[FreelancerAuthorization]},
-  {path : 'skills' , component : ExpertiseComponent, canActivate:[FreelancerAuthorization]},
-  {path : 'experience-level' , component : ExpertlevelComponent, canActivate:[FreelancerAuthorization]},
+  {path : 'category' , component : CategoryComponent, canActivate:[AuthGuard]},
+  {path : 'overview' , component : OverviewComponent, canActivate:[AuthGuard]},
+  {path : 'skills' , component : ExpertiseComponent, canActivate:[AuthGuard]},
+  {path : 'experience-level' , component : ExpertlevelComponent, canActivate:[AuthGuard]},
   {path : 'education' , component : EductionComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
-  {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard , FreelancerAuthorization]},
-  {path : 'hourly-rate' , component : HourlyrateComponent, canActivate:[FreelancerAuthorization]},
+  {path : 'lang' , component : LanguagesComponent, canActivate:[AuthGuard]},
+  {path : 'hourly-rate' , component : HourlyrateComponent, canActivate:[]},
   {path : 'location' , component : LocationComponent},
   {path : '' , component : ConnectionTypeComponent},
 ]
@@ -51,8 +51,8 @@ const routes : Routes=[
 
   ],
   imports: [
-    CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,SharedModule
-    // ,FormGroup
+    CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,LayoutModule
+    
   ],
   exports : [
     SignupComponent , SidebarComponent
