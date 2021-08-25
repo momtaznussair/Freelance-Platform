@@ -23,34 +23,18 @@
 
                 <!-----------------------------------start country --------------------------------->
                 <h3>Country</h3>
-                    <!--*ngIf="isLocationGet"-->
                 <div class="col-lg-12 col-md-12 col-sm-9" >
                     <select formControlName="country" #s (change)="selectCountry(s.value)" class="form-select form-select-sm " aria-label=".form-select-sm example">
                   
                            <option   [value]="item.country_name" *ngFor="let item of arrayOfCountries" >{{item.country_name}}</option>
 
                     </select>
-                    <!-- <select formControlName="country"  #o  (change)="selectCountry(o.value)" class="form-select form-select-sm " aria-label=".form-select-sm example">
-
-                            <option   [value]="item1"  *ngFor="let item1 of arrayOfCountries" >{{item1}}</option>
-
-                    </select> -->
+                   
                     <div  *ngIf="form.controls.country.invalid && isLogged || (form.controls.country.dirty || form.controls.country.touched)">
                         <small class="text-danger fw-bold mb-3" *ngIf="form.controls.country.hasError('required')">please select a country</small>
                     </div>
                 </div>
-                <!-- <div class="col-lg-12 col-md-12 col-sm-9" *ngIf="!isLocationGet">
-                    <select name="country" formControlName="country" class="form-select form-select-sm " aria-label=".form-select-sm example">
-                   
-
-                         <option value="egypt">Egypt</option>
-                         <option value="brazil">Brazil</option>
-
-                  </select>
-                    <div *ngIf="form.controls.country.invalid && isLogged || (form.controls.country.dirty || form.controls.country.touched)">
-                        <small class="text-danger fw-bold mb-3" *ngIf="form.controls.country.hasError('required')">please select a country</small>
-                    </div>
-                </div> -->
+              
                 <br>
                 <!-------------------------------------------end country-------------------------------------------->
                 <!-----------------------------start city------------------------------------>
@@ -58,15 +42,13 @@
                 <div class=" col-lg-12 col-md-12 col-sm-9">
                     <label class="visually-hidden" for="autoSizingInputGroup"></label>
                     <div class="input-group">
-                        <!-- <i class="fa fa-search"></i> -->
-                        <div class=" dropdown">
-                            <input #inpt type="text" value="" data-bs-toggle="dropdown" aria-expanded="false" [placeholder]="placeholder" formControlName="city" [(ngModel)]="queryloc" class="form-control">
-
-                            <ul class="menubox card list-group" *ngIf="inpt.value">
-                                <div *ngFor="let item of arrayOfCities |searchFilter:queryloc">
-                                    <a class="list-group-item list-group-item-light a" #a (click)="selectState(a)"> {{item.state_name}}</a>
-                                </div>
-                            </ul>
+                        <div class=" dropdown col-lg-12 col-md-12 col-sm-9">
+                           <select formControlName="city" #s (change)="selectState(s.value)" class="form-select form-select-sm " aria-label=".form-select-sm example"  formControlName="city" [(ngModel)]="queryloc" >
+                  
+                                <option   [value]="item.city_name" *ngFor="let item of arrayOfCountries" >{{item.country_name}}</option>
+     
+                         </select>
+                           
                             <div *ngIf="form.controls.city.invalid && isLogged || (form.controls.city.dirty || form.controls.city.touched)">
 
                                 <small class="text-danger mx-3 my-2 fw-bold mb-3" *ngIf="form.controls.city.hasError('required')">This field is required</small>

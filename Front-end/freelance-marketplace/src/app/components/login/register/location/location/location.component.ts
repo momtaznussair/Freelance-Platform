@@ -31,9 +31,8 @@ export class LocationComponent implements OnInit {
   data : any = '';
   arrayOfCountries:any
   arrayOfCities:any
-  arrayOfStates:any
   response_data : any;
-  isLocationGet : boolean = false;
+  // isLocationGet : boolean = false;
   locationAccessToken:any;
   ngOnInit(): void {
 
@@ -62,12 +61,10 @@ export class LocationComponent implements OnInit {
     -------------------------------------------*/
     //getting access token
     // this.locationAccessToken = this.countryAndCities.getToken();
-    this.locationAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJuZXZlcmdpdmV1cDk1OEBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJKM2g4Zl8xeHlCLVFDbGhlZ0QtZUd6NnRuRlFjOVotcXFfY0FfS1JGVmJWQWJCSU5IRnpUa0FQNFpCQ0gycU92Q0xrIn0sImV4cCI6MTYyOTkzNTY4M30.IeyQkVgVtAjdpJPio_LLtlsJ0XnDLJyhPU4dGkTxgm0'
-    // console.log(this.locationAccessToken)
-    this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
-      // alert(res);
+      this.locationAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJuZXZlcmdpdmV1cDk1OEBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJKM2g4Zl8xeHlCLVFDbGhlZ0QtZUd6NnRuRlFjOVotcXFfY0FfS1JGVmJWQWJCSU5IRnpUa0FQNFpCQ0gycU92Q0xrIn0sImV4cCI6MTYyOTkzNTY4M30.IeyQkVgVtAjdpJPio_LLtlsJ0XnDLJyhPU4dGkTxgm0'
+      this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
       this.arrayOfCountries =res
-      this.isLocationGet = true;
+      // this.isLocationGet = true;
     console.log(this.arrayOfCountries)
   },error=>
   {
@@ -218,20 +215,16 @@ export class LocationComponent implements OnInit {
     // }
 
     
-    //=================End of notifications ==============
-
-
+    //================= End of notifications ==============
     selectCountry(selectedCountry:string){
         console.log(selectedCountry)
         this.countryAndCities.getCities(selectedCountry, this.locationAccessToken).subscribe(res=>{
           this.arrayOfCities=res
-          // console.log(this.arrayOfCities[0].state_name)
         })
     }
-    selectState(a:HTMLElement){
-      this.placeholder=a.innerText
-
-      console.log(a.innerText)
+    selectState(a:string){
+      this.placeholder=a
+      console.log(a)
     }
 
 
