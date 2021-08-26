@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClientJobService } from 'src/app/services/client-job.service';
+import { JobService } from 'src/app/services/job.service';
 
 @Component({
   selector: 'app-job-details',
@@ -11,7 +12,7 @@ export class JobDetailsComponent implements OnInit {
   id:string;
   isDataGet:any;
   jobb:any;
-  constructor(private route:ActivatedRoute,private job:ClientJobService) { 
+  constructor(private route:ActivatedRoute,private job:JobService) { 
     this.id = this.route.snapshot.params['id'];
 
   }
@@ -20,7 +21,10 @@ export class JobDetailsComponent implements OnInit {
     this.job.getJob(this.id).subscribe(res=>{
       this.jobb=res.data;
       console.log(this.jobb);
-    },error=>console.error)
+      this.isDataGet=true;
+
+    },error=>console.error);
+
   }
 
 }

@@ -20,7 +20,7 @@
         totalItems: count}">
         <div class="col-7">
             <h5>{{post.job_title}}</h5>
-            <p>Created 2 months ago by You</p>
+            <p>Created at : {{post.created_at | date:'yyyy-MM-dd hh:mm'}} by You</p>
         </div>
         <div class="col-5">
             <div class="row">

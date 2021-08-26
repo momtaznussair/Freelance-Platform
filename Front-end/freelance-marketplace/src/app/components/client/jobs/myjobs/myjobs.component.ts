@@ -10,16 +10,20 @@ import { JobService } from 'src/app/services/job.service';
 })
 export class MyjobsComponent implements OnInit {
 jobs:any;
+user_id:any;
   constructor(private api:ApiService,private job:ClientJobService) { }
 
   ngOnInit(): void {
+    this.user_id=localStorage.getItem('user_id');
+    console.log(this.user_id);
     this.fetchJobs()
   }
   fetchJobs(){
-    this.job.getJobs().subscribe(res=>{
+    this.job.getJob("1").subscribe(res=>{
       this.jobs=res.data;
       console.log(this.jobs);
     })
+    
   }
 
  /*-------------------------

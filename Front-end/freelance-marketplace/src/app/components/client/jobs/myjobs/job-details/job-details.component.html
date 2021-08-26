@@ -1,32 +1,32 @@
 
         <app-clientnav></app-clientnav>
 
-    <div class="container ps-4 border">
+    <div class="container ps-4 border" >
         <div class="row">
           <!-- left col -->
           <div class="col-12 col-lg-9 ">
-            <div class="row border-bottom py-3 pt-md-4">
+            <div class="row border-bottom py-3 pt-md-4" *ngIf="isDataGet" >
               <h4>Job details</h4>
-              <p class="po"> web design
-                <br><span class="sp">Posted 4 days ago</span><br>
-                <span><i class="fas fa-route ii"></i>WorldWide</span>
+              <p class="po"> {{jobb.job_title}}
+                <br><span class="sp">Posted at: {{jobb.created_at}}</span><br>
+                <!-- <span><i class="fas fa-route ii"></i>WorldWide</span> -->
             </p>
   
             </div>
             <div class="row border-bottom mt-4 py-md-1">
-              <p class="po">ccdccdcdccdscdscdc</p>
+              <p class="po">{{jobb.description}}</p>
             </div>
             <div class="row border-bottom py-3 pt-md-3">
                 <div class="col-md-4 ">
                     <i class="far fa-clock ii"></i>
-                    <p class="d-inline ms-md-1 po">job_details_duration
+                    <p class="d-inline ms-md-1 po">{{jobb.duration.name}}
 
                     </p>
                 </div>
           
                 <div class=" col-md-4 ">
                     <i class="fas fa-dollar-sign d-inline ii"></i>
-                    <p class="d-inline ms-md-1 po">job_details_experience
+                    <p class="d-inline ms-md-1 po">{{jobb.experience.name}}
                         <!-- <br><span class=" sp">freelancers with the lowest rates</span> -->
 
                     </p>
@@ -37,25 +37,17 @@
 
 
 
-            <div class="row border-bottom pt-3 pt-md-3">
+            <!-- <div class="row border-bottom pt-3 pt-md-3">
               <p class="ii"><b>Project Type:</b> &nbsp; One-time project</p>
-            </div>
+            </div> -->
             <div class="row border-bottom py-3 pt-md-3">
               <p class="po ii"><b>Skills and expertise </b></p><br>
-              <p class="po">Web Design Languages </p>
+              <!-- <p class="po">Web Design Languages </p> -->
               <ul class="nav free mb-md-4">
                 <li class="nav-item">
-                  <a class="nav-link " href="#">CSS3</a>
+                  <a class="nav-link " >{{jobb.skills.name}}</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">WordPress</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">PHP</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link " href="#">HTML</a>
-                </li>
+             
               </ul>
             </div>
             <div class="row border-bottom pt-3 pt-md-3">
