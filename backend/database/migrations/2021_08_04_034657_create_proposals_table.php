@@ -26,14 +26,14 @@ class CreateProposalsTable extends Migration
 
             // $table->unsignedBigInteger('payment_style_id');
             $table->unsignedBigInteger('duration_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('freelancer_id');
             $table->unsignedBigInteger('job_id');
             
             $table->timestamps();
 
             // $table->foreign('payment_style_id')->references('id')->on('payment_styles');
             $table->foreign('duration_id')->references('id')->on('durations');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('freelancer_id')->references('id')->on('freelancers');
             $table->foreign('job_id')->references('id')->on('jobs');
 
         });

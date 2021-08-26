@@ -25,7 +25,7 @@ class Experience_levelFactory extends Factory
         $levels=['entry','intermediate','expert'];
         $level=$levels[rand(0,2)];
         return [
-            'name' => $this->$level,
+            'name' => $level,
         ];
     }
 }
