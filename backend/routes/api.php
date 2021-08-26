@@ -227,3 +227,5 @@ Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPass
 
 
 Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);
+
+Route::post('test/image', [JobController::class, 'testImage']);
