@@ -93,7 +93,7 @@ Route::get('proposals',[ProposalController::class,'index']);
 Route::get('proposals/{proposal}',[ProposalController::class,'show']);
 
 // CRUD for Durations
-Route::get('durations',[DurationController::class, 'index']);
+Route::get('durations',[JobDurationController::class, 'index']);
 Route::get('durations/{durations}',[DurationController::class,'show']);
 Route::post('durations' ,[DurationController::class,'store']);
 Route::post('durations/{durations}' ,[DurationController::class,'update']);
@@ -170,7 +170,13 @@ Route::middleware(['client','auth:sanctum'])->group(function () {
     Route::post('/companies/{company}',[CompanyController::class,'update']);
     Route::delete('/companies/delete/{company}',[CompanyController::class,'destroy']);
 
+    //proposals
+
+
 });
+
+Route::get('job/proposals/{job}', [ProposalController::class, 'showJob']);
+
 
 // authenticated freelancer routes
 
@@ -227,3 +233,5 @@ Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPass
 
 
 Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);
+
+Route::post('test/image', [JobController::class, 'testImage']);

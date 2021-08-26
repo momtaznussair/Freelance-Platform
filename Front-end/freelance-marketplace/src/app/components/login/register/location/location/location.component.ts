@@ -61,7 +61,9 @@ export class LocationComponent implements OnInit {
     -------------------------------------------*/
     //getting access token
     // this.locationAccessToken = this.countryAndCities.getToken();
-      this.locationAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJuZXZlcmdpdmV1cDk1OEBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJKM2g4Zl8xeHlCLVFDbGhlZ0QtZUd6NnRuRlFjOVotcXFfY0FfS1JGVmJWQWJCSU5IRnpUa0FQNFpCQ0gycU92Q0xrIn0sImV4cCI6MTYyOTkzNTY4M30.IeyQkVgVtAjdpJPio_LLtlsJ0XnDLJyhPU4dGkTxgm0'
+      this.locationAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtb210YXpudXNzYWlyQGdtYWlsLmNvbSIsImFwaV90b2tlbiI6IldlRjUzTEVhZlVrenY1MFhLUThBdmxXOTlKNmpmZl8xUDEwem1rNDJNa0F5cEdaQkxyd0F1Qkp2U2Q1eUp0Q0FqMzAifSwiZXhwIjoxNjMwMDY5MzI1fQ.IVOntdAZWoZ675CY_cNjyhK00GrXfj0WTstdw2XLh1I'
+      // this.locationAccessToken=this.countryAndCities.getToken();
+      console.log(this.locationAccessToken);
       this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
       this.arrayOfCountries =res
       // this.isLocationGet = true;
