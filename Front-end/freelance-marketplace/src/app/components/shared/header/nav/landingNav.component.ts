@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./landingNav.component.css']
 })
 export class LandingNavComponent implements OnInit {
- 
+  x='search in freelancers';
   // queryInJobs='';
   isUserLogged : boolean = false;
 
@@ -37,7 +37,6 @@ export class LandingNavComponent implements OnInit {
   logout(){
     this.userService.logout();
   }
-  x='search in freelancers';
   freelancer(){
  
     this.x="search in freelancers";

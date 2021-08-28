@@ -46,8 +46,7 @@ export class SecurityComponent implements OnInit {
   new_password : string = '';
   new_password_confirmation : string = '';
   isLogged : boolean = false;
-  error:boolean=false;
-  errorMassage:string='';
+
   changePassword(){
 
     console.log(this.form.value)
@@ -63,15 +62,13 @@ export class SecurityComponent implements OnInit {
           this.errorUpdate = true;
         }
       } , error => {
-        this.error=true;
-        this.errorMassage='please check your info and try again';
+        alert('please check your data and try again');
       });
     }
     else
     {
       this.isLogged = true;
-      this.error=true;
-      this.errorMassage='please check your info and try again';
+      alert('please check your info and try again');
       console.log(this.isLogged);
     }
   }

@@ -9,7 +9,7 @@ import { RespondedLocationToken } from 'src/app/models/location/responded-locati
 import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
 import { countries } from 'src/app/models/location/countries';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-location',
@@ -34,8 +34,6 @@ export class LocationComponent implements OnInit {
   response_data : any;
   // isLocationGet : boolean = false;
   locationAccessToken:any;
-  error:boolean=false;
-  errorMassage:string='';
   ngOnInit(): void {
 
     if(localStorage.getItem('user_data'))
@@ -77,7 +75,7 @@ export class LocationComponent implements OnInit {
   //////////////////////////////////
 
 
- 
+
   }
 
 
@@ -144,8 +142,7 @@ export class LocationComponent implements OnInit {
           else
           {
             this.router.navigateByUrl('/user/signup/register');
-            this.error=true;
-            this.errorMassage=this.response_data.msg.email;
+            alert(this.response_data.msg.email);
             localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
           }
           })//end of request
@@ -166,7 +163,7 @@ export class LocationComponent implements OnInit {
             this.response_data = response;
             if(this.response_data.data != null)
             {
-              // localStorage.setItem('token' , t36his.response_data.data.access_token);
+              // localStorage.setItem('token' , this.response_data.data.access_token);
               localStorage.setItem('user_data' , JSON.stringify(this.response_data.data.user));
               localStorage.setItem('user_id' , this.response_data.data.user.user_id);
               localStorage.setItem('token' , this.response_data.data.access_token);
@@ -197,8 +194,7 @@ export class LocationComponent implements OnInit {
             else
             {
               this.router.navigateByUrl('/user/signup/register');
-              this.error=true;
-              this.errorMassage=this.response_data.msg.email;
+              alert(this.response_data.msg.email);
               localStorage.setItem('error_msg' , JSON.stringify(this.response_data.msg.email));
             }
 
@@ -216,9 +212,9 @@ export class LocationComponent implements OnInit {
     }
 
     //==============start use notification ===============
-    successAlertNotification(){
-      Swal.fire('Hi', 'Congrats! operation successfull', 'success')
-    }
+    // successAlertNotification(){
+    //   Swal.fire('Hi', 'Congrats! operation successfull', 'success')
+    // }
 
     
     //================= End of notifications ==============

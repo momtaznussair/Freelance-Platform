@@ -62,6 +62,7 @@ class AuthController extends Controller
             $path = Storage::putFile('users', $request->file('img_link'));
             $user->img_link = $path;
         }
+
         $user->save();
         
         $token = $user->createToken('auth_token')->plainTextToken;

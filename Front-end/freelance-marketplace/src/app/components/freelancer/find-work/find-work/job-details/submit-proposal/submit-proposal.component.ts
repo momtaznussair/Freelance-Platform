@@ -21,7 +21,7 @@ export class SubmitProposalComponent implements OnInit {
     isDataGet:any;
     job_details:any;
     job_skills:any;
-    user_id:any;
+    freelancer_id:any;
     id:string;
     duration:any;
   constructor(private proposalservice:ProposalService,private durations:DurationsService ,private _formBuilder:FormBuilder,private router:Router,private jobDetails:JobService,private route:ActivatedRoute) { 
@@ -30,11 +30,11 @@ export class SubmitProposalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user_id=localStorage.getItem('user_id');
-    console.log(this.user_id);
+    this.freelancer_id=localStorage.getItem('freelancer_id');
+    console.log(this.freelancer_id);
     this.form=this._formBuilder.group({
       job_id:[this.id],
-      user_id:[this.user_id],
+      freelancer_id:[this.freelancer_id],
       duration_id:['',[Validators.required]],
        payment_amount:['',[Validators.required,Validators.minLength(2)]],
        attatchment:[''],
@@ -45,7 +45,7 @@ export class SubmitProposalComponent implements OnInit {
     this.jobDetails.getJob(this.id).subscribe(response=>{
       this.job_details=response['data'] as Job[];
       console.log(this.job_details);
-      this.job_skills=this.job_details.skill;
+      this.job_skills=this.job_details.skills;
       console.log(this.job_skills);
       this.isDataGet=true;
 

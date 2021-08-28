@@ -144,10 +144,6 @@
            </div>
         </div>
 
-
-
-
-
     </div>
  </div>
 
@@ -274,6 +270,7 @@
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
                 <div class="card-body"  *ngFor="let post of jobPost  
                 | searchFilter:query 
+                | filterJobs:Categories:payment_style:experience:null
                 |paginate : {
                     itemsPerPage: 5,
                     currentPage: page,
@@ -294,8 +291,8 @@
                     </div>
 
                     <!-- Job Info  -->
-                    Hourly: <span class="hourly-rate fw-bold">$5.00 - $15.00</span>
-                    <span class="complex"> - Intermidiate</span> - Est. Time: <span class="job-time"> More than 6 months, Hours to be determined </span> - Posted: <span class="job-since"> 1 day ago</span>
+                    {{post.payment_style}}: <span class="hourly-rate fw-bold">$5.00 - $15.00</span>
+                    <span class="complex"> - {{post.experience}}</span> - Est. Time: <span class="job-time"> More than 6 months, Hours to be determined </span> - Posted: <span class="job-since"> 1 day ago</span>
                     <br>
 
                     <!-- Job Description -->
@@ -308,7 +305,7 @@
                         <span class="mx-2"  *ngFor="let skill of post.skill">{{skill.name}}</span>
                     </div>
 
-                    -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
+                    -Proposals: <span class="proposals fw-bold">{{post.proposals_number}}</span> <br>
 
                     <!-- More Info -->
                     <div class="more-info">

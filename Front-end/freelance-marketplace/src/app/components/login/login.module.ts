@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LayoutModule } from '../layout/layout.module';
-
 
 const routes: Routes = [
   {
@@ -20,7 +18,7 @@ const routes: Routes = [
     LoginComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),ReactiveFormsModule,FormsModule
+    CommonModule,RouterModule.forChild(routes),ReactiveFormsModule,FormsModule,
   ],
   exports : [
     LoginComponent ,

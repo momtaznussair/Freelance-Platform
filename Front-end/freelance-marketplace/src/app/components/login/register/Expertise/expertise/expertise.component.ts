@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
-// import { HttpClient } from '@angular/common/http';
 import { SkillsService } from 'src/app/services/skills.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';

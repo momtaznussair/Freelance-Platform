@@ -161,7 +161,7 @@ return [
             'App\\Widgets\\Portfolios',
             'App\\Widgets\\Proposals',
             'App\\Widgets\\Skills',
-            'App\\Widgets\\Tests',
+            // 'App\\Widgets\\Tests',
         ],
 
     ],

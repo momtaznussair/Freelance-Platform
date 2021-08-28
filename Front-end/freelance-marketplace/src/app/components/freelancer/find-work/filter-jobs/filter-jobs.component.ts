@@ -31,6 +31,7 @@ export class FilterJobsComponent implements OnInit {
   radioSelected:any
   radioSel:any;
   radioSelectedString:string=''
+  urlQuery:string=''
   getSelecteditem(){
     this.radioSel = this.cat.find(Item => Item.name === this.radioSelected);
     this.radioSelectedString = JSON.stringify(this.radioSel);
@@ -38,6 +39,8 @@ export class FilterJobsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.fetchJobs();
+  this.urlQuery=this.activatedRoute.snapshot.params.query;
+  this.query=this.urlQuery;
   }
   // search(){
     // console.log(this.query)

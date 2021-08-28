@@ -15,8 +15,8 @@ import { CategoryComponent } from './category/category/category.component';
 import { ConnectionTypeComponent } from './connection-type/connection-type/connection-type.component';
 import { OverviewComponent } from './overview/overview.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { SharedModule } from '../../freelancer/shared/shared.module';
 import { FreelancerAuthorization } from 'src/app/guards/freelancer-authorization.guard';
+import { LayoutModule } from '../../layout/layout.module';
 
 const routes : Routes=[
   {path : 'main' , component : ConnectionTypeComponent},
@@ -51,8 +51,8 @@ const routes : Routes=[
 
   ],
   imports: [
-    CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,SharedModule
-    // ,FormGroup
+    CommonModule , RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,LayoutModule
+    
   ],
   exports : [
     SignupComponent , SidebarComponent

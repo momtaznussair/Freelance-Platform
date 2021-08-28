@@ -24,6 +24,7 @@ const routes : Routes = [
   {path : 'job/details' , component : JobDetailsComponent},
   {path : 'job/details/:id' , component : JobDetailsComponent},
   {path : 'proposals' , component : ProposalsComponent},
+  {path : 'proposals/:id' , component : ProposalsComponent},
   {path : '' , component : MyjobsComponent},
 ]
 

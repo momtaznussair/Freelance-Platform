@@ -45,6 +45,14 @@ class ClientController extends Controller
         ]);
 
         if($client){
+
+            if ($request->company_name)
+            {
+                Company::create([
+                    'founder_id' => $client->id,
+                    'name' => $request->company_name,
+                ]);
+            }
             return $this->apiResponse($client);
         }
 
@@ -88,7 +96,7 @@ class ClientController extends Controller
     public function Rules(){
         return [
             'user_id' => 'required|exists:users,id',
-            'company_id' => 'exists:companies,id'
+            'company_name' => 'string|min:3|max:255'
         ];
     }
 }

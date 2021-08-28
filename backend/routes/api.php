@@ -24,7 +24,6 @@ use App\Models\Education;
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\UserLanguagesController;
-use App\Models\User;
 
 
 /*
@@ -94,7 +93,7 @@ Route::get('proposals',[ProposalController::class,'index']);
 Route::get('proposals/{proposal}',[ProposalController::class,'show']);
 
 // CRUD for Durations
-Route::get('durations',[JobDurationController::class, 'index']);
+Route::get('durations',[DurationController::class, 'index']);
 Route::get('durations/{durations}',[DurationController::class,'show']);
 Route::post('durations' ,[DurationController::class,'store']);
 Route::post('durations/{durations}' ,[DurationController::class,'update']);
@@ -180,21 +179,15 @@ Route::get('job/proposals/{job}', [ProposalController::class, 'showJob']);
 
 
 // authenticated freelancer routes
-Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
-
-Route::post('portfolios' ,[PortfolioController::class,'store']);
-Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
-Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
 
 
 Route::middleware(['freelancer','auth:sanctum'])->group(function () {
     // portfolios
-    Route::post('portfolios' ,[PortfolioController::class,'store']);
     Route::post('portfolios/{portfolio}' ,[PortfolioController::class,'update']);
+    Route::delete('portfolios/delete/{portfolio}' ,[PortfolioController::class,'destroy']);
 
     // portfolios images
-
-
+    Route::post('portfolios' ,[PortfolioController::class,'store']);
     Route::delete('portfolios/images/{id}', [portfolioImagesController::class, 'destroy']);
     Route::post('portfolios/images', [portfolioImagesController::class, 'store']);
 
@@ -239,24 +232,6 @@ Route::post('/user/updateLocation/{id}' , [AuthController::class,'updateUserPhon
 Route::post('/user/updatePassword/{id}' , [AuthController::class,'updateUserPassword']);
 
 
-Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);
-Route::get('/home', function () {
-    return "billing portal finished";
-})->name('home');
-Route::get('/billing-portal/{user}', function ($id) {
-    $user = User::find($id);
-
-    return $user->redirectToBillingPortal(route('home'));
-});
-
-Route::get('/terms', function () {
-    return "billing portal terms";
-})->name('terms');
-
-
-Route::post('/freelancer/updateJobTitle/{id}',[FreelancerController::class,'updateFreelancerTitle']);
-Route::post('/freelancer/updateOverview/{id}',[FreelancerController::class,'updateFreelancerOverview']);
-Route::post('/freelancer/updateHourlyRate/{id}',[FreelancerController::class,'updateFreelancerHourly']);
 Route::post('/user/checkEmail' ,[SocialiteAuthController::class ,'checkEmail']);
 
 Route::post('test/image', [JobController::class, 'testImage']);

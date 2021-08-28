@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FreelancerResource;
 use App\Http\Resources\ProposalResource;
+// use App\Http\Resources\ProposalResource;
 use App\Models\Job;
 use App\Models\Proposal;
 use App\Notifications\ProposalNotification;
@@ -108,7 +109,7 @@ class ProposalController extends Controller
             'freelancer_comment' => 'string|min:5',
             // 'payment_style_id' => 'required|exists:payment_styles,id',
             'duration_id' => 'required|exists:durations,id',
-            'user_id' => 'required|exists:users,id',
+            'freelancer_id' => 'required|exists:freelancers,id',
             'job_id' => 'required|exists:jobs,id'
         ];
     }

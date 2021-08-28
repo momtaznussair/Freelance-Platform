@@ -19,9 +19,13 @@ export class HourlyrateComponent implements OnInit {
   constructor(private formBuilder : FormBuilder , private apiService : ApiService,private router : Router ) { }
 
   currentRegisterData : any;
+  token : any;
 
   ngOnInit(): void
   {
+
+    // we need to save token to make freelancer can logged
+    this.token = localStorage.getItem('user_token');
 
     this.user_id = localStorage.getItem('user_id');
     console.log(this.user_id);
@@ -52,7 +56,6 @@ export class HourlyrateComponent implements OnInit {
 
     //sent request
     this.apiService.post(`${environment.apiUrl}/freelancers` , this.currentRegisterData).subscribe(response=>{
-
 
       console.log(response);
       this.freelancer_data = response;
