@@ -38,7 +38,7 @@ export class SubmitProposalComponent implements OnInit {
       duration_id:['',[Validators.required]],
        payment_amount:['',[Validators.required,Validators.minLength(2)]],
        attatchment:[''],
-       cover_letter:['',[Validators.required,Validators.minLength(2),Validators.maxLength(255)]],
+       cover_letter:['',[Validators.required,Validators.minLength(2),Validators.maxLength(1024)]],
     });
 
     //get job details
@@ -71,7 +71,6 @@ export class SubmitProposalComponent implements OnInit {
     }else{
       this.islogged=true;
     }
-
    }
   
 
