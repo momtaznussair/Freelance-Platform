@@ -1,6 +1,8 @@
 <app-nav></app-nav>
 <div class="container py-5 px-3">
-
+    <div class="alert alert-danger" role="alert"  *ngIf="error">
+        {{errorMassage}}
+      </div>
     <div class="row">
 
 
@@ -96,7 +98,7 @@
                 <div class="card-footer px-4">
                     <p class="fw-bold mt-2">Client Account</p>
                     <span class="text-justify">Hire, manage and pay as a different company. Each client company has its own freelancers, payment methods and reports.</span>
-                    <button routerLink="/client-account" type="button" class="btn pull-right">New Client Account</button>
+                    <button routerLink="/freelancer/client-account" type="button" class="btn pull-right">New Client Account</button>
                 </div>
             </div>
             <!-- End of additional account -->

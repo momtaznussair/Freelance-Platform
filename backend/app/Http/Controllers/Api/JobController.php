@@ -23,17 +23,29 @@ class JobController extends Controller
         return $this->apiResponse(JobResource::collection($jobs));
     }
 
+    public function showClient($client)
+    {
+        $jobs = Job::where('client_id', $client)->get();
+
+        if($jobs){
+            return $this->apiResponse(JobResource::collection($jobs));
+        }
+
+        return $this->NotFoundError();
+        
+    }
+    
     public function show($id)
     {
 
-        // $job = Job::with(['skills','category','duration','experience','payment_style','client.user'])->find($id);
-        $job = Job::find($id);
+        $job = Job::with(['skills','category','duration','experience','payment_style','client.user', 'proposals'])->find($id);
+        // $job = Job::find($id);
 
         if (!$job) {
             $this->NotFoundError();
         }
-        // return $this->apiResponse($job);
-        return $this->apiResponse(new JobResource($job));
+        return $this->apiResponse($job);
+        // return $this->apiResponse(new JobResource($job));
 
     }
 
@@ -111,7 +123,7 @@ class JobController extends Controller
 
         $job->update($request->all());
 
-        $job->skills()->sync($request->skill === null ? [] : $request->skills);
+        $job->skills()->sync($request->skill === null ? [] : $request->skill);
         if ($job) {
             return $this->apiResponse($job, '', 201);
         }

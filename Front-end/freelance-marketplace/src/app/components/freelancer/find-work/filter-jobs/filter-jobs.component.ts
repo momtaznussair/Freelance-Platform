@@ -4,6 +4,7 @@ import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { Job } from 'src/app/models/job';
 import { JobService } from 'src/app/services/job.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-filter-jobs',
@@ -12,18 +13,19 @@ import { JobService } from 'src/app/services/job.service';
 })
 export class FilterJobsComponent implements OnInit {
   r:any;
-  query:any;
-    
+  query:any; // search term
+
+
+  
+  //filters icons
   shape0='fa-chevron-down';
   shape1='fa-chevron-down';
   shape2='fa-chevron-down';
   shape3='fa-chevron-down';
   shape4='fa-chevron-down';
-  params= new Set();
-  count = 0;
-  currentIndex:number=0;
-  cat :Category[]=[];
-  constructor(private catService: CategoryService,private job:JobService ) { }
+
+  cat :any[]=[];
+  constructor(private catService: CategoryService,private job:JobService, private activatedRoute: ActivatedRoute) { }
 
 
   radioSelected:any
@@ -32,57 +34,70 @@ export class FilterJobsComponent implements OnInit {
   getSelecteditem(){
     this.radioSel = this.cat.find(Item => Item.name === this.radioSelected);
     this.radioSelectedString = JSON.stringify(this.radioSel);
-    console.log(this.radioSelectedString)
+    // console.log(this.radioSelectedString)
   }
   ngOnInit(): void {
-    this.fetchPosts();
+    this.fetchJobs();
   }
-  search(){}
+  // search(){
+    // console.log(this.query)
+  // }
 
 
  jobPost:any;
-  fetchPosts(): void {
-  
+  Categories:any;
+  fetchJobs(): void {
+  // get jobs
       this.job.getJobs().subscribe(response=>{
         this.jobPost=response['data'] as Job;
     console.log(this.jobPost)
       },error=>console.error);
-      ///////////
+ // get categories 
     this.catService .getCategories('categories').subscribe(response=>{
-      this.cat=response ['data'] as Category[];
-      console.log(this.cat)
+      // this.cat=response ['data'] as Category[];
+      this.cat=response ['data'] 
+     this.Categories =this.cat
+    for(let category of this.cat){
+      category.selected=false;
+    }
     }
     )
   }
-  addCategories(e:any){
-
-  }
-
-  addParams(e:any){
-    //  console.log(e.target.tagName)
-      // console.log(e.target.innerText)
-      if(e.target.checked){
-       this.params.add(e.target.value)
-      }else{
-        console.log(e)
-      }
-      console.log(e.target.name);
-        console.log(this.params);
-     }
+  
    /*------------------------------
       add filters to array params
-  --------------------------------*/ 
-  addExpermentLevel(e:any){
-  //  console.log(e.target.tagName)
-    // console.log(e.target.innerText)
-    if(e.target.checked){
-     this.params.add(e.target.value)
-    }else{
-      console.log(e)
-    }
-    console.log(e.target.name);
-      console.log(this.params);
-   }
+  --------------------------------*/
+
+  // filters
+
+  experience  = [{name:'entry',selected:false},{name:'intermediate',selected:false},{name:'expert',selected:false}];
+  payment_style  = [{name:'fixed',selected:false},{name:'hourly',selected:false}];
+  payment_amountRange={min:0,max:0};
+  nOfProposals ={min:0,max:0};
+
+selectCategory(input:any){
+  let index=this.Categories.findIndex((element: { name: any; })=>element.name==input.value);
+  this.Categories[index].selected=! this.Categories[index].selected;
+ 
+}
+
+experienceLevel(input:any){
+  let index=this.experience.findIndex((level)=>level.name==input.value);
+  this.experience[index].selected=! this.experience[index].selected;
+}
+paymentStyle(input:any){
+  let index=this.payment_style.findIndex((level)=>level.name==input.value);
+  this.payment_style[index].selected=! this.payment_style[index].selected;
+}
+paymentAmount(min:any,max:any){
+this.payment_amountRange.min=min;
+this.payment_amountRange.max=max;
+}
+selectNOfProposals(min:any,max:any){
+  this.nOfProposals.min=min;
+  this.nOfProposals.max=max;
+}
+  
   /*-------------------------
      change icon methods 
   -------------------------- */ 
@@ -129,14 +144,16 @@ export class FilterJobsComponent implements OnInit {
   -------------------------- */ 
   page=1;
   tableSize=7;
+  count = 0;
+  currentIndex:number=0;
   onTableDataChange(event:any){
     this.page = event;
-    this.fetchPosts();
+    this.fetchJobs();
   }  
 
   onTableSizeChange(event:any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.fetchPosts();
+    this.fetchJobs();
   }  
 }

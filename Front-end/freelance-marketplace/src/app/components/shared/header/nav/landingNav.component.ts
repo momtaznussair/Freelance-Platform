@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./landingNav.component.css']
 })
 export class LandingNavComponent implements OnInit {
-  x='search';
+ 
   // queryInJobs='';
   isUserLogged : boolean = false;
 
@@ -37,19 +37,35 @@ export class LandingNavComponent implements OnInit {
   logout(){
     this.userService.logout();
   }
-  url:string='';
-  freelancer(inpt:HTMLInputElement){
+  x='search in freelancers';
+  freelancer(){
  
-    this.x="search in freelancer";
-    this.url=`freelancers/${inpt.value}`
-    this.router.navigateByUrl(this.url);
-  }
+    this.x="search in freelancers";
+    this.searchFlag=true;
+ }
 
-  jobs(inpt:HTMLInputElement){
+ jobs(){
   
-    this.x="search in jobs";
-    this.url=`freelancer/work/filter-jobs/${inpt.value}`
-    this.router.navigateByUrl(this.url);
+   this.x="search in jobs";
+   this.searchFlag=false;
+ }
+ searchFlag:boolean=true; //jobs
+ Url:string='';
+
+ search(searchKeyword:string){
+   
+  if(this.searchFlag) //search in freelancers
+  {
+    this.Url=`freelancers/${searchKeyword}`
+ 
+
+  }else //search in jobs
+  {
+    this.Url=`/freelancer/work/filter-jobs/${searchKeyword}`;
+ 
   }
+  this.router.navigateByUrl(this.Url);
+ }
+
 }
 

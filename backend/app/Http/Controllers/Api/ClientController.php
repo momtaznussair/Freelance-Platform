@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\JobResource;
 use App\Models\Client;
+use App\Models\Company;
+use App\Models\Job;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -18,7 +21,7 @@ class ClientController extends Controller
     }
 
     public function show($id){
-        $client = Client::find($id);
+        $client = Client::with('jobs')->find($id);
 
         if($client){
             return $this->apiResponse($client);
@@ -26,6 +29,7 @@ class ClientController extends Controller
 
         return $this->NotFoundError();
     }
+
 
     public function store(Request $request){
         

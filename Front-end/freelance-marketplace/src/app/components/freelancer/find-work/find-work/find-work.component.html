@@ -114,13 +114,15 @@
                   
 
 <!----/////////////////////////////////////////////start card /////////////////////////////////////////////////////////////////-->
-                    <div  [routerLink]="['/freelancer/work/details/', post.id]" class="card-body" *ngFor="let post of jobPost   |searchFilter:query | paginate : {
-                        itemsPerPage: 5,
-                        currentPage: page,
-                        totalItems: count
-                      };
-                let i = index" [class.active]="i == currentIndex">
+<div  [routerLink]="['/freelancer/work/details/', post.id]" class="card-body" *ngFor="let post of jobPost   |searchFilter:query | paginate : {
+    itemsPerPage: 5,
+    currentPage: page,
+    totalItems: count
+  };
+let i = index" [class.active]="i == currentIndex">
+
                         <!-- Job Title -->
+                       
                         <div class="header d-flex">
                             <a routerLink="#"> {{post.job_title}}</a>
                             <span class="ms-auto">
@@ -192,7 +194,7 @@
                 <!-- View Profile -->
                 <span class="profile mt-2 d-inline-block">
                     <i class="fas fa-eye me-2"></i>
-                    <a href="#">View Profile</a>
+                    <a routerLink="/freelancer/profile">View Profile</a>
                 </span>
 
                 <!-- Visibility -->
