@@ -10,6 +10,6 @@ export class JobProposalService {
   constructor(private api:ApiService) { }
 
   get(id:string):Observable<any>{
-    return this.api.get("http://127.0.0.1:8000/api/job/proposal/"+id);
+    return this.api.get("http://127.0.0.1:8000/api/job/proposals/"+id);
   }
 }

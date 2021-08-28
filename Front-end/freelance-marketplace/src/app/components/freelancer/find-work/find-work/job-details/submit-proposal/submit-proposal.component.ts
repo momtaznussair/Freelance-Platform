@@ -33,8 +33,8 @@ export class SubmitProposalComponent implements OnInit {
     this.freelancer_id=localStorage.getItem('freelancer_id');
     console.log(this.freelancer_id);
     this.form=this._formBuilder.group({
-      job_id:[this.id],
-      freelancer_id:[this.freelancer_id],
+      job_id:[+this.id],
+      freelancer_id:[+this.freelancer_id],
       duration_id:['',[Validators.required]],
        payment_amount:['',[Validators.required,Validators.minLength(2)]],
        attatchment:[''],
