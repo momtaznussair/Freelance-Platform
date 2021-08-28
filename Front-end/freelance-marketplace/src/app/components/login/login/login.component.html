@@ -1,5 +1,8 @@
 <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
     <div class="container">
+        <div class="alert alert-danger" role="alert"  *ngIf="error">
+            {{errorMassage}}
+          </div>
         <div class="card login-card">
             <div class="row g-0">
                 <div class="col-md-5">

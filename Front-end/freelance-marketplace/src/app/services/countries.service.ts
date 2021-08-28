@@ -13,12 +13,11 @@ export class CountriesService {
     location:RespondedLocationToken=new RespondedLocationToken()
     // get access token
   getToken(){
-    ///J3h8f_1xyB-QClhegD-eGz6tnFQc9Z-qq_cA_KRFVbVAbBINHFzTkAP4ZBCH2qOvCLk
-  //
-    const headers= new HttpHeaders()
-    .append('Accept', 'application/json')
-    .append('api-token', 'AuXnFjES43NqbdODZoc1anLtpO9op_9HsA7hqU56HJoxlbbNrMsUAzmsp6cqoZ0HhWQ')
-    .append('user-email', 'nevergiveup958@gmail.com');
+  
+    const headers= new Headers()
+    headers .append('Accept', 'application/json')
+    headers  .append('api-token', 'J3h8f_1xyB-QClhegD-eGz6tnFQc9Z-qq_cA_KRFVbVAbBINHFzTkAP4ZBCH2qOvCLk')
+    headers  .append('user-email', 'nevergiveup958@gmail.com');
   
   this.api.get("https://www.universal-tutorial.com/api/getaccesstoken",{'headers': headers }).subscribe(res=>{
     return res;
@@ -27,9 +26,10 @@ export class CountriesService {
 
 // get all countries
  getCountries(accessToken:any){
-  const headers= new HttpHeaders()
-  .set("Accept", "application/json")
-  .set("Authorization", `Bearer ${accessToken}`)
+  const headers= new Headers();
+  headers.append("Accept", "application/json");
+  headers.append("Authorization", `Bearer ${accessToken}`)
+
   console.log(this.getToken());
   return  this.api.get("https://www.universal-tutorial.com/api/countries",{ 'headers': headers });
 
