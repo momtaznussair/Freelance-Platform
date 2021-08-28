@@ -10,9 +10,14 @@ import { UserService } from 'src/app/services/user.service';
 export class ClientnavComponent implements OnInit {
   x='search in freelancers';
   constructor(private userService : UserService , private router:Router) { }
-
-  ngOnInit(): void {
-  }
+  userName:any
+  userData:any;
+  currentUserData:any
+    ngOnInit(): void {
+      this.currentUserData = localStorage.getItem('user_data');
+    this.userData=JSON.parse(this.currentUserData)
+    this.userName=`${this.userData.first_name} ${this.userData.last_name}`;}
+    
   setting(){
     this.router.navigateByUrl("/freelancer/settings/info");
   }
