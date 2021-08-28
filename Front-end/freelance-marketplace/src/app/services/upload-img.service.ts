@@ -13,13 +13,15 @@ export class UploadImgService {
    upload(file:File):Observable<any> {
   
     // Create form data
-    // const formData = new FormData(); 
+    const formData = new FormData(); 
       
     // Store form name as "file" with file data
-    // formData.append("file", file,file.name);
+    formData.append("file", file,file.name);
       // console.log(formData);
 
     // Make http post request over api  with formData as req
-    return this.http.post(`${environment.apiUrl}/register`, file)
+    // return this.http.post(`${environment.apiUrl}/register`, file)
+    return this.http.post(`http://127.0.0.1:8000/api/test/image`, formData)
+
 }
 }

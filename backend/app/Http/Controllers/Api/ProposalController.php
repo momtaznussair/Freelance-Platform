@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FreelancerResource;
+use App\Http\Resources\ProposalResource;
+use App\Models\Job;
 use App\Models\Proposal;
 use App\Notifications\ProposalNotification;
 use App\Traits\ApiResponseTrait;
@@ -27,6 +30,18 @@ class ProposalController extends Controller
         }
         return $this->apiResponse($proposal);
     }
+
+    // show proposals of a specific job
+    public function showJob($job_id)
+    {
+        $proposals = Proposal::where('job_id', $job_id)->get();
+
+        if(!$proposals){
+            $this->NotFoundError();
+        }
+        return $this->apiResponse(ProposalResource::collection($proposals));
+    }
+
 
     public function store(Request $request){
         $validate = Validator::make($request->all(),$this->Rules());

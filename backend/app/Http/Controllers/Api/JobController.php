@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Notifications\JobNotification;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class JobController extends Controller
@@ -34,7 +35,7 @@ class JobController extends Controller
         return $this->NotFoundError();
         
     }
-    
+
     public function show($id)
     {
 
@@ -143,5 +144,32 @@ class JobController extends Controller
         }
 
         return $this->NotFoundError();
+    }
+
+    public function testImage(Request $request)
+    {
+        if ($request->hasFile('img_link'))
+        {
+            $validate = Validator::make($request->all(), [
+                'img_link' => 'required|image',
+            ]);
+    
+            if ($validate->fails()) {
+                return  $this->apiResponse(null, $validate->errors(), 422);
+            }
+    
+
+            $path = Storage::putFile('users', $request->file('img_link'));
+
+            if($path)
+            {
+                return ['msg' => 'image stored successfully',
+                        'path' => $path
+            ];   
+            
+            }
+        }
+        return "image storing failed";
+
     }
 }
