@@ -11,6 +11,7 @@ import { JobService } from 'src/app/services/job.service';
 export class MyjobsComponent implements OnInit {
 jobs:any;
 client_id:any;
+
   constructor(private api:ApiService,private job:ClientJobService) { }
 
   ngOnInit(): void {

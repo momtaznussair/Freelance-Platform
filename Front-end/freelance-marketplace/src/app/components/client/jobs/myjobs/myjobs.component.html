@@ -9,12 +9,12 @@
 <div class="container mt-3 p-3 border">
     
     <!-- ===search===== -->
-    <div class="row border-bottom" >
-        <input type="text" class="form-control my-3 p-2" placeholder="search" style="width: 50rem;"/>
-    </div>
+    <!-- <div class="row border-bottom" >
+        <input type="text" class="form-control my-3 p-2" placeholder="search"  style="width: 50rem;"/>
+    </div> -->
     <!-- ====end search==== -->
  
-    <div class="row mt-3 border-bottom" [routerLink]="['/client/job/details',post.id]"  *ngFor="let post of jobs | paginate : {
+    <div class="row mt-3 border-bottom" [routerLink]="['/client/job/details',post.id]"  *ngFor="let post of jobs  | paginate : {
         itemsPerPage: 5,
         currentPage: page,
         totalItems: count}">
