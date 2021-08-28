@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 import { sharedSignUpProcess } from 'src/app/services/shared-sign-up-process';
-import { UploadImgService } from 'src/app/services/upload-img.service';
 
 // import Swal from 'sweetalert2';
 
@@ -18,10 +17,11 @@ export class SignupComponent implements OnInit {
   userResponse : User = new User();
   imgPattern = '([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)';
 
+  file: File | null = null; // Variable to store file
 
 
   form : FormGroup = new FormGroup({});
-  constructor( private imgUploadService: UploadImgService,private formBuilder : FormBuilder  ,private userService : UserService ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
+  constructor(private formBuilder : FormBuilder  ,private userService : UserService ,private router : Router , private sharedProcess : sharedSignUpProcess) { }
 
   // files:any;
   // uploadImage(event:any){
@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
   genders = ['male' , 'female'];
 
 
- 
+  //start of ngOnInit()
   ngOnInit(): void {
 
     //check if user logged
@@ -77,32 +77,11 @@ export class SignupComponent implements OnInit {
       type:['' , [Validators.required]],
     })
 
-  }
-/***********************************
-            upload image
- ***********************************/
- loading: boolean = false; // Flag variable
- file: File[]= [] // Variable to store file
+  }//end of ngOnInit
 
-// On file Select
   onChange(event : any) {
-    this. file[0] =<File> event.target.files[0];
-    // console.log(this.file[0]) 
+    this.file = event.target.files[0];
   }
-   // OnClick of button Upload
-  onUploadImg(){
-    this.loading = !this.loading;
-    this.imgUploadService.upload(this.file[0]).subscribe(
-        (event: any) => {
-            if (typeof (event) === 'object') {
-              console.log(event)
-                this.loading = false; // Flag variable 
-            }
-        }
-    );
-}
-  
-
   nextStepOfSignUp()
   {
 
@@ -128,11 +107,13 @@ export class SignupComponent implements OnInit {
   isLogged : boolean = false;
 
   register(){
+    console.log(this.file)
     if(this.form.valid && this.password == this.password_confirmation)
     {
+      // console.log(this.files)
       // console.log(this.form.value);
       this.sharedProcess.sharedSignUpProcess.user_data = this.form.value;
-      this.sharedProcess.sharedSignUpProcess.files = this.file[0];
+      // this.sharedProcess.sharedSignUpProcess.files = this.files;
       // console.log(this.sharedProcess.sharedSignUpProcess)
       localStorage.setItem('data' , JSON.stringify(this.sharedProcess.sharedSignUpProcess));
       localStorage.setItem('files' , JSON.stringify(this.sharedProcess.sharedSignUpProcess.files));
@@ -140,6 +121,7 @@ export class SignupComponent implements OnInit {
     }
     else
     {
+      // this.simpleAlert();
       this.isLogged = true;
     }
   };//end of register function

@@ -31,7 +31,7 @@ class ExLevel extends BaseDimmer
             'text'   => "You Have {$count} {$string} , Click on button below to view all {$string}",
             'button' => [
                 'text' => 'View All Experience_levels',
-                'link' => route('voyager.experience_levels.index'),
+                'link' => route('voyager.experience-levels.index'),
             ],
             'image' => 'storage/widgets/experience_level.jpg',
         ]));

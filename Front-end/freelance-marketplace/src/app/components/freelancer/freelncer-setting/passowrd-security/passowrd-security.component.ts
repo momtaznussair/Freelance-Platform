@@ -37,8 +37,7 @@ export class PassowrdSecurityComponent implements OnInit {
 
   new_password : string = '';
   new_password_confirmation : string = '';
-  error:boolean=false;
-  errorMassage:string='';
+
   changePassword(){
 
     console.log(this.form.value)
@@ -48,16 +47,13 @@ export class PassowrdSecurityComponent implements OnInit {
         console.log(response);
         this.user_id = localStorage.getItem('user_id');
       } , error => {
-        this.error=true;
-        this.errorMassage='please check your info and try again';
+        alert('please check your data and try again');
       });
     }
     else
     {
       this.isLogged = true;
-      this.error=true;
-      this.errorMassage='please check your info and try again';
-    
+      alert('please check your info and try again');
       console.log(this.isLogged);
     }
   }

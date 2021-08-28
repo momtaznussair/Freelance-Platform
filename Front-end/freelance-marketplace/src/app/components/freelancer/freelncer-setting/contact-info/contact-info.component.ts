@@ -21,9 +21,7 @@ export class ContactInfoComponent implements OnInit {
   isLogged : boolean = false;
   resData : any;
   errorUpdate : boolean = false;
-  
-  error:boolean=false;
-  errorMassage:string='';
+
   constructor(private formBuilder : FormBuilder  ,  private userService : UserService) { }
   ngOnInit(): void {
 
@@ -72,8 +70,7 @@ export class ContactInfoComponent implements OnInit {
     }
     else
     {
-      this.error=true;
-      this.errorMassage='please check your info and try again';
+      alert('please check your data and try again');
       this.isLogged = true;
       console.log(this.isLogged);
     }
@@ -100,8 +97,7 @@ export class ContactInfoComponent implements OnInit {
     else
     {
       this.isLogged = true;
-      this.error=true;
-      this.errorMassage='please check your info and try again';
+      alert('please check your info and try again');
       console.log(this.isLogged);
     }
   }

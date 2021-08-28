@@ -148,7 +148,7 @@ let i = index" [class.active]="i == currentIndex">
                         <span class="mx-2"  *ngFor="let skill of post.skills">{{skill.name}}</span>
                     </div>
 
-                        -Proposals: <span class="proposals fw-bold">5 to 10</span> <br>
+                        -Proposals: <span class="proposals fw-bold">{{ post.proposals_number }}</span> <br>
 
                         <!-- More Info -->
                         <div class="more-info">
@@ -174,7 +174,7 @@ let i = index" [class.active]="i == currentIndex">
                             <!-- Location -->
                             <span class="location ms-md-2">
                                 <i class="fas fa-map-marker-alt me-2"></i>
-                                <span class="fw-bold">United state</span>
+                                <span class="fw-bold">{{ post.user.country | uppercase }}</span>
                             </span>
                         </div>
 

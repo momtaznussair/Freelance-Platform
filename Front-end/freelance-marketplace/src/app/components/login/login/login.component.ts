@@ -12,8 +12,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-error:boolean=false;
-errorMassage:string='';
 
   form : FormGroup = new FormGroup({});
   constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService , private apiService : ApiService) { }
@@ -93,8 +91,7 @@ errorMassage:string='';
     }
     else
     {
-      this.error=true;
-      this.errorMassage="credentials are incorrect";
+      alert('credentials are incorrect')
       this.isLogged = true;
       console.log(this.isLogged);
     }

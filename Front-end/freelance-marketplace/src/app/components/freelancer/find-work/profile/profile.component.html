@@ -1,14 +1,11 @@
 <app-nav></app-nav>
 <div class="container firstcon border rounded mt-md-5" *ngIf="isDataGet">
-    <div class="alert alert-danger" role="alert"  *ngIf="error">
-        {{errorMassage}}
-      </div>
     <!-- image container -->
     <div class="row rounded-top">
         <div class="col border-bottom ">
             <div class="my-md-4 d-flex">
                 <i class="fas fa-camera ca ii ms-4 mt-2"></i>
-                <img class="d-inline-block ms-3" src="./assets/images/profile.jpg" />
+                <img class="d-inline-block ms-4 rounded-circle" src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" />
                 <h4 class="d-inline-block mt-4 ms-3">{{profileData.user.name}}</h4>
                 <button type="button" class="btn btn-lg rounded-pill  border border-1 b1 mt-4 me-3 ms-auto fw-bold" routerLink="/freelancer/info">Profile Setting</button>
             </div>
@@ -211,7 +208,7 @@
                                 <p class="fw-bold">${{profileData.hourly_rate}}/hr</p>
                             </span>
                         </div>
-                        <div class="col-md-5 ms-3">
+                        <div class="col-md-10 ms-3">
                             <span class="ms-auto">
                                 <p>{{profileData.overview}}</p>
 

@@ -27,8 +27,6 @@ export class MyInfoComponent implements OnInit {
   resData : any;
   errorUpdate : boolean = false;
 
-  error:boolean=false;
-  errorMassage:string='';
   ngOnInit(): void {
 
     this.user_id = localStorage.getItem('user_id');
@@ -73,8 +71,7 @@ export class MyInfoComponent implements OnInit {
     }
     else
     {
-      this.error=true;
-      this.errorMassage='please check your info and try again';
+      alert('please check your data and try again');
       this.isLogged = true;
       console.log(this.isLogged);
     }
@@ -101,8 +98,7 @@ export class MyInfoComponent implements OnInit {
     else
     {
       this.isLogged = true;
-      this.error=true;
-      this.errorMassage='please check your info and try again';
+      alert('please check your info and try again');
       console.log(this.isLogged);
     }
   }
