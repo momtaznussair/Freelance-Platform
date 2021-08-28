@@ -11,8 +11,6 @@ import { filterJobs } from 'src/app/pipes/filter-jobs.pipe';
 const routes : Routes =[
 
 ]
-
-
 @NgModule({
   declarations: [
     searchFilter, filterJobs,
@@ -20,7 +18,7 @@ const routes : Routes =[
     // ClientnavComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes)
+    CommonModule,RouterModule.forChild(routes),FormsModule,
   ],
   exports : [
   searchFilter, filterJobs
