@@ -12,6 +12,7 @@ export class JobDetailsComponent implements OnInit {
   id:string;
   isDataGet:any;
   jobb:any;
+  skills:any;
   constructor(private route:ActivatedRoute,private job:JobService) { 
     this.id = this.route.snapshot.params['id'];
 
@@ -21,6 +22,9 @@ export class JobDetailsComponent implements OnInit {
     this.job.getJob(this.id).subscribe(res=>{
       this.jobb=res.data;
       console.log(this.jobb);
+      this.skills=this.jobb.skills;
+      console.log(this.skills);
+
       this.isDataGet=true;
 
     },error=>console.error);

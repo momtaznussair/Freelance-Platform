@@ -44,8 +44,8 @@
               <p class="po ii"><b>Skills and expertise </b></p><br>
               <!-- <p class="po">Web Design Languages </p> -->
               <ul class="nav free mb-md-4">
-                <li class="nav-item">
-                  <a class="nav-link " >{{jobb.skills.name}}</a>
+                <li class="nav-item" *ngFor="let skill of skills">
+                  <a class="nav-link " >{{skill.name}}</a>
                 </li>
              
               </ul>

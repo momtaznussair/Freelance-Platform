@@ -47,7 +47,7 @@ const routes : Routes = [
     MainComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes),LayoutModule
+    CommonModule,RouterModule.forChild(routes),LayoutModule,
   ],
   exports : [
     JobsModule, TalentModule , ReportsModule,MessagesModule,ClientSettingModule

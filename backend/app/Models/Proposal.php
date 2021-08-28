@@ -20,7 +20,7 @@ class Proposal extends Model
         'freelancer_comment' ,
         'payment_style_id' ,
         'duration_id' ,
-        'user_id',
+        'freelancer_id',
         'job_id'
     ];
 
