@@ -23,6 +23,7 @@ client_id:any;
     this.job.getJob(this.client_id).subscribe(res=>{
       this.jobs=res.data;
       console.log(this.jobs);
+
     })
     
   }

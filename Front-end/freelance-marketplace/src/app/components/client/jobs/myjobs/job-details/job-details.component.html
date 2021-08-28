@@ -4,7 +4,7 @@
     <div class="container ps-4 border" >
         <div class="row">
           <!-- left col -->
-          <div class="col-12 col-lg-9 ">
+          <div class="col-12 col-lg-12 ">
             <div class="row border-bottom py-3 pt-md-4" *ngIf="isDataGet" >
               <h4>Job details</h4>
               <p class="po"> {{jobb.job_title}}
@@ -53,7 +53,7 @@
             <div class="row border-bottom pt-3 pt-md-3">
                 <div class="col ">
                     <p class="po ii"><b>Activity on this job </b></p>
-                    <p class="po ">Proposals:  Less than 5
+                    <p class="po ">Proposals:  {{jobb.proposals.length}}
                          <br><br>
                          Last viewed by client:  3 days ago <br>
                          Interviewing: 0 <br>
@@ -68,15 +68,7 @@
           </div>
            <!--end of left col -->
           <!-- right col -->
-           <div class=" right d-none d-lg-block col-lg-3 border-start pt-md-4">
-            <!-- <i class="fas fa-eye ii"></i><h5 class="d-inline ps-3 ps-md-3 ">View Posting</h5><br> -->
-          <h5>About Client</h5>
-
-          <p>2 jobs posted <br> <br>
-            0% hire rate <br> <br>
-            Member since : Jun 6, 2021
-          </p>
-           </div>
+        
             <!--end of right col -->
         </div>
       </div>
