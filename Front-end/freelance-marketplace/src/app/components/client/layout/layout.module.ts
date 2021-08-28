@@ -15,7 +15,7 @@ const routes : Routes =[
    ClientnavComponent , 
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes), NgxPaginationModule
+    CommonModule,RouterModule.forChild(routes), NgxPaginationModule,
   ],
   exports : [
     ClientnavComponent,

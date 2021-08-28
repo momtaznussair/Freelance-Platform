@@ -93,7 +93,7 @@ Route::get('proposals',[ProposalController::class,'index']);
 Route::get('proposals/{proposal}',[ProposalController::class,'show']);
 
 // CRUD for Durations
-Route::get('durations',[JobDurationController::class, 'index']);
+Route::get('durations',[DurationController::class, 'index']);
 Route::get('durations/{durations}',[DurationController::class,'show']);
 Route::post('durations' ,[DurationController::class,'store']);
 Route::post('durations/{durations}' ,[DurationController::class,'update']);

@@ -63,9 +63,7 @@ export class LocationComponent implements OnInit {
     -------------------------------------------*/
     //getting access token
     // this.locationAccessToken = this.countryAndCities.getToken();
-      this.locationAccessToken='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJtb210YXpudXNzYWlyQGdtYWlsLmNvbSIsImFwaV90b2tlbiI6IldlRjUzTEVhZlVrenY1MFhLUThBdmxXOTlKNmpmZl8xUDEwem1rNDJNa0F5cEdaQkxyd0F1Qkp2U2Q1eUp0Q0FqMzAifSwiZXhwIjoxNjMwMDY5MzI1fQ.IVOntdAZWoZ675CY_cNjyhK00GrXfj0WTstdw2XLh1I'
-      // this.locationAccessToken=this.countryAndCities.getToken();
-      console.log(this.locationAccessToken);
+      this.locationAccessToken= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJfZW1haWwiOiJuZXZlcmdpdmV1cDk1OEBnbWFpbC5jb20iLCJhcGlfdG9rZW4iOiJEVVExeFpFM2VzRnhDd3RIb2I4aVpmZ3B5ZFJJQlBNSVhjWl9nTHVaQVlXY25fV3ZDczBhTkh1cDA1ZjRyUEphUjQifSwiZXhwIjoxNjI5OTg3NDYyfQ.3KFrADUfEWuPsaXS5VwmmKUFmd96wuSfB29kisx8UyY"
       this.countryAndCities.getCountries(this.locationAccessToken).subscribe(res=>{
       this.arrayOfCountries =res
       // this.isLocationGet = true;
