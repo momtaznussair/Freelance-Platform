@@ -1,1 +1,51 @@
-<p>myjobs works!</p>
+<app-clientnav></app-clientnav>
+<div class=" container mt-4 ">
+    <div class="row ">
+        <div class="col-12 d-flex">
+        <button class="rounded-pill ms-auto p-1 " routerLink="/client/post-job">Post a job</button>
+    </div>
+    </div>
+</div>
+<div class="container mt-3 p-3 border">
+    
+    <!-- ===search===== -->
+    <!-- <div class="row border-bottom" >
+        <input type="text" class="form-control my-3 p-2" placeholder="search"  style="width: 50rem;"/>
+    </div> -->
+    <!-- ====end search==== -->
+ 
+    <div class="row mt-3 border-bottom" [routerLink]="['/client/job/details',post.id]"  *ngFor="let post of jobs  | paginate : {
+        itemsPerPage: 5,
+        currentPage: page,
+        totalItems: count}">
+        <div class="col-7">
+            <h5>{{post.job_title}}</h5>
+            <p>Created at : {{post.created_at | date:'yyyy-MM-dd hh:mm'}} by You</p>
+        </div>
+        <div class="col-5">
+            <div class="row">
+                <div class="col-4">
+                 <p class="prop" [routerLink]="['/client/proposals',post.id]" >  0 <br> Proposals</p>
+                </div>
+                <div class="col-4">
+                    <p class="prop">0 <br>  Messaged </p>
+
+                </div>
+                <div class="col-4">
+                   <p class="prop"> 0 <br> Hired</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!---------------------------------------------------------------- pagination controls------------------------------------------------------->
+<div class="container">
+
+    <div class="d-flex justify-content-center">
+        <pagination-controls
+         nextLabel="next" (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>
+
+</div>

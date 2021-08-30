@@ -12,8 +12,7 @@ class Language_level extends Model
         'name',
     ];
 
-    public function jobs(){
-        return $this->hasMany(Job::class);
+    public function users(){
+        return $this->belongsToMany(User::class);
     }
-
 }

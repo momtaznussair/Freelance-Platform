@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PortfolioResource;
 use App\Models\Portfolio;
 use App\Models\PortfolioImages;
 use App\Traits\ApiResponseTrait;
@@ -16,7 +17,7 @@ class PortfolioController extends Controller
 
     public function index(){
         $portfolios = Portfolio::all();
-        return $this->apiResponse($portfolios);
+        return $this->apiResponse(PortfolioResource::collection($portfolios));
     }
 
     public function show($id){
@@ -25,7 +26,7 @@ class PortfolioController extends Controller
         if(!$portfolio){
             $this->NotFoundError();
         }
-        return $this->apiResponse($portfolio);
+        return $this->apiResponse(new PortfolioResource($portfolio));
     }
 
     public function store(Request $request){
@@ -41,7 +42,7 @@ class PortfolioController extends Controller
         if($validate->fails()){
             return  $this->apiResponse(null,$validate->errors(),422);
         }
-        
+
         $portfolio = new Portfolio();
         $portfolio->freelancer_id = $request->freelancer_id;
         $portfolio->title = $request->title;
@@ -54,20 +55,20 @@ class PortfolioController extends Controller
         }
 
         $portfolio->save();
-
+        
         foreach($request->file('image') as $image)
         {
             $path = Storage::putFile('portfolios', $image);
-            
+
             $image = PortfolioImages::create([
                 'portfolio_id' => $portfolio->id,
                 'image_path' => $path,
-            ]);  
+            ]);
 
         }
 
         if($portfolio){
-            return $this->apiResponse($portfolio);
+            return $this->apiResponse(new PortfolioResource($portfolio));
         }
 
         return $this->UnknownError();
@@ -92,7 +93,7 @@ class PortfolioController extends Controller
         }
 
         $attachment_path = $portfolio->attachment_link;
-        
+
         if ($request->hasFile('attachment'))
         {
             Storage::delete("$attachment_path");
@@ -106,7 +107,7 @@ class PortfolioController extends Controller
         $portfolio->save();
 
         if($portfolio){
-            return $this->apiResponse($portfolio,'',201);
+            return $this->apiResponse(new PortfolioResource($portfolio),'',201);
         }
 
         return  $this->UnknownError();
@@ -119,10 +120,10 @@ class PortfolioController extends Controller
             $images = $portfolio->images;
             foreach ($images as $image ){
 
-                Storage::delete($image);            
+                Storage::delete($image);
             }
-            $images->delete();
-            
+            $portfolio->images()->delete();
+
             $portfolio->delete();
             return $this->apiResponse(true,'',200);
         }

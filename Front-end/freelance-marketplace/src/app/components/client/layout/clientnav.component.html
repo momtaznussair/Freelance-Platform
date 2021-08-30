@@ -1,0 +1,281 @@
+<div class="container-fluid py-md-2">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark text-light">
+            <div class="container-fluid">
+                <!-- Start Logo -->
+                <a class="navbar-brand ms-md-2" routerLink="/client/main">Freelance</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+                <!-- End Logo -->
+
+                <!-- Start Links-->
+                <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2  mb-lg-0">
+                              <!-- search -->
+            <form class="d-flex mt-1">
+                <div class="btn-group">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+
+                    <!-- search type dropdown -->
+                    <ul class="dropdown-menu mt-2 ms-3">
+                        <li>
+                            <a class="dropdown-item" routerLink="/freelancers" (click)="freelancer()">
+                                <span class="fa fa-user me-3" style="font-size:24px"></span> Freelancers
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" routerLink="/client/jobposts" (click)="jobs()">
+                                <span class="fa fa-briefcase me-3" style="font-size:24px"></span> Jobs
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--end  search type  dropdown-->
+                <!-- search box -->
+                <input class="form-control me-2 rounded-pill" type="search" [placeholder]="x" aria-label="Search">
+                <button class="fa fa-search border-0 bg-transparent"></button>
+            </form>
+            <!-- end of search -->
+
+                        <!-- Start jobs -->
+                        <li class="nav-item dropdown ms-md-4 me-md-2">
+                            <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown"> Jobs </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="/client/myjobs">My jobs</a>
+                                </li>
+                                <!-- <li>
+                                    <a class="dropdown-item" routerLink="/">all job posts</a>
+                                </li> -->
+                                <li>
+                                    <a class="dropdown-item" routerLink="/">All contracts</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/client/post-job">Post a job</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/work/stats">My State</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- End jobs -->
+
+                        <!-- Start Talent -->
+                        <li class="nav-item dropdown me-md-2">
+                            <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown"> Talent
+                          </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancers">Discover</a>
+                                </li>
+                                <!-- <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/myjobs/contracts">All Contracts</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/myjobs/workdiary">Work Diary</a>
+                                </li> -->
+                            </ul>
+                        </li>
+                        <!-- End My talent -->
+
+                        <!-- Start Reports -->
+                        <li class="nav-item dropdown me-md-2">
+                            <a class="nav-link  dropdown-toggle text-white" href="#" data-bs-toggle="dropdown"> Reports
+                          </a>
+                            <!-- <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/overview">Oveview</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/my-reports">My Reports</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/billings-earnings">Billings
+                                      & Earnings</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/connects-history">Connects
+                                      History</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/transaction-history">Transaction History</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" routerLink="/freelancer/reports/certificate-of-earnings">Certificate of
+                                      Earnings</a>
+                                </li>
+                            </ul> -->
+                        </li>
+                        <!-- End Reports -->
+
+                        <!-- Start Messages -->
+                        <li class="nav-item mx-md-2 mt-md-2">
+                            <a routerLink="/freelancer/messages" class="text-white text-decoration-none">Messages</a>
+                        </li>
+                        <!-- End Messages -->
+
+                        <!-- strat Help , Notification , Direct Contract , Image in md => xl screen -->
+                        <div class="nav-item d-sm-none d-md-flex">
+                            <ul class="navbar-nav">
+                                <!-- Start Help -->
+                                <li class="ms-md-5 me-md-3">
+                                    <a routerLink="#" class="">
+                                        <i class="fas fa-question fa-2x"></i>
+                                    </a>
+                                </li>
+                                <!-- End Help -->
+
+                                <!-- Start Notifications -->
+                                <li class=" mx-md-3">
+                                    <a routerLink="#">
+                                        <i class="far fa-bell fa-2x"></i>
+                                    </a>
+                                </li>
+                                <!-- End Notifications -->
+
+                                <!-- Start Direct Contracts -->
+                                <li class=" mx-md-3">
+                                    <a routerLink="#">
+                                        <i class="far fa-location-arrow fa-2x"></i>
+                                    </a>
+                                </li>
+                                <!-- End Direct Contracts -->
+
+                                <!-- Start Image -->
+                                <li class="nav-item dropdown me-md-2">
+                                    <img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt="">
+                                    <!-- Drop down-->
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a class="dropdown-item" routerLink=""><img src="../../../../../../assets/images/itay-verchik-YmQ8TrsieE4-unsplash.jpg" alt=""><span>Omar Badr <br><small>Freelancer</small></span></a>
+
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" routerLink="/freelancer/info"><span
+                                                  class="fas fa-cog"></span>
+                                              Settings
+                                          </a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" (click)="logout()"><span
+                                                  class="fas fa-sign-out-alt"></span>
+                                              Log Out
+                                          </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <!-- end Help , Notification , Direct Contract , Image in md => xl screen -->
+
+                        <!-- strat Help , Notification , Direct Contract , Image in sm screen -->
+                        <div class="nav-item d-sm-flex d-md-none">
+                            <ul class="navbar-nav">
+                                <!-- Help -->
+                                <li>
+                                    Help
+                                    <a routerLink="#">
+                                        <i class="fas fa-question ms-2"></i>
+                                    </a>
+                                </li>
+
+                                <!-- Notifications -->
+                                <li>
+                                    Notifications
+                                    <a routerLink="#">
+                                        <i class="far fa-bell ms-2"></i>
+                                    </a>
+                                </li>
+
+                                <!-- Direct Contracts -->
+                                <li>
+                                    Direct Contracts
+                                    <a routerLink="#">
+                                        <i class="far fa-location-arrow ms-2"></i>
+                                    </a>
+                                </li>
+
+                                <!-- Settings -->
+                                <li>
+                                    <button type="submit" (click)="setting()">
+                                      <span class="fas fa-cog me-2"></span>
+                                      Settings
+                                  </button>
+
+                                </li>
+                                <!-- Logout -->
+                                <li>
+                                    <a (click)="logout()">
+                                        <i class="fas fa-sign-out-alt me-2"></i>
+                                    </a>
+                                    Logout
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- end Help , Notification , Direct Contract , Image in sm screen -->
+                    </ul>
+
+                </div>
+                <!-- End Links -->
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------------------ -->
+
+
+<!-- Srart Scripts -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // make it as accordion for smaller screens
+        if (window.innerWidth > 992) {
+
+            document.querySelectorAll('.navbar .nav-item').forEach(function(everyitem) {
+
+                everyitem.addEventListener('mouseover', function(e) {
+
+                    let el_link = this.querySelector('a[data-bs-toggle]');
+
+                    if (el_link != null) {
+                        let nextEl = el_link.nextElementSibling;
+                        el_link.classList.add('show');
+                        nextEl.classList.add('show');
+                    }
+
+                });
+                everyitem.addEventListener('mouseleave', function(e) {
+                    let el_link = this.querySelector('a[data-bs-toggle]');
+
+                    if (el_link != null) {
+                        let nextEl = el_link.nextElementSibling;
+                        el_link.classList.remove('show');
+                        nextEl.classList.remove('show');
+                    }
+
+
+                })
+            });
+
+        }
+        // end if innerWidth
+    });
+    // DOMContentLoaded  end
+</script>
+
+<!-- End Scripts -->

@@ -1,44 +1,6 @@
-<span class="active">
-    <i class="fas fa-pencil-alt"></i>
-    <h6>Title </h6>
-    <i class="fas fa-check-circle"></i>
-</span>
 
-<span>
-    <i class="fas fa-file-signature"></i>
-    <h6>Description</h6>
-    <i class="fas fa-check-circle"></i>
-</span>
-
-<span>
-    <i class="fas fa-list-alt"></i>
-    <h6>Details </h6>
-    <i class="fas fa-check-circle"></i>
-</span>
-
-
-<span>
-    <i class="fas fa-clipboard-list"></i>
-    <h6>Expertise  </h6>
-    <i class="fas fa-check-circle"></i>
-</span>
-
-
-<span>
-    <i class="far fa-eye"></i>
-    <h6>Visibility</h6>
-    <i class="fas fa-check-circle"></i>
-</span>
-
-<span>
-    <i class="fas fa-dollar-sign"></i>
-    <h6>Budget</h6>
-    <i class="fas fa-check-circle"></i>
-</span>
-
-<span>
-    <i class="fas fa-check"></i>
-    <h6>Review</h6>
-    <i class="fas fa-check-circle"></i>
-</span>
-
+<ul id="grouplist" class="list-unstyled">
+    <li class="my-md-3 " *ngFor="let item of groups">
+        <a [ngClass]="{'active': currentPath == item.path }"><span class="fas fa-{{item.shape}} mx-2 "></span> {{ item.name }}</a>
+    </li>
+</ul>

@@ -1,36 +1,40 @@
 h1{
-    font-weight: bold !important;
+    font-size: 8vh;
+    font-weight: 630 !important;
+    color:black
 }
 
-li a{
-    text-decoration: none;
-    color:#999;
+.img-fluid{
+    height: 345px;
+    object-fit: contain;
 }
 
-li a:hover{
-    color: blue;
-}
-
-a.active{
-    color: var(--mc) !important;
-}
 
 img{
     border-radius: 10px;
 }
 
-span{
-    border: 1px solid gray;
-    padding: 5px;
-    border-radius: 1.5rem;
+.btnn{
+    background-color: var(--bg);
+    color: var(--bc);
+    padding: 2px;
+}
+.btnn:hover{
+    background-color: #c6d2db ;
+
 }
 
-span:hover{
-    background-color: rgb(216, 216, 216);
-    cursor: pointer;
+ li{
+    font-size: 30px;
+    font-family: cursive;
+    text-decoration: none;
+    font-weight: 600;
+    color:rgb(146, 145, 145);
 }
-
-
+ li:hover{
+     cursor: pointer;
+    color:var(--mc);
+}
 /* ----------------------------------------------------------------------------------------------------------------- */
 
 /* Media Query */
@@ -39,5 +43,13 @@ span:hover{
 @media (min-width: 300px) and (max-width:768px) { 
     a{
         font-size: 1.4rem;
+    }
+    /* h1{
+
+    } */
+    @media screen and (max-width: 992px)  {
+        h1{
+            font-size:2.5rem
+        }
     }
 }

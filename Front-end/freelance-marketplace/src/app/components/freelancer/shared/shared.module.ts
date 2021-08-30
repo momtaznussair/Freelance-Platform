@@ -1,8 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NavComponent } from './header/nav/nav.component';
-import { searchFilter } from 'src/app/pipes/search-filter.pipe';
+
 
 const routes : Routes =[
 
@@ -10,13 +11,13 @@ const routes : Routes =[
 
 @NgModule({
   declarations: [
-    NavComponent,searchFilter
+    NavComponent    
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes)
+    CommonModule,RouterModule.forChild(routes), NgxPaginationModule,
   ],
   exports : [
-    NavComponent,searchFilter
+    NavComponent,
   ]
 })
 export class SharedModule { }

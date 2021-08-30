@@ -1,29 +1,46 @@
-
+<app-nav></app-nav>
 <div class="container border pt-3 mt-5">
     <div class="row">
         <div class="col">
             <div class="row border-bottom">
                 <div class="col">
+                    
                     <h4>Create a client account</h4>
                 </div>
             </div>
+            <form  [formGroup]="form">
             <p class="mt-3">Setup a client account if you want to post jobs and hire talents.</p>
-       
 
-                <!-- <div class="bill p-3 mb-4">
+
+            <!-- <div class="bill p-3 mb-4">
                     <p >billing is required asdd dddw</p>
 
                 </div> -->
-                  <label  class="form-label">Company Name</label>
-                  <input type="text" #compname class="form-control" >
-                  <!-- <span>Your company name will NOT appear on job posts unless you have previously worked with the talent or agency on Upwork.</span> -->
-               <hr class="mt-5">
+                
+            <label class="form-label">Company Name</label>
+            <input type="text" formControlName="company_name" name="company_name" class="form-control">
+            <div
+            *ngIf="form.controls.company_name.invalid && islogged || (form.controls.company_name.dirty || form.controls.company_name.touched)">
+            <small class="text-danger fw-bold mb-3"
+                *ngIf="form.controls.company_name.hasError('maxlingth')">You should write
+                less than 255 letter</small>
+         `   <small class="text-danger fw-bold mb-3"
+                *ngIf="form.controls.company_name.hasError('minlength')">You should write
+                more than 5 letter </small>
+        </div>
+
+        <input type="text" formControlName="user_id" name="user_id" hidden >
+
+            <!-- <span>Your company name will NOT appear on job posts unless you have previously worked with the talent or agency on Upwork.</span> -->
+            <hr class="mt-5">
             <div class="row mb-3">
                 <div class="col d-flex justify-content-end">
-                <button  routerLink="/client/main"  [disabled]="compname.value==null " type="submit" class="btn btn-primary rounded-pill " (click)="addcompany(compname.value)">Create Client Account</button>
+                    <button  type="submit" class="btn2"  routerLink="/freelancer/setting/info">Cancel</button>
+                    <button  type="submit" class="btn btn-primary rounded-pill ms-3"  (click)="addcompany()">Create Client Account</button>
 
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>

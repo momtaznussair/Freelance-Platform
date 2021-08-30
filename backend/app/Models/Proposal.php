@@ -20,7 +20,7 @@ class Proposal extends Model
         'freelancer_comment' ,
         'payment_style_id' ,
         'duration_id' ,
-        'user_id',
+        'freelancer_id',
         'job_id'
     ];
 
@@ -29,7 +29,7 @@ class Proposal extends Model
     }
 
     public function freelancer(){
-        return $this->belongsTo(freelancer::class);
+        return $this->belongsTo(Freelancer::class);
     }
 
     public function duration(){
@@ -39,4 +39,5 @@ class Proposal extends Model
     public function payment_style(){
         return $this->belongsTo(Payment_style::class);
     }
+
 }

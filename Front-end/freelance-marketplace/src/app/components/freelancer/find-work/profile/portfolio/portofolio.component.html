@@ -1,0 +1,59 @@
+<div class="container py-5 px-3">
+    <div class="row">
+        <section class="d-none d-md-block col-md-2">
+        </section>
+        <section class="myinfo col-12 col-md-9">
+            <div class="card mb-5">
+
+                <div class="card-header p-4">
+                    <span class="h2" id="one"> Portfolio </span>
+                </div>
+                <div class="card-footer  px-4">
+
+                    <form action="" [formGroup]="form">
+                        <div class="body">
+                            <div class="mt-4 mb-3">
+                                <p class="h3 fw-bold" id="one">Title</p>
+                                <input type="text" formControlName="title" class=" form-control" placeholder="write title for your skills">
+                                <div *ngIf="form.controls.title.invalid && isLogged || (form.controls.title.dirty || form.controls.title.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.title.hasError('required')">This field is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.title.hasError('minlength')">You have to write more than 3 characters</small>
+
+                                </div>
+
+                            </div>
+                            <p class="fw-bold h3" id="one">
+                                Images
+                            </p>
+                            <div class="drag-drop">
+                                <p class=" text-center mt-4">
+                                    <input type="file" name="image" formControlName="image" (change)="uploadImages($event)">
+                                </p>
+
+                            </div>
+                            <div *ngIf="form.controls.image.invalid && isLogged || (form.controls.image.dirty || form.controls.image.touched)">
+                                <small class="text-danger fw-bold mb-3" *ngIf="form.controls.image.hasError('required')">This field is required</small>
+                            </div>
+
+                            <div class="description card-haeder mt-3">
+                                <p class="h3 " id="one">Description</p>
+                                <textarea formControlName="description" name="description" class="form-control" placeholder="type an description about yourself" value=""></textarea>
+                                <div *ngIf="form.controls.description.invalid && isLogged || (form.controls.description.dirty || form.controls.description.touched)">
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.description.hasError('required')">This field is required</small>
+                                    <small class="text-danger fw-bold mb-3" *ngIf="form.controls.description.hasError('minlength')">You have to write more than 10 characters</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" card-footer py-4">
+                            <button class="btn btn-light px-5 mx-3 py-2 border rounded-pill " data-bs-dismiss="modal" routerLink="/freelancer/profile" id="one">Cancel</button>
+                            <button class="btn btn-dark px-5 mx-3 py-2 rounded-pill" (click)="save()" type="submit" id="two">Save</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</div>

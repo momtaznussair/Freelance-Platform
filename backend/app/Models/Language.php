@@ -13,8 +13,9 @@ class Language extends Model
         'name',
     ];
 
-    public function jobs(){
-        return $this->hasMany(Job::class);
-    }
+    protected $hidden = ['pivot'];
 
+    public function users(){
+        return $this->belongsToMany(User::class,'user_languages');
+    }
 }

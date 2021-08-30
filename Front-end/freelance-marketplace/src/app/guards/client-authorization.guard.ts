@@ -13,7 +13,7 @@ export class ClientAuthorizationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       let isClient = this.userService.isUserClient();
       if(!isClient){
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/user/login')
         return false;
       }
 

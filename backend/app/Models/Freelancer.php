@@ -15,7 +15,7 @@ class Freelancer extends Model
         'overview',
         'job_title',
         'experience_id',
-        'hourly-rate',
+        'hourly_rate',
     ];
 
     public function portfolios(){
@@ -38,11 +38,11 @@ class Freelancer extends Model
     }
 
     public function category(){
-
         return $this->belongsTo(Category::class);
     }
 
-    public function proposals(){
-        return $this->hasMany(Proposal::class);
+    public function experience(){
+        return $this->belongsTo(Experience_level::class);
     }
+
 }

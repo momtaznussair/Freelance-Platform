@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-main',
@@ -9,7 +11,11 @@ export class MainComponent implements OnInit {
 
   constructor() { }
 
+  // successAlertNotification(){
+  //   Swal.fire('Hi', 'Now you can hire freelancers', 'success')
+  // }
   ngOnInit(): void {
+    // this.successAlertNotification()
   }
 
 }

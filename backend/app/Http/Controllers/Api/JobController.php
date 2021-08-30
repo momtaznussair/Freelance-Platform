@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\JobResource;
+use App\Models\Freelancer;
+use App\Models\FreelancerSkill;
 use App\Models\Job;
+use App\Models\User;
+use App\Notifications\JobNotification;
 use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class JobController extends Controller
@@ -15,38 +21,55 @@ class JobController extends Controller
     public function index()
     {
         $jobs = Job::with('skills')->get();
-        return $this->apiResponse($jobs);
+        return $this->apiResponse(JobResource::collection($jobs));
+    }
+
+    public function showClient($client)
+    {
+        $jobs = Job::where('client_id', $client)->get();
+
+        if($jobs){
+            return $this->apiResponse(JobResource::collection($jobs));
+        }
+
+        return $this->NotFoundError();
+        
     }
 
     public function show($id)
     {
-        $job = Job::with('skills')->find($id);
-       
+
+        $job = Job::with(['skills','category','duration','experience','payment_style','client.user', 'proposals'])->find($id);
+        // $job = Job::find($id);
+
         if (!$job) {
             $this->NotFoundError();
         }
         return $this->apiResponse($job);
+        // return $this->apiResponse(new JobResource($job));
+
     }
 
     public function store(Request $request)
     {
+
         $validate = Validator::make($request->all(), [
             'description' => 'required|min:10',
-            'payment_amount' => 'required|numeric',
+            'payment_amount' => 'numeric',
             'job_title' => 'required|min:3',
-            'attachment' => 'min:5',
+            // 'attachment' => 'min:5',
             'skill' => 'required|exists:skills,id',
             'client_id' => 'required|exists:clients,id',
-            'duration_id' => 'required|exists:durations,id',
+            'duration_id' => 'exists:durations,id',
             'experience_id' => 'required|exists:experience_levels,id',
             'payment_style_id' => 'required|exists:payment_styles,id',
             'category_id' => 'required|exists:categories,id',
-            'language_id' => 'required|exists:languages,id',
-            'language_level_id' => 'required|exists:language_levels,id',
+            'from' => 'numeric',
+            'to' => 'numeric',
         ]);
 
         if ($validate->fails()) {
-            return  $this->apiResponse(null, $validate->errors(), 422);
+            return  $this->apiResponse(null, $validate->errors(), 200);
         }
 
         $job = Job::create(
@@ -57,27 +80,36 @@ class JobController extends Controller
 
 
         if ($job) {
+            $skillsIDs = $job->skills;
+            $freelancersIDs =  FreelancerSkill::select('freelancer_id')->whereIn('skill_id',$skillsIDs)->get();
+            foreach($freelancersIDs as $id){
+                $freelancer = Freelancer::where('id' , $id->freelancer_id)->first();
+                $user = User::where('id' , $freelancer->user_id)->first();
+                $user->notify(new JobNotification($job->job_title));
+            }
+
             return $this->apiResponse($job);
         }
 
-        return $this->UnknownError();
+        // return $this->UnknownError();
+        return $this->apiResponse(true ,'',200);
     }
 
     public function update(Request $request, $id)
     {
         $validate = Validator::make($request->all(), [
             'description' => 'required|min:10',
-            'payment_amount' => 'required|numeric',
+            'payment_amount' => 'numeric',
             'job_title' => 'required|min:3',
             'attachment' => 'min:5',
             'skill' => 'required|exists:skills,id',
             'client_id' => 'required|exists:clients,id',
-            'duration_id' => 'required|exists:durations,id',
+            'duration_id' => 'exists:durations,id',
             'experience_id' => 'required|exists:experience_levels,id',
             'payment_style_id' => 'required|exists:payment_styles,id',
             'category_id' => 'required|exists:categories,id',
-            'language_id' => 'required|exists:languages,id',
-            'language_level_id' => 'required|exists:language_levels,id',
+            'from' => 'numeric',
+            'to' => 'numeric',
         ]);
 
         if ($validate->fails()) {
@@ -92,7 +124,7 @@ class JobController extends Controller
 
         $job->update($request->all());
 
-        $job->skills()->sync($request->skill === null ? [] : $request->skills);
+        $job->skills()->sync($request->skill === null ? [] : $request->skill);
         if ($job) {
             return $this->apiResponse($job, '', 201);
         }
@@ -112,5 +144,32 @@ class JobController extends Controller
         }
 
         return $this->NotFoundError();
+    }
+
+    public function testImage(Request $request)
+    {
+        if ($request->hasFile('img_link'))
+        {
+            $validate = Validator::make($request->all(), [
+                'img_link' => 'required|image',
+            ]);
+    
+            if ($validate->fails()) {
+                return  $this->apiResponse(null, $validate->errors(), 422);
+            }
+    
+
+            $path = Storage::putFile('users', $request->file('img_link'));
+
+            if($path)
+            {
+                return ['msg' => 'image stored successfully',
+                        'path' => $path
+            ];   
+            
+            }
+        }
+        return "image storing failed";
+
     }
 }

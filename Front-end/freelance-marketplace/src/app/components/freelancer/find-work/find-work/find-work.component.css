@@ -6,7 +6,8 @@ a:hover{
     text-decoration: underline;
 }
 .active{
-    border-left: 5px solid var(--mc);
+    border-left: 3px solid var(--mc);
+ padding-left: 4px;
     
 }
 

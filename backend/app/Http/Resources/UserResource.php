@@ -20,13 +20,13 @@ class UserResource extends JsonResource
             'last_name' => $this->last_name,
             'email' => $this->email,
             'gender' => $this->gender,
-            'image_link' =>  asset("uploads/users/$this->img_link"),
+            'image_link' =>  asset("uploads/"."$this->img_link"),
             'country' => $this->country,
             'city' => $this->city,
             'street' => $this->street,
             'zip_code' => $this->zip_code,
-            'freelancer_id' => $this->freelancer->id,
-            'client_id' => $this->clinet->id,
+            'freelancer_id' => $this->freelancer->id ?? Null,
+            'client_id' => $this->client->id ?? Null,
         ];
 
     }

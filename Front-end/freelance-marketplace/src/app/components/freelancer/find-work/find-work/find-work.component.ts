@@ -1,6 +1,9 @@
-import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {JobPostsService} from '../../../../services/job-posts.service'
+// import Swal from 'sweetalert2';
+import { Job } from 'src/app/models/job';
+import { JobService } from 'src/app/services/job.service';
+import { Skill } from 'src/app/models/skill';
+
 
 @Component({
   selector: 'app-find-work',
@@ -10,7 +13,7 @@ import {JobPostsService} from '../../../../services/job-posts.service'
 export class FindWorkComponent implements OnInit {
 query:string='';
 jobs=[
- 
+
   {
     "id":1,
   "title":"photoshop to html and css ",
@@ -41,34 +44,53 @@ tableSize = 7;
 tableSizes = [3, 6, 9, 12];
 responsive:string="true"
 currentIndex:number=0;
-  constructor(private jobsPosts:JobPostsService) { }
+jobPost:any;
+skills:any;
+  constructor(private job:JobService) { }
 
+  // successAlertNotification(){
+  //   Swal.fire('Welcome', 'Now you can apply for jobs', 'success')
+  // }
+  
   ngOnInit(): void {
+    // this.successAlertNotification();
     this.fetchPosts();
-  }  
-
-  fetchPosts(): void {
-    
-    this.jobsPosts.getAllPosts(HttpParams)
-      .subscribe(
-        response => {
-          this.POSTS = response;
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        });
   }
 
+  fetchPosts(): void {
+
+    this.job.getJobs().subscribe(res=>{
+      this.jobPost=res['data'] as Job;
+      console.log(this.jobPost);
+      this.skills=this.jobPost.skills;
+      console.log(this.skills);
+
+    // this.job.get().subscribe(res=>{
+    //   this.jobPost=res.data as Job[]
+    //   this.skills=this.jobPost.skills
+    //   console.log(this.skills)
+    //   console.log(this.jobPost)
+
+    // },error=>console.log)
+
+  })}
+
+/*-------------------------------
+    pagination methods
+--------------------------------*/
   onTableDataChange(event:any){
     this.page = event;
     this.fetchPosts();
-  }  
+  }
 
   onTableSizeChange(event:any): void {
     this.tableSize = event.target.value;
     this.page = 1;
     this.fetchPosts();
-  }  
+  }
+
+  search(){
+    console.log(this.query)
+  }
 
 }

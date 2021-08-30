@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup } from '@angular/forms';
@@ -13,12 +14,18 @@ import { ApiService } from 'src/app/services/api.service';
 export class SecurityComponent implements OnInit {
 
   form : FormGroup = new FormGroup({});
-  constructor(private formBuilder : FormBuilder  , private router : Router , private apiService : ApiService) { }
+  constructor(private formBuilder : FormBuilder  , private router : Router , private userService : UserService) { }
 
 
   isTokenFound : boolean = false;
+  user_id : any;
+  resData : any;
+  isDataUpdated : boolean = false;
+  errorUpdate : boolean = false;
 
   ngOnInit(): void {
+
+    this.user_id = localStorage.getItem('user_id');
     if(localStorage.getItem('token'))
     {
       this.isTokenFound = true;
@@ -29,33 +36,40 @@ export class SecurityComponent implements OnInit {
 
 
     this.form = this.formBuilder.group({
-      password : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15) ]],
-      updatedPassword : ['' , [Validators.required , Validators.minLength(8) , Validators.maxLength(15) ]],
-      confirmPassword : ['' , [Validators.required]],
+      password : ['' , [Validators.required , Validators.minLength(8) ]],
+      new_password : ['' , [Validators.required , Validators.minLength(8) ]],
+      new_password_confirmation : ['' , [Validators.required]],
     })
 
   }
 
-  updatedPassword : string = '';
-  confirmPassword : string = '';
+  new_password : string = '';
+  new_password_confirmation : string = '';
   isLogged : boolean = false;
 
-  saveData(){
+  changePassword(){
 
-    console.log(this.form.value);
-    if(this.form.valid && this.updatedPassword == this.confirmPassword)
+    console.log(this.form.value)
+    if(this.form.valid)
     {
-
-      alert ('updated successfully');
-      // this.router.navigateByUrl('client/account-security/password-and-security');
-        this.apiService.post(`${environment.apiUrl}` , this.form.value).subscribe(response=>{
-        alert ('updated successfully');
-      }, error =>console.error);
-
+      this.userService.updateUser( `updatePassword/${this.user_id}` , this.form.value).subscribe(response=>{
+        console.log(response);
+        if(this.resData.data != null)
+        {
+          this.isDataUpdated = true;
+        }else
+        {
+          this.errorUpdate = true;
+        }
+      } , error => {
+        alert('please check your data and try again');
+      });
     }
     else
     {
       this.isLogged = true;
+      alert('please check your info and try again');
+      console.log(this.isLogged);
     }
   }
 
